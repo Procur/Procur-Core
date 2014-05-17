@@ -33,14 +33,14 @@ module.exports = {
     },
     physicalAddress1: {
       type: 'string',
-      required: 'true'
+      required: true
     },
     physicalAddress2: {
       type: 'string'
     },
     country: {
       type: 'string',
-      required: 'true'
+      required: true
     },
     province: {
       type: 'string',
