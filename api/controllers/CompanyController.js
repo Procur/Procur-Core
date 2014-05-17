@@ -16,15 +16,14 @@
  */
 
 module.exports = {
-    
-  
+
+  welcome: function(req, res){
+    res.view();
+  },
+
+  setup: function(req, res){
+    var b = req.body;
+  }
 
 
-  /**
-   * Overrides for the settings in `config/controllers.js`
-   * (specific to CompanyController)
-   */
-  _config: {}
-
-  
 };

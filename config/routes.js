@@ -56,6 +56,17 @@ module.exports.routes = {
   '/logout': {
     controller: 'AuthController',
     action: 'logout'
+  },
+
+  //WELCOME ROUTES
+  'get /welcome': {
+    controller: 'CompanyController',
+    action: 'welcome'
+  },
+
+  'post /welcome' {
+    controller: 'CompanyController'm
+    action: 'setup'
   }
 
   //DEPRECATED ROUTES
