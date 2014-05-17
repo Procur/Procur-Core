@@ -44,20 +44,27 @@ passport.use(new LocalStrategy({
   function (email, password, done) {
     // asynchronous verification, for effect...
     User.findOne({ email: email }, function(err, user){
-      bcrypt.compare(password, user.password, function (err, res) {
-        if (!res)
-          return done(null, false, {
-            message: 'Invalid Password'
-          });
-        var returnUser = {
-          email: user.email,
-          createdAt: user.createdAt,
-          id: user.id
-        };
-        return done(null, returnUser, {
-          message: 'Logged In Successfully'
+      if ((!user) || (err)) {
+        return done(null, false, {
+          message: 'User not found'
         });
-      });
+      }
+      else {
+        bcrypt.compare(password, user.password, function (err, res) {
+          if (!res)
+            return done(null, false, {
+              message: 'Invalid Password'
+            });
+          var returnUser = {
+            email: user.email,
+            createdAt: user.createdAt,
+            id: user.id
+          };
+          return done(null, returnUser, {
+            message: 'Logged In Successfully'
+          });
+        });
+      };
     });
   }
 ));
