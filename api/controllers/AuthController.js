@@ -11,7 +11,7 @@ module.exports = {
   },*/
 
 
-  process: function(req, res){
+    process: function(req, res){
     passport.authenticate('local', function(err, user, info) {
       if ((err) || (!user)) {
         return res.send({
@@ -32,7 +32,7 @@ module.exports = {
     var b = req.body;
     var created = false;
 
-    User.findOne({ email: req.body.email}, function(err, user){
+    User.findOne({ email: b.email}, function(err, user){
       if(err) {
         res.send(err);
         console.log('err should be written')
@@ -88,15 +88,15 @@ module.exports.blueprints = {
   // Expose a route for every method,
   // e.g.
   // `/auth/foo` =&gt; `foo: function (req, res) {}`
-  actions: false,
+  actions: true,
 
   // Expose a RESTful API, e.g.
   // `post /auth` =&gt; `create: function (req, res) {}`
-  rest: false,
+  rest: true,
 
   // Expose simple CRUD shortcuts, e.g.
   // `/auth/create` =&gt; `create: function (req, res) {}`
   // (useful for prototyping)
-  shortcuts: false
+  shortcuts: true
 
 };
