@@ -64,9 +64,16 @@ module.exports.routes = {
     action: 'welcome'
   },
 
-  'post /welcome' {
-    controller: 'CompanyController'm
+  'post /welcome': {
+    controller: 'CompanyController',
     action: 'setup'
+  },
+
+  //TESTING ROUTES
+
+  'get /internal': {
+    controller: 'AuthController',
+    action: 'test'
   }
 
   //DEPRECATED ROUTES

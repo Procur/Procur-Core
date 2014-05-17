@@ -20,10 +20,13 @@ module.exports = {
         res.send(err);
       }
       req.logIn(user, function(err) {
-        if (err) res.send(err);
-        return res.send({
-          message: 'login successful'
-        });
+        if (err){
+           res.send(err);
+        }
+        else {
+          req.session.authenticated = true;
+          res.redirect('/internal');
+        }
       });
     })(req, res);
   },
@@ -63,6 +66,11 @@ module.exports = {
   logout: function (req,res){
     req.logout();
     res.send('logout successful');
+  },
+
+  test: function(req, res){
+    console.log(req.session.authenticated);
+    res.view();
   }
 };
 
