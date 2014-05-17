@@ -5,9 +5,12 @@
 var passport = require('passport');
 module.exports = {
 
-  login: function (req, res) {
+  //MOVED TO HOME CONTROLLER FOR LOGIN MODAL
+  /*login: function (req, res) {
     res.view();
-  },
+  },*/
+
+
   process: function(req, res){
     passport.authenticate('local', function(err, user, info) {
       if ((err) || (!user)) {
@@ -24,6 +27,39 @@ module.exports = {
       });
     })(req, res);
   },
+
+  register: function(req, res){
+    var b = req.body;
+    var created = false;
+
+    User.findOne({ email: req.body.email}, function(err, user){
+      if(err) {
+        res.send(err);
+        console.log('err should be written')
+      }
+      if(!user){
+        User.create({ firstName: b.firstName, lastName: b.lastName, email: b.email, password: b.password }, function(err, user){
+          if(err){
+            created = false;
+            res.send(err);
+          }
+          else{
+            created = true;
+            console.log("User: " + b.email + " created.");
+          }
+        })
+      }
+      else {
+        created = false;
+        res.send({message: 'Email address is unavailable.'});
+      }
+    });
+
+    if(created = true){
+      res.redirect('/dashboard');
+    };
+  },
+
   logout: function (req,res){
     req.logout();
     res.send('logout successful');
@@ -52,15 +88,15 @@ module.exports.blueprints = {
   // Expose a route for every method,
   // e.g.
   // `/auth/foo` =&gt; `foo: function (req, res) {}`
-  actions: true,
+  actions: false,
 
   // Expose a RESTful API, e.g.
   // `post /auth` =&gt; `create: function (req, res) {}`
-  rest: true,
+  rest: false,
 
   // Expose simple CRUD shortcuts, e.g.
   // `/auth/create` =&gt; `create: function (req, res) {}`
   // (useful for prototyping)
-  shortcuts: true
+  shortcuts: false
 
 };
