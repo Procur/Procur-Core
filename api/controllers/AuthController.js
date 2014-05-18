@@ -65,12 +65,12 @@ module.exports = {
 
   logout: function (req,res){
     req.logout();
-    res.send('logout successful');
+    res.redirect('/');
   },
 
   test: function(req, res){
     console.log(req.session.authenticated);
-    res.view();
+    res.view({ message: "Welcome, " + req.session.firstName });
   }
 };
 
