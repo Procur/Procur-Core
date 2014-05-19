@@ -69,6 +69,12 @@ module.exports.routes = {
     action: 'setup'
   },
 
+  //DASHBOARD
+  'get /dashboard': {
+    controller: 'DashboardController',
+    action: 'index'
+  },
+
   //TESTING ROUTES
 
   'get /internal': {
