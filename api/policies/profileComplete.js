@@ -9,10 +9,8 @@
 module.exports = function (req, res, next) {
   var profileComplete;
 
-  //TODO add profile field checks.
-  console.log("We're in the profile checker policy");
+  // add profile field checks.
 
   if (profileComplete) return next();
   // User is not allowed
-  else return res.redirect("/welcome");
 };

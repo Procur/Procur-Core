@@ -25,6 +25,8 @@ module.exports = {
     var b = req.body;
     console.log(req.body);
 
+    
+
     //Final Action: Redirect to Dashboard
     //profileComplete policy is executed to ensure proper Company setup
     res.redirect('/dashboard');

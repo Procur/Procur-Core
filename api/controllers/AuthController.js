@@ -33,7 +33,6 @@ module.exports = {
 
   register: function(req, res){
     var b = req.body;
-    var created = false;
 
     User.findOne({ email: b.email}, function(err, user){
       if(err) {
@@ -43,34 +42,47 @@ module.exports = {
       if(!user){
         User.create({ firstName: b.firstName, lastName: b.lastName, email: b.email, password: b.password }, function(err, user){
           if(err){
-            created = false;
             res.send(err);
           }
           else{
-            created = true;
             console.log("User: " + b.email + " created.");
+            passport.authenticate('local', function(err, user, info) {
+              if ((err) || (!user)) {
+                return res.send({
+                message: 'login failed'
+                });
+                res.send(err);
+              }
+              req.logIn(user, function(err) {
+                if (err){
+                   res.send(err);
+                }
+                else {
+                  req.session.authenticated = true;
+                  res.redirect('/welcome');
+                }
+              });
+            })(req, res);
+
           }
-        })
+        });
       }
       else {
-        created = false;
         res.send({message: 'Email address is unavailable.'});
       }
     });
-
-    if(created = true){
-      res.redirect('/dashboard');
-    };
   },
 
   logout: function (req,res){
+    req.session.authenticated = false;
     req.logout();
     res.redirect('/');
   },
 
   test: function(req, res){
     console.log(req.session.authenticated);
-    res.view({ message: "Welcome, " + req.session.firstName });
+    console.log(req.session);
+    res.view();
   }
 };
 

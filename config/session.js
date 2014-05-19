@@ -32,7 +32,7 @@ module.exports.session = {
   // Read more about options at: https://github.com/visionmedia/connect-redis
   //
   host: 'localhost',
-  port: 6379,
+  port: 6379
   // ttl: <redis session TTL in seconds>,
   // db: 0,
   // pass: <redis auth password>
