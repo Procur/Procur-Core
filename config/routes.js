@@ -75,6 +75,12 @@ module.exports.routes = {
     action: 'index'
   },
 
+  //COMPANY ROUTES
+  'post /company/create': {
+    controller: 'CompanyController',
+    action: 'create'
+  },
+
   //TESTING ROUTES
 
   'get /internal': {

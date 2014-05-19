@@ -19,6 +19,13 @@ module.exports = {
 
   setup: function(req, res){
     var b = req.body;
+  },
+
+  create: function(req, res){
+    var b = req.body;
+    console.log(req.body);
+
+
   }
 
 
