@@ -7,15 +7,13 @@
  */
 
 module.exports = function (req, res, next) {
-  var profileComplete;
-
-  // add profile field checks.
-
-  if (profileComplete) {
-    return next();
-  }
-  else {
-    res.redirect('/welcome');
-  }
-  // User is not allowed
+  User.findOne({ id: req.session.user }, function(err, user){
+    if (err) return next(err);
+    if (user.profileComplete == true) {
+      return next();
+    }
+    else {
+      res.redirect('/welcome');
+    }
+  });
 };

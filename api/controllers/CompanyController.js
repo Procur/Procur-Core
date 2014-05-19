@@ -61,29 +61,41 @@ module.exports = {
         res.send(err);
       }
       else{
-        console.log("Company: " + company.companyName + " created.");
-        User.find().where({ id: req.session.user }, function(err, user){
-          if (err) {
-            console.log("Failed at findone user");
-            res.send(err);
-          }
-          else {
-            user.update({ profileComplete: true }, function(err, user){
-              if (err){
-                console.log("Failed at update user");
-                rs.send(err);
-              }
-              else {
-                //Final Action: Redirect to Dashboard
-                //profileComplete policy is executed to ensure proper Company setup
-                res.redirect('/dashboard');
-              }
-            });
-          };
+        console.log("Company: " + company.name + " created.");
+
+        User.update(req.session.user, { profileComplete: true }, function(err, user){
+          if(err) return next(err);
+          console.log(user)
         });
+
+        res.redirect('/dashboard');
       }
     });
   }
+
+
+  /*
+  User.update().where({ id: req.session.user }, function(err, user){
+    if (err) {
+      console.log("Failed at findone user");
+      res.send(err);
+    }
+    else {
+      console.log(user);
+      /*user.update({ profileComplete: true }, function(err, user){
+        if (err){
+          console.log("Failed at update user");
+          rs.send(err);
+        }
+        else {
+          //Final Action: Redirect to Dashboard
+          //profileComplete policy is executed to ensure proper Company setup
+          res.redirect('/dashboard');
+        }
+      });
+      res.redirect('/dashboard');
+    };
+  });*/
 
 
 
