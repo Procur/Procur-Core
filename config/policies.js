@@ -25,6 +25,10 @@ module.exports.policies = {
 
   UserController: {
     welcome: 'isAuthenticated'
+  },
+
+  AuthController: {
+    test: 'isAuthenticated'
   }
 
   /*
