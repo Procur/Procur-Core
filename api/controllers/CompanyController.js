@@ -17,10 +17,6 @@
 
 module.exports = {
 
-  welcome: function(req, res){
-    res.view();
-  },
-
   setup: function(req, res){
     var b = req.body;
   }

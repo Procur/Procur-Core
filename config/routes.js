@@ -60,7 +60,7 @@ module.exports.routes = {
 
   //WELCOME ROUTES
   'get /welcome': {
-    controller: 'CompanyController',
+    controller: 'UserController',
     action: 'welcome'
   },
 

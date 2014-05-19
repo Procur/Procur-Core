@@ -16,15 +16,9 @@
  */
 
 module.exports = {
-    
-  
 
+  welcome: function(req, res){
+    res.view();
+  }
 
-  /**
-   * Overrides for the settings in `config/controllers.js`
-   * (specific to UserController)
-   */
-  _config: {}
-
-  
 };

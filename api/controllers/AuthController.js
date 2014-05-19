@@ -25,7 +25,7 @@ module.exports = {
         }
         else {
           req.session.authenticated = true;
-          res.redirect('/internal');
+          res.redirect('/dashboard');
         }
       });
     })(req, res);
