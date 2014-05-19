@@ -70,6 +70,67 @@ module.exports = {
     cageCode: {
       type: 'string'
     },
+
+    //SHARED ATTRIBUTES
+
+    facebookUsername: {
+      type: 'string'
+    },
+    twitterUsername: {
+      type: 'string'
+    },
+    pintrestUsername: {
+      type: 'string'
+    },
+    tumblrUsername: {
+      type: 'string'
+    },
+    linkedinUsername: {
+      type: 'string'
+    },
+    instagramUsername: {
+      type: 'string'
+    },
+    googleUsername: {
+      type: 'string'
+    },
+    relevantLinksTitle: {
+      type: 'string'
+    },
+    languages: {
+      type: 'string',
+      required: true
+    },
+    dunsNumber: {
+      type: 'string'
+    },
+    contactName: {
+      type: 'string'
+    },
+    contactPosition: {
+      type: 'string'
+    },
+    contactEmail: {
+      type: 'string'
+    },
+    responsibilityStatement: {
+      type: 'text'
+    },
+    aboutCompany: {
+      type: 'text'
+    },
+    downloads: {
+      type: 'string'
+    },
+    logoUrl: {
+      type: 'string'
+    },
+    featuredPhotos: {
+      type: 'string'
+    },
+    certifications: {
+      type: 'string'
+    }
   }
 
 };
