@@ -18,7 +18,16 @@
 module.exports = {
 
   index: function(req, res){
-    res.view();
+    var user = req.session.user;
+    User.findOne({ id: req.session.user }, function(err, user){
+      if(err) {
+        res.send(err);
+        console.log('err should be written')
+      }
+      else {
+        res.view({ message: "Welcome, " + user.firstName });
+      }
+    });
   }
 
 
