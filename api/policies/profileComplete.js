@@ -11,6 +11,11 @@ module.exports = function (req, res, next) {
 
   // add profile field checks.
 
-  if (profileComplete) return next();
+  if (profileComplete) {
+    return next();
+  }
+  else {
+    res.redirect('/welcome');
+  }
   // User is not allowed
 };
