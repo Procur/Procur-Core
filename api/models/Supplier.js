@@ -10,6 +10,10 @@ module.exports = {
 
   attributes: {
 
+    company: {
+      type: 'string',
+      required: true
+    },
   	productionVolume: {
       type: 'integer',
       required: true
@@ -65,7 +69,7 @@ module.exports = {
     },
     cageCode: {
       type: 'string'
-    }
+    },
   }
 
 };

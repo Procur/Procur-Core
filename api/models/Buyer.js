@@ -10,6 +10,10 @@ module.exports = {
 
   attributes: {
 
+    company: {
+      type: 'string',
+      required: 'true'
+    },
     preferredSupplierType: {
       type: 'string',
       required: true
