@@ -10,9 +10,14 @@ module.exports = {
 
   attributes: {
 
+    user: {
+      type: 'string',
+      required: true  //TIES COMPANY TO USER
+    },
   	name: {
       type: 'string',
-      required: true
+      required: true,
+      unique: true
     },
     phoneNumber: {
       type: 'string',

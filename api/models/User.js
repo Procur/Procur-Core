@@ -28,6 +28,10 @@ module.exports = {
       type: 'string',
       required: true
     },
+    profileComplete: {
+      type: 'boolean',
+      required: true
+    },
     toJSON: function() {
       var obj = this.toObject();
       delete obj.password;

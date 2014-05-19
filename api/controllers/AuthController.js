@@ -40,7 +40,7 @@ module.exports = {
         console.log('err should be written')
       }
       if(!user){
-        User.create({ firstName: b.firstName, lastName: b.lastName, email: b.email, password: b.password }, function(err, user){
+        User.create({ firstName: b.firstName, lastName: b.lastName, email: b.email, password: b.password, profileComplete: false }, function(err, user){
           if(err){
             res.send(err);
           }
@@ -65,7 +65,7 @@ module.exports = {
             })(req, res);
 
           }
-        });
+        })
       }
       else {
         res.send({message: 'Email address is unavailable.'});
