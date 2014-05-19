@@ -27,35 +27,42 @@ module.exports = {
     console.log(req.body);
     console.log(b.companyName);
 
+
+
+    //CREATE HQ TOGGLE LOGIC
+
+
+
     Company.create({
       user: req.session.passport.user,
-      companyName: b.companyName,
-      companyPhone: b.companyPhone,
-      companyPhoneExt: b.companyPhoneExt,
-      companyFax: b.companyFax,
-      companyFaxExt: b.companyFaxExt,
-      companyWebsite: b.companyWebsite,
-      companyAddress1: b.companyAddress1,
-      companyAddress2: b.companyAddress2,
-      companyCountry: b.companyCountry,
-      companyProvince: b.companyProvince,
-      companyPostalCode: b.companyPostalCode,
-      companyIsHq: b.companyIsHq,
+      name: b.companyName,
+      phoneNumber: b.companyPhone,
+      phoneExtension: b.companyPhoneExt,
+      faxNumber: b.companyFax,
+      faxExtension: b.companyFaxExt,
+      email: b.companyEmail,
+      website: b.companyWebsite,
+      physicalAddress1: b.companyAddress1,
+      physicalAddress2: b.companyAddress2,
+      country: b.companyCountry,
+      province: b.companyProvince,
+      postalCode: b.companyPostalCode,
       hqAddress1: b.hqAddress1,
       hqAddress2: b.hqAddress2,
       hqCountry: b.hqCountry,
       hqProvince: b.hqProvince,
       hqPostalCode: b.hqPostalCode,
       companyType: b.companyType,
-      companyIndustry: b.companyIndustry,
-      companyEmployeeCount: b.companyEmployeeCount
+      industry: b.companyIndustry,
+      employeeCount: b.companyEmployeeCount
     }, function(err, company){
       if(err){
         console.log("Failed at create company");
         res.send(err);
       }
       else{
-        User.findOne({ id: req.session.user }, function(err, user){
+        console.log("Company: " + company.companyName + " created.");
+        User.find().where({ id: req.session.user }, function(err, user){
           if (err) {
             console.log("Failed at findone user");
             res.send(err);
@@ -67,6 +74,8 @@ module.exports = {
                 rs.send(err);
               }
               else {
+                //Final Action: Redirect to Dashboard
+                //profileComplete policy is executed to ensure proper Company setup
                 res.redirect('/dashboard');
               }
             });
@@ -75,8 +84,7 @@ module.exports = {
       }
     });
   }
-    //Final Action: Redirect to Dashboard
-    //profileComplete policy is executed to ensure proper Company setup
+
 
 
 };

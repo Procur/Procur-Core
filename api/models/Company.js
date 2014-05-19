@@ -29,6 +29,9 @@ module.exports = {
     faxNumber: {
       type: 'string'
     },
+    faxExtension: {
+      type: 'string'
+    },
     email: {
       type: 'email',
       required: true
