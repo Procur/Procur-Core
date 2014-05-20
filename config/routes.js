@@ -52,12 +52,12 @@ module.exports.routes = {
     action: 'pricing'
   },
 
-  'get /tradeShows': {
+  'get /tradeshows': {
     controller: 'HomeController',
     action: 'tradeShows'
   },
 
-  'get /aboutUs': {
+  'get /about': {
     controller: 'HomeController',
     action: 'aboutUs'
   },
@@ -82,7 +82,7 @@ module.exports.routes = {
     action: 'faq'
   },
 
-  'get /contactSupport': {
+  'get /contactsupport': {
     controller: 'HomeController',
     action: 'contactSupport'
   },
