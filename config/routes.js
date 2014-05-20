@@ -87,6 +87,16 @@ module.exports.routes = {
     action: 'contactSupport'
   },
 
+  'get /privacy': {
+    controller: 'HomeController',
+    action: 'privacyNotice'
+  },
+
+  'get /terms': {
+    controller: 'HomeController',
+    action: 'privacyNotice'
+  },
+
   //AUTHENTICATION ROUTES
   'post /login': {
     controller: 'AuthController',
