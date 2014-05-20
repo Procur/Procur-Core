@@ -1,8 +1,8 @@
 {
-  "name": "sailsauth",
+  "name": "Procur-Core",
   "private": true,
-  "version": "0.0.0",
-  "description": "a Sails application",
+  "version": "0.1.0",
+  "description": "Procur core platform",
   "dependencies": {
     "bcrypt": "~0.7.6",
     "ejs": "0.8.4",
@@ -21,6 +21,6 @@
   },
   "main": "app.js",
   "repository": "",
-  "author": "",
-  "license": ""
+  "author": "Procur Systems, Inc.",
+  "license": "Proprietary"
 }
