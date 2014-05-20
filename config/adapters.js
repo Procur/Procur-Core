@@ -12,28 +12,47 @@
  * http://sailsjs.org/#documentation
  */
 
-module.exports.adapters = {
+module.exports = {
 
-  // If you leave the adapter config unspecified
-  // in a model definition, 'default' will be used.
+  port: 80,
+  environment: 'production',
+  adapters:{
+
   'default': 'mongo',
 
-  mongo: {
-    module: 'sails-mongo',
-    host: 'localhost',
-    port: '27017',
-    database: 'procur'
+    mongo: {
+      module: 'sails-mongo',
+      url: 'mongodb://procur-dev:Pr0cur1!@oceanic.mongohq.com:10073/app25459603',
+      database: 'procur'
+    },
+    disk: {
+      module: 'sails-disk'
+    }
   },
+
+  environment: 'development',
+  adapters:{
+
+  'default': 'mongo',
+
+    mongo: {
+      module: 'sails-mongo',
+      host: 'localhost',
+      port: '27017',
+      database: 'procur'
+    },
+    disk: {
+      module: 'sails-disk'
+    }
+  }
 
   // Persistent adapter for DEVELOPMENT ONLY
   // (data is preserved when the server shuts down)
-  disk: {
-    module: 'sails-disk'
-  },
+
 
   // MySQL is the world's most popular relational database.
   // Learn more: http://en.wikipedia.org/wiki/MySQL
-  myLocalMySQLDatabase: {
+  /*myLocalMySQLDatabase: {
 
     module: 'sails-mysql',
     host: 'YOUR_MYSQL_SERVER_HOSTNAME_OR_IP_ADDRESS',
@@ -42,5 +61,5 @@ module.exports.adapters = {
     // so you don't inadvertently push it up if you're using version control
     password: 'YOUR_MYSQL_PASSWORD',
     database: 'YOUR_MYSQL_DB'
-  }
+  }*/
 };
