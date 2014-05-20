@@ -19,6 +19,42 @@ module.exports = {
 
   index: function(req, res){
     res.view();
+  },
+
+  features: function(req, res){
+    res.view();
+  },
+
+  pricing: function(req, res){
+    res.view();
+  },
+
+  tradeShows: function(req, res){
+    res.view();
+  },
+
+  aboutUs: function(req, res){
+    res.view();
+  },
+
+  press: function(req, res){
+    res.view();
+  },
+
+  careers: function(req, res){
+    res.view();
+  },
+
+  contact: function(req, res){
+    res.view();
+  },
+
+  faq: function(req, res){
+    res.view();
+  },
+
+  contactSupport: function(req, res){
+    res.view();
   }
 
 
