@@ -10,7 +10,7 @@ module.exports = {
     res.view();
   },*/
 
-
+    //PROCESSES LOGIN REQUESTS
     process: function(req, res){
     passport.authenticate('local', function(err, user, info) {
       if ((err) || (!user)) {
@@ -31,6 +31,7 @@ module.exports = {
     })(req, res);
   },
 
+  //HANDLES REGISTRATION FORM DATA
   register: function(req, res){
     var b = req.body;
 
@@ -73,12 +74,14 @@ module.exports = {
     });
   },
 
+  //KILLS SESSIONS AND REDIRECTS TO LOGOUT CONFIRMATION VIEW (GOODBYE)
   logout: function (req,res){
     req.session.authenticated = false;
     req.logout();
     res.redirect('/goodbye');
   },
 
+  //LOGOUT CONFIRMATION
   goodbye: function(req, res){
     var user = req.session.user;
     User.findOne({ id: req.session.user }, function(err, user){
@@ -92,6 +95,7 @@ module.exports = {
     });
   },
 
+  //DEBUG VIEW - CONTAINS DEVELOPMENT UTILITY TOOLS
   test: function(req, res){
     console.log(req.session.authenticated);
     console.log(req.session);
