@@ -74,10 +74,16 @@ module.exports.routes = {
     action: 'setup'
   },
 
-  //DASHBOARD
+  //DASHBOARD ROUTES
   'get /dashboard': {
     controller: 'DashboardController',
     action: 'index'
+  },
+
+  //USER ROUTES
+  'get /myprocur': {
+    controller: 'UserController',
+    action: 'myProcur'
   },
 
   //COMPANY ROUTES

@@ -23,7 +23,8 @@ module.exports.policies = {
   },
 
   UserController: {
-    welcome: ['isAuthenticated', 'profileComplete']
+    welcome: ['isAuthenticated', 'profileComplete'],
+    myProcur: ['isAuthenticated', 'profileComplete']
   },
 
   AuthController: {
