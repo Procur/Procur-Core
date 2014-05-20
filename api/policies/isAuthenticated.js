@@ -8,19 +8,11 @@
  *
  */
 module.exports = function (req, res, next) {
-
-  // User is allowed, proceed to controller
-  //var is_auth = req.isAuthenticated()
-
   var is_auth = req.session.authenticated;
-  
-  if (is_auth) {
-    console.log("We're in the auth checker");
+  if (is_auth == true) {
     return next();
   }
-  // User is not allowed
   else {
-    console.log("Not auth'd. Should redirect.")
     return res.redirect("/");
   };
 };

@@ -76,7 +76,20 @@ module.exports = {
   logout: function (req,res){
     req.session.authenticated = false;
     req.logout();
-    res.redirect('/');
+    res.redirect('/goodbye');
+  },
+
+  goodbye: function(req, res){
+    var user = req.session.user;
+    User.findOne({ id: req.session.user }, function(err, user){
+      if(err) {
+        res.send(err);
+        console.log('err should be written')
+      }
+      else {
+        res.view({ message: user.email + " signed out. "});
+      }
+    });
   },
 
   test: function(req, res){

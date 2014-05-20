@@ -19,12 +19,11 @@ module.exports.policies = {
   '*': true,
 
   DashboardController: {
-    index: 'isAuthenticated',
-    index: 'profileComplete'
+    index: ['isAuthenticated', 'profileComplete']
   },
 
   UserController: {
-    welcome: 'isAuthenticated'
+    welcome: ['isAuthenticated', 'profileComplete']
   },
 
   AuthController: {

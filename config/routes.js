@@ -58,6 +58,11 @@ module.exports.routes = {
     action: 'logout'
   },
 
+  'get /goodbye': {
+    controller: 'AuthController',
+    action: 'goodbye'
+  },
+
   //WELCOME ROUTES
   'get /welcome': {
     controller: 'UserController',
