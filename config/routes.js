@@ -36,10 +36,55 @@ module.exports.routes = {
 
 
 
-  //GENERAL ROUTES
-  '/': {
+  //LANDING PAGE ROUTES
+  'get /': {
     controller: 'HomeController',
     action: 'index'
+  },
+
+  'get /features': {
+    controller: 'HomeController',
+    action: 'features'
+  },
+
+  'get /pricing': {
+    controller: 'HomeController',
+    action: 'pricing'
+  },
+
+  'get /tradeShows': {
+    controller: 'HomeController',
+    action: 'tradeShows'
+  },
+
+  'get /aboutUs': {
+    controller: 'HomeController',
+    action: 'aboutUs'
+  },
+
+  'get /press': {
+    controller: 'HomeController',
+    action: 'press'
+  },
+
+  'get /careers': {
+    controller: 'HomeController',
+    action: 'careers'
+  },
+
+  'get /contact': {
+    controller: 'HomeController',
+    action: 'contact'
+  },
+
+  'get /faq': {
+    controller: 'HomeController',
+    action: 'faq'
+  },
+
+  'get /contactSupport': {
+    controller: 'HomeController',
+    action: 'contactSupport'
   },
 
   //AUTHENTICATION ROUTES
