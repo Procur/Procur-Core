@@ -32,7 +32,7 @@ module.exports.session = {
   // Read more about options at: https://github.com/visionmedia/connect-redis
   //
   host: 'angelfish.redistogo.com',
-  port: 9809
+  port: 9809,
   // ttl: <redis session TTL in seconds>,
   db: 'redistogo',
   pass: '0d5b806697a93b4cd6f1f66bd4b24c18'
