@@ -21,6 +21,8 @@ module.exports = {
     res.view();
   },
 
+
+  //HEADER ACTIONS
   features: function(req, res){
     res.view();
   },
@@ -54,6 +56,15 @@ module.exports = {
   },
 
   contactSupport: function(req, res){
+    res.view();
+  },
+
+  //FOOTER ACTIONS
+  privacyNotice: function(req, res){
+    res.view();
+  },
+
+  terms: function(req, res){
     res.view();
   }
 
