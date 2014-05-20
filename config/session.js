@@ -31,11 +31,11 @@ module.exports.session = {
   // on localhost is expected.
   // Read more about options at: https://github.com/visionmedia/connect-redis
   //
-  host: 'localhost',
-  port: 6379
+  host: 'angelfish.redistogo.com',
+  port: 9809
   // ttl: <redis session TTL in seconds>,
-  // db: 0,
-  // pass: <redis auth password>
+  db: 'redistogo',
+  pass: '0d5b806697a93b4cd6f1f66bd4b24c18'
   // prefix: 'sess:'
 
 
