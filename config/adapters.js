@@ -14,21 +14,20 @@
 
 module.exports = {
 
-  port: 80,
-  environment: 'production',
   adapters:{
 
   'default': 'mongo',
 
     mongo: {
       module: 'sails-mongo',
-      url: 'mongodb://procur-dev:Pr0cur1!@oceanic.mongohq.com:10073/app25459603',
-      database: 'procur'
+      url: process.env.DB_URL,
+      schema: true
     },
-    disk: {
+
+  }
+    /*disk: {
       module: 'sails-disk'
     }
-  },
 
   environment: 'development',
   adapters:{
