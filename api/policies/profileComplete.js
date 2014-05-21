@@ -20,6 +20,8 @@ module.exports = function (req, res, next) {
     }
     console.log("ROUTE: " + keys);
   };
+  getKeys(req);
+
     if (user.profileComplete == true) {
       if (req.route.path == '/welcome') {
         res.redirect('/dashboard')
