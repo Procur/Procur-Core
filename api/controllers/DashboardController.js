@@ -25,7 +25,7 @@ module.exports = {
         console.log('err should be written')
       }
       else {
-        res.view({ message: "Welcome, " + user.firstName });
+        res.view({ message: "Welcome."}); //+ user.firstName
       }
     });
   }
