@@ -16,15 +16,10 @@
  */
 
 module.exports = {
+
+  create: function(req, res){
     
-  
+  }
 
 
-  /**
-   * Overrides for the settings in `config/controllers.js`
-   * (specific to SupplierController)
-   */
-  _config: {}
-
-  
 };
