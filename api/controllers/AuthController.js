@@ -2,7 +2,19 @@
  * AuthController
  *
  */
-var passport = require('passport');
+var passport = require('passport'),
+    nodemailer = require('nodemailer'),
+    mandrill = require('./mandrillConfig.js'),
+    smtpTransport = nodemailer.createTransport("SMTP", {
+      service: "Mandrill",
+      auth: {
+        user: mandrill.username,
+        pass: mandrill.pass
+        //user: "app25459603@heroku.com",
+        //pass: "_tko3ueulFUKJ4Grtv9cmQ"
+      }
+    });
+
 module.exports = {
 
     //PROCESSES LOGIN REQUESTS
@@ -41,6 +53,23 @@ module.exports = {
             res.send(err);
           }
           else{
+            //SEND VERIFICATION EMAIL
+            var mailOptions = {
+              from: "welcome@procur.com",
+              to: user.email,
+              subject: "Please verify your Procur account!",
+              text: "Test Message"
+            };
+
+            smtpTransport.sendMail(mailOptions, function(err, response){
+              if(err){
+                console.log(err);
+              }
+              else {
+                console.log("Verification email sent: " + response.message);
+              }
+            });
+            //NOW AUTHENTICATE USER
             console.log("User: " + b.email + " created.");
             passport.authenticate('local', function(err, user, info) {
               if ((err) || (!user)) {
