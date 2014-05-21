@@ -70,5 +70,17 @@ module.exports = {
 
   buyerOrSupplier: function(req, res){
     res.view();
+  },
+
+  createBuyer: function(req, res){
+
+  },
+
+  createSupplier: function(req, res){
+
+  },
+
+  createBuyerAndSupplier: function(req, res){
+    
   }
 };
