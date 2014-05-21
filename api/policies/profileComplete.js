@@ -32,7 +32,7 @@ module.exports = function (req, res, next) {
       }
     }
     else {
-      res.redirect('/welcome');
+      return next();
     }
   });
 };
