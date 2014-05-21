@@ -12,6 +12,14 @@ module.exports = function (req, res, next) {
     console.log("SESSION: " + req.session.passport.user);
     console.log("USER: " + user.profileComplete);
     console.log("ROUTE: " + req)
+
+  var getKeys = function(obj){
+    var keys = [];
+    for(var key in obj){
+      keys.push(key);
+    }
+    console.log("ROUTE: " + keys);
+  };
     if (user.profileComplete == true) {
       if (req.route.path == '/welcome') {
         res.redirect('/dashboard')
