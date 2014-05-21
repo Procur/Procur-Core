@@ -40,149 +40,151 @@ module.exports.routes = {
   'get /': {
     controller: 'HomeController',
     action: 'index'
-  },
+  }, //Displays Front Page
 
   'get /features': {
     controller: 'HomeController',
     action: 'features'
-  },
+  }, //Displays Features
 
   'get /pricing': {
     controller: 'HomeController',
     action: 'pricing'
-  },
+  }, //Displays Pricing
 
   'get /tradeshows': {
     controller: 'HomeController',
     action: 'tradeShows'
-  },
+  }, //Displays Trade Shows
 
   'get /about': {
     controller: 'HomeController',
     action: 'aboutUs'
-  },
+  }, //Displays 'about us' View
 
   'get /press': {
     controller: 'HomeController',
     action: 'press'
-  },
+  }, //Displays Press Page
 
   'get /careers': {
     controller: 'HomeController',
     action: 'careers'
-  },
+  }, //Displays Careers Page
 
   'get /contact': {
     controller: 'HomeController',
     action: 'contact'
-  },
+  }, //Displays Contact Form View
 
   'get /faq': {
     controller: 'HomeController',
     action: 'faq'
-  },
+  }, //Displays FAQ Page
 
   'get /contactsupport': {
     controller: 'HomeController',
     action: 'contactSupport'
-  },
+  }, //Displays Support Page
 
   'get /privacy': {
     controller: 'HomeController',
     action: 'privacyNotice'
-  },
+  }, //Displays Privacy Notice Page
 
   'get /terms': {
     controller: 'HomeController',
-    action: 'privacyNotice'
-  },
+    action: 'terms'
+  }, //Displays Terms of Use Page
 
   //AUTHENTICATION ROUTES
   'post /login': {
     controller: 'AuthController',
     action: 'process'
-  },
+  }, //Processes Login Request
 
   'post /register': {
     controller: 'AuthController',
     action: 'register'
-  },
+  }, //Processes Registration Request
 
   '/logout': {
     controller: 'AuthController',
     action: 'logout'
-  },
+  }, //Processes Logout
 
   'get /goodbye': {
     controller: 'AuthController',
     action: 'goodbye'
-  },
+  }, //Displays Logout Confirmation View
 
   //WELCOME ROUTES
   'get /welcome': {
     controller: 'UserController',
     action: 'welcome'
-  },
+  }, //Displays Company Creation Form
 
   'post /welcome': {
     controller: 'CompanyController',
     action: 'setup'
-  },
+  }, //Processes submission of company creation form
 
   'get /welcome/moreinfo': {
     controller: 'CompanyController',
     action: 'buyerOrSupplier'
-  },
+  }, //Displays buyer/supplier/both slection view
 
   'get /welcome/buyer': {
     controller: 'CompanyController',
     action: 'buyerWizard'
-  },
+  }, //Displays buyer setup wizard
 
   'get /welcome/supplier': {
     controller: 'CompanyController',
     action: 'supplierWizard'
-  },
+  }, //Displays supplier setup wizard
 
   'get /welcome/both': {
     controller: 'CompanyController',
     action: 'createBuyerAndSupplier'
-  },
+  }, //Starts Buyer + Supplier setup process
+
+  // TODO: BUILD BOTH LOGIC ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
   'post /buyer/create': {
     controller: 'BuyerController',
     action: 'create'
-  },
+  }, //Processes submission of Buyer Wizard
 
   'post /supplier/create': {
     controller: 'SupplierController',
     action: 'create'
-  },
+  }, //Processes submission of SupplierWizard
 
   //DASHBOARD ROUTES
   'get /dashboard': {
     controller: 'DashboardController',
     action: 'index'
-  },
+  }, //Displays MyProcur Dashboard
 
-  //USER ROUTES
+  //MYPROCUR ROUTES
   'get /myprocur': {
-    controller: 'UserController',
-    action: 'myProcur'
-  },
+    controller: 'MyProcurController',
+    action: 'index'
+  }, //Displays Main view of myProcur
 
   //COMPANY ROUTES
   'post /company/create': {
     controller: 'CompanyController',
     action: 'create'
-  },
+  }, //Processes submission of Company Wizard
 
   //TESTING ROUTES
 
   'get /internal': {
     controller: 'AuthController',
     action: 'test'
-  }
+  } //USE THIS VIEW FOR TESTING, DEBUGGING, AND PROTOTYPING
 
   //DEPRECATED ROUTES
 
