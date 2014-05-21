@@ -11,7 +11,7 @@ module.exports = function (req, res, next) {
     if (err) return next(err);
     console.log("SESSION: " + req.session.passport.user);
     console.log("USER: " + user.profileComplete);
-    console.log("ROUTE: " + req)
+    console.log("ROUTE: " + req.route.path)
 
   var getKeys = function(obj){
     var keys = [];
@@ -20,7 +20,7 @@ module.exports = function (req, res, next) {
     }
     console.log("ROUTE: " + keys);
   };
-  getKeys(req.route);
+  getKeys(req.route.path);
 
     if (user.profileComplete == true) {
       if (req.route.path == '/welcome') {
