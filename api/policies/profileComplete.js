@@ -9,7 +9,8 @@
 module.exports = function (req, res, next) {
   User.findOne({ id: req.session.user }, function(err, user){
     if (err) return next(err);
-    console.log(user);
+    console.log("SESSION: " + req.session);
+    console.log("USER: " + user);
     if (user.profileComplete == true) {
       if (req.route.path == '/welcome') {
         res.redirect('/dashboard')
