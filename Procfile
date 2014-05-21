@@ -1,1 +1,1 @@
-web: forever app.js
+web: forever app.js --prod
