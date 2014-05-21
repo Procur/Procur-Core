@@ -72,15 +72,11 @@ module.exports = {
     res.view();
   },
 
-  createBuyer: function(req, res){
-
+  buyerWizard: function(req, res){
+    res.view();
   },
 
-  createSupplier: function(req, res){
-
+  supplierWizard: function(req, res){
+    res.view();
   },
-
-  createBuyerAndSupplier: function(req, res){
-    
-  }
 };

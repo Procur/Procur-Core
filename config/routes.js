@@ -136,17 +136,27 @@ module.exports.routes = {
 
   'get /welcome/buyer': {
     controller: 'CompanyController',
-    action: 'createBuyer'
+    action: 'buyerWizard'
   },
 
   'get /welcome/supplier': {
     controller: 'CompanyController',
-    action: 'createSupplier'
+    action: 'supplierWizard'
   },
 
   'get /welcome/both': {
     controller: 'CompanyController',
     action: 'createBuyerAndSupplier'
+  },
+
+  'post /buyer/create': {
+    controller: 'BuyerController',
+    action: 'create'
+  },
+
+  'post /supplier/create': {
+    controller: 'SupplierController',
+    action: 'create'
   },
 
   //DASHBOARD ROUTES
