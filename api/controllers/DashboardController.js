@@ -18,8 +18,8 @@
 module.exports = {
 
   index: function(req, res){
-    var user = req.session.user;
-    User.findOne({ id: req.session.user }, function(err, user){
+    var user = req.session.passport.user;
+    User.findOne({ id: user }, function(err, user){
       if(err) {
         res.send(err);
         console.log('err should be written')
