@@ -27,12 +27,7 @@ module.exports = {
     console.log(req.body);
     console.log(b.companyName);
 
-
-
     //CREATE HQ TOGGLE LOGIC
-
-
-
     Company.create({
       user: req.session.passport.user,
       name: b.companyName,
@@ -71,32 +66,9 @@ module.exports = {
         res.redirect('/dashboard');
       }
     });
+  },
+
+  buyerOrSupplier: function(req, res){
+    res.view();
   }
-
-
-  /*
-  User.update().where({ id: req.session.user }, function(err, user){
-    if (err) {
-      console.log("Failed at findone user");
-      res.send(err);
-    }
-    else {
-      console.log(user);
-      /*user.update({ profileComplete: true }, function(err, user){
-        if (err){
-          console.log("Failed at update user");
-          rs.send(err);
-        }
-        else {
-          //Final Action: Redirect to Dashboard
-          //profileComplete policy is executed to ensure proper Company setup
-          res.redirect('/dashboard');
-        }
-      });
-      res.redirect('/dashboard');
-    };
-  });*/
-
-
-
 };

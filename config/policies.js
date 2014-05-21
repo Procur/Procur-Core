@@ -29,6 +29,12 @@ module.exports.policies = {
 
   AuthController: {
     test: 'isAuthenticated'
+  },
+
+  CompanyController: {
+    buyerOrSupplier: ['isAuthenticated', 'profileComplete']
+
+    //TODO: Add logic to force buyer/supplier choice.
   }
 
   /*

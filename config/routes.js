@@ -129,6 +129,11 @@ module.exports.routes = {
     action: 'setup'
   },
 
+  'get /welcome/moreinfo': {
+    controller: 'CompanyController',
+    action: 'buyerOrSupplier'
+  },
+
   //DASHBOARD ROUTES
   'get /dashboard': {
     controller: 'DashboardController',

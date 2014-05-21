@@ -5,11 +5,6 @@
 var passport = require('passport');
 module.exports = {
 
-  //MOVED TO HOME CONTROLLER FOR LOGIN MODAL
-  /*login: function (req, res) {
-    res.view();
-  },*/
-
     //PROCESSES LOGIN REQUESTS
     process: function(req, res){
     passport.authenticate('local', function(err, user, info) {
