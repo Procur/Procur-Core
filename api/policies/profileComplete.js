@@ -7,7 +7,7 @@
  */
 
 module.exports = function (req, res, next) {
-  User.findOne({ id: req.session.user }, function(err, user){
+  User.findOne({ id: req.session.passport.user }, function(err, user){
     if (err) return next(err);
     console.log("SESSION: " + req.session.passport.user);
     console.log("USER: " + user);
