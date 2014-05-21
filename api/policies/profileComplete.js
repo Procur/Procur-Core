@@ -11,6 +11,7 @@ module.exports = function (req, res, next) {
     if (err) return next(err);
     console.log("SESSION: " + req.session.passport.user);
     console.log("USER: " + user.profileComplete);
+    console.log("ROUTE: " + req)
     if (user.profileComplete == true) {
       if (req.route.path == '/welcome') {
         res.redirect('/dashboard')
