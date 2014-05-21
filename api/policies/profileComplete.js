@@ -24,7 +24,8 @@ module.exports = function (req, res, next) {
 
     if (user.profileComplete == true) {
       if (req.route.path == '/welcome') {
-        res.redirect('/dashboard')
+        console.log("It was /welcome");
+        res.redirect('/dashboard');
       }
       else {
         return next();
