@@ -41,6 +41,9 @@ module.exports.routes = {
     controller: 'HomeController',
     action: 'index'
   },
+  'get /testing':{
+
+  },
 
   'get /features': {
     controller: 'HomeController',
