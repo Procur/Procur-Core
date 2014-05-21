@@ -10,7 +10,7 @@ module.exports = function (req, res, next) {
   User.findOne({ id: req.session.passport.user }, function(err, user){
     if (err) return next(err);
     console.log("SESSION: " + req.session.passport.user);
-    console.log("USER: " + user[]);
+    console.log("USER: " + user.profileComplete);
     if (user.profileComplete == true) {
       if (req.route.path == '/welcome') {
         res.redirect('/dashboard')
