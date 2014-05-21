@@ -8,6 +8,7 @@
  *
  */
 module.exports = function (req, res, next) {
+  console.log(req.session);
   var is_auth = req.session.authenticated;
   if (is_auth == true) {
     return next();
