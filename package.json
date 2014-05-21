@@ -5,6 +5,7 @@
   "description": "Procur core platform",
   "dependencies": {
     "bcrypt": "~0.7.6",
+    "connect-redis": "^2.0.0",
     "ejs": "0.8.4",
     "forever": "^0.11.1",
     "grunt": "0.4.1",
