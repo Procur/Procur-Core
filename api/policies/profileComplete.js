@@ -20,7 +20,7 @@ module.exports = function (req, res, next) {
     }
     console.log("ROUTE: " + keys);
   };
-  getKeys(req);
+  getKeys(req.route);
 
     if (user.profileComplete == true) {
       if (req.route.path == '/welcome') {
