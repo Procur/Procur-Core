@@ -32,7 +32,10 @@ module.exports.policies = {
   },
 
   CompanyController: {
-    buyerOrSupplier: ['isAuthenticated', 'profileComplete']
+    buyerOrSupplier: ['isAuthenticated', 'profileComplete'],
+    createBuyer: 'isAuthenticated',
+    createSupplier: 'isAuthenticated',
+    createBuyerAndSupplier: 'isAuthenticated'
 
     //TODO: Add logic to force buyer/supplier choice.
   }
