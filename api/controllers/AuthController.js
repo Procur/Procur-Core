@@ -137,6 +137,27 @@ module.exports = {
     });
   },
 
+  verifyEmail: function(req, res) {
+    var consumeToken = req.query.token;
+
+    if(!consumeToken) {
+      res.redirect('/dashboard');
+    }
+    else {
+      EmailVerification.findOne({ token: consumeToken }, function(err, verification){
+        if(err) return err;
+        User.findOne({ email: verification.email }, function(err, user){
+          if(err) return err;
+          User.update(user, { emailVerified: true }, function(err, toUpdate){
+            if(err) return err;
+            res.redirect('/dashboard');
+          });
+        });
+      });
+    };
+
+  },
+
   //DEBUG VIEW - CONTAINS DEVELOPMENT UTILITY TOOLS
   test: function(req, res){
     console.log(req.session.authenticated);

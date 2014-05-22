@@ -119,8 +119,8 @@ module.exports.routes = {
   }, //Displays Logout Confirmation View
 
   'get /verify': {
-    controller: 'EmailVerificationController',
-    action: 'verify'
+    controller: 'AuthController',
+    action: 'verifyEmail'
   }, //HANDLES ACTIVATION EMAIL CLICK. RECEIVES ACTIVATION TOKEN
 
   //WELCOME ROUTES
