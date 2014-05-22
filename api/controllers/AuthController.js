@@ -69,7 +69,7 @@ module.exports = {
               //USER CREATED///////////
               /////////////////////////
               //SEND VERIFICATION EMAIL
-              var htmlContent = '<a href="http://' + address + '/verify/?token=' + token + '">Click to verify your Procur account!</a>';
+              var htmlContent = '<a href="http://' + address + '/verify?token=' + token + '">Click to verify your Procur account!</a>';
               var mailOptions = {
                 from: "welcome@procur.com",
                 to: user.email,

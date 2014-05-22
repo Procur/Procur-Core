@@ -18,10 +18,26 @@
 module.exports = {
 
 
-verify: function(req, res) {
-  var token = req.query.token;
-  console.log('YO. HERE BE DAT TOKEN, PLAYA: ' + token);
-}
+  verify: function(req, res) {
+    var token = req.query.token;
+
+    if(!token) {
+      res.redirect('/dashboard');
+    }
+    else {
+      EmailVerification.findOne({ token: token }, function(err, verification){
+        if(err) return err;
+        User.findOne({ email: verification.email }, function(err, user){
+          if(err) return err;
+          User.update(user, { emailVerified: true }, function(err, toUpdate){
+            if(err) return err;
+            res.redirect('/dashboard');
+          });
+        });
+      });
+    };
+
+  }
 
 
 };

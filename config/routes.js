@@ -118,6 +118,11 @@ module.exports.routes = {
     action: 'goodbye'
   }, //Displays Logout Confirmation View
 
+  'get /verify': {
+    controller: 'EmailVerificationController',
+    action: 'verify'
+  }, //HANDLES ACTIVATION EMAIL CLICK. RECEIVES ACTIVATION TOKEN
+
   //WELCOME ROUTES
   'get /welcome': {
     controller: 'UserController',
