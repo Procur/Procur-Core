@@ -91,6 +91,13 @@ module.exports = {
     supplier: {
       type: 'boolean',
       required: true
+    },
+    primaryMode: {
+      type: 'string'
+    },
+    wizardComplete: {
+      type: 'boolean',
+      required: true
     }
 
   }
