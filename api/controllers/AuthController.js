@@ -10,10 +10,12 @@ var passport = require('passport'),
       auth: {
         user: mandrill.username,
         pass: mandrill.pass
-        //user: "app25459603@heroku.com",
-        //pass: "_tko3ueulFUKJ4Grtv9cmQ"
       }
-    });
+    }),
+    address = '127.0.0.1:1337',
+    crypto = require('crypto'),
+    bcrypt = require('bcrypt'),
+    token;
 
 module.exports = {
 
@@ -48,52 +50,65 @@ module.exports = {
         console.log('err should be written')
       }
       if(!user){
-        User.create({ firstName: b.firstName, lastName: b.lastName, email: b.email, password: b.password, profileComplete: false }, function(err, user){
+        //CREATE USER
+        User.create({ firstName: b.firstName, lastName: b.lastName, email: b.email, password: b.password, emailVerified: false, profileComplete: false }, function(err, user){
           if(err){
             res.send(err);
           }
           else{
+            //CREATE EMAIL VERIFICATION OBJECT AND TOKEN
+            crypto.randomBytes(256, function(err, hash) {
+              if(err) return err;
+              token = hash.toString('base64').replace(/\//g,'_').replace(/\+/g,'-');
+              console.log("TOKEN: " + token);
+              EmailVerification.create({ email: b.email, token: token }, function(err, emailVerification){
+                if(err) return err;
+                console.log("Verification created: " + emailVerification);
+              });
 
-            //USER CREATED///////////
-            /////////////////////////
-            //SEND VERIFICATION EMAIL
-            var mailOptions = {
-              from: "welcome@procur.com",
-              to: user.email,
-              subject: "Please verify your Procur account!",
-              text: "Test Message"
-            };
+              //USER CREATED///////////
+              /////////////////////////
+              //SEND VERIFICATION EMAIL
+              var htmlContent = '<a href="http://' + address + '/verify/?token=' + token + '">Click to verify your Procur account!</a>';
+              var mailOptions = {
+                from: "welcome@procur.com",
+                to: user.email,
+                subject: "Please verify your Procur account!",
+                generateTextFromHTML: true,
+                html: htmlContent
+              };
 
-            smtpTransport.sendMail(mailOptions, function(err, response){
-              if(err){
-                console.log(err);
-              }
-              else {
-                console.log("Verification email sent: " + response.message);
-              }
-            });
-            //NOW AUTHENTICATE USER
-            console.log("User: " + b.email + " created.");
-            passport.authenticate('local', function(err, user, info) {
-              if ((err) || (!user)) {
-                return res.send({
-                message: 'login failed'
-                });
-                res.send(err);
-              }
-              req.logIn(user, function(err) {
-                if (err){
-                   res.send(err);
+              smtpTransport.sendMail(mailOptions, function(err, response){
+                if(err){
+                  console.log(err);
                 }
                 else {
-                  req.session.authenticated = true;
-                  res.redirect('/welcome');
+                  console.log("Verification email sent: " + response.message);
                 }
               });
-            })(req, res);
+              //NOW AUTHENTICATE USER
+              console.log("User: " + b.email + " created.");
+              passport.authenticate('local', function(err, user, info) {
+                if ((err) || (!user)) {
+                  return res.send({
+                  message: 'login failed'
+                  });
+                  res.send(err);
+                }
+                req.logIn(user, function(err) {
+                  if (err){
+                     res.send(err);
+                  }
+                  else {
+                    req.session.authenticated = true;
+                    res.redirect('/welcome');
+                  }
+                });
+              })(req, res);
+            });
 
           }
-        })
+        })//END OF USER.CREATE
       }
       else {
         res.send({message: 'Email address is unavailable.'});
