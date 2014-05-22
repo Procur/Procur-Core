@@ -149,9 +149,9 @@ module.exports.routes = {
     action: 'supplierWizard'
   }, //Displays supplier setup wizard
 
-  'get /welcome/both': {
+  'get /welcome/selectdefault': {
     controller: 'CompanyController',
-    action: 'createBuyerAndSupplier'
+    action: 'selectDefault'
   }, //Starts Buyer + Supplier setup process
 
   // TODO: BUILD BOTH LOGIC ^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -171,12 +171,6 @@ module.exports.routes = {
     controller: 'DashboardController',
     action: 'index'
   }, //Displays MyProcur Dashboard
-
-  //MYPROCUR ROUTES
-  'get /myprocur': {
-    controller: 'MyProcurController',
-    action: 'index'
-  }, //Displays Main view of myProcur
 
   //COMPANY ROUTES
   'post /company/create': {

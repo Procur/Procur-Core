@@ -72,6 +72,10 @@ module.exports = {
     res.view();
   },
 
+  selectDefault: function(req, res){
+    res.view();
+  },
+
   buyerWizard: function(req, res){
     res.view();
   },
