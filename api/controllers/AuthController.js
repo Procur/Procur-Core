@@ -4,7 +4,7 @@
  */
 var passport = require('passport'),
     nodemailer = require('nodemailer'),
-    mandrill = require('./mandrillConfig.js'),
+    mandrill = require('./modules/mandrillConfig.js'),
     smtpTransport = nodemailer.createTransport("SMTP", {
       service: "Mandrill",
       auth: {
@@ -53,6 +53,9 @@ module.exports = {
             res.send(err);
           }
           else{
+
+            //USER CREATED///////////
+            /////////////////////////
             //SEND VERIFICATION EMAIL
             var mailOptions = {
               from: "welcome@procur.com",

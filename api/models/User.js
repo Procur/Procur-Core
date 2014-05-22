@@ -28,6 +28,10 @@ module.exports = {
       type: 'string',
       required: true
     },
+    emailVerified: {
+      type: 'boolean',
+      required: true
+    },
     profileComplete: {
       type: 'boolean',
       required: true
