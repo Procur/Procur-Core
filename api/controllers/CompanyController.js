@@ -76,6 +76,46 @@ module.exports = {
     res.view();
   },
 
+  setDefault: function(req, res){
+    var destination = req.route.path;
+    var user = req.session.passport.user;
+
+    if (destination == '/buyerdefault'){
+      Company.findOne({ user: user }, function(err, company){
+        if (err) res.redirect('/dashboard');
+        Company.update(company, { primaryMode: 'buyer' }, function(err, company){
+          if (err) res.redirect('/dashboard');
+          console.log('Company updated: ' + company);
+          res.redirect('/dashboard')
+        });
+      });
+    }
+    else if (destination == '/supplierdefault') {
+      Company.findOne({ user: user }, function(err, company){
+        if (err) res.redirect('/dashboard');
+        Company.update(company, { primaryMode: 'supplier' }, function(err, company){
+          if (err) res.redirect('/dashboard');
+          console.log('Company updated: ' + company);
+          res.redirect('/dashboard')
+        });
+      });
+    }
+  },
+
+  setBoth: function(req, res){
+    var user = req.session.passport.user;
+
+    Company.findOne({ user: user }, function(err, company){
+      if(err) res.redirect('/dashboard');
+      console.log(company);
+      Company.update(company, { buyer: true, supplier: true }, function(err, company){
+        if(err) res.redirect('/dashboard');
+        console.log(company);
+        return next();
+      });
+    });
+  },
+
   buyerWizard: function(req, res){
     res.view();
   },

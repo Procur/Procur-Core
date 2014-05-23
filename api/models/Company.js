@@ -86,18 +86,15 @@ module.exports = {
     },
     buyer: {
       type: 'boolean',
-      required: true
     },
     supplier: {
       type: 'boolean',
-      required: true
     },
     primaryMode: {
       type: 'string'
     },
     wizardComplete: {
       type: 'boolean',
-      required: true
     }
 
   }

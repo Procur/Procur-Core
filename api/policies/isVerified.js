@@ -9,8 +9,8 @@
  */
 module.exports = function (req, res, next) {
   var user = req.session.passport.user;
-
-  User.findOne({ id: user.id }, function(err, user){
+  console.log(req.session);
+  User.findOne({ id: user }, function(err, user){
     if(err){
       res.redirect('/');
     }

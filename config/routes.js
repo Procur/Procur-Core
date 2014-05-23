@@ -118,6 +118,11 @@ module.exports.routes = {
     action: 'goodbye'
   }, //Displays Logout Confirmation View
 
+  'get /pleaseverify': {
+    controller: 'UserController',
+    action: 'pleaseVerify'
+  },
+
   'get /verify': {
     controller: 'AuthController',
     action: 'verifyEmail'
@@ -153,6 +158,21 @@ module.exports.routes = {
     controller: 'CompanyController',
     action: 'selectDefault'
   }, //Starts Buyer + Supplier setup process
+
+  'get /welcome/both': {
+    controller: 'CompanyController',
+    action: 'setBoth'
+  }, //Processes primaryMode selection
+
+  'get /buyerdefault': {
+    controller: 'CompanyController',
+    action: 'setDefault'
+  },
+
+  'get /supplierDefault': {
+    controller: 'CompanyController',
+    action: 'setDefault'
+  },
 
   // TODO: BUILD BOTH LOGIC ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 

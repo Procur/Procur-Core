@@ -20,8 +20,12 @@ module.exports = {
   welcome: function(req, res){
     res.view();
   },
-  
+
   myProcur: function(req, res){
+    res.view();
+  },
+
+  pleaseVerify: function(req, res){
     res.view();
   }
 
