@@ -111,7 +111,7 @@ module.exports = {
       Company.update(company, { buyer: true, supplier: true }, function(err, company){
         if(err) res.redirect('/dashboard');
         console.log(company);
-        return next();
+        res.redirect('/welcome/selectdefault');
       });
     });
   },
