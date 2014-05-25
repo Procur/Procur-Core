@@ -17,11 +17,41 @@
 
 module.exports = {
 
+  index: function(req, res){
+    User.findOne({ id: req.session.passport.user }, function(err, user){
+      if (err) return res.redirect('/dashboard');
+      Company.findOne({ user: user.id }, function(err, company){
+        if (err) return res.redirect('/dashboard');
+        Buyer.findOne({ company: company.id }, function(err, buyer){
+          var b = buyer;
+          res.view({
+            company: b.comany,
+            preferredSupplierType: b.preferredSupplierType,
+            productCategories: b.productCategories,
+            productsOfInterest: b.productsOfInterest,
+            facebookUsername: b.facebookUsername,
+            twitterUsername: b.twitterUsername,
+            pintrestUsername: b.pintrestUsername,
+            tumblrUsername: b.tumblrUsername,
+            linkedinUsername: b.linkedinUsername,
+            instagramUsername: b.instagramUsername,
+            googleUsername: b.googleUsername,
+            relevantLinksTitle: b.relevantLinksTitle,
+            languages: b.languages,
+            dunsNumber: b.dunsNumber,
+            contactName: b.contactName,
+            contactPosition: b.contactPosition
+          });
+        });
+      });
+    });
+  },
+
   create: function(req, res){
     var b = req.body;
     User.findOne({ id: req.session.passport.user }, function(err, user){
       Company.findOne({ user: user.id }, function(err, company){
-        if (err) res.redirect('/dashboard');
+        if (err) return res.redirect('/dashboard');
         Buyer.create({
           company: company.id,
           preferredSupplierType: b.preferredSupplierType,
@@ -42,7 +72,7 @@ module.exports = {
         }, function(err, buyer){
           if (err){
             var message = "There was a problem."
-            res.redirect('/dashboard', { message: message });
+            return res.redirect('/dashboard', { message: message });
           }
           else {
             console.log('Buyer created: ' + buyer.company);
@@ -51,6 +81,14 @@ module.exports = {
         });
       });
     });
+  },
+
+  update: function(req, res){
+
+  },
+
+  destroy: function(req, res){
+
   }
 
 };
