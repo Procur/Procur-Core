@@ -18,7 +18,39 @@
 module.exports = {
 
   create: function(req, res){
-
+    var b = req.body;
+    User.findOne({ id: req.session.passport.user }, function(err, user){
+      Company.findOne({ user: user.id }, function(err, company){
+        if (err) res.redirect('/dashboard');
+        Buyer.create({
+          company: company.id,
+          preferredSupplierType: b.preferredSupplierType,
+          productCategories: b.productCategories,
+          productsOfInterest: b.productsOfInterest,
+          facebookUsername: b.facebookUsername,
+          twitterUsername: b.twitterUsername,
+          pintrestUsername: b.pintrestUsername,
+          tumblrUsername: b.tumblrUsername,
+          linkedinUsername: b.linkedinUsername,
+          instagramUsername: b.instagramUsername,
+          googleUsername: b.googleUsername,
+          relevantLinksTitle: b.relevantLinksTitle,
+          languages: b.languages,
+          dunsNumber: b.dunsNumber,
+          contactName: b.contactName,
+          contactPosition: b.contactPosition
+        }, function(err, buyer){
+          if (err){
+            var message = "There was a problem."
+            res.redirect('/dashboard', { message: message });
+          }
+          else {
+            console.log('Buyer created: ' + buyer.company);
+            res.redirect('/dashboard');
+          }
+        });
+      });
+    });
   }
-  
+
 };
