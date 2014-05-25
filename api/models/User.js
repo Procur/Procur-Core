@@ -36,6 +36,13 @@ module.exports = {
       type: 'boolean',
       required: true
     },
+
+    //UTILITY
+
+    active: {
+      type: 'boolean',
+      required: true
+    },
     toJSON: function() {
       var obj = this.toObject();
       delete obj.password;

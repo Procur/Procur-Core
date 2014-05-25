@@ -68,7 +68,8 @@ module.exports = {
           languages: b.languages,
           dunsNumber: b.dunsNumber,
           contactName: b.contactName,
-          contactPosition: b.contactPosition
+          contactPosition: b.contactPosition,
+          active: true
         }, function(err, buyer){
           if (err){
             var message = "There was a problem."

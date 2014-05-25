@@ -130,6 +130,13 @@ module.exports = {
     },
     certifications: {
       type: 'string'
+    },
+
+    //UTILITY
+
+    active: {
+      type: 'boolean',
+      required: true
     }
   }
 

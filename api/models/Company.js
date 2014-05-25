@@ -95,6 +95,13 @@ module.exports = {
     },
     wizardComplete: {
       type: 'boolean',
+    },
+
+    //UTILITY
+
+    active: {
+      type: 'boolean',
+      required: true
     }
 
   }

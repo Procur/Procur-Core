@@ -51,7 +51,15 @@ module.exports = {
       }
       if(!user){
         //CREATE USER
-        User.create({ firstName: b.firstName, lastName: b.lastName, email: b.email, password: b.password, emailVerified: false, profileComplete: false }, function(err, user){
+        User.create({
+          firstName: b.firstName,
+          lastName: b.lastName,
+          email: b.email,
+          password: b.password,
+          emailVerified: false,
+          profileComplete: false
+          active: true
+        }, function(err, user){
           if(err){
             res.send(err);
           }

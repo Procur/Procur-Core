@@ -49,7 +49,8 @@ module.exports = {
       hqPostalCode: b.hqPostalCode,
       companyType: b.companyType,
       industry: b.companyIndustry,
-      employeeCount: b.companyEmployeeCount
+      employeeCount: b.companyEmployeeCount,
+      active: true
     }, function(err, company){
       if(err){
         console.log("Failed at create company");
