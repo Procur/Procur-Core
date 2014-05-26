@@ -18,11 +18,31 @@
 module.exports = {
 
   index: function(req, res){
-
+    User.findOne({ id: req.session.passport.user }, function(err, user){
+      if(err) return res.redirect('/dashboard');
+      Company.findOne({ user: user.id }, function(err, company){
+        if(err) return res.redirect('/dashboard');
+        Supplier.findOne({ company: company.id }, function(err, supplier){
+            //TODO: Pass all supplier attributes to view.
+            res.view();
+        });
+      });
+    });
   },
 
   create: function(req, res){
-
+    User.findOne({ id: req.session.passport.user }, function(err, user){
+      if(err) return res.redirect('/dashboard');
+      Company.findOne({ user: user.id }, function(err, company){
+        if(err) return res.redirect('/dashboard');
+        Supplier.create({  }, function(err, supplier){
+          if(err) return res.redirect('/dashboard');
+          //TODO: pass all supplier params from supplier wizard into create method
+          console.log('Supplier created: ' + supplier.company);
+          res.redirect('/dashboard');
+        });
+      });
+    });
   },
 
   update: function(req, res){
@@ -30,7 +50,16 @@ module.exports = {
   },
 
   destroy: function(req, res){
-
+    User.findOne({ id: req.session.passport.user }, function(err, user){
+      if(err) return res.redirect('/dashboard');
+      Company.findOne({ user: user.id }, function(err, company){
+        if(err) return res.redirect('/dashboard');
+        Supplier.findOne({ company: company.id }, function(err, supplier){
+            if(err) return res.redirect('/dashboard');
+            Supplier.update(supplier, { active: false });
+        });
+      });
+    });
   }
 
 };
