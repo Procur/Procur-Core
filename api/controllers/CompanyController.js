@@ -192,7 +192,7 @@ module.exports = {
         });
       }
       else {
-        User.findOne({ req.session.passport.user }, function(err, user){
+        User.findOne({ id: req.session.passport.user }, function(err, user){
           if(err) return res.redirect('/dashboard');
           Company.findOne({ user: user.id }, function(err, company){
             if(err) return res.redirect('/dashboard');
@@ -204,7 +204,7 @@ module.exports = {
         });
       }
     });
-  }
+  },
 
   update: function(req, res){
     User.findOne({ id: req.session.passport.user }, function(err, user){
