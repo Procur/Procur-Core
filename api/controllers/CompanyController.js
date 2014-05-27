@@ -178,9 +178,30 @@ module.exports = {
       if(err) return res.redirect('/dashboard');
       Company.findOne({ user: user.id }, function(err, company){
         if(err) return res.redirect('/dashboard');
-        Company.update(company, {  }, function(err, company){
+        Company.update(company, {
+          name: b.companyName,
+          phoneNumber: b.companyPhone,
+          phoneExtension: b.companyPhoneExt,
+          faxNumber: b.companyFax,
+          faxExtension: b.companyFaxExt,
+          email: b.companyEmail,
+          website: b.companyWebsite,
+          physicalAddress1: b.companyAddress1,
+          physicalAddress2: b.companyAddress2,
+          country: b.companyCountry,
+          province: b.companyProvince,
+          postalCode: b.companyPostalCode,
+          hqAddress1: b.hqAddress1,
+          hqAddress2: b.hqAddress2,
+          hqCountry: b.hqCountry,
+          hqProvince: b.hqProvince,
+          hqPostalCode: b.hqPostalCode,
+          companyType: b.companyType,
+          industry: b.companyIndustry,
+          employeeCount: b.companyEmployeeCount,
+        }, function(err, company){
           if(err) return res.redirect('/dashboard');
-          res.redirect('/dashboard', { message: 'Company info updated.'});
+          res.redirect('/dashboard'); //TODO: Add success flash
         });
       });
     });
