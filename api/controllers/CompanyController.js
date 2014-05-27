@@ -19,7 +19,12 @@ module.exports = {
 
   show: function(req, res){
     console.log(req);
-    //TODO: Add user lookup functionality
+    //TODO: Add user lookup functionality + add company Slug
+    var companySlug = req.param('company');
+    Company.findOne({ slug: companySlug }, function(err, company){
+      if (err) return res.send(err, 500);
+      res.view({ company: company });
+    });
   },
 
   setup: function(req, res){
