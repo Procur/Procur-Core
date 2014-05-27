@@ -198,6 +198,11 @@ module.exports.routes = {
   }, //Displays MyProcur Dashboard
 
   //COMPANY ROUTES
+  'get /:id': {
+    controller: 'CompanyController',
+    action: 'show'
+  },
+
   'post /company/create': {
     controller: 'CompanyController',
     action: 'create'

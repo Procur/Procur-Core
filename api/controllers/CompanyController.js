@@ -17,6 +17,11 @@
 
 module.exports = {
 
+  show: function(req, res){
+    console.log(req);
+    //TODO: Add user lookup functionality
+  },
+
   setup: function(req, res){
     var b = req.body;
   },
