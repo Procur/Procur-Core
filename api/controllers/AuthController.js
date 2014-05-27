@@ -61,7 +61,7 @@ module.exports = {
           active: true
         }, function(err, user){
           if(err){
-            res.send(err);
+            res.redirect('/dashboard');
           }
           else{
             //CREATE EMAIL VERIFICATION OBJECT AND TOKEN
