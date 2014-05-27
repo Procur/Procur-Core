@@ -220,12 +220,12 @@ module.exports.routes = {
 
   'get /company/changehandle': {
     controller: 'CompanyController',
-    action: 'getHandle'
+    action: 'changeHandle'
   },
 
   'post /company/changehandle': {
     controller: 'CompanyController',
-    action: 'changeHandle'
+    action: 'updateHandle'
   },
 
   'get /company/update': {

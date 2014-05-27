@@ -162,8 +162,8 @@ module.exports = {
     });
   },
 
-  getHandle: function(req, res){
-    User.findOne({ user: req.session.passport.user }, function(err, user){
+  changeHandle: function(req, res){
+    User.findOne({ id: req.session.passport.user }, function(err, user){
       if(err) return res.redirect('/dashboard');
       Company.findOne({ user: user.id }, function(err, company){
         if(err) return res.redirect('/dashboard');
@@ -172,7 +172,7 @@ module.exports = {
     });
   },
 
-  changeHandle: function(req, res){
+  updateHandle: function(req, res){
     var b = req.body;
     Company.findOne({ handle: b.handle }, function(err, company){
       if(err) return res.redirect('/dashboard');
@@ -196,9 +196,10 @@ module.exports = {
           if(err) return res.redirect('/dashboard');
           Company.findOne({ user: user.id }, function(err, company){
             if(err) return res.redirect('/dashboard');
-            Company.update(company, { handle: b.handle }, function(err, company){
+            Company.update(company, { handle: b.handle.toLowerCase() }, function(err, company){
               if(err) return res.redirect('/dashboard');
               req.flash('message', 'Handle updated.');
+              res.redirect('/dashboard');
             });
           });
         });
