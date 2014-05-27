@@ -218,6 +218,16 @@ module.exports.routes = {
     action: 'createHandle'
   },
 
+  'get /company/changehandle': {
+    controller: 'CompanyController',
+    action: 'getHandle'
+  },
+
+  'post /company/changehandle': {
+    controller: 'CompanyController',
+    action: 'changeHandle'
+  },
+
   'get /company/update': {
     controller: 'CompanyController',
     action: 'update'

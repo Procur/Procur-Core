@@ -162,6 +162,50 @@ module.exports = {
     });
   },
 
+  getHandle: function(req, res){
+    User.findOne({ user: req.session.passport.user }, function(err, user){
+      if(err) return res.redirect('/dashboard');
+      Company.findOne({ user: user.id }, function(err, company){
+        if(err) return res.redirect('/dashboard');
+        res.view({ handle: company.handle });
+      });
+    });
+  },
+
+  changeHandle: function(req, res){
+    var b = req.body;
+    Company.findOne({ handle: b.handle }, function(err, company){
+      if(err) return res.redirect('/dashboard');
+      if(company) {
+        req.flash('message', 'Handle is unavailable'); //HANDLE UNAVAILABLE FLASH FOR BOTH CONDITIONS
+        User.findOne({ req.session.passport.user }, function(err, user){
+          if(err) return res.redirect('/dashboard');
+          Company.findOne({ user: user.id }, function(err, company){
+            if(err) return res.redirect('/dashboard');
+            if (company.handle) {
+              res.redirect('/company/changehandle')
+            }
+            else {
+              res.redirect('/selecthandle');
+            }
+          });
+        });
+      }
+      else {
+        User.findOne({ req.session.passport.user }, function(err, user){
+          if(err) return res.redirect('/dashboard');
+          Company.findOne({ user: user.id }, function(err, company){
+            if(err) return res.redirect('/dashboard');
+            Company.update(company, { handle: b.handle }, function(err, company){
+              if(err) return res.redirect('/dashboard');
+              req.flash('message', 'Handle updated.');
+            });
+          });
+        });
+      }
+    });
+  }
+
   update: function(req, res){
     User.findOne({ id: req.session.passport.user }, function(err, user){
       if(err) return res.redirect('/dashboard');
