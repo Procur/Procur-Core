@@ -140,7 +140,7 @@ module.exports = {
         console.log('err should be written')
       }
       else {
-        res.view({ message: user.email + " signed out. "});
+        res.view({ message: "signed out. "});
       }
     });
   },

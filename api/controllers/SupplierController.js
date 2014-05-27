@@ -30,19 +30,48 @@ module.exports = {
     });
   },
 
-  create: function(req, res){
-    User.findOne({ id: req.session.passport.user }, function(err, user){
-      if(err) return res.redirect('/dashboard');
-      Company.findOne({ user: user.id }, function(err, company){
-        if(err) return res.redirect('/dashboard');
-        Supplier.create({  }, function(err, supplier){
-          if(err) return res.redirect('/dashboard');
-          //TODO: pass all supplier params from supplier wizard into create method
-          console.log('Supplier created: ' + supplier.company);
+create: function(req, res){
+      var b = req.body;
+      User.findOne({ id: req.session.passport.user }, function(err, user){
+        if(err){
+          console.log(err);
           res.redirect('/dashboard');
+        };
+        Company.findOne({ user: user.id }, function(err, company){
+          if (err){
+            console.log(err);
+            res.redirect('/dashboard');
+          }
+          Supplier.create({
+            company: company.id,
+            preferredSupplierType: b.preferredSupplierType,
+            productCategories: b.productCategories,
+            productsOfInterest: b.productsOfInterest,
+            facebookUsername: b.facebookUsername,
+            twitterUsername: b.twitterUsername,
+            pintrestUsername: b.pintrestUsername,
+            tumblrUsername: b.tumblrUsername,
+            linkedinUsername: b.linkedinUsername,
+            instagramUsername: b.instagramUsername,
+            googleUsername: b.googleUsername,
+            relevantLinksTitle: b.relevantLinksTitle,
+            languages: b.languages,
+            dunsNumber: b.dunsNumber,
+            contactName: b.contactName,
+            contactPosition: b.contactPosition,
+            active: true
+          }, function(err, supplier){
+            if (err){
+              var message = "There was a problem."
+              res.redirect('/dashboard', { message: message });
+            }
+            else {
+              console.log('Supplier created: ' + supplier.company);
+              res.redirect('/dashboard');
+            }
+          });
         });
       });
-    });
   },
 
   update: function(req, res){
