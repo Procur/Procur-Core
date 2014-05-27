@@ -18,12 +18,16 @@
 module.exports = {
 
   show: function(req, res){
-    console.log(req);
     //TODO: Add user lookup functionality + add company Slug
-    var companySlug = req.param('company');
-    Company.findOne({ slug: companySlug }, function(err, company){
-      if (err) return res.send(err, 500);
-      res.view({ company: company });
+    var handle = req.param('id');
+    Company.findOne({ handle: handle }, function(err, company){
+      if (err) return res.redirect('/error/notfound');
+      if(company == undefined) {
+        res.redirect('/error/notfound');
+      }
+      else{
+        res.view({ company: company });
+      }
     });
   },
 
@@ -134,4 +138,8 @@ module.exports = {
   supplierWizard: function(req, res){
     res.view();
   },
+
+  notFound: function(req, res){
+    res.view();
+  }
 };

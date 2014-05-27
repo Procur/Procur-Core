@@ -208,6 +208,12 @@ module.exports.routes = {
     action: 'create'
   }, //Processes submission of Company Wizard
 
+  //ERROR ROUTES
+  'get /error/notfound': {
+    controller: 'CompanyController',
+    action: 'notFound'
+  },
+
   //TESTING ROUTES
 
   'get /internal': {
