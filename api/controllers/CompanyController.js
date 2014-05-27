@@ -139,6 +139,25 @@ module.exports = {
     res.view();
   },
 
+  selectHandle: function(req, res){
+    res.view();
+  },
+
+  createHandle: function(req, res){
+    var b = req.body;
+    User.findOne({ id: req.session.passport.user }, function(err, user){
+      if(err) return res.redirect('/dashboard');
+      Company.findOne({ user: user.id }, function(err, company){
+        if(err) return res.redirect('/dashboard');
+        Company.update(company, { handle: b.handle }, function(err, company){
+          if(err) return res.redirect('/dashboard');
+          console.log('Handle, ' + company.handle + ' created for ' + company.name);
+          res.redirect('dashboard');
+        });
+      });
+    });
+  },
+
   notFound: function(req, res){
     res.view();
   }
