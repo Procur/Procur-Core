@@ -145,6 +145,24 @@ module.exports = {
     });
   },
 
+  resendVerificationEmail: function(req, res){
+    User.findOne(req.session.passport.user, function(err, user){
+      if(err) res.redirect('/dashboard');
+      EmailVerification.findOne({ email: user.email }, function(err, emailVerification){
+        if(err) res.redirect('/dashboard');
+        crypto.randomBytes(256, function(err, hash) {
+          if(err) return err;
+          token = hash.toString('base64').replace(/\//g,'_').replace(/\+/g,'-');
+          console.log("TOKEN: " + token);
+          EmailVerification.update(emailVerification, {token: token }, function(err, emailVerification){
+            if(err) return err;
+            console.log("Verification created: " + emailVerification);
+          });
+        });
+      });
+    });
+  },
+
   verifyEmail: function(req, res) {
     var consumeToken = req.query.token;
 

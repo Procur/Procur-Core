@@ -128,6 +128,11 @@ module.exports.routes = {
     action: 'verifyEmail'
   }, //HANDLES ACTIVATION EMAIL CLICK. RECEIVES ACTIVATION TOKEN
 
+  'get /resendverification': {
+    controller: 'AuthController',
+    action: 'resendVerificationEmail'
+  },
+
   //WELCOME ROUTES
   'get /welcome': {
     controller: 'UserController',
