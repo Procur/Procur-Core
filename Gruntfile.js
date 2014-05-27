@@ -29,7 +29,7 @@ module.exports = function (grunt) {
    */
 
   var cssFilesToInject = [
-    'linker/**/*.css'
+    'linker/**/main.css'
   ];
 
 
@@ -57,6 +57,7 @@ module.exports = function (grunt) {
     'linker/js/app.js',
 
     // *->    put other dependencies here   <-*
+    'https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"',
 
     // All of the rest of your app scripts imported here
     'linker/**/*.js'
@@ -133,6 +134,7 @@ module.exports = function (grunt) {
   grunt.loadTasks(depsPath + '/grunt-contrib-cssmin/tasks');
   grunt.loadTasks(depsPath + '/grunt-contrib-less/tasks');
   grunt.loadTasks(depsPath + '/grunt-contrib-coffee/tasks');
+  grunt.loadTasks('node_modules/grunt-contrib-sass/tasks');
 
   // Project configuration.
   grunt.initConfig({
@@ -179,6 +181,28 @@ module.exports = function (grunt) {
         files: {
           '.tmp/public/jst.js': templateFilesToInject
         }
+      }
+    },
+
+    sass: {
+      dev: {
+        options: {
+          style: 'expanded' 
+        },
+        files: [{
+          expand: true,
+          cwd: 'assets/styles/',
+          src: ['*.scss', '*.sass'], // Feel free to remove a format if you do not use it.
+          dest: '.tmp/public/styles/',
+          ext: '.css'
+        }, {
+          expand: true,
+          cwd: 'assets/linker/styles/',
+          src: ['*.scss', '*.sass'], // Feel free to remove a format if you do not use it.
+          dest: '.tmp/public/linker/styles/',
+          ext: '.css'
+        }
+        ]
       }
     },
 
@@ -423,6 +447,7 @@ module.exports = function (grunt) {
     'clean:dev',
     'jst:dev',
     'less:dev',
+    'sass:dev',
     'copy:dev',    
     'coffee:dev'
   ]);
@@ -453,6 +478,7 @@ module.exports = function (grunt) {
     'clean:dev',
     'jst:dev',
     'less:dev',
+    'sass:dev',
     'copy:dev',
     'coffee:dev',
     'concat',
