@@ -1,1 +1,16 @@
-<h1>Company Name</h1>
+<h1><%= company.name %></h1>
+<h3>
+  <% if((company.buyer == true) && (company.supplier == true)) {
+    %>Buyer | Suppplier<%
+  }
+  else if((company.buyer == true) && (company.supplier == false)) {
+    %>Buyer<%
+  }
+  else if((company.buyer == false) && (company.supplier == true)) {
+    %>Supplier<%
+  }%>
+</h3>
+
+<li>Company Type: <strong><%= company.companyType %></strong></li>
+<li>Country: <strong><%= company.country %></strong></li>
+<li>Employee Count: <strong><%= company.employeeCount %></strong></li>
