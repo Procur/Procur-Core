@@ -57,7 +57,7 @@ module.exports = {
           email: b.email,
           password: b.password,
           emailVerified: false,
-          profileComplete: false,
+          profileComplete: false
           active: true
         }, function(err, user){
           if(err){
