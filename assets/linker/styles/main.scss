@@ -1,5 +1,15 @@
 @import 'test';
 
+footer {
+	position: fixed;
+	bottom: 0px;
+}
+
+header {
+	text-align: center;
+}
+
+
 * {
 	h1 {
 	color: red;

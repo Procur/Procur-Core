@@ -19,11 +19,13 @@
   </head>
 
   <body>
+<%- partial('partials/inner-header') %>
+
 
     <!-- Include the view file for the current controller/route -->
     <%- body %>
 
-
+<%- partial('partials/inner-footer') %>
    
 <!--SCRIPTS-->
 <script src="/linker/js/socket.io.js"></script>
