@@ -1,5 +1,7 @@
 @import 'test';
 
+$pink: #f398f9;
+
 footer {
 	position: fixed;
 	bottom: 0px;
@@ -12,7 +14,7 @@ header {
 
 * {
 	h1 {
-	color: red;
+	color: $pink;
 	}
 
 	h2 {
