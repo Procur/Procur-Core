@@ -162,6 +162,30 @@ module.exports = {
     });
   },
 
+  update: function(req, res){
+    User.findOne({ id: req.session.passport.user }, function(err, user){
+      if(err) return res.redirect('/dashboard');
+      Company.findOne({ user: user.id }, function(err, company){
+        if(err) return res.redirect('/dashboard');
+        res.view({ company: company })
+      });
+    });
+  },
+
+  setUpdate: function(req, res){
+    var b = req.body;
+    User.findOne({ id: req.session.passport.user }, function(err, user){
+      if(err) return res.redirect('/dashboard');
+      Company.findOne({ user: user.id }, function(err, company){
+        if(err) return res.redirect('/dashboard');
+        Company.update(company, {  }, function(err, company){
+          if(err) return res.redirect('/dashboard');
+          res.redirect('/dashboard', { message: 'Company info updated.'});
+        });
+      });
+    });
+  },
+
   notFound: function(req, res){
     res.view();
   }

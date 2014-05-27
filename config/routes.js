@@ -218,6 +218,16 @@ module.exports.routes = {
     action: 'createHandle'
   },
 
+  'get /company/update': {
+    controller: 'CompanyController',
+    action: 'update'
+  },
+
+  'post /company/update': {
+    controller: 'CompanyController',
+    action: 'setUpdate'
+  },
+
   //ERROR ROUTES
   'get /error/notfound': {
     controller: 'CompanyController',
