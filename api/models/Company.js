@@ -97,6 +97,10 @@ module.exports = {
     wizardComplete: {
       type: 'boolean',
     },
+    handle: {
+      type: 'string',
+      unique: true
+    },
 
     //UTILITY
 

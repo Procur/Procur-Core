@@ -8,12 +8,12 @@
  *
  */
 module.exports = function (req, res, next) {
-  User.findOne({ id: user }, function(err, user){
+  User.findOne({ id: req.session.passport.user }, function(err, user){
     if(err) return res.redirect('/dashboard', 500);
     Company.findOne({ user: user.id }, function(err, company){
       if(err) return res.redirect('/dashboard', 500)
       if(company.handle == undefined) {
-        res.redirect('/company/createhandle');
+        res.redirect('/company/selecthandle');
       }
       else {
         return next();

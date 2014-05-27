@@ -145,11 +145,15 @@ module.exports = {
 
   createHandle: function(req, res){
     var b = req.body;
+    console.log(b);
     User.findOne({ id: req.session.passport.user }, function(err, user){
       if(err) return res.redirect('/dashboard');
+      console.log(user);
       Company.findOne({ user: user.id }, function(err, company){
         if(err) return res.redirect('/dashboard');
-        Company.update(company, { handle: b.handle }, function(err, company){
+        console.log(company);
+        console.log(b.handle.toLowerCase());
+        Company.update(company, { handle: b.handle.toLowerCase() }, function(err, company){
           if(err) return res.redirect('/dashboard');
           console.log('Handle, ' + company.handle + ' created for ' + company.name);
           res.redirect('dashboard');
