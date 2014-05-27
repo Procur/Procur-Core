@@ -30,7 +30,7 @@ module.exports = {
       }
       req.logIn(user, function(err) {
         if (err){
-           res.send(err);
+           return res.send(err);
         }
         else {
           req.session.authenticated = true;
@@ -46,7 +46,7 @@ module.exports = {
 
     User.findOne({ email: b.email}, function(err, user){
       if(err) {
-        res.send(err);
+        return res.send(err);
         console.log('err should be written')
       }
       if(!user){
@@ -101,7 +101,6 @@ module.exports = {
                   return res.send({
                   message: 'login failed'
                   });
-                  res.send(err);
                 }
                 req.logIn(user, function(err) {
                   if (err){
@@ -136,7 +135,7 @@ module.exports = {
     var user = req.session.user;
     User.findOne({ id: req.session.user }, function(err, user){
       if(err) {
-        res.send(err);
+        return res.send(err);
         console.log('err should be written')
       }
       else {
