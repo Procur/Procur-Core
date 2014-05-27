@@ -12,7 +12,8 @@ module.exports = {
 
     company: {
       type: 'string',
-      required: 'true'
+      required: 'true',
+      unique: true
     },
     preferredSupplierType: {
       type: 'string',

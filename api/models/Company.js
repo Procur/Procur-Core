@@ -12,7 +12,8 @@ module.exports = {
 
     user: {
       type: 'string',
-      required: true  //TIES COMPANY TO USER
+      required: true,  //TIES COMPANY TO USER
+      unique: true
     },
   	name: {
       type: 'string',
