@@ -157,6 +157,23 @@ module.exports = {
           EmailVerification.update(emailVerification, {token: token }, function(err, emailVerification){
             if(err) return err;
             console.log("Verification created: " + emailVerification);
+            var htmlContent = '<a href="http://' + address + '/verify?token=' + token + '">Click to verify your Procur account!</a>';
+            var mailOptions = {
+              from: "welcome@procur.com",
+              to: user.email,
+              subject: "Please verify your Procur account!",
+              generateTextFromHTML: true,
+              html: htmlContent
+            };
+
+            smtpTransport.sendMail(mailOptions, function(err, response){
+              if(err){
+                console.log(err);
+              }
+              else {
+                console.log("Verification email sent: " + response.message);
+              }
+            });
           });
         });
       });
