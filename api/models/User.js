@@ -36,6 +36,10 @@ module.exports = {
       type: 'boolean',
       required: true
     },
+    handle: {
+      type: 'string',
+      unique: true
+    },
 
     //UTILITY
 
