@@ -18,6 +18,11 @@
 module.exports = {
 
   index: function(req, res){
+    var is_auth = req.session.authenticated;
+
+    if(is_auth){
+      res.redirect('/dashboard');
+    }
     res.view();
   },
 

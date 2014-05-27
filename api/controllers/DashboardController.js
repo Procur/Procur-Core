@@ -19,11 +19,6 @@ module.exports = {
 
   index: function(req, res){
     var user = req.session.passport.user;
-    var is_auth = req.session.authenticated;
-
-    if(is_auth){
-      res.redirect('/dashboard');
-    }
     User.findOne({ id: user }, function(err, user){
       if(err) {
         res.send(err);
