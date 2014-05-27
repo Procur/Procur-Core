@@ -178,7 +178,7 @@ module.exports = {
       if(err) return res.redirect('/dashboard');
       if(company) {
         req.flash('message', 'Handle is unavailable'); //HANDLE UNAVAILABLE FLASH FOR BOTH CONDITIONS
-        User.findOne({ req.session.passport.user }, function(err, user){
+        User.findOne({ id: req.session.passport.user }, function(err, user){
           if(err) return res.redirect('/dashboard');
           Company.findOne({ user: user.id }, function(err, company){
             if(err) return res.redirect('/dashboard');
