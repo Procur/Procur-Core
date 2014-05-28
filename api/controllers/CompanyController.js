@@ -183,7 +183,7 @@ module.exports = {
           Company.findOne({ user: user.id }, function(err, company){
             if(err) return res.redirect('/dashboard');
             if (company.handle) {
-              res.redirect('/company/changehandle')
+              res.redirect('company/changehandle')
             }
             else {
               res.redirect('/selecthandle');
