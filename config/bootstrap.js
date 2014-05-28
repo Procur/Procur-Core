@@ -11,6 +11,13 @@
 module.exports.bootstrap = function (cb) {
   sails.newrelic = require('newrelic');
 
+  if(process.env.NODETIME_ACCOUNT_KEY) {
+    require('nodetime').profile({
+      accountKey: process.env.NODETIME_ACCOUNT_KEY,
+      appName: 'Procur-Core' // optional
+    });
+  }
+
   // It's very important to trigger this callack method when you are finished
   // with the bootstrap!  (otherwise your server will never lift, since it's waiting on the bootstrap)
   cb();

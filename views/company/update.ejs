@@ -26,3 +26,12 @@
     <div><input type="submit"></div>
   </form>
 </section>
+
+<% if (company.buyer == true) { %>
+<section id="updateBuyerForm">
+  <form action="/buyer/update" method="post">
+    <div></div>
+  </form>
+</section>
+
+<% } %>
