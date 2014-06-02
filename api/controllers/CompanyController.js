@@ -37,9 +37,9 @@ module.exports = {
 
   create: function(req, res){
     var b = req.body;
-    console.log(req.session.passport.user);
-    console.log(req.body);
-    console.log(b.companyName);
+    //console.log(req.session.passport.user);
+    //console.log(req.body);
+    //console.log(b.companyName)
 
     //CREATE HQ TOGGLE LOGIC
     Company.create({
@@ -208,11 +208,40 @@ module.exports = {
   },
 
   update: function(req, res){
+    var payload = [];
     User.findOne({ id: req.session.passport.user }, function(err, user){
       if(err) return res.redirect('/dashboard');
       Company.findOne({ user: user.id }, function(err, company){
         if(err) return res.redirect('/dashboard');
-        res.view({ company: company })
+        payload.push(company);
+        if((company.buyer == true) && (company.supplier == false)){
+          Buyer.findOne({ company: company.id }, function(err, buyer){
+            if(err) return res.redirect('/dashboard');
+            payload.push(buyer);
+            console.log(payload);
+            res.view({ company: payload[0], buyer: payload[1] });
+          });
+        }
+        else if((company.supplier == true) && (company.buyer == false)){
+          Buyer.findOne({ company: company.id }, function(err, supplier){
+            if(err) return res.redirect('/dashboard');
+            payload.push(supplier);
+            console.log(payload);
+            res.view({ company: payload[0], supplier: payload[1] });
+          });
+        }
+        else if((company.buyer == true) && (company.supplier == true)){
+          Buyer.findOne({ company: company.id }, function(err, supplier){
+            if(err) return res.redirect('/dashboard');
+            payload.push(supplier);
+            Supplier.findOne({ company: supplier.company }, function(err, supplier){
+              if(err) return res.redirect('/dashboard');
+              payload.push(supplier);
+              console.log(payload);
+              res.view({ company: payload[0], buyer: payload[1], supplier: payload[2] });
+            });
+          });
+        }
       });
     });
   },

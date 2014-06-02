@@ -28,9 +28,62 @@
 </section>
 
 <% if (company.buyer == true) { %>
+<h2>Buyer Info</h2>
 <section id="updateBuyerForm">
   <form action="/buyer/update" method="post">
-    <div></div>
+    <div><input type="text" name="preferredSupplierType" value=<%= buyer.preferredSupplierType %>></div>
+    <div><input type="text" name="productCategories" value=<%= buyer.productCategories %>></div>
+    <div><input type="text" name="productsOfInterest" value=<%= buyer.productsOfInterest %>></div>
+    <div><input type="text" name="facebookUsername" value=<%= buyer.facebookUsername %>></div>
+    <div><input type="text" name="twitterUsername" value=<%= buyer.twitterUsername %>></div>
+    <div><input type="text" name="pintrestUsername" value=<%= buyer.pintrestUsername %>></div>
+    <div><input type="text" name="tumblrUsername" value=<%= buyer.tumblrUsername %>></div>
+    <div><input type="text" name="linkedinUsername" value=<%= buyer.linkedinUsername %>></div>
+    <div><input type="text" name="instagramUsername" value=<%= buyer.instagramUsername %>></div>
+    <div><input type="text" name="googleUsername" value=<%= buyer.googleUsername %>></div>
+    <div><input type="text" name="relevantLinksTitle" value=<%= buyer.relevantLinksTitle %>></div>
+    <div><input type="text" name="languages" value=<%= buyer.languages %>></div>
+    <div><input type="text" name="dunsNumber" value=<%= buyer.dunsNumber %>></div>
+    <div><input type="text" name="contactName" value=<%= buyer.contactName %>></div>
+    <div><input type="text" name="contactPosition" value=<%= buyer.contactPosition %>></div>
+    <div><textarea form="buyerWizard" name="responsibilityStatement" value=<%= buyer.responsibilityStatement %>></textarea></div>
+    <div><textarea form="buyerWizard" name="aboutCompany" value=<%= buyer.aboutCompany %>></textarea></div>
+    <div><input type="file" name="datafile" size="40">Downloads</div>
+    <div><input type="file" name="companyLogo" size="40">Company Logo</div>
+    <div><input type="file" name="featuredPhotos" size="40">Featured Photos</div>
+    <div><input type="file" name="certifications" size="40">Certifications</div>
+    <div><input type="submit"></div>
+  </form>
+</section>
+
+<% } %>
+
+<% if (company.supplier == true) { %>
+<h2>Supplier Info</h2>
+<section id="updateSupplierForm">
+  <form action="/supplier/update" method="post">
+    <div><input type="text" name="preferredSupplierType" value=<%= supplier.preferredSupplierType %>></div>
+    <div><input type="text" name="productCategories" value=<%= supplier.productCategories %>></div>
+    <div><input type="text" name="productsOfInterest" value=<%= supplier.productsOfInterest %>></div>
+    <div><input type="text" name="facebookUsername" value=<%= supplier.facebookUsername %>></div>
+    <div><input type="text" name="twitterUsername" value=<%= supplier.twitterUsername %>></div>
+    <div><input type="text" name="pintrestUsername" value=<%= supplier.pintrestUsername %>></div>
+    <div><input type="text" name="tumblrUsername" value=<%= supplier.tumblrUsername %>></div>
+    <div><input type="text" name="linkedinUsername" value=<%= supplier.linkedinUsername %>></div>
+    <div><input type="text" name="instagramUsername" value=<%= supplier.instagramUsername %>></div>
+    <div><input type="text" name="googleUsername" value=<%= supplier.googleUsername %>></div>
+    <div><input type="text" name="relevantLinksTitle" value=<%= supplier.relevantLinksTitle %>></div>
+    <div><input type="text" name="languages" value=<%= supplier.languages %>></div>
+    <div><input type="text" name="dunsNumber" value=<%= supplier.dunsNumber %>></div>
+    <div><input type="text" name="contactName" value=<%= supplier.contactName %>></div>
+    <div><input type="text" name="contactPosition" value=<%= supplier.contactPosition %>></div>
+    <div><textarea form="buyerWizard" name="responsibilityStatement" value=<%= supplier.responsibilityStatement %>></textarea></div>
+    <div><textarea form="buyerWizard" name="aboutCompany" value=<%= supplier.aboutCompany %>></textarea></div>
+    <div><input type="file" name="datafile" size="40">Downloads</div>
+    <div><input type="file" name="companyLogo" size="40">Company Logo</div>
+    <div><input type="file" name="featuredPhotos" size="40">Featured Photos</div>
+    <div><input type="file" name="certifications" size="40">Certifications</div>
+    <div><input type="submit"></div>
   </form>
 </section>
 
