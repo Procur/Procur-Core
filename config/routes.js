@@ -108,6 +108,11 @@ module.exports.routes = {
     action: 'register'
   }, //Processes Registration Request
 
+  'post /user/changepassword': {
+    controller: 'AuthController',
+    action: 'processChangePassword'
+  },
+
   '/logout': {
     controller: 'AuthController',
     action: 'logout'
@@ -131,6 +136,18 @@ module.exports.routes = {
   'get /resendverification': {
     controller: 'AuthController',
     action: 'resendVerificationEmail'
+  },
+
+  //USER ROUTES
+
+  'get /user/update': {
+    controller: 'UserController',
+    action: 'updateAccount'
+  },
+
+  'post /user/update': {
+    controller: 'UserController',
+    action: 'processUpdateAccount'
   },
 
   //WELCOME ROUTES

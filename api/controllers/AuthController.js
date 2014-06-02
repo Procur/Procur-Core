@@ -123,6 +123,24 @@ module.exports = {
     });
   },
 
+  processChangePassword: function(req, res){
+    var b = req.body;
+    var newPassword;
+    bcrypt.genSalt(10, function(err, salt){
+      bcrypt.hash(b.password, salt, function(err, hash){
+        newPassword = hash;
+        User.findOne({ id: req.session.passport.user }, function(err, user){
+          if(err) return res.redirect('/dashboard');
+          User.update(user, { password: newPassword }, function(err, user){
+            if(err) return res.redirect('/dashboard');
+            req.flash('Password changed.');
+            res.redirect('/dashboard');
+          });
+        });
+      });
+    });
+  },
+
   //KILLS SESSIONS AND REDIRECTS TO LOGOUT CONFIRMATION VIEW (GOODBYE)
   logout: function (req,res){
     req.session.authenticated = false;

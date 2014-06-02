@@ -1,0 +1,20 @@
+<h1>Update Account Information</h1>
+
+<section id="userUpdateForm">
+  <form action="/user/update" method="post">
+    <strong>Contact Information</strong>
+    <div><input type="text" name="firstName" value=<%= user.firstName %>></div>
+    <div><input type="text" name="lastName" value=<%= user.lastName %>></div>
+    <div><input type="text" name="email" value=<%= user.email %>></div>
+    <div><input type="submit">
+  </form>
+</section>
+
+<section id="passwordUpdateForm">
+  <form action="/user/changePassword" method="post">
+    <strong>Change Password</strong>
+    <div><input type="password" name="password" placeholder="New Password"></div>
+    <div><input type="password" name="passwordConfirm" placeholder="Confirm Password"></div>
+    <div><input type="submit">
+  </form>
+</section>

@@ -27,6 +27,17 @@ module.exports = {
 
   pleaseVerify: function(req, res){
     res.view();
-  }
+  },
+
+  updateAccount: function(req, res){
+    User.findOne({ id: req.session.passport.user }, function(err, user){
+      if(err) return res.redirect('/dashboard');
+      res.view({ user: user });
+    });
+  },
+
+  processUpdateAccount: function(req, res){
+
+  },
 
 };
