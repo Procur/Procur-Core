@@ -126,13 +126,33 @@ module.exports = {
   processChangePassword: function(req, res){
     var b = req.body;
     var newPassword;
+    var emailAddress;
     bcrypt.genSalt(10, function(err, salt){
       bcrypt.hash(b.password, salt, function(err, hash){
         newPassword = hash;
         User.findOne({ id: req.session.passport.user }, function(err, user){
           if(err) return res.redirect('/dashboard');
+          emailAddress = user.email;
           User.update(user, { password: newPassword }, function(err, user){
             if(err) return res.redirect('/dashboard');
+
+            var htmlContent = 'Your procur password has been changed. Please contact support if you did not authorize this change.';
+            var mailOptions = {
+              from: "support@procur.com",
+              to: emailAddress,
+              subject: "Your Procur password has been changed",
+              generateTextFromHTML: true,
+              html: htmlContent
+            };
+
+            smtpTransport.sendMail(mailOptions, function(err, response){
+              if(err){
+                console.log(err);
+              }
+              else {
+                console.log("Change Password email sent: " + response.message);
+              }
+            });
             req.flash('Password changed.');
             res.redirect('/dashboard');
           });
