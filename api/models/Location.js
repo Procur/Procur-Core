@@ -27,7 +27,7 @@ module.exports = {
       required: true
     },
     addressLine2: {
-      type: 'string'
+      type: 'string',
     },
     city: {
       type: 'string'

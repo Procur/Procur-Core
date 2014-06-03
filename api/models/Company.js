@@ -40,40 +40,6 @@ module.exports = {
     website: {
       type: 'string'
     },
-    physicalAddress1: {
-      type: 'string',
-      required: true
-    },
-    physicalAddress2: {
-      type: 'string'
-    },
-    country: {
-      type: 'string',
-      required: true
-    },
-    province: {
-      type: 'string',
-      required: true
-    },
-    postalCode: {
-      type: 'string',
-      required: true
-    },
-    hqAddress1: {
-      type: 'string'
-    },
-    hqAddress2: {
-      type: 'string'
-    },
-    hqCountry: {
-      type: 'string'
-    },
-    hqProvince: {
-      type: 'string'
-    },
-    hqPostalCode: {
-      type: 'string'
-    },
     companyType: {
       type: 'string',
       required: true
