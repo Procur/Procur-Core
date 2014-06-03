@@ -77,7 +77,8 @@ module.exports = {
             if(err) return res.redirect('/dashboard');
             User.update(req.session.user, { profileComplete: true }, function(err, user){
               if(err) return res.redirect('/dashboard');
-              console.log(user)
+              console.log(user);
+              res.redirect('/dashboard');
             });
           });
         }
