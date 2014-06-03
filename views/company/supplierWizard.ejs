@@ -2,27 +2,26 @@
 
 <section class="buyerWizard">
   <form action="/supplier/create" method="post">
-    <div><input type="text" name="preferredSupplierType" placeholder="Preferred Supplier Type"></div>
-    <div><input type="text" name="productCategories" placeholder="Product Categories"></div>
-    <div><input type="text" name="productsOfInterest" placeholder="Products of Interest"></div>
-    <div><input type="text" name="facebookUsername" placeholder="Facebook Username"></div>
-    <div><input type="text" name="twitterUsername" placeholder="Twitter Username"></div>
-    <div><input type="text" name="pintrestUsername" placeholder="Pintrest Username"></div>
-    <div><input type="text" name="tumblrUsername" placeholder="Tumblr Username"></div>
-    <div><input type="text" name="linkedinUsername" placeholder="Linkedin Username"></div>
-    <div><input type="text" name="instagramUsername" placeholder="Instagram username"></div>
-    <div><input type="text" name="googleUsername" placeholder="Google Username"></div>
-    <div><input type="text" name="relevantLinksTitle" placeholder="Relevant Links Title"></div>
-    <div><input type="text" name="languages" placeholder="Languages"></div>
-    <div><input type="text" name="dunsNumber" placeholder="Duns Number"></div>
-    <div><input type="text" name="contactName" placeholder="Contact Name"></div>
-    <div><input type="text" name="contactPosition" placeholder="Contact Position"></div>
-    <div><textarea form="buyerWizard" name="responsibilityStatement" placeholder="Responsibility Statement"></textarea></div>
-    <div><textarea form="buyerWizard" name="aboutCompany" placeholder="About Company"></textarea></div>
-    <div><input type="file" name="datafile" size="40">Downloads</div>
+    <div><input type="text" name="dbaName" placeholder="Alternate Company Name"></div>
     <div><input type="file" name="companyLogo" size="40">Company Logo</div>
-    <div><input type="file" name="featuredPhotos" size="40">Featured Photos</div>
-    <div><input type="file" name="certifications" size="40">Certifications</div>
+    <div><select name="language"><option value="English">English</option></select></div>
+    <div><select name="type"><option value="">Select a Type</option></select></div>
+    <div><input type="text" name="city" placeholder="City"></div>
+    <div><input type="text" name="province" placeholder="State/Province"></div>
+    <div><input type="text" name="country" placeholder="Country"></div>
+    <div><input type="text" name="portCity" placeholder="City"></div>
+    <div><input type="text" name="portProvince" placeholder="State/Province"></div>
+    <div><input type="text" name="portCountry" placeholder="Country"></div>
+    <div><select name="annualProductionVolume"><option value="">Select Volume</option></select></div>
+    <div><input type="text" name="productSpeciality" placeholder="Select a Speciality"></div>
+    <div><select name="preferredBuyerType"><option value="">Select a Type</option></select></div>
+    <div><select name="preferredBuyerLanguage"><option value="">Select a Language</option></select></div>
+    <div><select name="preferredBuyerCountry"><option value="">Country</option></select></div>
+    <div><input type="checkbox" name="acceptedDeliveryTerms"> Accepted Delivery Terms<div>
+    <div><input type="checkbox" name="acceptedCurrency"> Accepted Currency<div>
+    <div><input type="checkbox" name="acceptedPaymentTerms"> Accepted Payment Terms<div>
+    <div><select name="typeOfCompany"><option value="">Select a Type</option></select></div>
+    <div><input type="checkbox" name="privateLabeler"> Private Labeler<div>
     <div><input type="submit"></div>
   </form>
 </section>

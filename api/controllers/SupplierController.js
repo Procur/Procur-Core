@@ -30,48 +30,69 @@ module.exports = {
     });
   },
 
-create: function(req, res){
-      var b = req.body;
-      User.findOne({ id: req.session.passport.user }, function(err, user){
-        if(err){
+  create: function(req, res){
+    var b = req.body;
+    User.findOne({ id: req.session.passport.user }, function(err, user){
+      if(err){
+        console.log(err);
+        res.redirect('/dashboard');
+      };
+      Company.findOne({ user: user.id }, function(err, company){
+        if (err){
           console.log(err);
           res.redirect('/dashboard');
-        };
-        Company.findOne({ user: user.id }, function(err, company){
+        }
+        Supplier.create({
+          company: company.id,
+          dbaName: b.dbaName,
+          companyLogo: b.companyLogo,
+          language: b.language,
+          annualProductionVolume: b.annualProductionVolume,
+          productSpeciality: b.productSpeciality,
+          preferredBuyerType: b.preferredBuyerType,
+          preferredBuyerLanguage: b.preferredBuyerLanguage,
+          preferredBuyerCountry: b.preferredBuyerCountry,
+          acceptedDeliveryTerms: b.acceptedDeliveryTerms,
+          typeOfCompany: b.typeOfCompany,
+          privateLabeler: b.privateLabeler,
+          active: true
+        }, function(err, supplier){
           if (err){
-            console.log(err);
-            res.redirect('/dashboard');
+            var message = "There was a problem."
+            res.redirect('/dashboard', { message: message });
           }
-          Supplier.create({
+          console.log('Supplier created: ' + supplier.company);
+          Location.create({
             company: company.id,
-            preferredSupplierType: b.preferredSupplierType,
-            productCategories: b.productCategories,
-            productsOfInterest: b.productsOfInterest,
-            facebookUsername: b.facebookUsername,
-            twitterUsername: b.twitterUsername,
-            pintrestUsername: b.pintrestUsername,
-            tumblrUsername: b.tumblrUsername,
-            linkedinUsername: b.linkedinUsername,
-            instagramUsername: b.instagramUsername,
-            googleUsername: b.googleUsername,
-            relevantLinksTitle: b.relevantLinksTitle,
-            languages: b.languages,
-            dunsNumber: b.dunsNumber,
-            contactName: b.contactName,
-            contactPosition: b.contactPosition,
-            active: true
-          }, function(err, supplier){
-            if (err){
+            type: b.type,
+            city: b.city,
+            province: b.province,
+            country: b.country,
+            isHq: false
+          }, function(err, location) {
+            if (err) {
               var message = "There was a problem."
+              console.log("error is " + JSON.stringify(err));
               res.redirect('/dashboard', { message: message });
             }
-            else {
-              console.log('Supplier created: ' + supplier.company);
-              res.redirect('/dashboard');
-            }
+            Location.create({
+              company: company.id,
+              type: b.type,
+              city: b.portCity,
+              province: b.portProvince,
+              country: b.portCountry,
+              isHq: false
+            }, function(err, location) {
+              console.log("New location is: " + JSON.stringify(location));
+              if (err) {
+                console.log("SIFU");
+              }
+            });
+          res.redirect('/dashboard');
           });
         });
       });
+    });
   },
 
   update: function(req, res){
