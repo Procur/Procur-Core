@@ -32,27 +32,6 @@
      language: {
        type: 'string'
      },
-     locationType: {
-       type: 'string'
-     },
-     city: {
-       type: 'string'
-     },
-     state: {
-       type: 'string'
-     },
-     country: {
-       type: 'string'
-     },
-     portCity: {
-       type: 'string'
-     },
-     portState: {
-       type: 'string'
-     },
-     portCountry: {
-       type: 'string'
-     },
      annualProductionVolume: {
        type: 'string'
      },
