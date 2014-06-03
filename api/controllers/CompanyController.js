@@ -300,6 +300,8 @@ module.exports = {
                 Location.find().where({ buyer: buyerId }, function(err, locations){
                   if(err) return res.redirect('/dashboard');
                   locationsPayload.push(locations);
+                  console.log(payload);
+                  res.view({ company: payload[0], buyer: payload[1], supplier: payload[2], locations: locationsPayload });
                 });
               });
             });
