@@ -68,9 +68,6 @@ module.exports = {
             city: b.city,
             state: b.state,
             country: b.country,
-            portCity: b.portCity,
-            portState: b.portState,
-            portCountry: b.portCountry,
             isHq: false
           }, function(err, location) {
             if (err) {
@@ -78,12 +75,20 @@ module.exports = {
               console.log("error is " + JSON.stringify(err));
               res.redirect('/dashboard', { message: message });
             }
-            console.log("Location created: " + location.city);
-            Supplier.findOne({ company: company.id}, function(err, supplier) {
-              if(err) return res.redirect('/dashboard');
-              Location.update(company);
+            Location.create({
+              company: company.id,
+              type: b.type,
+              city: b.portCity,
+              state: b.portState,
+              country: b.portCountry,
+              isHq: false
+            }, function(err, location) {
+              console.log("New location is: " + JSON.stringify(location));
+              if (err) {
+                console.log("SIFU");
+              }
             });
-            res.redirect('/dashboard');
+          res.redirect('/dashboard');
           });
         });
       });
