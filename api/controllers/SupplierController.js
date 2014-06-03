@@ -66,7 +66,7 @@ module.exports = {
             company: company.id,
             type: b.type,
             city: b.city,
-            state: b.state,
+            province: b.province,
             country: b.country,
             isHq: false
           }, function(err, location) {
@@ -79,7 +79,7 @@ module.exports = {
               company: company.id,
               type: b.type,
               city: b.portCity,
-              state: b.portState,
+              province: b.portProvince,
               country: b.portCountry,
               isHq: false
             }, function(err, location) {

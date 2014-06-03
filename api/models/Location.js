@@ -23,8 +23,8 @@ module.exports = {
       type: 'string'
     },
     addressLine1: {
-      type: 'string',
-      required: false
+      type: 'string'
+      //previously required
     },
     addressLine2: {
       type: 'string',
@@ -32,24 +32,21 @@ module.exports = {
     city: {
       type: 'string'
     },
-    state: {
-      type: 'string'
-    },
     province: {
-      type: 'string',
-      required: false
+      type: 'string'
+      //previously required
     },
     country: {
-      type: 'string',
-      required: false
+      type: 'string'
+      //previously required
     },
     postalCode: {
-      type: 'string',
-      required: false
+      type: 'string'
+      //previously required
     },
     isHq: {
       type: 'boolean'
-      //required: false
+      //previously required
     },
     type: {
       type: 'string'
