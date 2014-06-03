@@ -11,8 +11,23 @@ module.exports = {
   attributes: {
 
     company: {        //Connects relationship to parent company
+      type: 'string'
+    },                //Connects relationship to buyer
+    buyer: {
+      type: 'string'
+    },
+    supplier: {
+      type: 'string'
+    },                //Connects relationship to supplier
+    title: {
+      type: 'string'
+    },
+    addressLine1: {
       type: 'string',
       required: true
+    },
+    addressLine2: {
+      string
     },
     city: {
       type: 'string'
@@ -21,14 +36,24 @@ module.exports = {
       type: 'string'
     },
     province: {
-      type: 'string'
+      type: 'string',
+      required: true
     },
     country: {
-      type: 'string'
+      type: 'string',
+      required: true
+    },
+    postalCode: {
+      type: 'string',
+      required: true
+    },
+    isHq: {
+      type: 'boolean',
+      required: true
     },
     type: {
       type: 'string'
-    }
+    }                  // Types: HQ, Factory, Office, nearestPort, otherLocation, preferredBuyerLocation, etc
   }
 
 };
