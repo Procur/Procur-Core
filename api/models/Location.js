@@ -24,7 +24,7 @@ module.exports = {
     },
     addressLine1: {
       type: 'string',
-      required: true
+      required: false
     },
     addressLine2: {
       type: 'string',
@@ -37,19 +37,19 @@ module.exports = {
     },
     province: {
       type: 'string',
-      required: true
+      required: false
     },
     country: {
       type: 'string',
-      required: true
+      required: false
     },
     postalCode: {
       type: 'string',
-      required: true
+      required: false
     },
     isHq: {
-      type: 'boolean',
-      required: true
+      type: 'boolean'
+      //required: false
     },
     type: {
       type: 'string'

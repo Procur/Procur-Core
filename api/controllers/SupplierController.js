@@ -30,44 +30,64 @@ module.exports = {
     });
   },
 
-create: function(req, res){
-      var b = req.body;
-      User.findOne({ id: req.session.passport.user }, function(err, user){
-        if(err){
+  create: function(req, res){
+    var b = req.body;
+    User.findOne({ id: req.session.passport.user }, function(err, user){
+      if(err){
+        console.log(err);
+        res.redirect('/dashboard');
+      };
+      Company.findOne({ user: user.id }, function(err, company){
+        if (err){
           console.log(err);
           res.redirect('/dashboard');
-        };
-        Company.findOne({ user: user.id }, function(err, company){
+        }
+        Supplier.create({
+          company: company.id,
+          dbaName: b.dbaName,
+          companyLogo: b.companyLogo,
+          language: b.language,
+          annualProductionVolume: b.annualProductionVolume,
+          productSpeciality: b.productSpeciality,
+          preferredBuyerType: b.preferredBuyerType,
+          preferredBuyerLanguage: b.preferredBuyerLanguage,
+          preferredBuyerCountry: b.preferredBuyerCountry,
+          acceptedDeliveryTerms: b.acceptedDeliveryTerms,
+          typeOfCompany: b.typeOfCompany,
+          privateLabeler: b.privateLabeler,
+          active: true
+        }, function(err, supplier){
           if (err){
-            console.log(err);
-            res.redirect('/dashboard');
+            var message = "There was a problem."
+            res.redirect('/dashboard', { message: message });
           }
-          Supplier.create({
+          console.log('Supplier created: ' + supplier.company);
+          Location.create({
             company: company.id,
-            dbaName: b.dbaName,
-            companyLogo: b.companyLogo,
-            language: b.language,
-            annualProductionVolume: b.annualProductionVolume,
-            productSpeciality: b.productSpeciality,
-            preferredBuyerType: b.preferredBuyerType,
-            preferredBuyerLanguage: b.preferredBuyerLanguage,
-            preferredBuyerCountry: b.preferredBuyerCountry,
-            acceptedDeliveryTerms: b.acceptedDeliveryTerms,
-            typeOfCompany: b.typeOfCompany,
-            privateLabeler: b.privateLabeler,
-            active: true
-          }, function(err, supplier){
-            if (err){
+            type: b.type,
+            city: b.city,
+            state: b.state,
+            country: b.country,
+            portCity: b.portCity,
+            portState: b.portState,
+            portCountry: b.portCountry,
+            isHq: false
+          }, function(err, location) {
+            if (err) {
               var message = "There was a problem."
+              console.log("error is " + JSON.stringify(err));
               res.redirect('/dashboard', { message: message });
             }
-            else {
-              console.log('Supplier created: ' + supplier.company);
-              res.redirect('/dashboard');
-            }
+            console.log("Location created: " + location.city);
+            Supplier.findOne({ company: company.id}, function(err, supplier) {
+              if(err) return res.redirect('/dashboard');
+              Location.update(company);
+            });
+            res.redirect('/dashboard');
           });
         });
       });
+    });
   },
 
   update: function(req, res){
