@@ -1,0 +1,23 @@
+@import 'test';
+
+$pink: #f398f9;
+
+footer {
+	position: fixed;
+	bottom: 0px;
+}
+
+header {
+	text-align: center;
+}
+
+
+* {
+	h1 {
+	color: $pink;
+	}
+
+	h2 {
+		color: blue;
+	}
+}
