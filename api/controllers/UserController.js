@@ -37,6 +37,7 @@ module.exports = {
   },
 
   processUpdateAccount: function(req, res){
+    var b = req.body;
 
   },
 

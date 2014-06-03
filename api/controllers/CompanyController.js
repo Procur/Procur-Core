@@ -51,16 +51,6 @@ module.exports = {
       faxExtension: b.companyFaxExt,
       email: b.companyEmail,
       website: b.companyWebsite,
-      physicalAddress1: b.companyAddress1,
-      physicalAddress2: b.companyAddress2,
-      country: b.companyCountry,
-      province: b.companyProvince,
-      postalCode: b.companyPostalCode,
-      hqAddress1: b.hqAddress1,
-      hqAddress2: b.hqAddress2,
-      hqCountry: b.hqCountry,
-      hqProvince: b.hqProvince,
-      hqPostalCode: b.hqPostalCode,
       companyType: b.companyType,
       industry: b.companyIndustry,
       employeeCount: b.companyEmployeeCount,
@@ -71,14 +61,57 @@ module.exports = {
         res.send(err);
       }
       else{
+        console.log(req.body);
         console.log("Company: " + company.name + " created.");
-
-        User.update(req.session.user, { profileComplete: true }, function(err, user){
-          if(err) return next(err);
-          console.log(user)
-        });
-
-        res.redirect('/dashboard');
+        if(b.companyIsHq == 'on') {
+          Location.create({
+            company: company.id,
+            addressLine1: b.companyAddress1,
+            addressLine2: b.companyAddress2,
+            country: b.companyCountry,
+            province: b.companyProvince,
+            postalCode: b.companyPostalCode,
+            isHq: true,
+            type: 'HQ'
+          }, function(err, location){
+            if(err) return res.redirect('/dashboard');
+            User.update(req.session.user, { profileComplete: true }, function(err, user){
+              if(err) return res.redirect('/dashboard');
+              console.log(user)
+            });
+          });
+        }
+        else {
+          Location.create({
+            company: company.id,
+            addressLine1: b.companyAddress1,
+            addressLine2: b.companyAddress2,
+            country: b.companyCountry,
+            province: b.companyProvince,
+            postalCode: b.companyPostalCode,
+            isHq: false,
+            type: 'Other'
+          }, function(err, location){
+            if(err) return res.redirect('/dashboard');
+            Location.create({
+              company: company.id,
+              addressLine1: b.hqAddress1,
+              addressLine2: b.hqAddress2,
+              country: b.hqCountry,
+              province: b.hqProvince,
+              postalCode: b.hqPostalCode,
+              isHq: true,
+              type: 'HQ'
+            }, function(err, location){
+              if(err) return res.redirect('/dashboard');
+              User.update(req.session.user, { profileComplete: true }, function(err, user){
+                if(err) return next(err);
+                console.log(user)
+                res.redirect('/dashboard');
+              });
+            });
+          });
+        }
       }
     });
   },
