@@ -202,19 +202,59 @@ module.exports = {
     var consumeToken = req.query.token;
     PasswordReset.findOne({ token: consumeToken }, function(err, reset){
       if(err){ return res.redirect('/dashboard') };
-      if(reset.consumed != true) {
-        res.view();
+      if(reset){
+        if(reset.consumed != true) {
+          req.session.token = consumeToken;
+          res.view();
+        }
+        else{
+          res.redirect('/forgotpassword');
+        }
       }
-      else{
-        res.redirect('/forgotpassword');
+      else {
+        res.redirect('/');
       }
     });
   },
 
   processSelectNewPassword: function(req, res){
     var b = req.body;
-
-
+    var newPassword;
+    var consumeToken = req.session.token;
+    PasswordReset.findOne({ token: consumeToken }, function(err, reset){
+      if(err){ return res.redirect('/dashboard') };
+      if(reset){
+        bcrypt.genSalt(10, function(err, salt){
+          bcrypt.hash(b.password, salt, function(err, hash){
+            newPassword = hash;
+            User.findOne({ id: reset.user }, function(err, user){
+              if(err){ return res.redirect('/dashboard') };
+              if(user){
+                User.update(user, { password: newPassword }, function(err, user){
+                  if(err){ return res.redirect('/dashboard') };
+                  PasswordReset.update(reset, { consumed: true }, function(err, reset){
+                    if(err){ return res.redirect('/dashboard') };
+                    if(reset.consumed == true){
+                      req.flash('Password changed. Please log in.');
+                      res.redirect('/');
+                    }
+                    else{
+                      res.redirect('/dashboard');
+                    }
+                  })
+                });
+              }
+              else {
+                res.redirect('/dashboard');
+              }
+            });
+          });
+        });
+      }
+      else{
+        res.redirect('/dashboard');
+      }
+    });
   },
 
   //KILLS SESSIONS AND REDIRECTS TO LOGOUT CONFIRMATION VIEW (GOODBYE)
