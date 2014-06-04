@@ -141,6 +141,26 @@ module.exports.routes = {
     action: 'resendVerificationEmail'
   },
 
+  'get /forgotpassword': {
+    controller: 'AuthController',
+    action: 'forgotPassword'
+  },
+
+  'post /forgotpassword': {
+    controller: 'AuthController',
+    action: 'processForgotPassword'
+  },
+
+  'get /resetPassword': {
+    controller: 'AuthController',
+    action: 'selectNewPassword'
+  },
+
+  'get /resetpassword/confirm': {
+    controller: 'AuthController',
+    action: 'resetRequestMade'
+  },
+
   //USER ROUTES
 
   'get /user/update': {

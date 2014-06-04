@@ -17,7 +17,10 @@ module.exports = {
     token: {
       type: 'string',
       required: true
+    },
+    consumed: {
+      type: 'boolean',
+      required: true
     }
   }
-
 };

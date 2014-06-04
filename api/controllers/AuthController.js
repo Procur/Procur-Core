@@ -171,12 +171,13 @@ module.exports = {
       if(err){ return res.redirect('/dashboard') };
       if(user){
         crypto.randomBytes(256, function(err, hash) {
-          PasswordReset.create({ user: user.id, token: hash }, function(err, reset){
+          token = hash.toString('base64').replace(/\//g,'_').replace(/\+/g,'-');
+          PasswordReset.create({ user: user.id, token: token, consumed: false }, function(err, reset){
             if(err){ return res.redirect('/dashboard') };
-            var htmlContent = 'Click the link below to reset your password. <br /><a href="http://' + address + '/verify?token=' + reset.token;
+            var htmlContent = 'Click the link below to reset your password. <br /><a href="http://' + address + '/resetpassword?token=' + reset.token + '">Here</a>';
             var mailOptions = {
               from: "support@procur.com",
-              to: emailAddress,
+              to: user.email,
               subject: "Procur Password Assistance",
               generateTextFromHTML: true,
               html: htmlContent
@@ -187,6 +188,7 @@ module.exports = {
               }
               else {
                 console.log("Change Password email sent: " + response.message);
+                res.redirect('/resetpassword/confirm');
               };
             });
           });
@@ -199,7 +201,26 @@ module.exports = {
     });
   },
 
-  processPasswordResetLink: function(req, res){
+  resetRequestMade: function(req, res){
+    res.view();
+  },
+
+  selectNewPassword: function(req, res){
+    var consumeToken = req.query.token;
+    PasswordReset.findOne({ token: consumeToken }, function(err, reset){
+      if(err){ return res.redirect('/dashboard') };
+      if(reset.consumed != true) {
+        res.view();
+      }
+      else{
+        res.redirect('/forgotpassword');
+      }
+    });
+  },
+
+  processSelectNewPassword: function(req, res){
+    var b = req.body;
+
 
   },
 
