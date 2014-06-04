@@ -21,7 +21,7 @@ module.exports = {
     //TODO: Add user lookup functionality + add company Slug
     var handle = req.param('id');
     Company.findOne({ handle: handle }, function(err, company){
-      if (err) return res.redirect('/error/notfound');
+      if (err) { return res.redirect('/error/notfound'); }
       if(company == undefined) {
         res.redirect('/error/notfound');
       }
@@ -74,9 +74,9 @@ module.exports = {
             isHq: true,
             type: 'HQ'
           }, function(err, location){
-            if(err) return res.redirect('/dashboard');
+            if(err) { return res.redirect('/dashboard'); }
             User.update(req.session.user, { profileComplete: true }, function(err, user){
-              if(err) return res.redirect('/dashboard');
+              if(err) { return res.redirect('/dashboard'); }
               console.log(user);
               res.redirect('/dashboard');
             });
@@ -93,7 +93,7 @@ module.exports = {
             isHq: false,
             type: 'Other'
           }, function(err, location){
-            if(err) return res.redirect('/dashboard');
+            if(err) { return res.redirect('/dashboard'); }
             Location.create({
               company: company.id,
               addressLine1: b.hqAddress1,
@@ -104,7 +104,7 @@ module.exports = {
               isHq: true,
               type: 'HQ'
             }, function(err, location){
-              if(err) return res.redirect('/dashboard');
+              if(err) { return res.redirect('/dashboard'); }
               User.update(req.session.user, { profileComplete: true }, function(err, user){
                 if(err) return next(err);
                 console.log(user)
@@ -131,21 +131,21 @@ module.exports = {
 
     if (destination == '/buyerdefault'){
       Company.findOne({ user: user }, function(err, company){
-        if (err) res.redirect('/dashboard');
+        if (err) { res.redirect('/dashboard'); }
         Company.update(company, { primaryMode: 'buyer' }, function(err, company){
-          if (err) res.redirect('/dashboard');
+          if (err) { res.redirect('/dashboard'); }
           console.log('Company updated: ' + company);
-          res.redirect('/dashboard')
+          res.redirect('/dashboard');
         });
       });
     }
     else if (destination == '/supplierdefault') {
       Company.findOne({ user: user }, function(err, company){
-        if (err) res.redirect('/dashboard');
+        if (err) { res.redirect('/dashboard'); }
         Company.update(company, { primaryMode: 'supplier' }, function(err, company){
-          if (err) res.redirect('/dashboard');
+          if (err) { res.redirect('/dashboard'); }
           console.log('Company updated: ' + company);
-          res.redirect('/dashboard')
+          res.redirect('/dashboard');
         });
       });
     }
@@ -155,10 +155,10 @@ module.exports = {
     var user = req.session.passport.user;
 
     Company.findOne({ user: user }, function(err, company){
-      if(err) res.redirect('/dashboard');
+      if(err) { res.redirect('/dashboard'); }
       console.log(company);
       Company.update(company, { buyer: true, supplier: true }, function(err, company){
-        if(err) res.redirect('/dashboard');
+        if(err) { res.redirect('/dashboard'); }
         console.log(company);
         res.redirect('/welcome/selectdefault');
       });
@@ -181,14 +181,14 @@ module.exports = {
     var b = req.body;
     console.log(b);
     User.findOne({ id: req.session.passport.user }, function(err, user){
-      if(err) return res.redirect('/dashboard');
+      if(err) { return res.redirect('/dashboard'); }
       console.log(user);
       Company.findOne({ user: user.id }, function(err, company){
-        if(err) return res.redirect('/dashboard');
+        if(err) { return res.redirect('/dashboard'); }
         console.log(company);
         console.log(b.handle.toLowerCase());
         Company.update(company, { handle: b.handle.toLowerCase() }, function(err, company){
-          if(err) return res.redirect('/dashboard');
+          if(err) { return res.redirect('/dashboard'); }
           console.log('Handle, ' + company.handle + ' created for ' + company.name);
           res.redirect('dashboard');
         });
@@ -198,9 +198,9 @@ module.exports = {
 
   changeHandle: function(req, res){
     User.findOne({ id: req.session.passport.user }, function(err, user){
-      if(err) return res.redirect('/dashboard');
+      if(err) { return res.redirect('/dashboard'); }
       Company.findOne({ user: user.id }, function(err, company){
-        if(err) return res.redirect('/dashboard');
+        if(err) { return res.redirect('/dashboard'); }
         res.view({ handle: company.handle });
       });
     });
@@ -209,13 +209,13 @@ module.exports = {
   updateHandle: function(req, res){
     var b = req.body;
     Company.findOne({ handle: b.handle }, function(err, company){
-      if(err) return res.redirect('/dashboard');
+      if(err) { return res.redirect('/dashboard'); }
       if(company) {
         req.flash('message', 'Handle is unavailable'); //HANDLE UNAVAILABLE FLASH FOR BOTH CONDITIONS
         User.findOne({ id: req.session.passport.user }, function(err, user){
-          if(err) return res.redirect('/dashboard');
+          if(err) { return res.redirect('/dashboard'); }
           Company.findOne({ user: user.id }, function(err, company){
-            if(err) return res.redirect('/dashboard');
+            if(err) { return res.redirect('/dashboard'); }
             if (company.handle) {
               res.redirect('company/changehandle')
             }
@@ -227,11 +227,11 @@ module.exports = {
       }
       else {
         User.findOne({ id: req.session.passport.user }, function(err, user){
-          if(err) return res.redirect('/dashboard');
+          if(err) { return res.redirect('/dashboard'); }
           Company.findOne({ user: user.id }, function(err, company){
-            if(err) return res.redirect('/dashboard');
+            if(err) { return res.redirect('/dashboard'); }
             Company.update(company, { handle: b.handle.toLowerCase() }, function(err, company){
-              if(err) return res.redirect('/dashboard');
+              if(err) { return res.redirect('/dashboard'); }
               req.flash('message', 'Handle updated.');
               res.redirect('/dashboard');
             });
@@ -249,20 +249,20 @@ module.exports = {
         supplierId;
 
     User.findOne({ id: req.session.passport.user }, function(err, user){
-      if(err) return res.redirect('/dashboard');
+      if(err) { return res.redirect('/dashboard'); }
       Company.findOne({ user: user.id }, function(err, company){
-        if(err) return res.redirect('/dashboard');
+        if(err) { return res.redirect('/dashboard'); }
         companyId = company.id;
         payload.push(company);
         if((company.buyer == true) && (company.supplier == false)){
           Buyer.findOne({ company: company.id }, function(err, buyer){
-            if(err) return res.redirect('/dashboard');
+            if(err) { return res.redirect('/dashboard'); }
             payload.push(buyer);
             Location.find().where({ buyer: buyer.id }, function(err, locations){
-              if(err) return res.redirect('/dashboard');
+              if(err) { return res.redirect('/dashboard'); }
               locationsPayload.push(locations);
               Location.find().where({ company: companyId }, function(err, locations){
-                if(err) return res.redirect('/dashboard');
+                if(err) { return res.redirect('/dashboard'); }
                 locationsPayload.push(locations);
                 console.log(payload);
                 res.view({ company: payload[0], buyer: payload[1], locations: locationsPayload });
@@ -272,12 +272,12 @@ module.exports = {
         }
         else if((company.supplier == true) && (company.buyer == false)){
           Buyer.findOne({ company: company.id }, function(err, supplier){
-            if(err) return res.redirect('/dashboard');
+            if(err) { return res.redirect('/dashboard'); }
             Location.find().where({ supplier: supplier.id }, function(err, locations){
-              if(err) return res.redirect('/dashboard');
+              if(err) { return res.redirect('/dashboard'); }
               locationsPayload.push(locations);
               Location.find().where({ company: companyId }, function(err, locations){
-                if(err) return res.redirect('/dashboard');
+                if(err) { return res.redirect('/dashboard'); }
                 locationsPayload.push(locations);
                 console.log(payload);
                 res.view({ company: payload[0], supplier: payload[1], locations: locationsPayload });
@@ -287,18 +287,18 @@ module.exports = {
         }
         else if((company.buyer == true) && (company.supplier == true)){
           Buyer.findOne({ company: company.id }, function(err, buyer){
-            if(err) return res.redirect('/dashboard');
+            if(err) { return res.redirect('/dashboard'); }
             payload.push(buyer);
             buyerId = buyer.id;
             Supplier.findOne({ company: supplier.company }, function(err, supplier){
-              if(err) return res.redirect('/dashboard');
+              if(err) { return res.redirect('/dashboard'); }
               payload.push(supplier);
               supplierId = supplier.id;
               Location.find().where({ supplier: supplier.id }, function(err, locations){
-                if(err) return res.redirect('/dashboard');
+                if(err) { return res.redirect('/dashboard'); }
                 locationsPayload.push(locations);
                 Location.find().where({ buyer: buyerId }, function(err, locations){
-                  if(err) return res.redirect('/dashboard');
+                  if(err) { return res.redirect('/dashboard'); }
                   locationsPayload.push(locations);
                   console.log(payload);
                   res.view({ company: payload[0], buyer: payload[1], supplier: payload[2], locations: locationsPayload });
@@ -314,9 +314,9 @@ module.exports = {
   setUpdate: function(req, res){
     var b = req.body;
     User.findOne({ id: req.session.passport.user }, function(err, user){
-      if(err) return res.redirect('/dashboard');
+      if(err) { return res.redirect('/dashboard'); }
       Company.findOne({ user: user.id }, function(err, company){
-        if(err) return res.redirect('/dashboard');
+        if(err) { return res.redirect('/dashboard'); }
         Company.update(company, {
           name: b.companyName,
           phoneNumber: b.companyPhone,
@@ -339,7 +339,7 @@ module.exports = {
           industry: b.companyIndustry,
           employeeCount: b.companyEmployeeCount,
         }, function(err, company){
-          if(err) return res.redirect('/dashboard');
+          if(err) { return res.redirect('/dashboard'); }
           res.redirect('/dashboard'); //TODO: Add success flash
         });
       });

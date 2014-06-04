@@ -31,7 +31,7 @@ module.exports = {
 
   updateAccount: function(req, res){
     User.findOne({ id: req.session.passport.user }, function(err, user){
-      if(err) return res.redirect('/dashboard');
+      if(err) { return res.redirect('/dashboard'); }
       res.view({ user: user });
     });
   },
