@@ -21,14 +21,11 @@ module.exports = {
     var user = req.session.passport.user;
     var payload = [];
     User.findOne({ id: user }, function(err, user){
-      if(err) {
-        res.send(err);
-        console.log('err should be written')
-      }
+      if(err) { return res.redirect('/dashboard'); }
       else {
         payload.push(user);
         Company.findOne({ user: user.id }, function(err, company){
-          if(err) return res.redirect('/dashboard');
+          if(err) { return res.redirect('/dashboard'); }
           payload.push(company);
           res.view({ user: payload[0], company: payload[1] })
         });
