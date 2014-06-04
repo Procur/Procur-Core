@@ -26,12 +26,10 @@ module.exports = {
         return res.send({
         message: 'login failed'
         });
-        res.send(err);
+        return res.redirect('/dashboard');
       }
       req.logIn(user, function(err) {
-        if (err){
-           return res.send(err);
-        }
+        if (err) { return res.redirect('/dashboard'); }
         else {
           req.session.authenticated = true;
           res.redirect('/welcome');
@@ -45,10 +43,7 @@ module.exports = {
     var b = req.body;
 
     User.findOne({ email: b.email}, function(err, user){
-      if(err) {
-        return res.send(err);
-        console.log('err should be written')
-      }
+      if(err) { return res.redirect('/dashboard'); }
       if(!user){
         //CREATE USER
         User.create({
@@ -60,17 +55,15 @@ module.exports = {
           profileComplete: false,
           active: true
         }, function(err, user){
-          if(err){
-            res.send(err);
-          }
+          if(err){ return res.redirect('/dashboard'); }
           else{
             //CREATE EMAIL VERIFICATION OBJECT AND TOKEN
             crypto.randomBytes(256, function(err, hash) {
-              if(err) return err;
+              if(err) { return res.redirect('/dashboard'); }
               token = hash.toString('base64').replace(/\//g,'_').replace(/\+/g,'-');
               console.log("TOKEN: " + token);
               EmailVerification.create({ email: b.email, token: token }, function(err, emailVerification){
-                if(err) return err;
+                if(err) { return redirect('/dashboard'); }
                 console.log("Verification created: " + emailVerification);
               });
 
@@ -103,8 +96,8 @@ module.exports = {
                   });
                 }
                 req.logIn(user, function(err) {
-                  if (err){
-                     res.send(err);
+                  if (err) {
+                    res.send(err);
                   }
                   else {
                     req.session.authenticated = true;
@@ -131,10 +124,10 @@ module.exports = {
       bcrypt.hash(b.password, salt, function(err, hash){
         newPassword = hash;
         User.findOne({ id: req.session.passport.user }, function(err, user){
-          if(err) return res.redirect('/dashboard');
+          if(err) { return res.redirect('/dashboard'); }
           emailAddress = user.email;
           User.update(user, { password: newPassword }, function(err, user){
-            if(err) return res.redirect('/dashboard');
+            if(err) { return res.redirect('/dashboard'); }
 
             var htmlContent = 'Your procur password has been changed. Please contact support if you did not authorize this change.';
             var mailOptions = {
@@ -215,8 +208,8 @@ module.exports = {
     var user = req.session.user;
     User.findOne({ id: req.session.user }, function(err, user){
       if(err) {
-        return res.send(err);
-        console.log('err should be written')
+        return res.redirect('/dashboard');
+        console.log('err should be written');
       }
       else {
         res.view({ message: "signed out. "});
@@ -226,15 +219,15 @@ module.exports = {
 
   resendVerificationEmail: function(req, res){
     User.findOne(req.session.passport.user, function(err, user){
-      if(err) res.redirect('/dashboard');
+      if(err) { return res.redirect('/dashboard'); }
       EmailVerification.findOne({ email: user.email }, function(err, emailVerification){
-        if(err) res.redirect('/dashboard');
+        if(err) { return res.redirect('/dashboard'); }
         crypto.randomBytes(256, function(err, hash) {
-          if(err) return err;
+          if(err) { return res.redirect('/dashboard'); }
           token = hash.toString('base64').replace(/\//g,'_').replace(/\+/g,'-');
           console.log("TOKEN: " + token);
           EmailVerification.update(emailVerification, {token: token }, function(err, emailVerification){
-            if(err) return err;
+            if(err) { return res.redirect('/dashboard'); }
             console.log("Verification created: " + emailVerification);
             var htmlContent = '<a href="http://' + address + '/verify?token=' + token + '">Click to verify your Procur account!</a>';
             var mailOptions = {
@@ -262,17 +255,15 @@ module.exports = {
   verifyEmail: function(req, res) {
     var consumeToken = req.query.token;
 
-    if(!consumeToken) {
-      res.redirect('/dashboard');
-    }
+    if(!consumeToken) { return res.redirect('/dashboard'); }
     else {
       EmailVerification.findOne({ token: consumeToken }, function(err, verification){
-        if(err) return err;
+        if(err) { return res.redirect('/dashboard'); }
         User.findOne({ email: verification.email }, function(err, user){
-          if(err) return err;
+          if(err) { return res.redirect('/dashboard'); }
           User.update(user, { emailVerified: true }, function(err, toUpdate){
-            if(err) return err;
-            res.redirect('/dashboard');
+            if(err) { return res.redirect('/dashboard'); }
+            return res.redirect('/dashboard');
           });
         });
       });

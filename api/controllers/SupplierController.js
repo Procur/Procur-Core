@@ -19,9 +19,9 @@ module.exports = {
 
   index: function(req, res){
     User.findOne({ id: req.session.passport.user }, function(err, user){
-      if(err) return res.redirect('/dashboard');
+      if(err) { return res.redirect('/dashboard'); }
       Company.findOne({ user: user.id }, function(err, company){
-        if(err) return res.redirect('/dashboard');
+        if(err) { return res.redirect('/dashboard'); }
         Supplier.findOne({ company: company.id }, function(err, supplier){
             //TODO: Pass all supplier attributes to view.
             res.view();
@@ -33,15 +33,9 @@ module.exports = {
   create: function(req, res){
     var b = req.body;
     User.findOne({ id: req.session.passport.user }, function(err, user){
-      if(err){
-        console.log(err);
-        res.redirect('/dashboard');
-      };
+      if(err) { return res.redirect('/dashboard'); }
       Company.findOne({ user: user.id }, function(err, company){
-        if (err){
-          console.log(err);
-          res.redirect('/dashboard');
-        }
+        if (err) { return res.redirect('/dashboard'); }
         Supplier.create({
           company: company.id,
           dbaName: b.dbaName,
@@ -101,11 +95,11 @@ module.exports = {
 
   destroy: function(req, res){
     User.findOne({ id: req.session.passport.user }, function(err, user){
-      if(err) return res.redirect('/dashboard');
+      if(err) { return res.redirect('/dashboard'); }
       Company.findOne({ user: user.id }, function(err, company){
-        if(err) return res.redirect('/dashboard');
+        if(err) { return res.redirect('/dashboard'); }
         Supplier.findOne({ company: company.id }, function(err, supplier){
-            if(err) return res.redirect('/dashboard');
+            if(err) { return res.redirect('/dashboard'); }
             Supplier.update(supplier, { active: false });
         });
       });

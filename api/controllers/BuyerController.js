@@ -19,9 +19,9 @@ module.exports = {
 
   index: function(req, res){
     User.findOne({ id: req.session.passport.user }, function(err, user){
-      if (err) return res.redirect('/dashboard');
+      if (err) { return res.redirect('/dashboard'); }
       Company.findOne({ user: user.id }, function(err, company){
-        if (err) return res.redirect('/dashboard');
+        if (err) { return res.redirect('/dashboard'); }
         Buyer.findOne({ company: company.id }, function(err, buyer){
           var b = buyer;
           res.view({
@@ -51,7 +51,7 @@ module.exports = {
     var b = req.body;
     User.findOne({ id: req.session.passport.user }, function(err, user){
       Company.findOne({ user: user.id }, function(err, company){
-        if (err) return res.redirect('/dashboard');
+        if (err) { return res.redirect('/dashboard'); }
         Buyer.create({
           company: company.id,
           preferredSupplierType: b.preferredSupplierType,
@@ -71,10 +71,7 @@ module.exports = {
           contactPosition: b.contactPosition,
           active: true
         }, function(err, buyer){
-          if (err){
-            var message = "There was a problem."
-            return res.redirect('/dashboard', { message: message });
-          }
+          if (err) { return res.redirect('/dashboard'); }
           else {
             console.log('Buyer created: ' + buyer.company);
             res.redirect('/dashboard');
