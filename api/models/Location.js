@@ -12,19 +12,18 @@ module.exports = {
 
     company: {        //Connects relationship to parent company
       type: 'string'
-    },                //Connects relationship to buyer
-    buyer: {
+    },
+    buyer: {          //Connects relationship to buyer
       type: 'string'
     },
-    supplier: {
+    supplier: {       //Connects relationship to supplier
       type: 'string'
-    },                //Connects relationship to supplier
+    },
     title: {
       type: 'string'
     },
     addressLine1: {
       type: 'string'
-      //previously required
     },
     addressLine2: {
       type: 'string',
@@ -34,23 +33,19 @@ module.exports = {
     },
     province: {
       type: 'string'
-      //previously required
     },
     country: {
       type: 'string'
-      //previously required
     },
     postalCode: {
       type: 'string'
-      //previously required
     },
     isHq: {
       type: 'boolean'
-      //previously required
     },
-    type: {
+    type: {           // Types: HQ, Factory, Office, nearestPort, otherLocation, preferredBuyerLocation, etc
       type: 'string'
-    }                  // Types: HQ, Factory, Office, nearestPort, otherLocation, preferredBuyerLocation, etc
+    }
   }
 
 };
