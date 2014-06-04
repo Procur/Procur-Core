@@ -348,5 +348,13 @@ module.exports = {
 
   notFound: function(req, res){
     res.view();
+  },
+
+  testing: function(req, res){
+    User.findOne({ id: req.session.passport.user }, function(err, user){
+      Company.findOne({ user: user }, function(err, company){
+        console.log(user);
+      });
+    });
   }
 };

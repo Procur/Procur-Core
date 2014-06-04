@@ -33,7 +33,10 @@ module.exports.routes = {
   //
   // (This would also work if you had a file at: `/views/home.ejs`)
 
-
+  'get /stupidtest': {
+    controller: 'CompanyController',
+    action: 'testing'
+  },
 
 
   //LANDING PAGE ROUTES
