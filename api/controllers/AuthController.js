@@ -29,7 +29,7 @@ module.exports = {
         return res.redirect('/dashboard');
       }
       req.logIn(user, function(err) {
-        if (err){ return res.redirect('/dashboard'); }
+        if (err) { return res.redirect('/dashboard'); }
         else {
           req.session.authenticated = true;
           res.redirect('/welcome');
@@ -43,7 +43,7 @@ module.exports = {
     var b = req.body;
 
     User.findOne({ email: b.email}, function(err, user){
-      if(err) { return res.redirect('/dasboard'); }
+      if(err) { return res.redirect('/dashboard'); }
       if(!user){
         //CREATE USER
         User.create({
@@ -59,11 +59,11 @@ module.exports = {
           else{
             //CREATE EMAIL VERIFICATION OBJECT AND TOKEN
             crypto.randomBytes(256, function(err, hash) {
-              if(err) { return res.redirect('/dasboard'); }
+              if(err) { return res.redirect('/dashboard'); }
               token = hash.toString('base64').replace(/\//g,'_').replace(/\+/g,'-');
               console.log("TOKEN: " + token);
               EmailVerification.create({ email: b.email, token: token }, function(err, emailVerification){
-                if(err) { return redirect('/dashboard') };
+                if(err) { return redirect('/dashboard'); }
                 console.log("Verification created: " + emailVerification);
               });
 
@@ -96,7 +96,9 @@ module.exports = {
                   });
                 }
                 req.logIn(user, function(err) {
-                  if (err){ return res.redirect('/dashboard'); }
+                  if (err) {
+                    res.send(err);
+                  }
                   else {
                     req.session.authenticated = true;
                     res.redirect('/welcome');
@@ -218,7 +220,8 @@ module.exports = {
         User.findOne({ email: verification.email }, function(err, user){
           if(err) { return res.redirect('/dashboard'); }
           User.update(user, { emailVerified: true }, function(err, toUpdate){
-            if(err) { return res.redirect('/dashboard'); }
+            //if(err) { return res.redirect('/dashboard'); }
+            return res.redirect('/dashboard');
           });
         });
       });
