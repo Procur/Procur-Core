@@ -220,7 +220,7 @@ module.exports = {
         User.findOne({ email: verification.email }, function(err, user){
           if(err) { return res.redirect('/dashboard'); }
           User.update(user, { emailVerified: true }, function(err, toUpdate){
-            //if(err) { return res.redirect('/dashboard'); }
+            if(err) { return res.redirect('/dashboard'); }
             return res.redirect('/dashboard');
           });
         });
