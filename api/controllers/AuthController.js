@@ -200,7 +200,7 @@ module.exports = {
 
   selectNewPassword: function(req, res){
     var consumeToken = req.query.token;
-    PasswordReset.findOne({ token: consumeToken }, function(err, reset){
+    PasswordReset.findOne({ token: consumeToken, consumed: false }, function(err, reset){
       if(err){ return res.redirect('/dashboard') };
       if(reset){
         if(reset.consumed != true) {
