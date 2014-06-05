@@ -32,7 +32,7 @@
      language: {
        type: 'string'
      },
-     annualProductionVolume: {
+     salesValue: {
        type: 'string'
      },
      productSpeciality: {
