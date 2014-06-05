@@ -34,8 +34,10 @@ module.exports = {
     var b = req.body;
     User.findOne({ id: req.session.passport.user }, function(err, user){
       if(err) { return res.redirect('/dashboard'); }
+      console.log(user);
       Company.findOne({ user: user.id }, function(err, company){
         if (err) { return res.redirect('/dashboard'); }
+        console.log(company);
         Supplier.create({
           company: company.id,
           dbaName: b.dbaName,
@@ -52,8 +54,9 @@ module.exports = {
           active: true
         }, function(err, supplier){
           if (err){
+            res.send(err);
             var message = "There was a problem."
-            res.redirect('/dashboard', { message: message });
+            //res.redirect('/dashboard', { message: message });
           }
           console.log('Supplier created: ' + supplier.company);
           Location.create({
