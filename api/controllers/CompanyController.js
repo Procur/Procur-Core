@@ -357,6 +357,7 @@ module.exports = {
           name: b.companyName,
           phoneNumber: b.companyPhone,
           phoneExtension: b.companyPhoneExt,
+          faxCountryCode: b.companyFaxCountryCode,
           faxNumber: b.companyFax,
           faxExtension: b.companyFaxExt,
           email: b.companyEmail,
@@ -371,7 +372,7 @@ module.exports = {
           hqCountry: b.hqCountry,
           hqProvince: b.hqProvince,
           hqPostalCode: b.hqPostalCode,
-          companyType: b.companyType,
+          //deprecated - companyType: b.companyType,
           industry: b.companyIndustry,
           employeeCount: b.companyEmployeeCount,
         }, function(err, company){
