@@ -20,7 +20,6 @@ module.exports = function (req, res, next) {
         if((company.buyer == true) && (company.supplier == true)) {
           console.log('both true')
           if(!company.primaryMode){
-            console.log('has primary mode');
             res.redirect('/welcome/selectdefault');
           }
           else {
@@ -70,7 +69,7 @@ module.exports = function (req, res, next) {
                       console.log(7);
                       res.redirect('/dashboard');
                     }
-                    else if (supplier == undefined) {
+                    else if (buyer == undefined) {
                       console.log(8);
                       res.redirect('/welcome/buyer');
                     }

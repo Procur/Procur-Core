@@ -24,7 +24,8 @@ module.exports.policies = {
 
   UserController: {
     welcome: ['isAuthenticated', 'profileComplete'],
-    myProcur: ['isAuthenticated', 'profileComplete']
+    myProcur: ['isAuthenticated', 'profileComplete'],
+    pleaseVerify: ['wizardComplete']
   },
 
   AuthController: {
