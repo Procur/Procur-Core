@@ -169,11 +169,31 @@ module.exports = {
   },
 
   buyerWizard: function(req, res){
-    res.view();
+    var user = req.session.passport.user;
+
+    Company.findOne({ user: user }, function(err, company){
+      if(err){ return res.redirect('/dashboard') };
+      Company.update(company, { buyer: true }, function(err, company){
+        if(err){ return res.redirect('/dashboard') };
+        if(company){
+          res.view();
+        };
+      });
+    });
   },
 
   supplierWizard: function(req, res){
-    res.view();
+    var user = req.session.passport.user;
+
+    Company.findOne({ user: user }, function(err, company){
+      if(err){ return res.redirect('/dashboard') };
+      Company.update(company, { supplier: true }, function(err, company){
+        if(err){ return res.redirect('/dashboard') };
+        if(company){
+          res.view();
+        };
+      });
+    });
   },
 
   selectHandle: function(req, res){
@@ -254,7 +274,7 @@ module.exports = {
 
     User.findOne({ id: req.session.passport.user }, function(err, user){
       if(err) { return res.redirect('/dashboard'); }
-      console.log(error++); //DEBUG THING\
+      console.log(error++); //DEBUG THING
       console.log(user);
       Company.findOne({ user: user.id }, function(err, company){
         if(err) { return res.redirect('/dashboard'); }
