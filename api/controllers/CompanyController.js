@@ -290,7 +290,7 @@ module.exports = {
             if(err) { return res.redirect('/dashboard'); }
             payload.push(buyer);
             buyerId = buyer.id;
-            Supplier.findOne({ company: supplier.company }, function(err, supplier){
+            Supplier.findOne({ company: company.id }, function(err, supplier){
               if(err) { return res.redirect('/dashboard'); }
               payload.push(supplier);
               supplierId = supplier.id;
