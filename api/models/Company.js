@@ -27,6 +27,9 @@ module.exports = {
     phoneExtension: {
       type: 'string'
     },
+    faxCountryCode: {
+      type: 'string'
+    },
     faxNumber: {
       type: 'string'
     },
@@ -39,10 +42,6 @@ module.exports = {
     },
     website: {
       type: 'string'
-    },
-    companyType: {
-      type: 'string',
-      required: true
     },
     industry: {
       type: 'string'

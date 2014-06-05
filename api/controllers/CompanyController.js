@@ -37,9 +37,6 @@ module.exports = {
 
   create: function(req, res){
     var b = req.body;
-    //console.log(req.session.passport.user);
-    //console.log(req.body);
-    //console.log(b.companyName)
 
     //CREATE HQ TOGGLE LOGIC
     Company.create({
@@ -47,11 +44,11 @@ module.exports = {
       name: b.companyName,
       phoneNumber: b.companyPhone,
       phoneExtension: b.companyPhoneExt,
+      faxCountryCode: b.companyFaxCountryCode,
       faxNumber: b.companyFax,
       faxExtension: b.companyFaxExt,
       email: b.companyEmail,
       website: b.companyWebsite,
-      companyType: b.companyType,
       industry: b.companyIndustry,
       employeeCount: b.companyEmployeeCount,
       active: true

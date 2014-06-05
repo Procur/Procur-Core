@@ -82,7 +82,8 @@ module.exports = {
             }, function(err, location) {
               console.log("New location is: " + JSON.stringify(location));
               if (err) {
-                console.log("SIFU");
+                var message = "There was a problem."
+                res.redirect('/dashboard', { message: message });
               }
             });
           res.redirect('/dashboard');
