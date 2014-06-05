@@ -128,6 +128,7 @@ module.exports = {
   setDefault: function(req, res){
     var destination = req.route.path;
     var user = req.session.passport.user;
+    console.log(req.route.path);
 
     if (destination == '/buyerdefault'){
       Company.findOne({ user: user }, function(err, company){
@@ -140,7 +141,9 @@ module.exports = {
       });
     }
     else if (destination == '/supplierdefault') {
+      console.log('dest');
       Company.findOne({ user: user }, function(err, company){
+        console.log(company);
         if (err) { res.redirect('/dashboard'); }
         Company.update(company, { primaryMode: 'supplier' }, function(err, company){
           if (err) { res.redirect('/dashboard'); }

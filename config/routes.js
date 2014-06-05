@@ -219,7 +219,7 @@ module.exports.routes = {
     action: 'setDefault'
   },
 
-  'get /supplierDefault': {
+  'get /supplierdefault': {
     controller: 'CompanyController',
     action: 'setDefault'
   },
