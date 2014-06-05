@@ -48,7 +48,6 @@ module.exports = {
     },
     employeeCount: {
       type: 'integer',
-      required: true
     },
     buyer: {
       type: 'boolean',

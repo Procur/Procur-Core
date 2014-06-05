@@ -2,27 +2,27 @@
 
 <section class="companyForm">
   <form action="/company/create" method="post">
-    <div><input type="text" name="companyName" placeholder="Company Name"></div>
+    <div><input type="text" name="companyName" placeholder="Your company Name"></div>
     <div><input type="text" name="companyPhone" placeholder="Company Phone"></div>
     <div><input type="text" name="companyPhoneExt" placeholder="Extension"></div>
     <div><input type="text" name="companyFaxCountryCode" placeholder="Fax Country Code"></div>
     <div><input type="text" name="companyFax" placeholder="Company Fax"></div>
     <div><input type="text" name="companyFaxExt" placeholder="Fax Extension"></div>
-    <div><input type="text" name="companyEmail" placeholder="Email"></div>
-    <div><input type="text" name="companyWebsite" placeholder="Website"></div>
-    <div><input type="text" name="companyAddress1" placeholder="Address Line 1"></div>
-    <div><input type="text" name="companyAddress2" placeholder="Address Line 2"></div>
-    <div><input type="text" name="companyCountry" placeholder="Country"></div>
-    <div><input type="text" name="companyProvince" placeholder="State / Province"></div>
+    <div><input type="text" name="companyEmail" placeholder="info@mycompany.com"></div>
+    <div><input type="text" name="companyWebsite" placeholder="www.mycompany.com"></div>
+    <div><input type="text" name="companyAddress1" placeholder="Address Line #1"></div>
+    <div><input type="text" name="companyAddress2" placeholder="Address Line #2"></div>
+    <div><select name="companyCountry"><option value="">Select Country</option></select></div>
+    <div><select name="companyProvince"><option value="">Select Province/State</option></select></div>
     <div><input type="text" name="companyPostalCode" placeholder="Postal Code"></div>
     <div><input type="checkbox" name="companyIsHq">Location is HQ?</div>
-    <div><input type="text" name="hqAddress1" placeholder="HQ Address Line 1"></div>
-    <div><input type="text" name="hqAddress2" placeholder="HQ Address Line 2"></div>
-    <div><input type="text" name="hqCountry" placeholder="HQ Country"></div>
-    <div><input type="text" name="hqProvince" placeholder="HQ State / Province"></div>
-    <div><input type="text" name="hqPostalCode" placeholder="HQ Postal Code"></div>
-    <div><input type="text" name="companyIndustry" placeholder="Industry"></div>
-    <div><input type="text" name="companyEmployeeCount" placeholder="Number of Employees"></div>
+    <div><input type="text" name="hqAddress1" placeholder="Address Line 1"></div>
+    <div><input type="text" name="hqAddress2" placeholder="Address Line 2"></div>
+    <div><select name="hqCountry"><option value="">Select Country</option></select></div>
+    <div><select name="hqProvince"><option value="">Select Province/State</option></select></div>
+    <div><input type="text" name="hqPostalCode" placeholder="Postal Code"></div>
+    <div><select name="companyIndustry"><option value="">Select Industry</option></select></div>
+    <div><select name="companyEmployeeCount"><option value="">Total No. of Employees</option></select></div>
     <div><input type="submit"></div>
   </form>
 </section>
