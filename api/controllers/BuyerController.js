@@ -25,57 +25,67 @@ module.exports = {
         Buyer.findOne({ company: company.id }, function(err, buyer){
           var b = buyer;
           res.view({
-            company: b.comany,
+            company: b.company,
+            dbaName: b.dba,
+            logoUrl: b.logoUrl,
+            language: b.language,
             preferredSupplierType: b.preferredSupplierType,
-            productCategories: b.productCategories,
-            productsOfInterest: b.productsOfInterest,
-            facebookUsername: b.facebookUsername,
-            twitterUsername: b.twitterUsername,
-            pintrestUsername: b.pintrestUsername,
-            tumblrUsername: b.tumblrUsername,
-            linkedinUsername: b.linkedinUsername,
-            instagramUsername: b.instagramUsername,
-            googleUsername: b.googleUsername,
-            relevantLinksTitle: b.relevantLinksTitle,
-            languages: b.languages,
-            dunsNumber: b.dunsNumber,
-            contactName: b.contactName,
-            contactPosition: b.contactPosition
+            preferredSupplierLanguage: b.preferredSupplierLanguage,
+            preferredSupplierLocation: b.preferredSupplierLocation,
+            typeOfCompany: b.typeOfCompany,
+            acceptedDeliveryTerms: b.acceptedDeliveryTerms,
+            acceptedCurrency: b.acceptedCurrency,
+            acceptedPaymentTerms: b.acceptedPaymentTerms
           });
         });
       });
     });
   },
 
-  create: function(req, res){
+  create: function(req, res) {
     var b = req.body;
-    User.findOne({ id: req.session.passport.user }, function(err, user){
-      Company.findOne({ user: user.id }, function(err, company){
+    User.findOne({ id: req.session.passport.user }, function(err, user) {
+      Company.findOne({ user: user.id }, function(err, company) {
         if (err) { return res.redirect('/dashboard'); }
         Buyer.create({
           company: company.id,
+          dbaName: b.dba,
+          logoUrl: b.logoUrl,
+          language: [b.language1, b.language2],
           preferredSupplierType: b.preferredSupplierType,
-          productCategories: b.productCategories,
-          productsOfInterest: b.productsOfInterest,
-          facebookUsername: b.facebookUsername,
-          twitterUsername: b.twitterUsername,
-          pintrestUsername: b.pintrestUsername,
-          tumblrUsername: b.tumblrUsername,
-          linkedinUsername: b.linkedinUsername,
-          instagramUsername: b.instagramUsername,
-          googleUsername: b.googleUsername,
-          relevantLinksTitle: b.relevantLinksTitle,
-          languages: b.languages,
-          dunsNumber: b.dunsNumber,
-          contactName: b.contactName,
-          contactPosition: b.contactPosition,
+          preferredSupplierLanguage: [b.preferredSupplierLanguage1,
+                                      b.prefferedSupplierLanguage2,
+                                      b.prefferedSupplierLanguage3],
+          preferredSupplierLocation: [b.preferredSupplierLocation1Country,
+                                      b.preferredSupplierLocation2Country,
+                                      b.preferredSupplierLocation3Country],
+          typeOfCompany: b.typeOfCompany,
+          acceptedDeliveryTerms: b.acceptedDeliveryTerms,
+          acceptedCurrency: b.acceptedCurrency,
+          acceptedPaymentTerms: b.acceptedPaymentTerms,
           active: true
-        }, function(err, buyer){
+        }, function(err, buyer) {
           if (err) { return res.redirect('/dashboard'); }
-          else {
-            console.log('Buyer created: ' + buyer.company);
-            res.redirect('/dashboard');
-          }
+          Location.create({
+            company: company.id,
+            title: b.otherLocation1Name,
+            type: b.type,
+            city: b.city,
+            province: b.province,
+            country: b.country
+          }, function(err, location) {
+            if (err) { return res.redirect('/dashboard'); }
+            Location.create({
+              company: company.id,
+              type: 'port',
+              city: b.nearestPortCity,
+              province: b.nearestPortProvince,
+              country: b.nearestPortCountry
+            }, function(err, location) {
+              if (err) { return res.rediret('/dashboard'); }
+              res.redirect('/dashboard');              
+            });
+          });
         });
       });
     });
