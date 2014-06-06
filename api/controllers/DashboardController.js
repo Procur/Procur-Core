@@ -18,7 +18,7 @@
 module.exports = {
 
   index: function(req, res){
-    var user = req.session.passport.user;
+    /*var user = req.session.passport.user;
     var payload = [];
     User.findOne({ id: user }, function(err, user){
       if(err) { return res.redirect('/dashboard'); }
@@ -31,6 +31,9 @@ module.exports = {
         });
       }
     });
+  }*/
+
+    res.redirect('http://localhost:1338');
   }
 
 };
