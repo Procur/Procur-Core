@@ -42,13 +42,19 @@ module.exports = {
           company: company.id,
           dbaName: b.dbaName,
           companyLogo: b.companyLogo,
-          language: b.language,
-          salesValue: b.salesValue,
-          productSpeciality: b.productSpeciality,
+          language: [b.language1, b.language2],
+          annualProductionVolume: b.annualProductionVolume,
+          primaryProductSpeciality: [b.primaryProductSpeciality1, b.primaryProductSpeciality2],
           preferredBuyerType: b.preferredBuyerType,
-          preferredBuyerLanguage: b.preferredBuyerLanguage,
-          preferredBuyerCountry: b.preferredBuyerCountry,
+          preferredBuyerLanguage: [b.preferredBuyerLanguage1,
+                                   b.preferredBuyerLanguage2,
+                                   b.preferredBuyerLanguage3],
+          preferredBuyerCountry: [b.preferredBuyerLocation1Country,
+                                  b.preferredBuyerLocation2Country,
+                                  b.preferredBuyerLocation3Country],
           acceptedDeliveryTerms: b.acceptedDeliveryTerms,
+          acceptedCurrencies: b.acceptedCurrencies,
+          acceptedPaymentTerms: b.acceptedPaymentTerms,
           typeOfCompany: b.typeOfCompany,
           privateLabeler: b.privateLabeler,
           active: true
@@ -61,6 +67,7 @@ module.exports = {
           console.log('Supplier created: ' + supplier.company);
           Location.create({
             company: company.id,
+            title: b.otherLocation1Name,
             type: b.type,
             city: b.city,
             province: b.province,
@@ -74,7 +81,8 @@ module.exports = {
             }
             Location.create({
               company: company.id,
-              type: b.type,
+              title: b.otherLocation1Name,
+              type: 'port',
               city: b.portCity,
               province: b.portProvince,
               country: b.portCountry,

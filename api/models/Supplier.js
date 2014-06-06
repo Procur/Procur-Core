@@ -16,59 +16,59 @@
 
  module.exports = {
 
-   attributes: {
+  attributes: {
 
-     company: {
-       type: 'string',
-       required: 'true',
-       unique: true
-     },
-     dbaName: {
-       type: 'string'
-     },
-     companyLogo: {
-       type: 'string'
-     },
-     language: {
-       type: 'string'
-     },
-     salesValue: {
-       type: 'string'
-     },
-     productSpeciality: {
-       type: 'string'
-     },
-     preferredBuyerType: {
-       type: 'string'
-     },
-     preferredBuyerLanguage: {
-       type: 'string'
-     },
-     preferredBuyerCountry: {
-       type: 'string'
-     },
-     acceptedDeliveryTerms: {
-       type: 'string'
-     },
-     acceptedCurrency: {
-       type: 'string'
-     },
-     acceptedPaymentTerms: {
-       type: 'string'
-     },
-     typeOfCompany: {
-       type: 'string'
-     },
-     privateLabeler: {
-       type: 'boolean'
-     },
+    company: {
+      type: 'string',
+      required: 'true',
+      unique: true
+    },
+    dbaName: {
+      type: 'string'
+    },
+    companyLogo: {
+      type: 'string'
+    },
+    language: {
+      type: 'array'
+    },
+    annualProductionVolume: {
+      type: 'string'
+    },
+    primaryProductSpeciality: {
+      type: 'array'
+    },
+    preferredBuyerType: {
+      type: 'string'
+    },
+    preferredBuyerLanguage: {
+      type: 'array'
+    },
+    preferredBuyerCountry: {
+      type: 'array'
+    },
+    acceptedDeliveryTerms: {
+      type: 'string'
+    },
+    acceptedCurrency: {
+      type: 'string'
+    },
+    acceptedPaymentTerms: {
+      type: 'string'
+    },
+    typeOfCompany: {
+      type: 'string'
+    },
+    privateLabeler: {
+      type: 'boolean'
+    },
 
-     //UTILITY
+    //UTILITY
 
-     active: {
-       type:'boolean',
-       required: 'true'
-     }
-   }
+    active: {
+      type:'boolean',
+      required: 'true'
+    }
+  }
 
  };
