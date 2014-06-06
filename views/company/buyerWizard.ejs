@@ -8,7 +8,11 @@
     <div><input type="file" name="logo"></div>
     <h4>Languages</h4>
     <div>
-      <select>
+      <select name="language1">
+        <option value="arabic">Arabic</option>
+        <option value="bengali">Bengali</option>
+      </select>
+      <select name="language2">
         <option value="arabic">Arabic</option>
         <option value="bengali">Bengali</option>
       </select>
@@ -38,7 +42,7 @@
       </div>
     </section>
 
-    <section id="otherLocation2">
+    <!--<section id="otherLocation2">
       <div><input type="text" name="otherLocation2Name" placeholder="Name"></div>
       <div><input type="text" name="otherLocation2Type" placeholder="Type"></div>
       <div><input type="text" name="otherLocation2City" placeholder="City"></div>
@@ -52,13 +56,15 @@
       <div><input type="text" name="otherLocation3City" placeholder="City"></div>
       <div><input type="text" name="otherLocation3Province" placeholder="State / Province"></div>
       <div><input type="text" name="otherLocation3Country" placeholder="Country"></div>
-    </section>
+    </section>-->
 
+    <h4>Port location</h4>
     <section id="nearestPort">
       <div><input type="text" name="nearestPortCity" placeholder="City"></div>
       <div><input type="text" name="nearestPortProvince" placeholder="State / Province"></div>
       <div><input type="text" name="nearestPortCountry" placeholder="Country"></div>
     </section>
+    
     <h4>Preferred Supplier Type</h4>
     <section id="preferredSupplierType">
       <select name="preferredSupplierType">
@@ -104,6 +110,13 @@
       <select name="preferredSupplierLocation3Country">
         <option value="1">1</option>
         <option value="2">2</option>
+      </select>
+    </section>
+
+    <h4>Type of Company</h4>
+    <section id="typeOfCompany">
+      <select name="typeOfCompany">
+        <option value="">Select a type</option>
       </select>
     </section>
 
