@@ -66,7 +66,6 @@ module.exports = {
           active: true
         }, function(err, buyer) {
           if (err) { return res.redirect('/dashboard'); }
-          console.log("AM - Buyer created " + buyer.dbaName);
           Location.create({
             company: company.id,
             title: b.otherLocation1Name,
@@ -76,7 +75,6 @@ module.exports = {
             country: b.country
           }, function(err, location) {
             if (err) { return res.redirect('/dashboard'); }
-            console.log("AM - Location created " + location.title);
             Location.create({
               company: company.id,
               type: 'port',
@@ -85,7 +83,6 @@ module.exports = {
               country: b.nearestPortCountry
             }, function(err, location) {
               if (err) { return res.rediret('/dashboard'); }
-              console.log("AM - Port location created " + location.city);
               res.redirect('/dashboard');              
             });
           });
