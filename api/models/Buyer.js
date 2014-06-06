@@ -30,6 +30,9 @@ module.exports = {
     preferredSupplierLanguage: {
       type: 'array'
     },
+    preferredSupplierLocation: {
+      type: 'array'
+    },
     typeOfCompany: {
       type: 'string'
     },
