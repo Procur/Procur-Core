@@ -15,6 +15,45 @@ module.exports = {
       required: 'true',
       unique: true
     },
+    dbaName: {
+      type: 'string'
+    },
+    logoUrl: {
+      type: 'string'
+    },
+    language: {
+      type: 'array'
+    },
+    preferredSupplierType: {
+      type: 'string'
+    },
+    preferredSupplierLanguage: {
+      type: 'array'
+    },
+    typeOfCompany: {
+      type: 'string'
+    },
+    acceptedDeliveryTerms: {
+      type: 'string'
+    },
+    acceptedCurrency: {
+      type: 'string'
+    },
+    acceptedPaymentTerms: {
+      type: 'string'
+    },
+
+    //UTILITY
+
+    active: {
+      type:'boolean',
+      required: 'true'
+    }
+    
+
+
+    /* DEPRECATED */
+    /*
     preferredSupplierType: {
       type: 'string',
       required: true
@@ -86,13 +125,7 @@ module.exports = {
     certifications: {
       type: 'string'
     },
-
-    //UTILITY
-
-    active: {
-      type:'boolean',
-      required: 'true'
-    }
+    */
   }
 
 };
