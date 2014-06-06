@@ -273,7 +273,6 @@ module.exports = {
       if(err) { return res.redirect('/dashboard'); }
       console.log(error++); //DEBUG THING
       console.log(user);
-      //console.log("is this working");
       Company.findOne({ user: user.id }, function(err, company){
         if(err) { return res.redirect('/dashboard'); }
         console.log(error++); //DEBUG THING
@@ -281,7 +280,6 @@ module.exports = {
         companyId = company.id;
         payload.push(company);
         if((company.buyer == true) && (company.supplier == null)){
-          console.log("is this working");
           Buyer.findOne({ company: companyId }, function(err, buyer){
             if(err) { return res.redirect('/dashboard'); }
             console.log(buyer);
@@ -316,7 +314,6 @@ module.exports = {
                 console.log(error++); //DEBUG THING
                 locationsPayload.push(locations);
                 console.log(payload);
-                console.log("supplier json " + JSON.stringify(payload[1]));
                 res.view({ company: payload[0], supplier: payload[1], locations: locationsPayload });
               });
             });
