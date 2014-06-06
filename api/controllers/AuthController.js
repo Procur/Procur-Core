@@ -53,7 +53,7 @@ module.exports = {
           password: b.password,
           emailVerified: false,
           profileComplete: false,
-          active: true
+          active: true,
         }, function(err, user){
           if(err){ return res.redirect('/dashboard'); }
           else{

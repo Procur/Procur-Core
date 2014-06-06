@@ -41,4 +41,22 @@ module.exports = {
 
   },
 
+  toggleMode: function(req, res){
+    var b = req.body;
+    console.log(b);
+    User.findOne({ id: req.session.passport.user }, function(err, user){
+      if(err){ return res.redirect('/dashboard'); }
+      if(user){
+        User.update(user, { activeMode: b.mode }, function(err, user){
+          if(err){ return res.redirect('/dashboard'); }
+          req.flash('Switched to ' + user.activeMode + ' mode.');
+          res.redirect('/dashboard');
+        });
+      }
+      else {
+        return res.redirect('/dashboard');
+      }
+    });
+  }
+
 };

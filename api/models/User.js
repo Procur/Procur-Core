@@ -37,6 +37,10 @@ module.exports = {
       required: true
     },
 
+    activeMode: {
+      type: 'string'
+    },
+
     //UTILITY
 
     active: {

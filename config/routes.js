@@ -178,6 +178,11 @@ module.exports.routes = {
     action: 'processUpdateAccount'
   },
 
+  'post /togglemode': {
+    controller: 'UserController',
+    action: 'toggleMode'
+  },
+
   //WELCOME ROUTES
   'get /welcome': {
     controller: 'UserController',
