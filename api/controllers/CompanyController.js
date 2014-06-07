@@ -170,7 +170,7 @@ module.exports = {
 
     Company.findOne({ user: user }, function(err, company){
       if(err){ return res.redirect('/dashboard') };
-      Company.update(company, { buyer: true }, function(err, company){
+      Company.update(company, { buyer: true, supplier: false }, function(err, company){
         if(err){ return res.redirect('/dashboard') };
         if(company){
           res.view();
@@ -184,7 +184,7 @@ module.exports = {
 
     Company.findOne({ user: user }, function(err, company){
       if(err){ return res.redirect('/dashboard') };
-      Company.update(company, { supplier: true }, function(err, company){
+      Company.update(company, { supplier: true, buyer: false }, function(err, company){
         if(err){ return res.redirect('/dashboard') };
         if(company){
           res.view();
@@ -266,8 +266,14 @@ module.exports = {
         locationsPayload = [],
         companyId,
         buyerId,
-        supplierId;
+        supplierId,
+        isBuyer,
+        isSupplier;
     var error = 0;
+    var setBuyerSupplierStatus = function(company) {
+      company["buyer"] === true ? isBuyer = true : isBuyer = false;
+      company["supplier"] === true ? isSupplier = true : isSupplier = false;
+    };
 
     User.findOne({ id: req.session.passport.user }, function(err, user){
       if(err) { return res.redirect('/dashboard'); }
@@ -277,9 +283,10 @@ module.exports = {
         if(err) { return res.redirect('/dashboard'); }
         console.log(error++); //DEBUG THING
         console.log(company);
+        setBuyerSupplierStatus(company);
         companyId = company.id;
         payload.push(company);
-        if((company.buyer == true) && (company.supplier == null)){
+        if ((isBuyer) && (!isSupplier)) {
           Buyer.findOne({ company: companyId }, function(err, buyer){
             if(err) { return res.redirect('/dashboard'); }
             console.log(buyer);
@@ -299,7 +306,9 @@ module.exports = {
             });
           });
         }
-        else if((company.supplier == true) && (company.buyer == null)){
+        else if ((isSupplier) && (!isBuyer)) {
+          console.log("isSupplier is " + isSupplier);
+          console.log("isBuyer is " + isBuyer);
           Supplier.findOne({ company: company.id }, function(err, supplier){
             if(err) { return res.redirect('/dashboard'); }
             console.log(error++); //DEBUG THING
@@ -319,7 +328,7 @@ module.exports = {
             });
           });
         }
-        else if((company.buyer == true) && (company.supplier == true)){
+        else if ((isBuyer) && (isSupplier)) {
           console.log('both');
           Buyer.findOne({ company: company.id }, function(err, buyer){
             if(err) { return res.redirect('/dashboard'); }
