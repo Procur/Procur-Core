@@ -50,36 +50,10 @@
                             <h4>Company Email Address*</h4>
                             <div class="breakForm"><input type="text" name="companyEmail" placeholder="info@mycompany.com"></div>
                             <h4>Official Company Website</h4>
-                            <div><input type="text" name="companyWebsite" placeholder="www.mycompany.com"></div>
-                        </div>
+                            <div class="breakForm"><input type="text" name="companyWebsite" placeholder="www.mycompany.com"></div>
 
-
-                        <div class="col-sm-6">
-                            <h4>Official Business Address*</h4>
-                            <div><input type="text" name="companyAddress1" placeholder="Address Line #1"></div>
-                            <div><input type="text" name="companyAddress2" placeholder="Address Line #2"></div>
-                            <div class="styledSelect"><select name="companyCountry">
-                                    <option value="">Select Country</option>
-                                </select>
-                            </div>
-                            <div class="styledSelect"><select name="companyProvince">
-                                    <option value="">Select Province/State</option>
-                                </select>
-                            </div>
-                            <div class="breakForm"><input type="text" name="companyPostalCode" placeholder="Postal Code"></div>
-
-
-                            <h4>Is the above address the headquarters?</h4>
-                            <div><input class="checkbox" type="checkbox" name="companyIsHq"><div class="checkboxtext breakForm">Yes; please copy my details below.</div></div>
-
-
-                            <h4>Company Headquarters Address*</h4>
-                            <div><input type="text" name="hqAddress1" placeholder="Address Line 1"></div>
-                            <div><input type="text" name="hqAddress2" placeholder="Address Line 2"></div>
-                            <div class="styledSelect"><select name="hqCountry"><option value="">Select Country</option></select></div>
-                            <div class="styledSelect"><select name="hqProvince"><option value="">Select Province/State</option></select></div>
-                            <div><input type="text" name="hqPostalCode" placeholder="Postal Code"></div>
-                            <div class="styledSelect"><select name="companyIndustry">
+                            <h4>Industry*</h4>
+                            <div class="styledSelect breakForm"><select name="companyIndustry">
                                 <!-- Partial these? -->
                                 <option value="">Select Industry</option>
                                 <option value="">Accounting</option>
@@ -138,6 +112,58 @@
                                 <option value="">501 - 1000</option>
                                 <option value="">1000+</option>
                             </select></div>
+
+                        </div>
+
+
+                        <div class="col-sm-6">
+                            <h4>Official Business Address*</h4>
+                            <div><input type="text" name="companyAddress1" placeholder="Address Line #1"></div>
+                            <div><input type="text" name="companyAddress2" placeholder="Address Line #2"></div>
+                            <div class="styledSelect"><select name="companyCountry">
+                                    <option value="">Select Country</option>
+                                </select>
+                            </div>
+
+
+                            <div class="row insideForm">
+                                <div class="col-sm-7">
+                                    <div class="styledSelect inputColumnL"><select name="companyProvince"><option value="">Select Province/State</option></select></div>
+                                </div>
+                                <div class="col-sm-5 inputColumnR">
+                                    <div><input type="text" name="companyPostalCode" placeholder="Postal Code"></div>
+                                </div>
+                            </div>
+
+
+
+                            <div class="styledSelect"><select name="companyProvince">
+                                    <option value="">Select Province/State</option>
+                                </select>
+                            </div>
+                            <div class="breakForm"><input type="text" name="companyPostalCode" placeholder="Postal Code"></div>
+
+
+                            <h4>Is the above address the headquarters?</h4>
+                            <div><input class="checkbox" type="checkbox" name="companyIsHq"><div class="checkboxtext breakForm">Yes; please copy my details below.</div></div>
+
+
+                            <h4>Company Headquarters Address*</h4>
+                            <div><input type="text" name="hqAddress1" placeholder="Address Line 1"></div>
+                            <div><input type="text" name="hqAddress2" placeholder="Address Line 2"></div>
+
+                            <div class="styledSelect"><select name="hqCountry"><option value="">Select Country</option></select></div>
+
+                            <div class="row insideForm">
+                                <div class="col-sm-7">
+                                    <div class="styledSelect inputColumnL"><select name="hqProvince"><option value="">Select Province/State</option></select></div>
+                                </div>
+                                <div class="col-sm-5 inputColumnR">
+                                    <div><input type="text" name="hqPostalCode" placeholder="Postal Code"></div>
+                                </div>
+                            </div>
+                            
+                            
                             <div><input type="submit"></div>
                           </form>
                         </section>
