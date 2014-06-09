@@ -70,9 +70,10 @@ module.exports = {
             company: company.id,
             title: b.otherLocation1Name,
             type: b.type,
-            city: b.city,
+            city: b.otherLocation1City,
             province: b.province,
-            country: b.country
+            country: b.country,
+            isHq: false
           }, function(err, location) {
             if (err) { return res.redirect('/dashboard'); }
             Location.create({
@@ -80,7 +81,8 @@ module.exports = {
               type: 'port',
               city: b.nearestPortCity,
               province: b.nearestPortProvince,
-              country: b.nearestPortCountry
+              country: b.nearestPortCountry,
+              isHq: false
             }, function(err, location) {
               if (err) { return res.rediret('/dashboard'); }
               res.redirect('/dashboard');              
