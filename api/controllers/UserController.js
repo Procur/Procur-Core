@@ -47,10 +47,14 @@ module.exports = {
     User.findOne({ id: req.session.passport.user }, function(err, user){
       if(err){ return res.redirect('/dashboard'); }
       if(user){
-        User.update(user, { activeMode: b.mode }, function(err, user){
-          if(err){ return res.redirect('/dashboard'); }
-          req.flash('Switched to ' + user.activeMode + ' mode.');
-          res.redirect('/dashboard');
+        Company.findOne({ user: user.id }, function(err, company){
+          if((company.buyer == true) && (company.supplier == true)){
+            User.update(user, { activeMode: b.mode }, function(err, user){
+              if(err){ return res.redirect('/dashboard'); }
+              req.flash('Switched to ' + user.activeMode + ' mode.');
+              res.redirect('/dashboard');
+            });
+          }
         });
       }
       else {
