@@ -1,7 +1,9 @@
-/* Import CSS Partials Here */
+/* Variables Live Here */
 
-	/* Registration Wizard */
-	@import 'regWizard';
+$beige: #ECEBE6;
+
+
+/* General Styles */
 
 h1, h2, h3, h4, {
 	font-family: 'Montserrat', sans-serif;
@@ -11,3 +13,11 @@ h1, h2, h3, h4, {
 input {
 	font-family: 'Roboto', sans-serif;
 }
+
+
+
+/* Import CSS Partials Here */
+
+
+	/* Registration Wizard */
+	@import 'regWizard';

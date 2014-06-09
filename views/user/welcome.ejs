@@ -58,13 +58,19 @@
                             <h4>Official Business Address*</h4>
                             <div><input type="text" name="companyAddress1" placeholder="Address Line #1"></div>
                             <div><input type="text" name="companyAddress2" placeholder="Address Line #2"></div>
-                            <div><select name="companyCountry"><option value="">Select Country</option></select></div>
-                            <div><select name="companyProvince"><option value="">Select Province/State</option></select></div>
-                            <div><input type="text" name="companyPostalCode" placeholder="Postal Code"></div>
+                            <div class="styledSelect"><select name="companyCountry">
+                                    <option value="">Select Country</option>
+                                </select>
+                            </div>
+                            <div class="styledSelect"><select name="companyProvince">
+                                    <option value="">Select Province/State</option>
+                                </select>
+                            </div>
+                            <div class="breakForm"><input type="text" name="companyPostalCode" placeholder="Postal Code"></div>
 
 
                             <h4>Is the above address the headquarters?</h4>
-                            <div><input type="checkbox" name="companyIsHq">Yesl please copy my details below.</div>
+                            <div class="checkboxtext"><input class="checkbox breakForm" type="checkbox" name="companyIsHq">Yes; please copy my details below.</div>
 
 
                             <h4>Company Headquarters Address*</h4>
@@ -73,7 +79,7 @@
                             <div><select name="hqCountry"><option value="">Select Country</option></select></div>
                             <div><select name="hqProvince"><option value="">Select Province/State</option></select></div>
                             <div><input type="text" name="hqPostalCode" placeholder="Postal Code"></div>
-                            <div><select name="companyIndustry">
+                            <div class="styledSelect"><select name="companyIndustry">
                                 <!-- Partial these? -->
                                 <option value="">Select Industry</option>
                                 <option value="">Accounting</option>

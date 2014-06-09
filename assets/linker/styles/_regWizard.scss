@@ -1,6 +1,3 @@
-/* Variables Live Here */
-
-$beige: #ECEBE6;
 
 
 /* Registration Wizard Fields */
@@ -10,6 +7,9 @@ $beige: #ECEBE6;
 
 	h1 {
 	text-align: center;
+	font-family: 'Open Sans', sans-serif; 
+	font-size: 18px;
+	font-weight: 300;
 	}
 
 	h4 {
@@ -31,6 +31,44 @@ $beige: #ECEBE6;
 		font-size: 11px;
 		padding: 0px 7px;
 		font-weight: 100;
+
+		
+	}
+
+	.checkbox {
+			height: auto;
+			margin: 0px;
+			width: auto;
+			display: inline-block;
+			margin-right: 8px;
+	}
+
+	.checkboxtext {
+			font-family: 'Open Sans', sans-serif;
+			font-size: 11px;
+
+	}
+
+	.styledSelect select {
+		width: 110%;
+		background: transparent;
+		border: none 0px;
+		margin: 1px 3px 7px;
+		height: 18px;
+		line-height: 25px;
+		font-family: 'Roboto', sans-serif;
+		font-weight: 100;
+		font-size: 11px;
+		padding: 0px 4px;
+		-webkit-appearance: none;
+	}
+
+	.styledSelect {
+		margin-top: 5px;
+		margin-bottom: 5px;
+		width: 100%;
+		overflow: hidden;
+		background: url(http://cdn.bavotasan.com/wp-content/uploads/2011/05/down_arrow_select.jpg) no-repeat right white;
 	}
 
 	.insideForm {
