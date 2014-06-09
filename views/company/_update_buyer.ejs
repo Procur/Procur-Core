@@ -3,27 +3,180 @@
 
   <h2>Buyer Info</h2>
   <section id="updateBuyerForm">
-    <div><input type="text" name="preferredSupplierType" value=<%= buyer.preferredSupplierType %>></div>
-    <div><input type="text" name="productCategories" value=<%= buyer.productCategories %>></div>
-    <div><input type="text" name="productsOfInterest" value=<%= buyer.productsOfInterest %>></div>
-    <div><input type="text" name="facebookUsername" value=<%= buyer.facebookUsername %>></div>
-    <div><input type="text" name="twitterUsername" value=<%= buyer.twitterUsername %>></div>
-    <div><input type="text" name="pintrestUsername" value=<%= buyer.pintrestUsername %>></div>
-    <div><input type="text" name="tumblrUsername" value=<%= buyer.tumblrUsername %>></div>
-    <div><input type="text" name="linkedinUsername" value=<%= buyer.linkedinUsername %>></div>
-    <div><input type="text" name="instagramUsername" value=<%= buyer.instagramUsername %>></div>
-    <div><input type="text" name="googleUsername" value=<%= buyer.googleUsername %>></div>
-    <div><input type="text" name="relevantLinksTitle" value=<%= buyer.relevantLinksTitle %>></div>
-    <div><input type="text" name="languages" value=<%= buyer.languages %>></div>
+    <div><input type="text" name="dbaName" value=<%= buyer.dbaName %>></div>
+    <h4>Logo</h4><div><input type="file" name="logo"></div>
+    <div>
+      <select name="language1">
+        <option value="arabic">Arabic</option>
+        <option value="bengali">Bengali</option>
+      </select>
+      <select name="language2">
+        <option value="arabic">Arabic</option>
+        <option value="bengali">Bengali</option>
+      </select>
+    </div>
+
+    <h4>Other Locations</h4>
+    <section id="otherLocation1">
+      <div><input type="text" name="otherLocation1Name" placeholder="Name"></div>
+      <div>
+        <select name="type">
+          <option value="1">1</option>
+          <option value="2">2</option>
+        </select>
+      </div>
+      <div><input type="text" name="otherLocation1City" placeholder="City"></div>
+      <div>
+        <select name="province">
+          <option value="1">1</option>
+          <option value="2">2</option>
+        </select>
+      </div>
+      <div>
+        <select name="country">
+          <option value="1">1</option>
+          <option value="2">2</option>
+        </select>
+      </div>
+    </section>
+
+    <h4>Port location</h4>
+    <section id="nearestPort">
+      <div><input type="text" name="nearestPortCity" placeholder="City"></div>
+      <div><input type="text" name="nearestPortProvince" placeholder="State / Province"></div>
+      <div><input type="text" name="nearestPortCountry" placeholder="Country"></div>
+    </section>
+
+    <h4>Preferred Supplier Type</h4>
+    <section id="preferredSupplierType">
+      <select name="preferredSupplierType">
+        <option value="1">1</option>
+        <option value="2">2</option>
+      </select>
+    </section>
+
+    <h4>Preferred Suppplier Languages</h4>
+    <section id="preferredSupplierLanguage1">
+      <select name="preferredSupplierLanguage1">
+        <option value="1">1</option>
+        <option value="2">2</option>
+      </select>
+    </section>
+
+    <section id="preferredSupplierLanguage2">
+      <select name="preferredSupplierLanguage2">
+        <option value="1">1</option>
+        <option value="2">2</option>
+      </select>
+    </section>
+
+    <section id="preferredSupplierLanguage3">
+      <select name="preferredSupplierLanguage3">
+        <option value="1">1</option>
+        <option value="2">2</option>
+      </select>
+    </section>
+
+    <h4>Preferred Supplier Locations</h4>
+    <section id="preferredSupplierLocation1">
+      <select name="preferredSupplierLocation1Country">
+        <option value="1">1</option>
+        <option value="2">2</option>
+      </select>
+    </section>
+    <section id="preferredSupplierLocation2">
+      <select name="preferredSupplierLocation2Country">
+        <option value="1">1</option>
+        <option value="2">2</option>
+      </select>
+    </section>
+    <section id="preferredSupplierLocation3">
+      <select name="preferredSupplierLocation3Country">
+        <option value="1">1</option>
+        <option value="2">2</option>
+      </select>
+    </section>
+
+    <h4>Type of Company</h4>
+    <section id="typeOfCompany">
+      <select name="typeOfCompany">
+        <option value="">Select a type</option>
+      </select>
+    </section>
+
+    <h4>Accepted Delivery Terms</h4>
+    <section id="acceptedDeliveryTerms">
+      <input type="checkbox" name="" value="1">1<br>
+      <input type="checkbox" name="" value="2">2<br>
+      <input type="checkbox" name="" value="3">3<br>
+      <input type="checkbox" name="" value="4">4<br>
+    </section>
+
+    <h4>Accepted Currencies</h4>
+    <section id="acceptedCurrencies">
+      <input type="checkbox" name="" value="1">1<br>
+      <input type="checkbox" name="" value="2">2<br>
+      <input type="checkbox" name="" value="3">3<br>
+      <input type="checkbox" name="" value="4">4<br>
+    </section>
+
+    <h4>Accepted Payment Terms</h4>
+    <section id="acceptedPaymentTerms">
+      <input type="checkbox" name="" value="1">1<br>
+      <input type="checkbox" name="" value="2">2<br>
+      <input type="checkbox" name="" value="3">3<br>
+      <input type="checkbox" name="" value="4">4<br>
+    </section>
+
+    <div><input type="text" name="facebook" value=<%= buyer.facebook %>></div>
+    <div><input type="text" name="twitter" value=<%= buyer.twitter %>></div>
+    <div><input type="text" name="pinterest" value=<%= buyer.pinterest %>></div>
+    <div><input type="text" name="tumblr" value=<%= buyer.tumblr %>></div>
+    <div><input type="text" name="linkedin" value=<%= buyer.linkedin %>></div>
+    <div><input type="text" name="instagram" value=<%= buyer.instagram %>></div>
+    <div><input type="text" name="google" value=<%= buyer.google %>></div>
+
     <div><input type="text" name="dunsNumber" value=<%= buyer.dunsNumber %>></div>
     <div><input type="text" name="contactName" value=<%= buyer.contactName %>></div>
     <div><input type="text" name="contactPosition" value=<%= buyer.contactPosition %>></div>
-    <div><textarea form="buyerWizard" name="responsibilityStatement" value=<%= buyer.responsibilityStatement %>></textarea></div>
-    <div><textarea form="buyerWizard" name="aboutCompany" value=<%= buyer.aboutCompany %>></textarea></div>
-    <div><input type="file" name="datafile" size="40">Downloads</div>
-    <div><input type="file" name="companyLogo" size="40">Company Logo</div>
-    <div><input type="file" name="featuredPhotos" size="40">Featured Photos</div>
-    <div><input type="file" name="certifications" size="40">Certifications</div>
+    <div><input type="text" name="contactEmail" value=<%= buyer.contactEmail %>></div>
+
+    <h4>Company Description</h4>
+    <textarea name="companyDescription" placeholder="Tell us about your business..."
+              rows="4" cols="50" value=<%= buyer.companyDescription %>>
+    </textarea>
+
+    <h4>Environmental Sustainability</h4>
+    <textarea name="environmentalSustainability" placeholder=""
+              rows="4" cols="50" value=<%= buyer.environmentalSustainability %>>
+    </textarea>
+
+    <h4>Quality Sourcing</h4>
+    <textarea name="qualitySourcing" placeholder=""
+              rows="4" cols="50" value=<%= buyer.qualitySourcing %>>
+    </textarea>
+
+    <h4>Workplace Safety</h4>
+    <textarea name="workplaceSafety" placeholder=""
+              rows="4" cols="50" value=<%= buyer.workplaceSafety %>>
+    </textarea>
+
+    <h4>Labor, Education, and Training</h4>
+    <textarea name="laborEducationTraining" placeholder=""
+              rows="4" cols="50" value=<%= buyer.laborEducationTraining %>>
+    </textarea>
+
+    <h4>Reinvestment</h4>
+    <textarea name="reinvestment" placeholder=""
+              rows="4" cols="50" value=<%= buyer.reinvestment %>>
+    </textarea>
+
+    <h4>Your Products of Interest</h4>
+    <textarea name="productsOfInterest" placeholder=""
+              rows="4" cols="50" value=<%= buyer.productsOfInterest %>>
+    </textarea>    
+
+    
     <div><input type="submit"></div>
   </section>
 </form>
