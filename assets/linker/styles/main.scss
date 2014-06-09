@@ -1,23 +1,5 @@
-@import 'test';
+/* Import CSS Partials Here */
 
-$pink: #f398f9;
+	/* Registration Wizard */
+	@import 'regWizard';
 
-footer {
-	position: fixed;
-	bottom: 0px;
-}
-
-header {
-	text-align: center;
-}
-
-
-* {
-	h1 {
-	color: $pink;
-	}
-
-	h2 {
-		color: blue;
-	}
-}

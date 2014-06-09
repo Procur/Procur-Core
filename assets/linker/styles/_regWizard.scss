@@ -1,0 +1,26 @@
+/* Variables Live Here */
+
+$beige: #ECEBE6;
+
+
+/* Registration Wizard Fields */
+
+
+#regWizard {
+
+	h1 {
+	text-align: center;
+	}
+	
+	.fieldBox {
+		background: $beige;
+		padding: 25px 30px;
+	}
+
+	input {
+		border: 0px none;
+		margin: 5px 0px;
+		width: 100%;
+	}
+
+}

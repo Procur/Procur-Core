@@ -1,28 +1,93 @@
-<h1>Enter info</h1>
+<div id="regWizard">    
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <h1>Complete Your Registration</h1>
+            </div>
+            <div class="col-sm-6 col-sm-offset-3 fieldBox">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <section class="companyForm">
+                          <form action="/company/create" method="post">
+                            <div><input type="text" name="companyName" placeholder="Your company Name"></div>
+                            <div><input type="text" name="companyPhone" placeholder="Company Phone"></div>
+                            <div><input type="text" name="companyPhoneExt" placeholder="Extension"></div>
+                            <div><input type="text" name="companyFaxCountryCode" placeholder="Fax Country Code"></div>
+                            <div><input type="text" name="companyFax" placeholder="Company Fax"></div>
+                            <div><input type="text" name="companyFaxExt" placeholder="Fax Extension"></div>
+                            <div><input type="text" name="companyEmail" placeholder="info@mycompany.com"></div>
+                            <div><input type="text" name="companyWebsite" placeholder="www.mycompany.com"></div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div><input type="text" name="companyAddress1" placeholder="Address Line #1"></div>
+                            <div><input type="text" name="companyAddress2" placeholder="Address Line #2"></div>
+                            <div><select name="companyCountry"><option value="">Select Country</option></select></div>
+                            <div><select name="companyProvince"><option value="">Select Province/State</option></select></div>
+                            <div><input type="text" name="companyPostalCode" placeholder="Postal Code"></div>
+                            <div><input type="checkbox" name="companyIsHq">Location is HQ?</div>
+                            <div><input type="text" name="hqAddress1" placeholder="Address Line 1"></div>
+                            <div><input type="text" name="hqAddress2" placeholder="Address Line 2"></div>
+                            <div><select name="hqCountry"><option value="">Select Country</option></select></div>
+                            <div><select name="hqProvince"><option value="">Select Province/State</option></select></div>
+                            <div><input type="text" name="hqPostalCode" placeholder="Postal Code"></div>
+                            <div><select name="companyIndustry">
+                                <!-- Partial these? -->
+                                <option value="">Select Industry</option>
+                                <option value="">Accounting</option>
+                                <option value="">Advertising</option>
+                                <option value="">Aerospace</option>
+                                <option value="">Agriculture</option> 
+                                <option value="">Aircraft</option>
+                                <option value="">Airline</option>
+                                <option value="">Apparel &amp; Accessories</option>
+                                <option value="">Automotive</option>
+                                <option value="">Banking</option>
+                                <option value="">Biotechnology </option>
+                                <option value="">Chemical</option>
+                                <option value="">Computer</option>
+                                <option value="">Consumer Products</option>
+                                <option value="">Cosmetics</option>
+                                <option value="">Defense</option>
+                                <option value="">Department Stores</option> 
+                                <option value="">Education</option>
+                                <option value="">Electronics</option>
+                                <option value="">Energy</option>
+                                <option value="">Entertainment &amp; Leisure</option>
+                                <option value="">Financial Services </option>
+                                <option value="">Food, Beverage &amp; Tobacco</option> 
+                                <option value="">Grocery</option>
+                                <option value="">Health Care</option>
+                                <option value="">Legal </option>
+                                <option value="">Manufacturing</option>
+                                <option value="">Motion Picture &amp; Video</option> 
+                                <option value="">Music </option>
+                                <option value="">Newspaper Publishers</option>
+                                <option value="">Other</option>
+                                <option value="">Pharmaceuticals</option>
+                                <option value="">Publishing</option>
+                                <option value="">Real Estate</option>
+                                <option value="">Retail</option>
+                                <option value="">Service</option>
+                                <option value="">Soap &amp; Detergent</option>
+                                <option value="">Software</option>
+                                <option value="">Sports</option>
+                                <option value="">Technology</option>
+                                <option value="">Telecommunications</option>
+                                <option value="">Television</option>
+                                <option value="">Transportation</option>
+                                <option value="">Trucking</option>
+                                <option value="">Wholesale</option>
+                            </select>
+                            </div>
+                            <div><select name="companyEmployeeCount"><option value="">Total No. of Employees</option></select></div>
+                            <div><input type="submit"></div>
+                          </form>
+                        </section>
+                    </div>
+                </div>
 
-<section class="companyForm">
-  <form action="/company/create" method="post">
-    <div><input type="text" name="companyName" placeholder="Your company Name"></div>
-    <div><input type="text" name="companyPhone" placeholder="Company Phone"></div>
-    <div><input type="text" name="companyPhoneExt" placeholder="Extension"></div>
-    <div><input type="text" name="companyFaxCountryCode" placeholder="Fax Country Code"></div>
-    <div><input type="text" name="companyFax" placeholder="Company Fax"></div>
-    <div><input type="text" name="companyFaxExt" placeholder="Fax Extension"></div>
-    <div><input type="text" name="companyEmail" placeholder="info@mycompany.com"></div>
-    <div><input type="text" name="companyWebsite" placeholder="www.mycompany.com"></div>
-    <div><input type="text" name="companyAddress1" placeholder="Address Line #1"></div>
-    <div><input type="text" name="companyAddress2" placeholder="Address Line #2"></div>
-    <div><select name="companyCountry"><option value="">Select Country</option></select></div>
-    <div><select name="companyProvince"><option value="">Select Province/State</option></select></div>
-    <div><input type="text" name="companyPostalCode" placeholder="Postal Code"></div>
-    <div><input type="checkbox" name="companyIsHq">Location is HQ?</div>
-    <div><input type="text" name="hqAddress1" placeholder="Address Line 1"></div>
-    <div><input type="text" name="hqAddress2" placeholder="Address Line 2"></div>
-    <div><select name="hqCountry"><option value="">Select Country</option></select></div>
-    <div><select name="hqProvince"><option value="">Select Province/State</option></select></div>
-    <div><input type="text" name="hqPostalCode" placeholder="Postal Code"></div>
-    <div><select name="companyIndustry"><option value="">Select Industry</option></select></div>
-    <div><select name="companyEmployeeCount"><option value="">Total No. of Employees</option></select></div>
-    <div><input type="submit"></div>
-  </form>
-</section>
+            </div>
+        </div>
+    </div>
+</div>
+
