@@ -41,7 +41,7 @@ module.exports = {
         Supplier.create({
           company: company.id,
           dbaName: b.dbaName,
-          companyLogo: b.companyLogo,
+          logoUrl: b.logoUrl,
           language: [b.language1, b.language2],
           annualSalesValue: b.annualSalesValue,
           primaryProductSpeciality: [b.primaryProductSpeciality1, b.primaryProductSpeciality2],

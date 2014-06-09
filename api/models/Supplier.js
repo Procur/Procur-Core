@@ -26,7 +26,7 @@
     dbaName: {
       type: 'string'
     },
-    companyLogo: {
+    logoUrl: {
       type: 'string'
     },
     language: {
@@ -175,7 +175,7 @@
     },
     cageCode: {
       type: 'string'
-    }
+    },
 
 
 

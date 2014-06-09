@@ -42,6 +42,7 @@ module.exports = {
     Company.create({
       user: req.session.passport.user,
       name: b.companyName,
+      phoneNumberCountryCode: b.companyPhoneCountryCode,
       phoneNumber: b.companyPhone,
       phoneExtension: b.companyPhoneExt,
       faxCountryCode: b.companyFaxCountryCode,
