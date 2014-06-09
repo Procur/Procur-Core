@@ -4,11 +4,10 @@
             <div class="col-sm-12">
                 <h1>Complete Your Registration</h1>
             </div>
-            <div class="col-sm-6 col-sm-offset-3 fieldBox">
-                <div class="row">
-                    <div class="col-sm-6">
-                        <section class="companyForm">
-                          <form action="/company/create" method="post">
+            <form action="/company/create" method="post">
+                <div class="col-sm-6 col-sm-offset-3 fieldBox">
+                    <div class="row">
+                        <div class="col-sm-6">
                             <h4>Company Name*</h4>
                             <div class="breakForm"><input type="text" name="companyName" placeholder="Your Company Name"></div>
 
@@ -23,7 +22,6 @@
                                 </div>
                             </div>
                             <div class="row insideForm">
-                                
                                 <div class="col-sm-7 col-sm-offset-5 inputColumnR">
                                     <div class="breakForm"><input type="text" name="companyPhoneExt" placeholder="Extension"></div>
                                 </div>
@@ -51,6 +49,7 @@
                             <div class="breakForm"><input type="text" name="companyEmail" placeholder="info@mycompany.com"></div>
                             <h4>Official Company Website</h4>
                             <div class="breakForm"><input type="text" name="companyWebsite" placeholder="www.mycompany.com"></div>
+
 
                             <h4>Industry*</h4>
                             <div class="styledSelect breakForm"><select name="companyIndustry">
@@ -103,17 +102,10 @@
                             </select>
                             </div>
 
-                            <h4>Total Number of Employees*</h4>
-                            <div class="styledSelect"><select name="companyEmployeeCount">
-                                <option value="">Less than 10</option>
-                                <option value="">11 - 50</option>
-                                <option value="">51 - 100</option>
-                                <option value="">101 - 500</option>
-                                <option value="">501 - 1000</option>
-                                <option value="">1000+</option>
-                            </select></div>
+                            
 
                         </div>
+                        <!-- End of First Column -->
 
 
                         <div class="col-sm-6">
@@ -131,17 +123,9 @@
                                     <div class="styledSelect inputColumnL"><select name="companyProvince"><option value="">Select Province/State</option></select></div>
                                 </div>
                                 <div class="col-sm-5 inputColumnR">
-                                    <div><input type="text" name="companyPostalCode" placeholder="Postal Code"></div>
+                                    <div class="breakForm"><input type="text" name="companyPostalCode" placeholder="Postal Code"></div>
                                 </div>
                             </div>
-
-
-
-                            <div class="styledSelect"><select name="companyProvince">
-                                    <option value="">Select Province/State</option>
-                                </select>
-                            </div>
-                            <div class="breakForm"><input type="text" name="companyPostalCode" placeholder="Postal Code"></div>
 
 
                             <h4>Is the above address the headquarters?</h4>
@@ -159,18 +143,33 @@
                                     <div class="styledSelect inputColumnL"><select name="hqProvince"><option value="">Select Province/State</option></select></div>
                                 </div>
                                 <div class="col-sm-5 inputColumnR">
-                                    <div><input type="text" name="hqPostalCode" placeholder="Postal Code"></div>
+                                    <div class="breakForm"><input type="text" name="hqPostalCode" placeholder="Postal Code"></div>
                                 </div>
                             </div>
-                            
-                            
-                            <div><input type="submit"></div>
-                          </form>
-                        </section>
+                            <h4>Total Number of Employees*</h4>
+                            <div class="styledSelect"><select name="companyEmployeeCount">
+                                <option value="">Less than 10</option>
+                                <option value="">11 - 50</option>
+                                <option value="">51 - 100</option>
+                                <option value="">101 - 500</option>
+                                <option value="">501 - 1000</option>
+                                <option value="">1000+</option>
+                            </select></div>
+
+                        </div>
+
+                        
+                    <!-- End of Second Column -->
                     </div>
                 </div>
-
-            </div>
+                <div class="row">
+                    <div class="col-sm-6 col-sm-offset-3">
+                        <div><button class="continueButton" type="submit">Continue&nbsp;&nbsp; <i class="fa fa-arrow-right"></i></button></div>
+                    </div>
+                </div>
+                
+            <form action="/company/create" method="post">
+            
         </div>
     </div>
 </div>
