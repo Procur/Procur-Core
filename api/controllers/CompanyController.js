@@ -167,10 +167,19 @@ module.exports = {
   },
 
   buyerWizard: function(req, res){
+    var isSupplierAndBuyer = function (company) {
+      if (company.buyer === true && company.supplier === true) {
+        return true;
+      } else {
+        return false;
+      }
+    };
+
     var user = req.session.passport.user;
 
     Company.findOne({ user: user }, function(err, company){
       if(err){ return res.redirect('/dashboard') };
+      if (isSupplierAndBuyer) { return res.view(); }
       Company.update(company, { buyer: true, supplier: false }, function(err, company){
         if(err){ return res.redirect('/dashboard') };
         if(company){
@@ -181,10 +190,19 @@ module.exports = {
   },
 
   supplierWizard: function(req, res){
+    var isSupplierAndBuyer = function (company) {
+      if (company.buyer === true && company.supplier === true) {
+        return true;
+      } else {
+        return false;
+      }
+    };
+
     var user = req.session.passport.user;
 
     Company.findOne({ user: user }, function(err, company){
       if(err){ return res.redirect('/dashboard') };
+      if (isSupplierAndBuyer) { return res.view(); }
       Company.update(company, { supplier: true, buyer: false }, function(err, company){
         if(err){ return res.redirect('/dashboard') };
         if(company){
