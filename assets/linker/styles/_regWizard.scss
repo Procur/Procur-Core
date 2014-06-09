@@ -36,24 +36,25 @@
 	}
 
 	.checkbox {
-			height: auto;
-			margin: 0px;
-			width: auto;
-			display: inline-block;
-			margin-right: 8px;
+		height: auto;
+		width: auto;
+		display: inline-block;
+		margin-right: 8px;
 	}
 
 	.checkboxtext {
-			font-family: 'Open Sans', sans-serif;
-			font-size: 11px;
-
+		font-family: 'Open Sans', sans-serif;
+		font-size: 11px;
+		display: inline-block;
+		position: relative;
+		top: -3px;
 	}
 
 	.styledSelect select {
 		width: 110%;
 		background: transparent;
 		border: none 0px;
-		margin: 1px 3px 7px;
+		margin: 5px 0px 5px;
 		height: 18px;
 		line-height: 25px;
 		font-family: 'Roboto', sans-serif;
@@ -65,10 +66,10 @@
 
 	.styledSelect {
 		margin-top: 5px;
-		margin-bottom: 5px;
+		margin-bottom: 10px;
 		width: 100%;
 		overflow: hidden;
-		background: url(http://cdn.bavotasan.com/wp-content/uploads/2011/05/down_arrow_select.jpg) no-repeat right white;
+		background: url(/images/ddarrow.png) no-repeat right white;
 	}
 
 	.insideForm {

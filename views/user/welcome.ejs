@@ -70,14 +70,14 @@
 
 
                             <h4>Is the above address the headquarters?</h4>
-                            <div class="checkboxtext"><input class="checkbox breakForm" type="checkbox" name="companyIsHq">Yes; please copy my details below.</div>
+                            <div><input class="checkbox" type="checkbox" name="companyIsHq"><div class="checkboxtext breakForm">Yes; please copy my details below.</div></div>
 
 
                             <h4>Company Headquarters Address*</h4>
                             <div><input type="text" name="hqAddress1" placeholder="Address Line 1"></div>
                             <div><input type="text" name="hqAddress2" placeholder="Address Line 2"></div>
-                            <div><select name="hqCountry"><option value="">Select Country</option></select></div>
-                            <div><select name="hqProvince"><option value="">Select Province/State</option></select></div>
+                            <div class="styledSelect"><select name="hqCountry"><option value="">Select Country</option></select></div>
+                            <div class="styledSelect"><select name="hqProvince"><option value="">Select Province/State</option></select></div>
                             <div><input type="text" name="hqPostalCode" placeholder="Postal Code"></div>
                             <div class="styledSelect"><select name="companyIndustry">
                                 <!-- Partial these? -->
@@ -130,7 +130,14 @@
                             </div>
 
                             <h4>Total Number of Employees*</h4>
-                            <div><select name="companyEmployeeCount"><option value="">Total No. of Employees</option></select></div>
+                            <div class="styledSelect"><select name="companyEmployeeCount">
+                                <option value="">Less than 10</option>
+                                <option value="">11 - 50</option>
+                                <option value="">51 - 100</option>
+                                <option value="">101 - 500</option>
+                                <option value="">501 - 1000</option>
+                                <option value="">1000+</option>
+                            </select></div>
                             <div><input type="submit"></div>
                           </form>
                         </section>
