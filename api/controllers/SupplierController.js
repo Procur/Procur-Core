@@ -43,7 +43,7 @@ module.exports = {
           dbaName: b.dbaName,
           companyLogo: b.companyLogo,
           language: [b.language1, b.language2],
-          annualProductionVolume: b.annualProductionVolume,
+          annualSalesValue: b.annualSalesValue,
           primaryProductSpeciality: [b.primaryProductSpeciality1, b.primaryProductSpeciality2],
           preferredBuyerType: b.preferredBuyerType,
           preferredBuyerLanguage: [b.preferredBuyerLanguage1,
