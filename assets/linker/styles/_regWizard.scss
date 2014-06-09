@@ -11,6 +11,12 @@ $beige: #ECEBE6;
 	h1 {
 	text-align: center;
 	}
+
+	h4 {
+	font-size: 11px;
+	margin-bottom: 0px;
+	margin-top: 0px;
+	}
 	
 	.fieldBox {
 		background: $beige;
@@ -21,6 +27,24 @@ $beige: #ECEBE6;
 		border: 0px none;
 		margin: 5px 0px;
 		width: 100%;
+		height: 25px;
+		font-size: 11px;
+		padding: 0px 7px;
+		font-weight: 100;
+	}
+
+	.insideForm {
+		.inputColumnL {
+			padding-right: 0px;
+		}
+
+		.inputColumnR {
+			padding-left: 8px;
+		}
+	}
+
+	.breakForm {
+		margin-bottom: 20px;
 	}
 
 }
