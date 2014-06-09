@@ -170,7 +170,7 @@ module.exports = {
 
     Company.findOne({ user: user }, function(err, company){
       if(err){ return res.redirect('/dashboard') };
-      Company.update(company, { buyer: true }, function(err, company){
+      Company.update(company, { buyer: true, supplier: false }, function(err, company){
         if(err){ return res.redirect('/dashboard') };
         if(company){
           res.view();
@@ -184,7 +184,7 @@ module.exports = {
 
     Company.findOne({ user: user }, function(err, company){
       if(err){ return res.redirect('/dashboard') };
-      Company.update(company, { supplier: true }, function(err, company){
+      Company.update(company, { supplier: true, buyer: false }, function(err, company){
         if(err){ return res.redirect('/dashboard') };
         if(company){
           res.view();
@@ -266,77 +266,68 @@ module.exports = {
         locationsPayload = [],
         companyId,
         buyerId,
-        supplierId;
+        supplierId,
+        isBuyer,
+        isSupplier;
     var error = 0;
+    var setBuyerSupplierStatus = function(company) {
+      company["buyer"] === true ? isBuyer = true : isBuyer = false;
+      company["supplier"] === true ? isSupplier = true : isSupplier = false;
+    };
 
     User.findOne({ id: req.session.passport.user }, function(err, user){
       if(err) { return res.redirect('/dashboard'); }
-      console.log(error++); //DEBUG THING
-      console.log(user);
       Company.findOne({ user: user.id }, function(err, company){
         if(err) { return res.redirect('/dashboard'); }
-        console.log(error++); //DEBUG THING
-        console.log(company);
+        setBuyerSupplierStatus(company);
         companyId = company.id;
         payload.push(company);
-        if((company.buyer == true) && (company.supplier == false)){
+        if ((isBuyer) && (!isSupplier)) {
           Buyer.findOne({ company: companyId }, function(err, buyer){
             if(err) { return res.redirect('/dashboard'); }
-            console.log(buyer);
-            console.log(error++); //DEBUG THING
             payload.push(buyer);
-            Location.find().where({ buyer: buyer.id }, function(err, locations){
+            Location.find().where({ buyer: buyer.id }).exec(function(err, locations){
               if(err) { return res.redirect('/dashboard'); }
-              console.log(error++); //DEBUG THING
               locationsPayload.push(locations);
-              Location.find().where({ company: companyId }, function(err, locations){
+              Location.find().where({ company: companyId }).exec(function(err, locations){
                 if(err) { return res.redirect('/dashboard'); }
-                console.log(error++); //DEBUG THING
                 locationsPayload.push(locations);
-                console.log(payload);
                 res.view({ company: payload[0], buyer: payload[1], locations: locationsPayload });
               });
             });
           });
         }
-        else if((company.supplier == true) && (company.buyer == false)){
-          Buyer.findOne({ company: company.id }, function(err, supplier){
+        else if ((isSupplier) && (!isBuyer)) {
+          Supplier.findOne({ company: company.id }, function(err, supplier){
             if(err) { return res.redirect('/dashboard'); }
-            console.log(error++); //DEBUG THING
-            Location.find().where({ supplier: supplier.id }, function(err, locations){
+            supplierId = supplier.id;
+            payload.push(supplier);
+            Location.find().where({ supplier: supplierId }).exec(function(err, locations){
               if(err) { return res.redirect('/dashboard'); }
-              console.log(error++); //DEBUG THING
               locationsPayload.push(locations);
-              Location.find().where({ company: companyId }, function(err, locations){
+              Location.find().where({ company: companyId }).exec(function(err, locations){
                 if(err) { return res.redirect('/dashboard'); }
-                console.log(error++); //DEBUG THING
                 locationsPayload.push(locations);
-                console.log(payload);
                 res.view({ company: payload[0], supplier: payload[1], locations: locationsPayload });
               });
             });
           });
         }
-        else if((company.buyer == true) && (company.supplier == true)){
-          console.log('both');
+        else if ((isBuyer) && (isSupplier)) {
           Buyer.findOne({ company: company.id }, function(err, buyer){
             if(err) { return res.redirect('/dashboard'); }
             payload.push(buyer);
-            console.log(buyer);
             buyerId = buyer.id;
             Supplier.findOne({ company: company.id }, function(err, supplier){
               if(err) { return res.redirect('/dashboard'); }
-              console.log('supplier: ' + supplier.id);
               payload.push(supplier);
               supplierId = supplier.id;
-              Location.find().where({ supplier: supplierId }, function(err, locations){
+              Location.find().where({ supplier: supplierId }).exec(function(err, locations){
                 if(err) { return res.redirect('/dashboard'); }
                 locationsPayload.push(locations);
-                console.log(locations);
-                Location.find().where({ buyer: buyerId }, function(err, locations){
+                Location.find().where({ buyer: buyerId }).exec(function(err, locations){
                   if(err) { return res.redirect('/dashboard'); }
                   locationsPayload.push(locations);
-                  console.log(payload);
                   res.view({ company: payload[0], buyer: payload[1], supplier: payload[2], locations: locationsPayload });
                 });
               });

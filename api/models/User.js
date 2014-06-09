@@ -36,7 +36,6 @@ module.exports = {
       type: 'boolean',
       required: true
     },
-
     activeMode: {
       type: 'string'
     },
