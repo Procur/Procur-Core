@@ -92,7 +92,7 @@ module.exports = {
   },
 
   update: function(req, res){
-
+    console.log("You're in BuyerController#update");
   },
 
   destroy: function(req, res){

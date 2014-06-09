@@ -231,15 +231,27 @@ module.exports.routes = {
 
   // TODO: BUILD BOTH LOGIC ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+  //BUYER ROUTES
   'post /buyer/create': {
     controller: 'BuyerController',
     action: 'create'
   }, //Processes submission of Buyer Wizard
 
+  'post /buyer/update': {
+    controller: 'BuyerController',
+    action: 'update'
+  },
+
+  //SUPPLIER ROUTES
   'post /supplier/create': {
     controller: 'SupplierController',
     action: 'create'
   }, //Processes submission of SupplierWizard
+
+  'post /supplier/update': {
+    controller: 'SupplierController',
+    action: 'update'
+  },
 
   //DASHBOARD ROUTES
   'get /dashboard': {
@@ -278,6 +290,7 @@ module.exports.routes = {
     action: 'updateHandle'
   },
 
+  //This should get deprecated
   'get /company/update': {
     controller: 'CompanyController',
     action: 'update'

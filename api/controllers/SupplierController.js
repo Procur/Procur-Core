@@ -102,7 +102,7 @@ module.exports = {
   },
 
   update: function(req, res){
-
+    console.log("You're in SupplierController#update");
   },
 
   destroy: function(req, res){

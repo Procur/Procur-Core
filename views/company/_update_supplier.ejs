@@ -1,0 +1,29 @@
+<form action="/supplier/update" method="post">
+	<%- partial('_update_company') %>
+
+  <h2>Supplier Info</h2>
+  <section id="updateSupplierForm">
+    <div><input type="text" name="preferredBuyerType" value=<%= supplier.preferredBuyerType %>></div>
+    <div><input type="text" name="productCategories" value=<%= supplier.productCategories %>></div>
+    <div><input type="text" name="productsOfInterest" value=<%= supplier.productsOfInterest %>></div>
+    <div><input type="text" name="facebookUsername" value=<%= supplier.facebookUsername %>></div>
+    <div><input type="text" name="twitterUsername" value=<%= supplier.twitterUsername %>></div>
+    <div><input type="text" name="pintrestUsername" value=<%= supplier.pintrestUsername %>></div>
+    <div><input type="text" name="tumblrUsername" value=<%= supplier.tumblrUsername %>></div>
+    <div><input type="text" name="linkedinUsername" value=<%= supplier.linkedinUsername %>></div>
+    <div><input type="text" name="instagramUsername" value=<%= supplier.instagramUsername %>></div>
+    <div><input type="text" name="googleUsername" value=<%= supplier.googleUsername %>></div>
+    <div><input type="text" name="relevantLinksTitle" value=<%= supplier.relevantLinksTitle %>></div>
+    <div><input type="text" name="languages" value=<%= supplier.languages %>></div>
+    <div><input type="text" name="dunsNumber" value=<%= supplier.dunsNumber %>></div>
+    <div><input type="text" name="contactName" value=<%= supplier.contactName %>></div>
+    <div><input type="text" name="contactPosition" value=<%= supplier.contactPosition %>></div>
+    <div><textarea form="buyerWizard" name="responsibilityStatement" value=<%= supplier.responsibilityStatement %>></textarea></div>
+    <div><textarea form="buyerWizard" name="aboutCompany" value=<%= supplier.aboutCompany %>></textarea></div>
+    <div><input type="file" name="datafile" size="40">Downloads</div>
+    <div><input type="file" name="companyLogo" size="40">Company Logo</div>
+    <div><input type="file" name="featuredPhotos" size="40">Featured Photos</div>
+    <div><input type="file" name="certifications" size="40">Certifications</div>
+    <div><input type="submit"></div>
+  </section>
+</form>
