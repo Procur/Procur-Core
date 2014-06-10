@@ -38,14 +38,12 @@ module.exports = {
 
   processUpdateAccount: function(req, res){
     var b = req.body;
-    console.log(req.files.image.path);
 
     User.findOne({ id: req.session.passport.user }, function(err, user){
       if(err){ return res.redirect('/') };
       if(user){
         var image = req.files.image.path;
         cloudinary.uploader.upload(image, function(result){
-          console.log(result);
           User.update(user, { firstName: b.firstName, lastName: b.lastName, email: b.email, image: result.url }, function(err, user){
             if(err){ return res.redirect('/') };
             if(user){
