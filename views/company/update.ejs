@@ -1,7 +1,7 @@
-<% if (company.buyer == true) { %>
+<% if (user === 'buyer') { %>
   <%- partial('_update_buyer') %>
 <% } %>
 
-<% if (company.supplier == true) { %>
+<% if (user === 'supplier') { %>
   <%- partial('_update_supplier') %>
 <% } %>

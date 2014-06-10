@@ -134,7 +134,10 @@ module.exports = {
         Company.update(company, { primaryMode: 'buyer' }, function(err, company){
           if (err) { res.redirect('/dashboard'); }
           console.log('Company updated: ' + company);
-          res.redirect('/dashboard');
+          User.update(user, { activeMode: 'buyer' }, function (err, user) {
+            if (err) { return res.redirect('/dashboard'); }
+            res.redirect('/dashboard');
+          });
         });
       });
     }
@@ -146,7 +149,10 @@ module.exports = {
         Company.update(company, { primaryMode: 'supplier' }, function(err, company){
           if (err) { res.redirect('/dashboard'); }
           console.log('Company updated: ' + company);
-          res.redirect('/dashboard');
+          User.update(user, { activeMode: 'supplier' }, function (err, user){ 
+            if (err) { res.redirect('/dashboard'); }
+            res.redirect('/dashboard');
+          });
         });
       });
     }
@@ -178,13 +184,14 @@ module.exports = {
     var user = req.session.passport.user;
 
     Company.findOne({ user: user }, function(err, company){
-      if(err){ return res.redirect('/dashboard') };
-      if (isSupplierAndBuyer) { return res.view(); }
+      if (err) { return res.redirect('/dashboard'); }
+      if (isSupplierAndBuyer(company)) { return res.view(); }
       Company.update(company, { buyer: true, supplier: false }, function(err, company){
-        if(err){ return res.redirect('/dashboard') };
-        if(company){
-          res.view();
-        };
+        if (err) { return res.redirect('/dashboard'); }
+        User.update(user, { activeMode: 'buyer' }, function (err, user) {
+          if (err) { return res.redirect('/dashboard'); }
+          if (company) { res.view(); }
+        });
       });
     });
   },
@@ -201,13 +208,14 @@ module.exports = {
     var user = req.session.passport.user;
 
     Company.findOne({ user: user }, function(err, company){
-      if(err){ return res.redirect('/dashboard') };
-      if (isSupplierAndBuyer) { return res.view(); }
-      Company.update(company, { supplier: true, buyer: false }, function(err, company){
-        if(err){ return res.redirect('/dashboard') };
-        if(company){
-          res.view();
-        };
+      if (err) { return res.redirect('/dashboard'); }
+      if (isSupplierAndBuyer(company)) { return res.view(); }
+      Company.update(company, { supplier: true, buyer: false }, function (err, company){
+        if (err) { return res.redirect('/dashboard'); }
+        User.update(user, { activeMode: 'supplier' }, function (err, user) {
+          if (err) { return res.redirect('/dashboard'); }
+          if (company) { res.view(); }
+        });
       });
     });
   },
@@ -287,15 +295,20 @@ module.exports = {
         buyerId,
         supplierId,
         isBuyer,
-        isSupplier;
+        isSupplier,
+        userActiveMode;
     var error = 0;
     var setBuyerSupplierStatus = function(company) {
       company["buyer"] === true ? isBuyer = true : isBuyer = false;
       company["supplier"] === true ? isSupplier = true : isSupplier = false;
     };
+    var setUserActiveMode = function(user) {
+      return user.activeMode; 
+    };
 
     User.findOne({ id: req.session.passport.user }, function(err, user){
       if(err) { return res.redirect('/dashboard'); }
+      userActiveMode = setUserActiveMode(user);
       Company.findOne({ user: user.id }, function(err, company){
         if(err) { return res.redirect('/dashboard'); }
         setBuyerSupplierStatus(company);
@@ -311,7 +324,7 @@ module.exports = {
               Location.find().where({ company: companyId }).exec(function(err, locations){
                 if(err) { return res.redirect('/dashboard'); }
                 locationsPayload.push(locations);
-                res.view({ company: payload[0], buyer: payload[1], locations: locationsPayload });
+                res.view({ user: userActiveMode, company: payload[0], buyer: payload[1], locations: locationsPayload });
               });
             });
           });
@@ -327,7 +340,7 @@ module.exports = {
               Location.find().where({ company: companyId }).exec(function(err, locations){
                 if(err) { return res.redirect('/dashboard'); }
                 locationsPayload.push(locations);
-                res.view({ company: payload[0], supplier: payload[1], locations: locationsPayload });
+                res.view({ user: userActiveMode, company: payload[0], supplier: payload[1], locations: locationsPayload });
               });
             });
           });
@@ -347,7 +360,7 @@ module.exports = {
                 Location.find().where({ buyer: buyerId }).exec(function(err, locations){
                   if(err) { return res.redirect('/dashboard'); }
                   locationsPayload.push(locations);
-                  res.view({ company: payload[0], buyer: payload[1], supplier: payload[2], locations: locationsPayload });
+                  res.view({ user: userActiveMode, company: payload[0], buyer: payload[1], supplier: payload[2], locations: locationsPayload });
                 });
               });
             });
