@@ -21,7 +21,7 @@
 								<section id="typeOfCompany">
 									<div class="styledSelect breakForm">
 										<select name="typeOfCompany">
-											<option value="">Select a type</option>
+											<%- partial('../partials/dropdowns/buyer-type') %>
 										</select>
 									</div>
 								</section>
@@ -29,14 +29,12 @@
 								<h4>Language(s)*</h4>
 								<div class="styledSelect">
 									<select name="language1">
-										<option value="arabic">Arabic</option>
-										<option value="bengali">Bengali</option>
+										<%- partial('../partials/dropdowns/language') %>
 									</select>
 								</div>
 								<div class="styledSelect breakForm">
 									<select name="language2">
-										<option value="arabic">Arabic</option>
-										<option value="bengali">Bengali</option>
+										<%- partial('../partials/dropdowns/language') %>
 									</select>
 								</div>
 
@@ -52,8 +50,7 @@
 									<div><input type="text" name="otherLocation1Name" placeholder="Location Title"></div>
 									<div class="styledSelect">
 										<select name="type">
-											<option value="1">Type of Location</option>
-											<option value="2">2</option>
+											<%- partial('../partials/dropdowns/other-location-type') %>
 										</select>
 									</div>
 									<div class="styledSelect">
@@ -161,8 +158,7 @@
 								<h4>Your Supplier Preferences</h4>
 								<section id="preferredSupplierType" class="styledSelect">
 									<select name="preferredSupplierType">
-										<option value="1">Preferred Supplier Type</option>
-										<option value="2">2</option>
+										<%- partial('../partials/dropdowns/pref-supplier-type') %>
 									</select>
 								</section>
 								<section id="preferredSupplierLocation1" class="styledSelect">
@@ -173,8 +169,7 @@
 								</section>
 								<section id="preferredSupplierLanguage1" class="styledSelect">
 									<select name="preferredSupplierLanguage1">
-										<option value="1">Preferred Supplier Language</option>
-										<option value="2">2</option>
+										<%- partial('../partials/dropdowns/pref-supplier-language') %>
 									</select>
 								</section>
 
