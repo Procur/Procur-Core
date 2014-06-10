@@ -11,12 +11,13 @@
 module.exports.bootstrap = function (cb) {
   sails.newrelic = require('newrelic');
 
-  if(process.env.NODETIME_ACCOUNT_KEY) {
-    require('nodetime').profile({
-      accountKey: process.env.NODETIME_ACCOUNT_KEY,
-      appName: 'Procur-Core' // optional
-    });
-  }
+  var cloudinary = require('cloudinary');
+
+  cloudinary: cloudinary.config({
+    cloud_name: 'huewqecyr',
+    api_key: '881324675953382',
+    api_secret: 'ba-JzMMUoznUYbnalqxZD3ogTe4'
+  });
 
   // It's very important to trigger this callack method when you are finished
   // with the bootstrap!  (otherwise your server will never lift, since it's waiting on the bootstrap)

@@ -1,11 +1,12 @@
 <h1>Update Account Information</h1>
 
 <section id="userUpdateForm">
-  <form action="/user/update" method="post">
+  <form action="/user/update" method="post" enctype="multipart/form-data">
     <strong>Contact Information</strong>
     <div><input type="text" name="firstName" value=<%= user.firstName %>></div>
     <div><input type="text" name="lastName" value=<%= user.lastName %>></div>
     <div><input type="text" name="email" value=<%= user.email %>></div>
+    <p>Image: <input type="file" name="image" /></p>
     <div><input type="submit">
   </form>
 </section>

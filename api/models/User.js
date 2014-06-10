@@ -39,6 +39,10 @@ module.exports = {
     activeMode: {
       type: 'string'
     },
+    image: {
+      type: 'string',
+      unique: true
+    },
 
     //UTILITY
 

@@ -14,7 +14,7 @@
  *
  * @docs        :: http://sailsjs.org/#!documentation/controllers
  */
-
+var cloudinary = require('cloudinary');
 module.exports = {
 
   welcome: function(req, res){
@@ -38,7 +38,36 @@ module.exports = {
 
   processUpdateAccount: function(req, res){
     var b = req.body;
+    console.log(req.files.image.path);
 
+    User.findOne({ id: req.session.passport.user }, function(err, user){
+      if(err){ return res.redirect('/') };
+      if(user){
+        var image = req.files.image.path;
+        cloudinary.uploader.upload(image, function(result){
+          console.log(result);
+          User.update(user, { firstName: b.firstName, lastName: b.lastName, email: b.email, image: result.url }, function(err, user){
+            if(err){ return res.redirect('/') };
+            if(user){
+              req.flash('Account information updated');
+              res.redirect('/');
+            }
+            else {
+              req.flash('There was a problem');
+              res.redirect('/');
+            }
+          });
+        },
+        {
+          format: 'jpg',
+          width: 150,
+          height: 150,
+          crop: 'thumb',
+          gravity: 'face',
+          radius: 'max'
+        });
+      }
+    });
   },
 
   toggleMode: function(req, res){
