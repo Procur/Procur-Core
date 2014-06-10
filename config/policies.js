@@ -18,10 +18,6 @@ module.exports.policies = {
   // (`true` allows public access)
   '*': true,
 
-  HomeController: {
-    index: true
-  },
-
   DashboardController: {
     index: ['isAuthenticated', 'profileComplete', 'wizardComplete', 'isVerified', 'hasHandle']
   },
