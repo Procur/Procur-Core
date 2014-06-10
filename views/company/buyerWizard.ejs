@@ -1,149 +1,179 @@
-<h1>Buyer Wizard</h1>
+<div id="regWizard">    
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12">
+				<h1>Complete Your Registration</h1>
+			</div>
+			<form action="/buyer/create" method="post">
+				<div class="col-sm-6 col-sm-offset-3 topBox">
+					<h1>Your Buyer Profile</h1>
+				</div>
+				<div class="col-sm-6 col-sm-offset-3 fieldBox">
+					<section class="buyerWizard">
+						<div class="row">
+							<div class="col-sm-6">
+								<h4>Logo Image</h4>
+								<div><input class="breakForm" type="file" name="logo"></div>
+								<h4>DBA (Doing Business As) Name</h4>
+								<div><input class="breakForm" type="text" name="dba" placeholder="Alternate Company Name"></div>
+								
+								<h4>Type of Company*</h4>
+								<section id="typeOfCompany">
+									<div class="styledSelect breakForm">
+										<select name="typeOfCompany">
+											<option value="">Select a type</option>
+										</select>
+									</div>
+								</section>
 
-<section class="buyerWizard">
-  <form action="/buyer/create" method="post">
-    <h4>DBA</h4>
-    <div><input type="text" name="dba" placeholder="Alternate Company Name"></div>
-    <h4>Logo</h4>
-    <div><input type="file" name="logo"></div>
-    <h4>Languages</h4>
-    <div>
-      <select name="language1">
-        <option value="arabic">Arabic</option>
-        <option value="bengali">Bengali</option>
-      </select>
-      <select name="language2">
-        <option value="arabic">Arabic</option>
-        <option value="bengali">Bengali</option>
-      </select>
-    </div>
+								<h4>Language(s)*</h4>
+								<div class="styledSelect">
+									<select name="language1">
+										<option value="arabic">Arabic</option>
+										<option value="bengali">Bengali</option>
+									</select>
+								</div>
+								<div class="styledSelect breakForm">
+									<select name="language2">
+										<option value="arabic">Arabic</option>
+										<option value="bengali">Bengali</option>
+									</select>
+								</div>
 
-    <h4>Other Locations</h4>
-    <section id="otherLocation1">
-      <div><input type="text" name="otherLocation1Name" placeholder="Name"></div>
-      <div>
-        <select name="type">
-          <option value="1">1</option>
-          <option value="2">2</option>
-        </select>
-      </div>
-      <div><input type="text" name="otherLocation1City" placeholder="City"></div>
-      <div>
-        <select name="province">
-          <option value="1">1</option>
-          <option value="2">2</option>
-        </select>
-      </div>
-      <div>
-        <select name="country">
-          <option value="1">1</option>
-          <option value="2">2</option>
-        </select>
-      </div>
-    </section>
+								<h4>Nearest Port City*</h4>
+								<section id="nearestPort">
+									<div><input type="text" name="nearestPortCity" placeholder="City"></div>
+									<div><input type="text" name="nearestPortProvince" placeholder="State / Province"></div>
+									<div><input class="breakForm" type="text" name="nearestPortCountry" placeholder="Country"></div>
+								</section>
 
-    <!--<section id="otherLocation2">
-      <div><input type="text" name="otherLocation2Name" placeholder="Name"></div>
-      <div><input type="text" name="otherLocation2Type" placeholder="Type"></div>
-      <div><input type="text" name="otherLocation2City" placeholder="City"></div>
-      <div><input type="text" name="otherLocation2Province" placeholder="State / Province"></div>
-      <div><input type="text" name="otherLocation2Country" placeholder="Country"></div>
-    </section>
+								<h4>Other Locations</h4>
+								<section id="otherLocation1">
+									<div><input type="text" name="otherLocation1Name" placeholder="Location Title"></div>
+									<div class="styledSelect">
+										<select name="type">
+											<option value="1">Type of Location</option>
+											<option value="2">2</option>
+										</select>
+									</div>
+									<div class="styledSelect">
+										<select name="country">
+											<option value="1">Select Country</option>
+											<option value="2">2</option>
+										</select>
+									</div>
+									<div class="styledSelect">
+										<select name="province">
+											<option value="1">Select State/Province</option>
+											<option value="2">2</option>
+										</select>
+									</div>
+									<div><input type="text" name="otherLocation1City" placeholder="City"></div>
+								</section>
 
-    <section id="otherLocation3">
-      <div><input type="text" name="otherLocation3Name" placeholder="Name"></div>
-      <div><input type="text" name="otherLocation3Type" placeholder="Type"></div>
-      <div><input type="text" name="otherLocation3City" placeholder="City"></div>
-      <div><input type="text" name="otherLocation3Province" placeholder="State / Province"></div>
-      <div><input type="text" name="otherLocation3Country" placeholder="Country"></div>
-    </section>-->
 
-    <h4>Port location</h4>
-    <section id="nearestPort">
-      <div><input type="text" name="nearestPortCity" placeholder="City"></div>
-      <div><input type="text" name="nearestPortProvince" placeholder="State / Province"></div>
-      <div><input type="text" name="nearestPortCountry" placeholder="Country"></div>
-    </section>
-    
-    <h4>Preferred Supplier Type</h4>
-    <section id="preferredSupplierType">
-      <select name="preferredSupplierType">
-        <option value="1">1</option>
-        <option value="2">2</option>
-      </select>
-    </section>
-    <h4>Preferred Suppplier Languages</h4>
-    <section id="preferredSupplierLanguage1">
-      <select name="preferredSupplierLanguage1">
-        <option value="1">1</option>
-        <option value="2">2</option>
-      </select>
-    </section>
 
-    <section id="preferredSupplierLanguage2">
-      <select name="preferredSupplierLanguage2">
-        <option value="1">1</option>
-        <option value="2">2</option>
-      </select>
-    </section>
+								<!--<section id="otherLocation2">
+									<div><input type="text" name="otherLocation2Name" placeholder="Name"></div>
+									<div><input type="text" name="otherLocation2Type" placeholder="Type"></div>
+									<div><input type="text" name="otherLocation2City" placeholder="City"></div>
+									<div><input type="text" name="otherLocation2Province" placeholder="State / Province"></div>
+									<div><input type="text" name="otherLocation2Country" placeholder="Country"></div>
+								</section>
 
-    <section id="preferredSupplierLanguage3">
-      <select name="preferredSupplierLanguage3">
-        <option value="1">1</option>
-        <option value="2">2</option>
-      </select>
-    </section>
-    <h4>Preferred Supplier Locations</h4>
-    <section id="preferredSupplierLocation1">
-      <select name="preferredSupplierLocation1Country">
-        <option value="1">1</option>
-        <option value="2">2</option>
-      </select>
-    </section>
-    <section id="preferredSupplierLocation2">
-      <select name="preferredSupplierLocation2Country">
-        <option value="1">1</option>
-        <option value="2">2</option>
-      </select>
-    </section>
-    <section id="preferredSupplierLocation3">
-      <select name="preferredSupplierLocation3Country">
-        <option value="1">1</option>
-        <option value="2">2</option>
-      </select>
-    </section>
+								<section id="otherLocation3">
+									<div><input type="text" name="otherLocation3Name" placeholder="Name"></div>
+									<div><input type="text" name="otherLocation3Type" placeholder="Type"></div>
+									<div><input type="text" name="otherLocation3City" placeholder="City"></div>
+									<div><input type="text" name="otherLocation3Province" placeholder="State / Province"></div>
+									<div><input type="text" name="otherLocation3Country" placeholder="Country"></div>
+								</section>-->
 
-    <h4>Type of Company</h4>
-    <section id="typeOfCompany">
-      <select name="typeOfCompany">
-        <option value="">Select a type</option>
-      </select>
-    </section>
+								
+							</div>
+							<div class="col-sm-6">
+								<h4>Preferred Supplier Type</h4>
+								<section id="preferredSupplierType">
+									<select name="preferredSupplierType">
+										<option value="1">1</option>
+										<option value="2">2</option>
+									</select>
+								</section>
+								<h4>Preferred Suppplier Languages</h4>
+								<section id="preferredSupplierLanguage1">
+									<select name="preferredSupplierLanguage1">
+										<option value="1">1</option>
+										<option value="2">2</option>
+									</select>
+								</section>
 
-    <h4>Accepted Delivery Terms</h4>
-    <section id="acceptedDeliveryTerms">
-      <input type="checkbox" name="vehicle" value="1">1<br>
-      <input type="checkbox" name="vehicle" value="2">2<br>
-      <input type="checkbox" name="vehicle" value="3">3<br>
-      <input type="checkbox" name="vehicle" value="4">4<br>
-    </section>
+								<section id="preferredSupplierLanguage2">
+									<select name="preferredSupplierLanguage2">
+										<option value="1">1</option>
+										<option value="2">2</option>
+									</select>
+								</section>
 
-    <h4>Accepted Currencies</h4>
-    <section id="acceptedCurrencies">
-      <input type="checkbox" name="vehicle" value="1">1<br>
-      <input type="checkbox" name="vehicle" value="2">2<br>
-      <input type="checkbox" name="vehicle" value="3">3<br>
-      <input type="checkbox" name="vehicle" value="4">4<br>
-    </section>
+								<section id="preferredSupplierLanguage3">
+									<select name="preferredSupplierLanguage3">
+										<option value="1">1</option>
+										<option value="2">2</option>
+									</select>
+								</section>
+								<h4>Preferred Supplier Locations</h4>
+								<section id="preferredSupplierLocation1">
+									<select name="preferredSupplierLocation1Country">
+										<option value="1">1</option>
+										<option value="2">2</option>
+									</select>
+								</section>
+								<section id="preferredSupplierLocation2">
+									<select name="preferredSupplierLocation2Country">
+										<option value="1">1</option>
+										<option value="2">2</option>
+									</select>
+								</section>
+								<section id="preferredSupplierLocation3">
+									<select name="preferredSupplierLocation3Country">
+										<option value="1">1</option>
+										<option value="2">2</option>
+									</select>
+								</section>
 
-    <h4>Accepted Payment Terms</h4>
-    <section id="acceptedPaymentTerms">
-      <input type="checkbox" name="vehicle" value="1">1<br>
-      <input type="checkbox" name="vehicle" value="2">2<br>
-      <input type="checkbox" name="vehicle" value="3">3<br>
-      <input type="checkbox" name="vehicle" value="4">4<br>
-    </section>
+								<h4>Accepted Delivery Terms</h4>
+								<section id="acceptedDeliveryTerms">
+									<input type="checkbox" name="vehicle" value="1">1<br>
+									<input type="checkbox" name="vehicle" value="2">2<br>
+									<input type="checkbox" name="vehicle" value="3">3<br>
+									<input type="checkbox" name="vehicle" value="4">4<br>
+								</section>
 
-    <div><input type="submit"></div>
-  </form>
-</section>
+								<h4>Accepted Currencies</h4>
+								<section id="acceptedCurrencies">
+									<input type="checkbox" name="vehicle" value="1">1<br>
+									<input type="checkbox" name="vehicle" value="2">2<br>
+									<input type="checkbox" name="vehicle" value="3">3<br>
+									<input type="checkbox" name="vehicle" value="4">4<br>
+								</section>
+
+								<h4>Accepted Payment Terms</h4>
+								<section id="acceptedPaymentTerms">
+									<input type="checkbox" name="vehicle" value="1">1<br>
+									<input type="checkbox" name="vehicle" value="2">2<br>
+									<input type="checkbox" name="vehicle" value="3">3<br>
+									<input type="checkbox" name="vehicle" value="4">4<br>
+								</section>
+							</div>
+						</div>
+						
+						
+						
+
+						<div><input type="submit"></div>
+					</section>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+

@@ -23,6 +23,21 @@
 		padding: 25px 30px;
 	}
 
+	.topBox {
+		background: $charcoal;
+		h1 {
+			text-align: center;
+			font-family: 'Montserrat', sans-serif;
+			color: white;
+			font-size: 14px;
+			font-weight: 300;
+			text-transform: uppercase;
+			letter-spacing: 0.07em;
+			margin: 0px;
+			padding: 25px 0px 20px;
+		}
+	}
+
 	input {
 		border: 0px none;
 		margin: 5px 0px;
@@ -127,6 +142,5 @@
 		text-decoration: none;
 		@include transition(100ms);
 	}
-
 
 }
