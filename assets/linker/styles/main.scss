@@ -1,6 +1,21 @@
 /* Variables Live Here */
 
 $beige: #ECEBE6;
+$midGrey: #BBBDBF;
+$green: #2FA566;
+$offWhite: #f7f7f7;
+
+
+/* Mixins */
+
+@mixin transition($time) {
+-webkit-transition: all $time ease-in-out;
+-moz-transition: all $time ease-in-out;
+-ms-transition: all $time ease-in-out;
+-o-transition: all $time ease-in-out;
+transition: all $time ease-in-out;
+}
+
 
 
 /* General Styles */
@@ -8,6 +23,13 @@ $beige: #ECEBE6;
 h1, h2, h3, h4, {
 	font-family: 'Montserrat', sans-serif;
 	font-weight: 700;
+}
+
+p {
+	font-family: 'Roboto', sans-serif;
+	font-weight: 300;
+	font-size: 12px;
+	letter-spacing: 0.05em;
 }
 
 input {
