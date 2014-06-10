@@ -41,9 +41,9 @@ module.exports = {
         Supplier.create({
           company: company.id,
           dbaName: b.dbaName,
-          companyLogo: b.companyLogo,
+          logoUrl: b.logoUrl,
           language: [b.language1, b.language2],
-          annualProductionVolume: b.annualProductionVolume,
+          annualSalesValue: b.annualSalesValue,
           primaryProductSpeciality: [b.primaryProductSpeciality1, b.primaryProductSpeciality2],
           preferredBuyerType: b.preferredBuyerType,
           preferredBuyerLanguage: [b.preferredBuyerLanguage1,
@@ -53,7 +53,7 @@ module.exports = {
                                   b.preferredBuyerLocation2Country,
                                   b.preferredBuyerLocation3Country],
           acceptedDeliveryTerms: b.acceptedDeliveryTerms,
-          acceptedCurrencies: b.acceptedCurrencies,
+          acceptedCurrency: b.acceptedCurrency,
           acceptedPaymentTerms: b.acceptedPaymentTerms,
           typeOfCompany: b.typeOfCompany,
           privateLabeler: b.privateLabeler,
@@ -69,7 +69,7 @@ module.exports = {
             company: company.id,
             title: b.otherLocation1Name,
             type: b.type,
-            city: b.city,
+            city: b.otherLocation1City,
             province: b.province,
             country: b.country,
             isHq: false
@@ -81,11 +81,10 @@ module.exports = {
             }
             Location.create({
               company: company.id,
-              title: b.otherLocation1Name,
               type: 'port',
-              city: b.portCity,
-              province: b.portProvince,
-              country: b.portCountry,
+              city: b.nearestPortCity,
+              province: b.nearestPortProvince,
+              country: b.nearestPortCountry,
               isHq: false
             }, function(err, location) {
               console.log("New location is: " + JSON.stringify(location));
@@ -102,7 +101,7 @@ module.exports = {
   },
 
   update: function(req, res){
-
+    console.log("You're in SupplierController#update");
   },
 
   destroy: function(req, res){

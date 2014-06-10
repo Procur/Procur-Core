@@ -45,6 +45,78 @@ module.exports = {
     acceptedPaymentTerms: {
       type: 'string'
     },
+    facebook: {
+      type: 'string'
+    },
+    twitter: {
+      type: 'string'
+    },
+    pinterest: {
+      type: 'string'
+    },
+    tumblr: {
+      type: 'string'
+    },
+    linkedin: {
+      type: 'string'
+    },
+    instagram: {
+      type: 'string'
+    },
+    google: {
+      type: 'string'
+    },
+    relevantLinkTitle: {
+      type: 'array'
+    },
+    relevantLinkUrl: {
+      type: 'array'
+    },
+    dunsNumber: {
+      type: 'string'
+    },
+    contactName: {
+      type: 'string'
+    },
+    contactPosition: {
+      type: 'string'
+    },
+    contactEmail: {
+      type: 'string'
+    },
+    companyDescription: {
+      type: 'string'
+    },
+    downloadTitle: {
+      type: 'array'
+    },
+    downloadFile: {
+      type: 'array'
+    },
+    photo: {
+      type: 'array'
+    },
+    environmentalSustainability: {
+      type: 'string'
+    },
+    qualitySourcing: {
+      type: 'string'
+    },
+    workplaceSafety: {
+      type: 'string'
+    },
+    laborEducationTraining: {
+      type: 'string'
+    },
+    reinvestment: {
+      type: 'string'
+    },
+    productCategory: {
+      type: 'array'
+    },
+    productsOfInterest: {
+      type: 'string'
+    },
 
     //UTILITY
 

@@ -1,12 +1,10 @@
-<h1>Buyer Wizard</h1>
+<form action="/buyer/update" method="post">
+  <%- partial('_update_company') %>
 
-<section class="buyerWizard">
-  <form action="/buyer/create" method="post">
-    <h4>DBA</h4>
-    <div><input type="text" name="dba" placeholder="Alternate Company Name"></div>
-    <h4>Logo</h4>
-    <div><input type="file" name="logoUrl"></div>
-    <h4>Languages</h4>
+  <h2>Buyer Info</h2>
+  <section id="updateBuyerForm">
+    <div><input type="text" name="dbaName" value=<%= buyer.dbaName %>></div>
+    <h4>Logo</h4><div><input type="file" name="logo"></div>
     <div>
       <select name="language1">
         <option value="arabic">Arabic</option>
@@ -42,29 +40,13 @@
       </div>
     </section>
 
-    <!--<section id="otherLocation2">
-      <div><input type="text" name="otherLocation2Name" placeholder="Name"></div>
-      <div><input type="text" name="otherLocation2Type" placeholder="Type"></div>
-      <div><input type="text" name="otherLocation2City" placeholder="City"></div>
-      <div><input type="text" name="otherLocation2Province" placeholder="State / Province"></div>
-      <div><input type="text" name="otherLocation2Country" placeholder="Country"></div>
-    </section>
-
-    <section id="otherLocation3">
-      <div><input type="text" name="otherLocation3Name" placeholder="Name"></div>
-      <div><input type="text" name="otherLocation3Type" placeholder="Type"></div>
-      <div><input type="text" name="otherLocation3City" placeholder="City"></div>
-      <div><input type="text" name="otherLocation3Province" placeholder="State / Province"></div>
-      <div><input type="text" name="otherLocation3Country" placeholder="Country"></div>
-    </section>-->
-
     <h4>Port location</h4>
     <section id="nearestPort">
       <div><input type="text" name="nearestPortCity" placeholder="City"></div>
       <div><input type="text" name="nearestPortProvince" placeholder="State / Province"></div>
       <div><input type="text" name="nearestPortCountry" placeholder="Country"></div>
     </section>
-    
+
     <h4>Preferred Supplier Type</h4>
     <section id="preferredSupplierType">
       <select name="preferredSupplierType">
@@ -72,6 +54,7 @@
         <option value="2">2</option>
       </select>
     </section>
+
     <h4>Preferred Suppplier Languages</h4>
     <section id="preferredSupplierLanguage1">
       <select name="preferredSupplierLanguage1">
@@ -93,6 +76,7 @@
         <option value="2">2</option>
       </select>
     </section>
+
     <h4>Preferred Supplier Locations</h4>
     <section id="preferredSupplierLocation1">
       <select name="preferredSupplierLocation1Country">
@@ -122,28 +106,77 @@
 
     <h4>Accepted Delivery Terms</h4>
     <section id="acceptedDeliveryTerms">
-      <input type="checkbox" name="vehicle" value="1">1<br>
-      <input type="checkbox" name="vehicle" value="2">2<br>
-      <input type="checkbox" name="vehicle" value="3">3<br>
-      <input type="checkbox" name="vehicle" value="4">4<br>
+      <input type="checkbox" name="" value="1">1<br>
+      <input type="checkbox" name="" value="2">2<br>
+      <input type="checkbox" name="" value="3">3<br>
+      <input type="checkbox" name="" value="4">4<br>
     </section>
 
     <h4>Accepted Currencies</h4>
-    <section id="acceptedCurrency">
-      <input type="checkbox" name="vehicle" value="1">1<br>
-      <input type="checkbox" name="vehicle" value="2">2<br>
-      <input type="checkbox" name="vehicle" value="3">3<br>
-      <input type="checkbox" name="vehicle" value="4">4<br>
+    <section id="acceptedCurrencies">
+      <input type="checkbox" name="" value="1">1<br>
+      <input type="checkbox" name="" value="2">2<br>
+      <input type="checkbox" name="" value="3">3<br>
+      <input type="checkbox" name="" value="4">4<br>
     </section>
 
     <h4>Accepted Payment Terms</h4>
     <section id="acceptedPaymentTerms">
-      <input type="checkbox" name="vehicle" value="1">1<br>
-      <input type="checkbox" name="vehicle" value="2">2<br>
-      <input type="checkbox" name="vehicle" value="3">3<br>
-      <input type="checkbox" name="vehicle" value="4">4<br>
+      <input type="checkbox" name="" value="1">1<br>
+      <input type="checkbox" name="" value="2">2<br>
+      <input type="checkbox" name="" value="3">3<br>
+      <input type="checkbox" name="" value="4">4<br>
     </section>
 
+    <div><input type="text" name="facebook" value=<%= buyer.facebook %>></div>
+    <div><input type="text" name="twitter" value=<%= buyer.twitter %>></div>
+    <div><input type="text" name="pinterest" value=<%= buyer.pinterest %>></div>
+    <div><input type="text" name="tumblr" value=<%= buyer.tumblr %>></div>
+    <div><input type="text" name="linkedin" value=<%= buyer.linkedin %>></div>
+    <div><input type="text" name="instagram" value=<%= buyer.instagram %>></div>
+    <div><input type="text" name="google" value=<%= buyer.google %>></div>
+
+    <div><input type="text" name="dunsNumber" value=<%= buyer.dunsNumber %>></div>
+    <div><input type="text" name="contactName" value=<%= buyer.contactName %>></div>
+    <div><input type="text" name="contactPosition" value=<%= buyer.contactPosition %>></div>
+    <div><input type="text" name="contactEmail" value=<%= buyer.contactEmail %>></div>
+
+    <h4>Company Description</h4>
+    <textarea name="companyDescription" placeholder="Tell us about your business..."
+              rows="4" cols="50" value=<%= buyer.companyDescription %>>
+    </textarea>
+
+    <h4>Environmental Sustainability</h4>
+    <textarea name="environmentalSustainability" placeholder=""
+              rows="4" cols="50" value=<%= buyer.environmentalSustainability %>>
+    </textarea>
+
+    <h4>Quality Sourcing</h4>
+    <textarea name="qualitySourcing" placeholder=""
+              rows="4" cols="50" value=<%= buyer.qualitySourcing %>>
+    </textarea>
+
+    <h4>Workplace Safety</h4>
+    <textarea name="workplaceSafety" placeholder=""
+              rows="4" cols="50" value=<%= buyer.workplaceSafety %>>
+    </textarea>
+
+    <h4>Labor, Education, and Training</h4>
+    <textarea name="laborEducationTraining" placeholder=""
+              rows="4" cols="50" value=<%= buyer.laborEducationTraining %>>
+    </textarea>
+
+    <h4>Reinvestment</h4>
+    <textarea name="reinvestment" placeholder=""
+              rows="4" cols="50" value=<%= buyer.reinvestment %>>
+    </textarea>
+
+    <h4>Your Products of Interest</h4>
+    <textarea name="productsOfInterest" placeholder=""
+              rows="4" cols="50" value=<%= buyer.productsOfInterest %>>
+    </textarea>    
+
+    
     <div><input type="submit"></div>
-  </form>
-</section>
+  </section>
+</form>
