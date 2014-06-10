@@ -7,18 +7,25 @@
  */
 
 module.exports = function (req, res, next) {
-  User.findOne({ id: req.session.passport.user }, function(err, user){
-    if (err) return next(err)
-    if (user.profileComplete == true) {
-      if (req.route.path == '/welcome') {
-        res.redirect('/dashboard');
+
+  if(!req.session.passport.user){
+    res.redirect('/')
+  }
+  else{
+    User.findOne({ id: req.session.passport.user }, function(err, user){
+      console.log(req.session);
+      if (err) return res.redirect('/adsfasf');
+      if (user.profileComplete == true) {
+        if (req.route.path == '/welcome') {
+          res.redirect('/dashboard');
+        }
+        else {
+          return next();
+        }
       }
       else {
         return next();
       }
-    }
-    else {
-      return next();
-    }
-  });
+    });
+  }
 };
