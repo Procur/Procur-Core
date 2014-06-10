@@ -176,7 +176,8 @@ module.exports = {
     var isSupplierAndBuyer = function (company) {
       if (company.buyer === true && company.supplier === true) {
         return true;
-      } else {
+      }
+      else { 
         return false;
       }
     };
@@ -200,7 +201,8 @@ module.exports = {
     var isSupplierAndBuyer = function (company) {
       if (company.buyer === true && company.supplier === true) {
         return true;
-      } else {
+      }
+      else {
         return false;
       }
     };
