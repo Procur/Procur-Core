@@ -19,13 +19,13 @@ module.exports.policies = {
   '*': true,
 
   DashboardController: {
-    index: ['isAuthenticated', 'profileComplete', 'wizardComplete', 'isVerified', 'hasHandle']
+    index: ['sessionCheck', 'isAuthenticated', 'profileComplete', 'wizardComplete', 'isVerified', 'hasHandle']
   },
 
   UserController: {
-    welcome: ['isAuthenticated', 'profileComplete'],
-    myProcur: ['isAuthenticated', 'profileComplete'],
-    pleaseVerify: ['wizardComplete']
+    welcome: ['sessionCheck', 'isAuthenticated', 'profileComplete'],
+    myProcur: ['sessionCheck', 'isAuthenticated', 'profileComplete'],
+    pleaseVerify: ['sessionCheck', 'wizardComplete']
   },
 
   AuthController: {
@@ -33,10 +33,10 @@ module.exports.policies = {
   },
 
   CompanyController: {
-    buyerOrSupplier: ['isAuthenticated', 'profileComplete'],
-    createBuyer: 'isAuthenticated',
-    createSupplier: 'isAuthenticated',
-    createBuyerAndSupplier: 'isAuthenticated'
+    buyerOrSupplier: ['sessionCheck', 'isAuthenticated', 'profileComplete'],
+    createBuyer: ['sessionCheck', 'isAuthenticated'],
+    createSupplier: ['sessionCheck', 'isAuthenticated'],
+    createBuyerAndSupplier: ['sessionCheck', 'isAuthenticated']
 
     //TODO: Add logic to force buyer/supplier choice.
   }

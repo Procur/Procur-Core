@@ -55,10 +55,10 @@ module.exports = {
   environment: process.env.NODE_ENV || 'development',
 
   //SSL
-  express: { serverOptions : {
+  /*express: { serverOptions : {
     key: fs.readFileSync('config/ssl/key.pem'),
     cert: fs.readFileSync('config/ssl/cert.pem')
-  }},
+  }},*/
 
   adapters:{
   'default': 'mongo',

@@ -18,6 +18,7 @@
 module.exports = {
 
   index: function(req, res){
+
     /*var user = req.session.passport.user;
     var payload = [];
     User.findOne({ id: user }, function(err, user){
@@ -32,8 +33,14 @@ module.exports = {
       }
     });
   }*/
-
-    res.redirect('http://localhost:1338');
+    if(process.env.NODE_ENV == 'development') {
+      console.log('dev');
+      res.redirect('http://localhost:1338');
+    }
+    else{
+      console.log('prod');
+      res.redirect('http://myprocur-staging.herokuapp.com');
+    }
   }
 
 };
