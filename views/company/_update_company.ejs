@@ -13,18 +13,22 @@
   <div><input type="text" name="companyEmail" value=<%= company.email %>></div>
   <div><input type="text" name="companyWebsite" value=<%= company.website %>></div>
 
-  <div><input type="text" name="companyAddress1" value=<%= locations.physicalAddress1 %>></div>
-  <div><input type="text" name="companyAddress2" value=<%= locations.physicalAddress2 %>></div>
-  <div><input type="text" name="companyCountry" value=<%= locations.country %>></div>
-  <div><input type="text" name="companyProvince" value=<%= locations.province %>></div>
-  <div><input type="text" name="companyPostalCode" value=<%= locations.postalCode %>></div>
+  <% for (var x = 0; x < locations["company-notHq"].length; x++) { %>
+    <div><input type="text" name="companyAddress1" value="<%= locations["company-notHq"][x].addressLine1 %>"></div>
+    <div><input type="text" name="companyAddress2" value="<%= locations["company-notHq"][x].addressLine2 %>"></div>
+    <div><input type="text" name="companyCountry" value="<%= locations["company-notHq"][x].country %>"></div>
+    <div><input type="text" name="companyProvince" value="<%= locations["company-notHq"][x].province %>"></div>
+    <div><input type="text" name="companyPostalCode" value="<%= locations["company-notHq"][x].postalCode %>"></div>
+  <% } %>
 
   <div><input type="checkbox" name="companyIsHq">Location is HQ?</div>
-  <div><input type="text" name="hqAddress1" value=<%= locations.hqAddress1 %>></div>
-  <div><input type="text" name="hqAddress2" value=<%= locations.hqAddress2 %>></div>
-  <div><input type="text" name="hqCountry" value=<%= locations.hqCountry %>></div>
-  <div><input type="text" name="hqProvince" value=<%= locations.hqProvince %>></div>
-  <div><input type="text" name="hqPostalCode" value=<%= locations.hqPostalCode %>></div>
+  <% if (locations["showHq"] === true) { %>
+    <div><input type="text" name="hqAddress1" value="<%= locations["company-isHq"].addressLine1 %>"></div>
+    <div><input type="text" name="hqAddress2" value="<%= locations["company-isHq"].addressLine2 %>"></div>
+    <div><input type="text" name="hqCountry" value="<%= locations["company-isHq"].country %>"></div>
+    <div><input type="text" name="hqProvince" value="<%= locations["company-isHq"].province %>"></div>
+    <div><input type="text" name="hqPostalCode" value="<%= locations["company-isHq"].postalCode %>"></div>
+  <% } %>
 
   <div><input type="text" name="companyIndustry" value=<%= company.industry %>></div>
   <div><input type="text" name="companyEmployeeCount" value=<%= company.employeeCount %>></div>

@@ -67,6 +67,7 @@ module.exports = {
           console.log('Supplier created: ' + supplier.company);
           Location.create({
             company: company.id,
+            supplier: supplier.id,
             title: b.otherLocation1Name,
             type: b.type,
             city: b.otherLocation1City,
@@ -81,6 +82,7 @@ module.exports = {
             }
             Location.create({
               company: company.id,
+              supplier: supplier.id,
               type: 'port',
               city: b.nearestPortCity,
               province: b.nearestPortProvince,

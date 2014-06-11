@@ -15,6 +15,14 @@
  * @docs        :: http://sailsjs.org/#!documentation/controllers
  */
 
+var locationsTest = function(locations, userType) {
+  console.log(locations[userType][0].city + " should be Atlanta.");
+  console.log(locations[userType][1].city + " should be Miami.");
+  console.log(locations["company"][0].addressLine1 + " should be 3400 Peachtree Street.");
+  console.log(locations["company"][1].addressLine1 + " should be 820 West Marietta Street.");
+  console.log(locations["company"][2].title + " should be Supplier Location 1.");
+}
+
 module.exports = {
 
   show: function(req, res){
@@ -293,6 +301,7 @@ module.exports = {
   update: function(req, res){
     var payload = [],
         locationsPayload = [],
+        viewLocations = {},
         companyId,
         buyerId,
         supplierId,
@@ -300,13 +309,6 @@ module.exports = {
         isSupplier,
         userActiveMode;
     var error = 0;
-    var setBuyerSupplierStatus = function(company) {
-      company["buyer"] === true ? isBuyer = true : isBuyer = false;
-      company["supplier"] === true ? isSupplier = true : isSupplier = false;
-    };
-    var setUserActiveMode = function(user) {
-      return user.activeMode; 
-    };
 
     User.findOne({ id: req.session.passport.user }, function(err, user){
       if(err) { return res.redirect('/dashboard'); }
@@ -338,11 +340,12 @@ module.exports = {
             payload.push(supplier);
             Location.find().where({ supplier: supplierId }).exec(function(err, locations){
               if(err) { return res.redirect('/dashboard'); }
-              locationsPayload.push(locations);
+              locationsPayload['supplier'] = locations;
               Location.find().where({ company: companyId }).exec(function(err, locations){
                 if(err) { return res.redirect('/dashboard'); }
-                locationsPayload.push(locations);
-                res.view({ user: userActiveMode, company: payload[0], supplier: payload[1], locations: locationsPayload });
+                locationsPayload['company'] = locations;
+                viewLocations = sails.config.locationsHelper.parseLocations(locationsPayload, "supplier");
+                res.view({ user: userActiveMode, company: payload[0], supplier: payload[1], locations: viewLocations });
               });
             });
           });
@@ -370,6 +373,16 @@ module.exports = {
         }
       });
     });
+
+    /* Utility Methods */
+    var setBuyerSupplierStatus = function(company) {
+      company["buyer"] === true ? isBuyer = true : isBuyer = false;
+      company["supplier"] === true ? isSupplier = true : isSupplier = false;
+    };
+
+    var setUserActiveMode = function(user) {
+      return user.activeMode; 
+    };
   },
 
   setUpdate: function(req, res){
