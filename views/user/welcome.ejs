@@ -65,20 +65,28 @@
 
                         <div class="col-sm-6">
                             <h4>Official Business Address*</h4>
-                            <div><input type="text" name="companyAddress1" placeholder="Address Line #1"></div>
-                            <div><input type="text" name="companyAddress2" placeholder="Address Line #2"></div>
-                            <div class="styledSelect"><select name="companyCountry">
-                                    <option value="">Select Country</option>
+                            <div><input class="address1" type="text" name="companyAddress1" placeholder="Address Line #1"></div>
+                            <div><input class="address2" type="text" name="companyAddress2" placeholder="Address Line #2"></div>
+                            <div class="styledSelect"><select class="companyCountry" name="companyCountry">
+                                    <option value="0">Select Country</option>
+                                    <option value="1">1</option>
                                 </select>
                             </div>
 
 
                             <div class="row insideForm">
                                 <div class="col-sm-7">
-                                    <div class="styledSelect inputColumnL"><select name="companyProvince"><option value="">Select Province/State</option></select></div>
+                                    <div class="styledSelect inputColumnL">
+                                        <select class="companyProvince" name="companyProvince">
+                                            <option value="0">Select Province/State</option>
+                                            <option value="1">Fakeland</option>
+                                        </select>
+                                    </div>
                                 </div>
                                 <div class="col-sm-5 inputColumnR">
-                                    <div class="breakForm"><input type="text" name="companyPostalCode" placeholder="Postal Code"></div>
+                                    <div class="breakForm">
+                                        <input type="text" class="companyPostalCode" name="companyPostalCode" placeholder="Postal Code">
+                                    </div>
                                 </div>
                             </div>
 
@@ -88,17 +96,29 @@
 
 
                             <h4>Company Headquarters Address*</h4>
-                            <div><input class="hqaddress" type="text" name="hqAddress1" placeholder="Address Line 1"></div>
-                            <div><input  class="hqaddress" type="text" name="hqAddress2" placeholder="Address Line 2"></div>
+                            <div><input class="hqfield hqaddress1" type="text" name="hqfield1" placeholder="Address Line 1"></div>
+                            <div><input  class="hqfield hqaddress2" type="text" name="hqfield2" placeholder="Address Line 2"></div>
 
-                            <div class="styledSelect"><select class="hqaddress" name="hqCountry"><option value="">Select Country</option></select></div>
+                            <div class="styledSelect">
+                                <select class="hqfield hqcompanyCountry" name="hqCountry">
+                                    <option value="0">Select Country</option>
+                                    <option value="1">1</option>
+                                </select>
+                            </div>
 
                             <div class="row insideForm">
                                 <div class="col-sm-7">
-                                    <div class="styledSelect inputColumnL"><select class="hqaddress" name="hqProvince"><option value="">Select Province/State</option></select></div>
+                                    <div class="styledSelect inputColumnL">
+                                        <select class="hqfield hqcompanyProvince" name="hqProvince">
+                                            <option value="0">Select Province/State</option>
+                                            <option value="1">Fakeland</option>
+                                        </select>
+                                    </div>
                                 </div>
                                 <div class="col-sm-5 inputColumnR">
-                                    <div class="breakForm"><input class="hqaddress" type="text" name="hqPostalCode" placeholder="Postal Code"></div>
+                                    <div class="breakForm">
+                                        <input class="hqfield hqPostalCode" type="text" name="hqPostalCode" placeholder="Postal Code">
+                                        </div>
                                 </div>
                             </div>
                             <h4>Total Number of Employees*</h4>
