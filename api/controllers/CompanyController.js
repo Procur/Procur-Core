@@ -300,7 +300,7 @@ module.exports = {
 
   update: function(req, res){
     var payload = [],
-        locationsPayload = [],
+        locationsPayload = {},
         viewLocations = {},
         companyId,
         buyerId,
@@ -324,11 +324,13 @@ module.exports = {
             payload.push(buyer);
             Location.find().where({ buyer: buyer.id }).exec(function(err, locations){
               if(err) { return res.redirect('/dashboard'); }
-              locationsPayload.push(locations);
+              locationsPayload["buyer"] = locations;
               Location.find().where({ company: companyId }).exec(function(err, locations){
                 if(err) { return res.redirect('/dashboard'); }
-                locationsPayload.push(locations);
-                res.view({ user: userActiveMode, company: payload[0], buyer: payload[1], locations: locationsPayload });
+                locationsPayload["company"] = locations;
+                //console.log("locationsPayload for Buyer is " + JSON.stringify(locationsPayload, null, ' '));
+                viewLocations = sails.config.locationsHelper.parseLocations(locationsPayload, "buyer");
+                res.view({ user: userActiveMode, company: payload[0], buyer: payload[1], locations: viewLocations });
               });
             });
           });
@@ -340,10 +342,11 @@ module.exports = {
             payload.push(supplier);
             Location.find().where({ supplier: supplierId }).exec(function(err, locations){
               if(err) { return res.redirect('/dashboard'); }
-              locationsPayload['supplier'] = locations;
+              locationsPayload["supplier"] = locations;
               Location.find().where({ company: companyId }).exec(function(err, locations){
                 if(err) { return res.redirect('/dashboard'); }
-                locationsPayload['company'] = locations;
+                locationsPayload["company"] = locations;
+                //console.log("locationsPayload for Supplier is " + JSON.stringify(locationsPayload, null, ' '));
                 viewLocations = sails.config.locationsHelper.parseLocations(locationsPayload, "supplier");
                 res.view({ user: userActiveMode, company: payload[0], supplier: payload[1], locations: viewLocations });
               });
