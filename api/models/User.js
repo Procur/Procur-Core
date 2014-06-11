@@ -43,6 +43,9 @@ module.exports = {
       type: 'string',
       unique: true
     },
+    jobTitle: {
+      type: 'string'
+    },
 
     //UTILITY
 

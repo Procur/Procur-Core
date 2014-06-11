@@ -15,6 +15,20 @@
  * @docs        :: http://sailsjs.org/#!documentation/controllers
  */
 var cloudinary = require('cloudinary');
+var fs = require('fs');
+var hasImage;
+
+function getFileSize(file){
+  var stats = fs.statSync(file);
+  var fileSize = stats['size'];
+  if (fileSize > 0){
+    return true;
+  }
+  else {
+    return false;
+  }
+};
+
 module.exports = {
 
   welcome: function(req, res){
@@ -38,13 +52,44 @@ module.exports = {
 
   processUpdateAccount: function(req, res){
     var b = req.body;
+    var image = req.files.image.path;
+    var imageSize = getFileSize(image);
+    var jobTitle;
+    if(b.jobTitle) {
+      jobTitle = b.jobTitle;
+    }
+    else {
+      jobTitle = "";
+    };
 
     User.findOne({ id: req.session.passport.user }, function(err, user){
       if(err){ return res.redirect('/') };
       if(user){
-        var image = req.files.image.path;
-        cloudinary.uploader.upload(image, function(result){
-          User.update(user, { firstName: b.firstName, lastName: b.lastName, email: b.email, image: result.url }, function(err, user){
+        if(imageSize) {
+          cloudinary.uploader.upload(image, function(result){
+            User.update(user, { firstName: b.firstName, lastName: b.lastName, email: b.email, image: result.url, jobTitle: b.jobTitle }, function(err, user){
+              if(err){ return res.redirect('/') };
+              if(user){
+                req.flash('Account information updated');
+                res.redirect('/');
+              }
+              else {
+                req.flash('There was a problem');
+                res.redirect('/');
+              }
+            });
+          },
+          {
+            format: 'jpg',
+            width: 150,
+            height: 150,
+            crop: 'thumb',
+            gravity: 'face',
+            radius: 'max'
+          });
+        }
+        else{
+          User.update(user, { firstName: b.firstName, lastName: b.lastName, email: b.email, jobTitle: b.jobTitle }, function(err, user){
             if(err){ return res.redirect('/') };
             if(user){
               req.flash('Account information updated');
@@ -55,15 +100,7 @@ module.exports = {
               res.redirect('/');
             }
           });
-        },
-        {
-          format: 'jpg',
-          width: 150,
-          height: 150,
-          crop: 'thumb',
-          gravity: 'face',
-          radius: 'max'
-        });
+        }
       }
     });
   },

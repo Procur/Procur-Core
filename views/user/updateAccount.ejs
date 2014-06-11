@@ -6,7 +6,11 @@
     <div><input type="text" name="firstName" value=<%= user.firstName %>></div>
     <div><input type="text" name="lastName" value=<%= user.lastName %>></div>
     <div><input type="text" name="email" value=<%= user.email %>></div>
-    <p>Image: <input type="file" name="image" /></p>
+    <div><input type="text" name="jobTitle" <% if (user.jobTitle) { %><%= user.jobTitle %><% } else{ %> placeholder="Job Title" <% } %>></div>
+    <div><% if(user.image){ %>
+      <div>Current Profile Picture</div>
+      <div><img src="<%= user.image %>"</div><% } %>
+    <div>Change Profile Picture: <input type="file" name="image" accept="image/*"/></div>
     <div><input type="submit">
   </form>
 </section>
