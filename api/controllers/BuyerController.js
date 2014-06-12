@@ -44,13 +44,16 @@ module.exports = {
 
   create: function(req, res) {
     var b = req.body;
+    var image = req.files.logoUrl.path;
+    var imageHelper = sails.config.imageUploadHelper;
+    var imageExists = imageHelper.getFileSize(image);
+
     User.findOne({ id: req.session.passport.user }, function(err, user) {
       Company.findOne({ user: user.id }, function(err, company) {
         if (err) { return res.redirect('/dashboard'); }
         Buyer.create({
           company: company.id,
           dbaName: b.dba,
-          logoUrl: b.logoUrl,
           language: [b.language1, b.language2],
           preferredSupplierType: b.preferredSupplierType,
           preferredSupplierLanguage: [b.preferredSupplierLanguage1,
@@ -66,6 +69,7 @@ module.exports = {
           active: true
         }, function(err, buyer) {
           if (err) { return res.redirect('/dashboard'); }
+          if (imageExists) { imageHelper.uploadBuyerImage(req, res, buyer, image); }
           Location.create({
             company: company.id,
             buyer: buyer.id,

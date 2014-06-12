@@ -32,16 +32,18 @@ module.exports = {
 
   create: function(req, res){
     var b = req.body;
+    var image = req.files.logoUrl.path;
+    var imageHelper = sails.config.imageUploadHelper;
+    var imageExists = imageHelper.getFileSize(image);
+
     User.findOne({ id: req.session.passport.user }, function(err, user){
       if(err) { return res.redirect('/dashboard'); }
-      console.log(user);
       Company.findOne({ user: user.id }, function(err, company){
         if (err) { return res.redirect('/dashboard'); }
-        console.log(company);
         Supplier.create({
           company: company.id,
           dbaName: b.dbaName,
-          logoUrl: b.logoUrl,
+          //logoUrl: b.logoUrl,
           language: [b.language1, b.language2],
           annualSalesValue: b.annualSalesValue,
           primaryProductSpeciality: [b.primaryProductSpeciality1, b.primaryProductSpeciality2],
@@ -59,12 +61,8 @@ module.exports = {
           privateLabeler: b.privateLabeler,
           active: true
         }, function(err, supplier){
-          if (err){
-            res.send(err);
-            var message = "There was a problem."
-            //res.redirect('/dashboard', { message: message });
-          }
-          console.log('Supplier created: ' + supplier.company);
+          if (err) { return res.redirect('/dashboard'); }
+          if (imageExists) { imageHelper.uploadSupplierImage(req, res, supplier, image); }
           Location.create({
             company: company.id,
             supplier: supplier.id,
