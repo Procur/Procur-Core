@@ -1,11 +1,13 @@
 <h1>Buyer Wizard</h1>
 
 <section class="buyerWizard">
-  <form action="/buyer/create" method="post">
+  <form action="/buyer/create" method="post" enctype="multipart/form-data">
     <h4>DBA</h4>
     <div><input type="text" name="dba" placeholder="Alternate Company Name"></div>
+
     <h4>Logo</h4>
-    <div><input type="file" name="logoUrl"></div>
+    <div><input type="file" name="logoUrl" accept="image/*"></div>
+    
     <h4>Languages</h4>
     <div>
       <select name="language1">

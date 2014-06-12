@@ -1,12 +1,12 @@
 <h1>Supplier Wizard</h1>
 
 <section class="supplierWizard">
-  <form action="/supplier/create" method="post">
+  <form action="/supplier/create" method="post" enctype="multipart/form-data">
     <h4>DBA</h4>
     <div><input type="text" name="dbaName" placeholder="Alternate Company Name"></div>
 
     <h4>Logo</h4>
-    <div><input type="file" name="logoUrl" size="40">Company Logo</div>
+    <div><input type="file" name="logoUrl" accept="image/*"/>Company Logo</div>
 
     <h4>Languages</h4>
     <div>
@@ -183,25 +183,3 @@
     <div><input type="submit"></div>
   </form>
 </section>
-
-<!--
-<div><select name="language"><option value="English">English</option></select></div>
-<div><select name="type"><option value="">Select a Type</option></select></div>
-<div><input type="text" name="city" placeholder="City"></div>
-<div><input type="text" name="province" placeholder="State/Province"></div>
-<div><input type="text" name="country" placeholder="Country"></div>
-<div><input type="text" name="portCity" placeholder="City"></div>
-<div><input type="text" name="portProvince" placeholder="State/Province"></div>
-<div><input type="text" name="portCountry" placeholder="Country"></div>
-<div><select name="salesValue"><option value="">Sales Value</option></select></div>
-<div><input type="text" name="productSpeciality" placeholder="Select a Speciality"></div>
-<div><select name="preferredBuyerType"><option value="">Select a Type</option></select></div>
-<div><select name="preferredBuyerLanguage"><option value="">Select a Language</option></select></div>
-<div><select name="preferredBuyerCountry"><option value="">Country</option></select></div>
-<div><input type="checkbox" name="acceptedDeliveryTerms"> Accepted Delivery Terms<div>
-<div><input type="checkbox" name="acceptedCurrency"> Accepted Currency<div>
-<div><input type="checkbox" name="acceptedPaymentTerms"> Accepted Payment Terms<div>
-<div><select name="typeOfCompany"><option value="">Select a Type</option></select></div>
-<div><input type="checkbox" name="privateLabeler"> Private Labeler<div>
-
--->

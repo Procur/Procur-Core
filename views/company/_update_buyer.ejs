@@ -4,6 +4,12 @@
   <h2>Buyer Info</h2>
   <section id="updateBuyerForm">
     <div><input type="text" name="dbaName" value=<%= buyer.dbaName %>></div>
+    <!-- remove this later -->
+    <% if (buyer.logoUrl) { %>
+      <h4>Current Logo</h4>
+      <div><img src="<%= buyer.logoUrl %>" /></div>
+    <% } %>
+    <!-- remove this later -->
     <h4>Logo</h4><div><input type="file" name="logo"></div>
     <div>
       <select name="language1">
