@@ -1,190 +1,150 @@
 <div id="regWizard">    
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-12">
-                <h1>Complete Your Registration</h1>
-            </div>
-            <form action="/company/create" method="post">
-                <div class="col-sm-6 col-sm-offset-3 fieldBox">
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <h4>Company Name*</h4>
-                            <div class="breakForm"><input type="text" name="companyName" placeholder="Your Company Name"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <h1>Complete Your Registration</h1>
+      </div>
+      <form action="/company/create" method="post">
+        <div class="col-sm-6 col-sm-offset-3 fieldBox">
+          <div class="row">
+            <div class="col-sm-6">
+              <h4>Company Name*</h4>
+              <div class="breakForm"><input type="text" name="companyName" placeholder="Your Company Name"></div>
 
-                            <!-- Telephone Info -->
-                            <h4>Company Phone*</h4>
-                            <div class="row insideForm">
-                                <div class="col-sm-5 inputColumnL">
-                                    <div><input type="text" name="companyPhoneCountryCode" placeholder="Country Code"></div>
-                                </div>
-                                <div class="col-sm-7 inputColumnR">
-                                    <div><input type="text" name="companyPhone" placeholder="Company Phone"></div>
-                                </div>
-                            </div>
-                            <div class="row insideForm">
-                                <div class="col-sm-7 col-sm-offset-5 inputColumnR">
-                                    <div class="breakForm"><input type="text" name="companyPhoneExt" placeholder="Extension"></div>
-                                </div>
-                            </div>    
-
-                            <!-- Fax Info -->
-                            <h4>Company Fax</h4>
-                            <div class="row insideForm">
-                                <div class="col-sm-5 inputColumnL">
-                                    <div><input type="text" name="companyFaxCountryCode" placeholder="Country Code"></div>
-                                </div>
-                                <div class="col-sm-7 inputColumnR ">
-                                    <div><input type="text" name="companyFax" placeholder="Company Phone"></div>
-                                </div>
-                            </div>
-                            <div class="row insideForm">
-                                
-                                <div class="col-sm-7 col-sm-offset-5 inputColumnR">
-                                    <div class="breakForm"><input type="text" name="companyFaxExt" placeholder="Extension"></div>
-                                </div>
-                            </div>    
-
-
-                            <h4>Company Email Address*</h4>
-                            <div class="breakForm"><input type="text" name="companyEmail" placeholder="info@mycompany.com"></div>
-                            <h4>Official Company Website</h4>
-                            <div class="breakForm"><input type="text" name="companyWebsite" placeholder="www.mycompany.com"></div>
-
-
-                            <h4>Industry*</h4>
-                            <div class="styledSelect breakForm"><select name="companyIndustry">
-                                <%- partial('../partials/dropdowns/industry') %>
-                            </select>
-                            </div>
-
-                            
-
-                        </div>
-                        <!-- End of First Column -->
-
-
-                        <div class="col-sm-6">
-                            <h4>Official Business Address*</h4>
-                            <div><input class="address1" type="text" name="companyAddress1" placeholder="Address Line #1"></div>
-                            <div><input class="address2" type="text" name="companyAddress2" placeholder="Address Line #2"></div>
-                            <div class="styledSelect"><select class="companyCountry" name="companyCountry">
-                                    <option value="0">Select Country</option>
-                                    <option value="1">1</option>
-                                </select>
-                            </div>
-
-
-                            <div class="row insideForm">
-                                <div class="col-sm-7">
-                                    <div class="styledSelect inputColumnL">
-                                        <select class="companyProvince" name="companyProvince">
-                                            <option value="0">Select Province/State</option>
-                                            <option value="1">Fakeland</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-sm-5 inputColumnR">
-                                    <div class="breakForm">
-                                        <input type="text" class="companyPostalCode" name="companyPostalCode" placeholder="Postal Code">
-                                    </div>
-                                </div>
-                            </div>
-
-
-                            <h4>Is the above address the headquarters?</h4>
-                            <div><input class="checkbox hqbox" type="checkbox" name="companyIsHq"><div class="checkboxtext breakForm">Yes; please copy my details below.</div></div>
-
-
-                            <h4>Company Headquarters Address*</h4>
-                            <div><input class="hqfield hqaddress1" type="text" name="hqfield1" placeholder="Address Line 1"></div>
-                            <div><input  class="hqfield hqaddress2" type="text" name="hqfield2" placeholder="Address Line 2"></div>
-
-                            <div class="styledSelect">
-                                <select class="hqfield hqcompanyCountry" name="hqCountry">
-                                    <option value="0">Select Country</option>
-                                    <option value="1">1</option>
-                                </select>
-                            </div>
-
-                            <div class="row insideForm">
-                                <div class="col-sm-7">
-                                    <div class="styledSelect inputColumnL">
-                                        <select class="hqfield hqcompanyProvince" name="hqProvince">
-                                            <option value="0">Select Province/State</option>
-                                            <option value="1">Fakeland</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-sm-5 inputColumnR">
-                                    <div class="breakForm">
-                                        <input class="hqfield hqPostalCode" type="text" name="hqPostalCode" placeholder="Postal Code">
-                                        </div>
-                                </div>
-                            </div>
-                            <h4>Total Number of Employees*</h4>
-                            <div class="styledSelect"><select name="companyEmployeeCount">
-                                <option value="">Less than 10</option>
-                                <option value="">11 - 50</option>
-                                <option value="">51 - 100</option>
-                                <option value="">101 - 500</option>
-                                <option value="">501 - 1000</option>
-                                <option value="">1000+</option>
-                            </select></div>
-
-                        </div>
-
-                        
-                    <!-- End of Second Column -->
-                    </div>
+              <!-- Telephone Info -->
+              <h4>Company Phone*</h4>
+              <div class="row insideForm">
+                <div class="col-sm-5 inputColumnL">
+                    <div><input type="text" name="companyPhoneCountryCode" placeholder="Country Code"></div>
                 </div>
-                <div class="row">
-                    <div class="col-sm-6 col-sm-offset-3">
-                        <div><button class="continueButton" type="submit">Continue&nbsp;&nbsp; <i class="fa fa-arrow-right"></i></button></div>
-                    </div>
+                <div class="col-sm-7 inputColumnR">
+                    <div><input type="text" name="companyPhone" placeholder="Company Phone"></div>
                 </div>
+              </div>
+              <div class="row insideForm">
+                <div class="col-sm-7 col-sm-offset-5 inputColumnR">
+                    <div class="breakForm"><input type="text" name="companyPhoneExt" placeholder="Extension"></div>
+                </div>
+              </div>    
+
+              <!-- Fax Info -->
+              <h4>Company Fax</h4>
+              <div class="row insideForm">
+                <div class="col-sm-5 inputColumnL">
+                    <div><input type="text" name="companyFaxCountryCode" placeholder="Country Code"></div>
+                </div>
+                <div class="col-sm-7 inputColumnR ">
+                    <div><input type="text" name="companyFax" placeholder="Company Phone"></div>
+                </div>
+              </div>
+              <div class="row insideForm">
+                  
+                <div class="col-sm-7 col-sm-offset-5 inputColumnR">
+                    <div class="breakForm"><input type="text" name="companyFaxExt" placeholder="Extension"></div>
+                </div>
+              </div>    
+
+
+              <h4>Company Email Address*</h4>
+              <div class="breakForm"><input type="text" name="companyEmail" placeholder="info@mycompany.com"></div>
+              <h4>Official Company Website</h4>
+              <div class="breakForm"><input type="text" name="companyWebsite" placeholder="www.mycompany.com"></div>
+
+
+              <h4>Industry*</h4>
+              <div class="styledSelect breakForm"><select name="companyIndustry">
+                <%- partial('../partials/dropdowns/industry') %>
+              </select>
+              </div>
+
                 
-            <form action="/company/create" method="post">
-            
+
+            </div>
+              <!-- End of First Column -->
+
+
+              <div class="col-sm-6">
+                <h4>Official Business Address*</h4>
+                <div><input class="address1" type="text" name="companyAddress1" placeholder="Address Line #1"></div>
+                <div><input class="address2" type="text" name="companyAddress2" placeholder="Address Line #2"></div>
+                <div class="styledSelect"><select class="companyCountry" name="companyCountry">
+                    <option value="0">Select Country</option>
+                    <option value="1">1</option>
+                  </select>
+                </div>
+
+
+                <div class="row insideForm">
+                  <div class="col-sm-7">
+                    <div class="styledSelect inputColumnL">
+                      <select class="companyProvince" name="companyProvince">
+                        <option value="0">Select Province/State</option>
+                        <option value="1">Fakeland</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-sm-5 inputColumnR">
+                    <div class="breakForm">
+                      <input type="text" class="companyPostalCode" name="companyPostalCode" placeholder="Postal Code">
+                    </div>
+                  </div>
+                </div>
+
+
+                <h4>Is the above address the headquarters?</h4>
+                <div><input class="checkbox hqbox" type="checkbox" name="companyIsHq"><div class="checkboxtext breakForm">Yes; please copy my details below.</div></div>
+
+
+                <h4>Company Headquarters Address*</h4>
+                <div><input class="hqfield hqaddress1" type="text" name="hqfield1" placeholder="Address Line 1"></div>
+                <div><input  class="hqfield hqaddress2" type="text" name="hqfield2" placeholder="Address Line 2"></div>
+
+                <div class="styledSelect">
+                  <select class="hqfield hqcompanyCountry" name="hqCountry">
+                    <option value="0">Select Country</option>
+                    <option value="1">1</option>
+                  </select>
+                </div>
+
+                <div class="row insideForm">
+                  <div class="col-sm-7">
+                    <div class="styledSelect inputColumnL">
+                      <select class="hqfield hqcompanyProvince" name="hqProvince">
+                        <option value="0">Select Province/State</option>
+                        <option value="1">Fakeland</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-sm-5 inputColumnR">
+                    <div class="breakForm">
+                      <input class="hqfield hqPostalCode" type="text" name="hqPostalCode" placeholder="Postal Code">
+                    </div>
+                  </div>
+                </div>
+                <h4>Total Number of Employees*</h4>
+                <div class="styledSelect"><select name="companyEmployeeCount">
+                  <option value="">Less than 10</option>
+                  <option value="">11 - 50</option>
+                  <option value="">51 - 100</option>
+                  <option value="">101 - 500</option>
+                  <option value="">501 - 1000</option>
+                  <option value="">1000+</option>
+                </select></div>
+
+              </div>
+
+              
+          <!-- End of Second Column -->
+          </div>
         </div>
+        <div class="row">
+          <div class="col-sm-6 col-sm-offset-3">
+            <div><button class="continueButton" type="submit">Continue&nbsp;&nbsp; <i class="fa fa-arrow-right"></i></button></div>
+          </div>
+        </div>
+          
+      <form action="/company/create" method="post">
+        
     </div>
+  </div>
 </div>
-
-<!--
-<h1>Enter info</h1>
-
-<section class="companyForm">
-  <form action="/company/create" method="post">
-    <div><input type="text" name="companyName" placeholder="Your company Name"></div>
-
-    <div><input type="text" name="companyPhoneCountryCode" placeholder="Country Code"></div>
-    <div><input type="text" name="companyPhone" placeholder="Company Phone"></div>
-    <div><input type="text" name="companyPhoneExt" placeholder="Extension"></div>
-
-    <div><input type="text" name="companyFaxCountryCode" placeholder="Fax Country Code"></div>
-    <div><input type="text" name="companyFax" placeholder="Company Fax"></div>
-    <div><input type="text" name="companyFaxExt" placeholder="Fax Extension"></div>
-
-    <div><input type="text" name="companyEmail" placeholder="info@mycompany.com"></div>
-    <div><input type="text" name="companyWebsite" placeholder="www.mycompany.com"></div>
-
-    <div><input type="text" name="companyAddress1" placeholder="Address Line #1"></div>
-    <div><input type="text" name="companyAddress2" placeholder="Address Line #2"></div>
-    <div><select name="companyCountry"><option value="">Select Country</option></select></div>
-    <div><select name="companyProvince"><option value="">Select Province/State</option></select></div>
-    <div><input type="text" name="companyPostalCode" placeholder="Postal Code"></div>
-
-    <div><input type="checkbox" name="companyIsHq">Location is HQ?</div>
-
-    <div><input type="text" name="hqAddress1" placeholder="Address Line 1"></div>
-    <div><input type="text" name="hqAddress2" placeholder="Address Line 2"></div>
-    <div><select name="hqCountry"><option value="">Select Country</option></select></div>
-    <div><select name="hqProvince"><option value="">Select Province/State</option></select></div>
-    <div><input type="text" name="hqPostalCode" placeholder="Postal Code"></div>
-
-    <div><select name="companyIndustry"><option value="">Select Industry</option></select></div>
-    <div><select name="companyEmployeeCount"><option value="">Total No. of Employees</option></select></div>
-
-    <div><input type="submit"></div>
-  </form>
-</section>
--->

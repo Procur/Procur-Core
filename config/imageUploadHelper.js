@@ -26,7 +26,7 @@ module.exports.imageUploadHelper = {
       height: 150,
       crop: 'thumb',
       gravity: 'face',
-      radisu: 'max'
+      radius: 'max'
     });
   },
 
@@ -42,7 +42,7 @@ module.exports.imageUploadHelper = {
       height: 150,
       crop: 'thumb',
       gravity: 'face',
-      radisu: 'max'
+      radius: 'max'
     });
   }
 
