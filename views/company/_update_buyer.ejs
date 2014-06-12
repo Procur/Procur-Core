@@ -46,8 +46,8 @@
     <% for (var x = 0; x < locations["buyer-isPort"].length; x++) { %>
     <section id="nearestPort">
       <div><input type="text" name="nearestPortCity" placeholder="City" value="<%= locations["buyer-isPort"][x].city %>"></div>
-      <div><input type="text" name="nearestPortProvince" placeholder="State / Province" value="<%= locations["buyer-isPort"][x].city %>"></div>
-      <div><input type="text" name="nearestPortCountry" placeholder="Country" value="<%= locations["buyer-isPort"][x].city %>"></div>
+      <div><input type="text" name="nearestPortProvince" placeholder="State / Province" value="<%= locations["buyer-isPort"][x].province %>"></div>
+      <div><input type="text" name="nearestPortCountry" placeholder="Country" value="<%= locations["buyer-isPort"][x].country %>"></div>
     </section>
     <% } %>
 

@@ -28,7 +28,6 @@ module.exports.locationsHelper = {
       }
     }
 
-    console.log("viewLocations is " + JSON.stringify(viewLocations, null, ' '));
     return viewLocations;
   },
 
