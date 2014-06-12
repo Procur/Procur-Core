@@ -1,23 +1,46 @@
-@import 'test';
+/* Variables Live Here */
 
-$pink: #f398f9;
+$beige: #ECEBE6;
+$midGrey: #BBBDBF;
+$green: #2FA566;
+$offWhite: #f7f7f7;
+$charcoal: #333132;
 
-footer {
-	position: fixed;
-	bottom: 0px;
+
+/* Mixins */
+
+@mixin transition($time) {
+-webkit-transition: all $time ease-in-out;
+-moz-transition: all $time ease-in-out;
+-ms-transition: all $time ease-in-out;
+-o-transition: all $time ease-in-out;
+transition: all $time ease-in-out;
 }
 
-header {
-	text-align: center;
+
+
+/* General Styles */
+
+h1, h2, h3, h4, {
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 700;
+}
+
+p {
+	font-family: 'Roboto', sans-serif;
+	font-weight: 300;
+	font-size: 12px;
+	letter-spacing: 0.05em;
+}
+
+input {
+	font-family: 'Roboto', sans-serif;
 }
 
 
-* {
-	h1 {
-	color: $pink;
-	}
 
-	h2 {
-		color: blue;
-	}
-}
+/* Import CSS Partials Here */
+
+
+	/* Registration Wizard */
+	@import 'regWizard';
