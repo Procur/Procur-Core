@@ -32,18 +32,20 @@ module.exports = {
 
   create: function(req, res){
     var b = req.body;
+    var image = req.files.logoUrl.path;
+    var imageHelper = sails.config.imageUploadHelper;
+    var imageExists = imageHelper.getFileSize(image);
+
     User.findOne({ id: req.session.passport.user }, function(err, user){
       if(err) { return res.redirect('/dashboard'); }
-      console.log(user);
       Company.findOne({ user: user.id }, function(err, company){
         if (err) { return res.redirect('/dashboard'); }
-        console.log(company);
         Supplier.create({
           company: company.id,
           dbaName: b.dbaName,
-          companyLogo: b.companyLogo,
+          //logoUrl: b.logoUrl,
           language: [b.language1, b.language2],
-          annualProductionVolume: b.annualProductionVolume,
+          annualSalesValue: b.annualSalesValue,
           primaryProductSpeciality: [b.primaryProductSpeciality1, b.primaryProductSpeciality2],
           preferredBuyerType: b.preferredBuyerType,
           preferredBuyerLanguage: [b.preferredBuyerLanguage1,
@@ -53,23 +55,20 @@ module.exports = {
                                   b.preferredBuyerLocation2Country,
                                   b.preferredBuyerLocation3Country],
           acceptedDeliveryTerms: b.acceptedDeliveryTerms,
-          acceptedCurrencies: b.acceptedCurrencies,
+          acceptedCurrency: b.acceptedCurrency,
           acceptedPaymentTerms: b.acceptedPaymentTerms,
           typeOfCompany: b.typeOfCompany,
           privateLabeler: b.privateLabeler,
           active: true
         }, function(err, supplier){
-          if (err){
-            res.send(err);
-            var message = "There was a problem."
-            //res.redirect('/dashboard', { message: message });
-          }
-          console.log('Supplier created: ' + supplier.company);
+          if (err) { return res.redirect('/dashboard'); }
+          if (imageExists) { imageHelper.uploadSupplierImage(req, res, supplier, image); }
           Location.create({
             company: company.id,
+            supplier: supplier.id,
             title: b.otherLocation1Name,
             type: b.type,
-            city: b.city,
+            city: b.otherLocation1City,
             province: b.province,
             country: b.country,
             isHq: false
@@ -81,11 +80,11 @@ module.exports = {
             }
             Location.create({
               company: company.id,
-              title: b.otherLocation1Name,
+              supplier: supplier.id,
               type: 'port',
-              city: b.portCity,
-              province: b.portProvince,
-              country: b.portCountry,
+              city: b.nearestPortCity,
+              province: b.nearestPortProvince,
+              country: b.nearestPortCountry,
               isHq: false
             }, function(err, location) {
               console.log("New location is: " + JSON.stringify(location));
@@ -102,7 +101,7 @@ module.exports = {
   },
 
   update: function(req, res){
-
+    console.log("You're in SupplierController#update");
   },
 
   destroy: function(req, res){

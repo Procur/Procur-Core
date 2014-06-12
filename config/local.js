@@ -35,7 +35,7 @@ module.exports = {
   //
   // In production, you'll probably want to change this setting
   // to 80 (http://) or 443 (https://) if you have an SSL certificate
-
+  host: process.env.HOST || 'localhost',
   port: process.env.PORT || 1337,
 
 
@@ -55,10 +55,10 @@ module.exports = {
   environment: process.env.NODE_ENV || 'development',
 
   //SSL
-  express: { serverOptions : {
+  /*express: { serverOptions : {
     key: fs.readFileSync('config/ssl/key.pem'),
     cert: fs.readFileSync('config/ssl/cert.pem')
-  }},
+  }},*/
 
   adapters:{
   'default': 'mongo',

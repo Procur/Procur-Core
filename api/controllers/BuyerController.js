@@ -44,13 +44,16 @@ module.exports = {
 
   create: function(req, res) {
     var b = req.body;
+    var image = req.files.logoUrl.path;
+    var imageHelper = sails.config.imageUploadHelper;
+    var imageExists = imageHelper.getFileSize(image);
+
     User.findOne({ id: req.session.passport.user }, function(err, user) {
       Company.findOne({ user: user.id }, function(err, company) {
         if (err) { return res.redirect('/dashboard'); }
         Buyer.create({
           company: company.id,
           dbaName: b.dba,
-          logoUrl: b.logoUrl,
           language: [b.language1, b.language2],
           preferredSupplierType: b.preferredSupplierType,
           preferredSupplierLanguage: [b.preferredSupplierLanguage1,
@@ -66,21 +69,26 @@ module.exports = {
           active: true
         }, function(err, buyer) {
           if (err) { return res.redirect('/dashboard'); }
+          if (imageExists) { imageHelper.uploadBuyerImage(req, res, buyer, image); }
           Location.create({
             company: company.id,
+            buyer: buyer.id,
             title: b.otherLocation1Name,
             type: b.type,
-            city: b.city,
+            city: b.otherLocation1City,
             province: b.province,
-            country: b.country
+            country: b.country,
+            isHq: false
           }, function(err, location) {
             if (err) { return res.redirect('/dashboard'); }
             Location.create({
               company: company.id,
+              buyer: buyer.id,
               type: 'port',
               city: b.nearestPortCity,
               province: b.nearestPortProvince,
-              country: b.nearestPortCountry
+              country: b.nearestPortCountry,
+              isHq: false
             }, function(err, location) {
               if (err) { return res.rediret('/dashboard'); }
               res.redirect('/dashboard');              
@@ -92,7 +100,7 @@ module.exports = {
   },
 
   update: function(req, res){
-
+    console.log("You're in BuyerController#update");
   },
 
   destroy: function(req, res){

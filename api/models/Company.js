@@ -20,6 +20,10 @@ module.exports = {
       required: true,
       unique: true
     },
+    phoneNumberCountryCode: {
+      type: 'string',
+      required: true
+    },
     phoneNumber: {
       type: 'string',
       required: true

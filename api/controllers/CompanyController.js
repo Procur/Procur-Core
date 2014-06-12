@@ -42,6 +42,7 @@ module.exports = {
     Company.create({
       user: req.session.passport.user,
       name: b.companyName,
+      phoneNumberCountryCode: b.companyPhoneCountryCode,
       phoneNumber: b.companyPhone,
       phoneExtension: b.companyPhoneExt,
       faxCountryCode: b.companyFaxCountryCode,
@@ -133,7 +134,10 @@ module.exports = {
         Company.update(company, { primaryMode: 'buyer' }, function(err, company){
           if (err) { res.redirect('/dashboard'); }
           console.log('Company updated: ' + company);
-          res.redirect('/dashboard');
+          User.update(user, { activeMode: 'buyer' }, function (err, user) {
+            if (err) { return res.redirect('/dashboard'); }
+            res.redirect('/dashboard');
+          });
         });
       });
     }
@@ -145,7 +149,10 @@ module.exports = {
         Company.update(company, { primaryMode: 'supplier' }, function(err, company){
           if (err) { res.redirect('/dashboard'); }
           console.log('Company updated: ' + company);
-          res.redirect('/dashboard');
+          User.update(user, { activeMode: 'supplier' }, function (err, user){ 
+            if (err) { res.redirect('/dashboard'); }
+            res.redirect('/dashboard');
+          });
         });
       });
     }
@@ -166,29 +173,51 @@ module.exports = {
   },
 
   buyerWizard: function(req, res){
+    var isSupplierAndBuyer = function (company) {
+      if (company.buyer === true && company.supplier === true) {
+        return true;
+      }
+      else { 
+        return false;
+      }
+    };
+
     var user = req.session.passport.user;
 
     Company.findOne({ user: user }, function(err, company){
-      if(err){ return res.redirect('/dashboard') };
+      if (err) { return res.redirect('/dashboard'); }
+      if (isSupplierAndBuyer(company)) { return res.view(); }
       Company.update(company, { buyer: true, supplier: false }, function(err, company){
-        if(err){ return res.redirect('/dashboard') };
-        if(company){
-          res.view();
-        };
+        if (err) { return res.redirect('/dashboard'); }
+        User.update(user, { activeMode: 'buyer' }, function (err, user) {
+          if (err) { return res.redirect('/dashboard'); }
+          if (company) { res.view(); }
+        });
       });
     });
   },
 
   supplierWizard: function(req, res){
+    var isSupplierAndBuyer = function (company) {
+      if (company.buyer === true && company.supplier === true) {
+        return true;
+      }
+      else {
+        return false;
+      }
+    };
+
     var user = req.session.passport.user;
 
     Company.findOne({ user: user }, function(err, company){
-      if(err){ return res.redirect('/dashboard') };
-      Company.update(company, { supplier: true, buyer: false }, function(err, company){
-        if(err){ return res.redirect('/dashboard') };
-        if(company){
-          res.view();
-        };
+      if (err) { return res.redirect('/dashboard'); }
+      if (isSupplierAndBuyer(company)) { return res.view(); }
+      Company.update(company, { supplier: true, buyer: false }, function (err, company){
+        if (err) { return res.redirect('/dashboard'); }
+        User.update(user, { activeMode: 'supplier' }, function (err, user) {
+          if (err) { return res.redirect('/dashboard'); }
+          if (company) { res.view(); }
+        });
       });
     });
   },
@@ -263,73 +292,51 @@ module.exports = {
 
   update: function(req, res){
     var payload = [],
-        locationsPayload = [],
+        locationsPayload = {},
+        viewLocations = {},
         companyId,
         buyerId,
         supplierId,
-        isBuyer,
-        isSupplier;
+        userActiveMode;
     var error = 0;
-    var setBuyerSupplierStatus = function(company) {
-      company["buyer"] === true ? isBuyer = true : isBuyer = false;
-      company["supplier"] === true ? isSupplier = true : isSupplier = false;
-    };
+    var locationsHelper = sails.config.locationsHelper;
 
     User.findOne({ id: req.session.passport.user }, function(err, user){
       if(err) { return res.redirect('/dashboard'); }
+      userActiveMode = user.activeMode;
       Company.findOne({ user: user.id }, function(err, company){
         if(err) { return res.redirect('/dashboard'); }
-        setBuyerSupplierStatus(company);
         companyId = company.id;
         payload.push(company);
-        if ((isBuyer) && (!isSupplier)) {
+        if (userActiveMode === "buyer") {
           Buyer.findOne({ company: companyId }, function(err, buyer){
             if(err) { return res.redirect('/dashboard'); }
             payload.push(buyer);
             Location.find().where({ buyer: buyer.id }).exec(function(err, locations){
               if(err) { return res.redirect('/dashboard'); }
-              locationsPayload.push(locations);
+              locationsPayload["buyer"] = locations;
               Location.find().where({ company: companyId }).exec(function(err, locations){
                 if(err) { return res.redirect('/dashboard'); }
-                locationsPayload.push(locations);
-                res.view({ company: payload[0], buyer: payload[1], locations: locationsPayload });
+                locationsPayload["company"] = locations;
+                viewLocations = locationsHelper.parseLocations(locationsPayload, "buyer");
+                res.view({ user: userActiveMode, company: payload[0], buyer: payload[1], locations: viewLocations });
               });
             });
           });
         }
-        else if ((isSupplier) && (!isBuyer)) {
+        else if (userActiveMode === "supplier") {
           Supplier.findOne({ company: company.id }, function(err, supplier){
             if(err) { return res.redirect('/dashboard'); }
             supplierId = supplier.id;
             payload.push(supplier);
             Location.find().where({ supplier: supplierId }).exec(function(err, locations){
               if(err) { return res.redirect('/dashboard'); }
-              locationsPayload.push(locations);
+              locationsPayload["supplier"] = locations;
               Location.find().where({ company: companyId }).exec(function(err, locations){
                 if(err) { return res.redirect('/dashboard'); }
-                locationsPayload.push(locations);
-                res.view({ company: payload[0], supplier: payload[1], locations: locationsPayload });
-              });
-            });
-          });
-        }
-        else if ((isBuyer) && (isSupplier)) {
-          Buyer.findOne({ company: company.id }, function(err, buyer){
-            if(err) { return res.redirect('/dashboard'); }
-            payload.push(buyer);
-            buyerId = buyer.id;
-            Supplier.findOne({ company: company.id }, function(err, supplier){
-              if(err) { return res.redirect('/dashboard'); }
-              payload.push(supplier);
-              supplierId = supplier.id;
-              Location.find().where({ supplier: supplierId }).exec(function(err, locations){
-                if(err) { return res.redirect('/dashboard'); }
-                locationsPayload.push(locations);
-                Location.find().where({ buyer: buyerId }).exec(function(err, locations){
-                  if(err) { return res.redirect('/dashboard'); }
-                  locationsPayload.push(locations);
-                  res.view({ company: payload[0], buyer: payload[1], supplier: payload[2], locations: locationsPayload });
-                });
+                locationsPayload["company"] = locations;
+                viewLocations = locationsHelper.parseLocations(locationsPayload, "supplier");
+                res.view({ user: userActiveMode, company: payload[0], supplier: payload[1], locations: viewLocations });
               });
             });
           });

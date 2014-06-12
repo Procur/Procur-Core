@@ -19,11 +19,22 @@ module.exports = {
 
   index: function(req, res){
     var is_auth = req.session.authenticated;
-
-    if(is_auth){
-      res.redirect('/dashboard');
+    if(req.session.passport.user){
+      if(is_auth){
+        res.redirect('/dashboard');
+      }
+      res.view();
     }
-    res.view();
+    else {
+      if(is_auth){
+        res.redirect('/logout');
+      }
+      else {
+        console.log('not auth');
+        res.view();
+      }
+    }
+
   },
 
 
