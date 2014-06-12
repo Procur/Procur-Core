@@ -68,6 +68,7 @@ module.exports = {
           if (err) { return res.redirect('/dashboard'); }
           Location.create({
             company: company.id,
+            buyer: buyer.id,
             title: b.otherLocation1Name,
             type: b.type,
             city: b.otherLocation1City,
@@ -78,6 +79,7 @@ module.exports = {
             if (err) { return res.redirect('/dashboard'); }
             Location.create({
               company: company.id,
+              buyer: buyer.id,
               type: 'port',
               city: b.nearestPortCity,
               province: b.nearestPortProvince,

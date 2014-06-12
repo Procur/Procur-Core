@@ -292,78 +292,51 @@ module.exports = {
 
   update: function(req, res){
     var payload = [],
-        locationsPayload = [],
+        locationsPayload = {},
+        viewLocations = {},
         companyId,
         buyerId,
         supplierId,
-        isBuyer,
-        isSupplier,
         userActiveMode;
     var error = 0;
-    var setBuyerSupplierStatus = function(company) {
-      company["buyer"] === true ? isBuyer = true : isBuyer = false;
-      company["supplier"] === true ? isSupplier = true : isSupplier = false;
-    };
-    var setUserActiveMode = function(user) {
-      return user.activeMode; 
-    };
+    var locationsHelper = sails.config.locationsHelper;
 
     User.findOne({ id: req.session.passport.user }, function(err, user){
       if(err) { return res.redirect('/dashboard'); }
-      userActiveMode = setUserActiveMode(user);
+      userActiveMode = user.activeMode;
       Company.findOne({ user: user.id }, function(err, company){
         if(err) { return res.redirect('/dashboard'); }
-        setBuyerSupplierStatus(company);
         companyId = company.id;
         payload.push(company);
-        if ((isBuyer) && (!isSupplier)) {
+        if (userActiveMode === "buyer") {
           Buyer.findOne({ company: companyId }, function(err, buyer){
             if(err) { return res.redirect('/dashboard'); }
             payload.push(buyer);
             Location.find().where({ buyer: buyer.id }).exec(function(err, locations){
               if(err) { return res.redirect('/dashboard'); }
-              locationsPayload.push(locations);
+              locationsPayload["buyer"] = locations;
               Location.find().where({ company: companyId }).exec(function(err, locations){
                 if(err) { return res.redirect('/dashboard'); }
-                locationsPayload.push(locations);
-                res.view({ user: userActiveMode, company: payload[0], buyer: payload[1], locations: locationsPayload });
+                locationsPayload["company"] = locations;
+                viewLocations = locationsHelper.parseLocations(locationsPayload, "buyer");
+                res.view({ user: userActiveMode, company: payload[0], buyer: payload[1], locations: viewLocations });
               });
             });
           });
         }
-        else if ((isSupplier) && (!isBuyer)) {
+        else if (userActiveMode === "supplier") {
           Supplier.findOne({ company: company.id }, function(err, supplier){
             if(err) { return res.redirect('/dashboard'); }
             supplierId = supplier.id;
             payload.push(supplier);
             Location.find().where({ supplier: supplierId }).exec(function(err, locations){
               if(err) { return res.redirect('/dashboard'); }
-              locationsPayload.push(locations);
+              locationsPayload["supplier"] = locations;
               Location.find().where({ company: companyId }).exec(function(err, locations){
                 if(err) { return res.redirect('/dashboard'); }
-                locationsPayload.push(locations);
-                res.view({ user: userActiveMode, company: payload[0], supplier: payload[1], locations: locationsPayload });
-              });
-            });
-          });
-        }
-        else if ((isBuyer) && (isSupplier)) {
-          Buyer.findOne({ company: company.id }, function(err, buyer){
-            if(err) { return res.redirect('/dashboard'); }
-            payload.push(buyer);
-            buyerId = buyer.id;
-            Supplier.findOne({ company: company.id }, function(err, supplier){
-              if(err) { return res.redirect('/dashboard'); }
-              payload.push(supplier);
-              supplierId = supplier.id;
-              Location.find().where({ supplier: supplierId }).exec(function(err, locations){
-                if(err) { return res.redirect('/dashboard'); }
-                locationsPayload.push(locations);
-                Location.find().where({ buyer: buyerId }).exec(function(err, locations){
-                  if(err) { return res.redirect('/dashboard'); }
-                  locationsPayload.push(locations);
-                  res.view({ user: userActiveMode, company: payload[0], buyer: payload[1], supplier: payload[2], locations: locationsPayload });
-                });
+                locationsPayload["company"] = locations;
+                viewLocations = locationsHelper.parseLocations(locationsPayload, "supplier");
+                res.view({ user: userActiveMode, company: payload[0], supplier: payload[1], locations: viewLocations });
               });
             });
           });
