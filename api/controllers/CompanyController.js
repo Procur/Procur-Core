@@ -149,7 +149,7 @@ module.exports = {
         Company.update(company, { primaryMode: 'supplier' }, function(err, company){
           if (err) { res.redirect('/dashboard'); }
           console.log('Company updated: ' + company);
-          User.update(user, { activeMode: 'supplier' }, function (err, user){ 
+          User.update(user, { activeMode: 'supplier' }, function (err, user){
             if (err) { res.redirect('/dashboard'); }
             res.redirect('/dashboard');
           });
@@ -177,7 +177,7 @@ module.exports = {
       if (company.buyer === true && company.supplier === true) {
         return true;
       }
-      else { 
+      else {
         return false;
       }
     };
@@ -303,6 +303,7 @@ module.exports = {
 
     User.findOne({ id: req.session.passport.user }, function(err, user){
       if(err) { return res.redirect('/dashboard'); }
+      if(user === undefined){ return res.serverError(); }
       userActiveMode = user.activeMode;
       Company.findOne({ user: user.id }, function(err, company){
         if(err) { return res.redirect('/dashboard'); }
