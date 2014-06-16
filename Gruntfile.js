@@ -182,7 +182,7 @@ module.exports = function (grunt) {
         }
       }
     },
-    
+
     less: {
       dev: {
         files: [
@@ -425,7 +425,6 @@ module.exports = function (grunt) {
     'clean:dev',
     'jst:dev',
     'less:dev',
-    'sass:dev',
     'copy:dev',    
     'coffee:dev'
   ]);
@@ -456,7 +455,6 @@ module.exports = function (grunt) {
     'clean:dev',
     'jst:dev',
     'less:dev',
-    'sass:dev',
     'copy:dev',
     'coffee:dev',
     'concat',
