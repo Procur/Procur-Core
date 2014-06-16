@@ -492,7 +492,7 @@ module.exports = function (grunt) {
     'sails-linker:devTplJADE'
   ]);
 
-  grunt.registerTask('heroku:production', [
+  grunt.registerTask('heroku', [
     'clean:dev',
     'jst:dev',
     'less:dev',
