@@ -21,21 +21,22 @@ module.exports = {
 
     //PROCESSES LOGIN REQUESTS
     process: function(req, res){
-    passport.authenticate('local', function(err, user, info) {
-      if ((err) || (!user)) {
-        return res.send({
-        message: 'login failed'
-        });
+      passport.authenticate('local', function(err, user, info) {
+        if ((err) || (!user)) {
+          return res.send({
+          message: 'login failed'
+          });
+        req.session.authenticated = true;
         return res.redirect('/dashboard');
-      }
-      req.logIn(user, function(err) {
-        if (err) { return res.redirect('/dashboard'); }
-        else {
-          req.session.authenticated = true;
-          res.redirect('/welcome');
         }
-      });
-    })(req, res);
+        req.logIn(user, function(err) {
+          if (err) { return res.redirect('/dashboard'); }
+          else {
+            req.session.authenticated = true;
+            res.redirect('/welcome');
+          }
+        });
+      })(req, res);
   },
 
   //HANDLES REGISTRATION FORM DATA
