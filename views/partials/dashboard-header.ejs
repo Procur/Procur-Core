@@ -27,10 +27,10 @@
           <ul>
             <% if((company.buyer == true) && (company.supplier == true)) { %>
             <% if(user.activeMode == 'buyer') { %>
-              <li class="typeToggle buyer">BUYER ACTIVE</li>
+              <li class="typeToggle buyer">SWITCH TO SUPPLIER</li>
             <% } %>
             <% if(user.activeMode == 'supplier') { %>
-              <li class="typeToggle supplier">SUPPLIER ACTIVE</li>
+              <li class="typeToggle supplier">SWITCH TO BUYER</li>
             <% } %>
           <% } %>
             <li><a href="#">MY PROCUR</a></li>
