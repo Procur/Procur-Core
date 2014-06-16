@@ -31,8 +31,7 @@
   },
   "scripts": {
     "start": "node app.js",
-    "debug": "node debug app.js",
-    "postinstall": "./node_modules/.bin/grunt"
+    "debug": "node debug app.js"
   },
   "main": "app.js",
   "repository": {
