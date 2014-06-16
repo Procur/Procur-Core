@@ -492,6 +492,8 @@ module.exports = function (grunt) {
     'sails-linker:devTplJADE'
   ]);
 
+  grunt.registerTask('heroku:production', 'clean less mincss uglify');
+
   // When API files are changed:
   // grunt.event.on('watch', function(action, filepath) {
   //   grunt.log.writeln(filepath + ' has ' + action);
