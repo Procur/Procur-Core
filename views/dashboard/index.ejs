@@ -5,7 +5,7 @@
       <div class="row">
         <div class="col-sm-4 userImageColumn">
           <section id="userData">
-              <% if(user.image){ %><img class="userImage" src="<%= user.image %>"><% }else{%> <a href="http://localhost:1337/user/update" class="userImage"><img class="userImage" src="/images/addUserPhoto.png"></a> <%}%>
+              <% if(user.image){ %><img class="userImage" src="<%= user.image %>"><% }else{%> <a href="/user/update" class="userImage"><img class="userImage" src="/images/addUserPhoto.png"></a> <%}%>
           </section>
         </div>
         <div class="col-sm-8">
@@ -17,10 +17,10 @@
       <div class="row">
         <div class="col-sm-12 userColumnLinks">
           <div class="userLink">
-            <i class="fa fa-gear fa-fw"></i> <a href="http://localhost:1337/user/update">Edit User Account Settings</a><br/>
+            <i class="fa fa-gear fa-fw"></i> <a href="/user/update">Edit User Account Settings</a><br/>
           </div>
           <div class="userLink">
-            <i class="fa fa-external-link-square fa-fw"></i> <a href="http://localhost:1337/companies/<%= company.handle %>">View My Company Profile</a>
+            <i class="fa fa-external-link-square fa-fw"></i> <a href="/companies/<%= company.handle %>">View My Company Profile</a>
           </div>
         </div>
       </div>
@@ -126,10 +126,10 @@
 <p>Welcome back, <%= user.firstName %></p>
 <h1>Dashboard</h1>
 
-<div><a href="http://localhost:1337/company/update">Change profile information</div>
-<div><a href="http://localhost:1337/companies/<%= company.handle %>">View my profile</a></div>
-<div><a href="http://localhost:1337/user/update">Change Password</a></div>
-<div><a href="http://localhost:1337/logout">Logout</a></div>
+<div><a href="/company/update">Change profile information</div>
+<div><a href="/companies/<%= company.handle %>">View my profile</a></div>
+<div><a href="/user/update">Change Password</a></div>
+<div><a href="/logout">Logout</a></div>
 
 <section id="userData">
   <ul>
@@ -170,7 +170,7 @@
 <% if((company.buyer == true) && (company.supplier == true)) { %>
 <section id="modeToggle">
   <h4>Toggle View</h4>
-  <form action="http://localhost:1337/togglemode" method="post">
+  <form action="/togglemode" method="post">
     <select name="mode">
       <option value="buyer">Buyer</option>
       <option value="supplier">Supplier</option>

@@ -14,7 +14,7 @@
         <!--  OLD STUFF HERE
           <section id="modeToggle">
             <h4>Toggle View</h4>
-            <form action="http://localhost:1337/togglemode" method="post">
+            <form action="/togglemode" method="post">
               <select name="mode">
                 <option value="buyer">Buyer</option>
                 <option value="supplier">Supplier</option>
@@ -34,7 +34,7 @@
             <% } %>
           <% } %>
             <li><a href="#">MY PROCUR</a></li>
-            <li><a href="http://localhost:1337/logout"><i class="fa fa-sign-out fa-fw"></i> LOGOUT</a></li>
+            <li><a href="/logout"><i class="fa fa-sign-out fa-fw"></i> LOGOUT</a></li>
           </ul>
         </div>
       </div>
@@ -46,9 +46,9 @@
         <div class="col-sm-12 text-right">
           <ul>
             <li><a href="http://localhost:1338/dashboard">Dashboard</a></li>
-            <li><a href="http://localhost:1337/companies/<%= company.handle %>">View Company Profile</a></li>
-            <li><a href="http://localhost:1337/company/update">Edit Company Profile</a></li>
-            <li><a href="http://localhost:1337/user/update">User Account Settings</a></li>
+            <li><a href="/companies/<%= company.handle %>">View Company Profile</a></li>
+            <li><a href="/company/update">Edit Company Profile</a></li>
+            <li><a href="/user/update">User Account Settings</a></li>
           </ul>
         </div>
       </div>
