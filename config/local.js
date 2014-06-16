@@ -21,7 +21,7 @@
  * For more information, check out:
  * http://sailsjs.org/#documentation
  */
-var fs = require('fs');
+
 module.exports = {
 
 

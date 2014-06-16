@@ -68,7 +68,7 @@ module.exports.sockets = {
   host: 'angelfish.redistogo.com',
   port: '9809',
   // ttl: <redis session TT'L in seconds>,
-  db: 'process.env.REDIS_DB',
+  db: process.env.REDIS_DB,
   pass: '0d5b806697a93b4cd6f1f66bd4b24c18',
   // Worth mentioning is that, if `adapter` config is `redis`,
   // but host/port is left unset, Sails will try to connect to redis

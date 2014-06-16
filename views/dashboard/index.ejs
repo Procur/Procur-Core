@@ -1,7 +1,180 @@
+<div class="container">
+    <div class="row">
+        <div class="col-sm-4 userColumn">
+            <div class="row">
+                <div class="col-sm-4">
+                    <section id="userData">
+                        <% if(user.image){ %><img src="<%= user.image %>"><% } %>
+                    </section>
+                </div>
+                <div class="col-sm-8">
+                    <h1><%= user.firstName %> <%= user.lastName %></h1>
+                    <h2><%= company.name %></h2>
+                    <h3>Procur Member Since <%= user.createdAt %></h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 userColumnLinks">
+                    <div class="userLink">
+                        <i class="fa fa-gear fa-fw"></i> <a href="http://localhost:1337/company/update">Edit Account Settings</a><br/>
+                    </div>
+                    <div class="userLink">
+                        <i class="fa fa-external-link-square fa-fw"></i> <a href="http://localhost:1337/companies/<%= company.handle %>">View My Company Profile</a>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6 userResourceLinks">
+                    <h4>TOOLS &amp; Resources</h4>
+                    <a href="#">This Tool</a><br/>
+                    <a href="#">Longer Text Here</a><br/>
+                    <a href="#">Another One</a><br/>
+                </div>
+                <div class="col-sm-6 userResourceLinks">
+                    <h4>Help &amp; Support</h4>
+                    <a href="#">More Things</a><br/>
+                    <a href="#">Better Stuff</a><br/>
+                    <a href="#">Some Great Help</a><br/>
+                    <a href="#">Very Useful</a><br/>
+                    <a href="#">Totally Great &amp; Easy</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-5">
+            <div class="middleHeader">
+                <h1>My Procur Action Items</h1>
+            </div>
+            <div class="middleDescription">
+                <h1>Welcome to Procur Early Access!</h1>
+                <p>This is a little bit about Early Access and what we’ll be doing and why we’re doing Early Access. People might want more information on what they’ll be able to do as a part of this time period and what the next steps are.</p>
+                <a href="#">Learn More About Early Access</a>
+            </div>
+            <div class="middleList">
+                <ul>
+                    <% if(user.photo){%> <li><i class="fa fa-check-circle"></i> <strike>Upload a user photo</strike></li> <%}else{%> <li><i class="fa fa-circle-o"></i> Upload a user photo</li> <%}%>
+                    <% if(user.jobTitle){%> <li><i class="fa fa-check-circle"></i> <strike>Update your Job Title</strike></li> <%}else{%> <li><i class="fa fa-circle-o"></i> Update your Job Title</li> <%}%>
+                    <% if(company.website){%> <li><i class="fa fa-check-circle"></i> <strike>Add your company's website address</strike></li> <%}else{%> <li><i class="fa fa-circle-o"></i> Add your company's website address</li> <%}%>
+
+
+                    <% if(company.logo){%> <li><i class="fa fa-check-circle"></i> <strike>Upload your company's logo image</strike></li> <%}else{%> <li><i class="fa fa-circle-o"></i> Upload your company's logo image</li> <%}%>
+                    <% if(company.description){%> <li><i class="fa fa-check-circle"></i> <strike>Add your company description</strike></li> <%}else{%> <li><i class="fa fa-circle-o"></i> Add your company description</li> <%}%>
+                    <% if(company.website){%> <li><i class="fa fa-check-circle"></i> <strike>Add your company website</strike></li> <%}else{%> <li><i class="fa fa-circle-o"></i> Add your company website</li> <%}%>
+
+                    <% if(user.activeMode == 'buyer') { %>
+                    <% if(buyer) { %>
+                    <% if(buyer.responsibilityStatement){%> <li><i class="fa fa-check-circle"></i> <strike>Add your company's Statements of Responsibility</strike></li> <%}else{%> <li><i class="fa fa-circle-o"></i> Add your company's Statements of Responsibility</li> <%}%>
+                    <% if(buyer.preferredSupplierType){%> <li><i class="fa fa-check-circle"></i> <strike>Add your preferred supplier type</strike></li> <%}else{%> <li><i class="fa fa-circle-o"></i> Add your preferred supplier type</li> <%}%>
+                    <% if(buyer.productsOfInterest){%> <li><i class="fa fa-check-circle"></i> <strike>Add your products of interest</strike></li> <%}else{%> <li><i class="fa fa-circle-o"></i> Add your products of interest</li> <%}%>
+                    <% }
+                    }
+                    else if(user.activeMode == 'supplier') { %>
+                    <% if(supplier) { %>
+                    <% if(supplier.preferredBuyerType){%> <li><i class="fa fa-check-circle"></i> <strike>Add your PBT</strike></li> <%}else{%> <li><i class="fa fa-circle-o"></i> Add your PBT</li> <%}%>
+                    <% } %>
+
+                    <% } %>
+                </ul>
+            </div>
+        </div>
+        <div class="col-sm-3 featuresColumn">
+            <h4>Currently Accessible:</h4>
+            <div class="rightSec">
+                <div class="rightSecBox">
+                    <i class="fa fa-gear fa-fw"></i>
+                </div>
+                <a href="#">Registered Trading Profile</a>
+            </div>
+
+            <h4>Features Coming Soon:</h4>
+            <div class="rightSec">
+                <div class="rightSecBox">
+                    <i class="fa fa-envelope fa-fw"></i>
+                </div>
+                <a href="#">In-App Message System</a>
+            </div>
+            <div class="rightSec rightAlt">
+                <div class="rightSecBox">
+                    <i class="fa fa-search fa-fw"></i>
+                </div>
+                <a href="#">Advanced Search</a>
+            </div>
+            <div class="rightSec">
+                <div class="rightSecBox">
+                    <i class="fa fa-truck fa-fw"></i>
+                </div>
+                <a href="#">Tradestream RFx Manager</a>
+            </div>
+            <div class="rightSec rightAlt">
+                <div class="rightSecBox">
+                    <i class="fa fa-th-large fa-fw"></i>
+                </div>
+                <a href="#">Product Database</a>
+            </div>
+            <div class="rightSec">
+                <div class="rightSecBox">
+                    <i class="fa fa-user fa-fw"></i>
+                </div>
+                <a href="#">Multiple User Accounts</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- 
 <p>Welcome back, <%= user.firstName %></p>
 <h1>Dashboard</h1>
 
-<div><a href="/company/update">Change profile information</div>
-<div><a href=<%= '/companies/' + company.handle %>>View my profile</a></div>
-<div><a href="/user/update">Change Password</a></div>
-<div><a href="/logout">Logout</a></div>
+<div><a href="http://localhost:1337/company/update">Change profile information</div>
+<div><a href="http://localhost:1337/companies/<%= company.handle %>">View my profile</a></div>
+<div><a href="http://localhost:1337/user/update">Change Password</a></div>
+<div><a href="http://localhost:1337/logout">Logout</a></div>
+
+<section id="userData">
+  <ul>
+    <% if(user.image){ %><img src="<%= user.image %>"><% } %>
+    <li>Name: <%= user.firstName + ' ' + user.lastName %></li>
+    <li>Member Since: <%= user.createdAt %></li>
+    <li>Company: <%= company.name %></li>
+    <% if(user.jobTitle){ %><li>Job Title: <%= user.jobTitle %></li><% } %>
+    <li>About EA:</li>
+  </ul>
+</section>
+
+<section id="buyerChecklist">
+  <% if(company.website){%> <li><strike>Add your company website</strike></li> <%}else{%> <li>Add your company website</li> <%}%>
+  <% if(user.jobTitle){%> <li><strike>Add your job title</strike></li> <%}else{%> <li>Add your job title</li> <%}%>
+  <% if(user.photo){%> <li><strike>Add your photo</strike></li> <%}else{%> <li>Add your photo</li> <%}%>
+  <% if(company.logo){%> <li><strike>Add your company logo</strike></li> <%}else{%> <li>Add your company logo</li> <%}%>
+  <% if(company.description){%> <li><strike>Add your company description</strike></li> <%}else{%> <li>Add your company description</li> <%}%>
+  <% if(company.website){%> <li><strike>Add your company website</strike></li> <%}else{%> <li>Add your company website</li> <%}%>
+
+  <% if(user.activeMode == 'buyer') { %>
+    <% if(buyer) { %>
+      <% if(buyer.responsibilityStatement){%> <li><strike>Add your SoR</strike></li> <%}else{%> <li>Add your SoR</li> <%}%>
+      <% if(buyer.preferredSupplierType){%> <li><strike>Add your preferred supplier type</strike></li> <%}else{%> <li>Add your preferred supplier type</li> <%}%>
+      <% if(buyer.productsOfInterest){%> <li><strike>Add your products of interest</strike></li> <%}else{%> <li>Add your products of interest</li> <%}%>
+    <% }
+}
+else if(user.activeMode == 'supplier') { %>
+    <% if(supplier) { %>
+      <% if(supplier.preferredBuyerType){%> <li><strike>Add your PBT</strike></li> <%}else{%> <li>Add your PBT</li> <%}%>
+    <% } %>
+
+  <% } %>
+
+
+</section>
+
+<% if((company.buyer == true) && (company.supplier == true)) { %>
+<section id="modeToggle">
+  <h4>Toggle View</h4>
+  <form action="http://localhost:1337/togglemode" method="post">
+    <select name="mode">
+      <option value="buyer">Buyer</option>
+      <option value="supplier">Supplier</option>
+    </select>
+    <input type="submit">
+  </form>
+</section>
+<% } %> -->

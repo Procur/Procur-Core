@@ -14,10 +14,10 @@
  *
  * @docs        :: http://sailsjs.org/#!documentation/controllers
  */
-
+var dateformat = require('dateformat');
 module.exports = {
 
-  index: function(req, res){
+ /* index: function(req, res){
 
     /*var user = req.session.passport.user;
     var payload = [];
@@ -32,7 +32,7 @@ module.exports = {
         });
       }
     });
-  }*/
+  }
     if(process.env.NODE_ENV == 'development') {
       console.log('dev');
       res.redirect('http://localhost:1338');
@@ -41,6 +41,55 @@ module.exports = {
       console.log('prod');
       res.redirect('http://myprocur-staging.herokuapp.com');
     }
+  }*/
+
+  index: function(req, res){
+    var user = req.session.passport.user;
+    var payload = [];
+
+    User.findOne({ id: user }, function(err, user){
+      if(err) { return res.redirect('/'); }
+      else {
+        user.createdAt = dateformat(user.createdAt, 'yyyy');
+        payload.push(user);
+        Company.findOne({ user: user.id }, function(err, company){
+          if(err) { return res.redirect('/'); }
+          payload.push(company);
+          Buyer.findOne({ company: company.id }, function(err, buyer){
+            if(err){ return res.redirect('/') }
+            console.log(buyer);
+            if(buyer){
+              payload.push(buyer);
+              Supplier.findOne({ company: company.id }, function(err, supplier){
+                if(err) { return res.redirect('/'); }
+                console.log(supplier);
+                if(supplier) {
+                  payload.push(supplier);
+                  res.view({ user: payload[0], company: payload[1], buyer: payload[2], supplier: payload[3] });
+                }
+                else {
+                  res.view({ user: payload[0], company: payload[1], buyer: payload[2] });
+                }
+              });
+            }
+            else {
+              payload.push('no buyer');
+              Supplier.findOne({ company: company.id }, function(err, supplier){
+                if(err) { return res.redirect('/'); }
+                if(supplier) {
+                  payload.push(supplier);
+                  res.view({ user: payload[0], company: payload[1], buyer: payload[2], supplier: payload[3] });
+                }
+                else {
+                  payload.push('no supplier');
+                  res.view({ user: payload[0], company: payload[1], buyer: payload[2], supplier: payload[3] });
+                }
+              });
+            }
+          });
+        });
+      }
+    });
   }
 
 };
