@@ -182,29 +182,7 @@ module.exports = function (grunt) {
         }
       }
     },
-
-    sass: {
-      dev: {
-        options: {
-          style: 'expanded' 
-        },
-        files: [{
-          expand: true,
-          cwd: 'assets/styles/',
-          src: ['*.scss', '*.sass'], // Feel free to remove a format if you do not use it.
-          dest: '.tmp/public/styles/',
-          ext: '.css'
-        }, {
-          expand: true,
-          cwd: 'assets/linker/styles/',
-          src: ['*.scss', '*.sass'], // Feel free to remove a format if you do not use it.
-          dest: '.tmp/public/linker/styles/',
-          ext: '.css'
-        }
-        ]
-      }
-    },
-
+    
     less: {
       dev: {
         files: [
