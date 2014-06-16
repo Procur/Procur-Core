@@ -26,13 +26,14 @@ module.exports = {
           return res.send({
           message: 'login failed'
           });
-        req.session.authenticated = true;
         return res.redirect('/dashboard');
         }
         req.logIn(user, function(err) {
           if (err) { return res.redirect('/dashboard'); }
           else {
             req.session.authenticated = true;
+            console.log(req);
+            console.log(req.session);
             res.redirect('/welcome');
           }
         });
