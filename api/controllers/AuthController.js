@@ -26,7 +26,7 @@ module.exports = {
           return res.send({
           message: 'login failed'
           });
-        return res.redirect('/dashboard');
+        //return res.redirect('/dashboard');
         }
         req.logIn(user, function(err) {
           if (err) { return res.redirect('/dashboard'); }
