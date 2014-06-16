@@ -34,6 +34,7 @@ module.exports = {
             req.session.authenticated = true;
             console.log(req);
             console.log(req.session);
+            console.log('THIS IS WHERE WE ARE FFS');
             res.redirect('/welcome');
           }
         });
