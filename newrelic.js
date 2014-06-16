@@ -8,11 +8,11 @@ exports.config = {
   /**
    * Array of application names.
    */
-  app_name : ['procur-core'],
+  app_name : ['My Application'],
   /**
    * Your New Relic license key.
    */
-  license_key : '13dca9072265bcbf41b040820eaff71164093298',
+  license_key : '0286c2001595d1fbd0068c8611644ca225df9fbd',
   logging : {
     /**
      * Level at which to log. 'trace' is most useful to New Relic when diagnosing
