@@ -1,0 +1,149 @@
+/* Variables Live Here */
+/* Mixins */
+/* General Styles */
+h1, h2, h3, h4 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+}
+
+p {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  font-size: 12px;
+  letter-spacing: 0.05em;
+}
+
+input {
+  font-family: 'Roboto', sans-serif;
+}
+
+/* Import CSS Partials Here */
+/* Registration Wizard */
+/* Registration Wizard Fields */
+#regWizard h1 {
+  text-align: center;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 18px;
+  font-weight: 300;
+}
+#regWizard h4 {
+  font-size: 12px;
+  margin-bottom: 0px;
+  margin-top: 0px;
+}
+#regWizard .fieldBox {
+  background: #ecebe6;
+  padding: 25px 30px;
+}
+#regWizard .topBox {
+  background: #333132;
+}
+#regWizard .topBox h1 {
+  text-align: center;
+  font-family: 'Montserrat', sans-serif;
+  color: white;
+  font-size: 14px;
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  margin: 0px;
+  padding: 25px 0px 20px;
+}
+#regWizard input {
+  border: 0px none;
+  margin: 5px 0px;
+  width: 100%;
+  height: 25px;
+  font-size: 11px;
+  padding: 0px 7px;
+  font-weight: 100;
+}
+#regWizard .checkbox {
+  height: auto;
+  width: auto;
+  display: inline-block;
+  margin-right: 8px;
+}
+#regWizard .checkboxtext {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 11px;
+  display: inline-block;
+  position: relative;
+  top: -3px;
+}
+#regWizard .styledSelect select {
+  width: 115%;
+  background: transparent;
+  border: none 0px;
+  margin: 4px 0px 4px;
+  height: 18px;
+  line-height: 25px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 100;
+  font-size: 11px;
+  padding: 0px 4px;
+  -webkit-appearance: none;
+}
+#regWizard .styledSelect {
+  margin-top: 5px;
+  margin-bottom: 10px;
+  width: 100%;
+  overflow: hidden;
+  background: url(/images/ddarrow.png) no-repeat right white;
+}
+#regWizard .insideForm .inputColumnL {
+  padding-right: 0px;
+}
+#regWizard .insideForm .inputColumnR {
+  padding-left: 8px;
+}
+#regWizard .breakForm {
+  margin-bottom: 20px;
+}
+#regWizard button {
+  position: absolute;
+  background: white;
+  border: 0px none;
+  top: 15px;
+  right: 4px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 12px;
+  display: inline;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+#regWizard .pillContainer {
+  position: relative;
+  height: 100px;
+}
+#regWizard a.pill {
+  left: 15px;
+  top: 0px;
+  position: absolute;
+  border-radius: 30px 30px 30px 30px;
+  background: #bbbdbf;
+  padding: 10px 20px;
+  font-family: 'Montserrat', sans-serif;
+  text-transform: uppercase;
+  color: #f7f7f7;
+  font-weight: 300;
+  letter-spacing: 0.07em;
+  margin-top: 30px;
+  text-decoration: none;
+  -webkit-transition: all 100ms ease-in-out;
+  -moz-transition: all 100ms ease-in-out;
+  -ms-transition: all 100ms ease-in-out;
+  -o-transition: all 100ms ease-in-out;
+  transition: all 100ms ease-in-out;
+  font-size: 14px;
+  width: 90%;
+}
+#regWizard a:hover.pill {
+  background: #2fa566;
+  text-decoration: none;
+  -webkit-transition: all 100ms ease-in-out;
+  -moz-transition: all 100ms ease-in-out;
+  -ms-transition: all 100ms ease-in-out;
+  -o-transition: all 100ms ease-in-out;
+  transition: all 100ms ease-in-out;
+}
