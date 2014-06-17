@@ -8,11 +8,11 @@ var passport = require('passport'),
     smtpTransport = nodemailer.createTransport("SMTP", {
       service: "Mandrill",
       auth: {
-        user: mandrill.username,
-        pass: mandrill.pass
+        user: process.env.MANDRILL_USERNAME,
+        pass: process.env.MANDRILL_APIKEY
       }
     }),
-    address = '127.0.0.1:1337',
+    address = process.env.ENVIRONMENT_URL || 'localhost:1337',
     crypto = require('crypto'),
     bcrypt = require('bcrypt'),
     token;
@@ -62,7 +62,7 @@ module.exports = {
               if(err) { return res.redirect('/dashboard'); }
               token = hash.toString('base64').replace(/\//g,'_').replace(/\+/g,'-');
               EmailVerification.create({ email: b.email, token: token }, function(err, emailVerification){
-                if(err) { return redirect('/dashboard'); }
+                if(err) { return res.redirect('/dashboard');
               });
 
               //USER CREATED///////////
@@ -112,33 +112,45 @@ module.exports = {
     var b = req.body;
     var newPassword;
     var emailAddress;
-    bcrypt.genSalt(10, function(err, salt){
-      bcrypt.hash(b.password, salt, function(err, hash){
-        newPassword = hash;
-        User.findOne({ id: req.session.passport.user }, function(err, user){
-          if(err) { return res.redirect('/dashboard'); }
-          emailAddress = user.email;
-          User.update(user, { password: newPassword }, function(err, user){
+    console.log("THE PASSWORD: " + b.password);
+    if((b.password !== undefined) && (b.password !== "")){
+      bcrypt.genSalt(10, function(err, salt){
+        bcrypt.hash(b.password, salt, function(err, hash){
+          newPassword = hash;
+          User.findOne({ id: req.session.passport.user }, function(err, user){
             if(err) { return res.redirect('/dashboard'); }
+            emailAddress = user.email;
+            User.update(user, { password: newPassword }, function(err, user){
+              if(err) { return res.redirect('/dashboard'); }
 
-            var htmlContent = 'Your procur password has been changed. Please contact support if you did not authorize this change.';
-            var mailOptions = {
-              from: "support@procur.com",
-              to: emailAddress,
-              subject: "Your Procur password has been changed",
-              generateTextFromHTML: true,
-              html: htmlContent
-            };
+              var htmlContent = 'Your procur password has been changed. Please contact support if you did not authorize this change.';
+              var mailOptions = {
+                from: "support@procur.com",
+                to: emailAddress,
+                subject: "Your Procur password has been changed",
+                generateTextFromHTML: true,
+                html: htmlContent
+              };
 
-            smtpTransport.sendMail(mailOptions, function(err, response){
-              if(err){res.serverError();}
+              smtpTransport.sendMail(mailOptions, function(err, response){
+                if(err){
+                  console.log(err);
+                }
+                else {
+                  console.log("Change Password email sent: " + response.message);
+                }
+              });
+              req.flash('Password changed.');
+              res.redirect('/dashboard');
             });
-            req.flash('Password changed.');
-            res.redirect('/dashboard');
           });
         });
       });
-    });
+    }
+    else {
+      req.flash('You must enter a new password to change your current one');
+      res.redirect('/user/update')
+    }
   },
 
   forgotPassword: function(req, res){
