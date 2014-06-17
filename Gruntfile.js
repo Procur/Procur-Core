@@ -31,7 +31,7 @@ module.exports = function (grunt) {
   var cssFilesToInject = [
 
     // Bring in any CSS files within the linker folder (should really only be the single .css created by sass)
-    'linker/**/main.css'
+    'linker/**/*.css'
   ];
 
 
