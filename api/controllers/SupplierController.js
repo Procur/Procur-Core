@@ -75,7 +75,6 @@ module.exports = {
           }, function(err, location) {
             if (err) {
               var message = "There was a problem."
-              console.log("error is " + JSON.stringify(err));
               res.redirect('/dashboard', { message: message });
             }
             Location.create({
@@ -87,7 +86,6 @@ module.exports = {
               country: b.nearestPortCountry,
               isHq: false
             }, function(err, location) {
-              console.log("New location is: " + JSON.stringify(location));
               if (err) {
                 var message = "There was a problem."
                 res.redirect('/dashboard', { message: message });
@@ -101,7 +99,6 @@ module.exports = {
   },
 
   update: function(req, res){
-    console.log("You're in SupplierController#update");
   },
 
   destroy: function(req, res){
