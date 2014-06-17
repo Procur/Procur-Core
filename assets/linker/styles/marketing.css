@@ -1,0 +1,46 @@
+.heroImage {
+	width: 100%;
+	background: #e2e2e2;
+	margin: 0px;
+	padding: 0px;
+	min-height: 360px;
+}
+
+.heroImage h3 {
+	font-family: 'Montserrat', sans-serif;
+	font-size: 12px;
+	color: white;
+	letter-spacing: 0.06em;
+	text-align: center;
+	font-weight: 400;
+}
+
+.regForm {
+	background-color: rgba(0, 0, 0, 0.2);
+	min-height: 360px;
+}
+
+.regForm input {
+	width: 100%;
+	margin-bottom: 10px;
+	height: 37px;
+	line-height: 37px;
+	padding-left: 10px;
+	font-family: 'Roboto', sans-serif;
+	font-weight: 300;
+}
+
+.regForm button {
+	width: 100%;
+	margin-bottom: 10px;
+	height: 37px;
+	line-height: 37px;
+	padding-left: 10px;
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 400;
+	border: 0px none;
+	background: rgba(241,144,57,0.9);
+	color: white;
+	letter-spacing: 0.08em;
+	font-size: 11px;
+}
