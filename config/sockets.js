@@ -42,10 +42,7 @@ module.exports.sockets = {
   'jsonp-polling'
   ],
 
-  host: process.env.REDIS_HOST || 'localhost',
-  port: process.env.REDIS_PORT || 6379,
-  db: process.env.REDIS_DB || "",
-  pass: process.env.REDIS_PASS || "",
+  url: process.env.REDISTOGO_URL,
 
 
   // Use this option to set the datastore socket.io will use to manage rooms/sockets/subscriptions:
