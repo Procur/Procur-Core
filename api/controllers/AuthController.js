@@ -12,7 +12,7 @@ var passport = require('passport'),
         pass: mandrill.pass
       }
     }),
-    address = '127.0.0.1:1337',
+    address = process.env.ENVIRONMENT_URL || 'localhost:1337',
     crypto = require('crypto'),
     bcrypt = require('bcrypt'),
     token;
@@ -66,7 +66,8 @@ module.exports = {
               token = hash.toString('base64').replace(/\//g,'_').replace(/\+/g,'-');
               console.log("TOKEN: " + token);
               EmailVerification.create({ email: b.email, token: token }, function(err, emailVerification){
-                if(err) { return redirect('/dashboard'); }
+                if(err) { return res.redirect('/dashboard');
+                console.log(err);}
                 console.log("Verification created: " + emailVerification);
               });
 

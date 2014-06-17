@@ -65,7 +65,7 @@ module.exports = {
   'default': 'mongo',
     mongo: {
       module: 'sails-mongo',
-      url: 'mongodb://procur-dev:Pr0cur1!@oceanic.mongohq.com:10073/app25459603'
+      url: process.env.DB_URL || 'mongodb://localhost:27017/procur-core'
     }
   }
 
