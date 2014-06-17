@@ -62,7 +62,7 @@ module.exports = {
               if(err) { return res.redirect('/dashboard'); }
               token = hash.toString('base64').replace(/\//g,'_').replace(/\+/g,'-');
               EmailVerification.create({ email: b.email, token: token }, function(err, emailVerification){
-                if(err) { return res.redirect('/dashboard');
+                if(err) { return res.redirect('/dashboard'); }
               });
 
               //USER CREATED///////////
