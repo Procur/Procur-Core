@@ -28,12 +28,12 @@
 
                 <h4>Language(s)*</h4>
                 <div class="styledSelect">
-                  <select name="language1">
+                  <select name="language">
                     <%- partial('../partials/dropdowns/language') %>
                   </select>
                 </div>
                 <div class="styledSelect breakForm">
-                  <select name="language2">
+                  <select name="language">
                     <%- partial('../partials/dropdowns/language') %>
                   </select>
                 </div>
@@ -47,7 +47,7 @@
 
                 <h4>Other Locations</h4>
                 <section id="otherLocation1">
-                  <div><input type="text" name="otherLocation1Name" placeholder="Location Title"></div>
+                  <div><input type="text" name="otherLocationName" placeholder="Location Title"></div>
                   <div class="styledSelect">
                     <select name="type">
                       <%- partial('../partials/dropdowns/other-location-type') %>
@@ -65,7 +65,7 @@
                       <option value="2">2</option>
                     </select>
                   </div>
-                  <div><input type="text" name="otherLocation1City" placeholder="City"></div>
+                  <div><input type="text" name="otherLocationCity" placeholder="City"></div>
                 </section>
                 
               </div>
@@ -97,20 +97,20 @@
                 <section id="acceptedDeliveryTerms">
                   <div class="row breakForm">
                     <div class="col-sm-6">
-                      <input class="checkbox" type="checkbox" name="deliveryTerms" value="EXW"><div class="checkboxtext">EXW</div><br>
-                      <input class="checkbox" type="checkbox" name="deliveryTerms" value="FCA"><div class="checkboxtext">FCA</div><br>
-                      <input class="checkbox" type="checkbox" name="deliveryTerms" value="CPT"><div class="checkboxtext">CPT</div><br>
-                      <input class="checkbox" type="checkbox" name="deliveryTerms" value="CIP"><div class="checkboxtext">CIP</div><br>
-                      <input class="checkbox" type="checkbox" name="deliveryTerms" value="DAT"><div class="checkboxtext">DAT</div><br>
-                      <input class="checkbox" type="checkbox" name="deliveryTerms" value="DAP"><div class="checkboxtext">DAP</div><br>
+                      <input class="checkbox" type="checkbox" name="acceptedDeliveryTerms" value="EXW"><div class="checkboxtext">EXW</div><br>
+                      <input class="checkbox" type="checkbox" name="acceptedDeliveryTerms" value="FCA"><div class="checkboxtext">FCA</div><br>
+                      <input class="checkbox" type="checkbox" name="acceptedDeliveryTerms" value="CPT"><div class="checkboxtext">CPT</div><br>
+                      <input class="checkbox" type="checkbox" name="acceptedDeliveryTerms" value="CIP"><div class="checkboxtext">CIP</div><br>
+                      <input class="checkbox" type="checkbox" name="acceptedDeliveryTerms" value="DAT"><div class="checkboxtext">DAT</div><br>
+                      <input class="checkbox" type="checkbox" name="acceptedDeliveryTerms" value="DAP"><div class="checkboxtext">DAP</div><br>
                     </div>
                     <div class="col-sm-6">
-                      <input class="checkbox" type="checkbox" name="deliveryTerms" value="DDP"><div class="checkboxtext">DDP</div><br>
-                      <input class="checkbox" type="checkbox" name="deliveryTerms" value="FAS"><div class="checkboxtext">FAS</div><br>
-                      <input class="checkbox" type="checkbox" name="deliveryTerms" value="FOB"><div class="checkboxtext">FOB</div><br>
-                      <input class="checkbox" type="checkbox" name="deliveryTerms" value="CFR"><div class="checkboxtext">CFR</div><br>
-                      <input class="checkbox" type="checkbox" name="deliveryTerms" value="CIF"><div class="checkboxtext">CIF</div><br>
-                      <input class="checkbox" type="checkbox" name="deliveryTerms" value="Custom"><div class="checkboxtext">Custom</div><br>
+                      <input class="checkbox" type="checkbox" name="acceptedDeliveryTerms" value="DDP"><div class="checkboxtext">DDP</div><br>
+                      <input class="checkbox" type="checkbox" name="acceptedDeliveryTerms" value="FAS"><div class="checkboxtext">FAS</div><br>
+                      <input class="checkbox" type="checkbox" name="acceptedDeliveryTerms" value="FOB"><div class="checkboxtext">FOB</div><br>
+                      <input class="checkbox" type="checkbox" name="acceptedDeliveryTerms" value="CFR"><div class="checkboxtext">CFR</div><br>
+                      <input class="checkbox" type="checkbox" name="acceptedDeliveryTerms" value="CIF"><div class="checkboxtext">CIF</div><br>
+                      <input class="checkbox" type="checkbox" name="acceptedDeliveryTerms" value="Custom"><div class="checkboxtext">Custom</div><br>
                     </div>
                   </div>
                 </section>
@@ -119,22 +119,22 @@
                 <section id="acceptedCurrencies">
                   <div class="row breakForm">
                     <div class="col-sm-6">
-                      <input class="checkbox" type="checkbox" name="acceptedCurrencies" value="USD"><div class="checkboxtext">USD</div><br>
-                      <input class="checkbox" type="checkbox" name="acceptedCurrencies" value="EUR"><div class="checkboxtext">EUR</div><br>
-                      <input class="checkbox" type="checkbox" name="acceptedCurrencies" value="JPY"><div class="checkboxtext">JPY</div><br>
-                      <input class="checkbox" type="checkbox" name="acceptedCurrencies" value="GBP"><div class="checkboxtext">GBP</div><br>
-                      <input class="checkbox" type="checkbox" name="acceptedCurrencies" value="AUD"><div class="checkboxtext">AUD</div><br>
-                      <input class="checkbox" type="checkbox" name="acceptedCurrencies" value="CHF"><div class="checkboxtext">CHF</div><br>
-                      <input class="checkbox" type="checkbox" name="acceptedCurrencies" value="CAD"><div class="checkboxtext">CAD</div><br>
+                      <input class="checkbox" type="checkbox" name="acceptedCurrency" value="USD"><div class="checkboxtext">USD</div><br>
+                      <input class="checkbox" type="checkbox" name="acceptedCurrency" value="EUR"><div class="checkboxtext">EUR</div><br>
+                      <input class="checkbox" type="checkbox" name="acceptedCurrency" value="JPY"><div class="checkboxtext">JPY</div><br>
+                      <input class="checkbox" type="checkbox" name="acceptedCurrency" value="GBP"><div class="checkboxtext">GBP</div><br>
+                      <input class="checkbox" type="checkbox" name="acceptedCurrency" value="AUD"><div class="checkboxtext">AUD</div><br>
+                      <input class="checkbox" type="checkbox" name="acceptedCurrency" value="CHF"><div class="checkboxtext">CHF</div><br>
+                      <input class="checkbox" type="checkbox" name="acceptedCurrency" value="CAD"><div class="checkboxtext">CAD</div><br>
                     </div>
                     <div class="col-sm-6">
-                      <input class="checkbox" type="checkbox" name="acceptedCurrencies" value="MXN"><div class="checkboxtext">MXN</div><br>
-                      <input class="checkbox" type="checkbox" name="acceptedCurrencies" value="CNY"><div class="checkboxtext">CNY</div><br>
-                      <input class="checkbox" type="checkbox" name="acceptedCurrencies" value="NZD"><div class="checkboxtext">NZD</div><br>
-                      <input class="checkbox" type="checkbox" name="acceptedCurrencies" value="SEK"><div class="checkboxtext">SEK</div><br>
-                      <input class="checkbox" type="checkbox" name="acceptedCurrencies" value="RUB"><div class="checkboxtext">RUB</div><br>
-                      <input class="checkbox" type="checkbox" name="acceptedCurrencies" value="HKD"><div class="checkboxtext">HKD</div><br>
-                      <input class="checkbox" type="checkbox" name="acceptedCurrencies" value="SGD"><div class="checkboxtext">SGD</div><br>
+                      <input class="checkbox" type="checkbox" name="acceptedCurrency" value="MXN"><div class="checkboxtext">MXN</div><br>
+                      <input class="checkbox" type="checkbox" name="acceptedCurrency" value="CNY"><div class="checkboxtext">CNY</div><br>
+                      <input class="checkbox" type="checkbox" name="acceptedCurrency" value="NZD"><div class="checkboxtext">NZD</div><br>
+                      <input class="checkbox" type="checkbox" name="acceptedCurrency" value="SEK"><div class="checkboxtext">SEK</div><br>
+                      <input class="checkbox" type="checkbox" name="acceptedCurrency" value="RUB"><div class="checkboxtext">RUB</div><br>
+                      <input class="checkbox" type="checkbox" name="acceptedCurrency" value="HKD"><div class="checkboxtext">HKD</div><br>
+                      <input class="checkbox" type="checkbox" name="acceptedCurrency" value="SGD"><div class="checkboxtext">SGD</div><br>
                     </div>
                   </div>
                 </section>
@@ -143,16 +143,16 @@
                 <section id="acceptedPaymentTerms">
                   <div class="row breakForm">
                     <div class="col-sm-6">
-                      <input class="checkbox" type="checkbox" name="acceptedPayment" value="MoneyGram"><div class="checkboxtext">MoneyGram</div><br>
-                      <input class="checkbox" type="checkbox" name="acceptedPayment" value="Western Union"><div class="checkboxtext">Western Union</div><br>
-                      <input class="checkbox" type="checkbox" name="acceptedPayment" value="T/T"><div class="checkboxtext">T/T</div><br>
-                      <input class="checkbox" type="checkbox" name="acceptedPayment" value="Credit Card"><div class="checkboxtext">Credit Card</div><br>
+                      <input class="checkbox" type="checkbox" name="acceptedPaymentTerms" value="MoneyGram"><div class="checkboxtext">MoneyGram</div><br>
+                      <input class="checkbox" type="checkbox" name="acceptedPaymentTerms" value="Western Union"><div class="checkboxtext">Western Union</div><br>
+                      <input class="checkbox" type="checkbox" name="acceptedPaymentTerms" value="T/T"><div class="checkboxtext">T/T</div><br>
+                      <input class="checkbox" type="checkbox" name="acceptedPaymentTerms" value="Credit Card"><div class="checkboxtext">Credit Card</div><br>
                     </div>
                     <div class="col-sm-6">
-                      <input class="checkbox" type="checkbox" name="acceptedPayment" value="Escrow"><div class="checkboxtext">Escrow</div><br>
-                      <input class="checkbox" type="checkbox" name="acceptedPayment" value="PayPal"><div class="checkboxtext">PayPal</div><br>
-                      <input class="checkbox" type="checkbox" name="acceptedPayment" value="D/P D/A"><div class="checkboxtext">D/P D/A</div><br>
-                      <input class="checkbox" type="checkbox" name="acceptedPayment" value="Cash"><div class="checkboxtext">Cash</div><br>
+                      <input class="checkbox" type="checkbox" name="acceptedPaymentTerms" value="Escrow"><div class="checkboxtext">Escrow</div><br>
+                      <input class="checkbox" type="checkbox" name="acceptedPaymentTerms" value="PayPal"><div class="checkboxtext">PayPal</div><br>
+                      <input class="checkbox" type="checkbox" name="acceptedPaymentTerms" value="D/P D/A"><div class="checkboxtext">D/P D/A</div><br>
+                      <input class="checkbox" type="checkbox" name="acceptedPaymentTerms" value="Cash"><div class="checkboxtext">Cash</div><br>
                     </div>
                   </div>
                 </section>
@@ -164,13 +164,13 @@
                   </select>
                 </section>
                 <section id="preferredBuyerLocation1" class="styledSelect">
-                  <select name="preferredBuyerLocation1Country">
+                  <select name="preferredBuyerLocation">
                     <option value="1">Preferred Buyer Location</option>
                     <option value="2">2</option>
                   </select>
                 </section>
                 <section id="preferredBuyerLanguage1" class="styledSelect">
-                  <select name="preferredBuyerLanguage1">
+                  <select name="preferredBuyerLanguage">
                     <%- partial('../partials/dropdowns/pref-buyer-language') %>
                   </select>
                 </section>

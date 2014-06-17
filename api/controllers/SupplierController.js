@@ -30,78 +30,50 @@ module.exports = {
     });
   },
 
-  create: function(req, res){
+  create: function(req, res) {
     var b = req.body;
     var image = req.files.logoUrl.path;
     var imageHelper = sails.config.imageUploadHelper;
     var imageExists = imageHelper.getFileSize(image);
 
-    User.findOne({ id: req.session.passport.user }, function(err, user){
-      if(err) { return res.redirect('/dashboard'); }
-      Company.findOne({ user: user.id }, function(err, company){
+    User.findOne({ id: req.session.passport.user }, function(err, user) {
+      Company.findOne({ user: user.id }, function(err, company) {
         if (err) { return res.redirect('/dashboard'); }
         Supplier.create({
-          company: company.id,
-          dbaName: b.dbaName,
-          //logoUrl: b.logoUrl,
-          language: [b.language1, b.language2],
-          annualSalesValue: b.annualSalesValue,
-          primaryProductSpeciality: [b.primaryProductSpeciality1, b.primaryProductSpeciality2],
-          preferredBuyerType: b.preferredBuyerType,
-          preferredBuyerLanguage: [b.preferredBuyerLanguage1,
-                                   b.preferredBuyerLanguage2,
-                                   b.preferredBuyerLanguage3],
-          preferredBuyerCountry: [b.preferredBuyerLocation1Country,
-                                  b.preferredBuyerLocation2Country,
-                                  b.preferredBuyerLocation3Country],
-          acceptedDeliveryTerms: b.acceptedDeliveryTerms,
-          acceptedCurrency: b.acceptedCurrency,
-          acceptedPaymentTerms: b.acceptedPaymentTerms,
-          typeOfCompany: b.typeOfCompany,
-          privateLabeler: b.privateLabeler,
-          active: true
-        }, function(err, supplier){
+        company  : company.id,
+        dbaName : b.dba,
+        typeOfCompany : b.typeOfCompany,
+        language : [b.language],
+        portCity : b.nearestPortCity,
+        portProvince : b.nearestPortProvince,
+        portCountry : b.nearestPortCountry,
+        locationName: [b.otherLocationName],
+        locationType: [b.type],
+        locationCountry: [b.country],
+        locationProvince: [b.province],
+        locationCity: [b.otherLocationCity],
+        annualSalesValue: b.annualProductionVolume,
+        privateLabeler: b.privateLabeler,
+        acceptedDeliveryTerms: [b.acceptedDeliveryTerms],
+        acceptedCurrency: [b.acceptedCurrency],
+        acceptedPaymentTerms: [b.acceptedPaymentTerms],
+        preferredBuyerType: b.preferredBuyerType,
+        preferredBuyerCountry: [b.preferredBuyerLocation],
+        preferredBuyerLanguage: [b.preferredBuyerLanguage],
+        active: true
+        }, function(err, supplier) {
           if (err) { return res.redirect('/dashboard'); }
+          console.log("Image hasn't been uploaded.");
           if (imageExists) { imageHelper.uploadSupplierImage(req, res, supplier, image); }
-          Location.create({
-            company: company.id,
-            supplier: supplier.id,
-            title: b.otherLocation1Name,
-            type: b.type,
-            city: b.otherLocation1City,
-            province: b.province,
-            country: b.country,
-            isHq: false
-          }, function(err, location) {
-            if (err) {
-              var message = "There was a problem."
-              console.log("error is " + JSON.stringify(err));
-              res.redirect('/dashboard', { message: message });
-            }
-            Location.create({
-              company: company.id,
-              supplier: supplier.id,
-              type: 'port',
-              city: b.nearestPortCity,
-              province: b.nearestPortProvince,
-              country: b.nearestPortCountry,
-              isHq: false
-            }, function(err, location) {
-              console.log("New location is: " + JSON.stringify(location));
-              if (err) {
-                var message = "There was a problem."
-                res.redirect('/dashboard', { message: message });
-              }
-            });
-          res.redirect('/dashboard');
-          });
+          console.log("Image should be uploaded.");
         });
+        res.redirect('/dashboard');
       });
     });
   },
 
   update: function(req, res){
-    console.log("You're in SupplierController#update");
+
   },
 
   destroy: function(req, res){

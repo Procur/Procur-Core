@@ -37,13 +37,13 @@ module.exports = {
       type: 'string'
     },
     acceptedDeliveryTerms: {
-      type: 'string'
+      type: 'array'
     },
     acceptedCurrency: {
-      type: 'string'
+      type: 'array'
     },
     acceptedPaymentTerms: {
-      type: 'string'
+      type: 'array'
     },
     facebook: {
       type: 'string'
@@ -118,89 +118,38 @@ module.exports = {
       type: 'string'
     },
 
+    //Location fields
+    portCity: {
+      type: 'string'
+    },
+    portProvince: {
+      type: 'string'
+    },
+    portCountry: {
+      type: 'string'
+    },
+    locationName: {
+      type: 'array'
+    },
+    locationType: {
+      type: 'array'
+    },
+    locationCountry: {
+      type: 'array'
+    },
+    locationProvince: {
+      type: 'array'
+    },
+    locationCity: {
+      type: 'array'
+    },
+
     //UTILITY
 
     active: {
       type:'boolean',
       required: 'true'
     }
-    
-
-
-    /* DEPRECATED */
-    /*
-    preferredSupplierType: {
-      type: 'string',
-      required: true
-    },
-    productCategories: {
-      type: 'string'
-    },
-    productsOfInterest: {
-      type: 'text'
-    },
-
-    //SHARED ATTRIBUTES
-
-    facebookUsername: {
-      type: 'string'
-    },
-    twitterUsername: {
-      type: 'string'
-    },
-    pintrestUsername: {
-      type: 'string'
-    },
-    tumblrUsername: {
-      type: 'string'
-    },
-    linkedinUsername: {
-      type: 'string'
-    },
-    instagramUsername: {
-      type: 'string'
-    },
-    googleUsername: {
-      type: 'string'
-    },
-    relevantLinksTitle: {
-      type: 'string'
-    },
-    languages: {
-      type: 'string',
-      required: true
-    },
-    dunsNumber: {
-      type: 'string'
-    },
-    contactName: {
-      type: 'string'
-    },
-    contactPosition: {
-      type: 'string'
-    },
-    contactEmail: {
-      type: 'string'
-    },
-    responsibilityStatement: {
-      type: 'text'
-    },
-    aboutCompany: {
-      type: 'text'
-    },
-    downloads: {
-      type: 'string'
-    },
-    logoUrl: {
-      type: 'string'
-    },
-    featuredPhotos: {
-      type: 'string'
-    },
-    certifications: {
-      type: 'string'
-    },
-    */
   }
 
 };

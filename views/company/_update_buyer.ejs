@@ -1,24 +1,19 @@
-<form action="/buyer/update" method="post">
+<form action="/buyer/update" method="post" enctype="multipart/form-data">
   <%- partial('_update_company') %>
 
   <h2>Buyer Info</h2>
   <section id="updateBuyerForm">
-    <div><input type="text" name="dbaName" value=<%= buyer.dbaName %>></div>
+    <div><input type="text" name="dbaName" value="<%= buyer.dbaName %>"></div>
     <!-- remove this later -->
     <% if (buyer.logoUrl) { %>
       <h4>Current Logo</h4>
       <div><img src="<%= buyer.logoUrl %>" /></div>
     <% } %>
     <!-- remove this later -->
-    <h4>Logo</h4><div><input type="file" name="logo"></div>
+    <h4>Logo</h4><div><input type="file" name="logoUrl"></div>
     <div>
-      <select name="language1">
-        <option value="arabic">Arabic</option>
-        <option value="bengali">Bengali</option>
-      </select>
-      <select name="language2">
-        <option value="arabic">Arabic</option>
-        <option value="bengali">Bengali</option>
+      <select name="language">
+        <%- partial('../partials/dropdowns/language') %>
       </select>
     </div>
 
@@ -28,8 +23,7 @@
       <div><input type="text" name="otherLocation1Name" placeholder="Name" value="<%= locations["buyer-notPort"][x].title %>"></div>
       <div>
         <select name="type">
-          <option value="1">1</option>
-          <option value="2">2</option>
+          <%- partial('../partials/dropdowns/other-location-type') %>
         </select>
       </div>
       <div><input type="text" name="otherLocation1City" placeholder="City" value="<%= locations["buyer-notPort"][x].city %>"></div>
@@ -60,30 +54,26 @@
     <h4>Preferred Supplier Type</h4>
     <section id="preferredSupplierType">
       <select name="preferredSupplierType">
-        <option value="1">1</option>
-        <option value="2">2</option>
+        <%- partial('../partials/dropdowns/pref-supplier-type') %>
       </select>
     </section>
 
     <h4>Preferred Suppplier Languages</h4>
     <section id="preferredSupplierLanguage1">
       <select name="preferredSupplierLanguage1">
-        <option value="1">1</option>
-        <option value="2">2</option>
+        <%- partial('../partials/dropdowns/pref-supplier-language') %>
       </select>
     </section>
 
     <section id="preferredSupplierLanguage2">
       <select name="preferredSupplierLanguage2">
-        <option value="1">1</option>
-        <option value="2">2</option>
+        <%- partial('../partials/dropdowns/pref-supplier-language') %>
       </select>
     </section>
 
     <section id="preferredSupplierLanguage3">
       <select name="preferredSupplierLanguage3">
-        <option value="1">1</option>
-        <option value="2">2</option>
+        <%- partial('../partials/dropdowns/pref-supplier-language') %>
       </select>
     </section>
 
@@ -110,7 +100,7 @@
     <h4>Type of Company</h4>
     <section id="typeOfCompany">
       <select name="typeOfCompany">
-        <option value="">Select a type</option>
+        <%- partial('../partials/dropdowns/buyer-type') %>
       </select>
     </section>
 
@@ -138,53 +128,53 @@
       <input type="checkbox" name="" value="4">4<br>
     </section>
 
-    <div><input type="text" name="facebook" value=<%= buyer.facebook %>></div>
-    <div><input type="text" name="twitter" value=<%= buyer.twitter %>></div>
-    <div><input type="text" name="pinterest" value=<%= buyer.pinterest %>></div>
-    <div><input type="text" name="tumblr" value=<%= buyer.tumblr %>></div>
-    <div><input type="text" name="linkedin" value=<%= buyer.linkedin %>></div>
-    <div><input type="text" name="instagram" value=<%= buyer.instagram %>></div>
-    <div><input type="text" name="google" value=<%= buyer.google %>></div>
+    <div><input type="text" name="facebook" value="<%= buyer.facebook %>"></div>
+    <div><input type="text" name="twitter" value="<%= buyer.twitter %>"></div>
+    <div><input type="text" name="pinterest" value="<%= buyer.pinterest %>"></div>
+    <div><input type="text" name="tumblr" value="<%= buyer.tumblr %>"></div>
+    <div><input type="text" name="linkedin" value="<%= buyer.linkedin %>"></div>
+    <div><input type="text" name="instagram" value="<%= buyer.instagram %>"></div>
+    <div><input type="text" name="google" value="<%= buyer.google %>"></div>
 
-    <div><input type="text" name="dunsNumber" value=<%= buyer.dunsNumber %>></div>
-    <div><input type="text" name="contactName" value=<%= buyer.contactName %>></div>
-    <div><input type="text" name="contactPosition" value=<%= buyer.contactPosition %>></div>
-    <div><input type="text" name="contactEmail" value=<%= buyer.contactEmail %>></div>
+    <div><input type="text" name="dunsNumber" value="<%= buyer.dunsNumber %>"></div>
+    <div><input type="text" name="contactName" value="<%= buyer.contactName %>"></div>
+    <div><input type="text" name="contactPosition" value="<%= buyer.contactPosition %>"></div>
+    <div><input type="text" name="contactEmail" value="<%= buyer.contactEmail %>"></div>
 
     <h4>Company Description</h4>
     <textarea name="companyDescription" placeholder="Tell us about your business..."
-              rows="4" cols="50" value=<%= buyer.companyDescription %>>
+              rows="4" cols="50"><%= buyer.companyDescription %>
     </textarea>
 
     <h4>Environmental Sustainability</h4>
     <textarea name="environmentalSustainability" placeholder=""
-              rows="4" cols="50" value=<%= buyer.environmentalSustainability %>>
+              rows="4" cols="50"><%= buyer.environmentalSustainability %>
     </textarea>
 
     <h4>Quality Sourcing</h4>
     <textarea name="qualitySourcing" placeholder=""
-              rows="4" cols="50" value=<%= buyer.qualitySourcing %>>
+              rows="4" cols="50"><%= buyer.qualitySourcing %>
     </textarea>
 
     <h4>Workplace Safety</h4>
     <textarea name="workplaceSafety" placeholder=""
-              rows="4" cols="50" value=<%= buyer.workplaceSafety %>>
+              rows="4" cols="50"><%= buyer.workplaceSafety %>
     </textarea>
 
     <h4>Labor, Education, and Training</h4>
     <textarea name="laborEducationTraining" placeholder=""
-              rows="4" cols="50" value=<%= buyer.laborEducationTraining %>>
+              rows="4" cols="50"><%= buyer.laborEducationTraining %>
     </textarea>
 
     <h4>Reinvestment</h4>
     <textarea name="reinvestment" placeholder=""
-              rows="4" cols="50" value=<%= buyer.reinvestment %>>
+              rows="4" cols="50"><%= buyer.reinvestment %>
     </textarea>
 
     <h4>Your Products of Interest</h4>
     <textarea name="productsOfInterest" placeholder=""
-              rows="4" cols="50" value=<%= buyer.productsOfInterest %>>
-    </textarea>    
+              rows="4" cols="50"><%= buyer.productsOfInterest %>
+    </textarea>
 
     
     <div><input type="submit"></div>
