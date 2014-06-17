@@ -64,6 +64,16 @@ module.exports.routes = {
     action: 'press'
   }, //Displays Press Page
 
+  'get /login': {
+    controller: 'HomeController',
+    action: 'login'
+  }, //Displays Login Page
+
+  'get /signup': {
+    controller: 'HomeController',
+    action: 'signup'
+  }, //Displays Signup Page
+
   'get /careers': {
     controller: 'HomeController',
     action: 'careers'

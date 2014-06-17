@@ -58,6 +58,14 @@ module.exports = {
     res.view();
   },
 
+  login: function(req, res){
+  res.view();
+  },
+
+  signup: function(req, res){
+  res.view();
+  },
+
   careers: function(req, res){
     res.view();
   },
