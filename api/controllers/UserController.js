@@ -107,7 +107,6 @@ module.exports = {
 
   toggleMode: function(req, res){
     var b = req.body;
-    console.log(b);
     User.findOne({ id: req.session.passport.user }, function(err, user){
       if(err){ return res.redirect('/dashboard'); }
       if(user){
