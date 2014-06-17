@@ -18,56 +18,80 @@ module.exports = {
   	name: {
       type: 'string',
       required: true,
-      unique: true
+      unique: true,
+      minLength: 3,
+      maxLength: 50
     },
     phoneNumberCountryCode: {
       type: 'string',
-      required: true
+      required: true,
+      minLength: 1,
+      maxLength: 8
     },
     phoneNumber: {
       type: 'string',
-      required: true
+      required: true,
+      minLength: 5,
+      maxLength: 50
     },
     phoneExtension: {
-      type: 'string'
+      type: 'string',
+      minLength: 1,
+      maxLength: 10
     },
     faxCountryCode: {
-      type: 'string'
+      type: 'string',
+      minLength: 1,
+      maxLength: 8
     },
     faxNumber: {
-      type: 'string'
+      type: 'string',
+      minLength: 5,
+      maxLength: 50
     },
     faxExtension: {
-      type: 'string'
+      type: 'string',
+      minLength: 1,
+      maxLength: 10
     },
     email: {
       type: 'email',
-      required: true
+      required: true,
+      minLength: 4,
+      maxLength: 50
     },
     website: {
-      type: 'string'
+      type: 'string',
+      minLength: 4,
+      maxLength: 80
     },
     industry: {
-      type: 'string'
+      type: 'string',
+      minLength: 1,
+      maxLength: 100
     },
     employeeCount: {
-      type: 'integer',
+      type: 'integer'
     },
     buyer: {
-      type: 'boolean',
+      type: 'boolean'
     },
     supplier: {
-      type: 'boolean',
+      type: 'boolean'
     },
     primaryMode: {
-      type: 'string'
+      type: 'string',
+      minLength: 1,
+      maxLength: 40
     },
     wizardComplete: {
-      type: 'boolean',
+      type: 'boolean'
     },
     handle: {
       type: 'string',
-      unique: true
+      unique: true,
+      minLength: 2,
+      maxLength: 50
     },
 
     //UTILITY
