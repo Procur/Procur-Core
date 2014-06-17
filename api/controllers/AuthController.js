@@ -32,9 +32,6 @@ module.exports = {
           if (err) { return res.redirect('/dashboard'); }
           else {
             req.session.authenticated = true;
-            console.log(req);
-            console.log(req.session);
-            console.log('THIS IS WHERE WE ARE FFS');
             res.redirect('/welcome');
           }
         });
@@ -64,11 +61,8 @@ module.exports = {
             crypto.randomBytes(256, function(err, hash) {
               if(err) { return res.redirect('/dashboard'); }
               token = hash.toString('base64').replace(/\//g,'_').replace(/\+/g,'-');
-              console.log("TOKEN: " + token);
               EmailVerification.create({ email: b.email, token: token }, function(err, emailVerification){
-                if(err) { return res.redirect('/dashboard');
-                console.log(err);}
-                console.log("Verification created: " + emailVerification);
+                if(err) { return res.redirect('/dashboard'); }
               });
 
               //USER CREATED///////////
@@ -84,15 +78,9 @@ module.exports = {
               };
 
               smtpTransport.sendMail(mailOptions, function(err, response){
-                if(err){
-                  console.log(err);
-                }
-                else {
-                  console.log("Verification email sent: " + response.message);
-                }
+                if(err){res.serverError();}
               });
               //NOW AUTHENTICATE USER
-              console.log("User: " + b.email + " created.");
               passport.authenticate('local', function(err, user, info) {
                 if ((err) || (!user)) {
                   return res.send({
@@ -187,13 +175,7 @@ module.exports = {
               html: htmlContent
             };
             smtpTransport.sendMail(mailOptions, function(err, response){
-              if(err){
-                console.log(err);
-              }
-              else {
-                console.log("Change Password email sent: " + response.message);
-                res.redirect('/resetpassword/confirm');
-              };
+              if(err){res.serverError();}
             });
           });
         });
@@ -281,7 +263,6 @@ module.exports = {
     User.findOne({ id: req.session.user }, function(err, user){
       if(err) {
         return res.redirect('/dashboard');
-        console.log('err should be written');
       }
       else {
         res.view({ message: "signed out. "});
@@ -297,10 +278,8 @@ module.exports = {
         crypto.randomBytes(256, function(err, hash) {
           if(err) { return res.redirect('/dashboard'); }
           token = hash.toString('base64').replace(/\//g,'_').replace(/\+/g,'-');
-          console.log("TOKEN: " + token);
           EmailVerification.update(emailVerification, {token: token }, function(err, emailVerification){
             if(err) { return res.redirect('/dashboard'); }
-            console.log("Verification created: " + emailVerification);
             var htmlContent = '<a href="http://' + address + '/verify?token=' + token + '">Click to verify your Procur account!</a>';
             var mailOptions = {
               from: "welcome@procur.com",
@@ -311,12 +290,7 @@ module.exports = {
             };
 
             smtpTransport.sendMail(mailOptions, function(err, response){
-              if(err){
-                console.log(err);
-              }
-              else {
-                console.log("Verification email sent: " + response.message);
-              }
+              if(err){res.serverError();}
             });
           });
         });
@@ -341,14 +315,8 @@ module.exports = {
       });
     };
 
-  },
-
-  //DEBUG VIEW - CONTAINS DEVELOPMENT UTILITY TOOLS
-  test: function(req, res){
-    console.log(req.session.authenticated);
-    console.log(req.session);
-    res.view();
   }
+
 };
 
 /**

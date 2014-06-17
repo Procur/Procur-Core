@@ -10,7 +10,6 @@
 module.exports = function (req, res, next) {
   var is_auth = req.session.authenticated;
   if (is_auth == true) {
-    console.log("core: USER IS AUTHENTICATED");
     return next();
   }
   else {

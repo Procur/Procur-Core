@@ -57,12 +57,10 @@ module.exports = {
           payload.push(company);
           Buyer.findOne({ company: company.id }, function(err, buyer){
             if(err){ return res.redirect('/') }
-            console.log(buyer);
             if(buyer){
               payload.push(buyer);
               Supplier.findOne({ company: company.id }, function(err, supplier){
                 if(err) { return res.redirect('/'); }
-                console.log(supplier);
                 if(supplier) {
                   payload.push(supplier);
                   res.view({ user: payload[0], company: payload[1], buyer: payload[2], supplier: payload[3] });

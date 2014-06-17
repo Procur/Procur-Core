@@ -30,7 +30,6 @@ module.exports = {
         res.redirect('/logout');
       }
       else {
-        console.log('not auth');
         res.view();
       }
     }
