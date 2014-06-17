@@ -8,8 +8,8 @@ var passport = require('passport'),
     smtpTransport = nodemailer.createTransport("SMTP", {
       service: "Mandrill",
       auth: {
-        user: mandrill.username,
-        pass: mandrill.pass
+        user: process.env.MANDRILL_USERNAME,
+        pass: process.env.MANDRILL_APIKEY
       }
     }),
     address = process.env.ENVIRONMENT_URL || 'localhost:1337',
