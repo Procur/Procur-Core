@@ -91,7 +91,7 @@ module.exports = {
               isHq: false
             }, function(err, location) {
               if (err) { return res.rediret('/dashboard'); }
-              res.redirect('/dashboard');              
+              res.redirect('/dashboard');
             });
           });
         });
@@ -100,7 +100,7 @@ module.exports = {
   },
 
   update: function(req, res){
-    console.log("You're in BuyerController#update");
+    
   },
 
   destroy: function(req, res){

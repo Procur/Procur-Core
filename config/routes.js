@@ -305,13 +305,8 @@ module.exports.routes = {
   'get /error/notfound': {
     controller: 'CompanyController',
     action: 'notFound'
-  },
-
-  //TESTING ROUTES
-
-  'get /internal': {
-    controller: 'AuthController',
-    action: 'test'
+  }
+  
   } //USE THIS VIEW FOR TESTING, DEBUGGING, AND PROTOTYPING
 
   //DEPRECATED ROUTES
