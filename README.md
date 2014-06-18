@@ -1,7 +1,7 @@
 # procur-core
-##TO RUN LOCALLY:
+###TO RUN LOCALLY:
 
-####local.js
+###local.js
 
 ```
 var url = require('url');
