@@ -13,15 +13,15 @@ var url = require('url');
  
    environment: process.env.NODE_ENV || 'development',
  
-   adapters:{
-     'default': 'mongo',
-     mongo: {
-       module: 'sails-mongo',
-       host: 'localhost',
-       port: '27017',
-       schema: true
+    adapters:{
+       'default': 'mongo',
+       mongo: {
+         module: 'sails-mongo',
+         host: 'localhost',
+         port: 27017,
+         schema: true
+       }
      }
-   }
  };
 ```
 
