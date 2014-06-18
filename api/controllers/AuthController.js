@@ -134,7 +134,7 @@ module.exports = {
               smtpTransport.sendMail(mailOptions, function(err, response){
                 if(err){ console.log(err); }
               });
-              req.flash('Password changed.');
+              req.flash('message', 'Password changed.');
               res.redirect('/dashboard');
             });
           });
@@ -142,7 +142,7 @@ module.exports = {
       });
     }
     else {
-      req.flash('You must enter a new password to change your current one');
+      req.flash('message', 'You must enter a new password to change your current one');
       res.redirect('/user/update')
     }
   },
@@ -175,7 +175,7 @@ module.exports = {
         });
       }
       else {
-        req.flash('User not found.');
+        req.flash('message', 'User not found.');
         res.redirect('/forgotpassword');
       }
     });
@@ -222,7 +222,7 @@ module.exports = {
                   PasswordReset.update(reset, { consumed: true }, function(err, reset){
                     if(err){ return res.redirect('/dashboard') };
                     if(reset.consumed == true){
-                      req.flash('Password changed. Please log in.');
+                      req.flash('message', 'Password changed. Please log in.');
                       res.redirect('/');
                     }
                     else{

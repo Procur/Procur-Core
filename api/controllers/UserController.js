@@ -74,11 +74,11 @@ module.exports = {
             User.update(user, { firstName: b.firstName, lastName: b.lastName, email: b.email, image: result.url, jobTitle: b.jobTitle }, function(err, user){
               if(err){ return res.redirect('/') };
               if(user){
-                req.flash('Account information updated');
+                req.flash('message', 'Account information updated');
                 res.redirect('/');
               }
               else {
-                req.flash('There was a problem');
+                req.flash('message', 'There was a problem');
                 res.redirect('/');
               }
             });
@@ -96,11 +96,11 @@ module.exports = {
           User.update(user, { firstName: b.firstName, lastName: b.lastName, email: b.email, jobTitle: b.jobTitle }, function(err, user){
             if(err){ return res.redirect('/') };
             if(user){
-              req.flash('Account information updated');
+              req.flash('message', 'Account information updated');
               res.redirect('/');
             }
             else {
-              req.flash('There was a problem');
+              req.flash('message', 'There was a problem');
               res.redirect('/');
             }
           });
@@ -118,7 +118,7 @@ module.exports = {
           if((company.buyer == true) && (company.supplier == true)){
             User.update(user, { activeMode: b.mode }, function(err, user){
               if(err){ return res.redirect('/dashboard'); }
-              req.flash('Switched to ' + user.activeMode + ' mode.');
+              req.flash('message', 'Switched to ' + user.activeMode + ' mode.');
               res.redirect('/dashboard');
             });
           }
