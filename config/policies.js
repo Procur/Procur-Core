@@ -30,7 +30,8 @@ module.exports.policies = {
   },
 
   AuthController: {
-    test: 'isAuthenticated'
+    test: 'isAuthenticated',
+    register: ['isAuthenticatedReverse']
   },
 
   CompanyController: {
