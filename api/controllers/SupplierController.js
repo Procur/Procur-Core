@@ -73,7 +73,86 @@ module.exports = {
   },
 
   update: function(req, res){
+    var b = req.body;
+    var image = req.files.logoUrl.path;
+    var imageHelper = sails.config.imageUploadHelper;
+    var imageExists = imageHelper.getFileSize(image);
+    var companyId;
+    var hqId;
 
+    User.findOne({ id: req.session.passport.user }, function(err, user) {
+      if (err) { return res.redirect('/dashboard'); }
+      Company.findOne({ user: user.id }, function(err, company) {
+        if (err) { return res.redirect('/dashboard'); }
+        companyId = company.id;
+        Company.update(company.id, {
+          name: b.companyName,
+          phoneNumberCountryCode: b.companyPhoneCountryCode,
+          phoneNumber: b.companyPhone,
+          phoneExtension: b.companyPhoneExt,
+          faxCountryCode: b.companyFaxCountryCode,
+          faxNumber: b.companyFax,
+          faxExtension: b.companyFaxExt,
+          email: b.companyEmail,
+          website: b.companyWebsite,
+          industry: b.companyIndustry,
+          employeeCount: b.companyEmployeeCount,
+          handle: b.companyUrl
+        }, function(err, company) {
+          if (err) { return res.redirect('/dashboard'); }
+          Location.findOne({ company: companyId, isHq: true }, function(err, hqLocation) {
+            if (err) { return res.redirect('/dashboard'); }
+            hqId = hqLocation.id;
+          })
+          //Company only has HQ location
+          if (b.companyIsHq === 'on') {
+            Location.update(hqId, {
+              addressLine1: b.hqAddress1,
+              addressLine2: b.hqAddress2,
+              province: b.hqProvince,
+              country: b.hqCountry,
+              postalCode: b.hqPostalCode
+            }).exec(function(err, updatedHq) {
+              if (err) { return res.redirect('/dashboard'); }
+              console.log("updatedHq is " + typeof updatedHq);
+            });
+          }
+          //Update HQ and company address
+          else {
+            Location.findOne({ company: companyId, isHq: false }, function(err, compLocation) {
+              console.log("hqId is " + hqId);
+              console.log("compLocation id is " + compLocation.id);
+              if (err) { return res.redirect('/dashboard'); }
+              Location.update(hqId, {
+                addressLine1: b.hqAddress1,
+                addressLine2: b.hqAddress2,
+                province: b.hqProvince,
+                country: b.hqCountry,
+                postalCode: b.hqPostalCode
+              }).exec(function(err, updatedHq) {
+                if (err) { return res.redirect('/dashboard'); }
+                console.log("updatedHq is " + typeof updatedHq);
+                //console.log("updatedHq id is " + JSON.stringify(updatedHq, null, ' '));
+              });
+              Location.update(compLocation.id, {
+                addressLine1: b.companyAddress1,
+                addressLine2: b.companyAddress2,
+                province: b.companyProvince,
+                country: b.companyCountry,
+                postalCode: b.companyPostalCode
+              }).exec(function(err, updatedLocation) {
+                if (err) { return res.redirect('/dashboard'); }
+                console.log("updatedLocation is " + typeof updatedLocation);
+                //console.log("updatedLocation id is " + JSON.stringify(updatedLocation, null, ' '));
+              });
+            });
+          }
+          //Add Supplier update code here?
+          console.log("update supplier code here.");
+          return res.redirect('/dashboard');
+        });
+      });
+    });
   },
 
   destroy: function(req, res){

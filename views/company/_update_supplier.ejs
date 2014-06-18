@@ -11,34 +11,35 @@
     <% } %>
     <!-- remove this later -->
     <h4>Logo</h4><div><input type="file" name="logoUrl"></div>
+
     <div>
-      <select name="language">
-        <%- partial('../partials/dropdowns/language') %>
-      </select>
-      <select name="language">
-        <%- partial('../partials/dropdowns/language') %>
-      </select>
+      <% for (var x = 0; x < supplier.language[0].length; x++) { %>
+        <select name="language">
+          <option selected="<%= supplier.language[0][x] %>" value="<%= supplier.language[0][x] %>"><%= supplier.language[0][x] %></option>
+          <%- partial('../partials/dropdowns/language') %>
+        </select>
+      <% } %>
     </div>
 
     <h4>Other Locations</h4>
-    <% for (var x = 0; x < locations["supplier-notPort"].length; x++) { %>
-    <section id="otherLocation1">
-      <div><input type="text" name="otherLocation1Name" placeholder="Name" value="<%= locations["supplier-notPort"][x].title %>"></div>
+    <% for (var x = 0; x < supplier2["locationName"].length; x++) { %>
+    <section id="otherLocation<%= x %>">
+      <div><input type="text" name="otherLocationName" placeholder="Name" value="<%= supplier2.locationName[x] %>"></div>
       <div>
         <select name="type">
           <%- partial('../partials/dropdowns/other-location-type') %>
         </select>
       </div>
-      <div><input type="text" name="otherLocation1City" placeholder="City" value="<%= locations["supplier-notPort"][x].city %>"></div>
+      <div><input type="text" name="otherLocationCity" placeholder="City" value="<%= supplier2.locationCity[x] %>"></div>
       <div>
         <select name="province">
-          <option value="1">1</option>
+          <option value="1"></option>
           <option value="2">2</option>
         </select>
       </div>
       <div>
         <select name="country">
-          <option value="1">1</option>
+          <option value="1"></option>
           <option value="2">2</option>
         </select>
       </div>
@@ -46,13 +47,11 @@
     <% } %>
 
     <h4>Port location</h4>
-    <% for (var x = 0; x < locations["supplier-isPort"].length; x++) { %>
     <section id="nearestPort">
-      <div><input type="text" name="nearestPortCity" placeholder="City" value="<%= locations["supplier-isPort"][x].city %>"></div>
-      <div><input type="text" name="nearestPortProvince" placeholder="State / Province" value="<%= locations["supplier-isPort"][x].province %>"></div>
-      <div><input type="text" name="nearestPortCountry" placeholder="Country" value="<%= locations["supplier-isPort"][x].country %>"></div>
+      <div><input type="text" name="nearestPortCity" placeholder="City" value="<%= supplier.portCity %>"></div>
+      <div><input type="text" name="nearestPortProvince" placeholder="State / Province" value="<%= supplier.portProvince %>"></div>
+      <div><input type="text" name="nearestPortCountry" placeholder="Country" value="<%= supplier.portCountry %>"></div>
     </section>
-    <% } %>
 
     <h4>Annual Sales Value</h4>
     <div>
@@ -108,28 +107,74 @@
       </select>
     </section>
 
+
     <h4>Accepted Delivery Terms</h4>
+    <% var terms = ["EXW","FCA","CPT","CIP","DAT","DAP","DDP","FAS","FOB","CFR","CIF","Custom"]; %>
+
     <section id="acceptedDeliveryTerms">
-      <input type="checkbox" name="" value="1">1<br>
-      <input type="checkbox" name="" value="2">2<br>
-      <input type="checkbox" name="" value="3">3<br>
-      <input type="checkbox" name="" value="4">4<br>
+      <div class="">
+        <div class="col-sm-12">
+          <% for (var x = 0; x < terms.length; x++) { %>
+            <% var matchFound = false; %>
+            <% for (var y = 0; y < supplier.acceptedDeliveryTerms[0].length; y++) { %>
+              <% if (terms[x] == supplier.acceptedDeliveryTerms[0][y]) { %>
+                <% matchFound = true; %>
+                <input class="checkbox" type="checkbox" name="acceptedDeliveryTerms" value="<%= terms[x] %>" checked><div class="checkboxtext"><%= terms[x] %></div><br>
+                <% break; %>
+              <% } %>
+            <% } %>
+            <% if (matchFound === false) { %>
+              <input class="checkbox" type="checkbox" name="acceptedDeliveryTerms" value="<%= terms[x] %>"><div class="checkboxtext"><%= terms[x] %></div><br>
+            <% } %>
+          <% } %>
+        </div>
+      </div>
     </section>
 
     <h4>Accepted Currencies</h4>
+    <% var currencies = ["USD","EUR","JPY","GBP","AUD","CHF","CAD","MXN","CNY","NZD","SEK","RUB","HKD","SGD"]; %>
+
     <section id="acceptedCurrencies">
-      <input type="checkbox" name="" value="1">1<br>
-      <input type="checkbox" name="" value="2">2<br>
-      <input type="checkbox" name="" value="3">3<br>
-      <input type="checkbox" name="" value="4">4<br>
+      <div class="">
+        <div class="col-sm-12">
+          <% for (var x = 0; x < currencies.length; x++) { %>
+            <% var matchFound = false; %>
+            <% for (var y = 0; y < supplier.acceptedCurrency[0].length; y++) { %>
+              <% if (currencies[x] == supplier.acceptedCurrency[0][y]) { %>
+                <% matchFound = true; %>
+                <input class="checkbox" type="checkbox" name="acceptedCurrency" value="<%= currencies[x] %>" checked><div class="checkboxtext"><%= currencies[x] %></div><br>
+                <% break; %>   
+              <% } %>
+            <% } %>
+            <% if (matchFound === false) { %>
+              <input class="checkbox" type="checkbox" name="acceptedCurrency" value="<%= currencies[x] %>"><div class="checkboxtext"><%= currencies[x] %></div><br>
+            <% } %>
+          <% } %>
+        </div>
+      </div>
     </section>
 
     <h4>Accepted Payment Terms</h4>
+    <% var payment = ["MoneyGram","Western Union","T/T","Credit Card","Escrow","PayPal","D/P D/A","Cash"]; %>
+
     <section id="acceptedPaymentTerms">
-      <input type="checkbox" name="" value="1">1<br>
-      <input type="checkbox" name="" value="2">2<br>
-      <input type="checkbox" name="" value="3">3<br>
-      <input type="checkbox" name="" value="4">4<br>
+      <div class="">
+        <div class="col-sm-12">
+        <% for (var x = 0; x < payment.length; x++) { %>
+          <% var matchFound = false; %>
+          <% for (var y = 0; y < supplier.acceptedPaymentTerms[0].length; y++) { %>
+            <% if (payment[x] == supplier.acceptedPaymentTerms[0][y]) { %>
+              <% matchFound = true; %>
+              <input class="checkbox" type="checkbox" name="acceptedPaymentTerms" value="<%= payment[x] %>" checked><div class="checkboxtext"><%= payment[x] %></div><br>
+              <% break; %>
+            <% } %>
+          <% } %>
+          <% if (matchFound === false) { %>
+            <input class="checkbox" type="checkbox" name="acceptedPaymentTerms" value="<%= payment[x] %>"><div class="checkboxtext"><%= payment[x] %></div><br>
+          <% } %>
+        <% } %>
+        </div>
+      </div>
     </section>
 
     <h4>Type of Company</h4>
@@ -141,22 +186,26 @@
 
     <h4>Contract Manufacturing</h4>
     <section id="privateLabeler" class="breakForm">
+    <% if (supplier.privateLabeler == "privateLabeler") { %>
+      <input class="checkbox" type="checkbox" name="privateLabeler" value="privateLabeler" checked><div class="checkboxtext">Private Labeling</div><br>
+    <% } else { %>
       <input class="checkbox" type="checkbox" name="privateLabeler" value="privateLabeler"><div class="checkboxtext">Private Labeling</div><br>
+    <% } %>
     </section>
     
 
-    <div><input type="text" name="facebook" value="<%= supplier.facebook %>"></div>
-    <div><input type="text" name="twitter" value="<%= supplier.twitter %>"></div>
-    <div><input type="text" name="pinterest" value="<%= supplier.pinterest %>"></div>
-    <div><input type="text" name="tumblr" value="<%= supplier.tumblr %>"></div>
-    <div><input type="text" name="linkedin" value="<%= supplier.linkedin %>"></div>
-    <div><input type="text" name="instagram" value="<%= supplier.instagram %>"></div>
-    <div><input type="text" name="google" value="<%= supplier.google %>"></div>
+    <div><input type="text" placeholder="facebook" name="facebook" value="<%= supplier.facebook %>"></div>
+    <div><input type="text" placeholder="twitter" name="twitter" value="<%= supplier.twitter %>"></div>
+    <div><input type="text" placeholder="pinterest" name="pinterest" value="<%= supplier.pinterest %>"></div>
+    <div><input type="text" placeholder="tumblr" name="tumblr" value="<%= supplier.tumblr %>"></div>
+    <div><input type="text" placeholder="linkedin" name="linkedin" value="<%= supplier.linkedin %>"></div>
+    <div><input type="text" placeholder="instagram" name="instagram" value="<%= supplier.instagram %>"></div>
+    <div><input type="text" placeholder="google" name="google" value="<%= supplier.google %>"></div>
 
-    <div><input type="text" name="dunsNumber" value="<%= supplier.dunsNumber %>"></div>
-    <div><input type="text" name="contactName" value="<%= supplier.contactName %>"></div>
-    <div><input type="text" name="contactPosition" value="<%= supplier.contactPosition %>"></div>
-    <div><input type="text" name="contactEmail" value="<%= supplier.contactEmail %>"></div>
+    <div><input type="text" placeholder="dunsNumber" name="dunsNumber" value="<%= supplier.dunsNumber %>"></div>
+    <div><input type="text" placeholder="contactName" name="contactName" value="<%= supplier.contactName %>"></div>
+    <div><input type="text" placeholder="contactPosition" name="contactPosition" value="<%= supplier.contactPosition %>"></div>
+    <div><input type="text" placeholder="contactEmail" name="contactEmail" value="<%= supplier.contactEmail %>"></div>
 
     <h4>Company Description</h4>
     <textarea name="companyDescription" placeholder="Tell us about your business..."

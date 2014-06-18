@@ -29,7 +29,13 @@
     <% } %>
   <% } %>
 
-  <div><input type="checkbox" name="companyIsHq">Location is HQ?</div>
+  <% if (locations["showHq"] === false) { %>
+    <div><input id="hq" type="checkbox" name="companyIsHq" checked>Location is HQ?</div>
+  <% } %>
+  <% if (locations["showHq"] === true) { %>
+    <div><input id="hq" type="checkbox" name="companyIsHq">Location is HQ?</div>
+  <% } %>
+
   <% if (locations["showHq"] === true) { %>
     <div><input type="text" name="hqAddress1" value="<%= locations["company-isHq"].addressLine1 %>"></div>
     <div><input type="text" name="hqAddress2" value="<%= locations["company-isHq"].addressLine2 %>"></div>

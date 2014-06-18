@@ -45,9 +45,9 @@
     <h4>Port location</h4>
     <% for (var x = 0; x < locations["buyer-isPort"].length; x++) { %>
     <section id="nearestPort">
-      <div><input type="text" name="nearestPortCity" placeholder="City" value="<%= locations["buyer-isPort"][x].city %>"></div>
-      <div><input type="text" name="nearestPortProvince" placeholder="State / Province" value="<%= locations["buyer-isPort"][x].province %>"></div>
-      <div><input type="text" name="nearestPortCountry" placeholder="Country" value="<%= locations["buyer-isPort"][x].country %>"></div>
+      <div><input type="text" name="nearestPortCity" placeholder="City" value="<%= buyer.portCity %>"></div>
+      <div><input type="text" name="nearestPortProvince" placeholder="State / Province" value="<%= buyer.portProvince %>"></div>
+      <div><input type="text" name="nearestPortCountry" placeholder="Country" value="<%= buyer.portCountry %>"></div>
     </section>
     <% } %>
 
@@ -106,40 +106,80 @@
 
     <h4>Accepted Delivery Terms</h4>
     <section id="acceptedDeliveryTerms">
-      <input type="checkbox" name="" value="1">1<br>
-      <input type="checkbox" name="" value="2">2<br>
-      <input type="checkbox" name="" value="3">3<br>
-      <input type="checkbox" name="" value="4">4<br>
+      <div class="row breakForm">
+        <div class="col-sm-6">
+          <input class="checkbox" type="checkbox" name="acceptedDeliveryTerms" value="EXW"><div class="checkboxtext">EXW</div><br>
+          <input class="checkbox" type="checkbox" name="acceptedDeliveryTerms" value="FCA"><div class="checkboxtext">FCA</div><br>
+          <input class="checkbox" type="checkbox" name="acceptedDeliveryTerms" value="CPT"><div class="checkboxtext">CPT</div><br>
+          <input class="checkbox" type="checkbox" name="acceptedDeliveryTerms" value="CIP"><div class="checkboxtext">CIP</div><br>
+          <input class="checkbox" type="checkbox" name="acceptedDeliveryTerms" value="DAT"><div class="checkboxtext">DAT</div><br>
+          <input class="checkbox" type="checkbox" name="acceptedDeliveryTerms" value="DAP"><div class="checkboxtext">DAP</div><br>
+        </div>
+        <div class="col-sm-6">
+          <input class="checkbox" type="checkbox" name="acceptedDeliveryTerms" value="DDP"><div class="checkboxtext">DDP</div><br>
+          <input class="checkbox" type="checkbox" name="acceptedDeliveryTerms" value="FAS"><div class="checkboxtext">FAS</div><br>
+          <input class="checkbox" type="checkbox" name="acceptedDeliveryTerms" value="FOB"><div class="checkboxtext">FOB</div><br>
+          <input class="checkbox" type="checkbox" name="acceptedDeliveryTerms" value="CFR"><div class="checkboxtext">CFR</div><br>
+          <input class="checkbox" type="checkbox" name="acceptedDeliveryTerms" value="CIF"><div class="checkboxtext">CIF</div><br>
+          <input class="checkbox" type="checkbox" name="acceptedDeliveryTerms" value="Custom"><div class="checkboxtext">Custom</div><br>
+        </div>
+      </div>
     </section>
 
     <h4>Accepted Currencies</h4>
     <section id="acceptedCurrencies">
-      <input type="checkbox" name="" value="1">1<br>
-      <input type="checkbox" name="" value="2">2<br>
-      <input type="checkbox" name="" value="3">3<br>
-      <input type="checkbox" name="" value="4">4<br>
+      <div class="row breakForm">
+        <div class="col-sm-6">
+          <input class="checkbox" type="checkbox" name="acceptedCurrency" value="USD"><div class="checkboxtext">USD</div><br>
+          <input class="checkbox" type="checkbox" name="acceptedCurrency" value="EUR"><div class="checkboxtext">EUR</div><br>
+          <input class="checkbox" type="checkbox" name="acceptedCurrency" value="JPY"><div class="checkboxtext">JPY</div><br>
+          <input class="checkbox" type="checkbox" name="acceptedCurrency" value="GBP"><div class="checkboxtext">GBP</div><br>
+          <input class="checkbox" type="checkbox" name="acceptedCurrency" value="AUD"><div class="checkboxtext">AUD</div><br>
+          <input class="checkbox" type="checkbox" name="acceptedCurrency" value="CHF"><div class="checkboxtext">CHF</div><br>
+          <input class="checkbox" type="checkbox" name="acceptedCurrency" value="CAD"><div class="checkboxtext">CAD</div><br>
+        </div>
+        <div class="col-sm-6">
+          <input class="checkbox" type="checkbox" name="acceptedCurrency" value="MXN"><div class="checkboxtext">MXN</div><br>
+          <input class="checkbox" type="checkbox" name="acceptedCurrency" value="CNY"><div class="checkboxtext">CNY</div><br>
+          <input class="checkbox" type="checkbox" name="acceptedCurrency" value="NZD"><div class="checkboxtext">NZD</div><br>
+          <input class="checkbox" type="checkbox" name="acceptedCurrency" value="SEK"><div class="checkboxtext">SEK</div><br>
+          <input class="checkbox" type="checkbox" name="acceptedCurrency" value="RUB"><div class="checkboxtext">RUB</div><br>
+          <input class="checkbox" type="checkbox" name="acceptedCurrency" value="HKD"><div class="checkboxtext">HKD</div><br>
+          <input class="checkbox" type="checkbox" name="acceptedCurrency" value="SGD"><div class="checkboxtext">SGD</div><br>
+        </div>
+      </div>
     </section>
 
     <h4>Accepted Payment Terms</h4>
     <section id="acceptedPaymentTerms">
-      <input type="checkbox" name="" value="1">1<br>
-      <input type="checkbox" name="" value="2">2<br>
-      <input type="checkbox" name="" value="3">3<br>
-      <input type="checkbox" name="" value="4">4<br>
+      <div class="row breakForm">
+        <div class="col-sm-6">
+          <input class="checkbox" type="checkbox" name="acceptedPaymentTerms" value="MoneyGram"><div class="checkboxtext">MoneyGram</div><br>
+          <input class="checkbox" type="checkbox" name="acceptedPaymentTerms" value="Western Union"><div class="checkboxtext">Western Union</div><br>
+          <input class="checkbox" type="checkbox" name="acceptedPaymentTerms" value="T/T"><div class="checkboxtext">T/T</div><br>
+          <input class="checkbox" type="checkbox" name="acceptedPaymentTerms" value="Credit Card"><div class="checkboxtext">Credit Card</div><br>
+        </div>
+        <div class="col-sm-6">
+          <input class="checkbox" type="checkbox" name="acceptedPaymentTerms" value="Escrow"><div class="checkboxtext">Escrow</div><br>
+          <input class="checkbox" type="checkbox" name="acceptedPaymentTerms" value="PayPal"><div class="checkboxtext">PayPal</div><br>
+          <input class="checkbox" type="checkbox" name="acceptedPaymentTerms" value="D/P D/A"><div class="checkboxtext">D/P D/A</div><br>
+          <input class="checkbox" type="checkbox" name="acceptedPaymentTerms" value="Cash"><div class="checkboxtext">Cash</div><br>
+        </div>
+      </div>
     </section>
 
-    <div><input type="text" name="facebook" value="<%= buyer.facebook %>"></div>
-    <div><input type="text" name="twitter" value="<%= buyer.twitter %>"></div>
-    <div><input type="text" name="pinterest" value="<%= buyer.pinterest %>"></div>
-    <div><input type="text" name="tumblr" value="<%= buyer.tumblr %>"></div>
-    <div><input type="text" name="linkedin" value="<%= buyer.linkedin %>"></div>
-    <div><input type="text" name="instagram" value="<%= buyer.instagram %>"></div>
-    <div><input type="text" name="google" value="<%= buyer.google %>"></div>
+    <div><input type="text" placeholder="facebook" name="facebook" value="<%= buyer.facebook %>"></div>
+    <div><input type="text" placeholder="twitter" name="twitter" value="<%= buyer.twitter %>"></div>
+    <div><input type="text" placeholder="pinterest" name="pinterest" value="<%= buyer.pinterest %>"></div>
+    <div><input type="text" placeholder="tumblr" name="tumblr" value="<%= buyer.tumblr %>"></div>
+    <div><input type="text" placeholder="linkedin" name="linkedin" value="<%= buyer.linkedin %>"></div>
+    <div><input type="text" placeholder="instagram" name="instagram" value="<%= buyer.instagram %>"></div>
+    <div><input type="text" placeholder="google" name="google" value="<%= buyer.google %>"></div>
 
-    <div><input type="text" name="dunsNumber" value="<%= buyer.dunsNumber %>"></div>
-    <div><input type="text" name="contactName" value="<%= buyer.contactName %>"></div>
-    <div><input type="text" name="contactPosition" value="<%= buyer.contactPosition %>"></div>
-    <div><input type="text" name="contactEmail" value="<%= buyer.contactEmail %>"></div>
+    <div><input type="text" placeholder="dunsNumber" name="dunsNumber" value="<%= buyer.dunsNumber %>"></div>
+    <div><input type="text" placeholder="contactName" name="contactName" value="<%= buyer.contactName %>"></div>
+    <div><input type="text" placeholder="contactPosition" name="contactPosition" value="<%= buyer.contactPosition %>"></div>
+    <div><input type="text" placeholder="contactEmail" name="contactEmail" value="<%= buyer.contactEmail %>"></div>
 
     <h4>Company Description</h4>
     <textarea name="companyDescription" placeholder="Tell us about your business..."

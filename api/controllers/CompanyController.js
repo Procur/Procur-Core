@@ -294,6 +294,7 @@ module.exports = {
         userActiveMode;
     var error = 0;
     var locationsHelper = sails.config.locationsHelper;
+    var waterlineHelper = sails.config.waterlineHelper;
 
     User.findOne({ id: req.session.passport.user }, function(err, user){
       if(err) { return res.redirect('/dashboard'); }
@@ -331,7 +332,10 @@ module.exports = {
                 if(err) { return res.redirect('/dashboard'); }
                 locationsPayload["company"] = locations;
                 viewLocations = locationsHelper.parseLocations(locationsPayload, "supplier");
-                res.view({ user: userActiveMode, company: payload[0], supplier: payload[1], locations: viewLocations });
+                //console.log("payload[1] is " + JSON.stringify(payload[1], null, ' '));
+                payload.push(waterlineHelper.fixSupplierArrays(payload[1]));
+                console.log("MY FIXED OBJECT IS " + JSON.stringify(payload[2], null, ' '));
+                res.view({ user: userActiveMode, company: payload[0], supplier: payload[1], supplier2: payload[2], locations: viewLocations });
               });
             });
           });
