@@ -30,7 +30,6 @@ module.exports = {
         res.redirect('/logout');
       }
       else {
-        console.log('not auth');
         res.view();
       }
     }
@@ -57,6 +56,14 @@ module.exports = {
 
   press: function(req, res){
     res.view();
+  },
+
+  login: function(req, res){
+  res.view();
+  },
+
+  signup: function(req, res){
+  res.view();
   },
 
   careers: function(req, res){

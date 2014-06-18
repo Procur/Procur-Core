@@ -23,22 +23,42 @@ module.exports.policies = {
   },
 
   UserController: {
-    welcome: ['sessionCheck', 'isAuthenticated', 'profileComplete'],
-    myProcur: ['sessionCheck', 'isAuthenticated', 'profileComplete'],
-    pleaseVerify: ['sessionCheck', 'wizardComplete']
+    welcome: ['sessionCheck', 'isAuthenticated'],
+    pleaseVerify: ['sessionCheck', 'isAuthenticated', 'wizardComplete'],
+    updateAccount: ['sessionCheck', 'isAuthenticated', 'profileComplete', 'wizardComplete']
   },
 
   AuthController: {
-    test: 'isAuthenticated'
+    test: 'isAuthenticated',
+    //register: ['isAuthenticatedReverse']
   },
 
   CompanyController: {
     buyerOrSupplier: ['sessionCheck', 'isAuthenticated', 'profileComplete'],
-    createBuyer: ['sessionCheck', 'isAuthenticated'],
-    createSupplier: ['sessionCheck', 'isAuthenticated'],
-    createBuyerAndSupplier: ['sessionCheck', 'isAuthenticated']
+    createBuyer: ['sessionCheck', 'isAuthenticated', 'profileComplete'],
+    createSupplier: ['sessionCheck', 'isAuthenticated', 'profileComplete'],
+    createBuyerAndSupplier: ['sessionCheck', 'isAuthenticated'],
+    update: ['sessionCheck', 'isAuthenticated', 'profileComplete', 'wizardComplete'],
+    setUpdate: ['sessionCheck', 'isAuthenticated', 'profileComplete', 'wizardComplete'],
+    selectDefault: ['sessionCheck', 'isAuthenticated', 'profileComplete'],
+    setDefault: ['sessionCheck', 'isAuthenticated', 'profileComplete'],
+    setBoth: ['sessionCheck', 'isAuthenticated', 'profileComplete'],
+    supplierWizard: ['sessionCheck', 'isAuthenticated', 'profileComplete'],
+    buyerWizard: ['sessionCheck', 'isAuthenticated', 'profileComplete']
+  },
 
-    //TODO: Add logic to force buyer/supplier choice.
+  BuyerController: {
+    index: ['sessionCheck', 'isAuthenticated', 'profileComplete'],
+    create: ['sessionCheck', 'isAuthenticated', 'profileComplete'],
+    update: ['sessionCheck', 'isAuthenticated', 'profileComplete', 'wizardComplete'],
+    destroy: ['sessionCheck', 'isAuthenticated', 'profileComplete', 'wizardComplete', 'denyAllAccess']
+  },
+
+  SupplierController: {
+    index: ['sessionCheck', 'isAuthenticated', 'profileComplete'],
+    create: ['sessionCheck', 'isAuthenticated', 'profileComplete'],
+    update: ['sessionCheck', 'isAuthenticated', 'profileComplete', 'wizardComplete'],
+    destroy: ['sessionCheck', 'isAuthenticated', 'profileComplete', 'wizardComplete', 'denyAllAccess']
   }
 
   /*

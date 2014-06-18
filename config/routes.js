@@ -33,12 +33,6 @@ module.exports.routes = {
   //
   // (This would also work if you had a file at: `/views/home.ejs`)
 
-  'get /stupidtest': {
-    controller: 'CompanyController',
-    action: 'testing'
-  },
-
-
   //LANDING PAGE ROUTES
   'get /': {
     controller: 'HomeController',
@@ -69,6 +63,16 @@ module.exports.routes = {
     controller: 'HomeController',
     action: 'press'
   }, //Displays Press Page
+
+  'get /login': {
+    controller: 'HomeController',
+    action: 'login'
+  }, //Displays Login Page
+
+  'get /signup': {
+    controller: 'HomeController',
+    action: 'signup'
+  }, //Displays Signup Page
 
   'get /careers': {
     controller: 'HomeController',
@@ -305,14 +309,9 @@ module.exports.routes = {
   'get /error/notfound': {
     controller: 'CompanyController',
     action: 'notFound'
-  },
+  }
 
-  //TESTING ROUTES
-
-  'get /internal': {
-    controller: 'AuthController',
-    action: 'test'
-  } //USE THIS VIEW FOR TESTING, DEBUGGING, AND PROTOTYPING
+}; //USE THIS VIEW FOR ING, DEBUGGING, AND PROTOTYPING
 
   //DEPRECATED ROUTES
 
@@ -378,7 +377,6 @@ module.exports.routes = {
   'get /*(^.*)': 'UserController.profile'
 
   */
-};
 
 
 
