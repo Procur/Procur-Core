@@ -71,7 +71,8 @@ module.exports = {
       replSet: {
         servers: [
           {
-            url: process.env.DB_REPL
+            host: process.env.DB_REPL_HOST,
+            port: process.env.DB_REPL_PORT
           }
         ]
       }
