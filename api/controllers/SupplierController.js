@@ -72,7 +72,6 @@ module.exports = {
   },
 
   update: function(req, res){
-<<<<<<< HEAD
     var b = req.body;
     var image = req.files.logoUrl.path;
     var imageHelper = sails.config.imageUploadHelper;
@@ -153,8 +152,6 @@ module.exports = {
         });
       });
     });
-=======
->>>>>>> master
   },
 
   destroy: function(req, res){
