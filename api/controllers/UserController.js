@@ -32,7 +32,15 @@ function getFileSize(file){
 module.exports = {
 
   welcome: function(req, res){
-    res.view();
+    Company.findOne({ user: req.session.passport.user },function(err, company){
+      if(err){ return res.redirect('/dashboard'); }
+      if(company === undefined){
+        res.view();
+      }
+      else{
+        res.redirect('/dashboard');
+      }
+    });
   },
 
   pleaseVerify: function(req, res){
