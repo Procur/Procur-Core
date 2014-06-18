@@ -1,4 +1,74 @@
-<section id="register">
+<%- partial('../partials/mktHeader') %>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-8 col-sm-offset-2">
+      <div class="row">
+        <div class="col-sm-6 moreInfo"> 
+          <h1>We will be launching our full platform this summer. Get in before we launch by signing up for Early Access now.</h1>
+          <div class="dottedLine"></div>
+          <div class="featuresColumn">
+            <h4>Currently Accessible:</h4>
+            <div class="rightSec">
+              <div class="rightSecBox">
+              <i class="fa fa-gear fa-fw"></i>
+              </div>
+              <a href="#">Registered Trading Profile</a>
+            </div>
+
+            <h4>Features Coming Soon:</h4>
+            <div class="rightSec">
+              <div class="rightSecBox">
+              <i class="fa fa-envelope fa-fw"></i>
+              </div>
+              <a href="#">In-App Message System</a>
+            </div>
+            <div class="rightSec rightAlt">
+              <div class="rightSecBox">
+              <i class="fa fa-search fa-fw"></i>
+              </div>
+              <a href="#">Advanced Search</a>
+            </div>
+            <div class="rightSec">
+              <div class="rightSecBox">
+              <i class="fa fa-truck fa-fw"></i>
+              </div>
+              <a href="#">Tradestream RFx Manager</a>
+            </div>
+            <div class="rightSec rightAlt">
+              <div class="rightSecBox">
+              <i class="fa fa-th-large fa-fw"></i>
+              </div>
+              <a href="#">Product Database</a>
+            </div>
+            <div class="rightSec">
+              <div class="rightSecBox">
+              <i class="fa fa-user fa-fw"></i>
+              </div>
+              <a href="#">Multiple User Accounts</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 signUpForm">
+          <h2>Welcome to Procur.<br/>Sign up for Early Access below:</h2>
+          <form action="/register" method="post">
+            <div><input type="text" name="firstName" placeholder="First Name*"></div>
+            <div><input type="text" name="lastName" placeholder="Last Name*"></div>
+            <div><input type="text" name="email" placeholder="Business Email Address*"></div>
+            <div><input type="password" name="password" placeholder="Create a Password*"></div>
+            <div><input type="password" name="passwordConfirm" placeholder="Create a Password*"></div>
+            <div><button type="submit" class="registerButton">Create my account</button></div>
+          </form>
+          <div class="orText"><p>or</p></div>
+          <div class="orLine"></div>
+          <a class="loginButton" href="/login"><button >Create my account</button></div></a>
+        </div>
+      </div>
+    </div>    
+  </div>
+</div>
+
+<!-- <section id="register">
   <h2>Register</h2>
   <form action="/register" method="post">
     <div><input type="text" name="firstName" placeholder="First Name"></div>
@@ -8,4 +78,4 @@
     <div><input type="password" name="passwordConfirm" placeholder="Confirm"></div>
     <div><input type="submit"></div>
   </form>
-</section>
+</section> -->
