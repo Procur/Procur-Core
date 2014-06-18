@@ -13,20 +13,28 @@ module.exports = {
 
     firstName: {
       type: 'string',
-      required: true
+      required: true,
+      minLength: 1,
+      maxLength: 100
     },
     lastName: {
       type: 'string',
-      required: true
+      required: true,
+      minLength: 1,
+      maxLength: 100
     },
     email: {
       type: 'string',
       required: true,
-      unique: true
+      unique: true,
+      minLength: 1,
+      maxLength: 100
     },
     password: {
       type: 'string',
-      required: true
+      required: true,
+      minLength: 8,
+      maxLength: 50
     },
     emailVerified: {
       type: 'boolean',
@@ -37,14 +45,20 @@ module.exports = {
       required: true
     },
     activeMode: {
-      type: 'string'
+      type: 'string',
+      minLength: 1,
+      maxLength: 100
     },
     image: {
       type: 'string',
-      unique: true
+      unique: true,
+      minLength: 1,
+      maxLength: 300
     },
     jobTitle: {
-      type: 'string'
+      type: 'string',
+      minLength: 1,
+      maxLength: 100
     },
 
     //UTILITY
