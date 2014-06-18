@@ -1,10 +1,10 @@
-<div id="regWizard">    
+<div id="regWizard">
   <div class="container">
     <div class="row">
       <div class="col-sm-12">
         <h1>Complete Your Registration</h1>
       </div>
-      <%- partial('../partials/progressProfile') %>
+      <%- partial('../partials/progressprofile') %>
       <form action="/supplier/create" method="post" enctype="multipart/form-data">
         <div class="col-sm-6 col-sm-offset-3 topBox">
           <h1>Your Supplier Profile</h1>
@@ -17,7 +17,7 @@
                 <div><input class="breakForm" type="file" name="logoUrl"></div>
                 <h4>DBA (Doing Business As) Name</h4>
                 <div><input class="breakForm" type="text" name="dba" placeholder="Alternate Company Name"></div>
-                
+
                 <h4>Type of Company*</h4>
                 <section id="typeOfCompany">
                   <div class="styledSelect breakForm">
@@ -68,17 +68,17 @@
                   </div>
                   <div><input type="text" name="otherLocationCity" placeholder="City"></div>
                 </section>
-                
+
               </div>
               <div class="col-sm-6">
-                
+
                 <h4>Annual Sales Value*</h4>
-                <!-- 
+                <!--
                 /////////////////////////////////////
 
                 annualProductionVolume == annualSalesValue
 
-                ///////////////////////////////////// 
+                /////////////////////////////////////
                 -->
                 <section id="annualProductionVolume">
                   <div class="styledSelect breakForm">
@@ -176,8 +176,8 @@
                   </select>
                 </section>
 
-                
-                
+
+
               </div>
             </div>
           </section>
@@ -191,4 +191,3 @@
     </div>
   </div>
 </div>
-
