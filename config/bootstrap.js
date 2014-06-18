@@ -10,7 +10,7 @@
 
 module.exports.bootstrap = function (cb) {
   sails.newrelic = require('newrelic');
-
+  console.log(process.env.DB_URL);
   var cloudinary = require('cloudinary');
 
 
