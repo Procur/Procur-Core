@@ -63,7 +63,6 @@ module.exports = {
         active: true
         }, function(err, supplier) {
           if (err) { return res.redirect('/dashboard'); }
-          console.log("Image hasn't been uploaded.");
           if (imageExists) { imageHelper.uploadSupplierImage(req, res, supplier, image); }
         });
         res.redirect('/dashboard');
@@ -113,14 +112,11 @@ module.exports = {
               postalCode: b.hqPostalCode
             }).exec(function(err, updatedHq) {
               if (err) { return res.redirect('/dashboard'); }
-              console.log("updatedHq is " + typeof updatedHq);
             });
           }
           //Update HQ and company address
           else {
             Location.findOne({ company: companyId, isHq: false }, function(err, compLocation) {
-              console.log("hqId is " + hqId);
-              console.log("compLocation id is " + compLocation.id);
               if (err) { return res.redirect('/dashboard'); }
               Location.update(hqId, {
                 addressLine1: b.hqAddress1,
@@ -130,8 +126,6 @@ module.exports = {
                 postalCode: b.hqPostalCode
               }).exec(function(err, updatedHq) {
                 if (err) { return res.redirect('/dashboard'); }
-                console.log("updatedHq is " + typeof updatedHq);
-                //console.log("updatedHq id is " + JSON.stringify(updatedHq, null, ' '));
               });
               Location.update(compLocation.id, {
                 addressLine1: b.companyAddress1,
@@ -141,13 +135,56 @@ module.exports = {
                 postalCode: b.companyPostalCode
               }).exec(function(err, updatedLocation) {
                 if (err) { return res.redirect('/dashboard'); }
-                console.log("updatedLocation is " + typeof updatedLocation);
-                //console.log("updatedLocation id is " + JSON.stringify(updatedLocation, null, ' '));
               });
             });
           }
-          //Add Supplier update code here?
-          console.log("update supplier code here.");
+
+          Supplier.findOne({ company: companyId }, function(err, supplier) {
+            if (err) { return res.redirect('/dashboard'); }
+            if (imageExists) { imageHelper.uploadSupplierImage(req, res, supplier, image); }
+            if (supplier) { console.log("Old supplier is " + JSON.stringify(supplier, null, ' ' )); }
+            Supplier.update(supplier.id, {
+              dbaName: b.dbaName,
+              language: [b.language],
+              locationName: [b.locationName],
+              locationType: [b.locationType],
+              locationCity: [b.locationCity],
+              locationProvince: [b.locationProvince],
+              locationCountry: [b.locationCountry],
+              portCity: b.nearestPortCity,
+              portProvince: b.nearestPortProvince,
+              portCountry: b.nearestPortCountry,
+              annualSalesValue: b.annualSalesValue,
+              preferredBuyerType: b.preferredBuyerType,
+              preferredBuyerLanguage: [b.preferredBuyerLanguage],
+              preferredBuyerCountry: [b.preferredBuyerCountry],
+              acceptedDeliveryTerms: [b.acceptedDeliveryTerms],
+              acceptedCurrency: [b.acceptedCurrency],
+              acceptedPaymentTerms: [b.acceptedPaymentTerms],
+              typeOfCompany: b.typeOfCompany,
+              privateLabeler: b.privateLabeler,
+              facebook: b.facebook,
+              twitter: b.twitter,
+              pinterest: b.pinterest,
+              tumblr: b.tumblr,
+              linkedin: b.linkedin,
+              instagram: b.instagram,
+              google: b.google,
+              dunsNumber: b.dunsNumber,
+              contactName: b.contactName,
+              contactPosition: b.contactPosition,
+              contactEmail: b.contactEmail,
+              companyDescription: b.companyDescription,
+              environmentalSustainability: b.environmentalSustainability,
+              qualitySourcing: b.qualitySourcing,
+              workplaceSafety: b.workplaceSafety,
+              laborEducationTraining: b.laborEducationTraining,
+              reinvestment: b.reinvestment
+            }).exec(function(err, supplier) {
+              if (err) { return res.redirect('/dashboard'); }
+              if (supplier) { console.log("New supplier is " + JSON.stringify(supplier, null, ' ')); }
+            });
+          });
           return res.redirect('/dashboard');
         });
       });

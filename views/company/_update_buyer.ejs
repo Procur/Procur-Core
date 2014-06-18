@@ -12,159 +12,143 @@
     <!-- remove this later -->
     <h4>Logo</h4><div><input type="file" name="logoUrl"></div>
     <div>
+      <% for (var x = 0; x < buyer2["language"].length; x++) { %>
       <select name="language">
-        <%- partial('../partials/dropdowns/language') %>
+        <option value="<%= buyer2.language[x] %>" selected="selected"><%= buyer2.language[x] %></option>
+        <%- partial('../partials/edit-dropdowns/edit-language') %>
       </select>
+      <% } %>
     </div>
 
     <h4>Other Locations</h4>
-    <% for (var x = 0; x < locations["buyer-notPort"].length; x++) { %>
-    <section id="otherLocation1">
-      <div><input type="text" name="otherLocation1Name" placeholder="Name" value="<%= locations["buyer-notPort"][x].title %>"></div>
+    <% for (var x = 0; x < buyer2["locationName"].length; x++) { %>
+    <section id="otherLocation<%= x %>">
+      <div><input type="text" name="locationName" placeholder="Name" value="<%= buyer2.locationName[x] %>"></div>
       <div>
-        <select name="type">
-          <%- partial('../partials/dropdowns/other-location-type') %>
+        <select name="locationType">
+          <option value="<%= buyer2.locationType[x] %>" selected="selected"><%= buyer2.locationType[x] %></option>
+          <%- partial('../partials/edit-dropdowns/edit-other-location-type') %>
         </select>
       </div>
-      <div><input type="text" name="otherLocation1City" placeholder="City" value="<%= locations["buyer-notPort"][x].city %>"></div>
+      <div><input type="text" name="locationCity" placeholder="City" value="<%= buyer2.locationCity[x] %>"></div>
       <div>
-        <select name="province">
-          <option value="1">1</option>
-          <option value="2">2</option>
+        <select name="locationProvince">
+          <option value="<%= buyer2.locationProvince[x] %>" selected="selected"><%= buyer2.locationProvince[x] %></option>
+          <!-- ADD PARTIAL HERE -->
         </select>
       </div>
       <div>
-        <select name="country">
-          <option value="1">1</option>
-          <option value="2">2</option>
+        <select name="locationCountry">
+          <option value="<%= buyer2.locationCountry[x] %>" selected="selected"><%= buyer2.locationCountry[x] %></option>
+          <!-- ADD PARTIAL HERE -->
         </select>
       </div>
     </section>
     <% } %>
 
     <h4>Port location</h4>
-    <% for (var x = 0; x < locations["buyer-isPort"].length; x++) { %>
     <section id="nearestPort">
       <div><input type="text" name="nearestPortCity" placeholder="City" value="<%= buyer.portCity %>"></div>
       <div><input type="text" name="nearestPortProvince" placeholder="State / Province" value="<%= buyer.portProvince %>"></div>
       <div><input type="text" name="nearestPortCountry" placeholder="Country" value="<%= buyer.portCountry %>"></div>
     </section>
-    <% } %>
 
     <h4>Preferred Supplier Type</h4>
     <section id="preferredSupplierType">
       <select name="preferredSupplierType">
-        <%- partial('../partials/dropdowns/pref-supplier-type') %>
+        <option value="<%= buyer2.preferredSupplierType %>" selected="selected"><%= buyer.preferredSupplierType %></option>
+        <%- partial('../partials/edit-dropdowns/edit-pref-supplier-type') %>
       </select>
     </section>
 
     <h4>Preferred Suppplier Languages</h4>
-    <section id="preferredSupplierLanguage1">
-      <select name="preferredSupplierLanguage1">
-        <%- partial('../partials/dropdowns/pref-supplier-language') %>
+    <% for(var x = 0; x < buyer2["preferredSupplierLanguage"].length; x++) { %>
+    <section id="preferredSupplierLanguage<%= x %>">
+      <select name="preferredSupplierLanguage">
+        <option value="<%= buyer2.preferredSupplierLanguage[x] %>" selected="selected"><%= buyer2.preferredSupplierLanguage[x] %></option>
+        <%- partial('../partials/edit-dropdowns/edit-pref-supplier-language') %>
       </select>
     </section>
-
-    <section id="preferredSupplierLanguage2">
-      <select name="preferredSupplierLanguage2">
-        <%- partial('../partials/dropdowns/pref-supplier-language') %>
-      </select>
-    </section>
-
-    <section id="preferredSupplierLanguage3">
-      <select name="preferredSupplierLanguage3">
-        <%- partial('../partials/dropdowns/pref-supplier-language') %>
-      </select>
-    </section>
+    <% } %>
 
     <h4>Preferred Supplier Locations</h4>
-    <section id="preferredSupplierLocation1">
-      <select name="preferredSupplierLocation1Country">
-        <option value="1">1</option>
-        <option value="2">2</option>
+    <% for(var x = 0; x < buyer2["preferredSupplierLocation"].length; x++) { %>
+    <section id="preferredSupplierLocation<%= x %>">
+      <select name="preferredSupplierCountry">
+        <option value="<%= buyer2.preferredSupplierLocation[x] %>" selected="selected"><%= buyer2.preferredSupplierLocation[x] %></option>
+        <!-- ADD PARTIAL HERE -->
       </select>
     </section>
-    <section id="preferredSupplierLocation2">
-      <select name="preferredSupplierLocation2Country">
-        <option value="1">1</option>
-        <option value="2">2</option>
-      </select>
-    </section>
-    <section id="preferredSupplierLocation3">
-      <select name="preferredSupplierLocation3Country">
-        <option value="1">1</option>
-        <option value="2">2</option>
-      </select>
-    </section>
+    <% } %>
 
     <h4>Type of Company</h4>
     <section id="typeOfCompany">
       <select name="typeOfCompany">
-        <%- partial('../partials/dropdowns/buyer-type') %>
+        <option value="<%= buyer.typeOfCompany %>" selected="selected"><%= buyer.typeOfCompany %></option>
+        <%- partial('../partials/edit-dropdowns/edit-buyer-type') %>
       </select>
     </section>
 
     <h4>Accepted Delivery Terms</h4>
+    <% var terms = ["EXW","FCA","CPT","CIP","DAT","DAP","DDP","FAS","FOB","CFR","CIF","Custom"]; %>
+
     <section id="acceptedDeliveryTerms">
-      <div class="row breakForm">
-        <div class="col-sm-6">
-          <input class="checkbox" type="checkbox" name="acceptedDeliveryTerms" value="EXW"><div class="checkboxtext">EXW</div><br>
-          <input class="checkbox" type="checkbox" name="acceptedDeliveryTerms" value="FCA"><div class="checkboxtext">FCA</div><br>
-          <input class="checkbox" type="checkbox" name="acceptedDeliveryTerms" value="CPT"><div class="checkboxtext">CPT</div><br>
-          <input class="checkbox" type="checkbox" name="acceptedDeliveryTerms" value="CIP"><div class="checkboxtext">CIP</div><br>
-          <input class="checkbox" type="checkbox" name="acceptedDeliveryTerms" value="DAT"><div class="checkboxtext">DAT</div><br>
-          <input class="checkbox" type="checkbox" name="acceptedDeliveryTerms" value="DAP"><div class="checkboxtext">DAP</div><br>
-        </div>
-        <div class="col-sm-6">
-          <input class="checkbox" type="checkbox" name="acceptedDeliveryTerms" value="DDP"><div class="checkboxtext">DDP</div><br>
-          <input class="checkbox" type="checkbox" name="acceptedDeliveryTerms" value="FAS"><div class="checkboxtext">FAS</div><br>
-          <input class="checkbox" type="checkbox" name="acceptedDeliveryTerms" value="FOB"><div class="checkboxtext">FOB</div><br>
-          <input class="checkbox" type="checkbox" name="acceptedDeliveryTerms" value="CFR"><div class="checkboxtext">CFR</div><br>
-          <input class="checkbox" type="checkbox" name="acceptedDeliveryTerms" value="CIF"><div class="checkboxtext">CIF</div><br>
-          <input class="checkbox" type="checkbox" name="acceptedDeliveryTerms" value="Custom"><div class="checkboxtext">Custom</div><br>
-        </div>
+      <div class="col-sm-12">
+        <% for (var x = 0; x < terms.length; x++) { %>
+          <% var matchFound = false; %>
+          <% for (var y = 0; y < buyer2["acceptedDeliveryTerms"].length; y++) { %>
+            <% if (terms[x] == buyer2.acceptedDeliveryTerms[y]) { %>
+              <% matchFound = true; %>
+              <input class="checkbox" type="checkbox" name="acceptedDeliveryTerms" value="<%= terms[x] %>" checked><div class="checkboxtext"><%= terms[x] %></div><br>
+              <% break; %>
+            <% } %>
+          <% } %>
+          <% if (matchFound === false) { %>
+            <input class="checkbox" type="checkbox" name="acceptedDeliveryTerms" value="<%= terms[x] %>"><div class="checkboxtext"><%= terms[x] %></div><br>
+          <% } %>
+        <% } %>
       </div>
     </section>
 
     <h4>Accepted Currencies</h4>
+    <% var currencies = ["USD","EUR","JPY","GBP","AUD","CHF","CAD","MXN","CNY","NZD","SEK","RUB","HKD","SGD"]; %>
+
     <section id="acceptedCurrencies">
-      <div class="row breakForm">
-        <div class="col-sm-6">
-          <input class="checkbox" type="checkbox" name="acceptedCurrency" value="USD"><div class="checkboxtext">USD</div><br>
-          <input class="checkbox" type="checkbox" name="acceptedCurrency" value="EUR"><div class="checkboxtext">EUR</div><br>
-          <input class="checkbox" type="checkbox" name="acceptedCurrency" value="JPY"><div class="checkboxtext">JPY</div><br>
-          <input class="checkbox" type="checkbox" name="acceptedCurrency" value="GBP"><div class="checkboxtext">GBP</div><br>
-          <input class="checkbox" type="checkbox" name="acceptedCurrency" value="AUD"><div class="checkboxtext">AUD</div><br>
-          <input class="checkbox" type="checkbox" name="acceptedCurrency" value="CHF"><div class="checkboxtext">CHF</div><br>
-          <input class="checkbox" type="checkbox" name="acceptedCurrency" value="CAD"><div class="checkboxtext">CAD</div><br>
-        </div>
-        <div class="col-sm-6">
-          <input class="checkbox" type="checkbox" name="acceptedCurrency" value="MXN"><div class="checkboxtext">MXN</div><br>
-          <input class="checkbox" type="checkbox" name="acceptedCurrency" value="CNY"><div class="checkboxtext">CNY</div><br>
-          <input class="checkbox" type="checkbox" name="acceptedCurrency" value="NZD"><div class="checkboxtext">NZD</div><br>
-          <input class="checkbox" type="checkbox" name="acceptedCurrency" value="SEK"><div class="checkboxtext">SEK</div><br>
-          <input class="checkbox" type="checkbox" name="acceptedCurrency" value="RUB"><div class="checkboxtext">RUB</div><br>
-          <input class="checkbox" type="checkbox" name="acceptedCurrency" value="HKD"><div class="checkboxtext">HKD</div><br>
-          <input class="checkbox" type="checkbox" name="acceptedCurrency" value="SGD"><div class="checkboxtext">SGD</div><br>
-        </div>
+      <div class="col-sm-12">
+        <% for(var x = 0; x < currencies.length; x++) { %>
+          <% var matchFound = false; %>
+          <% for (var y = 0; y < buyer2["acceptedCurrency"].length; y++) { %>
+            <% if (currencies[x] == buyer2.acceptedCurrency[y]) { %>
+              <% matchFound = true; %>
+              <input class="checkbox" type="checkbox" name="acceptedCurrency" value="<%= currencies[x] %>" checked><div class="checkboxtext"><%= currencies[x] %></div><br>
+              <% break; %>   
+            <% } %>
+          <% } %>
+          <% if (matchFound === false) { %>
+            <input class="checkbox" type="checkbox" name="acceptedCurrency" value="<%= currencies[x] %>"><div class="checkboxtext"><%= currencies[x] %></div><br>
+          <% } %>
+        <% } %>
       </div>
     </section>
 
     <h4>Accepted Payment Terms</h4>
+    <% var payment = ["MoneyGram","Western Union","T/T","Credit Card","Escrow","PayPal","D/P D/A","Cash"]; %>
+
     <section id="acceptedPaymentTerms">
-      <div class="row breakForm">
-        <div class="col-sm-6">
-          <input class="checkbox" type="checkbox" name="acceptedPaymentTerms" value="MoneyGram"><div class="checkboxtext">MoneyGram</div><br>
-          <input class="checkbox" type="checkbox" name="acceptedPaymentTerms" value="Western Union"><div class="checkboxtext">Western Union</div><br>
-          <input class="checkbox" type="checkbox" name="acceptedPaymentTerms" value="T/T"><div class="checkboxtext">T/T</div><br>
-          <input class="checkbox" type="checkbox" name="acceptedPaymentTerms" value="Credit Card"><div class="checkboxtext">Credit Card</div><br>
-        </div>
-        <div class="col-sm-6">
-          <input class="checkbox" type="checkbox" name="acceptedPaymentTerms" value="Escrow"><div class="checkboxtext">Escrow</div><br>
-          <input class="checkbox" type="checkbox" name="acceptedPaymentTerms" value="PayPal"><div class="checkboxtext">PayPal</div><br>
-          <input class="checkbox" type="checkbox" name="acceptedPaymentTerms" value="D/P D/A"><div class="checkboxtext">D/P D/A</div><br>
-          <input class="checkbox" type="checkbox" name="acceptedPaymentTerms" value="Cash"><div class="checkboxtext">Cash</div><br>
-        </div>
+      <div class="col-sm-12">
+      <% for(var x = 0; x < payment.length; x++) { %>
+        <% var matchFound = false; %>
+        <% for (var y = 0; y < buyer2["acceptedPaymentTerms"].length; y++) { %>
+          <% if (payment[x] == buyer2.acceptedPaymentTerms[y]) { %>
+            <% matchFound = true; %>
+            <input class="checkbox" type="checkbox" name="acceptedPaymentTerms" value="<%= payment[x] %>" checked><div class="checkboxtext"><%= payment[x] %></div><br>
+            <% break; %>
+          <% } %>
+        <% } %>
+        <% if (matchFound === false) { %>
+          <input class="checkbox" type="checkbox" name="acceptedPaymentTerms" value="<%= payment[x] %>"><div class="checkboxtext"><%= payment[x] %></div><br>
+        <% } %>
+      <% } %>
       </div>
     </section>
 
