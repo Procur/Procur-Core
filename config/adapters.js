@@ -20,8 +20,7 @@ module.exports = {
 
     mongo: {
       module: 'sails-mongo',
-      //url: process.env.DB_URL,
-      url: 'mongodb://heroku:F0VDcijJX9uA9wBkje0LL3QNO-A5xKJjWUrUP1MXwF2bMzunk43Q6dToQkuuIbPxDOLHOYs5bdorjsi0VHsSLg@candidate.21.mongolayer.com:10306,candidate.20.mongolayer.com:10307/app25752330',
+      url: process.env.DB_URL,
       schema: true
     }
   }
