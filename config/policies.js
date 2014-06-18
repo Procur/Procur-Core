@@ -45,6 +45,20 @@ module.exports.policies = {
     setBoth: ['sessionCheck', 'isAuthenticated', 'profileComplete', 'wizardComplete'],
     supplierWizard: ['sessionCheck', 'isAuthenticated', 'profileComplete', 'wizardComplete'],
     buyerWIzard: ['sessionCheck', 'isAuthenticated', 'profileComplete', 'wizardComplete']
+  },
+
+  BuyerController: {
+    index: ['sessionCheck', 'isAuthenticated', 'profileComplete', 'wizardComplete'],
+    create: ['sessionCheck', 'isAuthenticated', 'profileComplete', 'wizardComplete'],
+    update: ['sessionCheck', 'isAuthenticated', 'profileComplete', 'wizardComplete'],
+    destroy: ['sessionCheck', 'isAuthenticated', 'profileComplete', 'wizardComplete']
+  },
+
+  SupplierController: {
+    index: ['sessionCheck', 'isAuthenticated', 'profileComplete', 'wizardComplete'],
+    create: ['sessionCheck', 'isAuthenticated', 'profileComplete', 'wizardComplete'],
+    update: ['sessionCheck', 'isAuthenticated', 'profileComplete', 'wizardComplete'],
+    destroy: ['sessionCheck', 'isAuthenticated', 'profileComplete', 'wizardComplete']
   }
 
   /*
