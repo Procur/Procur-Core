@@ -17,7 +17,8 @@ var url = require('url');
      'default': 'mongo',
      mongo: {
        module: 'sails-mongo',
-       url: 'mongodb://localhost:27017/procur-core',
+       host: 'localhost',
+       port: '27017',
        schema: true
      }
    }
