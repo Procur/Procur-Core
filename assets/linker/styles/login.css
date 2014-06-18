@@ -108,5 +108,18 @@
 	color: white;
 	letter-spacing: 0.08em;
 	font-size: 11px;
+}
 
+.loginForm #hint p {
+	font-family: 'Roboto', sans-serif;
+	font-weight: 300;
+	font-size: 11px;
+	color: #333132;
+}
+
+.loginForm #hint a {
+	font-family: 'Roboto', sans-serif;
+	font-weight: 500;
+	font-size: 11px;
+	color: #333132;
 }
