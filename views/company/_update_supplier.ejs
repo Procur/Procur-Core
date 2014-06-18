@@ -13,10 +13,10 @@
     <h4>Logo</h4><div><input type="file" name="logoUrl"></div>
 
     <div>
-      <% for (var x = 0; x < supplier.language[0].length; x++) { %>
+      <% for (var x = 0; x < supplier2["language"].length; x++) { %>
         <select name="language">
-          <option selected="<%= supplier.language[0][x] %>" value="<%= supplier.language[0][x] %>"><%= supplier.language[0][x] %></option>
-          <%- partial('../partials/dropdowns/language') %>
+          <option value="<%= supplier2.language[x] %>" selected="selected"><%= supplier2.language[x] %></option>
+          <%- partial('../partials/edit-dropdowns/edit-language') %>
         </select>
       <% } %>
     </div>
@@ -27,20 +27,21 @@
       <div><input type="text" name="otherLocationName" placeholder="Name" value="<%= supplier2.locationName[x] %>"></div>
       <div>
         <select name="type">
-          <%- partial('../partials/dropdowns/other-location-type') %>
+          <option value="<%= supplier2.locationType[x] %>" selected="selected"><%= supplier2.locationType[x] %></option>
+          <%- partial('../partials/edit-dropdowns/edit-other-location-type') %>
         </select>
       </div>
       <div><input type="text" name="otherLocationCity" placeholder="City" value="<%= supplier2.locationCity[x] %>"></div>
       <div>
         <select name="province">
-          <option value="1"></option>
-          <option value="2">2</option>
+          <option value="<%= supplier2.locationProvince[x] %>" selected="selected"><%= supplier2.locationProvince[x] %></option>
+          <!-- ADD PARTIAL HERE -->
         </select>
       </div>
       <div>
         <select name="country">
-          <option value="1"></option>
-          <option value="2">2</option>
+          <option value="<%= supplier2.locationCountry[x] %>" selected="selected"><%= supplier2.locationCountry[x] %></option>
+          <!-- ADD PARTIAL HERE -->
         </select>
       </div>
     </section>
@@ -56,57 +57,38 @@
     <h4>Annual Sales Value</h4>
     <div>
       <select name="annualSalesValue">
-        <option value="1">1</option>
-        <option value="2">2</option>
+        <option value="<%= supplier2.annualSalesValue %>" selected="selected"><%= supplier2.annualSalesValue %></option>
+        <%- partial('../partials/edit-dropdowns/edit-annual-sales-value') %>
       </select>
     </div>
 
     <h4>Preferred Buyer Type</h4>
     <section id="preferredBuyerType">
       <select name="preferredBuyerType">
-        <%- partial('../partials/dropdowns/pref-buyer-type') %>
+        <option value="<%= supplier2.preferredBuyerType %>" selected="selected"><%= supplier2.preferredBuyerType %></option>
+        <%- partial('../partials/edit-dropdowns/edit-pref-buyer-type') %>
       </select>
     </section>
 
     <h4>Preferred Buyer Languages</h4>
+    <% for(var x = 0; x < supplier2["preferredBuyerLanguage"].length; x++) { %>
     <section id="preferredBuyerLanguage1">
-      <select name="preferredBuyerLanguage1">
-        <%- partial('../partials/dropdowns/pref-buyer-language') %>
+      <select name="preferredBuyerLanguage">
+        <option value="<%= supplier2.preferredBuyerLanguage[x] %>" selected="selected"><%= supplier2.preferredBuyerLanguage[x] %></option>
+        <%- partial('../partials/edit-dropdowns/edit-pref-buyer-language') %>
       </select>
     </section>
-
-    <section id="preferredBuyerLanguage2">
-      <select name="preferredBuyerLanguage2">
-        <%- partial('../partials/dropdowns/pref-buyer-language') %>
-      </select>
-    </section>
-
-    <section id="preferredBuyerLanguage3">
-      <select name="preferredBuyerLanguage3">
-        <%- partial('../partials/dropdowns/pref-buyer-language') %>
-      </select>
-    </section>
+    <% } %>
 
     <h4>Preferred Buyer Locations</h4>
+    <% for(var x = 0; x < supplier2["preferredBuyerCountry"].length; x++) { %>
     <section id="preferredBuyerLocation1">
-      <select name="preferredBuyerLocation1Country">
-        <option value="1">1</option>
-        <option value="2">2</option>
+      <select name="preferredBuyerCountry">
+        <option value="<%= supplier2.preferredBuyerCountry[x] %>" selected="selected"><%= supplier2.preferredBuyerCountry[x] %></option>
+        <%- partial('../partials/edit-dropdowns/edit-other-location-type') %>
       </select>
     </section>
-    <section id="preferredBuyerLocation2">
-      <select name="preferredBuyerLocation2Country">
-        <option value="1">1</option>
-        <option value="2">2</option>
-      </select>
-    </section>
-    <section id="preferredBuyerLocation3">
-      <select name="preferredBuyerLocation3Country">
-        <option value="1">1</option>
-        <option value="2">2</option>
-      </select>
-    </section>
-
+    <% } %>
 
     <h4>Accepted Delivery Terms</h4>
     <% var terms = ["EXW","FCA","CPT","CIP","DAT","DAP","DDP","FAS","FOB","CFR","CIF","Custom"]; %>
@@ -180,7 +162,8 @@
     <h4>Type of Company</h4>
     <section id="typeOfCompany">
       <select name="typeOfCompany">
-        <%- partial('../partials/dropdowns/supplier-type') %>
+        <option value="<%= supplier2.typeOfCompany %>" selected="selected"><%= supplier2.typeOfCompany %></option>
+        <%- partial('../partials/edit-dropdowns/edit-supplier-type') %>
       </select>
     </section>
 

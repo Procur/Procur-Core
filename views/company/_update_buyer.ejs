@@ -20,13 +20,13 @@
     <h4>Other Locations</h4>
     <% for (var x = 0; x < locations["buyer-notPort"].length; x++) { %>
     <section id="otherLocation1">
-      <div><input type="text" name="otherLocation1Name" placeholder="Name" value="<%= locations["buyer-notPort"][x].title %>"></div>
+      <div><input type="text" name="otherLocationName" placeholder="Name" value="<%= locations["buyer-notPort"][x].title %>"></div>
       <div>
         <select name="type">
           <%- partial('../partials/dropdowns/other-location-type') %>
         </select>
       </div>
-      <div><input type="text" name="otherLocation1City" placeholder="City" value="<%= locations["buyer-notPort"][x].city %>"></div>
+      <div><input type="text" name="otherLocationCity" placeholder="City" value="<%= locations["buyer-notPort"][x].city %>"></div>
       <div>
         <select name="province">
           <option value="1">1</option>
@@ -60,38 +60,13 @@
 
     <h4>Preferred Suppplier Languages</h4>
     <section id="preferredSupplierLanguage1">
-      <select name="preferredSupplierLanguage1">
+      <select name="preferredSupplierLanguage">
         <%- partial('../partials/dropdowns/pref-supplier-language') %>
       </select>
-    </section>
-
-    <section id="preferredSupplierLanguage2">
-      <select name="preferredSupplierLanguage2">
-        <%- partial('../partials/dropdowns/pref-supplier-language') %>
-      </select>
-    </section>
-
-    <section id="preferredSupplierLanguage3">
-      <select name="preferredSupplierLanguage3">
-        <%- partial('../partials/dropdowns/pref-supplier-language') %>
-      </select>
-    </section>
 
     <h4>Preferred Supplier Locations</h4>
     <section id="preferredSupplierLocation1">
-      <select name="preferredSupplierLocation1Country">
-        <option value="1">1</option>
-        <option value="2">2</option>
-      </select>
-    </section>
-    <section id="preferredSupplierLocation2">
-      <select name="preferredSupplierLocation2Country">
-        <option value="1">1</option>
-        <option value="2">2</option>
-      </select>
-    </section>
-    <section id="preferredSupplierLocation3">
-      <select name="preferredSupplierLocation3Country">
+      <select name="preferredSupplierCountry">
         <option value="1">1</option>
         <option value="2">2</option>
       </select>
