@@ -54,47 +54,28 @@ module.exports = {
         Buyer.create({
           company: company.id,
           dbaName: b.dba,
-          language: [b.language1, b.language2],
+          language: [b.language],
           preferredSupplierType: b.preferredSupplierType,
-          preferredSupplierLanguage: [b.preferredSupplierLanguage1,
-                                      b.prefferedSupplierLanguage2,
-                                      b.prefferedSupplierLanguage3],
-          preferredSupplierLocation: [b.preferredSupplierLocation1Country,
-                                      b.preferredSupplierLocation2Country,
-                                      b.preferredSupplierLocation3Country],
+          preferredSupplierLanguage: [b.preferredSupplierLanguage],
+          preferredSupplierLocation: [b.preferredSupplierLocation],
           typeOfCompany: b.typeOfCompany,
-          acceptedDeliveryTerms: b.acceptedDeliveryTerms,
-          acceptedCurrency: b.acceptedCurrency,
-          acceptedPaymentTerms: b.acceptedPaymentTerms,
+          acceptedDeliveryTerms: [b.acceptedDeliveryTerms],
+          acceptedCurrency: [b.acceptedCurrency],
+          acceptedPaymentTerms: [b.acceptedPaymentTerms],
+          portCity: b.portCity,
+          portProvince: b.portProvince,
+          portCountry: b.portCountry,
+          locationName: [b.locationName],
+          locationType: [b.locationType],
+          locationCountry: [b.locationCountry],
+          locationProvince: [b.locationProvince],
+          locationCity: [b.locationCity],
           active: true
         }, function(err, buyer) {
           if (err) { return res.redirect('/dashboard'); }
           if (imageExists) { imageHelper.uploadBuyerImage(req, res, buyer, image); }
-          Location.create({
-            company: company.id,
-            buyer: buyer.id,
-            title: b.otherLocation1Name,
-            type: b.type,
-            city: b.otherLocation1City,
-            province: b.province,
-            country: b.country,
-            isHq: false
-          }, function(err, location) {
-            if (err) { return res.redirect('/dashboard'); }
-            Location.create({
-              company: company.id,
-              buyer: buyer.id,
-              type: 'port',
-              city: b.nearestPortCity,
-              province: b.nearestPortProvince,
-              country: b.nearestPortCountry,
-              isHq: false
-            }, function(err, location) {
-              if (err) { return res.rediret('/dashboard'); }
-              res.redirect('/dashboard');
-            });
-          });
         });
+        res.redirect('/dashboard');
       });
     });
   },

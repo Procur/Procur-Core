@@ -16,8 +16,8 @@ module.exports.imageUploadHelper = {
 
   uploadSupplierImage: function(req, res, userObj, image) {
     cloudinary.uploader.upload(image, function(result) {
-      Supplier.update(userObj, { logoUrl: result.url }, function(err, supplier) {
-        if (err) { return res.redirect('/') };
+      Supplier.update(userObj.id, { logoUrl: result.url }, function(err, supplier) {
+        if (err) { return res.redirect('/'); }
       });
     },
     {
@@ -32,8 +32,8 @@ module.exports.imageUploadHelper = {
 
   uploadBuyerImage: function(req, res, userObj, image) {
     cloudinary.uploader.upload(image, function(result) {
-      Buyer.update(userObj, { logoUrl: result.url }, function(err, buyer) {
-        if (err) { return res.redirect('/') };
+      Buyer.update(userObj.id, { logoUrl: result.url }, function(err, buyer) {
+        if (err) { return res.redirect('/'); }
       });
     },
     {

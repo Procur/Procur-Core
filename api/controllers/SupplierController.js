@@ -30,75 +30,131 @@ module.exports = {
     });
   },
 
-  create: function(req, res){
+  create: function(req, res) {
     var b = req.body;
     var image = req.files.logoUrl.path;
     var imageHelper = sails.config.imageUploadHelper;
     var imageExists = imageHelper.getFileSize(image);
 
-    User.findOne({ id: req.session.passport.user }, function(err, user){
-      if(err) { return res.redirect('/dashboard'); }
-      Company.findOne({ user: user.id }, function(err, company){
+    User.findOne({ id: req.session.passport.user }, function(err, user) {
+      Company.findOne({ user: user.id }, function(err, company) {
         if (err) { return res.redirect('/dashboard'); }
         Supplier.create({
-          company: company.id,
-          dbaName: b.dbaName,
-          //logoUrl: b.logoUrl,
-          language: [b.language1, b.language2],
-          annualSalesValue: b.annualSalesValue,
-          primaryProductSpeciality: [b.primaryProductSpeciality1, b.primaryProductSpeciality2],
-          preferredBuyerType: b.preferredBuyerType,
-          preferredBuyerLanguage: [b.preferredBuyerLanguage1,
-                                   b.preferredBuyerLanguage2,
-                                   b.preferredBuyerLanguage3],
-          preferredBuyerCountry: [b.preferredBuyerLocation1Country,
-                                  b.preferredBuyerLocation2Country,
-                                  b.preferredBuyerLocation3Country],
-          acceptedDeliveryTerms: b.acceptedDeliveryTerms,
-          acceptedCurrency: b.acceptedCurrency,
-          acceptedPaymentTerms: b.acceptedPaymentTerms,
-          typeOfCompany: b.typeOfCompany,
-          privateLabeler: b.privateLabeler,
-          active: true
-        }, function(err, supplier){
+        company  : company.id,
+        dbaName : b.dba,
+        typeOfCompany : b.typeOfCompany,
+        language : [b.language],
+        portCity : b.nearestPortCity,
+        portProvince : b.nearestPortProvince,
+        portCountry : b.nearestPortCountry,
+        locationName: [b.otherLocationName],
+        locationType: [b.type],
+        locationCountry: [b.country],
+        locationProvince: [b.province],
+        locationCity: [b.otherLocationCity],
+        annualSalesValue: b.annualProductionVolume,
+        privateLabeler: b.privateLabeler,
+        acceptedDeliveryTerms: [b.acceptedDeliveryTerms],
+        acceptedCurrency: [b.acceptedCurrency],
+        acceptedPaymentTerms: [b.acceptedPaymentTerms],
+        preferredBuyerType: b.preferredBuyerType,
+        preferredBuyerCountry: [b.preferredBuyerLocation],
+        preferredBuyerLanguage: [b.preferredBuyerLanguage],
+        active: true
+        }, function(err, supplier) {
           if (err) { return res.redirect('/dashboard'); }
+          console.log("Image hasn't been uploaded.");
           if (imageExists) { imageHelper.uploadSupplierImage(req, res, supplier, image); }
-          Location.create({
-            company: company.id,
-            supplier: supplier.id,
-            title: b.otherLocation1Name,
-            type: b.type,
-            city: b.otherLocation1City,
-            province: b.province,
-            country: b.country,
-            isHq: false
-          }, function(err, location) {
-            if (err) {
-              var message = "There was a problem."
-              res.redirect('/dashboard', { message: message });
-            }
-            Location.create({
-              company: company.id,
-              supplier: supplier.id,
-              type: 'port',
-              city: b.nearestPortCity,
-              province: b.nearestPortProvince,
-              country: b.nearestPortCountry,
-              isHq: false
-            }, function(err, location) {
-              if (err) {
-                var message = "There was a problem."
-                res.redirect('/dashboard', { message: message });
-              }
-            });
-          res.redirect('/dashboard');
-          });
         });
+        res.redirect('/dashboard');
       });
     });
   },
 
   update: function(req, res){
+<<<<<<< HEAD
+    var b = req.body;
+    var image = req.files.logoUrl.path;
+    var imageHelper = sails.config.imageUploadHelper;
+    var imageExists = imageHelper.getFileSize(image);
+    var companyId;
+    var hqId;
+
+    User.findOne({ id: req.session.passport.user }, function(err, user) {
+      if (err) { return res.redirect('/dashboard'); }
+      Company.findOne({ user: user.id }, function(err, company) {
+        if (err) { return res.redirect('/dashboard'); }
+        companyId = company.id;
+        Company.update(company.id, {
+          name: b.companyName,
+          phoneNumberCountryCode: b.companyPhoneCountryCode,
+          phoneNumber: b.companyPhone,
+          phoneExtension: b.companyPhoneExt,
+          faxCountryCode: b.companyFaxCountryCode,
+          faxNumber: b.companyFax,
+          faxExtension: b.companyFaxExt,
+          email: b.companyEmail,
+          website: b.companyWebsite,
+          industry: b.companyIndustry,
+          employeeCount: b.companyEmployeeCount,
+          handle: b.companyUrl
+        }, function(err, company) {
+          if (err) { return res.redirect('/dashboard'); }
+          Location.findOne({ company: companyId, isHq: true }, function(err, hqLocation) {
+            if (err) { return res.redirect('/dashboard'); }
+            hqId = hqLocation.id;
+          })
+          //Company only has HQ location
+          if (b.companyIsHq === 'on') {
+            Location.update(hqId, {
+              addressLine1: b.hqAddress1,
+              addressLine2: b.hqAddress2,
+              province: b.hqProvince,
+              country: b.hqCountry,
+              postalCode: b.hqPostalCode
+            }).exec(function(err, updatedHq) {
+              if (err) { return res.redirect('/dashboard'); }
+              console.log("updatedHq is " + typeof updatedHq);
+            });
+          }
+          //Update HQ and company address
+          else {
+            Location.findOne({ company: companyId, isHq: false }, function(err, compLocation) {
+              console.log("hqId is " + hqId);
+              console.log("compLocation id is " + compLocation.id);
+              if (err) { return res.redirect('/dashboard'); }
+              Location.update(hqId, {
+                addressLine1: b.hqAddress1,
+                addressLine2: b.hqAddress2,
+                province: b.hqProvince,
+                country: b.hqCountry,
+                postalCode: b.hqPostalCode
+              }).exec(function(err, updatedHq) {
+                if (err) { return res.redirect('/dashboard'); }
+                console.log("updatedHq is " + typeof updatedHq);
+                //console.log("updatedHq id is " + JSON.stringify(updatedHq, null, ' '));
+              });
+              Location.update(compLocation.id, {
+                addressLine1: b.companyAddress1,
+                addressLine2: b.companyAddress2,
+                province: b.companyProvince,
+                country: b.companyCountry,
+                postalCode: b.companyPostalCode
+              }).exec(function(err, updatedLocation) {
+                if (err) { return res.redirect('/dashboard'); }
+                console.log("updatedLocation is " + typeof updatedLocation);
+                //console.log("updatedLocation id is " + JSON.stringify(updatedLocation, null, ' '));
+              });
+            });
+          }
+          //Add Supplier update code here?
+          console.log("update supplier code here.");
+          return res.redirect('/dashboard');
+        });
+      });
+    });
+=======
+>>>>>>> master
   },
 
   destroy: function(req, res){

@@ -35,7 +35,7 @@
     annualSalesValue: {
       type: 'string'
     },
-    primaryProductSpeciality: {
+    primaryProductSpecialty: {
       type: 'array'
     },
     preferredBuyerType: {
@@ -48,19 +48,19 @@
       type: 'array'
     },
     acceptedDeliveryTerms: {
-      type: 'string'
+      type: 'array'
     },
     acceptedCurrency: {
-      type: 'string'
+      type: 'array'
     },
     acceptedPaymentTerms: {
-      type: 'string'
+      type: 'array'
     },
     typeOfCompany: {
       type: 'string'
     },
     privateLabeler: {
-      type: 'boolean'
+      type: 'string'
     },
     facebook: {
       type: 'string'
@@ -175,6 +175,32 @@
     },
     cageCode: {
       type: 'string'
+    },
+
+    //Location fields
+    portCity: {
+      type: 'string'
+    },
+    portProvince: {
+      type: 'string'
+    },
+    portCountry: {
+      type: 'string'
+    },
+    locationName: {
+      type: 'array'
+    },
+    locationType: {
+      type: 'array'
+    },
+    locationCountry: {
+      type: 'array'
+    },
+    locationProvince: {
+      type: 'array'
+    },
+    locationCity: {
+      type: 'array'
     },
 
 
