@@ -24,7 +24,6 @@ module.exports.policies = {
 
   UserController: {
     welcome: ['sessionCheck', 'isAuthenticated'],
-    myProcur: ['sessionCheck', 'isAuthenticated', 'profileComplete'],
     pleaseVerify: ['sessionCheck', 'isAuthenticated', 'wizardComplete'],
     updateAccount: ['sessionCheck', 'isAuthenticated', 'profileComplete', 'wizardComplete']
   },
