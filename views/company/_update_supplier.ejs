@@ -1,0 +1,242 @@
+<form action="/supplier/update" method="post" enctype="multipart/form-data">
+	<%- partial('_update_company') %>
+
+  <h2>Supplier Info</h2>
+  <section id="updateSupplierForm">
+    <div><input type="text" name="dbaName" value="<%= supplier.dbaName %>"></div>
+    <!-- remove this later -->
+    <% if (supplier.logoUrl) { %>
+      <h4>Current Logo</h4>
+      <div><img src="<%= supplier.logoUrl %>" /></div>
+    <% } %>
+    <!-- remove this later -->
+    <h4>Logo</h4><div><input type="file" name="logoUrl"></div>
+
+    <div>
+      <% for (var x = 0; x < supplier.language[0].length; x++) { %>
+        <select name="language">
+          <option selected="<%= supplier.language[0][x] %>" value="<%= supplier.language[0][x] %>"><%= supplier.language[0][x] %></option>
+          <%- partial('../partials/dropdowns/language') %>
+        </select>
+      <% } %>
+    </div>
+
+    <h4>Other Locations</h4>
+    <% for (var x = 0; x < supplier2["locationName"].length; x++) { %>
+    <section id="otherLocation<%= x %>">
+      <div><input type="text" name="otherLocationName" placeholder="Name" value="<%= supplier2.locationName[x] %>"></div>
+      <div>
+        <select name="type">
+          <%- partial('../partials/dropdowns/other-location-type') %>
+        </select>
+      </div>
+      <div><input type="text" name="otherLocationCity" placeholder="City" value="<%= supplier2.locationCity[x] %>"></div>
+      <div>
+        <select name="province">
+          <option value="1"></option>
+          <option value="2">2</option>
+        </select>
+      </div>
+      <div>
+        <select name="country">
+          <option value="1"></option>
+          <option value="2">2</option>
+        </select>
+      </div>
+    </section>
+    <% } %>
+
+    <h4>Port location</h4>
+    <section id="nearestPort">
+      <div><input type="text" name="nearestPortCity" placeholder="City" value="<%= supplier.portCity %>"></div>
+      <div><input type="text" name="nearestPortProvince" placeholder="State / Province" value="<%= supplier.portProvince %>"></div>
+      <div><input type="text" name="nearestPortCountry" placeholder="Country" value="<%= supplier.portCountry %>"></div>
+    </section>
+
+    <h4>Annual Sales Value</h4>
+    <div>
+      <select name="annualSalesValue">
+        <option value="1">1</option>
+        <option value="2">2</option>
+      </select>
+    </div>
+
+    <h4>Preferred Buyer Type</h4>
+    <section id="preferredBuyerType">
+      <select name="preferredBuyerType">
+        <%- partial('../partials/dropdowns/pref-buyer-type') %>
+      </select>
+    </section>
+
+    <h4>Preferred Buyer Languages</h4>
+    <section id="preferredBuyerLanguage1">
+      <select name="preferredBuyerLanguage1">
+        <%- partial('../partials/dropdowns/pref-buyer-language') %>
+      </select>
+    </section>
+
+    <section id="preferredBuyerLanguage2">
+      <select name="preferredBuyerLanguage2">
+        <%- partial('../partials/dropdowns/pref-buyer-language') %>
+      </select>
+    </section>
+
+    <section id="preferredBuyerLanguage3">
+      <select name="preferredBuyerLanguage3">
+        <%- partial('../partials/dropdowns/pref-buyer-language') %>
+      </select>
+    </section>
+
+    <h4>Preferred Buyer Locations</h4>
+    <section id="preferredBuyerLocation1">
+      <select name="preferredBuyerLocation1Country">
+        <option value="1">1</option>
+        <option value="2">2</option>
+      </select>
+    </section>
+    <section id="preferredBuyerLocation2">
+      <select name="preferredBuyerLocation2Country">
+        <option value="1">1</option>
+        <option value="2">2</option>
+      </select>
+    </section>
+    <section id="preferredBuyerLocation3">
+      <select name="preferredBuyerLocation3Country">
+        <option value="1">1</option>
+        <option value="2">2</option>
+      </select>
+    </section>
+
+
+    <h4>Accepted Delivery Terms</h4>
+    <% var terms = ["EXW","FCA","CPT","CIP","DAT","DAP","DDP","FAS","FOB","CFR","CIF","Custom"]; %>
+
+    <section id="acceptedDeliveryTerms">
+      <div class="">
+        <div class="col-sm-12">
+          <% for (var x = 0; x < terms.length; x++) { %>
+            <% var matchFound = false; %>
+            <% for (var y = 0; y < supplier.acceptedDeliveryTerms[0].length; y++) { %>
+              <% if (terms[x] == supplier.acceptedDeliveryTerms[0][y]) { %>
+                <% matchFound = true; %>
+                <input class="checkbox" type="checkbox" name="acceptedDeliveryTerms" value="<%= terms[x] %>" checked><div class="checkboxtext"><%= terms[x] %></div><br>
+                <% break; %>
+              <% } %>
+            <% } %>
+            <% if (matchFound === false) { %>
+              <input class="checkbox" type="checkbox" name="acceptedDeliveryTerms" value="<%= terms[x] %>"><div class="checkboxtext"><%= terms[x] %></div><br>
+            <% } %>
+          <% } %>
+        </div>
+      </div>
+    </section>
+
+    <h4>Accepted Currencies</h4>
+    <% var currencies = ["USD","EUR","JPY","GBP","AUD","CHF","CAD","MXN","CNY","NZD","SEK","RUB","HKD","SGD"]; %>
+
+    <section id="acceptedCurrencies">
+      <div class="">
+        <div class="col-sm-12">
+          <% for (var x = 0; x < currencies.length; x++) { %>
+            <% var matchFound = false; %>
+            <% for (var y = 0; y < supplier.acceptedCurrency[0].length; y++) { %>
+              <% if (currencies[x] == supplier.acceptedCurrency[0][y]) { %>
+                <% matchFound = true; %>
+                <input class="checkbox" type="checkbox" name="acceptedCurrency" value="<%= currencies[x] %>" checked><div class="checkboxtext"><%= currencies[x] %></div><br>
+                <% break; %>   
+              <% } %>
+            <% } %>
+            <% if (matchFound === false) { %>
+              <input class="checkbox" type="checkbox" name="acceptedCurrency" value="<%= currencies[x] %>"><div class="checkboxtext"><%= currencies[x] %></div><br>
+            <% } %>
+          <% } %>
+        </div>
+      </div>
+    </section>
+
+    <h4>Accepted Payment Terms</h4>
+    <% var payment = ["MoneyGram","Western Union","T/T","Credit Card","Escrow","PayPal","D/P D/A","Cash"]; %>
+
+    <section id="acceptedPaymentTerms">
+      <div class="">
+        <div class="col-sm-12">
+        <% for (var x = 0; x < payment.length; x++) { %>
+          <% var matchFound = false; %>
+          <% for (var y = 0; y < supplier.acceptedPaymentTerms[0].length; y++) { %>
+            <% if (payment[x] == supplier.acceptedPaymentTerms[0][y]) { %>
+              <% matchFound = true; %>
+              <input class="checkbox" type="checkbox" name="acceptedPaymentTerms" value="<%= payment[x] %>" checked><div class="checkboxtext"><%= payment[x] %></div><br>
+              <% break; %>
+            <% } %>
+          <% } %>
+          <% if (matchFound === false) { %>
+            <input class="checkbox" type="checkbox" name="acceptedPaymentTerms" value="<%= payment[x] %>"><div class="checkboxtext"><%= payment[x] %></div><br>
+          <% } %>
+        <% } %>
+        </div>
+      </div>
+    </section>
+
+    <h4>Type of Company</h4>
+    <section id="typeOfCompany">
+      <select name="typeOfCompany">
+        <%- partial('../partials/dropdowns/supplier-type') %>
+      </select>
+    </section>
+
+    <h4>Contract Manufacturing</h4>
+    <section id="privateLabeler" class="breakForm">
+    <% if (supplier.privateLabeler == "privateLabeler") { %>
+      <input class="checkbox" type="checkbox" name="privateLabeler" value="privateLabeler" checked><div class="checkboxtext">Private Labeling</div><br>
+    <% } else { %>
+      <input class="checkbox" type="checkbox" name="privateLabeler" value="privateLabeler"><div class="checkboxtext">Private Labeling</div><br>
+    <% } %>
+    </section>
+    
+
+    <div><input type="text" placeholder="facebook" name="facebook" value="<%= supplier.facebook %>"></div>
+    <div><input type="text" placeholder="twitter" name="twitter" value="<%= supplier.twitter %>"></div>
+    <div><input type="text" placeholder="pinterest" name="pinterest" value="<%= supplier.pinterest %>"></div>
+    <div><input type="text" placeholder="tumblr" name="tumblr" value="<%= supplier.tumblr %>"></div>
+    <div><input type="text" placeholder="linkedin" name="linkedin" value="<%= supplier.linkedin %>"></div>
+    <div><input type="text" placeholder="instagram" name="instagram" value="<%= supplier.instagram %>"></div>
+    <div><input type="text" placeholder="google" name="google" value="<%= supplier.google %>"></div>
+
+    <div><input type="text" placeholder="dunsNumber" name="dunsNumber" value="<%= supplier.dunsNumber %>"></div>
+    <div><input type="text" placeholder="contactName" name="contactName" value="<%= supplier.contactName %>"></div>
+    <div><input type="text" placeholder="contactPosition" name="contactPosition" value="<%= supplier.contactPosition %>"></div>
+    <div><input type="text" placeholder="contactEmail" name="contactEmail" value="<%= supplier.contactEmail %>"></div>
+
+    <h4>Company Description</h4>
+    <textarea name="companyDescription" placeholder="Tell us about your business..."
+              rows="4" cols="50"><%= supplier.companyDescription %>
+    </textarea>
+
+    <h4>Environmental Sustainability</h4>
+    <textarea name="environmentalSustainability" placeholder=""
+              rows="4" cols="50"><%= supplier.companyDescription %>
+    </textarea>
+
+    <h4>Quality Sourcing</h4>
+    <textarea name="qualitySourcing" placeholder=""
+              rows="4" cols="50"><%= supplier.qualitySourcing %>
+    </textarea>
+
+    <h4>Workplace Safety</h4>
+    <textarea name="workplaceSafety" placeholder=""
+              rows="4" cols="50"><%= supplier.workplaceSafety %>
+    </textarea>
+
+    <h4>Labor, Education, and Training</h4>
+    <textarea name="laborEducationTraining" placeholder=""
+              rows="4" cols="50"><%= supplier.laborEducationTraining %>
+    </textarea>
+
+    <h4>Reinvestment</h4>
+    <textarea name="reinvestment" placeholder=""
+              rows="4" cols="50"><%= supplier.reinvestment %>
+    </textarea>
+
+    <div><input type="submit"></div>
+  </section>
+</form>
