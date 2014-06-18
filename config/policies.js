@@ -41,23 +41,23 @@ module.exports.policies = {
     createBuyerAndSupplier: ['sessionCheck', 'isAuthenticated'],
     update: ['sessionCheck', 'isAuthenticated', 'profileComplete', 'wizardComplete'],
     setUpdate: ['sessionCheck', 'isAuthenticated', 'profileComplete', 'wizardComplete'],
-    selectDefault: ['sessionCheck', 'isAuthenticated', 'profileComplete', 'wizardComplete'],
-    setDefault: ['sessionCheck', 'isAuthenticated', 'profileComplete', 'wizardComplete'],
-    setBoth: ['sessionCheck', 'isAuthenticated', 'profileComplete', 'wizardComplete'],
-    supplierWizard: ['sessionCheck', 'isAuthenticated', 'profileComplete', 'wizardComplete'],
-    buyerWIzard: ['sessionCheck', 'isAuthenticated', 'profileComplete', 'wizardComplete']
+    selectDefault: ['sessionCheck', 'isAuthenticated', 'profileComplete'],
+    setDefault: ['sessionCheck', 'isAuthenticated', 'profileComplete'],
+    setBoth: ['sessionCheck', 'isAuthenticated', 'profileComplete'],
+    supplierWizard: ['sessionCheck', 'isAuthenticated', 'profileComplete'],
+    buyerWizard: ['sessionCheck', 'isAuthenticated', 'profileComplete']
   },
 
   BuyerController: {
-    index: ['sessionCheck', 'isAuthenticated', 'profileComplete', 'wizardComplete'],
-    create: ['sessionCheck', 'isAuthenticated', 'profileComplete', 'wizardComplete'],
+    index: ['sessionCheck', 'isAuthenticated', 'profileComplete'],
+    create: ['sessionCheck', 'isAuthenticated', 'profileComplete'],
     update: ['sessionCheck', 'isAuthenticated', 'profileComplete', 'wizardComplete'],
     destroy: ['sessionCheck', 'isAuthenticated', 'profileComplete', 'wizardComplete', 'denyAllAccess']
   },
 
   SupplierController: {
-    index: ['sessionCheck', 'isAuthenticated', 'profileComplete', 'wizardComplete'],
-    create: ['sessionCheck', 'isAuthenticated', 'profileComplete', 'wizardComplete'],
+    index: ['sessionCheck', 'isAuthenticated', 'profileComplete'],
+    create: ['sessionCheck', 'isAuthenticated', 'profileComplete'],
     update: ['sessionCheck', 'isAuthenticated', 'profileComplete', 'wizardComplete'],
     destroy: ['sessionCheck', 'isAuthenticated', 'profileComplete', 'wizardComplete', 'denyAllAccess']
   }
