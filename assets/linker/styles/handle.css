@@ -1,0 +1,41 @@
+.urlBox {
+	width: 100%;
+	height: 40px;
+	border: 1px solid #e3e3e3;
+	margin-bottom: 25px;
+	line-height: 40px;
+	padding-left: 10px;
+}
+
+#selectHandleForm h2 {
+	font-family: 'Montserrat', sans-serif;
+	font-size: 13px;
+	color: #333132;
+	text-align: center;
+	font-weight: 400;
+	letter-spacing: 0.06em;
+	line-height: 18px;
+	margin-bottom: 20px;
+}
+
+.urls {
+	display: inline;
+	margin: 0px;
+	padding: 0px;
+	font-family: 'Open-Sans', sans-serif;
+	font-size: 12px;
+	letter-spacing: 0.06em;
+}
+
+.urlStatic img {
+	margin-top: -3px;
+}
+
+.green {
+	color: #4FA31E;
+}
+
+.urlDynamic {
+	margin-left: -1px;
+	font-weight: 700;
+}
