@@ -307,7 +307,7 @@ module.exports = {
                 //console.log("OLD OBJECT IS " + JSON.stringify(payload[1], null, ' '));
                 payload.push(waterlineHelper.fixBuyerArrays(payload[1]));
                 //console.log("MY FIXED OBJECT IS " + JSON.stringify(payload[2], null, ' '));
-                res.view({ user: userActiveMode, company: payload[0], buyer: payload[1], locations: viewLocations });
+                res.view({ user: userActiveMode, company: payload[0], buyer: payload[1], buyer2: payload[2], locations: viewLocations });
               });
             });
           });
