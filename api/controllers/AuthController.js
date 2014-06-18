@@ -53,7 +53,7 @@ module.exports = {
           password: b.password,
           emailVerified: false,
           profileComplete: false,
-          active: true,
+          active: true
         }, function(err, user){
           if(err){ return res.redirect('/dashboard'); }
           else{
@@ -62,7 +62,7 @@ module.exports = {
               if(err) { return res.redirect('/dashboard'); }
               token = hash.toString('base64').replace(/\//g,'_').replace(/\+/g,'-');
               EmailVerification.create({ email: b.email, token: token }, function(err, emailVerification){
-                if(err) { return res.redirect('/dashboard'); }
+                if(err) {return res.redirect('/dashboard'); }
               });
 
               //USER CREATED///////////
@@ -112,7 +112,6 @@ module.exports = {
     var b = req.body;
     var newPassword;
     var emailAddress;
-    console.log("THE PASSWORD: " + b.password);
     if((b.password !== undefined) && (b.password !== "")){
       bcrypt.genSalt(10, function(err, salt){
         bcrypt.hash(b.password, salt, function(err, hash){
@@ -133,12 +132,7 @@ module.exports = {
               };
 
               smtpTransport.sendMail(mailOptions, function(err, response){
-                if(err){
-                  console.log(err);
-                }
-                else {
-                  console.log("Change Password email sent: " + response.message);
-                }
+                if(err){ console.log(err); }
               });
               req.flash('Password changed.');
               res.redirect('/dashboard');

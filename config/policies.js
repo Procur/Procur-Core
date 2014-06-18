@@ -23,21 +23,21 @@ module.exports.policies = {
   },
 
   UserController: {
-    welcome: ['sessionCheck', 'isAuthenticated', 'profileComplete'],
+    welcome: ['sessionCheck', 'isAuthenticated'],
     myProcur: ['sessionCheck', 'isAuthenticated', 'profileComplete'],
-    pleaseVerify: ['sessionCheck', 'wizardComplete'],
+    pleaseVerify: ['sessionCheck', 'isAuthenticated', 'wizardComplete'],
     updateAccount: ['sessionCheck', 'isAuthenticated', 'profileComplete', 'wizardComplete']
   },
 
   AuthController: {
     test: 'isAuthenticated',
-    register: ['isAuthenticatedReverse']
+    //register: ['isAuthenticatedReverse']
   },
 
   CompanyController: {
     buyerOrSupplier: ['sessionCheck', 'isAuthenticated', 'profileComplete'],
-    createBuyer: ['sessionCheck', 'isAuthenticated'],
-    createSupplier: ['sessionCheck', 'isAuthenticated'],
+    createBuyer: ['sessionCheck', 'isAuthenticated', 'profileComplete'],
+    createSupplier: ['sessionCheck', 'isAuthenticated', 'profileComplete'],
     createBuyerAndSupplier: ['sessionCheck', 'isAuthenticated'],
     update: ['sessionCheck', 'isAuthenticated', 'profileComplete', 'wizardComplete'],
     setUpdate: ['sessionCheck', 'isAuthenticated', 'profileComplete', 'wizardComplete'],
