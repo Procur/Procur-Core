@@ -97,6 +97,5 @@
 
 .dottedLine {
 	border-bottom: 1px dotted #999;
-	margin-top: 20px;
-	margin-bottom: 20px;
+	margin-top: 20px 0px 20px;
 }
