@@ -25,7 +25,7 @@ module.exports = {
         servers: [
           {
             host: process.env.DB_REPL_HOST || 'localhost',
-            port: process.env.DB_REPL_PORT || '27017'
+            port: process.env.DB_REPL_PORT || 27017
           }
         ]
       }
