@@ -67,7 +67,14 @@ module.exports = {
   'default': 'mongo',
     mongo: {
       module: 'sails-mongo',
-      url: process.env.DB_URL || 'mongodb://localhost:27017/procur-core'
+      url: process.env.DB_URL || 'mongodb://localhost:27017/procur-core',
+      replSet: {
+        servers: [
+          {
+            url: process.env.DB_REPL
+          }
+        ]
+      }
     }
   }
 
