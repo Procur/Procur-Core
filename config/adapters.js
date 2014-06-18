@@ -14,14 +14,21 @@
 
 module.exports = {
 
-  adapters:{
+  adapters: {
 
-  'default': 'mongo',
+    'default': 'mongo',
 
     mongo: {
       module: 'sails-mongo',
       url: process.env.DB_URL,
-      schema: true
+      replSet: {
+        servers: [
+          {
+            host: process.env.DB_REPL_HOST,
+            port: process.env.DB_REPL_PORT
+          }
+        ]
+      }
     }
   }
 };

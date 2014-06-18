@@ -64,20 +64,11 @@ module.exports = {
   }},*/
 
   adapters:{
-  'default': 'mongo',
+    'default': 'mongo',
     mongo: {
       module: 'sails-mongo',
-      url: process.env.DB_URL || 'mongodb://localhost:27017/procur-core',
-      replSet: {
-        servers: [
-          {
-            host: process.env.DB_REPL_HOST,
-            port: process.env.DB_REPL_PORT
-          }
-        ]
-      }
+      url: process.env.DB_URL,
+      schema: true
     }
   }
-
-
 };
