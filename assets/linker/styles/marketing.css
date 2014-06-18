@@ -49,7 +49,7 @@
 }
 
 .regForm {
-	background-color: rgba(0, 0, 0, 0.2);
+	background-color: rgba(0, 0, 0, 0.16);
 	min-height: 360px;
 	height: 100%;
 	margin-top: -5px;
@@ -63,6 +63,9 @@
 	padding-left: 10px;
 	font-family: 'Roboto', sans-serif;
 	font-weight: 300;
+	border: 0px none;
+	font-size: 11px;
+	letter-spacing: 0.05em;
 }
 
 .regForm button {
