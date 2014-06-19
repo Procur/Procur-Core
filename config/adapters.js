@@ -20,7 +20,7 @@ module.exports = {
 
     mongo: {
       module: 'sails-mongo',
-      url: process.env.DB_URL,
+      url: process.env.DB_URL || 'mongodb://localhost:27017',
       replSet: {
         servers: [
           {
