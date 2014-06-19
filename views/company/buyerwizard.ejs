@@ -42,10 +42,18 @@
                 </div>
 
                 <h4>Nearest Port City*</h4>
-                <section id="port">
+                <section id="nearestPort">
                   <div><input type="text" name="portCity" placeholder="City"></div>
-                  <div><input type="text" name="portProvince" placeholder="State / Province"></div>
-                  <div><input class="breakForm" type="text" name="portCountry" placeholder="Country"></div>
+                  <div class="styledSelect">
+                    <select name="nearestPortCountry" id="nearestPortCountry" onchange="print_state('nearestPortProvince', this.selectedIndex);">
+                      <option>Select Country</option>
+                    </select>
+                  </div>
+                  <div class="styledSelect">
+                    <select name="nearestPortProvince" id="nearestPortProvince">
+                      <option>Select State/Province</option>
+                    </select>
+                  </div><script language="javascript">print_country("nearestPortCountry");</script>
                 </section>
 
                 <h4>Other Locations</h4>
@@ -132,7 +140,7 @@
                     <div class="col-sm-6">
                       <input class="checkbox" type="checkbox" name="acceptedPaymentTerms" value="Escrow"><div class="checkboxtext">Escrow</div><br>
                       <input class="checkbox" type="checkbox" name="acceptedPaymentTerms" value="PayPal"><div class="checkboxtext">PayPal</div><br>
-                      <input class="checkbox" type="checkbox" name="acceptedPaymentTerms" value="D/P D/A"><div class="checkboxtext">D/P D/A</div><br>
+                      <input class="ch`ckbox" type="checkbox" name="acceptedPaymentTerms" value="D/P D/A"><div class="checkboxtext">D/P D/A</div><br>
                       <input class="checkbox" type="checkbox" name="acceptedPaymentTerms" value="Cash"><div class="checkboxtext">Cash</div><br>
                     </div>
                   </div>
@@ -150,7 +158,7 @@
                 <section id="preferredSupplierLocation1" class="styledSelect">
                   <select name="preferredSupplierLocation" id="preferredSupplierLocation">
                     <option >Preferred Supplier Location</option>
-                  </select><script language="javascript">print_country("preferredSupplierLocation");</script>
+                  </select><script l`guage="javascript">print_country("preferredSupplierLocation");</script>
                 </section>
                 <section id="preferredSupplierLanguage1" class="styledSelect">
                   <select name="preferredSupplierLanguage">
