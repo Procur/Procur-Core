@@ -81,7 +81,120 @@ module.exports = {
   },
 
   update: function(req, res){
-    
+    var b = req.body;
+    var image = req.files.logoUrl.path;
+    var imageHelper = sails.config.imageUploadHelper;
+    var imageExists = imageHelper.getFileSize(image);
+    var companyId;
+    var hqId;
+
+    User.findOne({ id: req.session.passport.user }, function(err, user) {
+      if (err) { return res.redirect('/dashboard'); }
+      Company.findOne({ user: user.id }, function(err, company) {
+        if (err) { return res.redirect('/dashboard'); }
+        companyId = company.id;
+        Company.update(company.id, {
+          name: b.companyName,
+          phoneNumberCountryCode: b.companyPhoneCountryCode,
+          phoneNumber: b.companyPhone,
+          phoneExtension: b.companyPhoneExt,
+          faxCountryCode: b.companyFaxCountryCode,
+          faxNumber: b.companyFax,
+          faxExtension: b.companyFaxExt,
+          email: b.companyEmail,
+          website: b.companyWebsite,
+          industry: b.companyIndustry,
+          employeeCount: b.employeeCount,
+          handle: b.companyUrl
+        }, function(err, company) {
+          if (err) { return res.redirect('/dashboard'); }
+          Location.findOne({ company: companyId, isHq: true }, function(err, hqLocation) {
+            if (err) { return res.redirect('/dashboard'); }
+            hqId = hqLocation.id;
+          });
+          if (b.companyIsHq === 'on') {
+            Location.update(hqId, {
+              addressLine1: b.hqAddress1,
+              addressLine2: b.hqAddress2,
+              province: b.hqProvince,
+              country: b.hqCountry,
+              postalCode: b.hqPostalCode
+            }).exec(function(err, updatedHq) {
+              if (err) { return res.redirect('/dashboard'); }
+            });
+          }
+          else {
+            Location.findOne({ company: companyId, isHq: false }, function(err, compLocation) {
+              if (err) { return res.redirect('/dashboard'); }
+              Location.update(hqId, {
+                addressLine1: b.hqAddress1,
+                addressLine2: b.hqAddress2,
+                province: b.hqProvince,
+                country: b.hqCountry,
+                postalCode: b.hqPostalCode
+              }).exec(function(err, updatedHq) {
+                if (err) { return res.redirect('/dashboard'); }
+              });
+              Location.update(compLocation.id, {
+                addressLine1: b.companyAddress1,
+                addressLine2: b.companyAddress2,
+                province: b.companyProvince,
+                country: b.companyCountry,
+                postalCode: b.companyPostalCode
+              }).exec(function(err, updatedLocation) {
+                if (err) { return res.redirect('/dashboard'); }
+              });
+            });
+          }
+
+          Buyer.findOne({ company: companyId }, function(err, buyer) {
+            if (err) { return res.redirect('/dashboard'); }
+            if (imageExists) { imageHelper.uploadBuyerImage(req, res, supplier, image); }
+            Buyer.update(buyer.id, {
+              dbaName: b.dbaName,
+              language: [b.language],
+              locationName: [b.locationName],
+              locationType: [b.locationType],
+              locationCity: [b.locationCity],
+              locationProvince: [b.locationProvince],
+              locationCountry: [b.locationCountry],
+              portCity: b.nearestPortCity,
+              portProvince: b.nearestPortProvince,
+              portCountry: b.nearestPortCountry,
+              preferredSupplierType: [b.preferredSupplierType],
+              preferredSupplierLanguage: [b.preferredSupplierLanguage],
+              preferredSupplierLocation: [b.preferredSupplierCountry],
+              typeOfCompany: b.typeOfCompany,
+              acceptedDeliveryTerms: [b.acceptedDeliveryTerms],
+              acceptedCurrency: [b.acceptedCurrency],
+              acceptedPaymentTerms: [b.acceptedPaymentTerms],
+              facebook: b.facebook,
+              twitter: b.twitter,
+              pinterest: b.pinterest,
+              tumblr: b.tumblr,
+              linkedin: b.linkedin,
+              instagram: b.instagram,
+              google: b.google,
+              dunsNumber: b.dunsNumber,
+              contactName: b.contactName,
+              contactPosition: b.contactPosition,
+              contactEmail: b.contactEmail,
+              companyDescription: b.companyDescription,
+              environmentalSustainability: b.environmentalSustainability,
+              qualitySourcing: b.qualitySourcing,
+              workplaceSafety: b.workplaceSafety,
+              laborEducationTraining: b.laborEducationTraining,
+              reinvestment: b.reinvestment,
+              productsOfInterest: b.productsOfInterest
+            }, function(err, buyer) {
+              if (err) { return res.redirect('/dashboard'); }
+              return res.redirect('/company/update');
+            });
+          });
+        });
+      });
+    });
+
   },
 
   destroy: function(req, res){
@@ -89,3 +202,47 @@ module.exports = {
   }
 
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

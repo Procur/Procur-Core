@@ -304,7 +304,8 @@ module.exports = {
                 if(err) { return res.redirect('/dashboard'); }
                 locationsPayload["company"] = locations;
                 viewLocations = locationsHelper.parseLocations(locationsPayload, "buyer");
-                res.view({ user: userActiveMode, company: payload[0], buyer: payload[1], locations: viewLocations });
+                payload.push(waterlineHelper.fixBuyerArrays(payload[1]));
+                res.view({ user: userActiveMode, company: payload[0], buyer: payload[1], buyer2: payload[2], locations: viewLocations });
               });
             });
           });
@@ -321,9 +322,7 @@ module.exports = {
                 if(err) { return res.redirect('/dashboard'); }
                 locationsPayload["company"] = locations;
                 viewLocations = locationsHelper.parseLocations(locationsPayload, "supplier");
-                //console.log("payload[1] is " + JSON.stringify(payload[1], null, ' '));
                 payload.push(waterlineHelper.fixSupplierArrays(payload[1]));
-                console.log("MY FIXED OBJECT IS " + JSON.stringify(payload[2], null, ' '));
                 res.view({ user: userActiveMode, company: payload[0], supplier: payload[1], supplier2: payload[2], locations: viewLocations });
               });
             });
