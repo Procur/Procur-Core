@@ -43,7 +43,7 @@
         <select name="locationProvince" id="province<%= x %>">
           <option value="<%= supplier2.locationProvince[x] %>" selected="selected"><%= supplier2.locationProvince[x] %></option>
         </select>
-      </div><script language="javascript">edit_country(<%= supplier2.locationCountry[x] %>, "country<%= x %>");</script>
+      </div><script language="javascript">edit_country("<%= supplier2.locationCountry[x] %>", "country<%= x %>");</script>
     </section>
     <% } %>
 
@@ -81,13 +81,12 @@
     <% } %>
 
     <h4>Preferred Buyer Locations</h4>
-    <% for(var x = 0; x < supplier2["preferredBuyerCountry"].length; x++) { %>
-    <%= supplier2.preferredBuyerCountry[x] %>
-    <section id="preferredBuyerCountry">
-      <select name="preferredBuyerLocation" id="preferredBuyerCountry<%= x %>">
+    <% for(var x = 0; x < supplier2["preferredBuyerLocation"].length; x++) { %>
+    <section id="preferredBuyerLocation">
+      <select name="preferredBuyerCountry" id="preferredBuyerLocation<%= x %>">
         <!-- edit_country(buyersCountry, countryID) will populate this dropdown -->
       </select>
-    </section><script language="javascript">edit_country(<%= supplier2.preferredBuyerCountry[x] %>, "preferredBuyerCountry<%= x %>");</script>
+    </section><script language="javascript">edit_country("<%= supplier2.preferredBuyerLocation[x] %>", "preferredBuyerLocation<%= x %>");</script>
     <% } %>
 
     <h4>Accepted Delivery Terms</h4>
