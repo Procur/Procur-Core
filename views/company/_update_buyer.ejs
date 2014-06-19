@@ -42,7 +42,7 @@
         <select name="locationProvince" id="province<%= x %>">
           <option value="<%= buyer2.locationProvince[x] %>" selected="selected"><%= buyer2.locationProvince[x] %></option>
         </select>
-      </div><script language="javascript">edit_country(<%= buyer2.locationCountry[x] %>, "country<%= x %>");</script>
+      </div><script language="javascript">edit_country("<%= buyer2.locationCountry[x] %>", "country<%= x %>");</script>
     </section>
     <% } %>
 
@@ -77,7 +77,7 @@
       <select name="preferredSupplierCountry" id="preferredSupplierLocation<%= x %>">
         <!-- edit_country(buyersCountry, countryID) will populate this dropdown -->
       </select>
-    </section><script language="javascript">edit_country(<%= buyer2.preferredSupplierLocation[x] %>, "preferredSupplierLocation<%= x %>");</script>
+    </section><script language="javascript">edit_country("<%= buyer2.preferredSupplierLocation[x] %>", "preferredSupplierLocation<%= x %>");</script>
     <% } %>
 
     <h4>Type of Company</h4>

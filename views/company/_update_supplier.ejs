@@ -84,7 +84,7 @@
     <% for(var x = 0; x < supplier2["preferredBuyerLocation"].length; x++) { %>
     <section id="preferredBuyerLocation">
       <select name="preferredBuyerCountry" id="preferredBuyerLocation<%= x %>">
-        <!-- edit_country(buyersCountry, countryID) will populate this dropdown -->
+        <!-- edit_country(suppliersCountry, countryID) will populate this dropdown -->
       </select>
     </section><script language="javascript">edit_country("<%= supplier2.preferredBuyerLocation[x] %>", "preferredBuyerLocation<%= x %>");</script>
     <% } %>
