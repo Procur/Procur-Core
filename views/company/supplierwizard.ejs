@@ -1,3 +1,6 @@
+<script src="/countries.js"></script>
+
+
 <div id="regWizard">
   <div class="container">
     <div class="row">
@@ -55,17 +58,15 @@
                     </select>
                   </div>
                   <div class="styledSelect">
-                    <select name="country">
-                      <option value="1">Select Country</option>
-                      <option value="2">2</option>
+                    <select name="country" id="country" onchange="print_state('province',this.selectedIndex);">
+                      <option >Select Country</option>
                     </select>
                   </div>
                   <div class="styledSelect">
-                    <select name="province">
-                      <option value="1">Select State/Province</option>
-                      <option value="2">2</option>
+                    <select name="province" id="province">
+                      <option>Select State/Province</option>
                     </select>
-                  </div>
+                  </div><script language="javascript">print_country("country");</script>
                   <div><input type="text" name="otherLocationCity" placeholder="City"></div>
                 </section>
 
@@ -165,10 +166,9 @@
                   </select>
                 </section>
                 <section id="preferredBuyerLocation1" class="styledSelect">
-                  <select name="preferredBuyerLocation">
-                    <option value="1">Preferred Buyer Location</option>
-                    <option value="2">2</option>
-                  </select>
+                  <select name="preferredBuyerLocation" id="preferredBuyerLocation">
+                    <option >Preferred Buyer Location</option>
+                  </select><script language="javascript">print_country("preferredBuyerLocation");</script>
                 </section>
                 <section id="preferredBuyerLanguage1" class="styledSelect">
                   <select name="preferredBuyerLanguage">

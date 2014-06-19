@@ -5,15 +5,20 @@ $( ".hqbox" ).click(function() {
 if($(".hqbox").is(':checked')) {
 
 // Disable hq field entry...
-	$(".hqfield").prop('disabled', true);
+	// $(".hqfield").prop('disabled', true);
+
+
+  alert($(".companyCountry").val());
+	alert($(".companyProvince").val());
 
 // And copy over the values from the company fields
 	$(".hqaddress1").val($(".address1").val());
 	$(".hqaddress2").val($(".address2").val());
 	$(".hqcompanyCountry").val($(".companyCountry").val());
+	setTimeout(function(){
 	$(".hqcompanyProvince").val($(".companyProvince").val());
-	$(".hqPostalCode").val($(".companyPostalCode").val());
-} 
+	$(".hqPostalCode").val($(".companyPostalCode").val());},5000);
+}
 
 // Otherwise, forget about it...
 else {
@@ -21,4 +26,3 @@ else {
 }
 
 });
-

@@ -1,3 +1,5 @@
+<script src="/countries.js"></script>
+
 <form action="/supplier/update" method="post" enctype="multipart/form-data">
 	<%- partial('_update_company') %>
 
@@ -33,17 +35,15 @@
       </div>
       <div><input type="text" name="locationCity" placeholder="City" value="<%= supplier2.locationCity[x] %>"></div>
       <div>
-        <select name="locationProvince">
-          <option value="<%= supplier2.locationProvince[x] %>" selected="selected"><%= supplier2.locationProvince[x] %></option>
-          <!-- ADD PARTIAL HERE -->
+				<select name="locationCountry" id="country<%= x %>" onchange="print_state('province<%= x %>',this.selectedIndex);">
+          <!-- edit_country(suppliersCountry, countryID) will populate this dropdown -->
         </select>
       </div>
       <div>
-        <select name="locationCountry">
-          <option value="<%= supplier2.locationCountry[x] %>" selected="selected"><%= supplier2.locationCountry[x] %></option>
-          <!-- ADD PARTIAL HERE -->
+        <select name="locationProvince" id="province<%= x %>">
+          <option value="<%= supplier2.locationProvince[x] %>" selected="selected"><%= supplier2.locationProvince[x] %></option>
         </select>
-      </div>
+      </div><script language="javascript">edit_country(<%= supplier2.locationCountry[x] %>, "country<%= x %>");</script>
     </section>
     <% } %>
 
@@ -82,12 +82,12 @@
 
     <h4>Preferred Buyer Locations</h4>
     <% for(var x = 0; x < supplier2["preferredBuyerCountry"].length; x++) { %>
-    <section id="preferredBuyerLocation<%= x %>">
-      <select name="preferredBuyerCountry">
-        <option value="<%= supplier2.preferredBuyerCountry[x] %>" selected="selected"><%= supplier2.preferredBuyerCountry[x] %></option>
-        <!-- ADD PARTIAL HERE -->
+    <%= supplier2.preferredBuyerCountry[x] %>
+    <section id="preferredBuyerCountry">
+      <select name="preferredBuyerLocation" id="preferredBuyerCountry<%= x %>">
+        <!-- edit_country(buyersCountry, countryID) will populate this dropdown -->
       </select>
-    </section>
+    </section><script language="javascript">edit_country(<%= supplier2.preferredBuyerCountry[x] %>, "preferredBuyerCountry<%= x %>");</script>
     <% } %>
 
     <h4>Accepted Delivery Terms</h4>
@@ -169,7 +169,7 @@
       <input class="checkbox" type="checkbox" name="privateLabeler" value="privateLabeler"><div class="checkboxtext">Private Labeling</div><br>
     <% } %>
     </section>
-    
+
 
     <div><input type="text" placeholder="facebook" name="facebook" value="<%= supplier.facebook %>"></div>
     <div><input type="text" placeholder="twitter" name="twitter" value="<%= supplier.twitter %>"></div>

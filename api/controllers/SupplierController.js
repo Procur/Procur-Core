@@ -39,6 +39,7 @@ module.exports = {
     User.findOne({ id: req.session.passport.user }, function(err, user) {
       Company.findOne({ user: user.id }, function(err, company) {
         if (err) { return res.redirect('/dashboard'); }
+        if (b.privateLabeler == "privateLabeler") { b.privateLabeler = true; } else { b.privateLabeler = false; }
         Supplier.create({
         company  : company.id,
         dbaName : b.dba,
