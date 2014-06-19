@@ -1,3 +1,5 @@
+<script src="/countries.js"></script>
+
 <form action="/supplier/update" method="post" enctype="multipart/form-data">
 	<%- partial('_update_company') %>
 
@@ -31,18 +33,17 @@
         </select>
       </div>
       <div><input type="text" name="otherLocationCity" placeholder="City" value="<%= supplier2.locationCity[x] %>"></div>
+			<div>
+				<select name="country" id="country" onchange="print_state('province',this.selectedIndex);">
+					<option >Select Country</option>
+				</select>
+			</div>
       <div>
-        <select name="province">
-          <option value="1"></option>
-          <option value="2">2</option>
-        </select>
-      </div>
-      <div>
-        <select name="country">
-          <option value="1"></option>
-          <option value="2">2</option>
-        </select>
-      </div>
+        <select name="province" id="province">
+          <option >Select State/Province</option>
+				</select>
+      </div><script language="javascript">print_country("country");</script>
+
     </section>
     <% } %>
 
@@ -89,22 +90,19 @@
 
     <h4>Preferred Buyer Locations</h4>
     <section id="preferredBuyerLocation1">
-      <select name="preferredBuyerLocation1Country">
-        <option value="1">1</option>
-        <option value="2">2</option>
-      </select>
+      <select name="preferredBuyerLocation1Country" id="preferredBuyerLocation1Country">
+        <option >Preferred Buyer Location</option>
+      </select><script language="javascript">print_country("preferredBuyerLocation1Country");</script>
     </section>
     <section id="preferredBuyerLocation2">
-      <select name="preferredBuyerLocation2Country">
-        <option value="1">1</option>
-        <option value="2">2</option>
-      </select>
+      <select name="preferredBuyerLocation2Country" id="preferredBuyerLocation2Country">
+				<option >Preferred Buyer Location</option>
+			</select><script language="javascript">print_country("preferredBuyerLocation2Country");</script>
     </section>
     <section id="preferredBuyerLocation3">
-      <select name="preferredBuyerLocation3Country">
-        <option value="1">1</option>
-        <option value="2">2</option>
-      </select>
+      <select name="preferredBuyerLocation3Country" id="preferredBuyerLocation3Country">
+				<option >Preferred Buyer Location</option>
+			</select><script language="javascript">print_country("preferredBuyerLocation3Country");</script>
     </section>
 
 
@@ -143,7 +141,7 @@
               <% if (currencies[x] == supplier.acceptedCurrency[0][y]) { %>
                 <% matchFound = true; %>
                 <input class="checkbox" type="checkbox" name="acceptedCurrency" value="<%= currencies[x] %>" checked><div class="checkboxtext"><%= currencies[x] %></div><br>
-                <% break; %>   
+                <% break; %>
               <% } %>
             <% } %>
             <% if (matchFound === false) { %>
@@ -192,7 +190,7 @@
       <input class="checkbox" type="checkbox" name="privateLabeler" value="privateLabeler"><div class="checkboxtext">Private Labeling</div><br>
     <% } %>
     </section>
-    
+
 
     <div><input type="text" placeholder="facebook" name="facebook" value="<%= supplier.facebook %>"></div>
     <div><input type="text" placeholder="twitter" name="twitter" value="<%= supplier.twitter %>"></div>

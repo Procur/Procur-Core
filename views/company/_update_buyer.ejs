@@ -1,3 +1,5 @@
+<script src="/countries.js"></script>
+
 <form action="/buyer/update" method="post" enctype="multipart/form-data">
   <%- partial('_update_company') %>
 
@@ -28,17 +30,15 @@
       </div>
       <div><input type="text" name="otherLocation1City" placeholder="City" value="<%= locations["buyer-notPort"][x].city %>"></div>
       <div>
-        <select name="province">
-          <option value="1">1</option>
-          <option value="2">2</option>
+        <select name="country" id="country" onchange="print_state('province',this.selectedIndex);">
+          <option >Select Country</option>
         </select>
       </div>
       <div>
-        <select name="country">
-          <option value="1">1</option>
-          <option value="2">2</option>
+        <select name="province" id="province">
+          <option >Select State/Province</option>
         </select>
-      </div>
+      </div><script language="javascript">print_country("country");</script>
     </section>
     <% } %>
 
@@ -79,22 +79,19 @@
 
     <h4>Preferred Supplier Locations</h4>
     <section id="preferredSupplierLocation1">
-      <select name="preferredSupplierLocation1Country">
-        <option value="1">1</option>
-        <option value="2">2</option>
-      </select>
+      <select name="preferredSupplierLocation1Country" id="preferredSupplierLocation1Country">
+        <option >Preferred Supplier Location</option>
+      </select><script language="javascript">print_country("preferredSupplierLocation1Country");</script>
     </section>
     <section id="preferredSupplierLocation2">
-      <select name="preferredSupplierLocation2Country">
-        <option value="1">1</option>
-        <option value="2">2</option>
-      </select>
+      <select name="preferredSupplierLocation2Country" id="preferredSupplierLocation2Country">
+        <option >Preferred Supplier Location</option>
+      </select><script language="javascript">print_country("preferredSupplierLocation2Country");</script>
     </section>
     <section id="preferredSupplierLocation3">
-      <select name="preferredSupplierLocation3Country">
-        <option value="1">1</option>
-        <option value="2">2</option>
-      </select>
+      <select name="preferredSupplierLocation3Country" id="preferredSupplierLocation3Country">
+        <option >Preferred Supplier Location</option>
+      </select><script language="javascript">print_country("preferredSupplierLocation3Country");</script>
     </section>
 
     <h4>Type of Company</h4>
@@ -216,7 +213,7 @@
               rows="4" cols="50"><%= buyer.productsOfInterest %>
     </textarea>
 
-    
+
     <div><input type="submit"></div>
   </section>
 </form>

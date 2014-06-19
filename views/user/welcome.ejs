@@ -1,4 +1,5 @@
-<div id="regWizard">    
+<script src="/countries.js"></script>
+<div id="regWizard">
   <div class="container">
     <div class="row">
       <div class="col-sm-12">
@@ -26,7 +27,7 @@
                 <div class="col-sm-7 col-sm-offset-5 inputColumnR">
                     <div class="breakForm"><input type="text" name="companyPhoneExt" placeholder="Extension"></div>
                 </div>
-              </div>    
+              </div>
 
               <!-- Fax Info -->
               <h4>Company Fax</h4>
@@ -39,11 +40,11 @@
                 </div>
               </div>
               <div class="row insideForm">
-                  
+
                 <div class="col-sm-7 col-sm-offset-5 inputColumnR">
                     <div class="breakForm"><input type="text" name="companyFaxExt" placeholder="Extension"></div>
                 </div>
-              </div>    
+              </div>
 
 
               <h4>Company Email Address*</h4>
@@ -58,7 +59,7 @@
               </select>
               </div>
 
-                
+
 
             </div>
               <!-- End of First Column -->
@@ -68,9 +69,15 @@
                 <h4>Official Business Address*</h4>
                 <div><input class="address1" type="text" name="companyAddress1" placeholder="Address Line #1"></div>
                 <div><input class="address2" type="text" name="companyAddress2" placeholder="Address Line #2"></div>
-                <div class="styledSelect"><select class="companyCountry" name="companyCountry">
+
+
+
+
+
+
+
+                <div class="styledSelect"><select class="companyCountry" name="companyCountry" id="companyCountry" onchange="print_state('companyProvince',this.selectedIndex);">
                     <option value="0">Select Country</option>
-                    <option value="1">1</option>
                   </select>
                 </div>
 
@@ -78,12 +85,17 @@
                 <div class="row insideForm">
                   <div class="col-sm-7">
                     <div class="styledSelect inputColumnL">
-                      <select class="companyProvince" name="companyProvince">
+                      <select class="companyProvince" name="companyProvince" id="companyProvince">
                         <option value="0">Select Province/State</option>
-                        <option value="1">Fakeland</option>
-                      </select>
+                      </select><script language="javascript">print_country("companyCountry");</script>
                     </div>
                   </div>
+
+
+
+
+
+
                   <div class="col-sm-5 inputColumnR">
                     <div class="breakForm">
                       <input type="text" class="companyPostalCode" name="companyPostalCode" placeholder="Postal Code">
@@ -100,21 +112,26 @@
                 <div><input class="hqfield hqaddress1" type="text" name="hqAddress1" placeholder="Address Line 1"></div>
                 <div><input  class="hqfield hqaddress2" type="text" name="hqAddress2" placeholder="Address Line 2"></div>
 
+
+
                 <div class="styledSelect">
-                  <select class="hqfield hqcompanyCountry" name="hqCountry">
+                  <select class="hqfield hqcompanyCountry" name="hqcompanyCountry" id="hqcompanyCountry" onchange="print_state('hqcompanyProvince',this.selectedIndex);">
                     <option value="0">Select Country</option>
-                    <option value="1">1</option>
                   </select>
                 </div>
 
                 <div class="row insideForm">
                   <div class="col-sm-7">
                     <div class="styledSelect inputColumnL">
-                      <select class="hqfield hqcompanyProvince" name="hqProvince">
+                      <select class="hqfield hqcompanyProvince" name="hqcompanyProvince" id="hqcompanyProvince">
                         <option value="0">Select Province/State</option>
-                        <option value="1">Fakeland</option>
                       </select>
-                    </div>
+                    </div><script language="javascript">print_country("hqcompanyCountry");</script>
+
+
+
+
+
                   </div>
                   <div class="col-sm-5 inputColumnR">
                     <div class="breakForm">
@@ -134,7 +151,7 @@
 
               </div>
 
-              
+
           <!-- End of Second Column -->
           </div>
         </div>
