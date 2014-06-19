@@ -18,3 +18,12 @@
 #legal p {
   display: inline;
 }
+
+#legal a {
+  color: #ef9818;
+  text-decoration: none;
+}
+
+#legal a:hover {
+  text-decoration: underline;
+};
