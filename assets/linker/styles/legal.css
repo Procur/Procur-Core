@@ -1,0 +1,20 @@
+#legal h1 {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 36px;
+  text-transform: uppercase;
+  font-weight: 300;
+  color: #ef9818;
+  letter-spacing: 0.04em;
+}
+
+#legal h2,
+#legal h3 {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 600;
+  font-size: 12px;
+}
+
+#legal h3,
+#legal p {
+  display: inline;
+}
