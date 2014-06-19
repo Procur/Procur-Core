@@ -94,7 +94,7 @@ module.exports = {
           email: b.companyEmail,
           website: b.companyWebsite,
           industry: b.companyIndustry,
-          employeeCount: b.companyEmployeeCount,
+          employeeCount: b.employeeCount,
           handle: b.companyUrl
         }, function(err, company) {
           if (err) { return res.redirect('/dashboard'); }
@@ -142,7 +142,6 @@ module.exports = {
           Supplier.findOne({ company: companyId }, function(err, supplier) {
             if (err) { return res.redirect('/dashboard'); }
             if (imageExists) { imageHelper.uploadSupplierImage(req, res, supplier, image); }
-            if (supplier) { console.log("Old supplier is " + JSON.stringify(supplier, null, ' ' )); }
             Supplier.update(supplier.id, {
               dbaName: b.dbaName,
               language: [b.language],
@@ -182,7 +181,6 @@ module.exports = {
               reinvestment: b.reinvestment
             }).exec(function(err, supplier) {
               if (err) { return res.redirect('/dashboard'); }
-              if (supplier) { console.log("New supplier is " + JSON.stringify(supplier, null, ' ')); }
             });
           });
           return res.redirect('/dashboard');
