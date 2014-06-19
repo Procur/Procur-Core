@@ -282,8 +282,6 @@ function print_state(state_id, state_index){
 
 //Added by Adam Morgan
 function edit_country(default_value, country_id){
-  console.log(default_value);
-  console.log(country_id);
   // default_value will be set as the default <option> value rather than 'Select Country' 
   // given the id of the <select> tag as function argument, it inserts <option> tags
   var option_str = document.getElementById(country_id);

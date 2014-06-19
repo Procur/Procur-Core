@@ -59,7 +59,7 @@ module.exports = {
         acceptedCurrency: [b.acceptedCurrency],
         acceptedPaymentTerms: [b.acceptedPaymentTerms],
         preferredBuyerType: b.preferredBuyerType,
-        preferredBuyerCountry: [b.preferredBuyerLocation],
+        preferredBuyerLocation: [b.preferredBuyerLocation],
         preferredBuyerLanguage: [b.preferredBuyerLanguage],
         active: true
         }, function(err, supplier) {
@@ -157,7 +157,7 @@ module.exports = {
               annualSalesValue: b.annualSalesValue,
               preferredBuyerType: b.preferredBuyerType,
               preferredBuyerLanguage: [b.preferredBuyerLanguage],
-              preferredBuyerCountry: [b.preferredBuyerCountry],
+              preferredBuyerLocation: [b.preferredBuyerLocation],
               acceptedDeliveryTerms: [b.acceptedDeliveryTerms],
               acceptedCurrency: [b.acceptedCurrency],
               acceptedPaymentTerms: [b.acceptedPaymentTerms],
