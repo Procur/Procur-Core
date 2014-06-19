@@ -123,3 +123,18 @@
 	font-size: 11px;
 	color: #333132;
 }
+
+
+/* LOGOUT */
+
+.logOut h1 {
+	font-family: 'Open Sans', sans-serif;
+	color: #999;
+	font-weight: 300;
+	font-size: 20px;
+	line-height: 26px;
+}
+
+.logOut h4 {
+	margin-bottom: 30px;
+}
