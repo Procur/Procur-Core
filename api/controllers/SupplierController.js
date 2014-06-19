@@ -94,7 +94,7 @@ module.exports = {
           email: b.companyEmail,
           website: b.companyWebsite,
           industry: b.companyIndustry,
-          employeeCount: b.companyEmployeeCount,
+          employeeCount: b.employeeCount,
           handle: b.companyUrl
         }, function(err, company) {
           if (err) { return res.redirect('/dashboard'); }

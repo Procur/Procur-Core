@@ -104,10 +104,11 @@ module.exports = {
           email: b.companyEmail,
           website: b.companyWebsite,
           industry: b.companyIndustry,
-          employeeCount: b.companyEmployeeCount,
+          employeeCount: b.employeeCount,
           handle: b.companyUrl
         }, function(err, company) {
           console.log("company " + company + " updated.");
+          if (company) { console.log("company is " + JSON.stringify(company, null, ' ' )); }
           if (err) { return res.redirect('/dashboard'); }
           Location.findOne({ company: companyId, isHq: true }, function(err, hqLocation) {
             if (err) { return res.redirect('/dashboard'); }
@@ -154,7 +155,7 @@ module.exports = {
           Buyer.findOne({ company: companyId }, function(err, buyer) {
             if (err) { return res.redirect('/dashboard'); }
             if (imageExists) { imageHelper.uploadBuyerImage(req, res, supplier, image); }
-            if (buyer) { console.log("Old Buyer is " + JSON.stringify(buyer, null, ' ')); }
+            //if (buyer) { console.log("Old Buyer is " + JSON.stringify(buyer, null, ' ')); }
             Buyer.update(buyer.id, {
               dbaName: b.dbaName,
               language: [b.language],
@@ -193,10 +194,10 @@ module.exports = {
               productsOfInterest: b.productsOfInterest
             }, function(err, buyer) {
               if (err) { return res.redirect('/dashboard'); }
-              if (buyer) { console.log("New Buyer is " + JSON.stringify(buyer, null, ' ')); }
+              //if (buyer) { console.log("New Buyer is " + JSON.stringify(buyer, null, ' ')); }
             });
           });
-          return res.redirect('/dashboard');
+          return res.view({_layoutFile: 'views/dashboard/index.ejs'});
         });
       });
     });
