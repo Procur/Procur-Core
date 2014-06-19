@@ -107,8 +107,6 @@ module.exports = {
           employeeCount: b.employeeCount,
           handle: b.companyUrl
         }, function(err, company) {
-          console.log("company " + company + " updated.");
-          if (company) { console.log("company is " + JSON.stringify(company, null, ' ' )); }
           if (err) { return res.redirect('/dashboard'); }
           Location.findOne({ company: companyId, isHq: true }, function(err, hqLocation) {
             if (err) { return res.redirect('/dashboard'); }
@@ -122,7 +120,6 @@ module.exports = {
               country: b.hqCountry,
               postalCode: b.hqPostalCode
             }).exec(function(err, updatedHq) {
-              console.log("updatedHq " + updatedHq + " updated.");
               if (err) { return res.redirect('/dashboard'); }
             });
           }
@@ -136,7 +133,6 @@ module.exports = {
                 country: b.hqCountry,
                 postalCode: b.hqPostalCode
               }).exec(function(err, updatedHq) {
-                console.log("updatedHq " + updatedHq + " updated.");
                 if (err) { return res.redirect('/dashboard'); }
               });
               Location.update(compLocation.id, {
@@ -146,7 +142,6 @@ module.exports = {
                 country: b.companyCountry,
                 postalCode: b.companyPostalCode
               }).exec(function(err, updatedLocation) {
-                console.log("updatedLocation " + updatedLocation + " updated.");
                 if (err) { return res.redirect('/dashboard'); }
               });
             });
@@ -155,7 +150,6 @@ module.exports = {
           Buyer.findOne({ company: companyId }, function(err, buyer) {
             if (err) { return res.redirect('/dashboard'); }
             if (imageExists) { imageHelper.uploadBuyerImage(req, res, supplier, image); }
-            //if (buyer) { console.log("Old Buyer is " + JSON.stringify(buyer, null, ' ')); }
             Buyer.update(buyer.id, {
               dbaName: b.dbaName,
               language: [b.language],
@@ -194,10 +188,9 @@ module.exports = {
               productsOfInterest: b.productsOfInterest
             }, function(err, buyer) {
               if (err) { return res.redirect('/dashboard'); }
-              //if (buyer) { console.log("New Buyer is " + JSON.stringify(buyer, null, ' ')); }
+              return res.redirect('/company/update');
             });
           });
-          return res.view({_layoutFile: 'views/dashboard/index.ejs'});
         });
       });
     });
