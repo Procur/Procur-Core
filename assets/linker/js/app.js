@@ -13,7 +13,7 @@
   // as soon as this file is loaded, connect automatically, 
   var socket = io.connect();
   if (typeof console !== 'undefined') {
-    log('Connecting to Sails.js...');
+    log('Connecting to Procur...');
   }
 
   socket.on('connect', function socketConnected() {
@@ -38,10 +38,10 @@
     // the Sails.js server.
     ///////////////////////////////////////////////////////////
     log(
-        'Socket is now connected and globally accessible as `socket`.\n' + 
+        'Procur is now connected'/*) and globally accessible as `socket`.\n' +
         'e.g. to send a GET request to Sails, try \n' + 
         '`socket.get("/", function (response) ' +
-        '{ console.log(response); })`'
+        '{ console.log(response); })`'*/
     );
     ///////////////////////////////////////////////////////////
 
