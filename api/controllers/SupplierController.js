@@ -61,6 +61,7 @@ module.exports = {
         preferredBuyerType: b.preferredBuyerType,
         preferredBuyerLocation: [b.preferredBuyerLocation],
         preferredBuyerLanguage: [b.preferredBuyerLanguage],
+        productCategory: [b.autocomplete],
         active: true
         }, function(err, supplier) {
           if (err) { return res.redirect('/dashboard'); }
@@ -179,7 +180,8 @@ module.exports = {
               qualitySourcing: b.qualitySourcing,
               workplaceSafety: b.workplaceSafety,
               laborEducationTraining: b.laborEducationTraining,
-              reinvestment: b.reinvestment
+              reinvestment: b.reinvestment,
+              productCategory: [b.autocomplete]
             }).exec(function(err, supplier) {
               if (err) { return res.redirect('/dashboard'); }
             });

@@ -75,7 +75,7 @@ module.exports = {
         }, function(err, buyer) {
           if (err) { return res.redirect('/dashboard'); }
           if (imageExists) { imageHelper.uploadBuyerImage(req, res, buyer, image); }
-          
+
         });
         //console.log(Buyer);
         res.redirect('/dashboard');
@@ -188,7 +188,8 @@ module.exports = {
               workplaceSafety: b.workplaceSafety,
               laborEducationTraining: b.laborEducationTraining,
               reinvestment: b.reinvestment,
-              productsOfInterest: b.productsOfInterest
+              productsOfInterest: b.productsOfInterest,
+              productCategory: [b.autocomplete]
             }, function(err, buyer) {
               if (err) { return res.redirect('/dashboard'); }
               return res.redirect('/company/update');

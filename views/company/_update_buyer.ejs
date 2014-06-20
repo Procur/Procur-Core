@@ -120,7 +120,7 @@
             <% if (currencies[x] == buyer2.acceptedCurrency[y]) { %>
               <% matchFound = true; %>
               <input class="checkbox" type="checkbox" name="acceptedCurrency" value="<%= currencies[x] %>" checked><div class="checkboxtext"><%= currencies[x] %></div><br>
-              <% break; %>   
+              <% break; %>
             <% } %>
           <% } %>
           <% if (matchFound === false) { %>
@@ -198,6 +198,20 @@
     <textarea name="productsOfInterest" placeholder=""
               rows="4" cols="50"><%= buyer.productsOfInterest %>
     </textarea>
+
+    <h4>Select your Category Preferences</h4>
+    <label  for="autocomplete"></label>
+      <input id="autocomplete1" name="autocomplete" placeholder="Option 1">
+
+
+    <h4>Select your Category Preferences</h4>
+    <label  for="autocomplete"></label>
+      <input id="autocomplete2" name="autocomplete" placeholder="Option 2">
+
+
+    <h4>Select your Category Preferences</h4>
+    <label  for="autocomplete"></label>
+      <input id="autocomplete3" name="autocomplete" placeholder="Option 3">
 
 
     <div><input type="submit"></div>
