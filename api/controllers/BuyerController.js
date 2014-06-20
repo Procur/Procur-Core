@@ -70,11 +70,14 @@ module.exports = {
           locationCountry: [b.locationCountry],
           locationProvince: [b.locationProvince],
           locationCity: [b.locationCity],
+          productCategory: [b.autocomplete],
           active: true
         }, function(err, buyer) {
           if (err) { return res.redirect('/dashboard'); }
           if (imageExists) { imageHelper.uploadBuyerImage(req, res, buyer, image); }
+          
         });
+        //console.log(Buyer);
         res.redirect('/dashboard');
       });
     });
@@ -202,47 +205,3 @@ module.exports = {
   }
 
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
