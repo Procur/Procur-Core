@@ -1,4 +1,21 @@
 # Procur-Core
+##Stack
+```
+|=======|    |=========|
+| REDIS |    | MONGODB |
+| -sess |    | -appdata|
+|=======|    |=========|
+    |             |
+    |             |
+    |  |-------|  |
+    |--| SAILS |--|
+       |-------|
+          ^ |
+          | V
+       |-------|
+       |  web  |
+       |-------|
+```
 ##Running Locally  
 
 ###Development Environment Setup
