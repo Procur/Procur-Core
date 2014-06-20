@@ -45,8 +45,16 @@
                 <h4>Nearest Port City*</h4>
                 <section id="nearestPort">
                   <div><input type="text" name="nearestPortCity" placeholder="City"></div>
-                  <div><input type="text" name="nearestPortProvince" placeholder="State / Province"></div>
-                  <div><input class="breakForm" type="text" name="nearestPortCountry" placeholder="Country"></div>
+                  <div class="styledSelect">
+                    <select name="nearestPortCountry" id="nearestPortCountry" onchange="print_state('nearestPortProvince', this.selectedIndex);">
+                      <option>Select Country</option>
+                    </select>
+                  </div>
+                  <div class="styledSelect">
+                    <select name="nearestPortProvince" id="nearestPortProvince">
+                      <option>Select State/Province</option>
+                    </select>
+                  </div><script language="javascript">print_country("nearestPortCountry");</script>
                 </section>
 
                 <h4>Other Locations</h4>
@@ -59,7 +67,7 @@
                   </div>
                   <div class="styledSelect">
                     <select name="country" id="country" onchange="print_state('province',this.selectedIndex);">
-                      <option >Select Country</option>
+                      <option>Select Country</option>
                     </select>
                   </div>
                   <div class="styledSelect">
@@ -84,7 +92,7 @@
                 <section id="annualProductionVolume">
                   <div class="styledSelect breakForm">
                     <select name="annualProductionVolume">
-                      <option value="1">1</option>
+                      <%- partial('../partials/dropdowns/annual-sales-value') %>
                     </select>
                   </div>
                 </section>
