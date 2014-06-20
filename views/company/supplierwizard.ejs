@@ -1,3 +1,6 @@
+<script src="/countries.js"></script>
+
+
 <div id="regWizard">
   <div class="container">
     <div class="row">
@@ -42,8 +45,16 @@
                 <h4>Nearest Port City*</h4>
                 <section id="nearestPort">
                   <div><input type="text" name="nearestPortCity" placeholder="City"></div>
-                  <div><input type="text" name="nearestPortProvince" placeholder="State / Province"></div>
-                  <div><input class="breakForm" type="text" name="nearestPortCountry" placeholder="Country"></div>
+                  <div class="styledSelect">
+                    <select name="nearestPortCountry" id="nearestPortCountry" onchange="print_state('nearestPortProvince', this.selectedIndex);">
+                      <option>Select Country</option>
+                    </select>
+                  </div>
+                  <div class="styledSelect">
+                    <select name="nearestPortProvince" id="nearestPortProvince">
+                      <option>Select State/Province</option>
+                    </select>
+                  </div><script language="javascript">print_country("nearestPortCountry");</script>
                 </section>
 
                 <h4>Other Locations</h4>
@@ -55,17 +66,15 @@
                     </select>
                   </div>
                   <div class="styledSelect">
-                    <select name="country">
-                      <option value="1">Select Country</option>
-                      <option value="2">2</option>
+                    <select name="country" id="country" onchange="print_state('province',this.selectedIndex);">
+                      <option>Select Country</option>
                     </select>
                   </div>
                   <div class="styledSelect">
-                    <select name="province">
-                      <option value="1">Select State/Province</option>
-                      <option value="2">2</option>
+                    <select name="province" id="province">
+                      <option>Select State/Province</option>
                     </select>
-                  </div>
+                  </div><script language="javascript">print_country("country");</script>
                   <div><input type="text" name="otherLocationCity" placeholder="City"></div>
                 </section>
 
@@ -83,7 +92,7 @@
                 <section id="annualProductionVolume">
                   <div class="styledSelect breakForm">
                     <select name="annualProductionVolume">
-                      <option value="1">1</option>
+                      <%- partial('../partials/dropdowns/annual-sales-value') %>
                     </select>
                   </div>
                 </section>
@@ -165,16 +174,29 @@
                   </select>
                 </section>
                 <section id="preferredBuyerLocation1" class="styledSelect">
-                  <select name="preferredBuyerLocation">
-                    <option value="1">Preferred Buyer Location</option>
-                    <option value="2">2</option>
-                  </select>
+                  <select name="preferredBuyerLocation" id="preferredBuyerLocation">
+                    <option >Preferred Buyer Location</option>
+                  </select><script language="javascript">print_country("preferredBuyerLocation");</script>
                 </section>
                 <section id="preferredBuyerLanguage1" class="styledSelect">
                   <select name="preferredBuyerLanguage">
                     <%- partial('../partials/dropdowns/pref-buyer-language') %>
                   </select>
                 </section>
+
+                <h4>Select your Category Preferences</h4>
+                <label  for="autocomplete"></label>
+                  <input id="autocomplete1" name="autocomplete" placeholder="Option 1">
+
+
+                <h4>Select your Category Preferences</h4>
+                <label  for="autocomplete"></label>
+                  <input id="autocomplete2" name="autocomplete" placeholder="Option 2">
+
+
+                <h4>Select your Category Preferences</h4>
+                <label  for="autocomplete"></label>
+                  <input id="autocomplete3" name="autocomplete" placeholder="Option 3">
 
 
 
