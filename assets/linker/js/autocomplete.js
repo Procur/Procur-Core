@@ -1,4 +1,4 @@
-$("#autocomplete").autocomplete({
+$("#autocomplete1,#autocomplete2,#autocomplete3").autocomplete({
   source: [
 	"RAW MATERIALS -- MINERALS & METALS -- ALUMINUM",
 	"RAW MATERIALS -- MINERALS & METALS -- ASBESTOS",
