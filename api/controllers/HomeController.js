@@ -59,25 +59,7 @@ module.exports = {
   },
 
   login: function(req, res){
-  res.view({ 
-    // GENERAL STUFF HERE
-    title: 'Login to Procur',
-    description: 'This is a test description.',
-
-    // OPENGRAPH
-    ogtitle: '',
-    // full list of types here: https://developers.facebook.com/docs/reference/opengraph
-    ogtype: '',
-    // solid link to a square image
-    ogimage: '',
-    ogurl: '',
-    // og:description can only be 297 characters
-    ogdescription: '', 
-    // https://developers.facebook.com/docs/insights/
-    fbadmins: ''
-
-
-  });
+  res.view();
   },
 
   signup: function(req, res){
