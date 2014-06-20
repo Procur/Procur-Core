@@ -217,7 +217,7 @@ $('#basic-company-details-form').validate({
 	messages:{
 		companyWebsite: {
  			url: "Please enter a valid URL preceded by http://",
- 		},
+ 		}
 	}
 });
 
@@ -325,6 +325,17 @@ $('#buyer-wizard-form').validate({
  			//Buyer model says this is stored as an array (length 1-100), but it is a dropdown in the UI.
  			//TODO: ask about this.
  		}
+	},
+	messages:{
+		acceptedDeliveryTerms: {
+			required: "Please select at least one option."
+		},
+		acceptedCurrency: {
+			required: "Please select at least one option."
+		},
+		acceptedPaymentTerms: {
+			required: "Please select at least one option."
+		}
 	}
 });
 
