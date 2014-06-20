@@ -5,12 +5,13 @@
     <div class="row">
       <div class="col-sm-4 col-sm-offset-8 regForm">
         <h3>Sign up for Early Access:</h3>
-        <form action="/register" method="post">
+        <form action="/register" id="registration-form" method="post">
           <div><input type="text" name="firstName" placeholder="First Name*"></div>
           <div><input type="text" name="lastName" placeholder="Last Name*"></div>
-          <div><input type="text" name="email" placeholder="Business Email Address*"></div>
-          <div><input type="password" name="password" placeholder="Create a Password*"></div>
-          <div><input type="password" name="passwordConfirm" placeholder="Create a Password*"></div>
+          <div><input type="text" name="email" id="regEmail" placeholder="Business Email Address*"></div>
+          <div><input type="text" name="emailConfirm" placeholder="Confirm Email Address*"></div>
+          <div><input type="password" name="password" id="regPassword" placeholder="Create a Password*"></div>
+          <div><input type="password" name="passwordConfirm" placeholder="Confirm Password*"></div>
           <div><button type="submit" class="registerButton">Register Now for Early Access</button></div>
         </form>
       </div>
