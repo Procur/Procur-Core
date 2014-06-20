@@ -48,13 +48,16 @@ Procur-Core uses Redis as its session store. In development mode, it looks for a
 * Show all sessions in redis-cli:  
 `> KEYS *`  
 * Show the contents of a key:  
-`>GET [key]`  
+`> GET [key]`  
 * Delete a key:  
 `> DEL [key]`
 
 ###Common Problems
 ####Failed to Deserialze User
-If a user document is removed from mongoDB before that user has been logged out, an error will be thrown on the next request to the server that contains `failed to deserialize user`. If you know the user's session id, you can delete its respective session key from redis to remedy the problem.
+If a user document is removed from mongoDB before that user has been logged out, an error will be thrown on the next request to the server that contains `failed to deserialize user`. If you know the user's session id, you can delete its respective session key from redis to remedy the problem by using the delete method mentioned above.
+
+####I want to completely clear Redis and just start over!
+Simply running `FLUSHALL` in the Redis-CLI will remove all keys and return a blank slate for you to break again.
 
 ####My local database contains too much stuff! Halp!
 If the amount of data in your local MongoDB instance becomes to great to comfortably use for development, or if too many malformed documents have been created from development and testing, and you wish to scorch the Earth, simply follow these steps:  
