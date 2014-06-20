@@ -62,7 +62,9 @@ Simply running `FLUSHALL` in the Redis-CLI will remove all keys and return a bla
 ####My local database contains too much stuff! Halp!
 If the amount of data in your local MongoDB instance becomes to great to comfortably use for development, or if too many malformed documents have been created from development and testing, and you wish to scorch the Earth, simply follow these steps:  
 * Clearing the entire DB  
-`> use db`  
-`> db.collection.drop()`
+```
+> use db
+> db.collection.drop()
+```
 * Clearing a single collection  
 `db.collection.drop()`
