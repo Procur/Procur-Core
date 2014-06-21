@@ -5,7 +5,7 @@
         <h1>Complete Your Registration</h1>
       </div>
       <%- partial('../partials/progressprofile') %>
-      <form action="/supplier/create" method="post" enctype="multipart/form-data">
+      <form action="/supplier/create" method="post" id="supplier-wizard-form" enctype="multipart/form-data">
         <div class="col-sm-6 col-sm-offset-3 topBox">
           <h1>Your Supplier Profile</h1>
         </div>
@@ -39,7 +39,7 @@
                   </select>
                 </div>
 
-                <h4>Nearest Port City*</h4>
+                <h4>Nearest Port City</h4>
                 <section id="nearestPort">
                   <div><input type="text" name="nearestPortCity" placeholder="City"></div>
                   <div><input type="text" name="nearestPortProvince" placeholder="State / Province"></div>
@@ -50,18 +50,18 @@
                 <section id="otherLocation1">
                   <div><input type="text" name="otherLocationName" placeholder="Location Title"></div>
                   <div class="styledSelect">
-                    <select name="type">
+                    <select name="otherLocationType">
                       <%- partial('../partials/dropdowns/other-location-type') %>
                     </select>
                   </div>
                   <div class="styledSelect">
-                    <select name="country">
+                    <select name="otherLocationCountry">
                       <option value="1">Select Country</option>
                       <option value="2">2</option>
                     </select>
                   </div>
                   <div class="styledSelect">
-                    <select name="province">
+                    <select name="otherLocationProvince">
                       <option value="1">Select State/Province</option>
                       <option value="2">2</option>
                     </select>
@@ -83,7 +83,7 @@
                 <section id="annualProductionVolume">
                   <div class="styledSelect breakForm">
                     <select name="annualProductionVolume">
-                      <option value="1">1</option>
+                      <%- partial('../partials/dropdowns/annual-sales-value') %>
                     </select>
                   </div>
                 </section>
@@ -94,7 +94,7 @@
                 </section>
 
 
-                <h4>Accepted Delivery Terms</h4>
+                <h4>Accepted Delivery Terms*</h4>
                 <section id="acceptedDeliveryTerms">
                   <div class="row breakForm">
                     <div class="col-sm-6">
@@ -116,7 +116,7 @@
                   </div>
                 </section>
 
-                <h4>Accepted Currencies</h4>
+                <h4>Accepted Currencies*</h4>
                 <section id="acceptedCurrencies">
                   <div class="row breakForm">
                     <div class="col-sm-6">
@@ -140,7 +140,7 @@
                   </div>
                 </section>
 
-                <h4>Accepted Payment Terms</h4>
+                <h4>Accepted Payment Terms*</h4>
                 <section id="acceptedPaymentTerms">
                   <div class="row breakForm">
                     <div class="col-sm-6">
@@ -158,7 +158,7 @@
                   </div>
                 </section>
 
-                <h4>Your Buyer Preferences</h4>
+                <h4>Your Buyer Preferences*</h4>
                 <section id="preferredBuyerType" class="styledSelect">
                   <select name="preferredBuyerType">
                     <%- partial('../partials/dropdowns/pref-buyer-type') %>

@@ -46,6 +46,7 @@ jQuery.validator.addMethod("alphanumeric+punct+whitespace", function(value, elem
 }, jQuery.validator.format("Simple characters, punctuation, and spaces only."));
 
 
+var checkBoxMsg = "Please select at least one option.";
 
 /*
 
@@ -266,25 +267,25 @@ $('#buyer-wizard-form').validate({
 			"internationalphanumeric+punct+whitespace": true,
 			minlength: 3,
 			maxlength: 50
- 			//Buyer model says this is stored as an array, (length 1-100) but it is a dropdown in the UI.
+ 			//Buyer model says this is stored as an array, (length 1-100) but it is a single dropdown in the UI.
  			//TODO: ask about this.
  		},
  		locationType: {
  			required: false
  			// (provided)
- 			//Buyer model says this is stored as an array, (length 1-100) but it is a dropdown in the UI.
+ 			//Buyer model says this is stored as an array, (length 1-100) but it is a single dropdown in the UI.
  			//TODO: ask about this.
  		},
  		locationCountry: {
  			required: false
  			// (provided)
- 			//Buyer model says this is stored as an array, (length 1-100) but it is a dropdown in the UI.
+ 			//Buyer model says this is stored as an array, (length 1-100) but it is a single dropdown in the UI.
  			//TODO: ask about this.
  		},
  		locationProvince: {
  			required: false
  			// (provided)
- 			//Buyer model says this is stored as an array, (length 1-100) but it is a dropdown in the UI.
+ 			//Buyer model says this is stored as an array, (length 1-100) but it is a single dropdown in the UI.
  			//TODO: ask about this.
  		},
  		locationCity: {
@@ -292,7 +293,7 @@ $('#buyer-wizard-form').validate({
 			"internationalphanumeric+punct+whitespace": true,
 			minlength: 2,
 			maxlength: 50
- 			//Buyer model says this is stored as an array, (length 1-100) but it is a dropdown in the UI.
+ 			//Buyer model says this is stored as an array, (length 1-100) but it is a single dropdown in the UI.
  			//TODO: ask about this.
  		},
 		acceptedDeliveryTerms: {
@@ -310,32 +311,163 @@ $('#buyer-wizard-form').validate({
  		preferredSupplierType: {
  			required: true
  			// (provided)
- 			//Buyer model says this is stored as an array, (length 1-100) but it is a dropdown in the UI.
- 			//TODO: ask about this.
  		},
  		preferredSupplierLocation: {
  			required: false
  			// (provided)
- 			//Buyer model says this is stored as an array (length 1-100), but it is a dropdown in the UI.
+ 			//Buyer model says this is stored as an array (length 1-100), but it is a single dropdown in the UI.
  			//TODO: ask about this.
  		},
  		preferredSupplierLanguage: {
  			required: false
  			// (provided)
- 			//Buyer model says this is stored as an array (length 1-100), but it is a dropdown in the UI.
+ 			//Buyer model says this is stored as an array (length 1-100), but it is a single dropdown in the UI.
  			//TODO: ask about this.
  		}
 	},
 	messages:{
 		acceptedDeliveryTerms: {
-			required: "Please select at least one option."
+			required: checkBoxMsg
 		},
 		acceptedCurrency: {
-			required: "Please select at least one option."
+			required: checkBoxMsg
 		},
 		acceptedPaymentTerms: {
-			required: "Please select at least one option."
+			required: checkBoxMsg
 		}
 	}
 });
+
+
+$('#supplier-wizard-form').validate({
+	rules: {
+		logoUrl: {
+			required: false
+			//should be mistake-proof
+		},
+ 		dba: {
+ 			required: false,
+			"internationalphanumeric+punct+whitespace": true,
+			minlength: 3,
+      		maxlength: 50
+ 		},
+ 		typeOfCompany: {
+ 			required: true
+ 			//(provided) 
+			//Note: the required rule will only work on select menus if the dummy data has value="".
+ 		},
+ 		language: {
+ 			required: true
+ 			//multiple dropdowns with name="language". This requires at least one be selected.
+ 			//(provided) 
+			//Note: the required rule will only work on select menus if the dummy data has value="".
+ 		},
+ 		nearestPortCity: {
+ 			required: false,
+ 			"internationalphanumeric+punct+whitespace": true,
+ 			minlength: 2,
+      		maxlength: 50
+ 		},
+ 		nearestPortProvince: {
+ 			required: false
+ 			//(provided) 
+ 			//TODO: This should be a dropdown (and provided)
+ 		},
+ 		nearestPortCountry: {
+ 			required: false
+ 			//(provided) 
+ 			//TODO: This should be a dropdown (and provided)
+ 		},
+ 		otherLocationName: {
+ 			required: false,
+			"internationalphanumeric+punct+whitespace": true,
+			minlength: 3,
+			maxlength: 50
+ 			//Buyer model says this is stored as an array, (length 1-100) but it is a single dropdown in the UI.
+ 			//TODO: ask about this.
+ 		},
+ 		otherLocationType: {
+ 			required: false
+ 			// (provided)
+ 			//Buyer model says this is stored as an array, (length 1-100) but it is a single dropdown in the UI.
+ 			//TODO: ask about this.
+ 		},
+ 		otherLocationCountry: {
+ 			required: false
+ 			// (provided)
+ 			//Buyer model says this is stored as an array, (length 1-100) but it is a single dropdown in the UI.
+ 			//TODO: ask about this.
+ 		},
+ 		otherLocationProvince: {
+ 			required: false
+ 			// (provided)
+ 			//Buyer model says this is stored as an array, (length 1-100) but it is a single dropdown in the UI.
+ 			//TODO: ask about this.
+ 		},
+ 		otherLocationCity: {
+ 			required: false,
+			"internationalphanumeric+punct+whitespace": true,
+			minlength: 2,
+			maxlength: 50
+ 			//Buyer model says this is stored as an array, (length 1-100) but it is a single dropdown in the UI.
+ 			//TODO: ask about this.
+ 		},
+ 		annualProductionVolume:{
+ 			required: true
+ 			// (provided)
+ 		},
+		privateLabeler: {
+			//(n/a)
+		},
+		acceptedDeliveryTerms: {
+			required: true
+			// (provided)
+			//multiple checkboxes with name="acceptedDeliveryTerms". This requires at least one be checked.
+		},
+		acceptedCurrency: {
+			required: true
+			// (provided)
+			//multiple checkboxes with name="acceptedCurrency". This requires at least one be checked.
+		},
+		acceptedPaymentTerms: {
+			required: true
+			// (provided)
+			//multiple checkboxes with name="acceptedPaymentTerms". This requires at least one be checked.
+		},
+ 		preferredBuyerType: {
+ 			required: true
+ 			// (provided)
+ 		},
+ 		preferredBuyerLocation: {
+ 			required: false
+ 			// (provided)
+ 			//Buyer model says this is stored as an array (length 1-100), but it is a single dropdown in the UI.
+ 			//TODO: ask about this.
+ 		},
+ 		preferredBuyerLanguage: {
+ 			required: false
+ 			// (provided)
+ 			//Buyer model says this is stored as an array (length 1-100), but it is a single dropdown in the UI.
+ 			//TODO: ask about this.
+ 		}
+ 		/*
+			TODO: Product Specialties (At least one required.)
+ 		*/
+	},
+	messages:{
+		acceptedDeliveryTerms: {
+			required: checkBoxMsg
+		},
+		acceptedCurrency: {
+			required: checkBoxMsg
+		},
+		acceptedPaymentTerms: {
+			required: checkBoxMsg
+		}
+	}
+});
+
+
+
+
 
