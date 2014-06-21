@@ -46,7 +46,14 @@ jQuery.validator.addMethod("alphanumeric+punct+whitespace", function(value, elem
 }, jQuery.validator.format("Simple characters, punctuation, and spaces only."));
 
 
+/*
+
+Custom Validation Messages
+
+*/
 var checkBoxMsg = "Please select at least one option.";
+var urlHintMsg = "Please enter a valid URL preceded by http://";
+
 
 /*
 
@@ -217,7 +224,7 @@ $('#basic-company-details-form').validate({
 	},
 	messages:{
 		companyWebsite: {
- 			url: "Please enter a valid URL preceded by http://",
+ 			url: urlHintMsg
  		}
 	}
 });
@@ -464,6 +471,232 @@ $('#supplier-wizard-form').validate({
 		acceptedPaymentTerms: {
 			required: checkBoxMsg
 		}
+	}
+});
+
+
+$('#buyer-update-form').validate({
+	rules: {
+		logoUrl: {
+			required: false
+			//should be mistake-proof
+		},
+ 		dba: {
+ 			required: false,
+			"internationalphanumeric+punct+whitespace": true,
+			minlength: 3,
+      		maxlength: 50
+ 		},
+ 		typeOfCompany: {
+ 			required: true
+ 			//(provided) 
+			//Note: the required rule will only work on select menus if the dummy data has value="".
+ 		},
+ 		language: {
+ 			required: true
+ 			//multiple dropdowns with name="language". This requires at least one be selected.
+ 			//(provided) 
+			//Note: the required rule will only work on select menus if the dummy data has value="".
+ 		},
+ 		nearestPortCity: {
+ 			required: false,
+ 			"internationalphanumeric+punct+whitespace": true,
+ 			minlength: 2,
+      		maxlength: 50
+ 		},
+ 		nearestPortProvince: {
+ 			required: false
+ 			//(provided) 
+ 			//TODO: This should be a dropdown (and provided)
+ 		},
+ 		nearestPortCountry: {
+ 			required: false
+ 			//(provided) 
+ 			//TODO: This should be a dropdown (and provided)
+ 		},
+ 		locationName: {
+ 			required: false,
+			"internationalphanumeric+punct+whitespace": true,
+			minlength: 3,
+			maxlength: 50
+ 			//Buyer model says this is stored as an array, (length 1-100) but it is a single dropdown in the UI.
+ 			//TODO: ask about this.
+ 		},
+ 		locationType: {
+ 			required: false
+ 			// (provided)
+ 			//Buyer model says this is stored as an array, (length 1-100) but it is a single dropdown in the UI.
+ 			//TODO: ask about this.
+ 		},
+ 		locationCountry: {
+ 			required: false
+ 			// (provided)
+ 			//Buyer model says this is stored as an array, (length 1-100) but it is a single dropdown in the UI.
+ 			//TODO: ask about this.
+ 		},
+ 		locationProvince: {
+ 			required: false
+ 			// (provided)
+ 			//Buyer model says this is stored as an array, (length 1-100) but it is a single dropdown in the UI.
+ 			//TODO: ask about this.
+ 		},
+ 		locationCity: {
+ 			required: false,
+			"internationalphanumeric+punct+whitespace": true,
+			minlength: 2,
+			maxlength: 50
+ 			//Buyer model says this is stored as an array, (length 1-100) but it is a single dropdown in the UI.
+ 			//TODO: ask about this.
+ 		},
+		acceptedDeliveryTerms: {
+			required: true
+			//multiple checkboxes with name="acceptedDeliveryTerms". This requires at least one be checked.
+		},
+		acceptedCurrency: {
+			required: true
+			//multiple checkboxes with name="acceptedCurrency". This requires at least one be checked.
+		},
+		acceptedPaymentTerms: {
+			required: true
+			//multiple checkboxes with name="acceptedPaymentTerms". This requires at least one be checked.
+		},
+ 		preferredSupplierType: {
+ 			required: true
+ 			// (provided)
+ 		},
+ 		preferredSupplierCountry: {
+ 			required: false
+ 			// (provided)
+ 			//Buyer model says this is stored as an array (length 1-100), but it is a single dropdown in the UI.
+ 			//TODO: ask about this.
+ 		},
+ 		preferredSupplierLanguage: {
+ 			required: false
+ 			// (provided)
+ 			//Buyer model says this is stored as an array (length 1-100), but it is a single dropdown in the UI.
+ 			//TODO: ask about this.
+ 		},
+ 		facebook:{
+ 			required:false,
+ 			url: true,
+ 			maxlength: 50 //*possibly too short?
+ 		},
+		twitter:{
+			required:false,
+			url: true,
+			maxlength: 50 //*possibly too short?
+		},
+		pinterest:{
+			required:false,
+			url: true,
+			maxlength: 50 //*possibly too short?
+		},
+		tumblr:{
+			required:false,
+			url: true,
+			maxlength: 50 //*possibly too short?
+		},
+		linkedin:{
+			required:false,
+			url: true,
+			maxlength: 50 //*possibly too short?
+		},
+		instagram:{
+			required:false,
+			url: true,
+			maxlength: 50 //*possibly too short?
+		},
+		google:{
+			required:false,
+			url:true,
+			maxlength: 50 //*possibly too short?
+		},
+		dunsNumber:{
+			required:false,
+			digits: true,
+			minlength: 9,
+      		maxlength: 9
+		},
+		contactName:{
+			required:false,
+			"internationalphanumeric+punct+whitespace": true
+		},
+		contactPosition:{
+			required:false,
+			"internationalphanumeric+punct+whitespace": true,
+			maxlength: 50
+		},
+		contactEmail:{
+			required:false,
+			email:true,
+			minlength:4,
+			maxlength: 50
+		},
+		companyDescription:{
+			required:false,
+			maxlength: 5000
+		},
+		environmentalSustainability:{
+			required:false,
+			maxlength: 2000
+		},
+		qualitySourcing:{
+			required:false,
+			maxlength: 2000
+		},
+		workplaceSafety:{
+			required:false,
+			maxlength: 2000
+		},
+		laborEducationTraining:{
+			required:false,
+			maxlength: 2000
+		},
+		reinvestment:{
+			required:false,
+			maxlength: 2000
+		},
+		productsOfInterest:{
+			required:false,
+			maxlength: 2000
+		}
+	},
+	messages:{
+		acceptedDeliveryTerms: {
+			required: checkBoxMsg
+		},
+		acceptedCurrency: {
+			required: checkBoxMsg
+		},
+		acceptedPaymentTerms: {
+			required: checkBoxMsg
+		},
+		facebook:{
+ 			url: urlHintMsg
+ 		},
+		twitter:{
+			url: urlHintMsg
+		},
+		pinterest:{
+			url: urlHintMsg
+		},
+		tumblr:{
+			url: urlHintMsg
+		},
+		linkedin:{
+			url: urlHintMsg
+		},
+		instagram:{
+			url: urlHintMsg
+		},
+		google:{
+			url: urlHintMsg
+		},
+		dunsNumber:{
+			digits: "Please enter a 9-digit DNS Number.",
+			minlength: "Please enter a 9-digit DNS Number.",
+			maxlength: "Please enter a 9-digit DNS Number."
+		},
 	}
 });
 

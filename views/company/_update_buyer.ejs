@@ -1,4 +1,4 @@
-<form action="/buyer/update" method="post" enctype="multipart/form-data">
+<form action="/buyer/update" method="post" id="buyer-update-form" enctype="multipart/form-data">
   <%- partial('_update_company') %>
 
   <h2>Buyer Info</h2>
@@ -61,7 +61,7 @@
       </select>
     </section>
 
-    <h4>Preferred Suppplier Languages</h4>
+    <h4>Preferred Supplier Languages</h4>
     <% for(var x = 0; x < buyer2["preferredSupplierLanguage"].length; x++) { %>
     <section id="preferredSupplierLanguage<%= x %>">
       <select name="preferredSupplierLanguage">
