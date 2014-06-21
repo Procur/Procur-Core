@@ -62,30 +62,36 @@ Form Validation
 */
 $('#registration-form').validate({
 	rules: {
-	    firstName: {
-	        required: true
-	    },
+	  firstName: {
+	    required: true,
+	    minlength: 1,
+    	maxlength: 100
+	  },
 		lastName: {
-			required: true
+			required: true,
+			minlength: 1,
+      maxlength: 100
 		},
 	    email: {
-	  		required: true,
-	 		email: true
+	  	required: true,
+	 		email: true,
+	 		minlength: 1,
+      maxlength: 100
 		},
 		emailConfirm: {
-	  		required: true,
+	  	required: true,
 	 		equalTo: "#regEmail"
 		},
 		password: {
 			required: true,
 			minlength: 8,
-			strongPassword: true
+			strongPassword: true,
+			maxlength: 50
 		},
 		passwordConfirm: {
 			required: true,
-			minlength: 8,
 			equalTo: "#regPassword"
-	    }
+	  }
 	}
 });
 
@@ -931,3 +937,52 @@ $('#supplier-update-form').validate({
 });
 
 
+$('#user-update-form').validate({
+	rules: {
+	  firstName: {
+	    required: true,
+	    minlength: 1,
+      maxlength: 100
+	  },
+		lastName: {
+			required: true,
+			minlength: 1,
+      maxlength: 100
+		},
+	    email: {
+	  	required: true,
+	 		email: true,
+	 		minlength: 1,
+      maxlength: 100
+		},
+		emailConfirm: {
+	  	required: true,
+	 		equalTo: "#updateEmail"
+		},
+		jobTitle: {
+			required: false,
+			"internationalphanumeric+punct+whitespace": true,
+		  minlength: 1,
+      maxlength: 100
+		},
+		image: {
+			//n/a
+		}
+	}
+});
+
+
+$('#password-update-form').validate({
+	rules: {
+		password: {
+			required: true,
+			minlength: 8,
+			strongPassword: true,
+			maxlength: 50
+		},
+		passwordConfirm: {
+			required: true,
+			equalTo: "#newPassword"
+	    }
+	}
+});

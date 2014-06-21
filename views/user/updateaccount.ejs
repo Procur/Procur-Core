@@ -1,11 +1,12 @@
 <h1>Update Account Information</h1>
 
 <section id="userUpdateForm">
-  <form action="/user/update" method="post" enctype="multipart/form-data">
+  <form action="/user/update" method="post" id="user-update-form" enctype="multipart/form-data">
     <strong>Contact Information</strong>
     <div><input type="text" name="firstName" value=<%= user.firstName %>></div>
     <div><input type="text" name="lastName" value=<%= user.lastName %>></div>
-    <div><input type="text" name="email" value=<%= user.email %>></div>
+    <div><input type="text" name="email" id="updateEmail" value=<%= user.email %>></div>
+    <div><input type="text" name="emailConfirm" value=<%= user.email %>></div>
     <div><input type="text" name="jobTitle" <% if (user.jobTitle) { %><%= user.jobTitle %><% } else{ %> placeholder="Job Title" <% } %>></div>
     <div><% if(user.image){ %>
       <div>Current Profile Picture</div>
@@ -16,9 +17,9 @@
 </section>
 
 <section id="passwordUpdateForm">
-  <form action="/user/changePassword" method="post">
+  <form action="/user/changePassword" method="post" id="password-update-form">
     <strong>Change Password</strong>
-    <div><input type="password" name="password" placeholder="New Password"></div>
+    <div><input type="password" name="password" id="newPassword" placeholder="New Password"></div>
     <div><input type="password" name="passwordConfirm" placeholder="Confirm Password"></div>
     <div><input type="submit">
   </form>
