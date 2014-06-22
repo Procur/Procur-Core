@@ -81,7 +81,7 @@ If the amount of data in your local MongoDB instance becomes to great to comfort
 * Clearing the entire DB  
 ```
 > use dbname
-> db.collection.drop()
+> db.databaseName.drop()
 ```
 * Clearing a single collection  
-`db.collection.drop()`
+`db.collectionName.drop()`
