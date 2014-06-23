@@ -16,132 +16,210 @@ module.exports = {
       unique: true
     },
     dbaName: {
-      type: 'string'
+      type: 'string',
+      minLength: 3,
+      maxLength: 50
     },
     logoUrl: {
       type: 'string'
     },
     language: {
-      type: 'array'
+      type: 'array',
+      minLength: 1,
+      maxLength: 100
     },
     preferredSupplierType: {
-      type: 'string'
+      type: 'string',
+      minLength: 1,
+      maxLength: 100
     },
     preferredSupplierLanguage: {
-      type: 'array'
+      type: 'array',
+      minLength: 1,
+      maxLength: 100
     },
     preferredSupplierLocation: {
-      type: 'array'
+      type: 'array',
+      minLength: 1,
+      maxLength: 100
     },
     typeOfCompany: {
-      type: 'string'
+      type: 'string',
+      minLength: 1,
+      maxLength: 100
     },
     acceptedDeliveryTerms: {
-      type: 'array'
+      type: 'array',
+      minLength: 1,
+      maxLength: 100
     },
     acceptedCurrency: {
-      type: 'array'
+      type: 'array',
+      minLength: 1,
+      maxLength: 100
     },
     acceptedPaymentTerms: {
-      type: 'array'
+      type: 'array',
+      minLength: 1,
+      maxLength: 100
     },
     facebook: {
-      type: 'string'
+      type: 'string',
+      minLength: 1,
+      maxLength: 50
     },
     twitter: {
-      type: 'string'
+      type: 'string',
+      minLength: 1,
+      maxLength: 50
     },
     pinterest: {
-      type: 'string'
+      type: 'string',
+      minLength: 1,
+      maxLength: 50
     },
     tumblr: {
-      type: 'string'
+      type: 'string',
+      minLength: 1,
+      maxLength: 50
     },
     linkedin: {
-      type: 'string'
+      type: 'string',
+      minLength: 1,
+      maxLength: 50
     },
     instagram: {
-      type: 'string'
+      type: 'string',
+      minLength: 1,
+      maxLength: 50
     },
     google: {
-      type: 'string'
+      type: 'string',
+      minLength: 1,
+      maxLength: 50
     },
     relevantLinkTitle: {
-      type: 'array'
+      type: 'array',
+      minLength: 1,
+      maxLength: 100
     },
     relevantLinkUrl: {
-      type: 'array'
+      type: 'array',
+      minLength: 1,
+      maxLength: 100
     },
     dunsNumber: {
-      type: 'string'
+      type: 'string',
+      minLength: 9,
+      maxLength: 9
     },
     contactName: {
-      type: 'string'
+      type: 'string',
+      minLength: 1,
+      maxLength: 50
     },
     contactPosition: {
-      type: 'string'
+      type: 'string',
+      minLength: 1,
+      maxLength: 50
     },
     contactEmail: {
-      type: 'string'
+      type: 'string',
+      minLength: 4,
+      maxLength: 50
     },
     companyDescription: {
-      type: 'string'
+      type: 'string',
+      minLength: 1,
+      maxLength: 5000
     },
     downloadTitle: {
-      type: 'array'
+      type: 'array',
+      minLength: 1,
+      maxLength: 100
     },
     downloadFile: {
-      type: 'array'
+      type: 'array',
+      minLength: 1,
+      maxLength: 100
     },
     photo: {
-      type: 'array'
+      type: 'array',
+      minLength: 1,
+      maxLength: 100
     },
     environmentalSustainability: {
-      type: 'string'
+      type: 'string',
+      minLength: 1,
+      maxLength: 2000
     },
     qualitySourcing: {
-      type: 'string'
+      type: 'string',
+      minLength: 1,
+      maxLength: 2000
     },
     workplaceSafety: {
-      type: 'string'
+      type: 'string',
+      minLength: 1,
+      maxLength: 2000
     },
     laborEducationTraining: {
-      type: 'string'
+      type: 'string',
+      minLength: 1,
+      maxLength: 2000
     },
     reinvestment: {
-      type: 'string'
+      type: 'string',
+      minLength: 1,
+      maxLength: 2000
     },
     productCategory: {
-      type: 'array'
+      type: 'array'//TODO: question for will
     },
     productsOfInterest: {
-      type: 'string'
+      type: 'string'//TODO: question for will
     },
 
     //Location fields
     portCity: {
-      type: 'string'
+      type: 'string',
+      minLength: 2,
+      maxLength: 50
     },
     portProvince: {
-      type: 'string'
+      type: 'string',
+      minLength: 1,
+      maxLength: 100
     },
     portCountry: {
-      type: 'string'
+      type: 'string',
+      minLength: 1,
+      maxLength: 100
     },
     locationName: {
-      type: 'array'
+      type: 'array',
+      minLength: 1,
+      maxLength: 100
     },
     locationType: {
-      type: 'array'
+      type: 'array',
+      minLength: 1,
+      maxLength: 100
     },
     locationCountry: {
-      type: 'array'
+      type: 'array',
+      minLength: 1,
+      maxLength: 100
     },
     locationProvince: {
-      type: 'array'
+      type: 'array',
+      minLength: 1,
+      maxLength: 100
     },
     locationCity: {
-      type: 'array'
+      type: 'array',
+      minLength: 1,
+      maxLength: 100
     },
 
     //UTILITY

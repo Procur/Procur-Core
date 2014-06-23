@@ -11,40 +11,62 @@ module.exports = {
   attributes: {
 
     company: {        //Connects relationship to parent company
-      type: 'string'
+      type: 'string',
+      minLength: 1,
+      maxLength: 100
     },
     buyer: {          //Connects relationship to buyer
-      type: 'string'
+      type: 'string',
+      minLength: 1,
+      maxLength: 100
     },
     supplier: {       //Connects relationship to supplier
-      type: 'string'
+      type: 'string',
+      minLength: 1,
+      maxLength: 100
     },
     title: {
-      type: 'string'
+      type: 'string',
+      minLength: 1,
+      maxLength: 100
     },
     addressLine1: {
-      type: 'string'
+      type: 'string',
+      minLength: 1,
+      maxLength: 100
     },
     addressLine2: {
       type: 'string',
+      minLength: 1,
+      maxLength: 100
     },
     city: {
-      type: 'string'
+      type: 'string',
+      minLength: 1,
+      maxLength: 100
     },
     province: {
-      type: 'string'
+      type: 'string',
+      minLength: 1,
+      maxLength: 100
     },
     country: {
-      type: 'string'
+      type: 'string',
+      minLength: 1,
+      maxLength: 100
     },
     postalCode: {
-      type: 'string'
+      type: 'string',
+      minLength: 1,
+      maxLength: 100
     },
     isHq: {
       type: 'boolean'
     },
     type: {           // Types: HQ, Factory, Office, nearestPort, otherLocation, preferredBuyerLocation, etc
-      type: 'string'
+      type: 'string',
+      minLength: 1,
+      maxLength: 100
     }
   }
 
