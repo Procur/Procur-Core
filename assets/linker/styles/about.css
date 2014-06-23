@@ -1,0 +1,63 @@
+#about h1 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  text-transform: uppercase;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  border-bottom: 2px solid black;
+  padding-bottom: 10px;
+  border-color: #808080;
+}
+
+#about h2 {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 22px;
+  text-transform: uppercase;
+  font-weight: 300;
+  color: #ef9818;
+}
+
+#about p {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  letter-spacing: 0.06em;
+}
+#about .row {
+  border-bottom: 2px solid black;
+  border-color: #CCCCCC;
+}
+
+#about h3 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 18px;
+  text-transform: uppercase;
+  font-weight: 100;
+  letter-spacing: 0.06em;
+  border-bottom: 2px solid black;
+  padding-bottom: 10px;
+  border-color: #808080;
+}
+
+#about a {
+  color: #ef9818;
+  text-decoration: none;
+  float: right;
+}
+
+#about a:hover {
+  text-decoration: underline;
+};
+
+#about .info {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  text-transform: uppercase;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+}
+
+#about .text {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  letter-spacing: 0.06em;
+}
