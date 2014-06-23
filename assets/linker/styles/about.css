@@ -61,3 +61,7 @@
   font-weight: 300;
   letter-spacing: 0.06em;
 }
+
+#about .blah {
+  padding: 30px;
+}
