@@ -54,6 +54,10 @@ module.exports = {
     res.view();
   },
 
+  earlyaccess: function(req, res){
+  res.view();
+  },
+
   press: function(req, res){
     res.view();
   },
