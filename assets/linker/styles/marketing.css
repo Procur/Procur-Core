@@ -1,8 +1,9 @@
 /* HEADER*/
 #mktHeader {
-	height: 55px;
+	height: 64px;
 	width: 100%;
 	background: white;
+	margin-bottom: 0px;
 }
 
 #mktHeader ul {
@@ -14,7 +15,7 @@
 #mktHeader ul li {
 	display: inline;
 	margin-left: 15px;
-	line-height: 60px;
+	line-height: 74px;
 	color: #333132;
 	text-transform: uppercase;
 	font-family: 'Montserrat', sans-serif;
@@ -23,6 +24,42 @@
 }
 
 #mktHeader ul li a {
+	color: #333132;
+}
+
+
+/* LINE HEADER */
+
+#mktHeaderLine {
+	height: 64px;
+	width: 100%;
+	background: white;
+	margin-bottom: 50px;
+}
+
+#mktHeaderLine .container {
+	border-bottom: 2px solid #CDCDCD;
+	max-height: 64px;
+	overflow: hidden;
+}
+
+#mktHeaderLine ul {
+	list-style: none;
+	margin: 0px;
+}
+
+#mktHeaderLine ul li {
+	display: inline;
+	margin-left: 15px;
+	line-height: 74px;
+	color: #333132;
+	text-transform: uppercase;
+	font-family: 'Montserrat', sans-serif;
+	font-size: 10px;
+	letter-spacing: 0.04em;
+}
+
+#mktHeaderLine ul li a {
 	color: #333132;
 }
 
@@ -49,10 +86,10 @@
 }
 
 .regForm {
-	background-color: rgba(0, 0, 0, 0.2);
+	background-color: rgba(0, 0, 0, 0.16);
 	min-height: 360px;
 	height: 100%;
-	margin-top: -5px;
+	margin-top: -10px;
 }
 
 .regForm input {
@@ -63,6 +100,9 @@
 	padding-left: 10px;
 	font-family: 'Roboto', sans-serif;
 	font-weight: 300;
+	border: 0px none;
+	font-size: 11px;
+	letter-spacing: 0.05em;
 }
 
 .regForm button {

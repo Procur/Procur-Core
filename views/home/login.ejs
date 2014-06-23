@@ -1,4 +1,23 @@
+<%- partial('../partials/mktheaderline') %>
 
+<div class="container">
+	<div class="row">
+    <div class="col-sm-4 col-sm-offset-4 loginForm">
+      <h1>Welcome back.<br/>Please sign in to your account: </h1>
+      <form action="/login" method="post">
+		    <div><input type="text" name="email" placeholder="Email Address*"></div>
+		    <div><input type="password" name="password" placeholder="Password*"></div>
+        <div class="forgotPass"><a href="/forgotpassword">Forgot Your Password? Click here to reset.</a></div>
+        <div><button type="submit" class="signInButton">Sign in</button></div>
+
+	  </form>
+    <p class="or">or</p>
+    <a href="/signup"><div class="registerLink">New user? Create an account.</div>
+    </div></a>
+  </div>
+</div>
+
+<!-- 
 <section id="login">
   <h2>Login</h2>
   <form action="/login" method="post">
@@ -6,4 +25,4 @@
     <div><input type="password" name="password" placeholder="Password"></div>
     <div><input type="submit"></div>
   </form>
-</section>
+</section> -->
