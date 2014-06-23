@@ -393,7 +393,7 @@ input {
 }
 
 .middleDescription a {
-	color: #EF9818;
+	color: #FD9237;
 	font-family: 'Montserrat', sans-serif;
 	text-transform: uppercase;
 	font-size: 10px;
@@ -487,7 +487,7 @@ ul.ui-autocomplete {
 }
 
 .ui-autocomplete li:hover {
-  background: #EF9818;
+  background: #FD9237;
 }
 
 .ui-autocomplete li:hover a{
