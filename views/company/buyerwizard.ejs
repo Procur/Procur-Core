@@ -7,7 +7,7 @@
         <h1>Complete Your Registration</h1>
       </div>
       <%- partial('../partials/progressprofile') %>
-      <form action="/buyer/create" method="post" enctype="multipart/form-data">
+      <form action="/buyer/create" method="post" id="buyer-wizard-form" enctype="multipart/form-data">
         <div class="col-sm-6 col-sm-offset-3 topBox">
           <h1>Your Buyer Profile</h1>
         </div>
@@ -41,16 +41,16 @@
                   </select>
                 </div>
 
-                <h4>Nearest Port City*</h4>
-                <section id="nearestPort">
+                <h4>Nearest Port City</h4>
+                <section id="port">
                   <div><input type="text" name="portCity" placeholder="City"></div>
                   <div class="styledSelect">
-                    <select name="nearestPortCountry" id="nearestPortCountry" onchange="print_state('nearestPortProvince', this.selectedIndex);">
+                    <select name="portCountry" id="nearestPortCountry" onchange="print_state('nearestPortProvince', this.selectedIndex);">
                       <option>Select Country</option>
                     </select>
                   </div>
                   <div class="styledSelect">
-                    <select name="nearestPortProvince" id="nearestPortProvince">
+                    <select name="portProvince" id="nearestPortProvince">
                       <option>Select State/Province</option>
                     </select>
                   </div><script language="javascript">print_country("nearestPortCountry");</script>
@@ -66,12 +66,12 @@
                   </div>
                   <div class="styledSelect">
                     <select name="locationCountry" id="locationCountry" onchange="print_state('locationProvince',this.selectedIndex);">
-                      <option >Select Country</option>
+                      <option>Select Country</option>
                     </select>
                   </div>
                   <div class="styledSelect">
                     <select name="locationProvince" id="locationProvince">
-                      <option >Select State/Province</option>
+                      <option>Select State/Province</option>
                     </select>
                   </div><script language="javascript">print_country("locationCountry");</script><!--TODO:question for Cael-->
                   <div><input type="text" name="locationCity" placeholder="City"></div>
@@ -82,7 +82,7 @@
               <div class="col-sm-6">
 
 
-                <h4>Accepted Delivery Terms</h4>
+                <h4>Accepted Delivery Terms*</h4>
                 <section id="acceptedDeliveryTerms">
                   <div class="row breakForm">
                     <div class="col-sm-6">
@@ -104,7 +104,7 @@
                   </div>
                 </section>
 
-                <h4>Accepted Currencies</h4>
+                <h4>Accepted Currencies*</h4>
                 <section id="acceptedCurrencies">
                   <div class="row breakForm">
                     <div class="col-sm-6">
@@ -128,7 +128,7 @@
                   </div>
                 </section>
 
-                <h4>Accepted Payment Terms</h4>
+                <h4>Accepted Payment Terms*</h4>
                 <section id="acceptedPaymentTerms">
                   <div class="row breakForm">
                     <div class="col-sm-6">
@@ -146,7 +146,7 @@
                   </div>
                 </section>
 
-                <h4>Your Supplier Preferences</h4>
+                <h4>Your Supplier Preferences*</h4>
                 <section id="preferredSupplierType" class="styledSelect">
                   <select name="preferredSupplierType">
                     <%- partial('../partials/dropdowns/pref-supplier-type') %>

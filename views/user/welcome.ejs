@@ -6,7 +6,7 @@
         <h1>Complete Your Registration</h1>
       </div>
       <%- partial('../partials/progress') %>
-      <form action="/company/create" method="post">
+      <form action="/company/create" id="basic-company-details-form" method="post">
         <div class="col-sm-6 col-sm-offset-3 fieldBox">
           <div class="row">
             <div class="col-sm-6">
@@ -30,7 +30,7 @@
               </div>
 
               <!-- Fax Info -->
-              <h4>Company Fax</h4>
+              <h4>Company Fax*</h4>
               <div class="row insideForm">
                 <div class="col-sm-5 inputColumnL">
                     <div><input type="text" name="companyFaxCountryCode" placeholder="Country Code"></div>
@@ -50,7 +50,7 @@
               <h4>Company Email Address*</h4>
               <div class="breakForm"><input type="text" name="companyEmail" placeholder="info@mycompany.com"></div>
               <h4>Official Company Website</h4>
-              <div class="breakForm"><input type="text" name="companyWebsite" placeholder="www.mycompany.com"></div>
+              <div class="breakForm"><input type="text" name="companyWebsite" placeholder="http://www.mycompany.com" ></div>
 
 
               <h4>Industry*</h4>
@@ -69,15 +69,9 @@
                 <h4>Official Business Address*</h4>
                 <div><input class="address1" type="text" name="companyAddress1" placeholder="Address Line #1"></div>
                 <div><input class="address2" type="text" name="companyAddress2" placeholder="Address Line #2"></div>
-
-
-
-
-
-
-
-                <div class="styledSelect"><select class="companyCountry" name="companyCountry" id="companyCountry" onchange="print_state('companyProvince',this.selectedIndex);">
-                    <option value="0">Select Country</option>
+                <div class="styledSelect"><select class="companyCountry" name="companyCountry" id="companyCountry" onchange="print_state('companyProvince',this.selectedIndex);"> 
+                    <option value="">Select Country</option>
+                    <option value="1">1</option>
                   </select>
                 </div>
 
@@ -86,7 +80,8 @@
                   <div class="col-sm-7">
                     <div class="styledSelect inputColumnL">
                       <select class="companyProvince" name="companyProvince" id="companyProvince">
-                        <option value="0">Select Province/State</option>
+                        <option value="">Select Province/State</option>
+                        <option value="1">Fakeland</option>
                       </select><script language="javascript">print_country("companyCountry");</script>
                     </div>
                   </div>
@@ -115,16 +110,18 @@
 
 
                 <div class="styledSelect">
-                  <select class="hqfield hqcompanyCountry" name="hqcompanyCountry" id="hqcompanyCountry" onchange="print_state('hqcompanyProvince',this.selectedIndex);">
-                    <option value="0">Select Country</option>
+                  <select class="hqfield hqcompanyCountry" name="hqCountry" id="hqcompanyCountry" onchange="print_state('hqcompanyProvince',this.selectedIndex);">
+                    <option value="">Select Country</option>
+                    <option value="1">1</option>
                   </select>
                 </div>
 
                 <div class="row insideForm">
                   <div class="col-sm-7">
                     <div class="styledSelect inputColumnL">
-                      <select class="hqfield hqcompanyProvince" name="hqcompanyProvince" id="hqcompanyProvince">
-                        <option value="0">Select Province/State</option>
+                      <select class="hqfield hqcompanyProvince" name="hqProvince" id="hqcompanyProvince">
+                        <option value="">Select Province/State</option>
+                        <option value="1">Fakeland</option>
                       </select>
                     </div><script language="javascript">print_country("hqcompanyCountry");</script>
 
