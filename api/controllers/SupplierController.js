@@ -39,6 +39,7 @@ module.exports = {
     User.findOne({ id: req.session.passport.user }, function(err, user) {
       Company.findOne({ user: user.id }, function(err, company) {
         if (err) { return res.redirect('/dashboard'); }
+        if (b.privateLabeler == "privateLabeler") { b.privateLabeler = true; } else { b.privateLabeler = false; }
         Supplier.create({
         company  : company.id,
         dbaName : b.dba,
@@ -58,8 +59,9 @@ module.exports = {
         acceptedCurrency: [b.acceptedCurrency],
         acceptedPaymentTerms: [b.acceptedPaymentTerms],
         preferredBuyerType: b.preferredBuyerType,
-        preferredBuyerCountry: [b.preferredBuyerLocation],
+        preferredBuyerLocation: [b.preferredBuyerLocation],
         preferredBuyerLanguage: [b.preferredBuyerLanguage],
+        productCategory: [b.autocomplete],
         active: true
         }, function(err, supplier) {
           if (err) { return res.redirect('/dashboard'); }
@@ -156,7 +158,7 @@ module.exports = {
               annualSalesValue: b.annualSalesValue,
               preferredBuyerType: b.preferredBuyerType,
               preferredBuyerLanguage: [b.preferredBuyerLanguage],
-              preferredBuyerCountry: [b.preferredBuyerCountry],
+              preferredBuyerLocation: [b.preferredBuyerLocation],
               acceptedDeliveryTerms: [b.acceptedDeliveryTerms],
               acceptedCurrency: [b.acceptedCurrency],
               acceptedPaymentTerms: [b.acceptedPaymentTerms],
@@ -178,7 +180,8 @@ module.exports = {
               qualitySourcing: b.qualitySourcing,
               workplaceSafety: b.workplaceSafety,
               laborEducationTraining: b.laborEducationTraining,
-              reinvestment: b.reinvestment
+              reinvestment: b.reinvestment,
+              productCategory: [b.autocomplete]
             }).exec(function(err, supplier) {
               if (err) { return res.redirect('/dashboard'); }
             });

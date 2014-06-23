@@ -104,6 +104,11 @@ module.exports.routes = {
     action: 'terms'
   }, //Displays Terms of Use Page
 
+  'get /termsofservice': {
+    controller: 'HomeController',
+    action: 'termsofservice'
+  }, //Displays Terms of Service Page
+
   //AUTHENTICATION ROUTES
   'post /login': {
     controller: 'AuthController',

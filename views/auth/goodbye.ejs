@@ -1,8 +1,39 @@
-<h2><%= message %></h2>
+<%- partial('../partials/mktheaderline') %>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script type="text/javascript">
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4 col-sm-offset-4 logOut">
+      <h1>You have been successfully logged out of your account.<h1>
+      <div class="dottedLine"></div>
+      
+      <div class="featuresColumn">
+        <h4>If you are not automatically redirected, you can:</h4>
+        <div class="rightSec">
+          <div class="rightSecBox">
+          <i class="fa fa-gear fa-fw"></i>
+          </div>
+          <a href="#">Go to Homepage</a>
+        </div><br/>
+        <div class="rightSec">
+          <div class="rightSecBox">
+          <i class="fa fa-gear fa-fw"></i>
+          </div>
+          <a href="#">Sign In to My Account</a>
+        </div><br/>
+        <div class="rightSec">
+          <div class="rightSecBox">
+          <i class="fa fa-gear fa-fw"></i>
+          </div>
+          <a href="#">Learn More About Early Access</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- <h2><%= message %></h2> -->
+<!-- <script type="text/javascript">
   setTimeout(function() {
   window.location.href = "/";
-}, 2000);
-</script>
+ 20000);
+</script>-->

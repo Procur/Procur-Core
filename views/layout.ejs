@@ -6,10 +6,11 @@
         your `sails.config.appName` to show that you can inject data into layouts
         exactly the same way as with your other view templates.
     -->
-    <title><%- title %></title>
+    <% if(title){ %><title><%- title %></title><% }else{%><title>Procur - Placeholder Sitewide Title</title><%}%>
     <link rel="icon" href="/linker/favicon.ico" type="image/x-icon">
     <!-- Viewport mobile tag for sensible mobile support -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    
 
     <!-- Font Awesome 4.1.0 -->
     <link href="https://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
@@ -21,8 +22,12 @@
     <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
 
     <!--STYLES-->
+    <link rel="stylesheet" href="/linker/styles/auth.css">
+    <link rel="stylesheet" href="/linker/styles/handle.css">
+    <link rel="stylesheet" href="/linker/styles/legal.css">
     <link rel="stylesheet" href="/linker/styles/main.css">
     <link rel="stylesheet" href="/linker/styles/marketing.css">
+    <link rel="stylesheet" href="/linker/styles/signup.css">
     <!--STYLES END-->
 
   </head>
@@ -31,23 +36,29 @@
 
     <!-- Include the view file for the current controller/route -->
     <%- body %>
-       
+
     <!-- jQuery 1.11.1 -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+    <!-- Bootstrap 3.1.1 -->
+    <script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+
+    <!-- jQuery UI -->
+    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
 
     <!--SCRIPTS-->
     <script src="/linker/js/socket.io.js"></script>
     <script src="/linker/js/sails.io.js"></script>
-    <script src="/linker/js/jquery.js"></script>
+    <!--<script src="/linker/js/jquery.js"></script>-->
     <script src="/linker/js/jquery.validate.min.js"></script>
     <script src="/linker/js/app.js"></script>
+    <script src="/linker/js/autocomplete.js"></script>
     <script src="/linker/js/dash-toggle.js"></script>
     <script src="/linker/js/formvalidation.js"></script>
     <script src="/linker/js/hqcheck.js"></script>
+    <script src="/linker/textpreview.js"></script>
     <!--SCRIPTS END-->
 
-    <!-- Bootstrap 3.1.1 -->
-    <script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 
     </body>
 </html>

@@ -3,7 +3,7 @@ module.exports.waterlineHelper = {
   fixSupplierArrays: function(inObject) {
     var arrFields = ["acceptedCurrency","acceptedDeliveryTerms","acceptedPaymentTerms",
                      "language","locationCity","locationCountry","locationName",
-                     "locationProvince","locationType","preferredBuyerCountry",
+                     "locationProvince","locationType","preferredBuyerLocation",
                      "preferredBuyerLanguage"];
     var newObject = {};
 

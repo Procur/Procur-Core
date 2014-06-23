@@ -1,4 +1,6 @@
+<script src="/countries.js"></script>
 <form action="/supplier/update" method="post" id="supplier-update-form" enctype="multipart/form-data">
+
 	<%- partial('_update_company') %>
 
   <h2>Supplier Info</h2>
@@ -33,17 +35,15 @@
       </div>
       <div><input type="text" name="locationCity" placeholder="City" value="<%= supplier2.locationCity[x] %>"></div>
       <div>
-        <select name="locationProvince">
-          <option value="<%= supplier2.locationProvince[x] %>" selected="selected"><%= supplier2.locationProvince[x] %></option>
-          <!-- ADD PARTIAL HERE -->
+				<select name="locationCountry" id="country<%= x %>" onchange="print_state('province<%= x %>',this.selectedIndex);">
+          <!-- edit_country(suppliersCountry, countryID) will populate this dropdown -->
         </select>
       </div>
       <div>
-        <select name="locationCountry">
-          <option value="<%= supplier2.locationCountry[x] %>" selected="selected"><%= supplier2.locationCountry[x] %></option>
-          <!-- ADD PARTIAL HERE -->
+        <select name="locationProvince" id="province<%= x %>">
+          <option value="<%= supplier2.locationProvince[x] %>" selected="selected"><%= supplier2.locationProvince[x] %></option>
         </select>
-      </div>
+      </div><script language="javascript">edit_country("<%= supplier2.locationCountry[x] %>", "country<%= x %>");</script>
     </section>
     <% } %>
 
@@ -81,13 +81,12 @@
     <% } %>
 
     <h4>Preferred Buyer Locations</h4>
-    <% for(var x = 0; x < supplier2["preferredBuyerCountry"].length; x++) { %>
-    <section id="preferredBuyerLocation<%= x %>">
-      <select name="preferredBuyerCountry">
-        <option value="<%= supplier2.preferredBuyerCountry[x] %>" selected="selected"><%= supplier2.preferredBuyerCountry[x] %></option>
-        <!-- ADD PARTIAL HERE -->
+    <% for(var x = 0; x < supplier2["preferredBuyerLocation"].length; x++) { %>
+    <section id="preferredBuyerLocation">
+      <select name="preferredBuyerCountry" id="preferredBuyerLocation<%= x %>">
+        <!-- edit_country(suppliersCountry, countryID) will populate this dropdown -->
       </select>
-    </section>
+    </section><script language="javascript">edit_country("<%= supplier2.preferredBuyerLocation[x] %>", "preferredBuyerLocation<%= x %>");</script>
     <% } %>
 
     <h4>Accepted Delivery Terms</h4>
@@ -122,7 +121,7 @@
             <% if (currencies[x] == supplier2.acceptedCurrency[y]) { %>
               <% matchFound = true; %>
               <input class="checkbox" type="checkbox" name="acceptedCurrency" value="<%= currencies[x] %>" checked><div class="checkboxtext"><%= currencies[x] %></div><br>
-              <% break; %>   
+              <% break; %>
             <% } %>
           <% } %>
           <% if (matchFound === false) { %>
@@ -169,7 +168,7 @@
       <input class="checkbox" type="checkbox" name="privateLabeler" value="privateLabeler"><div class="checkboxtext">Private Labeling</div><br>
     <% } %>
     </section>
-    
+
 
     <div><input type="text" placeholder="facebook" name="facebook" value="<%= supplier.facebook %>"></div>
     <div><input type="text" placeholder="twitter" name="twitter" value="<%= supplier.twitter %>"></div>
@@ -213,6 +212,20 @@
     <textarea name="reinvestment" placeholder=""
               rows="4" cols="50"><%= supplier.reinvestment %>
     </textarea>
+
+		<h4>Select your Category Preferences</h4>
+		<label  for="autocomplete"></label>
+			<input id="autocomplete1" name="autocomplete" placeholder="Option 1">
+
+
+		<h4>Select your Category Preferences</h4>
+		<label  for="autocomplete"></label>
+			<input id="autocomplete2" name="autocomplete" placeholder="Option 2">
+
+
+		<h4>Select your Category Preferences</h4>
+		<label  for="autocomplete"></label>
+			<input id="autocomplete3" name="autocomplete" placeholder="Option 3">
 
     <div><input type="submit"></div>
   </section>
