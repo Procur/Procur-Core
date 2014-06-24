@@ -393,7 +393,7 @@ input {
 }
 
 .middleDescription a {
-	color: #EF9818;
+	color: #FD9237;
 	font-family: 'Montserrat', sans-serif;
 	text-transform: uppercase;
 	font-size: 10px;
@@ -471,4 +471,120 @@ input {
 
 .featuresColumn .rightAlt .rightSecBox {
 	background: #F7F6F4;
+}
+
+
+/* Auto Complete Styling */
+ul.ui-autocomplete {
+  list-style: none;
+  margin: 0px;
+  background: white;
+  padding: 0px;
+  border: 1px solid #e3e3e3;
+}
+
+.ui-autocomplete li {
+  cursor: pointer;
+  padding: 5px 0px;
+}
+
+.ui-autocomplete li:hover {
+  background: #f7f7f7;
+}
+
+.ui-autocomplete li:hover a,
+.ui-autocomplete li:hover a:hover {
+  color: #333132;
+  text-decoration: none;
+}
+
+.ui-menu-item a{
+  color: #333132;
+  text-transform: capitalize;
+  padding: 0px 10px;
+  cursor: pointer;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  font-size: 10px;
+  letter-spacing: 0.06em;
+}
+
+.ui-autocomplete {
+  max-height: 200px;
+  max-width: 700px;
+  overflow-y: auto;
+  /* prevent horizontal scrollbar */
+  overflow-x: hidden;
+}
+/* IE 6 doesn't support max-height
+ * we use height instead, but this forces the menu to always be this tall
+ */
+* html .ui-autocomplete {
+  height: 200px;
+}
+
+.ui-autocomplete-term { 
+  font-weight: bold; 
+  color: #FD9237; 
+}
+
+.ui-helper-hidden-accessible {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  color: #999999;
+  display: inline;
+}
+
+/* Icon Box and Item Link Styling */
+.rightSec,
+.rightSecBox,
+.rightSec a {
+  -webkit-transition: all 200ms ease-in-out;
+  -moz-transition: all 200ms ease-in-out;
+  -ms-transition: all 200ms ease-in-out;
+  -o-transition: all 200ms ease-in-out;
+  transition: all 200ms ease-in-out;
+}
+
+.rightSec:hover {
+  background: #FD9237;
+  -webkit-transition: all 200ms ease-in-out;
+  -moz-transition: all 200ms ease-in-out;
+  -ms-transition: all 200ms ease-in-out;
+  -o-transition: all 200ms ease-in-out;
+  transition: all 200ms ease-in-out;
+  cursor: pointer;
+}
+
+.rightSec:hover a {
+  color: white;
+  text-decoration: none;
+   -webkit-transition: all 200ms ease-in-out;
+  -moz-transition: all 200ms ease-in-out;
+  -ms-transition: all 200ms ease-in-out;
+  -o-transition: all 200ms ease-in-out;
+  transition: all 200ms ease-in-out;
+}
+
+.rightSec:hover a:hover {
+  color: white;
+  text-decoration: none;
+  -webkit-transition: all 200ms ease-in-out;
+  -moz-transition: all 200ms ease-in-out;
+  -ms-transition: all 200ms ease-in-out;
+  -o-transition: all 200ms ease-in-out;
+  transition: all 200ms ease-in-out;
+}
+
+
+.rightSec:hover .rightSecBox {
+  background: #FDB26E;
+  color: white;
+  -webkit-transition: all 200ms ease-in-out;
+  -moz-transition: all 200ms ease-in-out;
+  -ms-transition: all 200ms ease-in-out;
+  -o-transition: all 200ms ease-in-out;
+  transition: all 200ms ease-in-out;
 }

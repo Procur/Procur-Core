@@ -1,11 +1,12 @@
-<div id="regWizard">    
+<script src="/countries.js"></script>
+<div id="regWizard">
   <div class="container">
     <div class="row">
       <div class="col-sm-12">
         <h1>Complete Your Registration</h1>
       </div>
       <%- partial('../partials/progress') %>
-      <form action="/company/create" method="post">
+      <form action="/company/create" id="basic-company-details-form" method="post">
         <div class="col-sm-6 col-sm-offset-3 fieldBox">
           <div class="row">
             <div class="col-sm-6">
@@ -26,30 +27,13 @@
                 <div class="col-sm-7 col-sm-offset-5 inputColumnR">
                     <div class="breakForm"><input type="text" name="companyPhoneExt" placeholder="Extension"></div>
                 </div>
-              </div>    
-
-              <!-- Fax Info -->
-              <h4>Company Fax</h4>
-              <div class="row insideForm">
-                <div class="col-sm-5 inputColumnL">
-                    <div><input type="text" name="companyFaxCountryCode" placeholder="Country Code"></div>
-                </div>
-                <div class="col-sm-7 inputColumnR ">
-                    <div><input type="text" name="companyFax" placeholder="Company Phone"></div>
-                </div>
               </div>
-              <div class="row insideForm">
-                  
-                <div class="col-sm-7 col-sm-offset-5 inputColumnR">
-                    <div class="breakForm"><input type="text" name="companyFaxExt" placeholder="Extension"></div>
-                </div>
-              </div>    
 
 
               <h4>Company Email Address*</h4>
               <div class="breakForm"><input type="text" name="companyEmail" placeholder="info@mycompany.com"></div>
               <h4>Official Company Website</h4>
-              <div class="breakForm"><input type="text" name="companyWebsite" placeholder="www.mycompany.com"></div>
+              <div class="breakForm"><input type="text" name="companyWebsite" placeholder="http://www.mycompany.com" ></div>
 
 
               <h4>Industry*</h4>
@@ -58,7 +42,7 @@
               </select>
               </div>
 
-                
+
 
             </div>
               <!-- End of First Column -->
@@ -68,8 +52,8 @@
                 <h4>Official Business Address*</h4>
                 <div><input class="address1" type="text" name="companyAddress1" placeholder="Address Line #1"></div>
                 <div><input class="address2" type="text" name="companyAddress2" placeholder="Address Line #2"></div>
-                <div class="styledSelect"><select class="companyCountry" name="companyCountry">
-                    <option value="0">Select Country</option>
+                <div class="styledSelect"><select class="companyCountry" name="companyCountry" id="companyCountry" onchange="print_state('companyProvince',this.selectedIndex);"> 
+                    <option value="">Select Country</option>
                     <option value="1">1</option>
                   </select>
                 </div>
@@ -78,12 +62,18 @@
                 <div class="row insideForm">
                   <div class="col-sm-7">
                     <div class="styledSelect inputColumnL">
-                      <select class="companyProvince" name="companyProvince">
-                        <option value="0">Select Province/State</option>
+                      <select class="companyProvince" name="companyProvince" id="companyProvince">
+                        <option value="">Select Province/State</option>
                         <option value="1">Fakeland</option>
-                      </select>
+                      </select><script language="javascript">print_country("companyCountry");</script>
                     </div>
                   </div>
+
+
+
+
+
+
                   <div class="col-sm-5 inputColumnR">
                     <div class="breakForm">
                       <input type="text" class="companyPostalCode" name="companyPostalCode" placeholder="Postal Code">
@@ -100,9 +90,11 @@
                 <div><input class="hqfield hqaddress1" type="text" name="hqAddress1" placeholder="Address Line 1"></div>
                 <div><input  class="hqfield hqaddress2" type="text" name="hqAddress2" placeholder="Address Line 2"></div>
 
+
+
                 <div class="styledSelect">
-                  <select class="hqfield hqcompanyCountry" name="hqCountry">
-                    <option value="0">Select Country</option>
+                  <select class="hqfield hqcompanyCountry" name="hqCountry" id="hqcompanyCountry" onchange="print_state('hqcompanyProvince',this.selectedIndex);">
+                    <option value="">Select Country</option>
                     <option value="1">1</option>
                   </select>
                 </div>
@@ -110,11 +102,16 @@
                 <div class="row insideForm">
                   <div class="col-sm-7">
                     <div class="styledSelect inputColumnL">
-                      <select class="hqfield hqcompanyProvince" name="hqProvince">
-                        <option value="0">Select Province/State</option>
+                      <select class="hqfield hqcompanyProvince" name="hqProvince" id="hqcompanyProvince">
+                        <option value="">Select Province/State</option>
                         <option value="1">Fakeland</option>
                       </select>
-                    </div>
+                    </div><script language="javascript">print_country("hqcompanyCountry");</script>
+
+
+
+
+
                   </div>
                   <div class="col-sm-5 inputColumnR">
                     <div class="breakForm">
@@ -124,17 +121,12 @@
                 </div>
                 <h4>Total Number of Employees*</h4>
                 <div class="styledSelect"><select name="companyEmployeeCount">
-                  <option value="">Less than 10</option>
-                  <option value="">11 - 50</option>
-                  <option value="">51 - 100</option>
-                  <option value="">101 - 500</option>
-                  <option value="">501 - 1000</option>
-                  <option value="">1000+</option>
+                  <%- partial('../partials/dropdowns/total-employees') %>
                 </select></div>
 
               </div>
 
-              
+
           <!-- End of Second Column -->
           </div>
         </div>

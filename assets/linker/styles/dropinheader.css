@@ -1,0 +1,16 @@
+#dropin {
+  width: 100%;
+  height: 60px;
+  background: white;
+  position: fixed;
+  top: 0px;
+}
+
+#dropin a {
+}
+
+#dropin a .dropinbutton {
+
+  color: white;
+  background: #FD9237;
+}

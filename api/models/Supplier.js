@@ -46,6 +46,9 @@
       minLength: 1,
       maxLength: 100
     },
+    productCategory: {
+      type: 'array',
+    },
     preferredBuyerType: {
       type: 'string',
       minLength: 1,
@@ -56,7 +59,7 @@
       minLength: 1,
       maxLength: 100
     },
-    preferredBuyerCountry: {
+    preferredBuyerLocation: {
       type: 'array',
       minLength: 1,
       maxLength: 100

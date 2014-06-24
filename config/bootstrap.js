@@ -10,7 +10,6 @@
 
 module.exports.bootstrap = function (cb) {
   sails.newrelic = require('newrelic');
-
   var cloudinary = require('cloudinary');
 
 

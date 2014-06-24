@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4 col-sm-offset-4 loginForm">
+      <h1>Great, your email has been verified.</br><br/>Let's create your custom company link.</h1>
+
+      <section id="selectHandleForm">
+        <form action="/company/createHandle" method="post">
+          <div><input id="someTextBox" type="text" name="handle" placeholder="MyCompany"></div>
+
+          <h2>Here's a preview of your link:</h2>
+          <div class="urlBox">
+            <div class="urls urlStatic">
+              <img width="16px" src="/linker/favicon.ico" /> <span class="green">https</span>://procur.com/companies/
+            </div>
+            <div class="urls urlDynamic">
+            </div>
+          </div>
+          <div><input type="submit"></div>
+        </form>
+      </section>    
+	  </div>
+	</div>
+</div>
+
+
+
+
+
+<!-- 
+<h1>Select a handle to take your profile public.</h1>
+
+<section id="selectHandleForm">
+  <form action="/company/createHandle" method="post">
+    <div><input id="someTextBox" type="text" name="handle" placeholder="MyCompany"></div>
+    <div><input type="submit"></div>
+  </form>
+</section> -->

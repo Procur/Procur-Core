@@ -59,6 +59,11 @@ module.exports.routes = {
     action: 'aboutUs'
   }, //Displays 'about us' View
 
+  'get /earlyaccess': {
+    controller: 'HomeController',
+    action: 'earlyaccess'
+  }, //Displays 'early action' View
+
   'get /press': {
     controller: 'HomeController',
     action: 'press'

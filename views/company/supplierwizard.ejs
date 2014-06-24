@@ -1,0 +1,164 @@
+<script src="/countries.js"></script>
+
+
+<div id="regWizard">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <h1>Complete Your Registration</h1>
+      </div>
+      <%- partial('../partials/progressprofile') %>
+      <form action="/supplier/create" method="post" id="supplier-wizard-form" enctype="multipart/form-data">
+        <div class="col-sm-6 col-sm-offset-3 topBox">
+          <h1>Your Supplier Profile</h1>
+        </div>
+        <div class="col-sm-6 col-sm-offset-3 fieldBox">
+          <section class="supplierWizard">
+            <div class="row">
+              <div class="col-sm-6">
+                <h4>Logo Image</h4>
+                <div><input class="breakForm" type="file" name="logoUrl"></div>
+                <h4>DBA (Doing Business As) Name</h4>
+                <div><input class="breakForm" type="text" name="dba" placeholder="Alternate Company Name"></div>
+
+                <h4>Type of Company*</h4>
+                <section id="typeOfCompany">
+                  <div class="styledSelect breakForm">
+                    <select name="typeOfCompany">
+                      <%- partial('../partials/dropdowns/supplier-type') %>
+                    </select>
+                  </div>
+                </section>
+
+                <h4>Language(s)*</h4>
+                <div class="styledSelect">
+                  <select name="language">
+                    <%- partial('../partials/dropdowns/language') %>
+                  </select>
+                </div>
+
+                <h4>Other Locations</h4>
+                <section id="otherLocation1">
+                  <div><input type="text" name="otherLocationName" placeholder="Location Title"></div>
+                  <div class="styledSelect">
+                    <select name="otherLocationType">
+                      <%- partial('../partials/dropdowns/other-location-type') %>
+                    </select>
+                  </div>
+                  <div class="styledSelect">
+                    <select name="otherLocationCountry" id="country" onchange="print_state('province',this.selectedIndex);">
+                      <option>Select Country</option>
+                    </select>
+                  </div>
+                  <div class="styledSelect">
+                    <select name="otherLocationProvince" id="province">
+                      <option>Select State/Province</option>
+                    </select>
+                  </div><script language="javascript">print_country("country");</script>
+                  <div><input type="text" name="otherLocationCity" placeholder="City"></div>
+                </section>
+
+              </div>
+              <div class="col-sm-6">
+
+                <h4>Annual Sales Value*</h4>
+                <!--
+                /////////////////////////////////////
+
+                annualProductionVolume == annualSalesValue
+
+                /////////////////////////////////////
+                -->
+                <section id="annualProductionVolume">
+                  <div class="styledSelect breakForm">
+                    <select name="annualProductionVolume">
+                      <%- partial('../partials/dropdowns/annual-sales-value') %>
+                    </select>
+                  </div>
+                </section>
+
+                <h4>Contract Manufacturing</h4>
+                <section id="privateLabeler" class="breakForm">
+                  <input class="checkbox"type="checkbox" name="privateLabeler" value="privateLabeler"><div class="checkboxtext">Private Labeling</div><br>
+                </section>
+
+                <h4>Accepted Currencies*</h4>
+                <section id="acceptedCurrencies">
+                  <div class="row breakForm">
+                    <div class="col-sm-6">
+                      <input class="checkbox" type="checkbox" name="acceptedCurrency" value="USD"><div class="checkboxtext">USD</div><br>
+                      <input class="checkbox" type="checkbox" name="acceptedCurrency" value="EUR"><div class="checkboxtext">EUR</div><br>
+                      <input class="checkbox" type="checkbox" name="acceptedCurrency" value="JPY"><div class="checkboxtext">JPY</div><br>
+                      <input class="checkbox" type="checkbox" name="acceptedCurrency" value="GBP"><div class="checkboxtext">GBP</div><br>
+                      <input class="checkbox" type="checkbox" name="acceptedCurrency" value="AUD"><div class="checkboxtext">AUD</div><br>
+                      <input class="checkbox" type="checkbox" name="acceptedCurrency" value="CHF"><div class="checkboxtext">CHF</div><br>
+                      <input class="checkbox" type="checkbox" name="acceptedCurrency" value="CAD"><div class="checkboxtext">CAD</div><br>
+                    </div>
+                    <div class="col-sm-6">
+                      <input class="checkbox" type="checkbox" name="acceptedCurrency" value="MXN"><div class="checkboxtext">MXN</div><br>
+                      <input class="checkbox" type="checkbox" name="acceptedCurrency" value="CNY"><div class="checkboxtext">CNY</div><br>
+                      <input class="checkbox" type="checkbox" name="acceptedCurrency" value="NZD"><div class="checkboxtext">NZD</div><br>
+                      <input class="checkbox" type="checkbox" name="acceptedCurrency" value="SEK"><div class="checkboxtext">SEK</div><br>
+                      <input class="checkbox" type="checkbox" name="acceptedCurrency" value="RUB"><div class="checkboxtext">RUB</div><br>
+                      <input class="checkbox" type="checkbox" name="acceptedCurrency" value="HKD"><div class="checkboxtext">HKD</div><br>
+                      <input class="checkbox" type="checkbox" name="acceptedCurrency" value="SGD"><div class="checkboxtext">SGD</div><br>
+                    </div>
+                  </div>
+                </section>
+
+                <h4>Accepted Payment Terms*</h4>
+                <section id="acceptedPaymentTerms">
+                  <div class="row breakForm">
+                    <div class="col-sm-6">
+                      <input class="checkbox" type="checkbox" name="acceptedPaymentTerms" value="MoneyGram"><div class="checkboxtext">MoneyGram</div><br>
+                      <input class="checkbox" type="checkbox" name="acceptedPaymentTerms" value="Western Union"><div class="checkboxtext">Western Union</div><br>
+                      <input class="checkbox" type="checkbox" name="acceptedPaymentTerms" value="T/T"><div class="checkboxtext">T/T</div><br>
+                      <input class="checkbox" type="checkbox" name="acceptedPaymentTerms" value="Credit Card"><div class="checkboxtext">Credit Card</div><br>
+                    </div>
+                    <div class="col-sm-6">
+                      <input class="checkbox" type="checkbox" name="acceptedPaymentTerms" value="Escrow"><div class="checkboxtext">Escrow</div><br>
+                      <input class="checkbox" type="checkbox" name="acceptedPaymentTerms" value="PayPal"><div class="checkboxtext">PayPal</div><br>
+                      <input class="checkbox" type="checkbox" name="acceptedPaymentTerms" value="D/P D/A"><div class="checkboxtext">D/P D/A</div><br>
+                      <input class="checkbox" type="checkbox" name="acceptedPaymentTerms" value="Cash"><div class="checkboxtext">Cash</div><br>
+                    </div>
+                  </div>
+                </section>
+
+                <h4>Your Buyer Preferences*</h4>
+                <section id="preferredBuyerType" class="styledSelect">
+                  <select name="preferredBuyerType">
+                    <%- partial('../partials/dropdowns/pref-buyer-type') %>
+                  </select>
+                </section>
+                <section id="preferredBuyerLocation1" class="styledSelect">
+                  <select name="preferredBuyerLocation" id="preferredBuyerLocation">
+                    <option >Preferred Buyer Location</option>
+                  </select><script language="javascript">print_country("preferredBuyerLocation");</script>
+                </section>
+                <section id="preferredBuyerLanguage1" class="styledSelect">
+                  <select name="preferredBuyerLanguage">
+                    <%- partial('../partials/dropdowns/pref-buyer-language') %>
+                  </select>
+                </section>
+              </div>
+              <div class="col-sm-12">
+                <label  for="autocomplete"><h4>Select your Category Preferences</h4></label>
+                <input id="autocomplete1" name="autocomplete" placeholder="Begin typing to search categories...">
+                <label  for="autocomplete"><h4>Select your Category Preferences</h4></label>
+                <input id="autocomplete2" name="autocomplete" placeholder="Begin typing to search categories...">
+                <label  for="autocomplete"><h4>Select your Category Preferences</h4></label>
+                <input id="autocomplete3" name="autocomplete" placeholder="Begin typing to search categories...">
+              </div>
+
+            </div>
+          </section>
+        </div>
+        <div class="row">
+          <div class="col-sm-6 col-sm-offset-3">
+              <div><button class="continueButton" type="submit">Continue&nbsp;&nbsp; <i class="fa fa-arrow-right"></i></button></div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

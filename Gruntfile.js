@@ -54,6 +54,10 @@ module.exports = function (grunt) {
     // then beef it up with some convenience logic for talking to Sails.js
     'linker/js/sails.io.js',
 
+    //used for client-side validation
+    'linker/js/jquery.js',
+    'linker/js/jquery.validate.min.js',
+
     // A simpler boilerplate library for getting you up and running w/ an
     // automatic listener for incoming messages from Socket.io.
     'linker/js/app.js',
