@@ -78,10 +78,6 @@ $('#registration-form').validate({
 	 		minlength: 1,
       maxlength: 100
 		},
-		emailConfirm: {
-	  	required: true,
-	 		equalTo: "#regEmail"
-		},
 		password: {
 			required: true,
 			minlength: 8,
