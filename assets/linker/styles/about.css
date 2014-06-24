@@ -65,3 +65,18 @@
 #about .blah {
   padding: 30px;
 }
+
+#about #tractor {
+  position:relative;
+  top: 40px;
+
+
+}
+
+#about #train  {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+
+
+    }
