@@ -57,6 +57,7 @@ module.exports = function (grunt) {
     //used for client-side validation
     'linker/js/jquery.js',
     'linker/js/jquery.validate.min.js',
+    'linker/js/jquery.ui.js',
 
     // A simpler boilerplate library for getting you up and running w/ an
     // automatic listener for incoming messages from Socket.io.
