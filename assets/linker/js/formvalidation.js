@@ -118,7 +118,7 @@ $('#basic-company-details-form').validate({
  			minlength: 1,
 			maxlength: 10
  		},
- 		companyFaxCountryCode: {
+ 		/*companyFaxCountryCode: {
  			required: true,
  			"numeric+whitespace": true,
 			minlength: 1,
@@ -135,7 +135,7 @@ $('#basic-company-details-form').validate({
  			"numeric+whitespace": true,
  			minlength: 1,
 			maxlength: 10
- 		},
+ 		},*/
  		companyEmail: {
 			required: true,
 			email: true,

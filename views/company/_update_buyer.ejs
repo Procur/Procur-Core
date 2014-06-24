@@ -200,19 +200,10 @@
     </textarea>
 
     <h4>Select your Category Preferences</h4>
-    <label  for="autocomplete"></label>
-      <input id="autocomplete1" name="autocomplete" placeholder="Option 1">
-
-
-    <h4>Select your Category Preferences</h4>
-    <label  for="autocomplete"></label>
-      <input id="autocomplete2" name="autocomplete" placeholder="Option 2">
-
-
-    <h4>Select your Category Preferences</h4>
-    <label  for="autocomplete"></label>
-      <input id="autocomplete3" name="autocomplete" placeholder="Option 3">
-
+    <% for (var x = 0; x < buyer2["productCategory"].length; x++) { %>
+      <label for ="autocomplete"></label>
+      <input id="autocomplete<%= x + 1 %>" name=autocomplete" value="<%= buyer2.productCategory[x] %>"><br />
+    <% } %>
 
     <div><input type="submit"></div>
   </section>
