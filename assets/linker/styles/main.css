@@ -480,20 +480,22 @@ ul.ui-autocomplete {
   margin: 0px;
   background: white;
   padding: 0px;
+  border: 1px solid #e3e3e3;
 }
 
 .ui-autocomplete li {
-  border-bottom: 1px solid #e3e3e3;
   cursor: pointer;
   padding: 5px 0px;
 }
 
 .ui-autocomplete li:hover {
-  background: #FD9237;
+  background: #f7f7f7;
 }
 
-.ui-autocomplete li:hover a{
-  color: white;
+.ui-autocomplete li:hover a,
+.ui-autocomplete li:hover a:hover {
+  color: #333132;
+  text-decoration: none;
 }
 
 .ui-menu-item a{
@@ -508,19 +510,32 @@ ul.ui-autocomplete {
 }
 
 .ui-autocomplete {
-    max-height: 200px;
-    max-width: 700px;
-    overflow-y: auto;
-    /* prevent horizontal scrollbar */
-    overflow-x: hidden;
-  }
-  /* IE 6 doesn't support max-height
-   * we use height instead, but this forces the menu to always be this tall
-   */
-  * html .ui-autocomplete {
-    height: 200px;
-  }
+  max-height: 200px;
+  max-width: 700px;
+  overflow-y: auto;
+  /* prevent horizontal scrollbar */
+  overflow-x: hidden;
+}
+/* IE 6 doesn't support max-height
+ * we use height instead, but this forces the menu to always be this tall
+ */
+* html .ui-autocomplete {
+  height: 200px;
+}
 
+.ui-autocomplete-term { 
+  font-weight: bold; 
+  color: #FD9237; 
+}
+
+.ui-helper-hidden-accessible {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  color: #999999;
+  display: inline;
+}
 
 /* Icon Box and Item Link Styling */
 .rightSec,
