@@ -5,6 +5,7 @@
   font-weight: 300;
   color: #FD9237;
   letter-spacing: 0.04em;
+
 }
 
 #legal h2,
@@ -26,4 +27,4 @@
 
 #legal a:hover {
   text-decoration: underline;
-};
+}
