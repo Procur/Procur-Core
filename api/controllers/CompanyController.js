@@ -51,7 +51,6 @@ module.exports = {
       employeeCount: b.companyEmployeeCount,
       active: true
     }, function(err, company){
-      if (company) { console.log("company is " + JSON.stringify(company, null, ' ')); }
       if(err){
         res.send(err);
       }
