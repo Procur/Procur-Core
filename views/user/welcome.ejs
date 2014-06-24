@@ -10,6 +10,7 @@
         <div class="col-sm-6 col-sm-offset-3 fieldBox">
           <div class="row">
             <div class="col-sm-6">
+
               <h4>Company Name*</h4>
               <div class="breakForm"><input type="text" name="companyName" placeholder="Your Company Name"></div>
 
@@ -29,12 +30,10 @@
                 </div>
               </div>
 
-
               <h4>Company Email Address*</h4>
               <div class="breakForm"><input type="text" name="companyEmail" placeholder="info@mycompany.com"></div>
               <h4>Official Company Website</h4>
               <div class="breakForm"><input type="text" name="companyWebsite" placeholder="http://www.mycompany.com" ></div>
-
 
               <h4>Industry*</h4>
               <div class="styledSelect breakForm"><select name="companyIndustry">
@@ -42,94 +41,75 @@
               </select>
               </div>
 
+            </div><!-- End of First Column -->
 
-
-            </div>
-              <!-- End of First Column -->
-
-
-              <div class="col-sm-6">
-                <h4>Official Business Address*</h4>
-                <div><input class="address1" type="text" name="companyAddress1" placeholder="Address Line #1"></div>
-                <div><input class="address2" type="text" name="companyAddress2" placeholder="Address Line #2"></div>
-                <div class="styledSelect"><select class="companyCountry" name="companyCountry" id="companyCountry" onchange="print_state('companyProvince',this.selectedIndex);"> 
-                    <option value="">Select Country</option>
-                    <option value="1">1</option>
-                  </select>
-                </div>
-
-
-                <div class="row insideForm">
-                  <div class="col-sm-7">
-                    <div class="styledSelect inputColumnL">
-                      <select class="companyProvince" name="companyProvince" id="companyProvince">
-                        <option value="">Select Province/State</option>
-                        <option value="1">Fakeland</option>
-                      </select><script language="javascript">print_country("companyCountry");</script>
-                    </div>
-                  </div>
-
-
-
-
-
-
-                  <div class="col-sm-5 inputColumnR">
-                    <div class="breakForm">
-                      <input type="text" class="companyPostalCode" name="companyPostalCode" placeholder="Postal Code">
-                    </div>
-                  </div>
-                </div>
-
-
-                <h4>Is the above address the headquarters?</h4>
-                <div><input class="checkbox hqbox" type="checkbox" name="companyIsHq"><div class="checkboxtext breakForm">Yes; please copy my details below.</div></div>
-
-
-                <h4>Company Headquarters Address*</h4>
-                <div><input class="hqfield hqaddress1" type="text" name="hqAddress1" placeholder="Address Line 1"></div>
-                <div><input  class="hqfield hqaddress2" type="text" name="hqAddress2" placeholder="Address Line 2"></div>
-
-
-
-                <div class="styledSelect">
-                  <select class="hqfield hqcompanyCountry" name="hqCountry" id="hqcompanyCountry" onchange="print_state('hqcompanyProvince',this.selectedIndex);">
-                    <option value="">Select Country</option>
-                    <option value="1">1</option>
-                  </select>
-                </div>
-
-                <div class="row insideForm">
-                  <div class="col-sm-7">
-                    <div class="styledSelect inputColumnL">
-                      <select class="hqfield hqcompanyProvince" name="hqProvince" id="hqcompanyProvince">
-                        <option value="">Select Province/State</option>
-                        <option value="1">Fakeland</option>
-                      </select>
-                    </div><script language="javascript">print_country("hqcompanyCountry");</script>
-
-
-
-
-
-                  </div>
-                  <div class="col-sm-5 inputColumnR">
-                    <div class="breakForm">
-                      <input class="hqfield hqPostalCode" type="text" name="hqPostalCode" placeholder="Postal Code">
-                    </div>
-                  </div>
-                </div>
-                <h4>Total Number of Employees*</h4>
-                <div class="styledSelect"><select name="companyEmployeeCount">
-                  <%- partial('../partials/dropdowns/total-employees') %>
-                </select></div>
-
+            <div class="col-sm-6">
+              <h4>Official Business Address*</h4>
+              <div><input class="address1" type="text" name="companyAddress1" placeholder="Address Line #1"></div>
+              <div><input class="address2" type="text" name="companyAddress2" placeholder="Address Line #2"></div>
+              <div class="styledSelect"><select class="companyCountry" name="companyCountry" id="companyCountry" onchange="print_state('companyProvince',this.selectedIndex);"> 
+                  <option value="">Select Country</option>
+                  <option value="1">1</option>
+                </select>
               </div>
 
+              <div class="row insideForm">
+                <div class="col-sm-7">
+                  <div class="styledSelect inputColumnL">
+                    <select class="companyProvince" name="companyProvince" id="companyProvince">
+                      <option value="">Select Province/State</option>
+                      <option value="1">Fakeland</option>
+                    </select><script language="javascript">print_country("companyCountry");</script>
+                  </div>
+                </div>
 
-          <!-- End of Second Column -->
-          </div>
-        </div>
+                <div class="col-sm-5 inputColumnR">
+                  <div class="breakForm">
+                    <input type="text" class="companyPostalCode" name="companyPostalCode" placeholder="Postal Code">
+                  </div>
+                </div>
+              </div>
+
+              <h4>Is the above address the headquarters?</h4>
+              <div><input class="checkbox hqbox" type="checkbox" name="companyIsHq"><div class="checkboxtext breakForm">Yes; please copy my details below.</div></div>
+
+              <h4>Company Headquarters Address*</h4>
+              <div><input class="hqfield hqaddress1" type="text" name="hqAddress1" placeholder="Address Line 1"></div>
+              <div><input  class="hqfield hqaddress2" type="text" name="hqAddress2" placeholder="Address Line 2"></div>
+
+              <div class="styledSelect">
+                <select class="hqfield hqcompanyCountry" name="hqCountry" id="hqcompanyCountry" onchange="print_state('hqcompanyProvince',this.selectedIndex);">
+                  <option value="">Select Country</option>
+                  <option value="1">1</option>
+                </select>
+              </div>
+
+              <div class="row insideForm">
+                <div class="col-sm-7">
+                  <div class="styledSelect inputColumnL">
+                    <select class="hqfield hqcompanyProvince" name="hqProvince" id="hqcompanyProvince">
+                      <option value="">Select Province/State</option>
+                      <option value="1">Fakeland</option>
+                    </select>
+                  </div><script language="javascript">print_country("hqcompanyCountry");</script>
+                </div>
+
+                <div class="col-sm-5 inputColumnR">
+                  <div class="breakForm">
+                    <input class="hqfield hqPostalCode" type="text" name="hqPostalCode" placeholder="Postal Code">
+                  </div>
+                </div>
+              </div>
+
+              <h4>Total Number of Employees*</h4>
+              <div class="styledSelect"><select name="companyEmployeeCount">
+                <%- partial('../partials/dropdowns/total-employees') %>
+              </select></div>
+
+            </div><!-- End of Second Column -->
+          </div><!-- End "row" -->
+        </div><!-- End "col-sm-6 col-sm-offset-3 fieldBox" -->
+
         <div class="row">
           <div class="col-sm-6 col-sm-offset-3">
             <div><button class="continueButton" type="submit">Continue&nbsp;&nbsp; <i class="fa fa-arrow-right"></i></button></div>
