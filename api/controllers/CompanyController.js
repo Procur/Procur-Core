@@ -45,15 +45,13 @@ module.exports = {
       phoneNumberCountryCode: b.companyPhoneCountryCode,
       phoneNumber: b.companyPhone,
       phoneExtension: b.companyPhoneExt,
-      faxCountryCode: b.companyFaxCountryCode,
-      faxNumber: b.companyFax,
-      faxExtension: b.companyFaxExt,
       email: b.companyEmail,
       website: b.companyWebsite,
       industry: b.companyIndustry,
       employeeCount: b.companyEmployeeCount,
       active: true
     }, function(err, company){
+      if (company) { console.log("company is " + JSON.stringify(company, null, ' ')); }
       if(err){
         res.send(err);
       }
@@ -342,9 +340,9 @@ module.exports = {
           name: b.companyName,
           phoneNumber: b.companyPhone,
           phoneExtension: b.companyPhoneExt,
-          faxCountryCode: b.companyFaxCountryCode,
-          faxNumber: b.companyFax,
-          faxExtension: b.companyFaxExt,
+          //faxCountryCode: b.companyFaxCountryCode,
+          //faxNumber: b.companyFax,
+          //faxExtension: b.companyFaxExt,
           email: b.companyEmail,
           website: b.companyWebsite,
           physicalAddress1: b.companyAddress1,
