@@ -52,7 +52,6 @@ module.exports = {
         locationCity: [b.otherLocationCity],
         annualSalesValue: b.annualProductionVolume,
         privateLabeler: b.privateLabeler,
-        acceptedDeliveryTerms: [b.acceptedDeliveryTerms],
         acceptedCurrency: [b.acceptedCurrency],
         acceptedPaymentTerms: [b.acceptedPaymentTerms],
         preferredBuyerType: b.preferredBuyerType,

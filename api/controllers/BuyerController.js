@@ -59,7 +59,6 @@ module.exports = {
           preferredSupplierLanguage: [b.preferredSupplierLanguage],
           preferredSupplierLocation: [b.preferredSupplierLocation],
           typeOfCompany: b.typeOfCompany,
-          acceptedDeliveryTerms: [b.acceptedDeliveryTerms],
           acceptedCurrency: [b.acceptedCurrency],
           acceptedPaymentTerms: [b.acceptedPaymentTerms],
           locationName: [b.locationName],
