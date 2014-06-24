@@ -44,7 +44,6 @@ module.exports = {
         company  : company.id,
         dbaName : b.dba,
         typeOfCompany : b.typeOfCompany,
-        language : [b.language],
         locationName: [b.otherLocationName],
         locationType: [b.otherLocationType],
         locationCountry: [b.otherLocationCountry],
