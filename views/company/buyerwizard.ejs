@@ -1,0 +1,152 @@
+<script src="/countries.js"></script>
+
+<div id="regWizard">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <h1>Complete Your Registration</h1>
+      </div>
+      <%- partial('../partials/progressprofile') %>
+      <form action="/buyer/create" method="post" id="buyer-wizard-form" enctype="multipart/form-data">
+        <div class="col-sm-6 col-sm-offset-3 topBox">
+          <h1>Your Buyer Profile</h1>
+        </div>
+        <div class="col-sm-6 col-sm-offset-3 fieldBox">
+          <section class="buyerWizard">
+            <div class="row">
+              <div class="col-sm-6">
+                <h4>Logo Image</h4>
+                <div><input class="breakForm" type="file" name="logoUrl"></div>
+                <h4>DBA (Doing Business As) Name</h4>
+                <div><input class="breakForm" type="text" name="dba" placeholder="Alternate Company Name"></div>
+
+                <h4>Type of Company*</h4>
+                <section id="typeOfCompany">
+                  <div class="styledSelect breakForm">
+                    <select name="typeOfCompany">
+                      <%- partial('../partials/dropdowns/buyer-type') %>
+                    </select>
+                  </div>
+                </section>
+
+                <h4>Language(s)*</h4>
+                <div class="styledSelect">
+                  <select name="language">
+                    <%- partial('../partials/dropdowns/language') %>
+                  </select>
+                </div>
+
+                <h4>Other Locations</h4>
+                <section id="otherLocation1">
+                  <div><input type="text" name="locationName" placeholder="Location Title"></div>
+                  <div class="styledSelect">
+                    <select name="locationType">
+                      <%- partial('../partials/dropdowns/other-location-type') %>
+                    </select>
+                  </div>
+                  <div class="styledSelect">
+                    <select name="locationCountry" id="locationCountry" onchange="print_state('locationProvince',this.selectedIndex);">
+                      <option>Select Country</option>
+                    </select>
+                  </div>
+                  <div class="styledSelect">
+                    <select name="locationProvince" id="locationProvince">
+                      <option>Select State/Province</option>
+                    </select>
+                  </div><script language="javascript">print_country("locationCountry");</script><!--TODO:question for Cael-->
+                  <div><input type="text" name="locationCity" placeholder="City"></div>
+                </section>
+
+
+              </div>
+              <div class="col-sm-6">
+
+                <h4>Accepted Currencies*</h4>
+                <section id="acceptedCurrencies">
+                  <div class="row breakForm">
+                    <div class="col-sm-6">
+                      <input class="checkbox" type="checkbox" name="acceptedCurrency" value="USD"><div class="checkboxtext">USD</div><br>
+                      <input class="checkbox" type="checkbox" name="acceptedCurrency" value="EUR"><div class="checkboxtext">EUR</div><br>
+                      <input class="checkbox" type="checkbox" name="acceptedCurrency" value="JPY"><div class="checkboxtext">JPY</div><br>
+                      <input class="checkbox" type="checkbox" name="acceptedCurrency" value="GBP"><div class="checkboxtext">GBP</div><br>
+                      <input class="checkbox" type="checkbox" name="acceptedCurrency" value="AUD"><div class="checkboxtext">AUD</div><br>
+                      <input class="checkbox" type="checkbox" name="acceptedCurrency" value="CHF"><div class="checkboxtext">CHF</div><br>
+                      <input class="checkbox" type="checkbox" name="acceptedCurrency" value="CAD"><div class="checkboxtext">CAD</div><br>
+                    </div>
+                    <div class="col-sm-6">
+                      <input class="checkbox" type="checkbox" name="acceptedCurrency" value="MXN"><div class="checkboxtext">MXN</div><br>
+                      <input class="checkbox" type="checkbox" name="acceptedCurrency" value="CNY"><div class="checkboxtext">CNY</div><br>
+                      <input class="checkbox" type="checkbox" name="acceptedCurrency" value="NZD"><div class="checkboxtext">NZD</div><br>
+                      <input class="checkbox" type="checkbox" name="acceptedCurrency" value="SEK"><div class="checkboxtext">SEK</div><br>
+                      <input class="checkbox" type="checkbox" name="acceptedCurrency" value="RUB"><div class="checkboxtext">RUB</div><br>
+                      <input class="checkbox" type="checkbox" name="acceptedCurrency" value="HKD"><div class="checkboxtext">HKD</div><br>
+                      <input class="checkbox" type="checkbox" name="acceptedCurrency" value="SGD"><div class="checkboxtext">SGD</div><br>
+                    </div>
+                  </div>
+                </section>
+
+                <h4>Accepted Payment Terms*</h4>
+                <section id="acceptedPaymentTerms">
+                  <div class="row breakForm">
+                    <div class="col-sm-6">
+                      <input class="checkbox" type="checkbox" name="acceptedPaymentTerms" value="MoneyGram"><div class="checkboxtext">MoneyGram</div><br>
+                      <input class="checkbox" type="checkbox" name="acceptedPaymentTerms" value="Western Union"><div class="checkboxtext">Western Union</div><br>
+                      <input class="checkbox" type="checkbox" name="acceptedPaymentTerms" value="T/T"><div class="checkboxtext">T/T</div><br>
+                      <input class="checkbox" type="checkbox" name="acceptedPaymentTerms" value="Credit Card"><div class="checkboxtext">Credit Card</div><br>
+                    </div>
+                    <div class="col-sm-6">
+                      <input class="checkbox" type="checkbox" name="acceptedPaymentTerms" value="Escrow"><div class="checkboxtext">Escrow</div><br>
+                      <input class="checkbox" type="checkbox" name="acceptedPaymentTerms" value="PayPal"><div class="checkboxtext">PayPal</div><br>
+                      <input class="checkbox" type="checkbox" name="acceptedPaymentTerms" value="D/P D/A"><div class="checkboxtext">D/P D/A</div><br>
+                      <input class="checkbox" type="checkbox" name="acceptedPaymentTerms" value="Cash"><div class="checkboxtext">Cash</div><br>
+                    </div>
+                  </div>
+                </section>
+
+                <h4>Your Supplier Preferences*</h4>
+                <section id="preferredSupplierType" class="styledSelect">
+                  <select name="preferredSupplierType">
+                    <%- partial('../partials/dropdowns/pref-supplier-type') %>
+                  </select>
+                </section>
+                <section id="preferredSupplierLocation1" class="styledSelect">
+                  <select name="preferredSupplierLocation" id="preferredSupplierLocation">
+                    <option >Preferred Supplier Location</option>
+                  </select><script language="javascript">print_country("preferredSupplierLocation");</script>
+                </section>
+                <section id="preferredSupplierLanguage1" class="styledSelect">
+                  <select name="preferredSupplierLanguage">
+                    <%- partial('../partials/dropdowns/pref-supplier-language') %>
+                  </select>
+                </section>
+
+                <h4>Select your Category Preferences</h4>
+                <label  for="autocomplete"></label>
+                  <input id="autocomplete1" name="autocomplete" placeholder="Option 1">
+
+
+                <h4>Select your Category Preferences</h4>
+                <label  for="autocomplete"></label>
+                  <input id="autocomplete2" name="autocomplete" placeholder="Option 2">
+
+
+                <h4>Select your Category Preferences</h4>
+                <label  for="autocomplete"></label>
+                  <input id="autocomplete3" name="autocomplete" placeholder="Option 3">
+
+
+
+              </div>
+            </div>
+          </section>
+        </div>
+        <div class="row">
+          <div class="col-sm-6 col-sm-offset-3">
+              <div><button class="continueButton" type="submit">Continue&nbsp;&nbsp; <i class="fa fa-arrow-right"></i></button></div>
+          </div>
+
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

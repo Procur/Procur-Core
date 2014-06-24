@@ -47,10 +47,17 @@
   <h4>Industry, Employee #, Handle</h4>
   <div class="styledSelect breakForm">
   <select name="companyIndustry">
-    <%- partial('../partials/dropdowns/industry') %>
+    <option value="<%= company.industry %>" selected="selected"><%= company.industry %></option>
+    <%- partial('../partials/edit-dropdowns/edit-industry') %>
   </select>
   </div>
-  <div><input type="text" name="companyEmployeeCount" value="<%= company.employeeCount %>"></div>
+
+  <div>
+    <select name="employeeCount">
+      <option value="<%= company.employeeCount %>" selected="selected"><%= company.employeeCount %></option>
+      <%- partial('../partials/edit-dropdowns/edit-total-employees') %>
+    </select>
+  </div>
 
   <div><input type="text" name="companyUrl" value="<%= company.handle %>"></div>
 </section>
