@@ -1,0 +1,64 @@
+
+#faq h2 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  text-transform: uppercase;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+}
+
+#faq li {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 10px;
+  text-transform: uppercase;
+  font-weight: 400;
+  letter-spacing: 0.06em;d
+}
+
+#faq p {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  letter-spacing: 0.06em;
+  color: #999;
+}
+
+#faq h4 {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 19px;
+  font-weight: 300;
+}
+
+#faq #nav.affix {
+    position: fixed;
+    top: 0;
+    width:27%
+}
+
+#faq #nav > .navbar-inner {
+    border-left: 0;
+    border-right: 0;
+    border-radius: 0;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    -o-border-radius: 0;
+}
+
+#faq a:hover {
+  background-color: white;
+  border-left: 2px solid orange;
+  border-top: none;
+  border-bottom: none;
+  border-right: none;
+}
+
+#faq a {
+  color: #999;
+}
+
+#faq .nav-tabs>li>a {
+  border-radius: 0;
+}
+
+#faq .nav-tabs {
+  border-bottom: none;
+}
