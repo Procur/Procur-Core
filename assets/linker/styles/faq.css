@@ -28,6 +28,32 @@
   font-weight: 300;
 }
 
+#faq a {
+  font-size: 10px;
+  color: #999;
+  border-left: 2px solid white;
+  border-top: none;
+  border-bottom: none;
+  border-right: none;
+}
+
+#faq a:hover {
+  background-color: white;
+  border-left: 2px solid orange;
+  border-top: none;
+  border-bottom: none;
+  border-right: none;
+}
+
+#faq .nav-tabs>li>a {
+  border-radius: 0;
+}
+
+#faq .nav-tabs {
+  border-bottom: none;
+}
+
+
 #faq #nav.affix {
     position: fixed;
     top: 0;
@@ -41,24 +67,4 @@
     -webkit-border-radius: 0;
     -moz-border-radius: 0;
     -o-border-radius: 0;
-}
-
-#faq a:hover {
-  background-color: white;
-  border-left: 2px solid orange;
-  border-top: none;
-  border-bottom: none;
-  border-right: none;
-}
-
-#faq a {
-  color: #999;
-}
-
-#faq .nav-tabs>li>a {
-  border-radius: 0;
-}
-
-#faq .nav-tabs {
-  border-bottom: none;
 }
