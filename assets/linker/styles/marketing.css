@@ -64,6 +64,8 @@
 }
 
 
+
+
 /* PAGE */
 .heroImage {
 	width: 100%;
@@ -137,4 +139,132 @@
 	text-align: right;
 	line-height: 1.8em;
 	color: #444142;
+}
+
+.navbar {
+height:90px;
+padding-top:40px;
+background:#FFF!important;
+border-radius:0 none!important;
+margin-bottom:0;
+padding-bottom:10px;
+}
+
+.navbar ul {
+font-family:Montserrat,Tahoma,Verdana;
+text-transform:uppercase;
+font-weight:300;
+font-size:11px;
+letter-spacing:.06em;
+}
+
+.navbar li a {
+color:#000!important;
+}
+
+.navbar .special:hover a {
+	color:orange!important;
+	background:none transparent;
+}
+
+.navbar li:hover a {
+color:#999!important;
+background:none transparent;
+}
+
+
+
+.navbar .container {
+border-bottom:0 none;
+}
+
+.navbar .tri .hoverTriContainer {
+position:absolute;
+width:100%;
+height:10px;
+overflow:hidden;
+bottom:0;
+}
+
+.navbar .tri .hoverTri {
+position:relative;
+width:0;
+height:0;
+border-left:5px solid transparent;
+border-right:5px solid transparent;
+border-bottom:5px solid #fe9e23;
+margin-left:auto;
+margin-right:auto;
+bottom:-10px;
+-webkit-transition:all 200ms ease-in-out;
+-moz-transition:all 200ms ease-in-out;
+-ms-transition:all 200ms ease-in-out;
+-o-transition:all 200ms ease-in-out;
+transition:all 200ms ease-in-out;
+}
+
+.navbar li:hover .hoverTri {
+position:relative;
+bottom:-5px!important;
+-webkit-transition:all 200ms ease-in-out;
+-moz-transition:all 200ms ease-in-out;
+-ms-transition:all 200ms ease-in-out;
+-o-transition:all 200ms ease-in-out;
+transition:all 200ms ease-in-out;
+}
+
+#mktHeaderLine li.active a {
+background:none!important;
+color:#000!important;
+}
+
+#mktHeaderLine a {
+color:#000;
+-webkit-transition:all 350ms ease-in-out;
+-moz-transition:all 350ms ease-in-out;
+-ms-transition:all 350ms ease-in-out;
+-o-transition:all 350ms ease-in-out;
+transition:all 350ms ease-in-out;
+text-decoration:none;
+}
+
+#mktHeaderLine a:hover {
+color:#333;
+-webkit-transition:all 350ms ease-in-out;
+-moz-transition:all 350ms ease-in-out;
+-ms-transition:all 350ms ease-in-out;
+-o-transition:all 350ms ease-in-out;
+transition:all 350ms ease-in-out;
+text-decoration:none;
+}
+
+#mktHeaderLine a:visited {
+color:#333;
+-webkit-transition:all 350ms ease-in-out;
+-moz-transition:all 350ms ease-in-out;
+-ms-transition:all 350ms ease-in-out;
+-o-transition:all 350ms ease-in-out;
+transition:all 350ms ease-in-out;
+}
+
+#mktHeaderLine .navbar-brand {
+position:relative;
+left:30px;
+top:10px;
+background-image:url(assets/img/logo.png);
+height:20px;
+width:85px;
+background-position:center center;
+background-repeat:no-repeat;
+}
+
+#mktHeaderLine .joinNow a {
+	border: 2px solid #fe9e23;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	top: 7px;
+}
+
+#mktHeaderline .joinNow:hover a {
+	background-color: orange;
 }
