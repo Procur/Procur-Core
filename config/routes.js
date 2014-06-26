@@ -303,6 +303,11 @@ module.exports.routes = {
     controller: 'CompanyController',
     action: 'updateHandle'
   },
+  
+  'get /checkHandleExists': {
+    controller: 'CompanyController',
+    action: 'checkHandleExists'
+  },
 
   //This should get deprecated
   'get /company/update': {

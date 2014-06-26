@@ -91,6 +91,14 @@ $('#registration-form').validate({
 	}
 });
 
+$('#change-handle-form').validate({
+  rules: {
+    handle: {
+      minlength: 2,
+      maxlength: 50
+    }
+  }
+});
 
 $('#basic-company-details-form').validate({
 	rules: {
@@ -358,7 +366,7 @@ $('#supplier-wizard-form').validate({
  			required: false,
 			"internationalphanumeric+punct+whitespace": true,
 			minlength: 3,
-      		maxlength: 50
+      maxlength: 50
  		},
  		typeOfCompany: {
  			required: true
@@ -375,7 +383,7 @@ $('#supplier-wizard-form').validate({
  			required: false,
  			"internationalphanumeric+punct+whitespace": true,
  			minlength: 2,
-      		maxlength: 50
+      maxlength: 50
  		},
  		nearestPortProvince: {
  			required: false
@@ -487,7 +495,7 @@ $('#buyer-update-form').validate({
  			required: false,
 			"internationalphanumeric+punct+whitespace": true,
 			minlength: 3,
-      		maxlength: 50
+      maxlength: 50
  		},
  		typeOfCompany: {
  			required: true
@@ -504,7 +512,7 @@ $('#buyer-update-form').validate({
  			required: false,
  			"internationalphanumeric+punct+whitespace": true,
  			minlength: 2,
-      		maxlength: 50
+      maxlength: 50
  		},
  		nearestPortProvince: {
  			required: false
@@ -617,7 +625,7 @@ $('#buyer-update-form').validate({
 			required:false,
 			digits: true,
 			minlength: 9,
-      		maxlength: 9
+      maxlength: 9
 		},
 		contactName:{
 			required:false,
@@ -979,6 +987,6 @@ $('#password-update-form').validate({
 		passwordConfirm: {
 			required: true,
 			equalTo: "#newPassword"
-	    }
+	  }
 	}
 });

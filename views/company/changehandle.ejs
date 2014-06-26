@@ -1,8 +1,11 @@
 <h1>Change your handle</h1>
 
 <section id="changeHandleForm">
-  <form action="/company/changehandle" method="post">
-    <div><input type="text" name="handle" value="<%= handle %>"></div>
-    <div><input type="submit"></div>
+  <form action="/company/changehandle" id="change-handle-form" method="post">
+    <div>
+      <input type="text" id="desiredHandle" name="handle" value="<%= handle %>">
+      <span id="handleStatus"></span>
+    </div>
+    <div><button type="submit">Change handle</div>
   </form>
 </section>

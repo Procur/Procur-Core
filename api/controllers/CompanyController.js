@@ -235,6 +235,16 @@ module.exports = {
     });
   },
 
+  checkHandleExists: function(req, res){
+    if (req.isAjax === false) { res.redirect('404'); }
+
+    var desiredHandle = req.param('newHandle');
+    return Company.findOne({ handle: desiredHandle }, function(err, company) {
+      if (err === undefined) { return res.send(false); }
+      if (company) { return res.send(true); }
+    });
+  },
+
   updateHandle: function(req, res){
     var b = req.body;
     Company.findOne({ handle: b.handle }, function(err, company){
