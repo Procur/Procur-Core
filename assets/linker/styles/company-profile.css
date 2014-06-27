@@ -1,0 +1,71 @@
+/* COMPANY PROFILE HERE */
+
+/* LOGGED IN */
+#profileWrapper {
+  width: 80%;
+}
+
+.profileHeader {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 50px;
+  background: #FFFFFF;
+  border-bottom: 3px solid #E6E7E8;
+  padding-right: 5%;
+  padding-left: 5%;
+}
+
+.profileHeader .logoImage {
+  float: left;
+  margin-right: 10px;
+}
+
+.profileName {
+  font-size: 12px;
+  font-family: 'Montserrat', sans-serif;
+  letter-spacing: 0.06em;
+  font-weight: 400;
+  display: inline;
+  float: left;
+  color: #231F20;
+}
+
+.profileHeader h1 {
+  font-size: 12px;
+  font-family: 'Montserrat', sans-serif;
+  letter-spacing: 0.06em;
+  font-weight: 400;
+  display: inline;
+  float: left;
+}
+
+.profileName {
+  color: #231F20;
+}
+
+.profileCompany {
+  color: #7F7F7F;
+}
+
+.myProcurPill {
+  margin-top: 6px;
+}
+
+.myProcurPill a {
+  float: right;
+  color: #231F20;
+  letter-spacing: 0.06em;
+  font-weight: 400;
+  font-size: 12px;
+  font-family: 'Montserrat', sans-serif;
+  border: 2px solid #7F7F7F;
+  padding: 7px 10px 7px 10px;
+  border-radius: 30px 30px 30px 30px;
+}
+
+.myProcurPill a:hover {
+  color: #FFFFFF;
+  background: #7F7F7F;
+  text-decoration: none;
+}
