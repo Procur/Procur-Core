@@ -15,6 +15,17 @@
  * @docs        :: http://sailsjs.org/#!documentation/controllers
  */
 
+var nodemailer = require('nodemailer'),
+    smtpTransport = nodemailer.createTransport("SMTP", {
+      service: "Mandrill",
+      auth: {
+        user: process.env.MANDRILL_USERNAME || "app25459603@heroku.com",
+        pass: process.env.MANDRILL_APIKEY || "_tko3ueulFUKJ4Grtv9cmQ"
+      }
+    }),
+    address = process.env.ENVIRONMENT_URL || 'localhost:1337';
+
+
 module.exports = {
 
   index: function(req, res){
@@ -74,9 +85,31 @@ module.exports = {
     res.view();
   },
 
+  //CONTACT FORM FUNCTIONALITY
+
   contact: function(req, res){
     res.view();
   },
+
+  processContact: function(req, res){
+    var b = req.body;
+    var htmlContent = b.content;
+    var mailOptions = {
+      from: b.email,
+      to: 'dev@procur.com',
+      subject: "Contact form submission",
+      generateTextFromHTML: true,
+      html: htmlContent
+    };
+
+    smtpTransport.sendMail(mailOptions, function(err, response){
+      if(err){res.serverError();}
+      req.flash("Message sent! We'll get back to you as soon as possible.");
+      res.redirect('/contact');
+    });
+  },
+
+  ////////////////////////////
 
   faq: function(req, res){
     res.view();

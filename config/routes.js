@@ -89,6 +89,11 @@ module.exports.routes = {
     action: 'contact'
   }, //Displays Contact Form View
 
+  'post /contact': {
+    controller: 'HomeController',
+    action: 'processContact'
+  },
+
   'get /faq': {
     controller: 'HomeController',
     action: 'faq'
