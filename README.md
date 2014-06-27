@@ -85,3 +85,7 @@ If the amount of data in your local MongoDB instance becomes to great to comfort
 ```
 * Clearing a single collection  
 `db.collectionName.drop()`
+
+###Don't(s)
+* DO NOT ALLOW YOUR LOCAL DB TO BE PUSHED TO THIS REPO
+* DO NOT ALLOW `config/local.js` TO BE PUSHED TO THIS REPO
