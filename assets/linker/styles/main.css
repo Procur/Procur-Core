@@ -33,7 +33,8 @@ input {
 }
 #regWizard .fieldBox {
   background: #ecebe6;
-  padding: 25px 30px;
+  padding: 15px 36px;
+
 }
 #regWizard .topBox {
   background: #333132;
@@ -147,6 +148,37 @@ input {
   -o-transition: all 100ms ease-in-out;
   transition: all 100ms ease-in-out;
 }
+
+#regWizard .emailVerify a.resendLink {
+	color:#231f20;
+}
+
+#regWizard .emailVerify a.resendLink:hover{
+text-decoration: none;
+}
+
+#regWizard .emailVerify .midBox {
+	border-bottom: 2px solid #7f7f7f;
+}
+
+#regWizard .emailVerify a.pill {
+	margin-top: 10px;
+	width:100%;
+	left: 0px;
+}
+
+#regWizard .emailVerify .pillContainer {
+  height: 40px;
+}
+
+#regWizard .emailVerify .bottomLeft {
+	margin-top: 20px;
+}
+
+#regWizard .emailVerify .lowBox {
+	padding-bottom: 30px
+}
+
 
 .progressLine {
   position: absolute;
