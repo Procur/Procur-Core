@@ -1,4 +1,5 @@
 <h1>Contact Us</h1>
+<%- req.flash('success') %>
 <form action="/contact" method="post" id="contactForm">
     <div><input type="text" name="email" placeholder="Email"></div>
    <div><textarea name="content" form="contactForm" rows="15" cols="90" placeholder="Write something, fool."></textarea></div>

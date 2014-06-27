@@ -104,7 +104,7 @@ module.exports = {
 
     smtpTransport.sendMail(mailOptions, function(err, response){
       if(err){res.serverError();}
-      req.flash("Message sent! We'll get back to you as soon as possible.");
+      req.flash('success',"Message sent! We'll get back to you as soon as possible.");
       res.redirect('/contact');
     });
   },
