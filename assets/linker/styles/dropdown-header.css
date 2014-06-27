@@ -1,0 +1,41 @@
+.sticky-header h3 {
+font-family: 'Montserrat', sans-serif;
+color: white;
+float: left;
+margin: 13px 0;
+font-size: 10px;
+letter-spacing: 0.06em;
+font-weight: 300;
+}
+
+.sticky-header .button {
+font-family: 'Montserrat', sans-serif;
+font-size: 10px;
+float: right;
+background: #ffad5c;
+color: black!important;
+margin-top: 6px;
+font-weight: 500;
+padding: 4px 20px;
+border: 2px solid white;
+border-top-right-radius: 20px;
+border-top-left-radius: 20px;
+border-bottom-right-radius: 20px;
+border-bottom-left-radius: 20px;
+}
+
+.sticky-header .button:hover {
+text-decoration: none
+}
+
+.sticky-header {
+height: 40px;
+background: #ef9818;
+position: fixed;
+top: 0;
+left:0;
+z-index: 10;
+-webkit-box-shadow: 0 1px 2px rgba(0,0,0,.1);
+box-shadow: 0 1px 2px rgba(0,0,0,.1);
+display: none;
+}
