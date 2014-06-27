@@ -141,7 +141,7 @@
 	color: #444142;
 }
 
-.navbar {
+#mktHeaderLine {
 height:90px;
 padding-top:40px;
 background:#FFF!important;
@@ -150,7 +150,7 @@ margin-bottom:0;
 padding-bottom:10px;
 }
 
-.navbar ul {
+#mktHeaderLine ul {
 font-family:Montserrat,Tahoma,Verdana;
 text-transform:uppercase;
 font-weight:300;
@@ -158,24 +158,28 @@ font-size:11px;
 letter-spacing:.06em;
 }
 
-.navbar li a {
+#mktHeaderLine li a {
 color:#000!important;
 }
 
-.navbar .special:hover a {
+#mktHeaderLine .special a {
+	color: #999!important;
+}
+
+#mktHeaderLine .special:hover a {
 	color:orange!important;
 	background:none transparent;
 }
 
-.navbar li:hover a {
+#mktHeaderLine li:hover a {
 color:#999!important;
 background:none transparent;
 }
 
 
 
-.navbar .container {
-border-bottom:0 none;
+#mktHeaderLine .container {
+border-bottom:2px solid #999;
 }
 
 .navbar .tri .hoverTriContainer {
@@ -265,6 +269,11 @@ background-repeat:no-repeat;
 	top: 7px;
 }
 
-#mktHeaderline .joinNow:hover a {
-	background-color: orange;
+#mktHeaderLine .joinNow:hover a {
+	background-color: #fe9e23;
+	color: white!important;
+}
+
+#mktHeaderLine {
+	padding-top: 20px;
 }
