@@ -1,29 +1,28 @@
-<div id="regWizard">
-	<div class="container">
-		<div class="row">
-		<h1>Let's make sure you've verified your email address.</h1><br/>
-		<%- partial('../partials/progressverify') %>
-			<div class="col-sm-6 col-sm-offset-3 fieldBox text-center breakForm">
-				<h4 class="text-center">Have you already verified your email?</h4>
-				<div class="row">
-					<div class="pillContainer">
-						<div class="col-sm-6 col-sm-offset-3">
-							<a class="pill" href="/dashboard">Go to Dashboard</a>
-						</div>
-					</div>
-				</div>
-			</div>
 
-			<div class="col-sm-6 col-sm-offset-3 fieldBox text-center">
-				<h4 class="text-center">Didn't receive an email?</h4>
-				<div class="row">
-					<div class="pillContainer">
-						<div class="col-sm-6 col-sm-offset-3">
-							<a class="pill" href="/resendverification">Click to Resend Verification</a>
+
+<div id="regWizard">
+	<div class="container emailVerify"
+		<div class="row">
+			<h1>Complete Your Registration</h1><br/>
+			<%- partial('../partials/progressverify') %>
+				
+
+				<div class="col-sm-6 col-sm-offset-3 text-center topBox">
+					<h1>ALMOST DONE - VERIFY YOUR EMAIL ADDRESS TO FINISH</h1>
+				</div>
+				<div class="col-sm-6 col-sm-offset-3 text-left fieldBox midBox">
+					<p>Please check you email inbox to verify your address. If you didn't receive your verification request via email, <strong><a class="resendLink" href="/resendverification">please click here to re-send link.</a></strong></p>
+				</div>
+				<div class="col-sm-6 col-sm-offset-3 fieldBox lowBox">
+					<div class="row">
+						<div class="col-sm-6 bottomLeft">
+							<p><strong>Already verified your email address?</strong></p>
+						</div>
+						<div class="pillContainer col-sm-6">
+							<a class="pill" href="/dashboard">CONTINUE TO DASHBOARD</a>
 						</div>
 					</div>
 				</div>
-			</div>
-		</div>
+		</div
 	</div>
 </div>
