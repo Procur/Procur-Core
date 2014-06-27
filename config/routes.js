@@ -185,6 +185,11 @@ module.exports.routes = {
     action: 'processSelectNewPassword'
   },
 
+  'get /resetsuccess': {
+    controller: 'AuthController',
+    action: 'passwordResetSuccess'
+  },
+
   //USER ROUTES
 
   'get /user/update': {

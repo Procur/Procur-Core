@@ -181,6 +181,7 @@ module.exports = {
     });
   },
 
+
   resetRequestMade: function(req, res){
     res.view();
   },
@@ -223,7 +224,7 @@ module.exports = {
                     if(err){ return res.redirect('/dashboard') };
                     if(reset.consumed == true){
                       req.flash('message', 'Password changed. Please log in.');
-                      res.redirect('/');
+                      res.redirect('/resetsuccess');
                     }
                     else{
                       res.redirect('/dashboard');
@@ -242,6 +243,10 @@ module.exports = {
         res.redirect('/dashboard');
       }
     });
+  },
+
+  passwordResetSuccess: function(req, res){
+    res.view();
   },
 
   //KILLS SESSIONS AND REDIRECTS TO LOGOUT CONFIRMATION VIEW (GOODBYE)
