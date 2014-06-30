@@ -67,6 +67,8 @@
             <div><input type="submit"></div>
         </form>
     </div>
+
+    <!-- ACTIVE MODE BUYER  -->
     <% if (user.activeMode == 'buyer') { %>
         <div id="buyerInformation">
             <form action="/company/update/buyerInformation" method="post" id="buyerInformationForm">
@@ -83,6 +85,8 @@
             <h1>Victory.</h1>
         </div>
     <% } %>
+
+    <!-- ACTIVE MODE SUPPLIER  -->
     <% if (user.activeMode == 'supplier') { %>
         <div id="supplierInformation">
             <h4>Supplier Information</h4>
@@ -105,7 +109,19 @@
             </form>
         </div>
         <div id="productionDetails">
-            <h1>Production Details</h1>
+            <h4>Production Details</h4>
+            <form action="/company/update/supplierProductionDetails" method="post" id="supplierProductionDetailsForm">
+                <div><input type="text" name="annualSalesValue" value="<%= supplier.annualSalesValue %>"></div>
+                <div><input type="text" name="totalFactorySize" value="<%= supplier.totalFactorySize %>"></div>
+                <div><input type="text" name="totalQCStaff" value="<%= supplier.totalQCStaff %>"></div>
+                <div>ADD OTHER LOCATIONS</div>
+                <div>ADD NEAREST PORT</div>
+                <div><input type="text" name="primaryProductSpecialty" value="<%= supplier.primaryProductSpecialty %>"></div>
+                <div><input type="text" name="companyCapabilities" value="<%= supplier.companyCapabilities %>"></div>
+                <div><input type="text" name="annualSalesValue" value="<%= supplier.annualSalesValue %>"></div>
+                <div>Main Markets Distribution?</div>
+                <div><input type="submit"></div>
+            </form>
         </div>
         <div id="descriptionsSupplier">
             <h1>Descriptions</h1>
