@@ -1,38 +1,4 @@
 <!DOCTYPE html>
-<!--
-
-
-       444444444       000000000            444444444
-      4::::::::4     00:::::::::00         4::::::::4
-     4:::::::::4   00:::::::::::::00      4:::::::::4
-    4::::44::::4  0:::::::000:::::::0    4::::44::::4
-   4::::4 4::::4  0::::::0   0::::::0   4::::4 4::::4
-  4::::4  4::::4  0:::::0     0:::::0  4::::4  4::::4
- 4::::4   4::::4  0:::::0     0:::::0 4::::4   4::::4
-4::::444444::::4440:::::0 000 0:::::04::::444444::::444
-4::::::::::::::::40:::::0 000 0:::::04::::::::::::::::4
-4444444444:::::4440:::::0     0:::::04444444444:::::444
-          4::::4  0:::::0     0:::::0          4::::4
-          4::::4  0::::::0   0::::::0          4::::4
-          4::::4  0:::::::000:::::::0          4::::4
-        44::::::44 00:::::::::::::00         44::::::44
-        4::::::::4   00:::::::::00           4::::::::4
-        4444444444     000000000             4444444444
-
-
-
-  This is the default "404: Not Found" page.
-  User agents that don't "Accept" HTML will see a JSON version instead.
-  You can customize the control logic for your needs in `config/404.js`
-
-  Sails considers a request to be in a "404: Not Found" state when a user
-  requests a URL which doesn't match any of your app's routes or blueprints.
-
-  You can also trigger this response from one of your controllers or policies with:
-  `return res.notFound();`
-
-
--->
 <html>
   <head>
     <title>Page Not Found</title>
@@ -41,42 +7,7 @@
     <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="/linker/styles/marketing.css">
     <link rel="stylesheet" href="/linker/styles/main.css">
-
-    <style>
-      h1 {
-        font-family: 'Roboto', sans-serif;
-        font-size: 19px;
-        font-weight: 100;
-        letter-spacing: 0.06em;
-        line-height: 1.5em;
-        color: #999;
-        margin-top: 5px;
-        border-bottom: 2px solid black;
-        padding-bottom: 10px;
-        border-color: #808080;
-      }
-
-      h2 {
-        font-family: 'Montserrat', sans-serif;
-        color: #404041;
-        letter-spacing: 0.06em;
-        font-size: 10px;
-        text-transform: uppercase;
-        margin-top: 25px;
-      }
-
-      h3 {
-        font-family: 'Montserrat', sans-serif;
-        font-size: 8px;
-        font-weight: 100;
-        letter-spacing: 0.06em;
-        line-height: 1.5em;
-        color: #999;
-        margin-top: 5px;
-      }
-
-
-    </style
+    <link rel="stylesheet" href="/linker/styles/errorpages.css">
   </head>
 
 
@@ -84,11 +15,11 @@
 
   <%- partial('partials/mktheaderline') %>
 
-    <div class="container">
-      <div class=row>
+    <div class="container" id="errorPage">
+      <div class="row">
         <div class="col-sm-6 col-sm-offset-3">
             <h3>404 ERROR</h3>
-            <h1><b>Sorry, we can't seem to find what you're looking for.</b>  You may have tried accessing a page that no longer exists or has an incorrect address.</h1>
+            <h1><span class="dark">Sorry, we can't seem to find what you're looking for.</span> You may have tried accessing a page that no longer exists or has an incorrect address.</h1>
             <h2>PLEASE TRY SEARCHING AGAIN, OR CLICK ON ONE OF THE FOLLOWING OPITONS.</h2>
 
           <div class="featuresColumn">
@@ -96,13 +27,13 @@
               <div class="rightSecBox">
                 <i class="fa fa-gear fa-fw"></i>
               </div>
-              <a href="#">GO TO HOMEPAGE</a>
+              <a href="/">GO TO HOMEPAGE</a>
             </div><br/>
             <div class="rightSec rightAlt">
               <div class="rightSecBox">
                 <i class="fa fa-gear fa-fw"></i>
               </div>
-              <a href="#">Visit FAQ</a>
+              <a href="/faq">Visit FAQ</a>
             </div><br />
             <div class="rightSec">
               <div class="rightSecBox">

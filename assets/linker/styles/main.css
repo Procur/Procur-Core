@@ -628,3 +628,7 @@ ul.ui-autocomplete {
   -o-transition: all 200ms ease-in-out;
   transition: all 200ms ease-in-out;
 }
+
+.dark {
+  color: #333132;
+}
