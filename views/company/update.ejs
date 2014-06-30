@@ -34,6 +34,7 @@
 
     </ul>
     <div id="companyDetails">
+        <h4>Basic Company Details</h4>
         <form action="/company/update/basicCompanyDetails" method="post" id="companyDetailsForm">
             <div><input type="text" name="name" value="<%= company.name %>"></div>
             <div><input type="text" name="phoneNumberCountryCode" value="<%= company.phoneNumberCountryCode %>"></div>
@@ -84,11 +85,23 @@
     <% } %>
     <% if (user.activeMode == 'supplier') { %>
         <div id="supplierInformation">
+            <h4>Supplier Information</h4>
             <form action="/company/update/supplierInformation" method="post" id="supplierInformationForm">
                 <div><input type="text" name="dba" value="<%= supplier.dbaName %>"></div>
                 <div><img src="<%= supplier.logoUrl %>"> ADD UPDATE FUNCTIONALITY</div>
                 <div>ADD LANGUAGES</div>
                 <div><input type="text" name="acceptedCurrencies" value="<%= supplier.acceptedCurrency[0] %>"></div>
+                <div><input type="text" name="acceptedPaymentTerms" value="<%= supplier.acceptedPaymentTerms %>"></div>
+                <div><input type="text" name="acceptedDeliveryTerms" value="<%= supplier.acceptedDeliveryTerms %>"></div>
+                <div><input type="text" name="typeOfCompany" value="<%= supplier.typeOfCompany %>"></div>
+                <div><input type="text" name="privateLabeler" value="<%= supplier.privateLabeler %>"></div>
+                <div><input type="text" name="contactName" value="<%= supplier.contactName %>"></div>
+                <div><input type="text" name="contactPosition" value="<%= supplier.contactPosition %>"></div>
+                <div><input type="text" name="contactEmail" value="<%= supplier.contactEmail %>"></div>
+                <div><input type="text" name="gsaApprovedSupplier" value="<%= supplier.gsaApprovedSupplier %>"></div>
+                <div><input type="text" name="dunsNumber" value="<%= supplier.dunsNumber %>"></div>
+                <div><input type="text" name="cageCode" value="<%= supplier.cageCode %>"></div>
+                <div><input type="submit"></div>
             </form>
         </div>
         <div id="productionDetails">
