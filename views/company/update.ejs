@@ -17,7 +17,11 @@
 <div id="tabs">
     <ul>
         <li><a href="#companyDetails">Company Details</a></li>
-        <li><a href="#buyerInformation">Buyer Information</a></li>
+        <li><a href="#buyerSupplierInformation">Buyer / Supplier Information</a></li>
+        <li><a href="#descriptions">Descriptions</a></li>
+        <li><a href="#locations">Locations & Facilities</a></li>
+        <li><a href="#photosAndDownloads">Photos & Downloads</a></li>
+
     </ul>
     <div id="companyDetails">
         <form action="/company/update/basicCompanyDetails" method="post" id="companyDetailsForm">
@@ -52,49 +56,61 @@
             <div><input type="submit"></div>
         </form>
     </div>
-    <div id="buyerInformation">
-        <h1>OMG</h1>
+    <div id="buyerSupplierInformation">
+        <h1>Hai</h1>
+    </div>
+    <div id="descriptions">
+        <h1>Things</h1>
+    </div>
+    <div id="locations">
+        <h1>Words</h1>
+    </div>
+    <div id="photosAndDownloads">
+        <h1>Victory.</h1>
     </div>
 </div>
 
 <script>
-    //COMPANY DETAILS
-    $("#companyDetailsForm").submit(function(){
-        $.post($("#companyDetailsForm").attr("action"), $("#companyDetailsForm").serialize(), function(data){
-        });
-       alert($("#companyDetailsForm").serialize());
-       return false;
-    });
+    $(document).ready(function(){
 
-    //BUYER / SUPPLIER INFORMATION
-    $("#buyerSupplierInformationForm").submit(function(){
-        $.post($("#buyerSupplierInformationForm").attr("action"), $("#buyerSupplierInformationForm").serialize(), function(data){
+        //COMPANY DETAILS
+        $("#companyDetailsForm").submit(function(){
+            $.post($("#companyDetailsForm").attr("action"), $("#companyDetailsForm").serialize(), function(data){
+            });
+            console.log($("#companyDetailsForm").serialize());
+            return false;
         });
-        alert($("#buyerSupplierInformationForm").serialize());
-        return false;
-    });
 
-    //DESCRIPTIONS
-    $("#descriptionsForm").submit(function(){
-        $.post($("#descriptionsForm").attr("action"), $("#descriptionsForm").serialize(), function(data){
+        //BUYER / SUPPLIER INFORMATION
+        $("#buyerSupplierInformationForm").submit(function(){
+            $.post($("#buyerSupplierInformationForm").attr("action"), $("#buyerSupplierInformationForm").serialize(), function(data){
+            });
+            console.log($("#buyerSupplierInformationForm").serialize());
+            return false;
         });
-        alert($("#descriptionsForm").serialize());
-        return false;
-    });
 
-    //LOCATIONS AND FACILITIES
-    $("#locationsForm").submit(function(){
-        $.post($("#locationsForm").attr("action"), $("#locationsForm").serialize(), function(data){
+        //DESCRIPTIONS
+        $("#descriptionsForm").submit(function(){
+            $.post($("#descriptionsForm").attr("action"), $("#descriptionsForm").serialize(), function(data){
+            });
+            alert($("#descriptionsForm").serialize());
+            return false;
         });
-        alert($("#locationsForm").serialize());
-        return false;
-    });
 
-    //PHOTOS AND DOWNLOADS
-    $("#photosAndDownloadsForm").submit(function(){
-        $.post($("#photosAndDownloadsForm").attr("action"), $("#photosAndDownloadsForm").serialize(), function(data){
+        //LOCATIONS AND FACILITIES
+        $("#locationsForm").submit(function(){
+            $.post($("#locationsForm").attr("action"), $("#locationsForm").serialize(), function(data){
+            });
+            console.log($("#locationsForm").serialize());
+            return false;
         });
-        alert($("#photosAndDownloadsForm").serialize());
-        return false;
-    });
+
+        //PHOTOS AND DOWNLOADS
+        $("#photosAndDownloadsForm").submit(function(){
+            $.post($("#photosAndDownloadsForm").attr("action"), $("#photosAndDownloadsForm").serialize(), function(data){
+            });
+            console.log($("#photosAndDownloadsForm").serialize());
+            return false;
+        });
+    })
 </script>
