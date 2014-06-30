@@ -320,7 +320,7 @@ module.exports.routes = {
   },
 
   //This should get deprecated
-  'get /company/update': {
+  /*'get /company/update': {
     controller: 'CompanyController',
     action: 'update'
   },
@@ -328,6 +328,13 @@ module.exports.routes = {
   'post /company/update': {
     controller: 'CompanyController',
     action: 'setUpdate'
+  },*/
+
+  //COMPANY UPDATE ACTIONS
+
+  'get /company/update': {
+    controller: 'CompanyController',
+    action: 'update'
   },
 
   //ERROR ROUTES

@@ -1,7 +1,100 @@
-<% if (user === 'buyer') { %>
-  <%- partial('_update_buyer') %>
-<% } %>
+<script>
+    $(document).ready(function() {
+        $( "#tabs" ).tabs().addClass( "ui-tabs-vertical ui-helper-clearfix" );
+        $( "#tabs li" ).removeClass( "ui-corner-top" ).addClass( "ui-corner-left" );
+    });
+</script>
 
-<% if (user === 'supplier') { %>
-  <%- partial('_update_supplier') %>
-<% } %>
+<style>
+    .ui-tabs-vertical { width: 55em; }
+    .ui-tabs-vertical .ui-tabs-nav { padding: .2em .1em .2em .2em; float: left; width: 12em; }
+    .ui-tabs-vertical .ui-tabs-nav li { clear: left; width: 100%; border-bottom-width: 1px !important; border-right-width: 0 !important; margin: 0 -1px .2em 0; }
+    .ui-tabs-vertical .ui-tabs-nav li a { display:block; }
+    .ui-tabs-vertical .ui-tabs-nav li.ui-tabs-active { padding-bottom: 0; padding-right: .1em; border-right-width: 1px; border-right-width: 1px; }
+    .ui-tabs-vertical .ui-tabs-panel { padding: 1em; float: right; width: 40em;}
+</style>
+
+<div id="tabs">
+    <ul>
+        <li><a href="#companyDetails">Company Details</a></li>
+        <li><a href="#buyerInformation">Buyer Information</a></li>
+    </ul>
+    <div id="companyDetails">
+        <form action="/company/update/basicCompanyDetails" method="post" id="companyDetailsForm">
+            <div><input type="text" name="name" placeholder="<%= company.name %>"></div>
+            <div><input type="text" name="phoneNumberCountryCode" placeholder="<%= company.phoneNumberCountryCode %>"></div>
+            <div><input type="text" name="phoneNumber" placeholder="<%= company.phoneNumber %>"></div>
+            <div><input type="text" name="phoneExtension" placeholder="<%= company.phoneExtension %>"></div>
+            <br />
+            <div><input type="text" name="faxCountryCode" placeholder="<%= company.faxCountryCode %>"></div>
+            <div><input type="text" name="faxNumber" placeholder="<%= company.faxNumber %>"></div>
+            <div><input type="text" name="faxExtension" placeholder="<%= company.faxExtension %>"></div>
+            <br />
+            <div><input type="text" name="email" placeholder="<%= company.email %>"></div>
+            <div><input type="text" name="website" placeholder="<%= company.website %>"></div>
+            <br />
+            <select name="companyIndustry">
+                <option value="<%= company.industry %>" selected="selected"><%= company.industry %></option>
+                <%- partial('../partials/edit-dropdowns/edit-industry') %>
+            </select>
+            <div><input type="text" name="hqAddressLine1" placeholder="<%= companyHq.addressLine1 %>"></div>
+            <div><input type="text" name="hqAddressLine1" placeholder="<%= companyHq.addressLine2 %>"></div>
+            <div><input type="text" name="hqAddressLine1" placeholder="<%= companyHq.country %>"></div>
+            <div><input type="text" name="hqAddressLine1" placeholder="<%= companyHq.province %>"></div>
+            <div><input type="text" name="hqAddressLine1" placeholder="<%= companyHq.postalCode %>"></div>
+            <br />
+            <div>
+                <select name="employeeCount">
+                    <option value="<%= company.employeeCount %>" selected="selected"><%= company.employeeCount %></option>
+                    <%- partial('../partials/edit-dropdowns/edit-total-employees') %>
+                </select>
+            </div>
+            <div><input type="submit"></div>
+        </form>
+    </div>
+    <div id="buyerInformation">
+        <h1>OMG</h1>
+    </div>
+</div>
+
+<script>
+    //COMPANY DETAILS
+    $("#companyDetailsForm").submit(function(){
+        $.post($("#companyDetailsForm").attr("action"), $("#companyDetailsForm").serialize(), function(data){
+        });
+       alert($("#companyDetailsForm").serialize());
+       return false;
+    });
+
+    //BUYER / SUPPLIER INFORMATION
+    $("#buyerSupplierInformationForm").submit(function(){
+        $.post($("#buyerSupplierInformationForm").attr("action"), $("#buyerSupplierInformationForm").serialize(), function(data){
+        });
+        alert($("#buyerSupplierInformationForm").serialize());
+        return false;
+    });
+
+    //DESCRIPTIONS
+    $("#descriptionsForm").submit(function(){
+        $.post($("#descriptionsForm").attr("action"), $("#descriptionsForm").serialize(), function(data){
+        });
+        alert($("#descriptionsForm").serialize());
+        return false;
+    });
+
+    //LOCATIONS AND FACILITIES
+    $("#locationsForm").submit(function(){
+        $.post($("#locationsForm").attr("action"), $("#locationsForm").serialize(), function(data){
+        });
+        alert($("#locationsForm").serialize());
+        return false;
+    });
+
+    //PHOTOS AND DOWNLOADS
+    $("#photosAndDownloadsForm").submit(function(){
+        $.post($("#photosAndDownloadsForm").attr("action"), $("#photosAndDownloadsForm").serialize(), function(data){
+        });
+        alert($("#photosAndDownloadsForm").serialize());
+        return false;
+    });
+</script>
