@@ -90,7 +90,7 @@
     <% if (user.activeMode == 'supplier') { %>
         <div id="supplierInformation">
             <h4>Supplier Information</h4>
-            <form action="/company/update/supplierInformation" method="post" id="supplierInformationForm">
+            <form action="/supplier/update/information" method="post" id="supplierInformationForm">
                 <div><input type="text" name="dba" value="<%= supplier.dbaName %>"></div>
                 <div><img src="<%= supplier.logoUrl %>"> ADD UPDATE FUNCTIONALITY</div>
                 <div>ADD LANGUAGES</div>
@@ -110,7 +110,7 @@
         </div>
         <div id="productionDetails">
             <h4>Production Details</h4>
-            <form action="/company/update/supplierProductionDetails" method="post" id="supplierProductionDetailsForm">
+            <form action="/supplier/update/productionDetails" method="post" id="supplierProductionDetailsForm">
                 <div><input type="text" name="annualSalesValue" value="<%= supplier.annualSalesValue %>"></div>
                 <div><input type="text" name="totalFactorySize" value="<%= supplier.totalFactorySize %>"></div>
                 <div><input type="text" name="totalQCStaff" value="<%= supplier.totalQCStaff %>"></div>
@@ -125,12 +125,37 @@
         </div>
         <div id="descriptionsSupplier">
             <h1>Descriptions</h1>
+            <form action="/supplier/update/descriptions" method="post" id="supplierDescriptionsForm">
+                <div><input type="text" name="companyDescription" value="<%= supplier.companyDescription %>"></div>
+                <div>Statement of responsibility?</div>
+                <div><input type="submit"></div>
+            </form>
         </div>
         <div id="preferencesSupplier">
             <h1>Preferences</h1>
+            <form action="/supplier/update/preferences" method="post" id="supplierPreferencesForm">
+                <div><input type="text" name="preferredBuyerType" value="<%= supplier.preferredBuyerType %>"></div>
+                <div><input type="text" name="preferredBuyerLanguage" value="<%= supplier.preferredBuyerLanguage %>"></div>
+                <div><input type="text" name="preferredBuyerLocation" value="<%= supplier.preferredBuyerLocaion %>"></div>
+                <div><input type="submit"></div>
+            </form>
         </div>
         <div id="photosAndDownloadsSupplier">
             <h1>Photos and Downloads</h1>
+            <form action="/supplier/update/press" method="post" id="supplierPhotosAndDownloadsForm">
+                <div><input type="text" name="facebook" value="<%= supplier.facebook %>"></div>
+                <div><input type="text" name="twitter" value="<%= supplier.twitter %>"></div>
+                <div><input type="text" name="google" value="<%= supplier.google %>"></div>
+                <div><input type="text" name="linkedin" value="<%= supplier.linkedin %>"></div>
+                <div><input type="text" name="pinterest" value="<%= supplier.pinterest %>"></div>
+                <div><input type="text" name="instagram" value="<%= supplier.instagram %>"></div>
+                <div><input type="text" name="tumblr" value="<%= supplier.tumblr %>"></div>
+                <div><input type="text" name="google" value="<%= supplier.google %>"></div>
+                <div>Somehow pull off relevant links</div>
+                <div>Files / Downloads by some incredible feat</div>
+                <div>Photos, god willing</div>
+                <div><input type="submit"></div>
+            </form>
         </div>
     <% } %>
 </div>

@@ -47,7 +47,7 @@
       maxLength: 100
     },
     productCategory: {
-      type: 'array',
+      type: 'array'
     },
     preferredBuyerType: {
       type: 'string',
