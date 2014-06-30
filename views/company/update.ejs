@@ -93,7 +93,10 @@
             <form action="/supplier/update/information" method="post" id="supplierInformationForm">
                 <div><input type="text" name="dba" value="<%= supplier.dbaName %>"></div>
                 <div><img src="<%= supplier.logoUrl %>"> ADD UPDATE FUNCTIONALITY</div>
-                <div>ADD LANGUAGES</div>
+                <select name="language">
+                    <option value="<%= supplier.language %>" selected="selected"><%= supplier.language %></option>
+                    <%- partial('../partials/edit-dropdowns/edit-language') %>
+                </select>
                 <div><input type="text" name="acceptedCurrencies" value="<%= supplier.acceptedCurrency[0] %>"></div>
                 <div><input type="text" name="acceptedPaymentTerms" value="<%= supplier.acceptedPaymentTerms %>"></div>
                 <div><input type="text" name="acceptedDeliveryTerms" value="<%= supplier.acceptedDeliveryTerms %>"></div>
@@ -134,8 +137,14 @@
         <div id="preferencesSupplier">
             <h4>Preferences</h4>
             <form action="/supplier/update/preferences" method="post" id="supplierPreferencesForm">
-                <div><input type="text" name="preferredBuyerType" value="<%= supplier.preferredBuyerType %>"></div>
-                <div><input type="text" name="preferredBuyerLanguage" value="<%= supplier.preferredBuyerLanguage %>"></div>
+                <div><select name="preferredBuyerType">
+                    <option value="<%= supplier.preferredBuyerType %>" selected="selected"><%= supplier.preferredBuyerType %></option>
+                    <%- partial('../partials/edit-dropdowns/edit-pref-buyer-type') %>
+                </select></div>
+                <div><select name="preferredBuyerLanguage">
+                    <option value="<%= supplier.preferredBuyerLanguage %>" selected="selected"><%= supplier.preferredBuyerLanguage %></option>
+                    <%- partial('../partials/edit-dropdowns/edit-pref-buyer-language') %>
+                </select></div>
                 <div><input type="text" name="preferredBuyerLocation" value="<%= supplier.preferredBuyerLocaion %>"></div>
                 <div><input type="submit"></div>
             </form>
