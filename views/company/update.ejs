@@ -17,7 +17,8 @@
 <div id="tabs">
     <ul>
         <li><a href="#companyDetails">Company Details</a></li>
-        <li><a href="#buyerSupplierInformation">Buyer / Supplier Information</a></li>
+        <% if(user.activeMode == 'buyer'){ %><li><a href="#buyerInformation">Buyer Information</a></li><% } %>
+        <% if(user.activeMode == 'supplier'){ %><li><a href="#supplierInformation">Supplier Information</a></li><% } %>
         <li><a href="#descriptions">Descriptions</a></li>
         <li><a href="#locations">Locations & Facilities</a></li>
         <li><a href="#photosAndDownloads">Photos & Downloads</a></li>
@@ -56,9 +57,23 @@
             <div><input type="submit"></div>
         </form>
     </div>
-    <div id="buyerSupplierInformation">
-        <h1>Hai</h1>
+    <% if (user.activeMode == 'buyer') { %>
+    <div id="buyerInformation">
+        <form action="/company/update/buyerInformation" method="post" id="buyerInformationForm">
+
+        </form>
     </div>
+    <% } %>
+    <% if (user.activeMode == 'supplier') { %>
+    <div id="supplierInformation">
+        <form action="/company/update/supplierInformation" method="post" id="supplierInformationForm">
+            <div><input type="text" name="dba" value="<%= supplier.dbaName %>"></div>
+            <div><img src="<%= supplier.logoUrl %>"> ADD UPDATE FUNCTIONALITY</div>
+            <div>ADD LANGUAGES</div>
+            <div><input type="text" name="acceptedCurrencies" value="<%= supplier.acceptedCurrency[0] %>"></div>
+        </form>
+    </div>
+    <% } %>
     <div id="descriptions">
         <h1>Things</h1>
     </div>
@@ -86,14 +101,24 @@
             //console.log($("#companyDetailsForm").serialize());
             return false;
         });
-
-        //BUYER / SUPPLIER INFORMATION
-        $("#buyerSupplierInformationForm").submit(function(){
-            $.post($("#buyerSupplierInformationForm").attr("action"), $("#buyerSupplierInformationForm").serialize(), function(data){
+        if($("#buyerInformation")){
+            //BUYER INFORMATION
+            $("#buyerInformationForm").submit(function(){
+                $.post($("#buyerInformationForm").attr("action"), $("#buyerInformationForm").serialize(), function(data){
+                });
+                console.log($("#buyerInformationForm").serialize());
+                return false;
             });
-            console.log($("#buyerSupplierInformationForm").serialize());
-            return false;
-        });
+        }
+        else if($("#supplierInformation")){
+            //Supplier INFORMATION
+            $("#buyerInformationForm").submit(function(){
+                $.post($("#supplierInformationForm").attr("action"), $("#supplierInformationForm").serialize(), function(data){
+                });
+                console.log($("#supplierInformationForm").serialize());
+                return false;
+            });
+        }
 
         //DESCRIPTIONS
         $("#descriptionsForm").submit(function(){
