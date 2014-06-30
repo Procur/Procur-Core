@@ -22,7 +22,7 @@
         <% if(user.activeMode == 'buyer') { %>
             <li><a href="#buyerInformation">Buyer Information</a></li>
             <li><a href="#descriptionsBuyer">Descriptions</a></li>
-            <li><a href="#locations">Locations & Facilities</a></li>
+            <li><a href="#preferences">Preferences</a></li>
             <li><a href="#photosAndDownloads">Photos & Downloads</a></li>
         <% } %>
 
@@ -79,26 +79,66 @@
     <!-- ACTIVE MODE BUYER  -->
     <% if (user.activeMode == 'buyer') { %>
         <div id="buyerInformation">
-            <form action="/company/update/buyerInformation" method="post" id="buyerInformationForm">
-
+            <h4>Buyer Information</h4>
+            <form action="/buyer/update/information" method="post" id="buyerInformationForm">
+                <div><input type="text" name="dbaName" value="<%= buyer.dbaName %>"></div>
+                <div><img src="<%= buyer.logoUrl %>">ADD UPDATE FUNCTIONALITY</div>
+                <select name="language">
+                    <option value="<%= buyer.language %>" selected="selected"><%= buyer.language %></option>
+                    <%- partial('../partials/edit-dropdowns/edit-language') %>
+                </select>
+                <div><input type="text" name="acceptedCurrency" value="<%= buyer.acceptedCurrency %>"></div>
+                <div><input type="text" name="acceptedPaymentTerms" value="<%= buyer.acceptedPaymentTerms %>"></div>
+                <div><input type="text" name="acceptedDeliveryTerms" value="<%= buyer.acceptedDeliveryTerms %>"></div>
+                <div><input type="text" name="typeOfCompany" value="<%= buyer.typeOfCompany %>"></div>
+                <div><input type="text" name="contactName" value="<%= buyer.contactName %>"></div>
+                <div><input type="text" name="contactPosition" value="<%= buyer.contactPosition %>"></div>
+                <div><input type="text" name="contactEmail" value="<%= buyer.contactEmail %>"></div>
+                <div><input type="text" name="dunsNumber" value="<%= buyer.dunsNumber %>"></div>
+                <div>Product CATEGORIES</div>
+                <div>OTHER LOCATIONS</div>
+                <div>NEAREST PORT</div>
+                <div><input type="submit"></div>
             </form>
         </div>
         <div id="descriptionsBuyer">
-            <h1>Things</h1>
+            <h4>Descriptions</h4>
             <form action="/buyer/update/descriptions" method="post" id="buyerDescriptionsForm">
-
+                <div><input type="text" name="companyDescription" value="<%= buyer.companyDescription %>"></div>
+                <div>STATEMENTS OF RESPONSIBILITY</div>
+                <div><input type="submit"></div>
             </form>
         </div>
-        <div id="locations">
-            <h1>Words</h1>
-            <form action="/buyer/update/locations" method="post" id="buyerLocationsForm">
-
+        <div id="preferences">
+            <h4>Preferences</h4>
+            <form action="/buyer/update/preferences" method="post" id="buyerPreferencesForm">
+                <div><select name="preferredBuyerType">
+                        <option value="<%= buyer.preferredSupplierType %>" selected="selected"><%= buyer.preferredSupplierType %></option>
+                        <%- partial('../partials/edit-dropdowns/edit-pref-supplier-type') %>
+                    </select></div>
+                <div><select name="preferredSupplierLanguage">
+                        <option value="<%= buyer.preferredSupplierLanguage %>" selected="selected"><%= buyer.preferredSupplierLanguage %></option>
+                        <%- partial('../partials/edit-dropdowns/edit-pref-supplier-language') %>
+                    </select></div>
+                <div><input type="text" name="preferredSupplierLocation" value="<%= buyer.preferredSupplierLocaion %>"></div>
+                <div><input type="submit"></div>
             </form>
         </div>
         <div id="photosAndDownloads">
-            <h1>Victory.</h1>
+            <h4>Photos & Downloads</h4>
             <form action="/buyer/update/press" method="post" id="buyerPhotosAndDownloadsForm">
-
+                <div><input type="text" name="facebook" value="<%= buyer.facebook %>"></div>
+                <div><input type="text" name="twitter" value="<%= buyer.twitter %>"></div>
+                <div><input type="text" name="google" value="<%= buyer.google %>"></div>
+                <div><input type="text" name="linkedin" value="<%= buyer.linkedin %>"></div>
+                <div><input type="text" name="pinterest" value="<%= buyer.pinterest %>"></div>
+                <div><input type="text" name="instagram" value="<%= buyer.instagram %>"></div>
+                <div><input type="text" name="tumblr" value="<%= buyer.tumblr %>"></div>
+                <div><input type="text" name="google" value="<%= buyer.google %>"></div>
+                <div>Somehow pull off relevant links</div>
+                <div>Files / Downloads by some incredible feat</div>
+                <div>Photos, god willing</div>
+                <div><input type="submit"></div>
             </form>
         </div>
     <% } %>
