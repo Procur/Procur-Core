@@ -161,12 +161,12 @@
 </div>
 
 <script>
-    $(document).ready(function(){
+    $(document).ready(function() {
 
         //COMPANY DETAILS
-        $("#companyDetailsForm").submit(function(){
-            $.post($("#companyDetailsForm").attr("action"), $("#companyDetailsForm").serialize(), function(data){
-                if(data == 'success'){
+        $("#companyDetailsForm").submit(function () {
+            $.post($("#companyDetailsForm").attr("action"), $("#companyDetailsForm").serialize(), function (data) {
+                if (data == 'success') {
                     alert('Success');
                 }
                 else {
@@ -176,24 +176,19 @@
             //console.log($("#companyDetailsForm").serialize());
             return false;
         });
-        if($("#buyerInformation")){
-            //BUYER INFORMATION
-            $("#buyerInformationForm").submit(function(){
-                $.post($("#buyerInformationForm").attr("action"), $("#buyerInformationForm").serialize(), function(data){
-                });
-                console.log($("#buyerInformationForm").serialize());
-                return false;
+    });
+</script>
+
+<!-- BUYER MODE AJAX -->
+<% if(user.activeMode == 'buyer') { %>
+    <script>
+        //BUYER INFORMATION
+        $("#buyerInformationForm").submit(function(){
+            $.post($("#buyerInformationForm").attr("action"), $("#buyerInformationForm").serialize(), function(data){
             });
-        }
-        else if($("#supplierInformation")){
-            //Supplier INFORMATION
-            $("#buyerInformationForm").submit(function(){
-                $.post($("#supplierInformationForm").attr("action"), $("#supplierInformationForm").serialize(), function(data){
-                });
-                console.log($("#supplierInformationForm").serialize());
-                return false;
-            });
-        }
+            console.log($("#buyerInformationForm").serialize());
+            return false;
+        });
 
         //DESCRIPTIONS
         $("#descriptionsForm").submit(function(){
@@ -218,5 +213,50 @@
             console.log($("#photosAndDownloadsForm").serialize());
             return false;
         });
-    })
-</script>
+    </script>
+<% } %>
+
+<!--SUPPLIER MODE AJAX -->
+<% if(user.activeMode == 'supplier') { %>
+    <script>
+        //SUPPLIER INFORMATION
+        $("#buyerInformationForm").submit(function () {
+            $.post($("#supplierInformationForm").attr("action"), $("#supplierInformationForm").serialize(), function (data) {
+            });
+            console.log($("#supplierInformationForm").serialize());
+            return false;
+        });
+
+        //SUPPLIER INFORMATION
+        $("#supplierProductionDetailsForm").submit(function () {
+            $.post($("#supplierProductionDetailsForm").attr("action"), $("#supplierProductionDetailsForm").serialize(), function (data) {
+            });
+            console.log($("#supplierProductionDetailsForm").serialize());
+            return false;
+        });
+
+        //SUPPLIER DESCRIPTIONS
+        $("#supplierDescriptionsForm").submit(function () {
+            $.post($("#supplierDescriptionsForm").attr("action"), $("#supplierDescriptionsForm").serialize(), function (data) {
+            });
+            console.log($("#supplierDescriptionsForm").serialize());
+            return false;
+        });
+
+        //SUPPLIER PREFERENCES
+        $("#supplierPreferencesForm").submit(function () {
+            $.post($("#supplierPreferencesForm").attr("action"), $("#supplierPreferencesForm").serialize(), function (data) {
+            });
+            console.log($("#supplierPreferencesForm").serialize());
+            return false;
+        });
+
+        //SUPPLIER PHOTOS & DOWNLOADS
+        $("#supplierPreferencesForm").submit(function () {
+            $.post($("#supplierPhotosAndDownloadsForm").attr("action"), $("#supplierPhotosAndDownloadsForm").serialize(), function (data) {
+            });
+            console.log($("#supplierPhotosAndDownloadsForm").serialize());
+            return false;
+        });
+    </script>
+<% } %>
