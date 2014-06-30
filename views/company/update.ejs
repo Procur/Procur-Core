@@ -17,11 +17,20 @@
 <div id="tabs">
     <ul>
         <li><a href="#companyDetails">Company Details</a></li>
-        <% if(user.activeMode == 'buyer'){ %><li><a href="#buyerInformation">Buyer Information</a></li><% } %>
-        <% if(user.activeMode == 'supplier'){ %><li><a href="#supplierInformation">Supplier Information</a></li><% } %>
-        <li><a href="#descriptions">Descriptions</a></li>
-        <li><a href="#locations">Locations & Facilities</a></li>
-        <li><a href="#photosAndDownloads">Photos & Downloads</a></li>
+        <% if(user.activeMode == 'buyer') { %>
+            <li><a href="#buyerInformation">Buyer Information</a></li>
+            <li><a href="#descriptionsBuyer">Descriptions</a></li>
+            <li><a href="#locations">Locations & Facilities</a></li>
+            <li><a href="#photosAndDownloads">Photos & Downloads</a></li>
+        <% } %>
+
+        <% if(user.activeMode == 'supplier'){ %>
+            <li><a href="#supplierInformation">Supplier Information</a></li>
+            <li><a href="#productionDetails">Production Details</a></li>
+            <li><a href="#descriptionsSupplier">Descriptions</a></li>
+            <li><a href="#preferencesSupplier">Preferences</a></li>
+            <li><a href="#photosAndDownloadsSupplier">Links, Photos, & Downloads</a></li>
+        <% } %>
 
     </ul>
     <div id="companyDetails">
@@ -58,31 +67,43 @@
         </form>
     </div>
     <% if (user.activeMode == 'buyer') { %>
-    <div id="buyerInformation">
-        <form action="/company/update/buyerInformation" method="post" id="buyerInformationForm">
+        <div id="buyerInformation">
+            <form action="/company/update/buyerInformation" method="post" id="buyerInformationForm">
 
-        </form>
-    </div>
+            </form>
+        </div>
+        <div id="descriptionsBuyer">
+            <h1>Things</h1>
+        </div>
+        <div id="locations">
+            <h1>Words</h1>
+        </div>
+        <div id="photosAndDownloads">
+            <h1>Victory.</h1>
+        </div>
     <% } %>
     <% if (user.activeMode == 'supplier') { %>
-    <div id="supplierInformation">
-        <form action="/company/update/supplierInformation" method="post" id="supplierInformationForm">
-            <div><input type="text" name="dba" value="<%= supplier.dbaName %>"></div>
-            <div><img src="<%= supplier.logoUrl %>"> ADD UPDATE FUNCTIONALITY</div>
-            <div>ADD LANGUAGES</div>
-            <div><input type="text" name="acceptedCurrencies" value="<%= supplier.acceptedCurrency[0] %>"></div>
-        </form>
-    </div>
+        <div id="supplierInformation">
+            <form action="/company/update/supplierInformation" method="post" id="supplierInformationForm">
+                <div><input type="text" name="dba" value="<%= supplier.dbaName %>"></div>
+                <div><img src="<%= supplier.logoUrl %>"> ADD UPDATE FUNCTIONALITY</div>
+                <div>ADD LANGUAGES</div>
+                <div><input type="text" name="acceptedCurrencies" value="<%= supplier.acceptedCurrency[0] %>"></div>
+            </form>
+        </div>
+        <div id="productionDetails">
+            <h1>Production Details</h1>
+        </div>
+        <div id="descriptionsSupplier">
+            <h1>Descriptions</h1>
+        </div>
+        <div id="preferencesSupplier">
+            <h1>Preferences</h1>
+        </div>
+        <div id="photosAndDownloadsSupplier">
+            <h1>Photos and Downloads</h1>
+        </div>
     <% } %>
-    <div id="descriptions">
-        <h1>Things</h1>
-    </div>
-    <div id="locations">
-        <h1>Words</h1>
-    </div>
-    <div id="photosAndDownloads">
-        <h1>Victory.</h1>
-    </div>
 </div>
 
 <script>
