@@ -1,4 +1,9 @@
-<%- partial('../partials/company-profile-header-logged-in') %>
+<% if (loggedin === true ) { %>
+  <%- partial('../partials/company-profile-header-logged-in') %>
+<% } %>
+<% if (loggedin === false) { %>
+  <%- partial('../partials/company-profile-header-logged-out') %>
+<% } %>
 
 <h1><%= company.name %></h1>
 <h3>

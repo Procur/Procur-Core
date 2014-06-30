@@ -20,13 +20,25 @@ module.exports = {
   show: function(req, res){
     //TODO: Add user lookup functionality + add company Slug
     var handle = req.param('id');
-    Company.findOne({ handle: handle }, function(err, company){
+    var currentUser = req.session.passport.user;
+
+    Company.findOne({ handle: handle }, function(err, company) {
       if (err) { return res.redirect('/error/notfound'); }
-      if(company == undefined) {
-        res.redirect('/error/notfound');
-      }
-      else{
-        res.view({ company: company });
+      if (!company) { return res.redirect('/404'); }
+      if (company !== undefined) {
+        if (currentUser !== undefined) {
+          User.findOne({ id: currentUser }, function(err, user) {
+            if (err) { return res.redirect('/dashboard'); }
+            if (user !== undefined) {
+              res.view({ company: company, user: user, loggedin: true });
+            }
+            else {
+              res.view({ company: company, loggedin: false });
+            }
+          });
+        } else {
+          res.view({ company: company, loggedin: false });
+        }
       }
     });
   },
