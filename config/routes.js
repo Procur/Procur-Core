@@ -337,6 +337,11 @@ module.exports.routes = {
     action: 'update'
   },
 
+  'post /company/update/basicCompanyDetails': {
+    controller: 'CompanyController',
+    action: 'updateBasicCompanyDetails'
+  },
+
   //ERROR ROUTES
   'get /error/notfound': {
     controller: 'CompanyController',

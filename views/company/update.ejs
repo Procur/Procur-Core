@@ -25,27 +25,27 @@
     </ul>
     <div id="companyDetails">
         <form action="/company/update/basicCompanyDetails" method="post" id="companyDetailsForm">
-            <div><input type="text" name="name" placeholder="<%= company.name %>"></div>
-            <div><input type="text" name="phoneNumberCountryCode" placeholder="<%= company.phoneNumberCountryCode %>"></div>
-            <div><input type="text" name="phoneNumber" placeholder="<%= company.phoneNumber %>"></div>
-            <div><input type="text" name="phoneExtension" placeholder="<%= company.phoneExtension %>"></div>
+            <div><input type="text" name="name" value="<%= company.name %>"></div>
+            <div><input type="text" name="phoneNumberCountryCode" value="<%= company.phoneNumberCountryCode %>"></div>
+            <div><input type="text" name="phoneNumber" value="<%= company.phoneNumber %>"></div>
+            <div><input type="text" name="phoneExtension" value="<%= company.phoneExtension %>"></div>
             <br />
-            <div><input type="text" name="faxCountryCode" placeholder="<%= company.faxCountryCode %>"></div>
-            <div><input type="text" name="faxNumber" placeholder="<%= company.faxNumber %>"></div>
-            <div><input type="text" name="faxExtension" placeholder="<%= company.faxExtension %>"></div>
+            <div><input type="text" name="faxCountryCode" value="<%= company.faxCountryCode %>"></div>
+            <div><input type="text" name="faxNumber" value="<%= company.faxNumber %>"></div>
+            <div><input type="text" name="faxExtension" value="<%= company.faxExtension %>"></div>
             <br />
-            <div><input type="text" name="email" placeholder="<%= company.email %>"></div>
-            <div><input type="text" name="website" placeholder="<%= company.website %>"></div>
+            <div><input type="text" name="email" value="<%= company.email %>"></div>
+            <div><input type="text" name="website" value="<%= company.website %>"></div>
             <br />
             <select name="companyIndustry">
                 <option value="<%= company.industry %>" selected="selected"><%= company.industry %></option>
                 <%- partial('../partials/edit-dropdowns/edit-industry') %>
             </select>
-            <div><input type="text" name="hqAddressLine1" placeholder="<%= companyHq.addressLine1 %>"></div>
-            <div><input type="text" name="hqAddressLine1" placeholder="<%= companyHq.addressLine2 %>"></div>
-            <div><input type="text" name="hqAddressLine1" placeholder="<%= companyHq.country %>"></div>
-            <div><input type="text" name="hqAddressLine1" placeholder="<%= companyHq.province %>"></div>
-            <div><input type="text" name="hqAddressLine1" placeholder="<%= companyHq.postalCode %>"></div>
+            <div><input type="text" name="hqAddressLine1" value="<%= companyHq.addressLine1 %>"></div>
+            <div><input type="text" name="hqAddressLine2" value="<%= companyHq.addressLine2 %>"></div>
+            <div><input type="text" name="hqCountry" value="<%= companyHq.country %>"></div>
+            <div><input type="text" name="hqProvince" value="<%= companyHq.province %>"></div>
+            <div><input type="text" name="hqPostalCode" value="<%= companyHq.postalCode %>"></div>
             <br />
             <div>
                 <select name="employeeCount">
@@ -76,8 +76,14 @@
         //COMPANY DETAILS
         $("#companyDetailsForm").submit(function(){
             $.post($("#companyDetailsForm").attr("action"), $("#companyDetailsForm").serialize(), function(data){
+                if(data == 'success'){
+                    alert('Success');
+                }
+                else {
+                    alert('failed');
+                }
             });
-            console.log($("#companyDetailsForm").serialize());
+            //console.log($("#companyDetailsForm").serialize());
             return false;
         });
 

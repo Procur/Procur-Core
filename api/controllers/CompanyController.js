@@ -506,7 +506,74 @@ module.exports = {
   },
 
   updateBasicCompanyDetails: function(req, res){
-
+    var p = req.params.all(),
+        name = p.name,
+        phoneNumberCountryCode = p.phoneNumberCountryCode,
+        phoneNumber = p.phoneNumber,
+        phoneExtension = p.phoneExtension,
+        faxCountryCode = p.faxCountryCode,
+        faxNumber = p.faxNumber,
+        faxExtension = p.faxExtension,
+        email = p.email,
+        website = p.website,
+        industry = p.companyIndustry,
+        hqAddressLine1 = p.hqAddressLine1,
+        hqAddressLine2 = p.hqAddressLine2,
+        hqCountry = p.hqCountry,
+        hqProvince = p.hqProvince,
+        hqPostalCode = p.hqPostalCode,
+        employeeCount = p.employeeCount;
+    User.findOne({ id: req.session.passport.user }, function(err,user){
+      if(err){ return res.redirect('/dashboard'); }
+      if(user !== undefined){
+        Company.findOne({ user: user.id }, function(err, company){
+          if(err){ return res.redirect('/dashboard'); }
+          Company.update(company, {
+            name: name,
+            phoneNumberCountryCode: phoneNumberCountryCode,
+            phoneNumber: phoneNumber,
+            phoneExtension: phoneExtension,
+            faxCountryCode: faxCountryCode,
+            faxNumber: faxNumber,
+            faxExtension: faxExtension,
+            email: email,
+            website: website,
+            industry: industry,
+            employeeCount: employeeCount
+          }, function(err, company){
+            if(err){ return res.send(err); }
+            if(company !== undefined){
+              Location.findOne({ company: company.id }, function(err, location){
+                if(err){ return res.send(err); }
+                if(company !== undefined){
+                  Location.update(location,{
+                    addressLine1: hqAddressLine1,
+                    addressLine2: hqAddressLine2,
+                    country: hqCountry,
+                    province: hqProvince,
+                    postalCode: hqPostalCode
+                  }, function(err, company){
+                    if(err){ return res.send(err); }
+                    if(company !== undefined) {
+                      res.send('success');
+                    }
+                    else {
+                      res.send('failed');
+                    }
+                  });
+                }
+              });
+            }
+            else {
+              res.send(err);
+            }
+          });
+        });
+      }
+      else {
+        return res.redirect('/dashboard');
+      }
+    });
   },
 
   updateBuyerInformation: function(req, res){
