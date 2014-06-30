@@ -1,0 +1,201 @@
+#earlyAccess #heroRow {
+  width: 100%;
+  height: 600px;
+  background: url('http://www.placehold.it/1200x600');
+  margin: 0px;
+  padding: 0px;
+}
+
+#earlyAccess #heroArea .heroContent {
+  width: 100%;
+  position: absolute;
+  bottom: 0px;
+}
+
+#earlyAccess #heroArea .heroContent .heroWelcome h1 {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300;
+  font-size: 24px;
+  padding: 30px 20px;
+  margin: 0px;
+}
+
+#earlyAccess #heroArea .heroWelcome {
+  background: rgba(255,255,255,0.6);
+  height: 80px;
+  width: 100%;
+  padding: 0px;
+  margin: 0px;
+}
+
+#earlyAccess #heroArea .heroText {
+  background: rgba(92,198,114,0.7);
+  margin: 0px;
+  padding: 20px;
+  width: 100%;
+  padding-bottom: 25px;
+}
+
+#earlyAccess #heroArea .heroText h2 {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300;
+  font-size: 24px;
+  line-height: 32px;
+  margin: 0px;
+  color: white;
+}
+
+#earlyAccess #heroArea .heroText h3 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 300;
+  font-size: 13px;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-top: 40px;
+  margin-bottom: 25px;
+}
+
+#earlyAccess #heroArea .heroText h4 {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300;
+  font-size: 24px;
+  color: white;
+  margin-bottom: 15px;
+}
+
+#earlyAccess #heroArea .heroText h4 i {
+  position: relative;
+  font-size: 0.5em;
+  top: -5px;
+  margin-right: 10px;
+}
+
+#earlyAccess #explanation {
+  padding-top: 30px;
+  letter-spacing: 0.06em;
+  line-height: 28px;
+}
+
+#earlyAccess #explanation p {
+  font-size: 14px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+}
+
+#earlyAccess .questionText {
+  color: #fbac27;
+  font-family: 'Montserrat', sans-serif;
+  text-transform: uppercase;
+  font-size: 16px;
+}
+
+#earlyAccess #registerNow {
+  padding-top: 30px;
+  margin-bottom: 30px;
+}
+
+#earlyAccess #registerNow a:hover {
+  text-decoration: none;
+}
+
+#earlyAccess #registerNow .registerNowButton {
+  border: 2px solid #fcab27;
+  padding: 6px 12px;
+  color: #333132;
+  font-family: 'Montserrat', sans-serif;
+  text-transform: uppercase;
+  font-weight: 300;
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-align: center;
+}
+
+#earlyAccess #registerNow .registerNowButton:hover {
+  background: #fcab27;
+  color: white;
+  text-decoration: none;
+}
+
+#earlyAccess #registerNow .helper {
+  float: right;
+  margin-top: 10px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 300;
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  color: #7f7f7f;
+}
+
+#earlyAccess .featuresColumn {
+  margin-bottom: 25px;
+}
+
+#earlyAccess .featuresColumn h3 {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300;
+  font-size: 18px;
+  margin-bottom: 20px;
+  margin-top: 10px;
+}
+
+#earlyAccess .featuresDetail {
+  background: #4d4d4d;
+  color: white;
+  padding: 15px;
+  display: none;
+}
+
+#earlyAccess .featuresDetail p {
+  font-family: 'Montserrat', sans-serif;
+  letter-spacing: 0.06em;
+  margin: 0px;
+  font-size: 11px;
+  font-weight: 300;
+}
+
+#earlyAccess .pdfDownload {
+  margin-bottom: 25px;
+}
+
+#earlyAccess .pdfDownload a {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 12px;
+  color: #5c5c5c;
+  text-transform: uppercase;
+}
+
+.rightSecIndicator {
+  position: relative;
+}
+
+.rightSecIndicator i {
+  position: absolute;
+  top: -32px;
+  right: 15px;
+  font-size: 1em;
+  color: #b3b3b3;
+  -webkit-transition: all 200ms ease-in-out;
+  -moz-transition: all 200ms ease-in-out;
+  -ms-transition: all 200ms ease-in-out;
+  -o-transition: all 200ms ease-in-out;
+  transition: all 200ms ease-in-out;
+}
+
+.rightSec:hover .rightSecIndicator i {
+  color: white;
+  -webkit-transition: all 200ms ease-in-out;
+  -moz-transition: all 200ms ease-in-out;
+  -ms-transition: all 200ms ease-in-out;
+  -o-transition: all 200ms ease-in-out;
+  transition: all 200ms ease-in-out;
+}
+
+.rightSecIndicator.minus {
+  display: none;
+}
+
+hr.separator {
+  background: none transparent;
+  border-top: 1px dotted #e3e3e3;
+}
