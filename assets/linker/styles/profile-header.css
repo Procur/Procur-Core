@@ -1,4 +1,4 @@
-/* COMPANY PROFILE HERE */
+/* COMPANY PROFILE HEADER HERE */
 
 #profileWrapper {
   width: 100%;
@@ -11,7 +11,7 @@
   z-index: 1;
 }
 
-.profile-container:nth-child(2) { /* pushing content below fixed header */
+.profile-header:nth-child(2) { /* pushing content below fixed header */
   margin-top: 50px;
 }
 
@@ -91,5 +91,4 @@
 
 #profileWrapper .profileCompany {
   color: #7F7F7F;
-} 
-
+}
