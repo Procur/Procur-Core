@@ -632,3 +632,14 @@ ul.ui-autocomplete {
 .dark {
   color: #333132;
 }
+
+hr.separator {
+  background: none transparent;
+  border-top: 1px dotted #e3e3e3;
+}
+
+hr.darkseparator {
+  background: none transparent;
+  border-top: 1px dotted #7f7f7f;
+  margin: 50px 0px;
+}
