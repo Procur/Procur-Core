@@ -1,0 +1,88 @@
+#features h1 {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 22px;
+  font-weight: 300;
+  color: #ef9818;
+  margin-bottom: 16px;
+  margin-top: 30px;
+}
+
+#features h5 {
+	font-family: 'Montserrat', sans-serif;
+	color: #7f7f7f;
+	letter-spacing: 0.06em;
+	font-size: 10px;
+	text-transform: uppercase;
+	margin-top: 16px;
+}
+
+#features h6 {
+	font-family: 'Montserrat', sans-serif;
+	color: #7f7f7f;
+	letter-spacing: 0.06em;
+	font-size: 9px;
+	margin-top: 16px;
+}
+
+#features p {
+	line-height: 25px;
+	font-size: 14px;
+	padding-bottom: 15px;
+}
+
+#features hr {
+	padding-bottom: 10px;
+}
+
+#features ul {
+	padding-left: 0;
+	margin-left: 20px;
+}
+
+#features li {
+	margin-bottom: 10px;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 18px;
+	color: #7f7f7f;
+	font-weight: 100
+}
+
+#features .fa-li {
+	color:green;
+}
+
+#features .featuresColumn {
+	margin-top: 78px;
+}
+
+#features .bottomRightClicker {
+	float: right;
+	margin-top: 20px;
+}
+
+#features #registerNow {
+	border: 2px solid #f7931d;
+	padding: 7px;
+	text-decoration: none;
+	color: black;
+	font-family: 'Montserrat', sans-serif;
+	text-transform: uppercase;
+	font-size: 10px;
+}
+
+#features #registerNow:hover {
+	color: white;
+	background: #f7931d;
+	-webkit-transition: all 200ms ease-in-out;
+  -moz-transition: all 200ms ease-in-out;
+  -ms-transition: all 200ms ease-in-out;
+  -o-transition: all 200ms ease-in-out;
+  transition: all 200ms ease-in-out;
+  cursor: pointer;
+}
+
+#features #faqLink {
+	text-decoration: none;
+	color: #7f7f7f;
+}
+
