@@ -254,81 +254,85 @@
 <!-- BUYER MODE AJAX -->
 <% if(user.activeMode == 'buyer') { %>
     <script>
-        //BUYER INFORMATION
-        $("#buyerInformationForm").submit(function(){
-            $.post($("#buyerInformationForm").attr("action"), $("#buyerInformationForm").serialize(), function(data){
+        $(document).ready(function() {
+            //BUYER INFORMATION
+            $("#buyerInformationForm").submit(function(){
+                $.post($("#buyerInformationForm").attr("action"), $("#buyerInformationForm").serialize(), function(data){
+                });
+                console.log($("#buyerInformationForm").serialize());
+                return false;
             });
-            console.log($("#buyerInformationForm").serialize());
-            return false;
-        });
 
-        //DESCRIPTIONS
-        $("#descriptionsForm").submit(function(){
-            $.post($("#descriptionsForm").attr("action"), $("#descriptionsForm").serialize(), function(data){
+            //DESCRIPTIONS
+            $("#descriptionsForm").submit(function(){
+                $.post($("#descriptionsForm").attr("action"), $("#descriptionsForm").serialize(), function(data){
+                });
+                alert($("#descriptionsForm").serialize());
+                return false;
             });
-            alert($("#descriptionsForm").serialize());
-            return false;
-        });
 
-        //LOCATIONS AND FACILITIES
-        $("#locationsForm").submit(function(){
-            $.post($("#locationsForm").attr("action"), $("#locationsForm").serialize(), function(data){
+            //LOCATIONS AND FACILITIES
+            $("#locationsForm").submit(function(){
+                $.post($("#locationsForm").attr("action"), $("#locationsForm").serialize(), function(data){
+                });
+                console.log($("#locationsForm").serialize());
+                return false;
             });
-            console.log($("#locationsForm").serialize());
-            return false;
-        });
 
-        //PHOTOS AND DOWNLOADS
-        $("#photosAndDownloadsForm").submit(function(){
-            $.post($("#photosAndDownloadsForm").attr("action"), $("#photosAndDownloadsForm").serialize(), function(data){
+            //PHOTOS AND DOWNLOADS
+            $("#photosAndDownloadsForm").submit(function(){
+                $.post($("#photosAndDownloadsForm").attr("action"), $("#photosAndDownloadsForm").serialize(), function(data){
+                });
+                console.log($("#photosAndDownloadsForm").serialize());
+                return false;
             });
-            console.log($("#photosAndDownloadsForm").serialize());
-            return false;
-        });
+        })
     </script>
 <% } %>
 
 <!--SUPPLIER MODE AJAX -->
 <% if(user.activeMode == 'supplier') { %>
     <script>
-        //SUPPLIER INFORMATION
-        $("#buyerInformationForm").submit(function () {
-            $.post($("#supplierInformationForm").attr("action"), $("#supplierInformationForm").serialize(), function (data) {
+        $(document).ready(function(){
+            //SUPPLIER INFORMATION
+            $("#buyerInformationForm").submit(function () {
+                $.post($("#supplierInformationForm").attr("action"), $("#supplierInformationForm").serialize(), function (data) {
+                });
+                console.log($("#supplierInformationForm").serialize());
+                return false;
             });
-            console.log($("#supplierInformationForm").serialize());
-            return false;
-        });
 
-        //SUPPLIER INFORMATION
-        $("#supplierProductionDetailsForm").submit(function () {
-            $.post($("#supplierProductionDetailsForm").attr("action"), $("#supplierProductionDetailsForm").serialize(), function (data) {
+            //SUPPLIER INFORMATION
+            $("#supplierProductionDetailsForm").submit(function () {
+                $.post($("#supplierProductionDetailsForm").attr("action"), $("#supplierProductionDetailsForm").serialize(), function (data) {
+                });
+                console.log($("#supplierProductionDetailsForm").serialize());
+                return false;
             });
-            console.log($("#supplierProductionDetailsForm").serialize());
-            return false;
-        });
 
-        //SUPPLIER DESCRIPTIONS
-        $("#supplierDescriptionsForm").submit(function () {
-            $.post($("#supplierDescriptionsForm").attr("action"), $("#supplierDescriptionsForm").serialize(), function (data) {
+            //SUPPLIER DESCRIPTIONS
+            $("#supplierDescriptionsForm").submit(function () {
+                $.post($("#supplierDescriptionsForm").attr("action"), $("#supplierDescriptionsForm").serialize(), function (data) {
+                });
+                console.log($("#supplierDescriptionsForm").serialize());
+                return false;
             });
-            console.log($("#supplierDescriptionsForm").serialize());
-            return false;
-        });
 
-        //SUPPLIER PREFERENCES
-        $("#supplierPreferencesForm").submit(function () {
-            $.post($("#supplierPreferencesForm").attr("action"), $("#supplierPreferencesForm").serialize(), function (data) {
+            //SUPPLIER PREFERENCES
+            $("#supplierPreferencesForm").submit(function () {
+                $.post($("#supplierPreferencesForm").attr("action"), $("#supplierPreferencesForm").serialize(), function (data) {
+                });
+                console.log($("#supplierPreferencesForm").serialize());
+                return false;
             });
-            console.log($("#supplierPreferencesForm").serialize());
-            return false;
-        });
 
-        //SUPPLIER PHOTOS & DOWNLOADS
-        $("#supplierPreferencesForm").submit(function () {
-            $.post($("#supplierPhotosAndDownloadsForm").attr("action"), $("#supplierPhotosAndDownloadsForm").serialize(), function (data) {
+            //SUPPLIER PHOTOS & DOWNLOADS
+            $("#supplierPreferencesForm").submit(function () {
+                $.post($("#supplierPhotosAndDownloadsForm").attr("action"), $("#supplierPhotosAndDownloadsForm").serialize(), function (data) {
+                });
+                console.log($("#supplierPhotosAndDownloadsForm").serialize());
+                return false;
             });
-            console.log($("#supplierPhotosAndDownloadsForm").serialize());
-            return false;
         });
     </script>
 <% } %>
