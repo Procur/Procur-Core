@@ -27,7 +27,9 @@ module.exports = {
     var payload = [];
     var locationsPayload = {};
     var viewLocations = {};
-    var loginStatus;
+    var loggedin;
+
+    currentUser === undefined ? loggedin = false : loggedin = true;
 
     Company.findOne({ handle: handle }, function(err, company) {
       if (err) { return res.redirect('/error/notfound'); }
@@ -36,12 +38,11 @@ module.exports = {
         payload.push(company);
         User.findOne({ id: currentUser }, function(err, user) {
           if (err) { return res.redirect('/dashboard'); }
-          user === undefined ? loginStatus = false : loginStatus = true;
           payload.push(user);
           if (err) { return res.redirect('/dashboard'); }
           Location.find({ company: company.id }, function(err, location) {
             locationsPayload["company"] = location;
-            if (payload[1].activeMode === "buyer" ) {
+            if (payload[0].buyer === true ) {
               locationsPayload["buyer"] = []; /* trash value until I redo locationsHelper :( */
               viewLocations = locationsHelper.parseLocations(locationsPayload, "buyer");
               
@@ -49,10 +50,10 @@ module.exports = {
                 buyer = waterlineHelper.fixBuyerArrays(buyer);
                 buyer = productCategoryHelper.getCategoryChild(buyer);
                 payload.push(buyer);
-                res.view({ company: payload[0], user: payload[1], buyer: payload[2], locations: viewLocations, loggedin: loginStatus });
+                res.view({ company: payload[0], user: payload[1], buyer: payload[2], locations: viewLocations, loggedin: loggedin });
               });
             }
-            if (payload[1].activeMode === "supplier" ) {
+            if (payload[0].supplier === true) {
               locationsPayload["supplier"] = []; /* trash value until I redo locationsHelper :( */
               viewLocations = locationsHelper.parseLocations(locationsPayload, "supplier");
 
@@ -60,7 +61,7 @@ module.exports = {
                 supplier = waterlineHelper.fixSupplierArrays(supplier);
                 supplier = productCategoryHelper.getCategoryChild(supplier);
                 payload.push(supplier);
-                res.view({ company: payload[0], user: payload[1], supplier: payload[2], locations: viewLocations, loggedin: loginStatus });
+                res.view({ company: payload[0], user: payload[1], supplier: payload[2], locations: viewLocations, loggedin: loggedin });
               });
             }
           });
@@ -68,31 +69,6 @@ module.exports = {
       }
     });
 
-    /*Company.findOne({ handle: handle }, function(err, company) {
-      if (err) { return res.redirect('/error/notfound'); }
-      if (!company) { return res.redirect('/404'); }
-      if (company !== undefined) {
-        Location.find({ company: company.id }, function(err, location) {
-          locationsPayload["company"] = location;
-          viewLocations = locationsHelper.parseLocations(locationsPayload, "buyer");
-          console.log("viewLocations is " + JSON.stringify(viewLocations, null, ' '));
-          if (currentUser !== undefined) {
-            User.findOne({ id: currentUser }, function(err, user) {
-              if (err) { return res.redirect('/dashboard'); }
-              if (user !== undefined) {
-                res.view({ company: company, user: user, location: viewLocations, loggedin: true });
-              }
-              else {
-                res.view({ company: company, loggedin: false });
-              }
-            });
-          }
-          else {
-            res.view({ company: company, loggedin: false });
-          }
-        });
-      }
-    });*/
   },
 
   setup: function(req, res){
