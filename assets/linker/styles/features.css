@@ -131,7 +131,7 @@
 	background-size: 100%;
 	margin: 0px;
 	padding: 0px;
-	height: auto;
+	min-height: 360px;
 }
 
 #features .heroOverLay {
@@ -160,7 +160,7 @@
 
 #features #heroButton {
 	padding: 11px;
-	background-color: #5c5c5c;
+	background-color: rgba(100,100,100,0.5);
 	border-radius: 20px;
 	padding-left: 20px;
 	padding-right: 20px;
@@ -170,5 +170,11 @@
 	font-size: 9px;
 	line-height: 22px;
 	color: #ffffff;
+	margin-left: 5px;
+}
+
+#features .buttonWrapper {
+	float: left;
+	margin-top: 15%;
 }
 
