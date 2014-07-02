@@ -23,6 +23,7 @@ module.exports = {
     var currentUser = req.session.passport.user;
     var locationsHelper = sails.config.locationsHelper;
     var waterlineHelper = sails.config.waterlineHelper;
+    var productCategoryHelper = sails.config.productCategoryHelper;
     var payload = [];
     var locationsPayload = {};
     var viewLocations = {};
@@ -43,11 +44,11 @@ module.exports = {
             if (payload[1].activeMode === "buyer" ) {
               locationsPayload["buyer"] = []; /* trash value until I redo locationsHelper :( */
               viewLocations = locationsHelper.parseLocations(locationsPayload, "buyer");
-              console.log("viewLocations is " + JSON.stringify(viewLocations, null, ' '));
-
+              
               Buyer.findOne({ company: payload[0].id }, function(err, buyer) {
-                payload.push(waterlineHelper.fixBuyerArrays(buyer));
-                console.log("buyer is " + JSON.stringify(buyer, null, ' '));
+                buyer = waterlineHelper.fixBuyerArrays(buyer);
+                buyer = productCategoryHelper.getCategoryChild(buyer);
+                payload.push(buyer);
                 res.view({ company: payload[0], user: payload[1], buyer: payload[2], locations: viewLocations, loggedin: loginStatus });
               });
             }

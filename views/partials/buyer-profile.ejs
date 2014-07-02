@@ -46,11 +46,7 @@
     
     <div class="company-detail-box">
       <h3><span>Product Categories</span></h3>
-      <p>
-        <% buyer["productCategory"].forEach(function(category) { %>
-          <%= category %>
-        <% }); %>
-      </p>
+      <p><%= buyer.viewCategoryList %></p>
     </div>
 
     <div class="company-two-col-box">
@@ -71,7 +67,7 @@
         <div class="company-col-detail">
           <p class="detail-header">Languages</p>
           <p class="detail-body">
-            <% buyer["preferredSupplierLanguage"].forEach(function(language) { %>
+            <% buyer["language"].forEach(function(language) { %>
               <%= language %>
             <% }) %>
           </p>
