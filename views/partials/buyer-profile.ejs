@@ -9,9 +9,9 @@
     <% if (locations["showHq"] === false) { %>
       <div class="company-info-box company-business-address">
         <h3><span class="glyphicon glyphicon-map-marker info-glyph"></span><span class="info-title">Official Business Address</span></h3>
-        <p><%= locations["company-isHq"][0].addressLine1 %></p>
-        <p><%= locations["company-isHq"][0].addressLine2 %></p>
-        <p><%= locations["company-isHq"][0].country %></p>
+        <p><%= locations["company-isHq"].addressLine1 %></p>
+        <p><%= locations["company-isHq"].addressLine2 %></p>
+        <p><%= locations["company-isHq"].country %></p>
       </div>
     <% } else { %>
       <div class="company-info-box company-business-address">
