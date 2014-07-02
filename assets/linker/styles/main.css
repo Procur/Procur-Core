@@ -151,7 +151,7 @@ input {
 }
 
 #regWizard .emailVerify a.resendLink {
-	color:#231f20;
+  color:#231f20;
 }
 
 #regWizard .emailVerify a.resendLink:hover{
@@ -159,13 +159,13 @@ text-decoration: none;
 }
 
 #regWizard .emailVerify .midBox {
-	border-bottom: 2px solid #7f7f7f;
+  border-bottom: 2px solid #7f7f7f;
 }
 
 #regWizard .emailVerify a.pill {
-	margin-top: 10px;
-	width:100%;
-	left: 0px;
+  margin-top: 10px;
+  width:100%;
+  left: 0px;
 }
 
 #regWizard .emailVerify .pillContainer {
@@ -173,22 +173,22 @@ text-decoration: none;
 }
 
 #regWizard .emailVerify .bottomLeft {
-	margin-top: 20px;
+  margin-top: 20px;
 }
 
 #regWizard .emailVerify .lowBox {
-	padding-bottom: 30px
+  padding-bottom: 30px
 }
 
 #regWizard .regWizYellowLink {
-	font-family: 'Montserrat', sans-serif;
-	color: #fbac27;
-	font-size: 7px;
-	text-transform: uppercase;
+  font-family: 'Montserrat', sans-serif;
+  color: #fbac27;
+  font-size: 7px;
+  text-transform: uppercase;
 }
 
 #regWizard .regWizYellowLink:hover {
-	text-decoration: none;
+  text-decoration: none;
 }
 
 
@@ -309,46 +309,46 @@ text-decoration: none;
 /* DASHBOARD */
 
 .userColumn h1 {
-	font-family: 'Montserrat', sans-serif;
-	font-size: 18px;
-	color: #808080;
-	border-bottom: 1px dotted #e3e3e3;
-	padding-bottom: 5px;
-	font-weight: 300;
-	margin-top: 45px;
-	letter-spacing: 0.06em;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 18px;
+  color: #808080;
+  border-bottom: 1px dotted #e3e3e3;
+  padding-bottom: 5px;
+  font-weight: 300;
+  margin-top: 45px;
+  letter-spacing: 0.06em;
 }
 
 .userColumn h2 {
-	font-family: 'Montserrat', sans-serif;
-	font-size: 14px;
-	text-transform: uppercase;
-	font-weight: 700;
-	letter-spacing: 0.05em;
-	border-bottom: 3px solid #e3e3e3;
-	padding-bottom: 9px;
-	margin-top: 14px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  border-bottom: 3px solid #e3e3e3;
+  padding-bottom: 9px;
+  margin-top: 14px;
 }
 
 .userColumn h3 {
-	font-family: 'Montserrat', sans-serif;
-	font-size: 10px;
-	text-transform: uppercase;
-	font-weight: 700;
-	margin: 0px;
-	padding: 0px;
-	letter-spacing: 0.06em;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 10px;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin: 0px;
+  padding: 0px;
+  letter-spacing: 0.06em;
 }
 
 .userColumn h4 {
-	font-family: 'Montserrat', sans-serif;
-	color: #404041;
-	letter-spacing: 0.06em;
-	font-size: 10px;
-	text-transform: uppercase;
-	margin-top: 25px;
-	border-bottom: 3px solid #CFCECE;
-	padding-bottom: 10px;
+  font-family: 'Montserrat', sans-serif;
+  color: #404041;
+  letter-spacing: 0.06em;
+  font-size: 10px;
+  text-transform: uppercase;
+  margin-top: 25px;
+  border-bottom: 3px solid #CFCECE;
+  padding-bottom: 10px;
 }
 
 .userImageColumn {
@@ -361,163 +361,163 @@ text-decoration: none;
 }
 
 .userColumn .userColumnLinks {
-	padding-top: 25px;
+  padding-top: 25px;
 }
 
 .userColumn .userColumnLinks .userLink {
-	border-top: 1px dotted #e3e3e3;
-	border-bottom: 1px dotted #e3e3e3;
-	padding: 15px 0px;
+  border-top: 1px dotted #e3e3e3;
+  border-bottom: 1px dotted #e3e3e3;
+  padding: 15px 0px;
 }
 
 .userColumn .userColumnLinks .userLink i {
-	color: #b3b3b3;
+  color: #b3b3b3;
 }
 
 .userColumn .userColumnLinks .userLink a {
-	color: #4D4d4d;
-	font-family: 'Roboto', sans-serif;
-	font-size: 12px;
-	font-weight: 300;
-	letter-spacing: 0.06em;
+  color: #4D4d4d;
+  font-family: 'Roboto', sans-serif;
+  font-size: 12px;
+  font-weight: 300;
+  letter-spacing: 0.06em;
 }
 
 .userColumn .userColumnLinks .userLink:last-child {
-	border-top: 0px none;
-	border-bottom: 1px dotted #e3e3e3;
-	padding: 15px 0px;
+  border-top: 0px none;
+  border-bottom: 1px dotted #e3e3e3;
+  padding: 15px 0px;
 
 }
 
 .userColumn .userResourceLinks a {
-	color: #4D4d4d;
-	font-family: 'Roboto', sans-serif;
-	font-size: 12px;
-	font-weight: 300;
-	letter-spacing: 0.06em;
+  color: #4D4d4d;
+  font-family: 'Roboto', sans-serif;
+  font-size: 12px;
+  font-weight: 300;
+  letter-spacing: 0.06em;
 }
 
 .middleHeader {
-	width: 100%;
-	background: #333132;
+  width: 100%;
+  background: #333132;
 }
 
 .middleHeader h1 {
-	color: white;
-	font-family: 'Montserrat', sans-serif;
-	font-size: 15px;
-	text-transform: uppercase;
-	font-weight: 300;
-	padding: 40px 20px 15px;
-	letter-spacing: 0.05em;
-	margin: 0px;
+  color: white;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 15px;
+  text-transform: uppercase;
+  font-weight: 300;
+  padding: 40px 20px 15px;
+  letter-spacing: 0.05em;
+  margin: 0px;
 }
 
 .middleDescription {
-	background: #f5f4f2;
-	padding: 25px 20px;
+  background: #f5f4f2;
+  padding: 25px 20px;
 }
 
 .middleDescription h1 {
-	padding: 0px;
-	margin: 0px 0px 15px;
-	font-family: 'Open Sans', sans-serif;
-	font-weight: 300;
-	font-size: 20px;
-	letter-spacing: 0.05em;
+  padding: 0px;
+  margin: 0px 0px 15px;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300;
+  font-size: 20px;
+  letter-spacing: 0.05em;
 }
 
 .middleDescription p {
-	margin: 0px;
-	padding: 0px;
-	font-family: 'Roboto', sans-serif;
-	font-weight: 300;
-	color: #808080;
-	letter-spacing: 0.05em;
-	font-size: 12px;
-	line-height: 1.6em;
-	margin-bottom: 12px;
+  margin: 0px;
+  padding: 0px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  color: #808080;
+  letter-spacing: 0.05em;
+  font-size: 12px;
+  line-height: 1.6em;
+  margin-bottom: 12px;
 }
 
 .middleDescription a {
-	color: #FD9237;
-	font-family: 'Montserrat', sans-serif;
-	text-transform: uppercase;
-	font-size: 10px;
-	letter-spacing: 0.08em;
+  color: #FD9237;
+  font-family: 'Montserrat', sans-serif;
+  text-transform: uppercase;
+  font-size: 10px;
+  letter-spacing: 0.08em;
 }
 
 .middleList {
-	background: #EEECE9;
-	padding: 25px 20px;
+  background: #EEECE9;
+  padding: 25px 20px;
 }
 
 .middleList ul {
-	margin: 0px;
-	padding: 0px;
+  margin: 0px;
+  padding: 0px;
 }
 
 .middleList ul li {
-	list-style: none;
-	font-family: 'Montserrat', sans-serif;
-	font-size: 15px;
-	color: #4d4d4d;
-	padding-bottom: 10px;
+  list-style: none;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 15px;
+  color: #4d4d4d;
+  padding-bottom: 10px;
 }
 
 .middleList strike {
-	color: #9C9C9C;
+  color: #9C9C9C;
 }
 
 .middleList ul li i {
-	margin-right: 10px;
-	color: #b3b3b3;
+  margin-right: 10px;
+  color: #b3b3b3;
 }
 
 .featuresColumn h4 {
-	font-family: 'Montserrat', sans-serif;
-	color: #404041;
-	letter-spacing: 0.06em;
-	font-size: 10px;
-	text-transform: uppercase;
-	margin-top: 25px;
+  font-family: 'Montserrat', sans-serif;
+  color: #404041;
+  letter-spacing: 0.06em;
+  font-size: 10px;
+  text-transform: uppercase;
+  margin-top: 25px;
 }
 
 
 .featuresColumn .rightSec {
-	position: relative;
-	background: #EEECE9;
-	height: 45px;
+  position: relative;
+  background: #EEECE9;
+  height: 45px;
 }
 
 .featuresColumn .rightAlt {
-	background: #F3F2F0;
+  background: #F3F2F0;
 }
 
 .featuresColumn .rightSec a {
-	font-family: 'Montserrat', sans-serif;
-	line-height: 48px;
-	margin-left: 15px;
-	font-size: 10px;
-	text-transform: uppercase;
-	color: #4d4d4d;
-	letter-spacing: 0.06em;
+  font-family: 'Montserrat', sans-serif;
+  line-height: 48px;
+  margin-left: 15px;
+  font-size: 10px;
+  text-transform: uppercase;
+  color: #4d4d4d;
+  letter-spacing: 0.06em;
 }
 
 .featuresColumn .rightSec .rightSecBox {
-	float: left;
-	position: relative;
-	height: 45px;
-	width: 45px;
-	background: #F3F2F0;
-	text-align: center;
-	line-height: 45px;
-	color: #b3b3b3;
-	font-size: 16px;
+  float: left;
+  position: relative;
+  height: 45px;
+  width: 45px;
+  background: #F3F2F0;
+  text-align: center;
+  line-height: 45px;
+  color: #b3b3b3;
+  font-size: 16px;
 }
 
 .featuresColumn .rightAlt .rightSecBox {
-	background: #F7F6F4;
+  background: #F7F6F4;
 }
 
 
