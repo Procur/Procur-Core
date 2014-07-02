@@ -54,6 +54,7 @@ module.exports = {
         Buyer.create({
           company: company.id,
           dbaName: b.dba,
+          language: [b.language],
           preferredSupplierType: b.preferredSupplierType,
           preferredSupplierLanguage: [b.preferredSupplierLanguage],
           preferredSupplierLocation: [b.preferredSupplierLocation],
