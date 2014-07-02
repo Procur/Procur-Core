@@ -2,9 +2,23 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-sm-8 col-sm-offset-2">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 col-sm-12 col-sm-offset-0">
       <div class="row">
-        <div class="col-sm-6 moreInfo"> 
+        <div class="col-sm-6 col-sm-push-6 signUpForm">
+          <h2>Welcome to Procur.<br/>Sign up for Early Access below:</h2>
+          <form action="/register" method="post">
+            <div><input type="text" name="firstName" placeholder="First Name*"></div>
+            <div><input type="text" name="lastName" placeholder="Last Name*"></div>
+            <div><input type="text" name="email" placeholder="Business Email Address*"></div>
+            <div><input type="password" name="password" placeholder="Create a Password*"></div>
+            <div><input type="password" name="passwordConfirm" placeholder="Create a Password*"></div>
+            <div><button type="submit" class="registerButton">Create my account</button></div>
+          </form>
+          <div class="orText"><p>or</p></div>
+          <div class="orLine"></div>
+          <a class="loginButton" href="/login"><button>Already have an account? Log in.</button></a>
+        </div>
+        <div class="col-sm-6 col-sm-pull-6 moreInfo"> 
           <h1>We will be launching our full platform this summer. Get in before we launch by signing up for Early Access now.</h1>
           <div class="dottedLine"></div>
           <div class="featuresColumn">
@@ -48,20 +62,6 @@
               <a href="#">Multiple User Accounts</a>
             </div>
           </div>
-        </div>
-        <div class="col-sm-6 signUpForm">
-          <h2>Welcome to Procur.<br/>Sign up for Early Access below:</h2>
-          <form action="/register" method="post">
-            <div><input type="text" name="firstName" placeholder="First Name*"></div>
-            <div><input type="text" name="lastName" placeholder="Last Name*"></div>
-            <div><input type="text" name="email" placeholder="Business Email Address*"></div>
-            <div><input type="password" name="password" placeholder="Create a Password*"></div>
-            <div><input type="password" name="passwordConfirm" placeholder="Create a Password*"></div>
-            <div><button type="submit" class="registerButton">Create my account</button></div>
-          </form>
-          <div class="orText"><p>or</p></div>
-          <div class="orLine"></div>
-          <a class="loginButton" href="/login"><button >Create my account</button></div></a>
         </div>
       </div>
     </div>    
