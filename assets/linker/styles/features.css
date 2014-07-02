@@ -101,26 +101,74 @@
 	background-color: black;
 }
 
-#tech {
+#features #tech {
 	background: black;
 	width: 100%;
 	color: white;
 	padding: 40px 0px;
 }
 
-#communityRow {
+#features #communityRow {
 	display: none;
 }
 
-.expander-contractor {
+#features .expander-contractor {
 	background: #5c5c5c;
 }
 
-.toggleText {
+#features .toggleText {
 	text-align: center;
 	color: white;
 	margin-top: 20px;
 	margin-bottom: 30px;
 	cursor: pointer;
+}
+
+#features .heroImage {
+	width: 100%;
+	background: url('../../images/featuresHero.png');
+	background-repeat: no-repeat;
+	background-size: 100%;
+	margin: 0px;
+	padding: 0px;
+	height: auto;
+}
+
+#features .heroOverLay {
+	margin-left: 0;
+	padding-left: 0;
+}
+
+#features .heroOverLay2 {
+	margin-left: 30px;
+	padding-left: 0;
+}
+
+#features #heroWhite {
+	padding: 15px;
+	margin-top: 50px;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 20px;
+	font-weight: 300;
+	color: #7f7f7f;
+	background-color: rgba(245, 245, 245, 0.5);
+}
+
+#features #heroButton:hover {
+	text-decoration: none;
+}
+
+#features #heroButton {
+	padding: 11px;
+	background-color: #5c5c5c;
+	border-radius: 20px;
+	padding-left: 20px;
+	padding-right: 20px;
+	font-family: 'Roboto', sans-serif;
+	font-weight: 300;
+	letter-spacing: 0.08em;
+	font-size: 9px;
+	line-height: 22px;
+	color: #ffffff;
 }
 
