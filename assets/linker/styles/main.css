@@ -84,6 +84,7 @@ input {
   font-size: 11px;
   padding: 0px 4px;
   -webkit-appearance: none;
+  color: #b2b2b2;
 }
 #regWizard .styledSelect {
   margin-top: 5px;
@@ -178,6 +179,20 @@ text-decoration: none;
 #regWizard .emailVerify .lowBox {
 	padding-bottom: 30px
 }
+
+#regWizard .regWizYellowLink {
+	font-family: 'Montserrat', sans-serif;
+	color: #fbac27;
+	font-size: 7px;
+	text-transform: uppercase;
+}
+
+#regWizard .regWizYellowLink:hover {
+	text-decoration: none;
+}
+
+
+
 
 
 .progressLine {
