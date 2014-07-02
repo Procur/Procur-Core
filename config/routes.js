@@ -346,6 +346,33 @@ module.exports.routes = {
   'get /error/notfound': {
     controller: 'CompanyController',
     action: 'notFound'
+  },
+
+  //BUYER UPDATE ACTIONS
+
+  'post /buyer/update/logo': {
+    controller: 'BuyerController',
+    action: 'updateLogo'
+  },
+
+  'post /buyer/update/information': {
+    controller: 'BuyerController',
+    action: 'updateInformation'
+  },
+
+  'post /buyer/update/descriptions': {
+    controller: 'BuyerController',
+    action: 'updateDescriptions'
+  },
+
+  'post /buyer/update/preferences': {
+    controller: 'BuyerController',
+    action: 'updatePreferences'
+  },
+
+  'post /buyer/update/press': {
+    controller: 'BuyerController',
+    action: 'updatePhotosAndDownloads'
   }
 
 }; //USE THIS VIEW FOR ING, DEBUGGING, AND PROTOTYPING

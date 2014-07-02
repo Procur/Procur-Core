@@ -80,9 +80,15 @@
     <% if (user.activeMode == 'buyer') { %>
         <div id="buyerInformation">
             <h4>Buyer Information</h4>
+            <div><img src="<%= buyer.logoUrl %>"></div>
+            <form id="buyerLogoForm" action="/buyer/update/logo" method="post" enctype="multipart/form-data">
+                <input type="file" name="logo" accept="image/*"/>
+                <input type="submit">
+            </form>
+            <br />
             <form action="/buyer/update/information" method="post" id="buyerInformationForm">
                 <div><input type="text" name="dbaName" value="<%= buyer.dbaName %>"></div>
-                <div><img src="<%= buyer.logoUrl %>">ADD UPDATE FUNCTIONALITY</div>
+
                 <select name="language">
                     <option value="<%= buyer.language %>" selected="selected"><%= buyer.language %></option>
                     <%- partial('../partials/edit-dropdowns/edit-language') %>

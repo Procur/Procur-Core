@@ -53,4 +53,4 @@ module.exports.waterlineHelper = {
     return newObject;
   }
   
-}
+};

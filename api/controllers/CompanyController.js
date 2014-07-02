@@ -405,7 +405,6 @@ module.exports = {
                       targetSupplier = supplier;
                       Location.find().where({ company: company.id }).exec(function(err, locations){
                         if(err){ return res.redirect('/dashboard'); }
-                        console.log(locations);
                         companyLocations = locations;
                         Location.find().where({ buyer: targetBuyer.id }).exec(function(err, locationsBuyer){
                           if(err){ return res.redirect('/dashboard'); }
