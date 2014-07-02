@@ -7,6 +7,17 @@
   margin-top: 30px;
 }
 
+#features h2 {
+	font-family: 'Montserrat', sans-serif;
+	color: white;
+	text-transform: uppercase;
+}
+
+#features h3 {
+	font-family: 'Montserrat', sans-serif;
+	color: white;
+}
+
 #features h5 {
 	font-family: 'Montserrat', sans-serif;
 	color: #7f7f7f;
@@ -84,5 +95,32 @@
 #features #faqLink {
 	text-decoration: none;
 	color: #7f7f7f;
+}
+
+#features #blackBox {
+	background-color: black;
+}
+
+#tech {
+	background: black;
+	width: 100%;
+	color: white;
+	padding: 40px 0px;
+}
+
+#communityRow {
+	display: none;
+}
+
+.expander-contractor {
+	background: #5c5c5c;
+}
+
+.toggleText {
+	text-align: center;
+	color: white;
+	margin-top: 20px;
+	margin-bottom: 30px;
+	cursor: pointer;
 }
 
