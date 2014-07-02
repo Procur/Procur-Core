@@ -57,7 +57,9 @@ module.exports = {
               viewLocations = locationsHelper.parseLocations(locationsPayload, "supplier");
 
               Supplier.findOne({ company: payload[0].id }, function(err, supplier) {
-                payload.push(waterlineHelper.fixBuyerArrays(supplier));
+                supplier = waterlineHelper.fixSupplierArrays(supplier);
+                supplier = productCategoryHelper.getCategoryChild(supplier);
+                payload.push(supplier);
                 res.view({ company: payload[0], user: payload[1], supplier: payload[2], locations: viewLocations, loggedin: loginStatus });
               });
             }
