@@ -3,59 +3,82 @@
     <img src="/images/profile-logo.png">
     <div class="company-header">
       <h2><span>Buyer Profile </span>&middot;<span><a href="#"> View Supplier Profile</a></span></h2>
-      <h1>North American Cotton Apparel Co.</h1>
+      <h1><%= company.name %></h1>
     </div>
-    <div class="company-info-box company-business-address">
-      <h3><span class="glyphicon glyphicon-map-marker info-glyph"></span><span class="info-title">Official Business Address</span></h3>
-      <p>3308 South Magnolia Ave., Suite 31B</p>
-      <p>Austin, TX 70431</p>
-      <p>United States</p>
-    </div>
-    <div class="company-info-box">
-      <h3><span class="glyphicon glyphicon-globe info-glyph"></span><span class="info-title">Headquarters</span></h3>
-      <p>4780 Michelangelo Rd., Suite 4200</p>
-      <p>Austin, TX 70433</p>
-      <p>United States</p>
-    </div>
+
+    <% if (locations["showHq"] === false) { %>
+      <div class="company-info-box company-business-address">
+        <h3><span class="glyphicon glyphicon-map-marker info-glyph"></span><span class="info-title">Official Business Address</span></h3>
+        <p><%= locations["company-isHq"][0].addressLine1 %></p>
+        <p><%= locations["company-isHq"][0].addressLine2 %></p>
+        <p><%= locations["company-isHq"][0].country %></p>
+      </div>
+    <% } else { %>
+      <div class="company-info-box company-business-address">
+        <h3><span class="glyphicon glyphicon-map-marker info-glyph"></span><span class="info-title">Official Business Address</span></h3>
+        <p><%= locations["company-notHq"][0].addressLine1 %></p>
+        <p><%= locations["company-notHq"][0].addressLine2 %></p>
+        <p><%= locations["company-notHq"][0].country %></p>
+      </div>
+      <div class="company-info-box">
+        <h3><span class="glyphicon glyphicon-globe info-glyph"></span><span class="info-title">Headquarters</span></h3>
+        <p><%= locations["company-isHq"].addressLine1 %></p>
+        <p><%= locations["company-isHq"].addressLine2 %></p>
+        <p><%= locations["company-isHq"].country %></p>
+      </div>
+    <% } %>
+
     <div class="company-info-box">
       <h3><span class="glyphicon glyphicon-earphone info-glyph"></span><span class="info-title">Company Phone &amp; Fax</span></h3>
-      <p>Telephone: +1 800 555 4782</p>
-      <p>Fax: +1 800 555 4781</p>
+      <p>Telephone: +<%= company.phoneNumberCountryCode %> <%= company.phoneNumber %> Ext: <%= company.phoneExtension %></p>
+      <p>Fax: +<%= company.faxCountryCode%> <%= company.faxNumber %> Ext: <%= company.faxExtension %></p>
     </div>
+
     <div class="company-info-box">
       <h3><span class="glyphicon glyphicon-send info-glyph"></span><span class="info-title">Company Email Address</span></h3>
-      <p>info@northamericancotton.com</p>
+      <p><%= company.email %></p>
     </div>
+
     <div class="company-info-box">
       <h3><span class="glyphicon glyphicon-send info-glyph"></span><span class="info-title">Company Website</span></h3>
-      <p><a href="#">www.northamericancotton.com</a></p>
+      <p><a href="<%= company.website %>"><%= company.website %></a></p>
     </div>
+    
     <div class="company-detail-box">
-      <h3><span>Product Specialties</span></h3>
-      <p>Children's Coats, Children's T-Shirts, Children's School Uniforms, Women's Basics, Men's Basics</p>
+      <h3><span>Product Categories</span></h3>
+      <p>
+        <% buyer["productCategory"].forEach(function(category) { %>
+          <%= category %>
+        <% }); %>
+      </p>
     </div>
+
     <div class="company-two-col-box">
       <h3><span>Buyer Details</span></h3>
       <div class="company-col-left">
         <div class="company-col-detail">
           <p class="detail-header">Type of Company</p>
-          <p class="detail-body">Supplier</p>
+          <p class="detail-body">Buyer</p>
         </div>
         <div class="company-col-detail">
           <p class="detail-header">Total # of Employees</p>
-          <p class="detail-body">50 - 200</p>
+          <p class="detail-body"><%= company.employeeCount %></p>
         </div>
         <div class="company-col-detail">
           <p class="detail-header">Industry</p>
-          <p class="detail-body">Apparel &amp; Clothing</p>
+          <p class="detail-body"><%= company.industry %></p>
         </div>
         <div class="company-col-detail">
           <p class="detail-header">Languages</p>
-          <p class="detail-body">English, Spanish</p>
+          <p class="detail-body">
+            <% buyer["preferredSupplierLanguage"].forEach(function(language) { %>
+              <%= language %>
+            <% }) %>
+          </p>
         </div>
         <div class="company-col-detail">
           <p class="detail-header">DUNS Number</p>
-          <p class="detail-body">92 - 650 - 7893</p>
+          <p class="detail-body"><%= buyer.dunsNumber  %></p>
         </div>
       </div><!-- END LEFT DETAIL COLUMN -->
       <div class="company-col-right">
@@ -70,7 +93,9 @@
       </div><!-- END RIGHT DETAIL COLUMN -->
       <div class="company-col-clear"></div>
     </div>
+
   </div><!-- END LEFT COLUMN -->
+
   <div class="col-sm-12 col-md-8">
     <div class="profile-nav">
       <ul>

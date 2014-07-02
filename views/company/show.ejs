@@ -5,4 +5,9 @@
   <%- partial('../partials/company-profile-header-logged-out') %>
 <% } %>
 
-<%- partial('../partials/supplier-profile') %>
+<% if (company.buyer === true) { %>
+  <%- partial('../partials/buyer-profile') %>
+<% } %>
+<% if (company.supplier === true) { %>
+  <%- partial('../partials/supplier-profile') %>
+<% } %>

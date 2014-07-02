@@ -21,26 +21,75 @@ module.exports = {
     //TODO: Add user lookup functionality + add company Slug
     var handle = req.param('id');
     var currentUser = req.session.passport.user;
+    var locationsHelper = sails.config.locationsHelper;
+    var waterlineHelper = sails.config.waterlineHelper;
+    var payload = [];
+    var locationsPayload = {};
+    var viewLocations = {};
+    var loginStatus;
 
     Company.findOne({ handle: handle }, function(err, company) {
       if (err) { return res.redirect('/error/notfound'); }
       if (!company) { return res.redirect('/404'); }
       if (company !== undefined) {
-        if (currentUser !== undefined) {
-          User.findOne({ id: currentUser }, function(err, user) {
-            if (err) { return res.redirect('/dashboard'); }
-            if (user !== undefined) {
-              res.view({ company: company, user: user, loggedin: true });
+        payload.push(company);
+        User.findOne({ id: currentUser }, function(err, user) {
+          if (err) { return res.redirect('/dashboard'); }
+          user === undefined ? loginStatus = false : loginStatus = true;
+          payload.push(user);
+          if (err) { return res.redirect('/dashboard'); }
+          Location.find({ company: company.id }, function(err, location) {
+            locationsPayload["company"] = location;
+            if (payload[1].activeMode === "buyer" ) {
+              locationsPayload["buyer"] = []; /* trash value until I redo locationsHelper :( */
+              viewLocations = locationsHelper.parseLocations(locationsPayload, "buyer");
+              console.log("viewLocations is " + JSON.stringify(viewLocations, null, ' '));
+
+              Buyer.findOne({ company: payload[0].id }, function(err, buyer) {
+                payload.push(waterlineHelper.fixBuyerArrays(buyer));
+                console.log("buyer is " + JSON.stringify(buyer, null, ' '));
+                res.view({ company: payload[0], user: payload[1], buyer: payload[2], locations: viewLocations, loggedin: loginStatus });
+              });
             }
-            else {
-              res.view({ company: company, loggedin: false });
+            if (payload[1].activeMode === "supplier" ) {
+              locationsPayload["supplier"] = []; /* trash value until I redo locationsHelper :( */
+              viewLocations = locationsHelper.parseLocations(locationsPayload, "supplier");
+
+              Supplier.findOne({ company: payload[0].id }, function(err, supplier) {
+                payload.push(waterlineHelper.fixBuyerArrays(supplier));
+                res.view({ company: payload[0], user: payload[1], supplier: payload[2], locations: viewLocations, loggedin: loginStatus });
+              });
             }
           });
-        } else {
-          res.view({ company: company, loggedin: false });
-        }
+        });
       }
     });
+
+    /*Company.findOne({ handle: handle }, function(err, company) {
+      if (err) { return res.redirect('/error/notfound'); }
+      if (!company) { return res.redirect('/404'); }
+      if (company !== undefined) {
+        Location.find({ company: company.id }, function(err, location) {
+          locationsPayload["company"] = location;
+          viewLocations = locationsHelper.parseLocations(locationsPayload, "buyer");
+          console.log("viewLocations is " + JSON.stringify(viewLocations, null, ' '));
+          if (currentUser !== undefined) {
+            User.findOne({ id: currentUser }, function(err, user) {
+              if (err) { return res.redirect('/dashboard'); }
+              if (user !== undefined) {
+                res.view({ company: company, user: user, location: viewLocations, loggedin: true });
+              }
+              else {
+                res.view({ company: company, loggedin: false });
+              }
+            });
+          }
+          else {
+            res.view({ company: company, loggedin: false });
+          }
+        });
+      }
+    });*/
   },
 
   setup: function(req, res){
