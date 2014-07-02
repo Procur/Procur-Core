@@ -19,13 +19,9 @@ module.exports = {
 
   index: function (req, res) {
     User.findOne({ id: req.session.passport.user }, function (err, user) {
-      if (err) {
-        return res.redirect('/dashboard');
-      }
+      if (err) { return res.redirect('/dashboard'); }
       Company.findOne({ user: user.id }, function (err, company) {
-        if (err) {
-          return res.redirect('/dashboard');
-        }
+        if (err) { return res.redirect('/dashboard'); }
         Buyer.findOne({ company: company.id }, function (err, buyer) {
           var b = buyer;
           res.view({
@@ -54,9 +50,7 @@ module.exports = {
 
     User.findOne({ id: req.session.passport.user }, function (err, user) {
       Company.findOne({ user: user.id }, function (err, company) {
-        if (err) {
-          return res.redirect('/dashboard');
-        }
+        if (err) { return res.redirect('/dashboard'); }
         Buyer.create({
           company: company.id,
           dbaName: b.dba,
@@ -74,13 +68,10 @@ module.exports = {
           productCategory: [b.autocomplete],
           active: true
         }, function (err, buyer) {
-          if (err) {
-            return res.redirect('/dashboard');
-          }
+          if (err) { return res.redirect('/dashboard'); }
           if (imageExists) {
             imageHelper.uploadBuyerImage(req, res, buyer, image);
           }
-
         });
         //console.log(Buyer);
         res.redirect('/dashboard');
@@ -97,13 +88,9 @@ module.exports = {
     var hqId;
 
     User.findOne({ id: req.session.passport.user }, function (err, user) {
-      if (err) {
-        return res.redirect('/dashboard');
-      }
+      if (err) { return res.redirect('/dashboard'); }
       Company.findOne({ user: user.id }, function (err, company) {
-        if (err) {
-          return res.redirect('/dashboard');
-        }
+        if (err) { return res.redirect('/dashboard'); }
         companyId = company.id;
         Company.update(company.id, {
           name: b.companyName,
@@ -119,13 +106,9 @@ module.exports = {
           employeeCount: b.employeeCount,
           handle: b.companyUrl
         }, function (err, company) {
-          if (err) {
-            return res.redirect('/dashboard');
-          }
+          if (err) { return res.redirect('/dashboard'); }
           Location.findOne({ company: companyId, isHq: true }, function (err, hqLocation) {
-            if (err) {
-              return res.redirect('/dashboard');
-            }
+            if (err) { return res.redirect('/dashboard'); }
             hqId = hqLocation.id;
           });
           if (b.companyIsHq === 'on') {
@@ -136,16 +119,12 @@ module.exports = {
               country: b.hqCountry,
               postalCode: b.hqPostalCode
             }).exec(function (err, updatedHq) {
-              if (err) {
-                return res.redirect('/dashboard');
-              }
+              if (err) { return res.redirect('/dashboard'); }
             });
           }
           else {
             Location.findOne({ company: companyId, isHq: false }, function (err, compLocation) {
-              if (err) {
-                return res.redirect('/dashboard');
-              }
+              if (err) { return res.redirect('/dashboard'); }
               Location.update(hqId, {
                 addressLine1: b.hqAddress1,
                 addressLine2: b.hqAddress2,
@@ -153,9 +132,7 @@ module.exports = {
                 country: b.hqCountry,
                 postalCode: b.hqPostalCode
               }).exec(function (err, updatedHq) {
-                if (err) {
-                  return res.redirect('/dashboard');
-                }
+                if (err) { return res.redirect('/dashboard'); }
               });
               Location.update(compLocation.id, {
                 addressLine1: b.companyAddress1,
@@ -164,17 +141,13 @@ module.exports = {
                 country: b.companyCountry,
                 postalCode: b.companyPostalCode
               }).exec(function (err, updatedLocation) {
-                if (err) {
-                  return res.redirect('/dashboard');
-                }
+                if (err) { return res.redirect('/dashboard'); }
               });
             });
           }
 
           Buyer.findOne({ company: companyId }, function (err, buyer) {
-            if (err) {
-              return res.redirect('/dashboard');
-            }
+            if (err) { return res.redirect('/dashboard'); }
             if (imageExists) {
               imageHelper.uploadBuyerImage(req, res, supplier, image);
             }
@@ -216,9 +189,7 @@ module.exports = {
               productsOfInterest: b.productsOfInterest,
               productCategory: [b.autocomplete]
             }, function (err, buyer) {
-              if (err) {
-                return res.redirect('/dashboard');
-              }
+              if (err) { return res.redirect('/dashboard'); }
               return res.redirect('/company/update');
             });
           });
@@ -270,9 +241,6 @@ module.exports = {
   },
 
   updateInformation: function (req, res) {
-    var image = req.files.image.path;
-    var imageHelper = sails.config.imageUploadHelper;
-    var imageExists = imageHelper.getFileSize(image);
     var activeUser = req.session.passport.user,
         p = req.params.all();
 

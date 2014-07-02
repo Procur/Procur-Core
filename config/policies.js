@@ -51,7 +51,8 @@ module.exports.policies = {
     index: ['sessionCheck', 'isAuthenticated', 'profileComplete'],
     create: ['sessionCheck', 'isAuthenticated', 'profileComplete'],
     update: ['sessionCheck', 'isAuthenticated', 'profileComplete', 'wizardComplete'],
-    destroy: ['sessionCheck', 'isAuthenticated', 'profileComplete', 'wizardComplete', 'denyAllAccess']
+    destroy: ['sessionCheck', 'isAuthenticated', 'profileComplete', 'wizardComplete', 'denyAllAccess'],
+    updateLogo: ['sessionCheck', 'isAuthenticated', 'profileComplete', 'wizardComplete']
   },
 
   SupplierController: {
