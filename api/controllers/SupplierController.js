@@ -154,7 +154,7 @@ module.exports = {
               annualSalesValue: b.annualSalesValue,
               preferredBuyerType: b.preferredBuyerType,
               preferredBuyerLanguage: [b.preferredBuyerLanguage],
-              preferredBuyerLocation: [b.preferredBuyerLocation],
+              preferredBuyerLocation: [b.preferredBuyerCountry],
               acceptedDeliveryTerms: [b.acceptedDeliveryTerms],
               acceptedCurrency: [b.acceptedCurrency],
               acceptedPaymentTerms: [b.acceptedPaymentTerms],
