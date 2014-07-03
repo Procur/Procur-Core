@@ -2,7 +2,10 @@
   <div class="col-sm-12 col-md-4">
     <img src="/images/profile-logo.png">
     <div class="company-header">
-      <h2><span>Buyer Profile </span>&middot;<span><a href="#"> View Supplier Profile</a></span></h2>
+      <h2>
+        <span>Buyer Profile </span>
+        <% if (company.supplier === true ) { %>&middot;<span><a href="#"> View Supplier Profile</a></span><% } %>
+      </h2>
       <h1><%= company.name %></h1>
     </div>
 
