@@ -376,23 +376,20 @@ background-repeat:no-repeat;
 	padding-top: 20px;
 }
 
+
 #homeCarousel .grayBox {
 	width: 100%;
 	height: 333px;
 	background-color: #7f7f7f;
 }
 
-.carousel-control.right{
-	background-image: none;
+.clickerWrapper {
+	border: 2px solid black;
+	display: inline;
 }
 
-.carousel-control.left{
-	background-image: none;
-}
 
-.carousel-control {
-	top: 250px;
-}
+
 
 .carousel-caption h4 {
 	font-family: 'Roboto', sans-serif;
@@ -438,28 +435,59 @@ background-repeat:no-repeat;
 	margin-left: 20px;
 	left: 0px;
 	bottom: 0px;
-}
-
-.carousel-control .glyphicon-chevron-left {
-	margin-top: -7px;
-	margin-left: 400%;
 
 }
 
-.carousel-control .glyphicon-chevron-right {
-	margin-top: -8px;
-	margin-right: 0px;
+.carousel-indicators li {
+	border: none;
+	background-color: #b8b8b8;
+	margin: 0px;
 }
+
+.carousel-indicators .active {
+	width:10px;
+	height: 10px;
+}
+
+.glyphicon-chevron-left {
+}
+
+.glyphicon-chevron-right {
+}
+
 
 
 .carousel-control.left {
-
+	position: relative;
+	background-image: none;
 	z-index: 40;
+	float: right;
+	display: inline;
+	height: 50px;
+	width: 50px;
+	bottom: 0px;
+	top: -50px;
 }
 
 .carousel-control.right {
+	position: relative;
+	background-image: none;
 	z-index: 40;
+	float:right;
+	width: 50px;
+	height: 50px;
+	display: inline;
+	bottom: 0px;
+	top:-51px;
 }
+
+
+
+
+
+
+
+
 
 
 
