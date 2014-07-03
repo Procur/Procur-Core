@@ -242,24 +242,27 @@ module.exports = {
 
   updateInformation: function (req, res) {
     var activeUser = req.session.passport.user,
-        p = req.params.all();
-
+        p = req.params;
   },
 
   updateDescriptions: function (req, res) {
-
+    var activeUser = req.session.passport.user,
+        p = req.params;
   },
 
   updatePreferences: function (req, res) {
-
+    var activeUser = req.session.passport.user,
+        p = req.params;
   },
 
   updatePhotosAndDownloads: function (req, res) {
-
+    var activeUser = req.session.passport.user,
+        p = req.params;
   },
 
   destroy: function (req, res) {
-
+    var activeUser = req.session.passport.user,
+        p = req.params;
   }
 
 };
