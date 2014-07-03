@@ -370,9 +370,9 @@ module.exports.routes = {
     action: 'updatePreferences'
   },
 
-  'post /buyer/update/press': {
+  'post /buyer/update/socialoutlets': {
     controller: 'BuyerController',
-    action: 'updatePhotosAndDownloads'
+    action: 'updateSocialOutlets'
   }
 
 }; //USE THIS VIEW FOR ING, DEBUGGING, AND PROTOTYPING

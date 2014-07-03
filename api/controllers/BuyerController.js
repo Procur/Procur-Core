@@ -323,9 +323,10 @@ module.exports = {
     });
   },
 
-  updatePhotosAndDownloads: function (req, res) {
+  updateSocialOutlets: function (req, res) {
     var activeUser = req.session.passport.user,
-        p = req.params;
+        p = req.body;
+    console.log(p.twitter);
     User.findOne({ id: activeUser }, function(err, user){
       if(err){ return res.redirect('/dashboard'); }
       if(user !== undefined){
@@ -335,8 +336,23 @@ module.exports = {
             Buyer.findOne({ company: company.id }, function(err, buyer){
               if(err){ return res.redirect('/dashboard'); }
               if(buyer !== undefined){
-                Buyer.update(buyer,{
-
+                console.log(buyer);
+                Buyer.update(buyer.id, {
+                  facebook: p.facebook,
+                  twitter: p.twitter,
+                  google: p.google,
+                  linkedin: p.linkedin,
+                  pinterest: p.pinterest,
+                  instagram: p.instagram,
+                  tumblr: p.tumblr
+                }, function(err, buyer){
+                  if(err){ return res.redirect('/company/update#socialOutletsBuyer') }
+                  if(buyer){
+                    return res.send('success');
+                  }
+                  else{
+                    return res.send('failed');
+                  }
                 });
               }
               else {
@@ -352,7 +368,7 @@ module.exports = {
       else{
         return res.redirect('/dashboard');
       }
-    });p = req.params;
+    });
   },
 
   destroy: function (req, res) {

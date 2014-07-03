@@ -24,7 +24,7 @@
         <% if(user.activeMode == 'buyer') { %>
             <li><a href="#buyerInformation">Buyer Information</a></li>
             <li><a href="#descriptionsBuyer">Descriptions</a></li>
-            <li><a href="#preferences">Preferences</a></li>
+            <li><a href="#preferencesBuyer">Preferences</a></li>
             <li><a href="#socialOutletsBuyer">Social Outlets</a></li>
         <% } %>
 
@@ -121,7 +121,7 @@
                 <div><input type="submit"></div>
             </form>
         </div>
-        <div id="preferences">
+        <div id="preferencesBuyer">
             <h4>Preferences</h4>
             <form action="/buyer/update/preferences" method="post" id="buyerPreferencesForm">
                 <div><select name="preferredBuyerType">
@@ -140,7 +140,7 @@
         </div>
         <div id="socialOutletsBuyer">
             <h4>Social Outlets</h4>
-            <form action="/buyer/update/press" method="post" id="buyerPhotosAndDownloadsForm">
+            <form action="/buyer/update/socialoutlets" method="post" id="buyerSocialOutletsForm">
                 <div><input type="text" name="facebook" value="<%= buyer.facebook %>"></div>
                 <div><input type="text" name="twitter" value="<%= buyer.twitter %>"></div>
                 <div><input type="text" name="google" value="<%= buyer.google %>"></div>
@@ -148,7 +148,6 @@
                 <div><input type="text" name="pinterest" value="<%= buyer.pinterest %>"></div>
                 <div><input type="text" name="instagram" value="<%= buyer.instagram %>"></div>
                 <div><input type="text" name="tumblr" value="<%= buyer.tumblr %>"></div>
-                <div><input type="text" name="google" value="<%= buyer.google %>"></div>
                 <div><input type="submit"></div>
             </form>
         </div>
@@ -222,7 +221,7 @@
         </div>
         <div id="socialOutletsSupplier">
             <h4>Social Outlets</h4>
-            <form action="/supplier/update/press" method="post" id="supplierPhotosAndDownloadsForm">
+            <form action="/supplier/update/socialoutlets" method="post" id="supplierSocialOutletsForm">
                 <div><input type="text" name="facebook" value="<%= supplier.facebook %>"></div>
                 <div><input type="text" name="twitter" value="<%= supplier.twitter %>"></div>
                 <div><input type="text" name="google" value="<%= supplier.google %>"></div>
@@ -285,11 +284,17 @@
                 return false;
             });
 
-            //PHOTOS AND DOWNLOADS
-            $("#photosAndDownloadsForm").submit(function(){
-                $.post($("#photosAndDownloadsForm").attr("action"), $("#photosAndDownloadsForm").serialize(), function(data){
+            //SOCIAL OUTLETS
+            $("#buyerSocialOutletsForm").submit(function(){
+                $.post($("#buyerSocialOutletsForm").attr("action"), $("#buyerSocialOutletsForm").serialize(), function(data){
+                    if (data == 'success') {
+                        alert('Success');
+                    }
+                    else {
+                        alert('failed');
+                    }
                 });
-                console.log($("#photosAndDownloadsForm").serialize());
+                console.log($("#buyerSocialOutletsForm").serialize());
                 return false;
             });
         })
