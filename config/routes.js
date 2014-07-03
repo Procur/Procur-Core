@@ -109,11 +109,6 @@ module.exports.routes = {
     action: 'privacyNotice'
   }, //Displays Privacy Notice Page
 
-  'get /terms': {
-    controller: 'HomeController',
-    action: 'terms'
-  }, //Displays Terms of Use Page
-
   'get /termsofservice': {
     controller: 'HomeController',
     action: 'termsofservice'

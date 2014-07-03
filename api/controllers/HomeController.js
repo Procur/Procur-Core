@@ -124,10 +124,6 @@ module.exports = {
     res.view();
   },
 
-  terms: function(req, res){
-    res.view();
-  },
-
   termsofservice: function(req, res){
     res.view();
   }
