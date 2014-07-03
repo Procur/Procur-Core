@@ -373,6 +373,33 @@ module.exports.routes = {
   'post /buyer/update/socialoutlets': {
     controller: 'BuyerController',
     action: 'updateSocialOutlets'
+  },
+
+  //SUPPLIER UPDATE ACTIONS
+
+  'post /supplier/update/logo': {
+    controller: 'SupplierController',
+    action: 'updateLogo'
+  },
+
+  'post /supplier/update/information': {
+    controller: 'SupplierController',
+    action: 'updateInformation'
+  },
+
+  'post /supplier/update/descriptions': {
+    controller: 'SupplierController',
+    action: 'updateDescriptions'
+  },
+
+  'post /supplier/update/preferences': {
+    controller: 'SupplierController',
+    action: 'updatePreferences'
+  },
+
+  'post /supplier/update/socialoutlets': {
+    controller: 'SupplierController',
+    action: 'updateSocialOutlets'
   }
 
 }; //USE THIS VIEW FOR ING, DEBUGGING, AND PROTOTYPING

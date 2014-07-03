@@ -378,9 +378,9 @@
                 return false;
             });
 
-            //SUPPLIER PHOTOS & DOWNLOADS
-            $("#supplierPreferencesForm").submit(function () {
-                $.post($("#supplierPhotosAndDownloadsForm").attr("action"), $("#supplierPhotosAndDownloadsForm").serialize(), function (data) {
+            //SUPPLIER SOCIAL OUTLETS
+            $("#supplierSocialOutletsForm").submit(function () {
+                $.post($("#supplierSocialOutletsForm").attr("action"), $("#supplierSocialOutletsForm").serialize(), function (data) {
                     if (data == 'success') {
                         alert('Success');
                     }
@@ -388,7 +388,7 @@
                         alert('failed');
                     }
                 });
-                console.log($("#supplierPhotosAndDownloadsForm").serialize());
+                console.log($("#supplierSocialOutletsForm").serialize());
                 return false;
             });
         });
