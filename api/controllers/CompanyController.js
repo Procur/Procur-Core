@@ -316,16 +316,12 @@ module.exports = {
           Buyer.findOne({ company: companyId }, function(err, buyer){
             if(err) { return res.redirect('/dashboard'); }
             payload.push(buyer);
-            Location.find().where({ buyer: buyer.id }).exec(function(err, locations){
+            Location.find().where({ company: companyId }).exec(function(err, locations){
               if(err) { return res.redirect('/dashboard'); }
-              locationsPayload["buyer"] = locations;
-              Location.find().where({ company: companyId }).exec(function(err, locations){
-                if(err) { return res.redirect('/dashboard'); }
-                locationsPayload["company"] = locations;
-                viewLocations = locationsHelper.parseLocations(locationsPayload, "buyer");
-                payload.push(waterlineHelper.fixBuyerArrays(payload[1]));
-                res.view({ user: userActiveMode, company: payload[0], buyer: payload[1], buyer2: payload[2], locations: viewLocations });
-              });
+              locationsPayload["company"] = locations;
+              viewLocations = locationsHelper.parseLocations(locationsPayload);
+              payload.push(waterlineHelper.fixBuyerArrays(payload[1]));
+              res.view({ user: userActiveMode, company: payload[0], buyer: payload[1], buyer2: payload[2], locations: viewLocations });
             });
           });
         }
@@ -334,16 +330,12 @@ module.exports = {
             if(err) { return res.redirect('/dashboard'); }
             supplierId = supplier.id;
             payload.push(supplier);
-            Location.find().where({ supplier: supplierId }).exec(function(err, locations){
+            Location.find().where({ company: companyId }).exec(function(err, locations){
               if(err) { return res.redirect('/dashboard'); }
-              locationsPayload["supplier"] = locations;
-              Location.find().where({ company: companyId }).exec(function(err, locations){
-                if(err) { return res.redirect('/dashboard'); }
-                locationsPayload["company"] = locations;
-                viewLocations = locationsHelper.parseLocations(locationsPayload, "supplier");
-                payload.push(waterlineHelper.fixSupplierArrays(payload[1]));
-                res.view({ user: userActiveMode, company: payload[0], supplier: payload[1], supplier2: payload[2], locations: viewLocations });
-              });
+              locationsPayload["company"] = locations;
+              viewLocations = locationsHelper.parseLocations(locationsPayload);
+              payload.push(waterlineHelper.fixSupplierArrays(payload[1]));
+              res.view({ user: userActiveMode, company: payload[0], supplier: payload[1], supplier2: payload[2], locations: viewLocations });
             });
           });
         }
