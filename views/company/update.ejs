@@ -23,7 +23,7 @@
             <li><a href="#buyerInformation">Buyer Information</a></li>
             <li><a href="#descriptionsBuyer">Descriptions</a></li>
             <li><a href="#preferences">Preferences</a></li>
-            <li><a href="#photosAndDownloads">Photos & Downloads</a></li>
+            <li><a href="#socialOutletsBuyer">Social Outlets</a></li>
         <% } %>
 
         <% if(user.activeMode == 'supplier'){ %>
@@ -31,7 +31,7 @@
             <li><a href="#productionDetails">Production Details</a></li>
             <li><a href="#descriptionsSupplier">Descriptions</a></li>
             <li><a href="#preferencesSupplier">Preferences</a></li>
-            <li><a href="#photosAndDownloadsSupplier">Links, Photos, & Downloads</a></li>
+            <li><a href="#socialOutletsSupplier">Social Outlets</a></li>
         <% } %>
 
     </ul>
@@ -130,8 +130,8 @@
                 <div><input type="submit"></div>
             </form>
         </div>
-        <div id="photosAndDownloads">
-            <h4>Photos & Downloads</h4>
+        <div id="socialOutletsBuyer">
+            <h4>Social Outlets</h4>
             <form action="/buyer/update/press" method="post" id="buyerPhotosAndDownloadsForm">
                 <div><input type="text" name="facebook" value="<%= buyer.facebook %>"></div>
                 <div><input type="text" name="twitter" value="<%= buyer.twitter %>"></div>
@@ -141,9 +141,6 @@
                 <div><input type="text" name="instagram" value="<%= buyer.instagram %>"></div>
                 <div><input type="text" name="tumblr" value="<%= buyer.tumblr %>"></div>
                 <div><input type="text" name="google" value="<%= buyer.google %>"></div>
-                <div>Somehow pull off relevant links</div>
-                <div>Files / Downloads by some incredible feat</div>
-                <div>Photos, god willing</div>
                 <div><input type="submit"></div>
             </form>
         </div>
@@ -185,7 +182,6 @@
                 <div><input type="text" name="primaryProductSpecialty" value="<%= supplier.primaryProductSpecialty %>"></div>
                 <div><input type="text" name="companyCapabilities" value="<%= supplier.companyCapabilities %>"></div>
                 <div><input type="text" name="annualSalesValue" value="<%= supplier.annualSalesValue %>"></div>
-                <div>Main Markets Distribution?</div>
                 <div><input type="submit"></div>
             </form>
         </div>
@@ -212,8 +208,8 @@
                 <div><input type="submit"></div>
             </form>
         </div>
-        <div id="photosAndDownloadsSupplier">
-            <h4>Photos and Downloads</h4>
+        <div id="socialOutletsSupplier">
+            <h4>Social Outlets</h4>
             <form action="/supplier/update/press" method="post" id="supplierPhotosAndDownloadsForm">
                 <div><input type="text" name="facebook" value="<%= supplier.facebook %>"></div>
                 <div><input type="text" name="twitter" value="<%= supplier.twitter %>"></div>
@@ -223,9 +219,6 @@
                 <div><input type="text" name="instagram" value="<%= supplier.instagram %>"></div>
                 <div><input type="text" name="tumblr" value="<%= supplier.tumblr %>"></div>
                 <div><input type="text" name="google" value="<%= supplier.google %>"></div>
-                <div>Somehow pull off relevant links</div>
-                <div>Files / Downloads by some incredible feat</div>
-                <div>Photos, god willing</div>
                 <div><input type="submit"></div>
             </form>
         </div>
