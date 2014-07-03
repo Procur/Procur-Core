@@ -96,17 +96,30 @@
     <div class="profile-nav">
       <ul>
         <div class="nav-left">
-          <li><a href="">About</a></li>
+          <li>About</li>
         </div>
         <div class="nav-right">
-          <li><a href="">Company Description</a></li>
-          <li><a href="">Products of Interest</a></li>
-          <li><a href="">Statements of Responsibility</a></li>
+          <li><a id="company-description">Company Description</a></li>
+          <li><a id="products-of-interest">Products of Interest</a></li>
+          <li><a id="statements-of-responsibility">Statements of Responsibility</a></li>
         </div>
       </ul>
     </div>
-    <div class="profile-content">
-      <p><%= buyer.companyDescription %></p>
+    <div id="profile-content">
+      <div class="content-desc"><%= buyer.companyDescription %></div>
+      <div class="content-interest" id="inactive"><%= buyer.productsOfInterest %></div>
+      <div class="content-statement" id="inactive">
+        <h4>Environmental Sustainability</h4>
+        <%= buyer.environmentalSustainability %><br /><br />
+        <h4>Quality Sourcing</h4>
+        <%= buyer.qualitySourcing %><br /><br />
+        <h4>Workplace Safety</h4>
+        <%= buyer.workplaceSafety %><br /><br />
+        <h4>Labor, Education, and Trainig</h4>
+        <%= buyer.laborEducationTraining %><br /><br />
+        <h4>Reinvestment</h4>
+        <%= buyer.reinvestment %>
+      </div>
     </div>
   </div><!-- END RIGHT COLUMN -->
 </div>
