@@ -241,7 +241,50 @@ module.exports = {
 
   updateInformation: function (req, res) {
     var activeUser = req.session.passport.user,
-        p = req.params;
+        p = req.body;
+    User.findOne({ id: activeUser }, function(err, user){
+      if(err){ return res.redirect('/dashboard'); }
+      if(user !== undefined){
+        Company.findOne({ user: user.id }, function(err, company){
+          if(err){ return res.redirect('/dashboard'); }
+          if(company !== undefined){
+            console.log('company found');
+            Buyer.findOne({ company: company.id }, function(err, buyer){
+              if(err){ return res.redirect('/dashboard'); }
+              if(buyer !== undefined){
+                console.log('buyer found');
+                Buyer.update(buyer.id, {
+
+
+
+                  //FILL IT UP
+
+
+
+                }, function(err, buyer){
+                  if(err){ return res.redirect('/company/update#descriptionsSupplier'); }
+                  if(buyer){
+                    return "success";
+                  }
+                  else {
+                    return "failed"
+                  }
+                });
+              }
+              else {
+                return res.redirect('/dashboard');
+              }
+            });
+          }
+          else {
+            return res.redirect('/dashboard');
+          }
+        });
+      }
+      else{
+        return res.redirect('/dashboard');
+      }
+    });
   },
 
   updateDescriptions: function (req, res) {
@@ -293,7 +336,9 @@ module.exports = {
 
   updatePreferences: function (req, res) {
     var activeUser = req.session.passport.user,
-        p = req.body;
+        p = req.body,
+        supplierLanguage = [p.preferredSupplierLanguage],
+        supplierLocation = [p.preferredSupplierLocation];
     User.findOne({ id: activeUser }, function(err, user){
       if(err){ return res.redirect('/dashboard'); }
       if(user !== undefined){
@@ -307,8 +352,8 @@ module.exports = {
                 console.log('buyer found');
                 Buyer.update(buyer.id, {
                   preferredSupplierType: p.preferredSupplierType,
-                  preferredSupplierLanguage: p.preferredSupplierLanguage,
-                  preferredSupplierLocation: p.preferredSupplierLocation
+                  preferredSupplierLanguage: supplierLanguage,
+                  preferredSupplierLocation: supplierLocation
                 }, function(err, buyer){
                   if(err){ console.log(err)} //return res.redirect('/company/update#descriptionsSupplier'); }
                   if(buyer){
