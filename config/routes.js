@@ -318,7 +318,7 @@ module.exports.routes = {
     action: 'checkHandleExists'
   },
 
-  //This should get deprecated
+  //deprecated 7/3/14
   /*'get /company/update': {
     controller: 'CompanyController',
     action: 'update'
