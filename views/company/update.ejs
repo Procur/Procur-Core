@@ -6,6 +6,8 @@
         $( "#tabs li" ).removeClass( "ui-corner-top" ).addClass( "ui-corner-left" );
     });
 </script>
+<script src="../../assets/countries.js"></script>
+<script language="javascript">print_country("preferredSupplierLocation");</script>
 
 <style>
     .ui-tabs-vertical { width: 55em; }
@@ -111,7 +113,11 @@
             <h4>Descriptions</h4>
             <form action="/buyer/update/descriptions" method="post" id="buyerDescriptionsForm">
                 <div><input type="text" name="companyDescription" value="<%= buyer.companyDescription %>"></div>
-                <div>STATEMENTS OF RESPONSIBILITY</div>
+                <div><textarea name="environmentalSustainability" form="buyerDescriptionsForm"><%= buyer.environmentalSustainability %></textarea></div>
+                <div><textarea name="qualitySourcing" form="buyerDescriptionsForm"><%= buyer.qualitySourcing %></textarea></div>
+                <div><textarea name="workplaceSafety" form="buyerDescriptionsForm"><%= buyer.workplaceSafety %></textarea></div>
+                <div><textarea name="laborEducationTraining" form="buyerDescriptionsForm"><%= buyer.laborEducationTraining %></textarea></div>
+                <div><textarea name="reinvestment" form="buyerDescriptionsForm"><%= buyer.reinvestment %></textarea></div>
                 <div><input type="submit"></div>
             </form>
         </div>
@@ -126,7 +132,9 @@
                         <option value="<%= buyer.preferredSupplierLanguage %>" selected="selected"><%= buyer.preferredSupplierLanguage %></option>
                         <%- partial('../partials/edit-dropdowns/edit-pref-supplier-language') %>
                     </select></div>
-                <div><input type="text" name="preferredSupplierLocation" value="<%= buyer.preferredSupplierLocaion %>"></div>
+                <div><select name="preferredSupplierLocation" id="preferredSupplierLocation">
+                        <option>Preferred Supplier Location</option>
+                    </select></div>
                 <div><input type="submit"></div>
             </form>
         </div>
@@ -189,7 +197,11 @@
             <h4>Descriptions</h4>
             <form action="/supplier/update/descriptions" method="post" id="supplierDescriptionsForm">
                 <div><input type="text" name="companyDescription" value="<%= supplier.companyDescription %>"></div>
-                <div>Statement of responsibility?</div>
+                <div><textarea name="environmentalSustainability" form="supplierDescriptionsForm">Environmental Sustainability</textarea></div>
+                <div><textarea name="qualitySourcing" form="supplierDescriptionsForm">Quality Sourcing</textarea></div>
+                <div><textarea name="workplaceSafety" form="supplierDescriptionsForm">Workplace Safety</textarea></div>
+                <div><textarea name="laborEducationTraining" form="supplierDescriptionsForm">Labor Education Training</textarea></div>
+                <div><textarea name="reinvestment" form="supplierDescriptionsForm">Reinvestment</textarea></div>
                 <div><input type="submit"></div>
             </form>
         </div>
@@ -257,10 +269,11 @@
             });
 
             //DESCRIPTIONS
-            $("#descriptionsForm").submit(function(){
-                $.post($("#descriptionsForm").attr("action"), $("#descriptionsForm").serialize(), function(data){
+            $("#buyerDescriptionsForm").submit(function(){
+                $.post($("#buyerDescriptionsForm").attr("action"), $("#buyerDescriptionsForm").serialize(), function(data){
+                    alert(data);
                 });
-                alert($("#descriptionsForm").serialize());
+                alert($("#buyerDescriptionsForm").serialize());
                 return false;
             });
 

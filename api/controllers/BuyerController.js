@@ -205,8 +205,7 @@ module.exports = {
     var image = req.files.logo.path;
     var imageHelper = sails.config.imageUploadHelper;
     var imageExists = imageHelper.getFileSize(image);
-    var activeUser = req.session.passport.user,
-        p = req.params.all();
+    var activeUser = req.session.passport.user;
 
     User.findOne({ id: activeUser }, function (err, user) {
       if (err) { return res.redirect('/dashboard'); }
@@ -247,17 +246,113 @@ module.exports = {
 
   updateDescriptions: function (req, res) {
     var activeUser = req.session.passport.user,
-        p = req.params;
+        p = req.body;
+    User.findOne({ id: activeUser }, function(err, user){
+      if(err){ return res.redirect('/dashboard'); }
+      if(user !== undefined){
+        Company.findOne({ user: user.id }, function(err, company){
+          if(err){ return res.redirect('/dashboard'); }
+          if(company !== undefined){
+            console.log('company found');
+            Buyer.findOne({ company: company.id }, function(err, buyer){
+              if(err){ return res.redirect('/dashboard'); }
+              if(buyer !== undefined){
+                console.log('buyer found');
+                Buyer.update(buyer.id, {
+                  companyDescription: p.companyDescription,
+                  environmentalSustainability: p.environmentalSustainability,
+                  qualitySourcing: p.qualitySourcing,
+                  workplaceSafety: p.workplaceSafety,
+                  laborEducationTraining: p.laborEducationTraining,
+                  reinvestment: p.reinvestment
+                }, function(err, buyer){
+                  if(err){ return res.redirect('/company/update#descriptionsSupplier'); }
+                  if(buyer){
+                    return "success";
+                  }
+                  else {
+                    return "failed"
+                  }
+                });
+              }
+              else {
+                return res.redirect('/dashboard');
+              }
+            });
+          }
+          else {
+            return res.redirect('/dashboard');
+          }
+        });
+      }
+      else{
+        return res.redirect('/dashboard');
+      }
+    });
   },
 
   updatePreferences: function (req, res) {
     var activeUser = req.session.passport.user,
         p = req.params;
+    User.findOne({ id: activeUser }, function(err, user){
+      if(err){ return res.redirect('/dashboard'); }
+      if(user !== undefined){
+        Company.findOne({ user: user.id }, function(err, company){
+          if(err){ return res.redirect('/dashboard'); }
+          if(company !== undefined){
+            Buyer.findOne({ company: company.id }, function(err, buyer){
+              if(err){ return res.redirect('/dashboard'); }
+              if(buyer !== undefined){
+                Buyer.update(buyer,{
+
+                });
+              }
+              else {
+                return res.redirect('/dashboard');
+              }
+            });
+          }
+          else {
+            return res.redirect('/dashboard');
+          }
+        });
+      }
+      else{
+        return res.redirect('/dashboard');
+      }
+    });
   },
 
   updatePhotosAndDownloads: function (req, res) {
     var activeUser = req.session.passport.user,
         p = req.params;
+    User.findOne({ id: activeUser }, function(err, user){
+      if(err){ return res.redirect('/dashboard'); }
+      if(user !== undefined){
+        Company.findOne({ user: user.id }, function(err, company){
+          if(err){ return res.redirect('/dashboard'); }
+          if(company !== undefined){
+            Buyer.findOne({ company: company.id }, function(err, buyer){
+              if(err){ return res.redirect('/dashboard'); }
+              if(buyer !== undefined){
+                Buyer.update(buyer,{
+
+                });
+              }
+              else {
+                return res.redirect('/dashboard');
+              }
+            });
+          }
+          else {
+            return res.redirect('/dashboard');
+          }
+        });
+      }
+      else{
+        return res.redirect('/dashboard');
+      }
+    });p = req.params;
   },
 
   destroy: function (req, res) {
