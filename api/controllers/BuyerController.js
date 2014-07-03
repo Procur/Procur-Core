@@ -293,18 +293,30 @@ module.exports = {
 
   updatePreferences: function (req, res) {
     var activeUser = req.session.passport.user,
-        p = req.params;
+        p = req.body;
     User.findOne({ id: activeUser }, function(err, user){
       if(err){ return res.redirect('/dashboard'); }
       if(user !== undefined){
         Company.findOne({ user: user.id }, function(err, company){
           if(err){ return res.redirect('/dashboard'); }
           if(company !== undefined){
+            console.log('company found');
             Buyer.findOne({ company: company.id }, function(err, buyer){
               if(err){ return res.redirect('/dashboard'); }
               if(buyer !== undefined){
-                Buyer.update(buyer,{
-
+                console.log('buyer found');
+                Buyer.update(buyer.id, {
+                  preferredSupplierType: p.preferredSupplierType,
+                  preferredSupplierLanguage: p.preferredSupplierLanguage,
+                  preferredSupplierLocation: p.preferredSupplierLocation
+                }, function(err, buyer){
+                  if(err){ console.log(err)} //return res.redirect('/company/update#descriptionsSupplier'); }
+                  if(buyer){
+                    return "success";
+                  }
+                  else {
+                    return "failed"
+                  }
                 });
               }
               else {

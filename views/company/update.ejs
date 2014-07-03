@@ -124,7 +124,7 @@
         <div id="preferencesBuyer">
             <h4>Preferences</h4>
             <form action="/buyer/update/preferences" method="post" id="buyerPreferencesForm">
-                <div><select name="preferredBuyerType">
+                <div><select name="preferredSupplierType">
                         <option value="<%= buyer.preferredSupplierType %>" selected="selected"><%= buyer.preferredSupplierType %></option>
                         <%- partial('../partials/edit-dropdowns/edit-pref-supplier-type') %>
                     </select></div>
@@ -262,6 +262,12 @@
             //BUYER INFORMATION
             $("#buyerInformationForm").submit(function(){
                 $.post($("#buyerInformationForm").attr("action"), $("#buyerInformationForm").serialize(), function(data){
+                    if (data == 'success') {
+                        alert('Success');
+                    }
+                    else {
+                        alert('failed');
+                    }
                 });
                 console.log($("#buyerInformationForm").serialize());
                 return false;
@@ -270,17 +276,28 @@
             //DESCRIPTIONS
             $("#buyerDescriptionsForm").submit(function(){
                 $.post($("#buyerDescriptionsForm").attr("action"), $("#buyerDescriptionsForm").serialize(), function(data){
-                    alert(data);
+                    if (data == 'success') {
+                        alert('Success');
+                    }
+                    else {
+                        alert('failed');
+                    }
                 });
                 alert($("#buyerDescriptionsForm").serialize());
                 return false;
             });
 
-            //LOCATIONS AND FACILITIES
-            $("#locationsForm").submit(function(){
-                $.post($("#locationsForm").attr("action"), $("#locationsForm").serialize(), function(data){
+            //PREFERENCES
+            $("#buyerPreferencesForm").submit(function(){
+                $.post($("#buyerPreferencesForm").attr("action"), $("#buyerPreferencesForm").serialize(), function(data){
+                    if (data == 'success') {
+                        alert('Success');
+                    }
+                    else {
+                        alert('failed');
+                    }
                 });
-                console.log($("#locationsForm").serialize());
+                console.log($("#buyerPreferencesForm").serialize());
                 return false;
             });
 
@@ -308,6 +325,12 @@
             //SUPPLIER INFORMATION
             $("#buyerInformationForm").submit(function () {
                 $.post($("#supplierInformationForm").attr("action"), $("#supplierInformationForm").serialize(), function (data) {
+                    if (data == 'success') {
+                        alert('Success');
+                    }
+                    else {
+                        alert('failed');
+                    }
                 });
                 console.log($("#supplierInformationForm").serialize());
                 return false;
@@ -316,6 +339,12 @@
             //SUPPLIER INFORMATION
             $("#supplierProductionDetailsForm").submit(function () {
                 $.post($("#supplierProductionDetailsForm").attr("action"), $("#supplierProductionDetailsForm").serialize(), function (data) {
+                    if (data == 'success') {
+                        alert('Success');
+                    }
+                    else {
+                        alert('failed');
+                    }
                 });
                 console.log($("#supplierProductionDetailsForm").serialize());
                 return false;
@@ -324,6 +353,12 @@
             //SUPPLIER DESCRIPTIONS
             $("#supplierDescriptionsForm").submit(function () {
                 $.post($("#supplierDescriptionsForm").attr("action"), $("#supplierDescriptionsForm").serialize(), function (data) {
+                    if (data == 'success') {
+                        alert('Success');
+                    }
+                    else {
+                        alert('failed');
+                    }
                 });
                 console.log($("#supplierDescriptionsForm").serialize());
                 return false;
@@ -332,6 +367,12 @@
             //SUPPLIER PREFERENCES
             $("#supplierPreferencesForm").submit(function () {
                 $.post($("#supplierPreferencesForm").attr("action"), $("#supplierPreferencesForm").serialize(), function (data) {
+                    if (data == 'success') {
+                        alert('Success');
+                    }
+                    else {
+                        alert('failed');
+                    }
                 });
                 console.log($("#supplierPreferencesForm").serialize());
                 return false;
@@ -340,6 +381,12 @@
             //SUPPLIER PHOTOS & DOWNLOADS
             $("#supplierPreferencesForm").submit(function () {
                 $.post($("#supplierPhotosAndDownloadsForm").attr("action"), $("#supplierPhotosAndDownloadsForm").serialize(), function (data) {
+                    if (data == 'success') {
+                        alert('Success');
+                    }
+                    else {
+                        alert('failed');
+                    }
                 });
                 console.log($("#supplierPhotosAndDownloadsForm").serialize());
                 return false;
