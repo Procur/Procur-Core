@@ -95,7 +95,6 @@
   color: #7f7f7f;
 }
 
-
 /* Pricing Comparison Section */
 
 .pricingComparison h1 {
@@ -111,7 +110,7 @@
   font-size: 22px;
 }
 
-#pricing .memberTitle {
+#pricing .basicMember .memberTitle {
   text-align: center;
   font-family: 'Montserrat', sans-serif;
   color: white;
@@ -123,7 +122,7 @@
   padding: 12px;
 }
 
-#pricing .memberPrice {
+#pricing .basicMember .memberPrice {
   text-align: center;
   font-family: 'Open Sans', sans-serif;
   color: #333132;
@@ -133,7 +132,7 @@
   padding: 20px 0px;
 }
 
-#pricing .memberDetails {
+#pricing .basicMember .memberDetails {
   text-align: center;
   font-family: 'Montserrat', sans-serif;
   color: #7b7c79;
@@ -143,6 +142,37 @@
   padding: 10px 20px 20px;
 }
 
+#pricing .premiumMember .memberTitle {
+  text-align: center;
+  font-family: 'Montserrat', sans-serif;
+  color: white;
+  font-weight: 300;
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  background: #2da163;
+  padding: 12px;
+}
+
+#pricing .premiumMember .memberPrice {
+  text-align: center;
+  font-family: 'Open Sans', sans-serif;
+  color: #333132;
+  font-weight: 300;
+  font-size: 36px;
+  background: #e8e7e3;
+  padding: 20px 0px;
+}
+
+#pricing .premiumMember .memberDetails {
+  text-align: center;
+  font-family: 'Montserrat', sans-serif;
+  color: #7b7c79;
+  font-weight: 300;
+  font-size: 10px;
+  background: #e8e7e3;
+  padding: 10px 20px 20px;
+}
 
 #pricing .sectionTitle {
   background: #fcab27;
@@ -220,6 +250,33 @@
 #pricing .spacerRow .checkColumn {
   padding: 0px;
   height: 10px;
+}
+
+#pricing .startedRow .checkColumn {
+  padding: 0px;
+}
+
+#pricing .startedRow .checkColumn p {
+  font-family: 'Montserrat', sans-serif;
+  padding: 20px 20px 10px;
+}
+
+#pricing .startedRow .checkColumn .basicComingSoon {
+  background: #7b7c79;
+  padding: 8px;
+  font-family: 'Montserrat', sans-serif;
+  color: white;
+  font-size: 12px;
+  letter-spacing: 0.06em;
+}
+
+#pricing .startedRow .checkColumn .premiumComingSoon {
+  background: #2da163;
+  padding: 8px;
+  font-family: 'Montserrat', sans-serif;
+  color: white;
+  font-size: 12px;
+  letter-spacing: 0.06em;
 }
 
 #pricing .commonQuestions h3 {
