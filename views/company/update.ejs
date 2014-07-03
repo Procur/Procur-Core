@@ -1,347 +1,251 @@
 <%- partial('../partials/dashboard-header.ejs') %>
-
-<script>
-    $(document).ready(function() {
-        $("#tabs").tabs().addClass("ui-tabs-vertical ui-helper-clearfix");
-        $("#tabs li").removeClass("ui-corner-top").addClass("ui-corner-left");
-        var area = " | Update Company Profile";
-        var first = $("#siteTitle").text();
-        $("#siteTitle").text(first + area);
-    });
-</script>
-<script src="../../assets/countries.js"></script>
-<script language="javascript">print_country("preferredSupplierLocation");</script>
-
-<style>
-    .ui-tabs-vertical { width: 55em; }
-    .ui-tabs-vertical .ui-tabs-nav { padding: .2em .1em .2em .2em; float: left; width: 12em; }
-    .ui-tabs-vertical .ui-tabs-nav li { clear: left; width: 100%; border-bottom-width: 1px !important; border-right-width: 0 !important; margin: 0 -1px .2em 0; }
-    .ui-tabs-vertical .ui-tabs-nav li a { display:block; }
-    .ui-tabs-vertical .ui-tabs-nav li.ui-tabs-active { padding-bottom: 0; padding-right: .1em; border-right-width: 1px; border-right-width: 1px; }
-    .ui-tabs-vertical .ui-tabs-panel { padding: 1em; float: right; width: 40em;}
-</style>
-
-<div id="tabs">
-    <ul>
-        <li><a href="#companyDetails">Company Details</a></li>
-        <% if(user.activeMode == 'buyer') { %>
-            <li><a href="#buyerInformation">Buyer Information</a></li>
-            <li><a href="#descriptionsBuyer">Descriptions</a></li>
-            <li><a href="#preferencesBuyer">Preferences</a></li>
-            <li><a href="#socialOutletsBuyer">Social Outlets</a></li>
-        <% } %>
-
-        <% if(user.activeMode == 'supplier'){ %>
-            <li><a href="#supplierInformation">Supplier Information</a></li>
-            <li><a href="#productionDetails">Production Details</a></li>
-            <li><a href="#descriptionsSupplier">Descriptions</a></li>
-            <li><a href="#preferencesSupplier">Preferences</a></li>
-            <li><a href="#socialOutletsSupplier">Social Outlets</a></li>
-        <% } %>
-
-    </ul>
-    <div id="username">
-        <h4>Your Company Username</h4>
-        <p>procur.com/companies/<strong><%= company.handle %>  </strong><a href="#">Edit</a></p>
-    </div>
-
-
-    <div id="companyDetails">
-        <h4>Basic Company Details</h4>
-        <form action="/company/update/basicCompanyDetails" method="post" id="companyDetailsForm">
-            <div><input type="text" name="name" value="<%= company.name %>"></div>
-            <div><input type="text" name="phoneNumberCountryCode" value="<%= company.phoneNumberCountryCode %>"></div>
-            <div><input type="text" name="phoneNumber" value="<%= company.phoneNumber %>"></div>
-            <div><input type="text" name="phoneExtension" value="<%= company.phoneExtension %>"></div>
-            <br />
-            <div><input type="text" name="faxCountryCode" value="<%= company.faxCountryCode %>"></div>
-            <div><input type="text" name="faxNumber" value="<%= company.faxNumber %>"></div>
-            <div><input type="text" name="faxExtension" value="<%= company.faxExtension %>"></div>
-            <br />
-            <div><input type="text" name="email" value="<%= company.email %>"></div>
-            <div><input type="text" name="website" value="<%= company.website %>"></div>
-            <br />
-            <select name="companyIndustry">
-                <option value="<%= company.industry %>" selected="selected"><%= company.industry %></option>
-                <%- partial('../partials/edit-dropdowns/edit-industry') %>
-            </select>
-            <div><input type="text" name="hqAddressLine1" value="<%= companyHq.addressLine1 %>"></div>
-            <div><input type="text" name="hqAddressLine2" value="<%= companyHq.addressLine2 %>"></div>
-            <div><input type="text" name="hqCountry" value="<%= companyHq.country %>"></div>
-            <div><input type="text" name="hqProvince" value="<%= companyHq.province %>"></div>
-            <div><input type="text" name="hqPostalCode" value="<%= companyHq.postalCode %>"></div>
-            <br />
-            <div>
-                <select name="employeeCount">
-                    <option value="<%= company.employeeCount %>" selected="selected"><%= company.employeeCount %></option>
-                    <%- partial('../partials/edit-dropdowns/edit-total-employees') %>
-                </select>
-            </div>
-            <div><input type="submit"></div>
-        </form>
-    </div>
-
-    <!-- ACTIVE MODE BUYER  -->
-    <% if (user.activeMode == 'buyer') { %>
-        <div id="buyerInformation">
-            <h4>Buyer Information</h4>
-            <div><img src="<%= buyer.logoUrl %>"></div>
-            <form id="buyerLogoForm" action="/buyer/update/logo" method="post" enctype="multipart/form-data">
-                <input type="file" name="logo" accept="image/*"/>
-                <input type="submit">
-            </form>
-            <br />
-            <form action="/buyer/update/information" method="post" id="buyerInformationForm">
-                <div><input type="text" name="dbaName" value="<%= buyer.dbaName %>"></div>
-
-                <select name="language">
-                    <option value="<%= buyer.language %>" selected="selected"><%= buyer.language %></option>
-                    <%- partial('../partials/edit-dropdowns/edit-language') %>
-                </select>
-                <div><input type="text" name="acceptedCurrency" value="<%= buyer.acceptedCurrency %>"></div>
-                <div><input type="text" name="acceptedPaymentTerms" value="<%= buyer.acceptedPaymentTerms %>"></div>
-                <div><input type="text" name="acceptedDeliveryTerms" value="<%= buyer.acceptedDeliveryTerms %>"></div>
-                <div><input type="text" name="typeOfCompany" value="<%= buyer.typeOfCompany %>"></div>
-                <div><input type="text" name="contactName" value="<%= buyer.contactName %>"></div>
-                <div><input type="text" name="contactPosition" value="<%= buyer.contactPosition %>"></div>
-                <div><input type="text" name="contactEmail" value="<%= buyer.contactEmail %>"></div>
-                <div><input type="text" name="dunsNumber" value="<%= buyer.dunsNumber %>"></div>
-                <div>Product CATEGORIES</div>
-                <div>OTHER LOCATIONS</div>
-                <div>NEAREST PORT</div>
-                <div><input type="submit"></div>
-            </form>
-        </div>
-        <div id="descriptionsBuyer">
-            <h4>Descriptions</h4>
-            <form action="/buyer/update/descriptions" method="post" id="buyerDescriptionsForm">
-                <div><input type="text" name="companyDescription" value="<%= buyer.companyDescription %>"></div>
-                <div><textarea name="environmentalSustainability" form="buyerDescriptionsForm"><%= buyer.environmentalSustainability %></textarea></div>
-                <div><textarea name="qualitySourcing" form="buyerDescriptionsForm"><%= buyer.qualitySourcing %></textarea></div>
-                <div><textarea name="workplaceSafety" form="buyerDescriptionsForm"><%= buyer.workplaceSafety %></textarea></div>
-                <div><textarea name="laborEducationTraining" form="buyerDescriptionsForm"><%= buyer.laborEducationTraining %></textarea></div>
-                <div><textarea name="reinvestment" form="buyerDescriptionsForm"><%= buyer.reinvestment %></textarea></div>
-                <div><input type="submit"></div>
-            </form>
-        </div>
-        <div id="preferencesBuyer">
-            <h4>Preferences</h4>
-            <form action="/buyer/update/preferences" method="post" id="buyerPreferencesForm">
-                <div><select name="preferredSupplierType">
-                        <option value="<%= buyer.preferredSupplierType %>" selected="selected"><%= buyer.preferredSupplierType %></option>
-                        <%- partial('../partials/edit-dropdowns/edit-pref-supplier-type') %>
-                    </select></div>
-                <div><select name="preferredSupplierLanguage">
-                        <option value="<%= buyer.preferredSupplierLanguage %>" selected="selected"><%= buyer.preferredSupplierLanguage %></option>
-                        <%- partial('../partials/edit-dropdowns/edit-pref-supplier-language') %>
-                    </select></div>
-                <div><select name="preferredSupplierLocation" id="preferredSupplierLocation">
-                        <option>Preferred Supplier Location</option>
-                    </select></div>
-                <div><input type="submit"></div>
-            </form>
-        </div>
-        <div id="socialOutletsBuyer">
-            <h4>Social Outlets</h4>
-            <form action="/buyer/update/socialoutlets" method="post" id="buyerSocialOutletsForm">
-                <div><input type="text" name="facebook" value="<%= buyer.facebook %>"></div>
-                <div><input type="text" name="twitter" value="<%= buyer.twitter %>"></div>
-                <div><input type="text" name="google" value="<%= buyer.google %>"></div>
-                <div><input type="text" name="linkedin" value="<%= buyer.linkedin %>"></div>
-                <div><input type="text" name="pinterest" value="<%= buyer.pinterest %>"></div>
-                <div><input type="text" name="instagram" value="<%= buyer.instagram %>"></div>
-                <div><input type="text" name="tumblr" value="<%= buyer.tumblr %>"></div>
-                <div><input type="submit"></div>
-            </form>
-        </div>
-    <% } %>
-
-    <!-- ACTIVE MODE SUPPLIER  -->
-    <% if (user.activeMode == 'supplier') { %>
-        <div id="supplierInformation">
-            <h4>Supplier Information</h4>
-            <form action="/supplier/update/information" method="post" id="supplierInformationForm">
-                <div><input type="text" name="dba" value="<%= supplier.dbaName %>"></div>
-                <div><img src="<%= supplier.logoUrl %>"> ADD UPDATE FUNCTIONALITY</div>
-                <select name="language">
-                    <option value="<%= supplier.language %>" selected="selected"><%= supplier.language %></option>
-                    <%- partial('../partials/edit-dropdowns/edit-language') %>
-                </select>
-                <div><input type="text" name="acceptedCurrencies" value="<%= supplier.acceptedCurrency[0] %>"></div>
-                <div><input type="text" name="acceptedPaymentTerms" value="<%= supplier.acceptedPaymentTerms %>"></div>
-                <div><input type="text" name="acceptedDeliveryTerms" value="<%= supplier.acceptedDeliveryTerms %>"></div>
-                <div><input type="text" name="typeOfCompany" value="<%= supplier.typeOfCompany %>"></div>
-                <div><input type="text" name="privateLabeler" value="<%= supplier.privateLabeler %>"></div>
-                <div><input type="text" name="contactName" value="<%= supplier.contactName %>"></div>
-                <div><input type="text" name="contactPosition" value="<%= supplier.contactPosition %>"></div>
-                <div><input type="text" name="contactEmail" value="<%= supplier.contactEmail %>"></div>
-                <div><input type="text" name="gsaApprovedSupplier" value="<%= supplier.gsaApprovedSupplier %>"></div>
-                <div><input type="text" name="dunsNumber" value="<%= supplier.dunsNumber %>"></div>
-                <div><input type="text" name="cageCode" value="<%= supplier.cageCode %>"></div>
-                <div><input type="submit"></div>
-            </form>
-        </div>
-        <div id="productionDetails">
-            <h4>Production Details</h4>
-            <form action="/supplier/update/productionDetails" method="post" id="supplierProductionDetailsForm">
-                <div><input type="text" name="annualSalesValue" value="<%= supplier.annualSalesValue %>"></div>
-                <div><input type="text" name="totalFactorySize" value="<%= supplier.totalFactorySize %>"></div>
-                <div><input type="text" name="totalQCStaff" value="<%= supplier.totalQCStaff %>"></div>
-                <div>ADD OTHER LOCATIONS</div>
-                <div>ADD NEAREST PORT</div>
-                <div><input type="text" name="primaryProductSpecialty" value="<%= supplier.primaryProductSpecialty %>"></div>
-                <div><input type="text" name="companyCapabilities" value="<%= supplier.companyCapabilities %>"></div>
-                <div><input type="text" name="annualSalesValue" value="<%= supplier.annualSalesValue %>"></div>
-                <div><input type="submit"></div>
-            </form>
-        </div>
-        <div id="descriptionsSupplier">
-            <h4>Descriptions</h4>
-            <form action="/supplier/update/descriptions" method="post" id="supplierDescriptionsForm">
-                <div><input type="text" name="companyDescription" value="<%= supplier.companyDescription %>"></div>
-                <div><textarea name="environmentalSustainability" form="supplierDescriptionsForm">Environmental Sustainability</textarea></div>
-                <div><textarea name="qualitySourcing" form="supplierDescriptionsForm">Quality Sourcing</textarea></div>
-                <div><textarea name="workplaceSafety" form="supplierDescriptionsForm">Workplace Safety</textarea></div>
-                <div><textarea name="laborEducationTraining" form="supplierDescriptionsForm">Labor Education Training</textarea></div>
-                <div><textarea name="reinvestment" form="supplierDescriptionsForm">Reinvestment</textarea></div>
-                <div><input type="submit"></div>
-            </form>
-        </div>
-        <div id="preferencesSupplier">
-            <h4>Preferences</h4>
-            <form action="/supplier/update/preferences" method="post" id="supplierPreferencesForm">
-                <div><select name="preferredBuyerType">
-                    <option value="<%= supplier.preferredBuyerType %>" selected="selected"><%= supplier.preferredBuyerType %></option>
-                    <%- partial('../partials/edit-dropdowns/edit-pref-buyer-type') %>
-                </select></div>
-                <div><select name="preferredBuyerLanguage">
-                    <option value="<%= supplier.preferredBuyerLanguage %>" selected="selected"><%= supplier.preferredBuyerLanguage %></option>
-                    <%- partial('../partials/edit-dropdowns/edit-pref-buyer-language') %>
-                </select></div>
-                <div><input type="text" name="preferredBuyerLocation" value="<%= supplier.preferredBuyerLocaion %>"></div>
-                <div><input type="submit"></div>
-            </form>
-        </div>
-        <div id="socialOutletsSupplier">
-            <h4>Social Outlets</h4>
-            <form action="/supplier/update/socialoutlets" method="post" id="supplierSocialOutletsForm">
-                <div><input type="text" name="facebook" value="<%= supplier.facebook %>"></div>
-                <div><input type="text" name="twitter" value="<%= supplier.twitter %>"></div>
-                <div><input type="text" name="google" value="<%= supplier.google %>"></div>
-                <div><input type="text" name="linkedin" value="<%= supplier.linkedin %>"></div>
-                <div><input type="text" name="pinterest" value="<%= supplier.pinterest %>"></div>
-                <div><input type="text" name="instagram" value="<%= supplier.instagram %>"></div>
-                <div><input type="text" name="tumblr" value="<%= supplier.tumblr %>"></div>
-                <div><input type="text" name="google" value="<%= supplier.google %>"></div>
-                <div><input type="submit"></div>
-            </form>
-        </div>
-    <% } %>
-</div>
-
-<script>
-    $(document).ready(function() {
-
-        //COMPANY DETAILS
-        $("#companyDetailsForm").submit(function () {
-            $.post($("#companyDetailsForm").attr("action"), $("#companyDetailsForm").serialize(), function (data) {
-                if (data == 'success') {
-                    alert('Success');
-                }
-                else {
-                    alert('failed');
-                }
-            });
-            //console.log($("#companyDetailsForm").serialize());
-            return false;
-        });
-    });
-</script>
-
-<!-- BUYER MODE AJAX -->
-<% if(user.activeMode == 'buyer') { %>
+<div class="container">
     <script>
         $(document).ready(function() {
-            //BUYER INFORMATION
-            $("#buyerInformationForm").submit(function(){
-                $.post($("#buyerInformationForm").attr("action"), $("#buyerInformationForm").serialize(), function(data){
-                    if (data == 'success') {
-                        alert('Success');
-                    }
-                    else {
-                        alert('failed');
-                    }
-                });
-                console.log($("#buyerInformationForm").serialize());
-                return false;
-            });
-
-            //DESCRIPTIONS
-            $("#buyerDescriptionsForm").submit(function(){
-                $.post($("#buyerDescriptionsForm").attr("action"), $("#buyerDescriptionsForm").serialize(), function(data){
-                    if (data == 'success') {
-                        alert('Success');
-                    }
-                    else {
-                        alert('failed');
-                    }
-                });
-                alert($("#buyerDescriptionsForm").serialize());
-                return false;
-            });
-
-            //PREFERENCES
-            $("#buyerPreferencesForm").submit(function(){
-                $.post($("#buyerPreferencesForm").attr("action"), $("#buyerPreferencesForm").serialize(), function(data){
-                    if (data == 'success') {
-                        alert('Success');
-                    }
-                    else {
-                        alert('failed');
-                    }
-                });
-                console.log($("#buyerPreferencesForm").serialize());
-                return false;
-            });
-
-            //SOCIAL OUTLETS
-            $("#buyerSocialOutletsForm").submit(function(){
-                $.post($("#buyerSocialOutletsForm").attr("action"), $("#buyerSocialOutletsForm").serialize(), function(data){
-                    if (data == 'success') {
-                        alert('Success');
-                    }
-                    else {
-                        alert('failed');
-                    }
-                });
-                console.log($("#buyerSocialOutletsForm").serialize());
-                return false;
-            });
-        })
+            $("#tabs").tabs().addClass("ui-tabs-vertical ui-helper-clearfix");
+            $("#tabs li").removeClass("ui-corner-top").addClass("ui-corner-left");
+            var area = " | Update Company Profile";
+            var first = $("#siteTitle").text();
+            $("#siteTitle").text(first + area);
+        });
     </script>
-<% } %>
+    <script src="../../assets/countries.js">
+        print_country("preferredSupplierLocation");
+    </script>
+    
+    <style>
+        .ui-tabs-vertical { width: 55em; }
+        .ui-tabs-vertical .ui-tabs-nav { padding: .2em .1em .2em .2em; float: left; width: 12em; }
+        .ui-tabs-vertical .ui-tabs-nav li { clear: left; width: 100%; border-bottom-width: 1px !important; border-right-width: 0 !important; margin: 0 -1px .2em 0; }
+        .ui-tabs-vertical .ui-tabs-nav li a { display:block; }
+        .ui-tabs-vertical .ui-tabs-nav li.ui-tabs-active { padding-bottom: 0; padding-right: .1em; border-right-width: 1px; border-right-width: 1px; }
+        .ui-tabs-vertical .ui-tabs-panel { padding: 1em; float: right; width: 40em;}
+    </style>
 
-<!--SUPPLIER MODE AJAX -->
-<% if(user.activeMode == 'supplier') { %>
+    <div id="tabs">
+        <ul>
+            <li><a href="#companyDetails">Company Details</a></li>
+            <% if(user.activeMode == 'buyer') { %>
+                <li><a href="#buyerInformation">Buyer Information</a></li>
+                <li><a href="#descriptionsBuyer">Descriptions</a></li>
+                <li><a href="#preferencesBuyer">Preferences</a></li>
+                <li><a href="#socialOutletsBuyer">Social Outlets</a></li>
+            <% } %>
+
+            <% if(user.activeMode == 'supplier'){ %>
+                <li><a href="#supplierInformation">Supplier Information</a></li>
+                <li><a href="#productionDetails">Production Details</a></li>
+                <li><a href="#descriptionsSupplier">Descriptions</a></li>
+                <li><a href="#preferencesSupplier">Preferences</a></li>
+                <li><a href="#socialOutletsSupplier">Social Outlets</a></li>
+            <% } %>
+
+        </ul>
+        <div id="username">
+            <h4>Your Company Username</h4>
+            <p>procur.com/companies/<strong><%= company.handle %>  </strong><a href="#">Edit</a></p>
+        </div>
+
+
+        <div id="companyDetails">
+            <h4>Basic Company Details</h4>
+            <form action="/company/update/basicCompanyDetails" method="post" id="companyDetailsForm">
+                <div><input type="text" name="name" value="<%= company.name %>"></div>
+                <div><input type="text" name="phoneNumberCountryCode" value="<%= company.phoneNumberCountryCode %>"></div>
+                <div><input type="text" name="phoneNumber" value="<%= company.phoneNumber %>"></div>
+                <div><input type="text" name="phoneExtension" value="<%= company.phoneExtension %>"></div>
+                <br />
+                <div><input type="text" name="faxCountryCode" value="<%= company.faxCountryCode %>"></div>
+                <div><input type="text" name="faxNumber" value="<%= company.faxNumber %>"></div>
+                <div><input type="text" name="faxExtension" value="<%= company.faxExtension %>"></div>
+                <br />
+                <div><input type="text" name="email" value="<%= company.email %>"></div>
+                <div><input type="text" name="website" value="<%= company.website %>"></div>
+                <br />
+                <select name="companyIndustry">
+                    <option value="<%= company.industry %>" selected="selected"><%= company.industry %></option>
+                    <%- partial('../partials/edit-dropdowns/edit-industry') %>
+                </select>
+                <div><input type="text" name="hqAddressLine1" value="<%= companyHq.addressLine1 %>"></div>
+                <div><input type="text" name="hqAddressLine2" value="<%= companyHq.addressLine2 %>"></div>
+                <div><input type="text" name="hqCountry" value="<%= companyHq.country %>"></div>
+                <div><input type="text" name="hqProvince" value="<%= companyHq.province %>"></div>
+                <div><input type="text" name="hqPostalCode" value="<%= companyHq.postalCode %>"></div>
+                <br />
+                <div>
+                    <select name="employeeCount">
+                        <option value="<%= company.employeeCount %>" selected="selected"><%= company.employeeCount %></option>
+                        <%- partial('../partials/edit-dropdowns/edit-total-employees') %>
+                    </select>
+                </div>
+                <div><input type="submit"></div>
+            </form>
+        </div>
+
+        <!-- ACTIVE MODE BUYER  -->
+        <% if (user.activeMode == 'buyer') { %>
+            <div id="buyerInformation">
+                <h4>Buyer Information</h4>
+                <div><img src="<%= buyer.logoUrl %>"></div>
+                <form id="buyerLogoForm" action="/buyer/update/logo" method="post" enctype="multipart/form-data">
+                    <input type="file" name="logo" accept="image/*"/>
+                    <input type="submit">
+                </form>
+                <br />
+                <form action="/buyer/update/information" method="post" id="buyerInformationForm">
+                    <div><input type="text" name="dbaName" value="<%= buyer.dbaName %>"></div>
+
+                    <select name="language">
+                        <option value="<%= buyer.language %>" selected="selected"><%= buyer.language %></option>
+                        <%- partial('../partials/edit-dropdowns/edit-language') %>
+                    </select>
+                    <div><input type="text" name="acceptedCurrency" value="<%= buyer.acceptedCurrency %>"></div>
+                    <div><input type="text" name="acceptedPaymentTerms" value="<%= buyer.acceptedPaymentTerms %>"></div>
+                    <div><input type="text" name="acceptedDeliveryTerms" value="<%= buyer.acceptedDeliveryTerms %>"></div>
+                    <div><input type="text" name="typeOfCompany" value="<%= buyer.typeOfCompany %>"></div>
+                    <div><input type="text" name="contactName" value="<%= buyer.contactName %>"></div>
+                    <div><input type="text" name="contactPosition" value="<%= buyer.contactPosition %>"></div>
+                    <div><input type="text" name="contactEmail" value="<%= buyer.contactEmail %>"></div>
+                    <div><input type="text" name="dunsNumber" value="<%= buyer.dunsNumber %>"></div>
+                    <div>Product CATEGORIES</div>
+                    <div>OTHER LOCATIONS</div>
+                    <div>NEAREST PORT</div>
+                    <div><input type="submit"></div>
+                </form>
+            </div>
+            <div id="descriptionsBuyer">
+                <h4>Descriptions</h4>
+                <form action="/buyer/update/descriptions" method="post" id="buyerDescriptionsForm">
+                    <div><input type="text" name="companyDescription" value="<%= buyer.companyDescription %>"></div>
+                    <div><textarea name="environmentalSustainability" form="buyerDescriptionsForm"><%= buyer.environmentalSustainability %></textarea></div>
+                    <div><textarea name="qualitySourcing" form="buyerDescriptionsForm"><%= buyer.qualitySourcing %></textarea></div>
+                    <div><textarea name="workplaceSafety" form="buyerDescriptionsForm"><%= buyer.workplaceSafety %></textarea></div>
+                    <div><textarea name="laborEducationTraining" form="buyerDescriptionsForm"><%= buyer.laborEducationTraining %></textarea></div>
+                    <div><textarea name="reinvestment" form="buyerDescriptionsForm"><%= buyer.reinvestment %></textarea></div>
+                    <div><input type="submit"></div>
+                </form>
+            </div>
+            <div id="preferencesBuyer">
+                <h4>Preferences</h4>
+                <form action="/buyer/update/preferences" method="post" id="buyerPreferencesForm">
+                    <div><select name="preferredSupplierType">
+                            <option value="<%= buyer.preferredSupplierType %>" selected="selected"><%= buyer.preferredSupplierType %></option>
+                            <%- partial('../partials/edit-dropdowns/edit-pref-supplier-type') %>
+                        </select></div>
+                    <div><select name="preferredSupplierLanguage">
+                            <option value="<%= buyer.preferredSupplierLanguage %>" selected="selected"><%= buyer.preferredSupplierLanguage %></option>
+                            <%- partial('../partials/edit-dropdowns/edit-pref-supplier-language') %>
+                        </select></div>
+                    <div><select name="preferredSupplierLocation" id="preferredSupplierLocation">
+                            <option>Preferred Supplier Location</option>
+                        </select></div>
+                    <div><input type="submit"></div>
+                </form>
+            </div>
+            <div id="socialOutletsBuyer">
+                <h4>Social Outlets</h4>
+                <form action="/buyer/update/socialoutlets" method="post" id="buyerSocialOutletsForm">
+                    <div><input type="text" name="facebook" value="<%= buyer.facebook %>"></div>
+                    <div><input type="text" name="twitter" value="<%= buyer.twitter %>"></div>
+                    <div><input type="text" name="google" value="<%= buyer.google %>"></div>
+                    <div><input type="text" name="linkedin" value="<%= buyer.linkedin %>"></div>
+                    <div><input type="text" name="pinterest" value="<%= buyer.pinterest %>"></div>
+                    <div><input type="text" name="instagram" value="<%= buyer.instagram %>"></div>
+                    <div><input type="text" name="tumblr" value="<%= buyer.tumblr %>"></div>
+                    <div><input type="submit"></div>
+                </form>
+            </div>
+        <% } %>
+
+        <!-- ACTIVE MODE SUPPLIER  -->
+        <% if (user.activeMode == 'supplier') { %>
+            <div id="supplierInformation">
+                <h4>Supplier Information</h4>
+                <form action="/supplier/update/information" method="post" id="supplierInformationForm">
+                    <div><input type="text" name="dba" value="<%= supplier.dbaName %>"></div>
+                    <div><img src="<%= supplier.logoUrl %>"> ADD UPDATE FUNCTIONALITY</div>
+                    <select name="language">
+                        <option value="<%= supplier.language %>" selected="selected"><%= supplier.language %></option>
+                        <%- partial('../partials/edit-dropdowns/edit-language') %>
+                    </select>
+                    <div><input type="text" name="acceptedCurrencies" value="<%= supplier.acceptedCurrency[0] %>"></div>
+                    <div><input type="text" name="acceptedPaymentTerms" value="<%= supplier.acceptedPaymentTerms %>"></div>
+                    <div><input type="text" name="acceptedDeliveryTerms" value="<%= supplier.acceptedDeliveryTerms %>"></div>
+                    <div><input type="text" name="typeOfCompany" value="<%= supplier.typeOfCompany %>"></div>
+                    <div><input type="text" name="privateLabeler" value="<%= supplier.privateLabeler %>"></div>
+                    <div><input type="text" name="contactName" value="<%= supplier.contactName %>"></div>
+                    <div><input type="text" name="contactPosition" value="<%= supplier.contactPosition %>"></div>
+                    <div><input type="text" name="contactEmail" value="<%= supplier.contactEmail %>"></div>
+                    <div><input type="text" name="gsaApprovedSupplier" value="<%= supplier.gsaApprovedSupplier %>"></div>
+                    <div><input type="text" name="dunsNumber" value="<%= supplier.dunsNumber %>"></div>
+                    <div><input type="text" name="cageCode" value="<%= supplier.cageCode %>"></div>
+                    <div><input type="submit"></div>
+                </form>
+            </div>
+            <div id="productionDetails">
+                <h4>Production Details</h4>
+                <form action="/supplier/update/productionDetails" method="post" id="supplierProductionDetailsForm">
+                    <div><input type="text" name="annualSalesValue" value="<%= supplier.annualSalesValue %>"></div>
+                    <div><input type="text" name="totalFactorySize" value="<%= supplier.totalFactorySize %>"></div>
+                    <div><input type="text" name="totalQCStaff" value="<%= supplier.totalQCStaff %>"></div>
+                    <div>ADD OTHER LOCATIONS</div>
+                    <div>ADD NEAREST PORT</div>
+                    <div><input type="text" name="primaryProductSpecialty" value="<%= supplier.primaryProductSpecialty %>"></div>
+                    <div><input type="text" name="companyCapabilities" value="<%= supplier.companyCapabilities %>"></div>
+                    <div><input type="text" name="annualSalesValue" value="<%= supplier.annualSalesValue %>"></div>
+                    <div><input type="submit"></div>
+                </form>
+            </div>
+            <div id="descriptionsSupplier">
+                <h4>Descriptions</h4>
+                <form action="/supplier/update/descriptions" method="post" id="supplierDescriptionsForm">
+                    <div><input type="text" name="companyDescription" value="<%= supplier.companyDescription %>"></div>
+                    <div><textarea name="environmentalSustainability" form="supplierDescriptionsForm">Environmental Sustainability</textarea></div>
+                    <div><textarea name="qualitySourcing" form="supplierDescriptionsForm">Quality Sourcing</textarea></div>
+                    <div><textarea name="workplaceSafety" form="supplierDescriptionsForm">Workplace Safety</textarea></div>
+                    <div><textarea name="laborEducationTraining" form="supplierDescriptionsForm">Labor Education Training</textarea></div>
+                    <div><textarea name="reinvestment" form="supplierDescriptionsForm">Reinvestment</textarea></div>
+                    <div><input type="submit"></div>
+                </form>
+            </div>
+            <div id="preferencesSupplier">
+                <h4>Preferences</h4>
+                <form action="/supplier/update/preferences" method="post" id="supplierPreferencesForm">
+                    <div><select name="preferredBuyerType">
+                        <option value="<%= supplier.preferredBuyerType %>" selected="selected"><%= supplier.preferredBuyerType %></option>
+                        <%- partial('../partials/edit-dropdowns/edit-pref-buyer-type') %>
+                    </select></div>
+                    <div><select name="preferredBuyerLanguage">
+                        <option value="<%= supplier.preferredBuyerLanguage %>" selected="selected"><%= supplier.preferredBuyerLanguage %></option>
+                        <%- partial('../partials/edit-dropdowns/edit-pref-buyer-language') %>
+                    </select></div>
+                    <div><input type="text" name="preferredBuyerLocation" value="<%= supplier.preferredBuyerLocaion %>"></div>
+                    <div><input type="submit"></div>
+                </form>
+            </div>
+            <div id="socialOutletsSupplier">
+                <h4>Social Outlets</h4>
+                <form action="/supplier/update/socialoutlets" method="post" id="supplierSocialOutletsForm">
+                    <div><input type="text" name="facebook" value="<%= supplier.facebook %>"></div>
+                    <div><input type="text" name="twitter" value="<%= supplier.twitter %>"></div>
+                    <div><input type="text" name="google" value="<%= supplier.google %>"></div>
+                    <div><input type="text" name="linkedin" value="<%= supplier.linkedin %>"></div>
+                    <div><input type="text" name="pinterest" value="<%= supplier.pinterest %>"></div>
+                    <div><input type="text" name="instagram" value="<%= supplier.instagram %>"></div>
+                    <div><input type="text" name="tumblr" value="<%= supplier.tumblr %>"></div>
+                    <div><input type="text" name="google" value="<%= supplier.google %>"></div>
+                    <div><input type="submit"></div>
+                </form>
+            </div>
+        <% } %>
+    </div>
+
     <script>
-        $(document).ready(function(){
-            //SUPPLIER INFORMATION
-            $("#buyerInformationForm").submit(function () {
-                $.post($("#supplierInformationForm").attr("action"), $("#supplierInformationForm").serialize(), function (data) {
-                    if (data == 'success') {
-                        alert('Success');
-                    }
-                    else {
-                        alert('failed');
-                    }
-                });
-                console.log($("#supplierInformationForm").serialize());
-                return false;
-            });
+        $(document).ready(function() {
 
-            //SUPPLIER INFORMATION
-            $("#supplierProductionDetailsForm").submit(function () {
-                $.post($("#supplierProductionDetailsForm").attr("action"), $("#supplierProductionDetailsForm").serialize(), function (data) {
+            //COMPANY DETAILS
+            $("#companyDetailsForm").submit(function () {
+                $.post($("#companyDetailsForm").attr("action"), $("#companyDetailsForm").serialize(), function (data) {
                     if (data == 'success') {
                         alert('Success');
                     }
@@ -349,51 +253,149 @@
                         alert('failed');
                     }
                 });
-                console.log($("#supplierProductionDetailsForm").serialize());
-                return false;
-            });
-
-            //SUPPLIER DESCRIPTIONS
-            $("#supplierDescriptionsForm").submit(function () {
-                $.post($("#supplierDescriptionsForm").attr("action"), $("#supplierDescriptionsForm").serialize(), function (data) {
-                    if (data == 'success') {
-                        alert('Success');
-                    }
-                    else {
-                        alert('failed');
-                    }
-                });
-                console.log($("#supplierDescriptionsForm").serialize());
-                return false;
-            });
-
-            //SUPPLIER PREFERENCES
-            $("#supplierPreferencesForm").submit(function () {
-                $.post($("#supplierPreferencesForm").attr("action"), $("#supplierPreferencesForm").serialize(), function (data) {
-                    if (data == 'success') {
-                        alert('Success');
-                    }
-                    else {
-                        alert('failed');
-                    }
-                });
-                console.log($("#supplierPreferencesForm").serialize());
-                return false;
-            });
-
-            //SUPPLIER SOCIAL OUTLETS
-            $("#supplierSocialOutletsForm").submit(function () {
-                $.post($("#supplierSocialOutletsForm").attr("action"), $("#supplierSocialOutletsForm").serialize(), function (data) {
-                    if (data == 'success') {
-                        alert('Success');
-                    }
-                    else {
-                        alert('failed');
-                    }
-                });
-                console.log($("#supplierSocialOutletsForm").serialize());
+                //console.log($("#companyDetailsForm").serialize());
                 return false;
             });
         });
     </script>
-<% } %>
+
+    <!-- BUYER MODE AJAX -->
+    <% if(user.activeMode == 'buyer') { %>
+        <script>
+            $(document).ready(function() {
+                //BUYER INFORMATION
+                $("#buyerInformationForm").submit(function(){
+                    $.post($("#buyerInformationForm").attr("action"), $("#buyerInformationForm").serialize(), function(data){
+                        if (data == 'success') {
+                            alert('Success');
+                        }
+                        else {
+                            alert('failed');
+                        }
+                    });
+                    console.log($("#buyerInformationForm").serialize());
+                    return false;
+                });
+
+                //DESCRIPTIONS
+                $("#buyerDescriptionsForm").submit(function(){
+                    $.post($("#buyerDescriptionsForm").attr("action"), $("#buyerDescriptionsForm").serialize(), function(data){
+                        if (data == 'success') {
+                            alert('Success');
+                        }
+                        else {
+                            alert('failed');
+                        }
+                    });
+                    alert($("#buyerDescriptionsForm").serialize());
+                    return false;
+                });
+
+                //PREFERENCES
+                $("#buyerPreferencesForm").submit(function(){
+                    $.post($("#buyerPreferencesForm").attr("action"), $("#buyerPreferencesForm").serialize(), function(data){
+                        if (data == 'success') {
+                            alert('Success');
+                        }
+                        else {
+                            alert('failed');
+                        }
+                    });
+                    console.log($("#buyerPreferencesForm").serialize());
+                    return false;
+                });
+
+                //SOCIAL OUTLETS
+                $("#buyerSocialOutletsForm").submit(function(){
+                    $.post($("#buyerSocialOutletsForm").attr("action"), $("#buyerSocialOutletsForm").serialize(), function(data){
+                        if (data == 'success') {
+                            alert('Success');
+                        }
+                        else {
+                            alert('failed');
+                        }
+                    });
+                    console.log($("#buyerSocialOutletsForm").serialize());
+                    return false;
+                });
+            })
+        </script>
+    <% } %>
+
+    <!--SUPPLIER MODE AJAX -->
+    <% if(user.activeMode == 'supplier') { %>
+        <script>
+            $(document).ready(function(){
+                //SUPPLIER INFORMATION
+                $("#buyerInformationForm").submit(function () {
+                    $.post($("#supplierInformationForm").attr("action"), $("#supplierInformationForm").serialize(), function (data) {
+                        if (data == 'success') {
+                            alert('Success');
+                        }
+                        else {
+                            alert('failed');
+                        }
+                    });
+                    console.log($("#supplierInformationForm").serialize());
+                    return false;
+                });
+
+                //SUPPLIER INFORMATION
+                $("#supplierProductionDetailsForm").submit(function () {
+                    $.post($("#supplierProductionDetailsForm").attr("action"), $("#supplierProductionDetailsForm").serialize(), function (data) {
+                        if (data == 'success') {
+                            alert('Success');
+                        }
+                        else {
+                            alert('failed');
+                        }
+                    });
+                    console.log($("#supplierProductionDetailsForm").serialize());
+                    return false;
+                });
+
+                //SUPPLIER DESCRIPTIONS
+                $("#supplierDescriptionsForm").submit(function () {
+                    $.post($("#supplierDescriptionsForm").attr("action"), $("#supplierDescriptionsForm").serialize(), function (data) {
+                        if (data == 'success') {
+                            alert('Success');
+                        }
+                        else {
+                            alert('failed');
+                        }
+                    });
+                    console.log($("#supplierDescriptionsForm").serialize());
+                    return false;
+                });
+
+                //SUPPLIER PREFERENCES
+                $("#supplierPreferencesForm").submit(function () {
+                    $.post($("#supplierPreferencesForm").attr("action"), $("#supplierPreferencesForm").serialize(), function (data) {
+                        if (data == 'success') {
+                            alert('Success');
+                        }
+                        else {
+                            alert('failed');
+                        }
+                    });
+                    console.log($("#supplierPreferencesForm").serialize());
+                    return false;
+                });
+
+                //SUPPLIER SOCIAL OUTLETS
+                $("#supplierSocialOutletsForm").submit(function () {
+                    $.post($("#supplierSocialOutletsForm").attr("action"), $("#supplierSocialOutletsForm").serialize(), function (data) {
+                        if (data == 'success') {
+                            alert('Success');
+                        }
+                        else {
+                            alert('failed');
+                        }
+                    });
+                    console.log($("#supplierSocialOutletsForm").serialize());
+                    return false;
+                });
+            });
+        </script>
+    <% } %>
+</div>
