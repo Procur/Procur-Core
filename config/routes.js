@@ -253,7 +253,6 @@ module.exports.routes = {
     action: 'setDefault'
   },
 
-  // TODO: BUILD BOTH LOGIC ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
   //BUYER ROUTES
   'post /buyer/create': {
