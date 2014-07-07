@@ -20,6 +20,7 @@ module.exports = {
   show: function(req, res){
     //TODO: Add user lookup functionality + add company Slug
     var handle = req.param('id');
+    var async = require('async');
     var currentUser = req.session.passport.user;
     var locationsHelper = sails.config.locationsHelper;
     var waterlineHelper = sails.config.waterlineHelper;
@@ -40,30 +41,59 @@ module.exports = {
           if (err) { return res.redirect('/dashboard'); }
           payload.push(user);
           if (err) { return res.redirect('/dashboard'); }
-          Location.find({ company: company.id }, function(err, location) {
+          Location.find({ company: company.id }).exec(function(err, location) {
             locationsPayload["company"] = location;
-            if (payload[0].buyer === true ) {
-              locationsPayload["buyer"] = []; /* trash value until I redo locationsHelper :( */
-              viewLocations = locationsHelper.parseLocations(locationsPayload, "buyer");
-              
-              Buyer.findOne({ company: payload[0].id }, function(err, buyer) {
-                buyer = waterlineHelper.fixBuyerArrays(buyer);
-                buyer = productCategoryHelper.getCategoryChild(buyer);
-                payload.push(buyer);
-                res.view({ company: payload[0], user: payload[1], buyer: payload[2], locations: viewLocations, loggedin: loggedin });
-              });
-            }
-            if (payload[0].supplier === true) {
-              locationsPayload["supplier"] = []; /* trash value until I redo locationsHelper :( */
-              viewLocations = locationsHelper.parseLocations(locationsPayload, "supplier");
+            locationsPayload["buyer"] = []; // trash value until merge
+            viewLocations = locationsHelper.parseLocations(locationsPayload, "buyer"); // trash argument until merge
 
-              Supplier.findOne({ company: payload[0].id }, function(err, supplier) {
-                supplier = waterlineHelper.fixSupplierArrays(supplier);
-                supplier = productCategoryHelper.getCategoryChild(supplier);
-                payload.push(supplier);
-                res.view({ company: payload[0], user: payload[1], supplier: payload[2], locations: viewLocations, loggedin: loggedin });
-              });
-            }
+            async.parallel(
+              {
+                buyer: function(callback) {
+                  Buyer
+                    .findOne({ company: payload[0].id })
+                    .exec(function(err, buyer) {
+                      if (err) { callback(err, null); }
+                      else if (!buyer) { callback(null, undefined); }
+                      else {
+                        buyer = waterlineHelper.fixBuyerArrays(buyer);
+                        buyer = productCategoryHelper.getCategoryChild(buyer);
+                        payload.push(buyer);
+
+                        callback(null, buyer);
+                      }
+                    });
+                },
+                supplier: function(callback) {
+                  Supplier
+                    .findOne({ company: payload[0].id })
+                    .exec(function(err, supplier) {
+                      if (err) { callback(err, null); }
+                      else if (!supplier) { callback(null, undefined); }
+                      else {
+                        supplier = waterlineHelper.fixSupplierArrays(supplier);
+                        supplier = productCategoryHelper.getCategoryChild(supplier);
+                        payload.push(supplier);
+
+                        callback(null, supplier);
+                      }
+                    });
+                }
+              },
+              function(err, data) {
+                if (data.buyer && data.supplier) {
+                  console.log("Buyer and Supplier");   
+                  res.view({ company: payload[0], user: payload[1], buyer: payload[2], supplier: payload[3], locations: viewLocations, loggedin: loggedin });
+                }
+                else if (data.buyer && (data.supplier === undefined)) {
+                  console.log("Buyer");   
+                  res.view({ company: payload[0], user: payload[1], buyer: payload[2], locations: viewLocations, loggedin: loggedin });
+                }
+                else if ((data.buyer === undefined) && data.supplier) {
+                  console.log("Supplier");   
+                  res.view({ company: payload[0], user: payload[1], supplier: payload[2], locations: viewLocations, loggedin: loggedin });
+                }
+              }
+            )
           });
         });
       }
