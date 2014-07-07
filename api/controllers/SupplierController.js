@@ -187,7 +187,7 @@ module.exports = {
     });
   },
 
-  //EDIT COMPANY PROFILE - BUYER ELEMENTS
+  //EDIT COMPANY PROFILE - SUPPLIER ELEMENTS
 
   updateLogo: function (req, res) {
     var image = req.files.logo.path;

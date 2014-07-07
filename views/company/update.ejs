@@ -12,7 +12,7 @@
     <script src="../../assets/countries.js">
         print_country("preferredSupplierLocation");
     </script>
-    
+
     <style>
         .ui-tabs-vertical ul { margin: 0px; padding-left: 0px !important;}
         .ui-tabs-vertical .ui-tabs-nav li { list-style: none; margin: 0px; padding: 0px;}
@@ -235,9 +235,14 @@
         <% if (user.activeMode == 'supplier') { %>
             <div id="supplierInformation">
                 <h4>Supplier Information</h4>
+                <div><img src="<%= supplier.logoUrl %>"></div>
+                <form id="supplierLogoForm" action="/supplier/update/logo" method="post" enctype="multipart/form-data">
+                    <input type="file" name="logo" accept="image/*"/>
+                    <input type="submit">
+                </form>
+                <br />
                 <form action="/supplier/update/information" method="post" id="supplierInformationForm">
                     <div><input type="text" name="dba" value="<%= supplier.dbaName %>"></div>
-                    <div><img src="<%= supplier.logoUrl %>"> ADD UPDATE FUNCTIONALITY</div>
                     <select name="language">
                         <option value="<%= supplier.language %>" selected="selected"><%= supplier.language %></option>
                         <%- partial('../partials/edit-dropdowns/edit-language') %>
