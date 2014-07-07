@@ -14,72 +14,146 @@
     </script>
     
     <style>
-        .ui-tabs-vertical { width: 55em; }
-        .ui-tabs-vertical .ui-tabs-nav { padding: .2em .1em .2em .2em; float: left; width: 12em; }
-        .ui-tabs-vertical .ui-tabs-nav li { clear: left; width: 100%; border-bottom-width: 1px !important; border-right-width: 0 !important; margin: 0 -1px .2em 0; }
-        .ui-tabs-vertical .ui-tabs-nav li a { display:block; }
-        .ui-tabs-vertical .ui-tabs-nav li.ui-tabs-active { padding-bottom: 0; padding-right: .1em; border-right-width: 1px; border-right-width: 1px; }
-        .ui-tabs-vertical .ui-tabs-panel { padding: 1em; float: right; width: 40em;}
+        .ui-tabs-vertical ul { margin: 0px; padding-left: 0px !important;}
+        .ui-tabs-vertical .ui-tabs-nav li { list-style: none; margin: 0px; padding: 0px;}
+        .ui-tabs-vertical .ui-tabs-nav li .rightSecBox { margin-right: 10px;}
+        .ui-tabs-vertical .ui-tabs-nav li a { display:block; margin-left: 20px; padding-left: 20px;}
+        .ui-tabs-vertical .ui-tabs-nav li a:focus { outline: none; border: 0px none; background: none transparent;}
+        .ui-tabs-vertical .ui-tabs-nav li.ui-tabs-active .rightSec { background: #fbac27; color: white;}
+        .ui-tabs-vertical .ui-tabs-nav li.ui-tabs-active .rightSec a { color: white;}
+        .ui-tabs-vertical .ui-tabs-nav li.ui-tabs-active .rightSecBox { background: #ffc65c;}
+        .ui-tabs-vertical .ui-tabs-nav li.ui-tabs-active .rightSec i { color: white;}
     </style>
 
-    <div id="tabs">
+    <div class="row" id="tabs">
+      <div class="col-sm-4">   
+        <div class="featuresColumn">
         <ul>
-            <li><a href="#companyDetails">Company Details</a></li>
-            <% if(user.activeMode == 'buyer') { %>
-                <li><a href="#buyerInformation">Buyer Information</a></li>
-                <li><a href="#descriptionsBuyer">Descriptions</a></li>
-                <li><a href="#preferencesBuyer">Preferences</a></li>
-                <li><a href="#socialOutletsBuyer">Social Outlets</a></li>
-            <% } %>
-
-            <% if(user.activeMode == 'supplier'){ %>
-                <li><a href="#supplierInformation">Supplier Information</a></li>
-                <li><a href="#productionDetails">Production Details</a></li>
-                <li><a href="#descriptionsSupplier">Descriptions</a></li>
-                <li><a href="#preferencesSupplier">Preferences</a></li>
-                <li><a href="#socialOutletsSupplier">Social Outlets</a></li>
-            <% } %>
-
-        </ul>
-        <div id="username">
-            <h4>Your Company Username</h4>
-            <p>procur.com/companies/<strong><%= company.handle %>  </strong><a href="#">Edit</a></p>
+          <li>
+          <div class="rightSec">
+              <div class="rightSecBox">
+                <i class="fa fa-gear fa-fw"></i>
+              </div>
+              <a href="#companyDetails">COMPANY DETAILS</a>
+          </div>
+          </li>
+          <% if(user.activeMode == 'buyer') { %>
+          <li>
+          <div class="rightSec rightAlt">
+            <div class="rightSecBox">
+              <i class="fa fa-gear fa-fw"></i>
+            </div>
+            <a href="#buyerInformation">BUYER INFORMATION</a>
+          </div>
+          </li>
+          <li>
+          <div class="rightSec">
+            <div class="rightSecBox">
+              <i class="fa fa-gear fa-fw"></i>
+            </div>
+            <a href="#descriptionsBuyer">DESCRIPTIONS</a>
+          </div>
+          </li>
+          <li>
+          <div class="rightSec rightAlt">
+            <div class="rightSecBox">
+              <i class="fa fa-gear fa-fw"></i>
+            </div>
+            <a href="#preferencesBuyer">PREFERENCES</a>
+          </div>
+          </li>
+          <li>
+          <div class="rightSec">
+            <div class="rightSecBox">
+              <i class="fa fa-gear fa-fw"></i>
+            </div>
+            <a href="#socialOutletsBuyer">SOCIAL OUTLETS</a>
+          </div>
+          </li>
+        <% } %>
+        <% if(user.activeMode == 'supplier') { %>
+          <li>
+          <div class="rightSec rightAlt">
+            <div class="rightSecBox">
+              <i class="fa fa-gear fa-fw"></i>
+            </div>
+            <a href="#supplierInformation">SUPPLIER INFORMATION</a>
+          </div>
+          </li>
+          <li>
+          <div class="rightSec">
+            <div class="rightSecBox">
+              <i class="fa fa-gear fa-fw"></i>
+            </div>
+            <a href="#productionDetails">PRODUCTION DETAILS</a>
+          </div>
+          </li>
+          <li>
+          <div class="rightSec rightAlt">
+            <div class="rightSecBox">
+              <i class="fa fa-gear fa-fw"></i>
+            </div>
+            <a href="#descriptionsSupplier">DESCRIPTIONS</a>
+          </div>
+          </li>
+          <li>
+          <div class="rightSec">
+            <div class="rightSecBox">
+              <i class="fa fa-gear fa-fw"></i>
+            </div>
+            <a href="#preferencesSupplier">PREFERENCES</a>
+          </div>
+          </li>
+          <li>
+          <div class="rightSec rightAlt">
+            <div class="rightSecBox">
+              <i class="fa fa-gear fa-fw"></i>
+            </div>
+            <a href="#socialOutletsSupplier">SOCIAL OUTLETS</a>
+          </div>
+          </li>
+          </ul>
+        <% } %>
+        </div> <!-- END FEATURES COLUMN -->
+                <div id="username">
+          <h4>Your Company Username</h4>
+          <p>procur.com/companies/<strong><%= company.handle %>  </strong><a href="#">Edit</a></p>
         </div>
-
-
+      </div> <!-- END COL-SM-4 -->
+      <div class="col-sm-8">
         <div id="companyDetails">
-            <h4>Basic Company Details</h4>
-            <form action="/company/update/basicCompanyDetails" method="post" id="companyDetailsForm">
-                <div><input type="text" name="name" value="<%= company.name %>"></div>
-                <div><input type="text" name="phoneNumberCountryCode" value="<%= company.phoneNumberCountryCode %>"></div>
-                <div><input type="text" name="phoneNumber" value="<%= company.phoneNumber %>"></div>
-                <div><input type="text" name="phoneExtension" value="<%= company.phoneExtension %>"></div>
-                <br />
-                <div><input type="text" name="faxCountryCode" value="<%= company.faxCountryCode %>"></div>
-                <div><input type="text" name="faxNumber" value="<%= company.faxNumber %>"></div>
-                <div><input type="text" name="faxExtension" value="<%= company.faxExtension %>"></div>
-                <br />
-                <div><input type="text" name="email" value="<%= company.email %>"></div>
-                <div><input type="text" name="website" value="<%= company.website %>"></div>
-                <br />
-                <select name="companyIndustry">
-                    <option value="<%= company.industry %>" selected="selected"><%= company.industry %></option>
-                    <%- partial('../partials/edit-dropdowns/edit-industry') %>
-                </select>
-                <div><input type="text" name="hqAddressLine1" value="<%= companyHq.addressLine1 %>"></div>
-                <div><input type="text" name="hqAddressLine2" value="<%= companyHq.addressLine2 %>"></div>
-                <div><input type="text" name="hqCountry" value="<%= companyHq.country %>"></div>
-                <div><input type="text" name="hqProvince" value="<%= companyHq.province %>"></div>
-                <div><input type="text" name="hqPostalCode" value="<%= companyHq.postalCode %>"></div>
-                <br />
-                <div>
-                    <select name="employeeCount">
-                        <option value="<%= company.employeeCount %>" selected="selected"><%= company.employeeCount %></option>
-                        <%- partial('../partials/edit-dropdowns/edit-total-employees') %>
-                    </select>
-                </div>
-                <div><input type="submit"></div>
-            </form>
+          <h4>Basic Company Details</h4>
+          <form action="/company/update/basicCompanyDetails" method="post" id="companyDetailsForm">
+            <div><input type="text" name="name" value="<%= company.name %>"></div>
+            <div><input type="text" name="phoneNumberCountryCode" value="<%= company.phoneNumberCountryCode %>"></div>
+            <div><input type="text" name="phoneNumber" value="<%= company.phoneNumber %>"></div>
+            <div><input type="text" name="phoneExtension" value="<%= company.phoneExtension %>"></div>
+            <br />
+            <div><input type="text" name="faxCountryCode" value="<%= company.faxCountryCode %>"></div>
+            <div><input type="text" name="faxNumber" value="<%= company.faxNumber %>"></div>
+            <div><input type="text" name="faxExtension" value="<%= company.faxExtension %>"></div>
+            <br />
+            <div><input type="text" name="email" value="<%= company.email %>"></div>
+            <div><input type="text" name="website" value="<%= company.website %>"></div>
+            <br />
+            <select name="companyIndustry">
+              <option value="<%= company.industry %>" selected="selected"><%= company.industry %></option>
+              <%- partial('../partials/edit-dropdowns/edit-industry') %>
+            </select>
+            <div><input type="text" name="hqAddressLine1" value="<%= companyHq.addressLine1 %>"></div>
+            <div><input type="text" name="hqAddressLine2" value="<%= companyHq.addressLine2 %>"></div>
+            <div><input type="text" name="hqCountry" value="<%= companyHq.country %>"></div>
+            <div><input type="text" name="hqProvince" value="<%= companyHq.province %>"></div>
+            <div><input type="text" name="hqPostalCode" value="<%= companyHq.postalCode %>"></div>
+            <br />
+            <div>
+              <select name="employeeCount">
+                  <option value="<%= company.employeeCount %>" selected="selected"><%= company.employeeCount %></option>
+                  <%- partial('../partials/edit-dropdowns/edit-total-employees') %>
+              </select>
+            </div>
+            <div><input type="submit"></div>
+          </form>
         </div>
 
         <!-- ACTIVE MODE BUYER  -->
@@ -238,7 +312,8 @@
                 </form>
             </div>
         <% } %>
-    </div>
+      </div><!-- END COL-SM-8 -->
+    </div> <!-- END TABS -->
 
     <script>
         $(document).ready(function() {
