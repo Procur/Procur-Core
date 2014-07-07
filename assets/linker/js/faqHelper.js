@@ -4,4 +4,6 @@ $(function() {
     $('#nav').affix({
         offset: { top: $('#nav').offset().top }
     });
+
+    $('body').scrollspy({ target: '.navbar-example' })
 });

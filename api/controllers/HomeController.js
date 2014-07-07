@@ -115,7 +115,7 @@ module.exports = {
     res.view();
   },
 
-  contactSupport: function(req, res){
+  support: function(req, res){
     res.view();
   },
 

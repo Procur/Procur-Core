@@ -99,9 +99,9 @@ module.exports.routes = {
     action: 'faq'
   }, //Displays FAQ Page
 
-  'get /contactsupport': {
+  'get /support': {
     controller: 'HomeController',
-    action: 'contactSupport'
+    action: 'support'
   }, //Displays Support Page
 
   'get /privacy': {
