@@ -399,6 +399,11 @@ module.exports.routes = {
   'post /supplier/update/socialoutlets': {
     controller: 'SupplierController',
     action: 'updateSocialOutlets'
+  },
+
+  'get /locationstest': {
+    controller: 'BuyerController',
+    action: 'test'
   }
 
 }; //USE THIS VIEW FOR ING, DEBUGGING, AND PROTOTYPING

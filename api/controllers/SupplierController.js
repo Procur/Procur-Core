@@ -61,9 +61,10 @@ module.exports = {
         active: true
         }, function(err, supplier) {
           if (err) { return res.redirect('/dashboard'); }
-          if (imageExists) { imageHelper.uploadSupplierImage(req, res, supplier, image); }
+          if (imageExists) { imageHelper.uploadSupplierImage(req, res, supplier, image, function(){
+            res.redirect('/dashboard');
+          }); }
         });
-        res.redirect('/dashboard');
       });
     });
   },
