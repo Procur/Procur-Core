@@ -29,8 +29,6 @@ function getFileSize(file){
   }
 };
 
-//test
-
 module.exports = {
 
   welcome: function(req, res){
