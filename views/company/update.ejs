@@ -1,5 +1,5 @@
 <%- partial('../partials/dashboard-header.ejs') %>
-<div class="container">
+<div class="container" id="companyUpdate">
     <script>
         $(document).ready(function() {
             $("#tabs").tabs().addClass("ui-tabs-vertical ui-helper-clearfix");
@@ -25,11 +25,17 @@
         .ui-tabs-vertical .ui-tabs-nav li.ui-tabs-active .rightSec i { color: white;}
     </style>
 
-    <div class="row" id="tabs">
-      <div class="col-sm-4">   
+    <div class="row ui-tabs ui-widget ui-widget-content ui-corner-all ui-tabs-vertical ui-helper-clearfix" id="tabs">
+      <div class="col-sm-4">
+        <% if(user.activeMode == 'buyer') { %>   
+          <h3>Edit Buyer Profile</h3>
+        <% } %>
+        <% if(user.activeMode == 'supplier') { %>   
+          <h3>Edit Supplier Profile</h3>
+        <% } %>
         <div class="featuresColumn">
-        <ul>
-          <li>
+        <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all" role="tablist">
+          <li class="ui-state-default ui-corner-left">
           <div class="rightSec">
               <div class="rightSecBox">
                 <i class="fa fa-gear fa-fw"></i>
@@ -38,7 +44,7 @@
           </div>
           </li>
           <% if(user.activeMode == 'buyer') { %>
-          <li>
+          <li class="ui-state-default ui-corner-left">
           <div class="rightSec rightAlt">
             <div class="rightSecBox">
               <i class="fa fa-gear fa-fw"></i>
@@ -46,7 +52,7 @@
             <a href="#buyerInformation">BUYER INFORMATION</a>
           </div>
           </li>
-          <li>
+          <li class="ui-state-default ui-corner-left">
           <div class="rightSec">
             <div class="rightSecBox">
               <i class="fa fa-gear fa-fw"></i>
@@ -54,7 +60,7 @@
             <a href="#descriptionsBuyer">DESCRIPTIONS</a>
           </div>
           </li>
-          <li>
+          <li class="ui-state-default ui-corner-left">
           <div class="rightSec rightAlt">
             <div class="rightSecBox">
               <i class="fa fa-gear fa-fw"></i>
@@ -62,7 +68,7 @@
             <a href="#preferencesBuyer">PREFERENCES</a>
           </div>
           </li>
-          <li>
+          <li class="ui-state-default ui-corner-left">
           <div class="rightSec">
             <div class="rightSecBox">
               <i class="fa fa-gear fa-fw"></i>
@@ -72,7 +78,7 @@
           </li>
         <% } %>
         <% if(user.activeMode == 'supplier') { %>
-          <li>
+          <li class="ui-state-default ui-corner-left">
           <div class="rightSec rightAlt">
             <div class="rightSecBox">
               <i class="fa fa-gear fa-fw"></i>
@@ -80,7 +86,7 @@
             <a href="#supplierInformation">SUPPLIER INFORMATION</a>
           </div>
           </li>
-          <li>
+          <li class="ui-state-default ui-corner-left">
           <div class="rightSec">
             <div class="rightSecBox">
               <i class="fa fa-gear fa-fw"></i>
@@ -88,7 +94,7 @@
             <a href="#productionDetails">PRODUCTION DETAILS</a>
           </div>
           </li>
-          <li>
+          <li class="ui-state-default ui-corner-left">
           <div class="rightSec rightAlt">
             <div class="rightSecBox">
               <i class="fa fa-gear fa-fw"></i>
@@ -96,7 +102,7 @@
             <a href="#descriptionsSupplier">DESCRIPTIONS</a>
           </div>
           </li>
-          <li>
+          <li class="ui-state-default ui-corner-left">
           <div class="rightSec">
             <div class="rightSecBox">
               <i class="fa fa-gear fa-fw"></i>
@@ -104,7 +110,7 @@
             <a href="#preferencesSupplier">PREFERENCES</a>
           </div>
           </li>
-          <li>
+          <li class="ui-state-default ui-corner-left">
           <div class="rightSec rightAlt">
             <div class="rightSecBox">
               <i class="fa fa-gear fa-fw"></i>
@@ -115,119 +121,165 @@
           </ul>
         <% } %>
         </div> <!-- END FEATURES COLUMN -->
-                <div id="username">
-          <h4>Your Company Username</h4>
+        <div id="username">
+          <h3>Your Company Username</h3>
           <p>procur.com/companies/<strong><%= company.handle %>  </strong><a href="#">Edit</a></p>
         </div>
       </div> <!-- END COL-SM-4 -->
       <div class="col-sm-8">
         <div id="companyDetails">
           <h4>Basic Company Details</h4>
-          <form action="/company/update/basicCompanyDetails" method="post" id="companyDetailsForm">
-            <div><input type="text" name="name" value="<%= company.name %>"></div>
-            <div><input type="text" name="phoneNumberCountryCode" value="<%= company.phoneNumberCountryCode %>"></div>
-            <div><input type="text" name="phoneNumber" value="<%= company.phoneNumber %>"></div>
-            <div><input type="text" name="phoneExtension" value="<%= company.phoneExtension %>"></div>
-            <br />
-            <div><input type="text" name="faxCountryCode" value="<%= company.faxCountryCode %>"></div>
-            <div><input type="text" name="faxNumber" value="<%= company.faxNumber %>"></div>
-            <div><input type="text" name="faxExtension" value="<%= company.faxExtension %>"></div>
-            <br />
-            <div><input type="text" name="email" value="<%= company.email %>"></div>
-            <div><input type="text" name="website" value="<%= company.website %>"></div>
-            <br />
-            <select name="companyIndustry">
-              <option value="<%= company.industry %>" selected="selected"><%= company.industry %></option>
-              <%- partial('../partials/edit-dropdowns/edit-industry') %>
-            </select>
-            <div><input type="text" name="hqAddressLine1" value="<%= companyHq.addressLine1 %>"></div>
-            <div><input type="text" name="hqAddressLine2" value="<%= companyHq.addressLine2 %>"></div>
-            <div><input type="text" name="hqCountry" value="<%= companyHq.country %>"></div>
-            <div><input type="text" name="hqProvince" value="<%= companyHq.province %>"></div>
-            <div><input type="text" name="hqPostalCode" value="<%= companyHq.postalCode %>"></div>
-            <br />
-            <div>
-              <select name="employeeCount">
-                  <option value="<%= company.employeeCount %>" selected="selected"><%= company.employeeCount %></option>
-                  <%- partial('../partials/edit-dropdowns/edit-total-employees') %>
-              </select>
+            <div class="formWrapper">
+              <form action="/company/update/basicCompanyDetails" method="post" id="companyDetailsForm">
+                <div class="row">
+                  <div class="col-sm-6">
+                    <h5>Company Name</h5>
+                    <div><input type="text" name="name" value="<%= company.name %>"></div><br/>
+                    <h5>Company Phone</h5>
+                    <div class="row insideForm">
+                      <div class="col-sm-5 inputColumnL">
+                          <div><input type="text" name="phoneNumberCountryCode" placeholder="Country Code*" value="<%= company.phoneNumberCountryCode %>"> </div>
+                      </div>
+                      <div class="col-sm-7 inputColumnR">
+                          <div><input type="text" name="phoneNumber" placeholder="Company Phone*" value="<%= company.phoneNumber %>"></div>
+                      </div>
+                    </div>
+                    <div class="row insideForm">
+                      <div class="col-sm-7 col-sm-offset-5 inputColumnR">
+                          <div class="breakForm"><input type="text" name="phoneExtension" placeholder="Extension" value="<%= company.phoneExtension %>"></div>
+                      </div>
+                    </div>
+
+                    <h5>Company Fax</h5>
+                    <div class="row insideForm">
+                      <div class="col-sm-5 inputColumnL">
+                          <div><input type="text" name="faxCountryCode" value="<%= company.faxCountryCode %>"> </div>
+                      </div>
+                      <div class="col-sm-7 inputColumnR">
+                          <div><input type="text" name="faxNumber" value="<%= company.faxNumber %>"></div>
+                      </div>
+                    </div>
+                    <div class="row insideForm">
+                      <div class="col-sm-7 col-sm-offset-5 inputColumnR">
+                          <div class="breakForm"><input type="text" name="faxExtension" value="<%= company.faxExtension %>"></div>
+                      </div>
+                    </div>
+
+                    <h5>Company Email</h5>
+                    <div><input type="text" name="email" value="<%= company.email %>"></div><br/>
+                    <h5>Company Website</h5>
+                    <div><input type="text" name="website" value="<%= company.website %>"></div><br/>
+                  </div>
+                  <!-- End 1st Column -->
+                  <div class="col-sm-6">
+                    
+                    <h5>Company Industry</h5>
+                    <div><select name="companyIndustry">
+                      <option value="<%= company.industry %>" selected="selected"><%= company.industry %></option>
+                      <%- partial('../partials/edit-dropdowns/edit-industry') %>
+                    </select></div><br/>
+                    <h5>Official Address</h5>
+                    <div><input type="text" name="hqAddressLine1" value="<%= companyHq.addressLine1 %>"></div>
+                    <div><input type="text" name="hqAddressLine2" value="<%= companyHq.addressLine2 %>"></div>
+                    <div><input type="text" name="hqCountry" value="<%= companyHq.country %>"></div>
+                    <div><input type="text" name="hqProvince" value="<%= companyHq.province %>"></div>
+                    <div><input type="text" name="hqPostalCode" value="<%= companyHq.postalCode %>"></div>
+                    <br />
+                    <h5>Total Number of Employees</h5>
+                    <div>
+                      <select name="employeeCount">
+                          <option value="<%= company.employeeCount %>" selected="selected"><%= company.employeeCount %></option>
+                          <%- partial('../partials/edit-dropdowns/edit-total-employees') %>
+                      </select>
+                    </div>
+                  </div>
+                  <!-- End 2nd Column -->
+                <div><input type="submit"></div>
+                </div>
+              </form>
             </div>
-            <div><input type="submit"></div>
-          </form>
         </div>
 
         <!-- ACTIVE MODE BUYER  -->
         <% if (user.activeMode == 'buyer') { %>
             <div id="buyerInformation">
-                <h4>Buyer Information</h4>
-                <div><img src="<%= buyer.logoUrl %>"></div>
-                <form id="buyerLogoForm" action="/buyer/update/logo" method="post" enctype="multipart/form-data">
-                    <input type="file" name="logo" accept="image/*"/>
-                    <input type="submit">
-                </form>
-                <br />
-                <form action="/buyer/update/information" method="post" id="buyerInformationForm">
-                    <div><input type="text" name="dbaName" value="<%= buyer.dbaName %>"></div>
+              <h4>Buyer Information</h4>
+                <div class="formWrapper">
+                  <div><img src="<%= buyer.logoUrl %>"></div>
+                  <form id="buyerLogoForm" action="/buyer/update/logo" method="post" enctype="multipart/form-data">
+                      <input type="file" name="logo" accept="image/*"/>
+                      <input type="submit">
+                  </form>
+                  <br />
+                  <form action="/buyer/update/information" method="post" id="buyerInformationForm">
+                      <div><input type="text" name="dbaName" value="<%= buyer.dbaName %>"></div>
 
-                    <select name="language">
-                        <option value="<%= buyer.language %>" selected="selected"><%= buyer.language %></option>
-                        <%- partial('../partials/edit-dropdowns/edit-language') %>
-                    </select>
-                    <div><input type="text" name="acceptedCurrency" value="<%= buyer.acceptedCurrency %>"></div>
-                    <div><input type="text" name="acceptedPaymentTerms" value="<%= buyer.acceptedPaymentTerms %>"></div>
-                    <div><input type="text" name="acceptedDeliveryTerms" value="<%= buyer.acceptedDeliveryTerms %>"></div>
-                    <div><input type="text" name="typeOfCompany" value="<%= buyer.typeOfCompany %>"></div>
-                    <div><input type="text" name="contactName" value="<%= buyer.contactName %>"></div>
-                    <div><input type="text" name="contactPosition" value="<%= buyer.contactPosition %>"></div>
-                    <div><input type="text" name="contactEmail" value="<%= buyer.contactEmail %>"></div>
-                    <div><input type="text" name="dunsNumber" value="<%= buyer.dunsNumber %>"></div>
-                    <div>Product CATEGORIES</div>
-                    <div>OTHER LOCATIONS</div>
-                    <div>NEAREST PORT</div>
-                    <div><input type="submit"></div>
-                </form>
+                      <select name="language">
+                          <option value="<%= buyer.language %>" selected="selected"><%= buyer.language %></option>
+                          <%- partial('../partials/edit-dropdowns/edit-language') %>
+                      </select>
+                      <div><input type="text" name="acceptedCurrency" value="<%= buyer.acceptedCurrency %>"></div>
+                      <div><input type="text" name="acceptedPaymentTerms" value="<%= buyer.acceptedPaymentTerms %>"></div>
+                      <div><input type="text" name="acceptedDeliveryTerms" value="<%= buyer.acceptedDeliveryTerms %>"></div>
+                      <div><input type="text" name="typeOfCompany" value="<%= buyer.typeOfCompany %>"></div>
+                      <div><input type="text" name="contactName" value="<%= buyer.contactName %>"></div>
+                      <div><input type="text" name="contactPosition" value="<%= buyer.contactPosition %>"></div>
+                      <div><input type="text" name="contactEmail" value="<%= buyer.contactEmail %>"></div>
+                      <div><input type="text" name="dunsNumber" value="<%= buyer.dunsNumber %>"></div>
+                      <div>Product CATEGORIES</div>
+                      <div>OTHER LOCATIONS</div>
+                      <div>NEAREST PORT</div>
+                      <div><input type="submit"></div>
+                  </form>
+                </div>
             </div>
             <div id="descriptionsBuyer">
-                <h4>Descriptions</h4>
-                <form action="/buyer/update/descriptions" method="post" id="buyerDescriptionsForm">
-                    <div><input type="text" name="companyDescription" value="<%= buyer.companyDescription %>"></div>
-                    <div><textarea name="environmentalSustainability" form="buyerDescriptionsForm"><%= buyer.environmentalSustainability %></textarea></div>
-                    <div><textarea name="qualitySourcing" form="buyerDescriptionsForm"><%= buyer.qualitySourcing %></textarea></div>
-                    <div><textarea name="workplaceSafety" form="buyerDescriptionsForm"><%= buyer.workplaceSafety %></textarea></div>
-                    <div><textarea name="laborEducationTraining" form="buyerDescriptionsForm"><%= buyer.laborEducationTraining %></textarea></div>
-                    <div><textarea name="reinvestment" form="buyerDescriptionsForm"><%= buyer.reinvestment %></textarea></div>
-                    <div><input type="submit"></div>
-                </form>
+              <h4>Descriptions</h4>
+                <div class="formWrapper">
+                  <form action="/buyer/update/descriptions" method="post" id="buyerDescriptionsForm">
+                      <div><input type="text" name="companyDescription" value="<%= buyer.companyDescription %>"></div>
+                      <div><textarea name="environmentalSustainability" form="buyerDescriptionsForm"><%= buyer.environmentalSustainability %></textarea></div>
+                      <div><textarea name="qualitySourcing" form="buyerDescriptionsForm"><%= buyer.qualitySourcing %></textarea></div>
+                      <div><textarea name="workplaceSafety" form="buyerDescriptionsForm"><%= buyer.workplaceSafety %></textarea></div>
+                      <div><textarea name="laborEducationTraining" form="buyerDescriptionsForm"><%= buyer.laborEducationTraining %></textarea></div>
+                      <div><textarea name="reinvestment" form="buyerDescriptionsForm"><%= buyer.reinvestment %></textarea></div>
+                      <div><input type="submit"></div>
+                  </form>
+                </div>
             </div>
             <div id="preferencesBuyer">
                 <h4>Preferences</h4>
-                <form action="/buyer/update/preferences" method="post" id="buyerPreferencesForm">
-                    <div><select name="preferredSupplierType">
-                            <option value="<%= buyer.preferredSupplierType %>" selected="selected"><%= buyer.preferredSupplierType %></option>
-                            <%- partial('../partials/edit-dropdowns/edit-pref-supplier-type') %>
-                        </select></div>
-                    <div><select name="preferredSupplierLanguage">
-                            <option value="<%= buyer.preferredSupplierLanguage %>" selected="selected"><%= buyer.preferredSupplierLanguage %></option>
-                            <%- partial('../partials/edit-dropdowns/edit-pref-supplier-language') %>
-                        </select></div>
-                    <div><select name="preferredSupplierLocation" id="preferredSupplierLocation">
-                            <option>Preferred Supplier Location</option>
-                        </select></div>
-                    <div><input type="submit"></div>
-                </form>
+                <div class="formWrapper">
+                  <form action="/buyer/update/preferences" method="post" id="buyerPreferencesForm">
+                      <div><select name="preferredSupplierType">
+                              <option value="<%= buyer.preferredSupplierType %>" selected="selected"><%= buyer.preferredSupplierType %></option>
+                              <%- partial('../partials/edit-dropdowns/edit-pref-supplier-type') %>
+                          </select></div>
+                      <div><select name="preferredSupplierLanguage">
+                              <option value="<%= buyer.preferredSupplierLanguage %>" selected="selected"><%= buyer.preferredSupplierLanguage %></option>
+                              <%- partial('../partials/edit-dropdowns/edit-pref-supplier-language') %>
+                          </select></div>
+                      <div><select name="preferredSupplierLocation" id="preferredSupplierLocation">
+                              <option>Preferred Supplier Location</option>
+                          </select></div>
+                      <div><input type="submit"></div>
+                  </form>
+                </div>
             </div>
             <div id="socialOutletsBuyer">
                 <h4>Social Outlets</h4>
-                <form action="/buyer/update/socialoutlets" method="post" id="buyerSocialOutletsForm">
-                    <div><input type="text" name="facebook" value="<%= buyer.facebook %>"></div>
-                    <div><input type="text" name="twitter" value="<%= buyer.twitter %>"></div>
-                    <div><input type="text" name="google" value="<%= buyer.google %>"></div>
-                    <div><input type="text" name="linkedin" value="<%= buyer.linkedin %>"></div>
-                    <div><input type="text" name="pinterest" value="<%= buyer.pinterest %>"></div>
-                    <div><input type="text" name="instagram" value="<%= buyer.instagram %>"></div>
-                    <div><input type="text" name="tumblr" value="<%= buyer.tumblr %>"></div>
-                    <div><input type="submit"></div>
-                </form>
+                <div class="formWrapper">
+                  <form action="/buyer/update/socialoutlets" method="post" id="buyerSocialOutletsForm">
+                      <div><input type="text" name="facebook" value="<%= buyer.facebook %>"></div>
+                      <div><input type="text" name="twitter" value="<%= buyer.twitter %>"></div>
+                      <div><input type="text" name="google" value="<%= buyer.google %>"></div>
+                      <div><input type="text" name="linkedin" value="<%= buyer.linkedin %>"></div>
+                      <div><input type="text" name="pinterest" value="<%= buyer.pinterest %>"></div>
+                      <div><input type="text" name="instagram" value="<%= buyer.instagram %>"></div>
+                      <div><input type="text" name="tumblr" value="<%= buyer.tumblr %>"></div>
+                      <div><input type="submit"></div>
+                  </form>
+                </div>
             </div>
         <% } %>
 
@@ -235,86 +287,96 @@
         <% if (user.activeMode == 'supplier') { %>
             <div id="supplierInformation">
                 <h4>Supplier Information</h4>
+                <div class="formWrapper">
                 <div><img src="<%= supplier.logoUrl %>"></div>
-                <form id="supplierLogoForm" action="/supplier/update/logo" method="post" enctype="multipart/form-data">
-                    <input type="file" name="logo" accept="image/*"/>
-                    <input type="submit">
-                </form>
-                <br />
-                <form action="/supplier/update/information" method="post" id="supplierInformationForm">
-                    <div><input type="text" name="dba" value="<%= supplier.dbaName %>"></div>
-                    <select name="language">
-                        <option value="<%= supplier.language %>" selected="selected"><%= supplier.language %></option>
-                        <%- partial('../partials/edit-dropdowns/edit-language') %>
-                    </select>
-                    <div><input type="text" name="acceptedCurrencies" value="<%= supplier.acceptedCurrency[0] %>"></div>
-                    <div><input type="text" name="acceptedPaymentTerms" value="<%= supplier.acceptedPaymentTerms %>"></div>
-                    <div><input type="text" name="acceptedDeliveryTerms" value="<%= supplier.acceptedDeliveryTerms %>"></div>
-                    <div><input type="text" name="typeOfCompany" value="<%= supplier.typeOfCompany %>"></div>
-                    <div><input type="text" name="privateLabeler" value="<%= supplier.privateLabeler %>"></div>
-                    <div><input type="text" name="contactName" value="<%= supplier.contactName %>"></div>
-                    <div><input type="text" name="contactPosition" value="<%= supplier.contactPosition %>"></div>
-                    <div><input type="text" name="contactEmail" value="<%= supplier.contactEmail %>"></div>
-                    <div><input type="text" name="gsaApprovedSupplier" value="<%= supplier.gsaApprovedSupplier %>"></div>
-                    <div><input type="text" name="dunsNumber" value="<%= supplier.dunsNumber %>"></div>
-                    <div><input type="text" name="cageCode" value="<%= supplier.cageCode %>"></div>
-                    <div><input type="submit"></div>
-                </form>
+                  <form id="supplierLogoForm" action="/supplier/update/logo" method="post" enctype="multipart/form-data">
+                      <input type="file" name="logo" accept="image/*"/>
+                      <input type="submit">
+                  </form>
+                  <br />
+                  <form action="/supplier/update/information" method="post" id="supplierInformationForm">
+                      <div><input type="text" name="dba" value="<%= supplier.dbaName %>"></div>
+                      <select name="language">
+                          <option value="<%= supplier.language %>" selected="selected"><%= supplier.language %></option>
+                          <%- partial('../partials/edit-dropdowns/edit-language') %>
+                      </select>
+                      <div><input type="text" name="acceptedCurrencies" value="<%= supplier.acceptedCurrency[0] %>"></div>
+                      <div><input type="text" name="acceptedPaymentTerms" value="<%= supplier.acceptedPaymentTerms %>"></div>
+                      <div><input type="text" name="acceptedDeliveryTerms" value="<%= supplier.acceptedDeliveryTerms %>"></div>
+                      <div><input type="text" name="typeOfCompany" value="<%= supplier.typeOfCompany %>"></div>
+                      <div><input type="text" name="privateLabeler" value="<%= supplier.privateLabeler %>"></div>
+                      <div><input type="text" name="contactName" value="<%= supplier.contactName %>"></div>
+                      <div><input type="text" name="contactPosition" value="<%= supplier.contactPosition %>"></div>
+                      <div><input type="text" name="contactEmail" value="<%= supplier.contactEmail %>"></div>
+                      <div><input type="text" name="gsaApprovedSupplier" value="<%= supplier.gsaApprovedSupplier %>"></div>
+                      <div><input type="text" name="dunsNumber" value="<%= supplier.dunsNumber %>"></div>
+                      <div><input type="text" name="cageCode" value="<%= supplier.cageCode %>"></div>
+                      <div><input type="submit"></div>
+                  </form>
+                </div>
             </div>
             <div id="productionDetails">
                 <h4>Production Details</h4>
-                <form action="/supplier/update/productionDetails" method="post" id="supplierProductionDetailsForm">
-                    <div><input type="text" name="annualSalesValue" value="<%= supplier.annualSalesValue %>"></div>
-                    <div><input type="text" name="totalFactorySize" value="<%= supplier.totalFactorySize %>"></div>
-                    <div><input type="text" name="totalQCStaff" value="<%= supplier.totalQCStaff %>"></div>
-                    <div>ADD OTHER LOCATIONS</div>
-                    <div>ADD NEAREST PORT</div>
-                    <div><input type="text" name="primaryProductSpecialty" value="<%= supplier.primaryProductSpecialty %>"></div>
-                    <div><input type="text" name="companyCapabilities" value="<%= supplier.companyCapabilities %>"></div>
-                    <div><input type="text" name="annualSalesValue" value="<%= supplier.annualSalesValue %>"></div>
-                    <div><input type="submit"></div>
-                </form>
+                <div class="formWrapper">
+                  <form action="/supplier/update/productionDetails" method="post" id="supplierProductionDetailsForm">
+                      <div><input type="text" name="annualSalesValue" value="<%= supplier.annualSalesValue %>"></div>
+                      <div><input type="text" name="totalFactorySize" value="<%= supplier.totalFactorySize %>"></div>
+                      <div><input type="text" name="totalQCStaff" value="<%= supplier.totalQCStaff %>"></div>
+                      <div>ADD OTHER LOCATIONS</div>
+                      <div>ADD NEAREST PORT</div>
+                      <div><input type="text" name="primaryProductSpecialty" value="<%= supplier.primaryProductSpecialty %>"></div>
+                      <div><input type="text" name="companyCapabilities" value="<%= supplier.companyCapabilities %>"></div>
+                      <div><input type="text" name="annualSalesValue" value="<%= supplier.annualSalesValue %>"></div>
+                      <div><input type="submit"></div>
+                  </form>
+                </div>
             </div>
             <div id="descriptionsSupplier">
                 <h4>Descriptions</h4>
-                <form action="/supplier/update/descriptions" method="post" id="supplierDescriptionsForm">
-                    <div><input type="text" name="companyDescription" value="<%= supplier.companyDescription %>"></div>
-                    <div><textarea name="environmentalSustainability" form="supplierDescriptionsForm">Environmental Sustainability</textarea></div>
-                    <div><textarea name="qualitySourcing" form="supplierDescriptionsForm">Quality Sourcing</textarea></div>
-                    <div><textarea name="workplaceSafety" form="supplierDescriptionsForm">Workplace Safety</textarea></div>
-                    <div><textarea name="laborEducationTraining" form="supplierDescriptionsForm">Labor Education Training</textarea></div>
-                    <div><textarea name="reinvestment" form="supplierDescriptionsForm">Reinvestment</textarea></div>
-                    <div><input type="submit"></div>
-                </form>
+                <div class="formWrapper">
+                  <form action="/supplier/update/descriptions" method="post" id="supplierDescriptionsForm">
+                      <div><input type="text" name="companyDescription" value="<%= supplier.companyDescription %>"></div>
+                      <div><textarea name="environmentalSustainability" form="supplierDescriptionsForm">Environmental Sustainability</textarea></div>
+                      <div><textarea name="qualitySourcing" form="supplierDescriptionsForm">Quality Sourcing</textarea></div>
+                      <div><textarea name="workplaceSafety" form="supplierDescriptionsForm">Workplace Safety</textarea></div>
+                      <div><textarea name="laborEducationTraining" form="supplierDescriptionsForm">Labor Education Training</textarea></div>
+                      <div><textarea name="reinvestment" form="supplierDescriptionsForm">Reinvestment</textarea></div>
+                      <div><input type="submit"></div>
+                  </form>
+                </div>
             </div>
             <div id="preferencesSupplier">
                 <h4>Preferences</h4>
-                <form action="/supplier/update/preferences" method="post" id="supplierPreferencesForm">
-                    <div><select name="preferredBuyerType">
-                        <option value="<%= supplier.preferredBuyerType %>" selected="selected"><%= supplier.preferredBuyerType %></option>
-                        <%- partial('../partials/edit-dropdowns/edit-pref-buyer-type') %>
-                    </select></div>
-                    <div><select name="preferredBuyerLanguage">
-                        <option value="<%= supplier.preferredBuyerLanguage %>" selected="selected"><%= supplier.preferredBuyerLanguage %></option>
-                        <%- partial('../partials/edit-dropdowns/edit-pref-buyer-language') %>
-                    </select></div>
-                    <div><input type="text" name="preferredBuyerLocation" value="<%= supplier.preferredBuyerLocaion %>"></div>
-                    <div><input type="submit"></div>
-                </form>
+                <div class="formWrapper">
+                  <form action="/supplier/update/preferences" method="post" id="supplierPreferencesForm">
+                      <div><select name="preferredBuyerType">
+                          <option value="<%= supplier.preferredBuyerType %>" selected="selected"><%= supplier.preferredBuyerType %></option>
+                          <%- partial('../partials/edit-dropdowns/edit-pref-buyer-type') %>
+                      </select></div>
+                      <div><select name="preferredBuyerLanguage">
+                          <option value="<%= supplier.preferredBuyerLanguage %>" selected="selected"><%= supplier.preferredBuyerLanguage %></option>
+                          <%- partial('../partials/edit-dropdowns/edit-pref-buyer-language') %>
+                      </select></div>
+                      <div><input type="text" name="preferredBuyerLocation" value="<%= supplier.preferredBuyerLocaion %>"></div>
+                      <div><input type="submit"></div>
+                  </form>
+                </div>
             </div>
             <div id="socialOutletsSupplier">
                 <h4>Social Outlets</h4>
-                <form action="/supplier/update/socialoutlets" method="post" id="supplierSocialOutletsForm">
-                    <div><input type="text" name="facebook" value="<%= supplier.facebook %>"></div>
-                    <div><input type="text" name="twitter" value="<%= supplier.twitter %>"></div>
-                    <div><input type="text" name="google" value="<%= supplier.google %>"></div>
-                    <div><input type="text" name="linkedin" value="<%= supplier.linkedin %>"></div>
-                    <div><input type="text" name="pinterest" value="<%= supplier.pinterest %>"></div>
-                    <div><input type="text" name="instagram" value="<%= supplier.instagram %>"></div>
-                    <div><input type="text" name="tumblr" value="<%= supplier.tumblr %>"></div>
-                    <div><input type="text" name="google" value="<%= supplier.google %>"></div>
-                    <div><input type="submit"></div>
-                </form>
+                <div class="formWrapper">
+                  <form action="/supplier/update/socialoutlets" method="post" id="supplierSocialOutletsForm">
+                      <div><input type="text" name="facebook" value="<%= supplier.facebook %>"></div>
+                      <div><input type="text" name="twitter" value="<%= supplier.twitter %>"></div>
+                      <div><input type="text" name="google" value="<%= supplier.google %>"></div>
+                      <div><input type="text" name="linkedin" value="<%= supplier.linkedin %>"></div>
+                      <div><input type="text" name="pinterest" value="<%= supplier.pinterest %>"></div>
+                      <div><input type="text" name="instagram" value="<%= supplier.instagram %>"></div>
+                      <div><input type="text" name="tumblr" value="<%= supplier.tumblr %>"></div>
+                      <div><input type="text" name="google" value="<%= supplier.google %>"></div>
+                      <div><input type="submit"></div>
+                  </form>
+                </div>
             </div>
         <% } %>
       </div><!-- END COL-SM-8 -->
