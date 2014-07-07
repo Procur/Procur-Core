@@ -60,6 +60,7 @@ var dnsMsg = "Please enter a 9-digit DNS Number.";
 Form Validation
 
 */
+
 $('#registration-form').validate({
   rules: {
     firstName: {
@@ -87,6 +88,37 @@ $('#registration-form').validate({
     passwordConfirm: {
       required: true,
       equalTo: "#regPassword"
+    }
+  }
+});
+
+$('#signup-form').validate({
+  rules: {
+    firstName: {
+      required: true,
+      minlength: 1,
+      maxlength: 100
+    },
+    lastName: {
+      required: true,
+      minlength: 1,
+      maxlength: 100
+    },
+      email: {
+      required: true,
+      email: true,
+      minlength: 1,
+      maxlength: 100
+    },
+    password: {
+      required: true,
+      minlength: 8,
+      strongPassword: true,
+      maxlength: 50
+    },
+    passwordConfirm: {
+      required: true,
+      equalTo: "#signUpPassword"
     }
   }
 });
