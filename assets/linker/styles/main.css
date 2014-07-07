@@ -596,7 +596,7 @@ ul.ui-autocomplete {
 }
 
 .rightSec:hover {
-  background: #FD9237;
+  background: #fbac27;
   -webkit-transition: all 200ms ease-in-out;
   -moz-transition: all 200ms ease-in-out;
   -ms-transition: all 200ms ease-in-out;
@@ -627,7 +627,7 @@ ul.ui-autocomplete {
 
 
 .rightSec:hover .rightSecBox {
-  background: #FDB26E;
+  background: #ffc65c;
   color: white;
   -webkit-transition: all 200ms ease-in-out;
   -moz-transition: all 200ms ease-in-out;

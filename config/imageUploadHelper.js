@@ -14,10 +14,11 @@ module.exports.imageUploadHelper = {
     }
   },
 
-  uploadSupplierImage: function(req, res, userObj, image) {
+  uploadSupplierImage: function(req, res, userObj, image, callback) {
     cloudinary.uploader.upload(image, function(result) {
       Supplier.update(userObj.id, { logoUrl: result.url }, function(err, supplier) {
         if (err) { return res.redirect('/'); }
+        callback();
       });
     },
     {
@@ -30,10 +31,11 @@ module.exports.imageUploadHelper = {
     });
   },
 
-  uploadBuyerImage: function(req, res, userObj, image) {
+  uploadBuyerImage: function(req, res, userObj, image, callback) {
     cloudinary.uploader.upload(image, function(result) {
       Buyer.update(userObj.id, { logoUrl: result.url }, function(err, buyer) {
         if (err) { return res.redirect('/'); }
+        callback();
       });
     },
     {

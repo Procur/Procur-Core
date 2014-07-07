@@ -292,7 +292,7 @@ module.exports = {
     });
   },
 
-  update: function(req, res){
+ /* update: function(req, res){
     var payload = [],
         locationsPayload = {},
         viewLocations = {},
@@ -343,7 +343,7 @@ module.exports = {
     });
   },
 
-  setUpdate: function(req, res){
+  /*setUpdate: function(req, res){
     var b = req.body;
     User.findOne({ id: req.session.passport.user }, function(err, user){
       if(err) { return res.redirect('/dashboard'); }
@@ -377,6 +377,222 @@ module.exports = {
         });
       });
     });
+  },*/
+
+  update: function(req, res){
+    var userId = req.session.passport.user,
+        targetUser,
+        targetBuyer,
+        targetSupplier,
+        targetCompany,
+        buyerLocations,
+        supplierLocations,
+        companyLocations,
+        hqLocation;
+
+    User.findOne({ id: userId }, function(err, user){
+      if(err){ return res.redirect('/dashboard'); }
+      if(user !== undefined){
+        targetUser = user;
+        Company.findOne({ user: user.id }, function (err, company){
+          if(err){ return res.redirect('/dashboard'); }
+          if(company !== undefined){
+            targetCompany = company;
+            if((company.buyer == true) && (company.supplier == true)){
+              Buyer.findOne({ company: company.id }, function(err, buyer){
+                if(err){ return res.redirect('/dashboard'); }
+                if(buyer !== undefined){
+                  targetBuyer = buyer;
+                  Supplier.findOne({ company: company.id }, function(err, supplier){
+                    if(err){ return res.redirect('/dashboard'); }
+                    if(supplier !== undefined) {
+                      targetSupplier = supplier;
+                      Location.find().where({ company: company.id }).exec(function(err, locations){
+                        if(err){ return res.redirect('/dashboard'); }
+                        companyLocations = locations;
+                        Location.find().where({ buyer: targetBuyer.id }).exec(function(err, locationsBuyer){
+                          if(err){ return res.redirect('/dashboard'); }
+                          buyerLocations = locationsBuyer;
+                          Location.find().where({ supplier: targetSupplier.id }).exec(function(err, locationsSupplier){
+                            if(err){ return res.redirect('/dashboard'); }
+                            supplierLocations = locationsSupplier;
+                            Location.findOne({ company: company.id, isHq: true }, function(err, locationsHq){
+                              if(err){ return res.redirect('/dashboard'); }
+                              hqLocation = locationsHq;
+                              res.view({
+                                user: targetUser,
+                                company: targetCompany,
+                                buyer: targetBuyer,
+                                supplier: targetSupplier,
+                                companyLocations: companyLocations,
+                                buyerLocations: buyerLocations,
+                                supplierLocations: supplierLocations,
+                                companyHq: hqLocation
+                              });
+                            });
+                          });
+                        });
+                      });
+                    }
+                    else {
+                      return res.redirect('/dashboard');
+                    }
+                  });
+                }
+                else {
+                  return res.redirect('/dashboard');
+                }
+              });
+            }
+            else if((company.buyer == true) && (company.supplier != true)){
+              Buyer.findOne({ company: company.id }, function(err, buyer){
+                if(err){ return res.redirect('/dashboard'); }
+                if(buyer !== undefined){
+                  targetBuyer = buyer;
+                  Location.find().where({ company: company.id }).exec(function(err, locationsCompany){
+                    if(err){ return res.redirect('/dashboard'); }
+                    companyLocations = locationsCompany;
+                    Location.find().where({ buyer: buyer.id }).exec(function(err, locationsBuyer){
+                      if(err){ return res.redirect('/dashboard'); }
+                      buyerLocations = locationsBuyer;
+                      res.view({
+                        user: targetUser,
+                        company: targetCompany,
+                        buyer: targetBuyer,
+                        companyLocations: companyLocations,
+                        buyerLocations: buyerLocations
+                      });
+                    });
+                  });
+                }
+                else {
+                  return res.redirect('/dashboard');
+                }
+              });
+            }
+            else if((company.buyer != true) && (company.supplier == true)){
+              Supplier.findOne({ company: company.id }, function(err, supplier){
+                if(err){ return res.redirect('/dashboard'); }
+                if(supplier !== undefined){
+                  targetSupplier = supplier;
+                  Location.find().where({ company: company.id }).exec(function(err, locationsCompany){
+                    if(err){ return res.redirect('/dashboard'); }
+                    companyLocations = locationsCompany;
+                    Location.find().where({ supplier: supplier.id }).exec(function(err, locationsSupplier){
+                      if(err){ return res.redirect('/dashboard'); }
+                      supplierLocations = locationsSupplier;
+                      res.view({
+                        user: targetUser,
+                        company: targetCompany,
+                        supplier: targetSupplier,
+                        companyLocations: companyLocations,
+                        supplierLocations: supplierLocations
+                      });
+                    });
+                  });
+                }
+                else {
+                  return res.redirect('/dashboard');
+                }
+              });
+            }
+          }
+          else {
+            return res.redirect('/dashboard');
+          }
+        });
+      }
+      else {
+        return res.redirect('/dashboard');
+      }
+    });
+  },
+
+  updateBasicCompanyDetails: function(req, res){
+    var p = req.params.all(),
+        name = p.name,
+        phoneNumberCountryCode = p.phoneNumberCountryCode,
+        phoneNumber = p.phoneNumber,
+        phoneExtension = p.phoneExtension,
+        faxCountryCode = p.faxCountryCode,
+        faxNumber = p.faxNumber,
+        faxExtension = p.faxExtension,
+        email = p.email,
+        website = p.website,
+        industry = p.companyIndustry,
+        hqAddressLine1 = p.hqAddressLine1,
+        hqAddressLine2 = p.hqAddressLine2,
+        hqCountry = p.hqCountry,
+        hqProvince = p.hqProvince,
+        hqPostalCode = p.hqPostalCode,
+        employeeCount = p.employeeCount;
+    User.findOne({ id: req.session.passport.user }, function(err,user){
+      if(err){ return res.redirect('/dashboard'); }
+      if(user !== undefined){
+        Company.findOne({ user: user.id }, function(err, company){
+          if(err){ return res.redirect('/dashboard'); }
+          Company.update(company, {
+            name: name,
+            phoneNumberCountryCode: phoneNumberCountryCode,
+            phoneNumber: phoneNumber,
+            phoneExtension: phoneExtension,
+            faxCountryCode: faxCountryCode,
+            faxNumber: faxNumber,
+            faxExtension: faxExtension,
+            email: email,
+            website: website,
+            industry: industry,
+            employeeCount: employeeCount
+          }, function(err, company){
+            if(err){ return res.send(err); }
+            if(company !== undefined){
+              Location.findOne({ company: company.id }, function(err, location){
+                if(err){ return res.send(err); }
+                if(company !== undefined){
+                  Location.update(location,{
+                    addressLine1: hqAddressLine1,
+                    addressLine2: hqAddressLine2,
+                    country: hqCountry,
+                    province: hqProvince,
+                    postalCode: hqPostalCode
+                  }, function(err, company){
+                    if(err){ return res.send(err); }
+                    if(company !== undefined) {
+                      res.send('success');
+                    }
+                    else {
+                      res.send('failed');
+                    }
+                  });
+                }
+              });
+            }
+            else {
+              res.send(err);
+            }
+          });
+        });
+      }
+      else {
+        return res.redirect('/dashboard');
+      }
+    });
+  },
+
+  updateBuyerInformation: function(req, res){
+
+  },
+
+  updateDescriptions: function(req, res){
+
+  },
+
+  updateLocations: function(req, res){
+
+  },
+
+  updatePhotosAndDownloads: function(req, res){
+
   },
 
   notFound: function(req, res){
