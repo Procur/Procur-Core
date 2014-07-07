@@ -24,7 +24,22 @@ var nodemailer = require('nodemailer'),
       }
     }),
     address = process.env.ENVIRONMENT_URL || 'localhost:1337';
-
+var mailchimpConfig = function () {
+      var apikey = process.env.MAILCHIMP_APIKEY || 'eb531267a844e3881e4b16d8482ed998-us3';
+      var apiurl = process.env.MAILCHIMP_APIURL || 'https://us3.api.mailchimp.com/2.0';
+      if (process.env.NODE_ENV){
+        console.log("Production");
+        var listid1 = "3a428c0b74"; //Procur.com Changes and Updates
+        var listid2 = "d96c07d54f"; //Trade & Industry Newsletter
+        var listid3 = "5ab736fb54"; //General News & Announcements
+      }
+      else {
+        console.log("Dev");
+        var listid1 = "58856a57f6"; //Procur.com Changes and Updates -  Dev
+        var listid2 = "f24155909b"; //Trade & Industry Newsletter - Dev
+        var listid3 = "152b1cd8d5"; //General News & Announcements - Dev
+     }
+};
 
 module.exports = {
 
@@ -107,6 +122,51 @@ module.exports = {
       req.flash('success',"Message sent! We'll get back to you as soon as possible.");
       res.redirect('/contact');
     });
+  },
+
+  subscribe: function(req, res){
+    var b = req.body;
+    var htmlContent = b.content;
+    var https = require('https');
+    var subscriber = {
+      email: 'placeholder',
+    };
+
+    var userString = JSON.stringify(user);
+
+    var headers = {
+      'Content-Type': 'application/json',
+      'Content-Length': userString.length
+    };
+
+    var options = {
+      host: 'myServer.example.com',
+      port: 80,
+      path: '/subscribe.json',
+      method: 'POST',
+      headers: headers
+    };
+    // Setup the request.
+    var mcReq = http.request(options, function(res) {
+      res.setEncoding('utf-8');
+
+      var responseString = '';
+
+      res.on('data', function(data) {
+        responseString += data;
+      });
+
+      res.on('end', function() {
+        var resultObject = JSON.parse(responseString);
+      });
+    });
+
+    mcReq.on('error', function(e) {
+      // TODO: handle error.
+    });
+
+    mcReq.write(userString);
+    mcReq.end();
   },
 
   ////////////////////////////
