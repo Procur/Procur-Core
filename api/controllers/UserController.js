@@ -27,7 +27,7 @@ function getFileSize(file){
   else {
     return false;
   }
-};
+}
 
 module.exports = {
 
