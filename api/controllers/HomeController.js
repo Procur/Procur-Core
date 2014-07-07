@@ -24,22 +24,23 @@ var nodemailer = require('nodemailer'),
       }
     }),
     address = process.env.ENVIRONMENT_URL || 'localhost:1337';
-var mailchimpConfig = function () {
-      var apikey = process.env.MAILCHIMP_APIKEY || 'eb531267a844e3881e4b16d8482ed998-us3';
-      var apiurl = process.env.MAILCHIMP_APIURL || 'https://us3.api.mailchimp.com/2.0';
-      if (process.env.NODE_ENV){
-        console.log("Production");
-        var listid1 = "3a428c0b74"; //Procur.com Changes and Updates
-        var listid2 = "d96c07d54f"; //Trade & Industry Newsletter
-        var listid3 = "5ab736fb54"; //General News & Announcements
-      }
-      else {
-        console.log("Dev");
-        var listid1 = "58856a57f6"; //Procur.com Changes and Updates -  Dev
-        var listid2 = "f24155909b"; //Trade & Industry Newsletter - Dev
-        var listid3 = "152b1cd8d5"; //General News & Announcements - Dev
-     }
-};
+
+function MailChimpConfig () {
+  this.apikey = process.env.MAILCHIMP_APIKEY || 'eb531267a844e3881e4b16d8482ed998-us3';
+  this.apiurl = process.env.MAILCHIMP_APIURL || 'us3.api.mailchimp.com';
+  if (sails.config.environment == 'development'){
+    console.log("Dev");
+    this.listid1 = "58856a57f6"; //Procur.com Changes and Updates -  Dev
+    this.listid2 = "f24155909b"; //Trade & Industry Newsletter - Dev
+    this.listid3 = "152b1cd8d5"; //General News & Announcements - Dev
+  }
+  else if (process.env.NODE_ENV != 'development'){
+    console.log("Production");
+    this.listid1 = "3a428c0b74"; //Procur.com Changes and Updates
+    this.listid2 = "d96c07d54f"; //Trade & Industry Newsletter
+    this.listid3 = "5ab736fb54"; //General News & Announcements
+  }
+}
 
 module.exports = {
 
@@ -125,48 +126,57 @@ module.exports = {
   },
 
   subscribe: function(req, res){
+    var mcConfig = new MailChimpConfig();
     var b = req.body;
-    var htmlContent = b.content;
-    var https = require('https');
-    var subscriber = {
-      email: 'placeholder',
-    };
+    var email = b.subscriberEmail;
+    if(!email){
+      req.flash('failure',"Email address is blank!");
+      res.redirect('/contact');
+    }
+    else if (email) {
+      var subscribeToList = function (email, listId) {
+        var https = require('https');
+        var subscriber = {
+          "apikey": mcConfig.apikey,
+          "email": {"email": email},
+          "id": listId
+        };
+        var subscriberString = JSON.stringify(subscriber);
+        var headers = {
+          'Content-Type': 'application/json',
+          'Content-Length': subscriberString.length
+        };
+        var options = {
+          host: mcConfig.apiurl,
+          port: 443,
+          path: '/2.0/lists/subscribe.json',
+          method: 'POST',
+          headers: headers
+        };
+        var mcReq = https.request(options, function (res) {
+          res.setEncoding('utf-8');
+          var responseString = '';
+          res.on('data', function (data) {
+            responseString += data;
+          });
+          res.on('end', function () {
+            var resultObject = JSON.parse(responseString);
+            console.log(resultObject);
+          });
+        });
+        mcReq.on('error', function (e) {
+          //TODO:Figure out how to handle an error here
+        });
+        mcReq.write(subscriberString);
+        mcReq.end();
 
-    var userString = JSON.stringify(user);
-
-    var headers = {
-      'Content-Type': 'application/json',
-      'Content-Length': userString.length
-    };
-
-    var options = {
-      host: 'myServer.example.com',
-      port: 80,
-      path: '/subscribe.json',
-      method: 'POST',
-      headers: headers
-    };
-    // Setup the request.
-    var mcReq = http.request(options, function(res) {
-      res.setEncoding('utf-8');
-
-      var responseString = '';
-
-      res.on('data', function(data) {
-        responseString += data;
-      });
-
-      res.on('end', function() {
-        var resultObject = JSON.parse(responseString);
-      });
-    });
-
-    mcReq.on('error', function(e) {
-      // TODO: handle error.
-    });
-
-    mcReq.write(userString);
-    mcReq.end();
+      };
+      if (b.chkList1 != 'undefined') { subscribeToList(email, mcConfig.listid1) }
+      if (b.chkList2 != 'undefined') { subscribeToList(email, mcConfig.listid2) }
+      if (b.chkList3 != 'undefined') { subscribeToList(email, mcConfig.listid3) }
+      req.flash('success', "Success!");
+      res.redirect('/contact');
+    }
   },
 
   ////////////////////////////
