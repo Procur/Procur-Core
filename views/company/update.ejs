@@ -134,29 +134,29 @@
                 <div class="row">
                   <div class="col-sm-6">
                     <h5>Company Name</h5>
-                    <div><input type="text" name="name" <% if(company.name !== undefined) { %>value="<%= company.name %>"><% } else { %> placeholder="Company Name" <% } %></div><br/>
+                    <div><input type="text" name="name" <% if(company.name !== undefined) { %>value="<%= company.name %>"<% } else { %> placeholder="Company Name" <% } %>></div><br/>
                     <h5>Company Phone</h5>
                     <div class="row insideForm">
                       <div class="col-sm-5 inputColumnL">
-                          <div><input type="text" name="phoneNumberCountryCode" <% if(company.phoneNumberCountryCode !== undefined) { %>value="<%= company.phoneNumberCountryCode %>"><% } else { %> placeholder="Country Code" <% } %></div>
+                          <div><input type="text" name="phoneNumberCountryCode" <% if(company.phoneNumberCountryCode !== undefined) { %>value="<%= company.phoneNumberCountryCode %>"<% } else { %> placeholder="Country Code" <% } %>></div>
                       </div>
                       <div class="col-sm-7 inputColumnR">
-                          <div><input type="text" name="phoneNumber" <% if(company.phoneNumber !== undefined) { %>value="<%= company.phoneNumber %>"><% } else { %> placeholder="Phone Number" <% } %></div>
+                          <div><input type="text" name="phoneNumber" <% if(company.phoneNumber !== undefined) { %>value="<%= company.phoneNumber %>"<% } else { %> placeholder="Phone Number" <% } %>></div>
                       </div>
                     </div>
                     <div class="row insideForm">
                       <div class="col-sm-7 col-sm-offset-5 inputColumnR">
-                          <div class="breakForm"><input type="text" name="phoneExtension" <% if(company.phoneExtension !== undefined) { %>value="<%= company.phoneExtension %>"><% } else { %> placeholder="Extension" <% } %></div>
+                          <div class="breakForm"><input type="text" name="phoneExtension" <% if(company.phoneExtension !== undefined) { %>value="<%= company.phoneExtension %>"<% } else { %> placeholder="Extension" <% } %>></div>
                       </div>
                     </div>
 
                     <h5>Company Fax</h5>
                     <div class="row insideForm">
                       <div class="col-sm-5 inputColumnL">
-                          <div><input type="text" name="faxCountryCode" <% if(company.faxCountryCode !== undefined) { %>value="<%= company.faxCountryCode %>"><% } else { %> placeholder="Country Code" <% } %></div>
+                          <div><input type="text" name="faxCountryCode" <% if(company.faxCountryCode !== undefined) { %>value="<%= company.faxCountryCode %>"<% } else { %> placeholder="Country Code" <% } %>></div>
                       </div>
                       <div class="col-sm-7 inputColumnR">
-                          <div><input type="text" name="faxNumber" <% if(company.faxNumber !== undefined) { %>value="<%= company.faxNumber %>"><% } else { %> placeholder="Fax Number" <% } %></div>
+                          <div><input type="text" name="faxNumber" <% if(company.faxNumber !== undefined) { %>value="<%= company.faxNumber %>"<% } else { %> placeholder="Fax Number" <% } %>></div>
                       </div>
                     </div>
                     <div class="row insideForm">
@@ -218,14 +218,14 @@
                           <option value="<%= buyer.language %>" selected="selected"><%= buyer.language %></option>
                           <%- partial('../partials/edit-dropdowns/edit-language') %>
                       </select>
-                      <div><input type="text" name="acceptedCurrency" <% if(buyer.acceptedCurrency !== undefined) { %>value="<%= buyer.acceptedCurrency %>"><% } else { %> placeholder="Accepted Currency" <% } %></div>
-                      <div><input type="text" name="acceptedPaymentTerms" <% if(buyer.acceptedPaymentTerms !== undefined) { %>value="<%= buyer.acceptedPaymentTerms %>"><% } else { %> placeholder="Accepted Payment Terms" <% } %></div>
-                      <div><input type="text" name="acceptedDeliveryTerms" <% if(buyer.acceptedDeliveryTerms !== undefined) { %>value="<%= buyer.acceptedDeliveryTerms %>"><% } else { %> placeholder="Accepted Delivery Terms" <% } %></div>
-                      <div><input type="text" name="typeOfCompany" <% if(buyer.typeOfCompany !== undefined) { %>value="<%= buyer.typeOfCompany %>"><% } else { %> placeholder="Type of Company" <% } %></div>
-                      <div><input type="text" name="contactName" <% if(buyer.contactName !== undefined) { %>value="<%= buyer.contactName %>"><% } else { %> placeholder="Contact Name" <% } %></div>
-                      <div><input type="text" name="contactPosition" <% if(buyer.contactPosition !== undefined) { %>value="<%= buyer.contactPosition %>"><% } else { %> placeholder="Contact Position" <% } %></div>
-                      <div><input type="text" name="contactEmail" <% if(buyer.contactEmail !== undefined) { %>value="<%= buyer.contactEmail %>"><% } else { %> placeholder="Contact Email" <% } %></div>
-                      <div><input type="text" name="dunsNumber" <% if(buyer.dunsNumber !== undefined) { %>value="<%= buyer.dunsNumber %>"><% } else { %> placeholder="DUNS Number" <% } %></div>
+                      <div><input type="text" name="acceptedCurrency" <% if(buyer.acceptedCurrency !== undefined) { %>value="<%= buyer.acceptedCurrency %>"<% } else { %> placeholder="Accepted Currency" <% } %>></div>
+                      <div><input type="text" name="acceptedPaymentTerms" <% if(buyer.acceptedPaymentTerms !== undefined) { %>value="<%= buyer.acceptedPaymentTerms %>"<% } else { %> placeholder="Accepted Payment Terms" <% } %>></div>
+                      <div><input type="text" name="acceptedDeliveryTerms" <% if(buyer.acceptedDeliveryTerms !== undefined) { %>value="<%= buyer.acceptedDeliveryTerms %>"<% } else { %> placeholder="Accepted Delivery Terms" <% } %>></div>
+                      <div><input type="text" name="typeOfCompany" <% if(buyer.typeOfCompany !== undefined) { %>value="<%= buyer.typeOfCompany %>"<% } else { %> placeholder="Type of Company" <% } %>></div>
+                      <div><input type="text" name="contactName" <% if(buyer.contactName !== undefined) { %>value="<%= buyer.contactName %>"<% } else { %> placeholder="Contact Name" <% } %>></div>
+                      <div><input type="text" name="contactPosition" <% if(buyer.contactPosition !== undefined) { %>value="<%= buyer.contactPosition %>"<% } else { %> placeholder="Contact Position" <% } %>></div>
+                      <div><input type="text" name="contactEmail" <% if(buyer.contactEmail !== undefined) { %>value="<%= buyer.contactEmail %>"<% } else { %> placeholder="Contact Email" <% } %>></div>
+                      <div><input type="text" name="dunsNumber" <% if(buyer.dunsNumber !== undefined) { %>value="<%= buyer.dunsNumber %>"<% } else { %> placeholder="DUNS Number" <% } %>></div>
                       <div>Product CATEGORIES</div>
                       <div>OTHER LOCATIONS</div>
                       <div>NEAREST PORT</div>
