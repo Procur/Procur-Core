@@ -6,7 +6,7 @@
         your `sails.config.appName` to show that you can inject data into layouts
         exactly the same way as with your other view templates.
     -->
-    <% if(title){ %><title><%- title %></title><% }else{%><title>Procur - Placeholder Sitewide Title</title><%}%>
+    <% if(title){ %><title id="siteTitle"><%- title %></title><% }else{%><title>Procur - Placeholder Sitewide Title</title><%}%>
     <link rel="icon" href="/linker/favicon.ico" type="image/x-icon">
     <!-- Viewport mobile tag for sensible mobile support -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
@@ -28,14 +28,17 @@
     <link rel="stylesheet" href="/linker/styles/earlyaccess.css">
     <link rel="stylesheet" href="/linker/styles/errorpages.css">
     <link rel="stylesheet" href="/linker/styles/faq.css">
+    <link rel="stylesheet" href="/linker/styles/features.css">
     <link rel="stylesheet" href="/linker/styles/handle.css">
     <link rel="stylesheet" href="/linker/styles/legal.css">
     <link rel="stylesheet" href="/linker/styles/main.css">
     <link rel="stylesheet" href="/linker/styles/marketing.css">
     <link rel="stylesheet" href="/linker/styles/pricing.css">
+    <link rel="stylesheet" href="/linker/styles/profile-body.css">
+    <link rel="stylesheet" href="/linker/styles/profile-header.css">
     <link rel="stylesheet" href="/linker/styles/signup.css">
     <!--STYLES END-->
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
   </head>
 
   <body>
@@ -54,12 +57,15 @@
     <script src="/linker/js/autocomplete.js"></script>
     <script src="/linker/js/bootstrap.min.js"></script>
     <script src="/linker/js/companyHandleExists.js"></script>
+    <script src="/linker/js/countries.js"></script>
     <script src="/linker/js/dash-toggle.js"></script>
     <script src="/linker/js/dropdown-helper.js"></script>
     <script src="/linker/js/earlyaccess.js"></script>
     <script src="/linker/js/faqHelper.js"></script>
+    <script src="/linker/js/featuresHelper.js"></script>
     <script src="/linker/js/formvalidation.js"></script>
     <script src="/linker/js/hqcheck.js"></script>
+    <script src="/linker/js/textpreview.js"></script>
     <script src="/linker/textpreview.js"></script>
     <!--SCRIPTS END-->
 

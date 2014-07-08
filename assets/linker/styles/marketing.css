@@ -1,66 +1,102 @@
 /* HEADER*/
 #mktHeader {
-	height: 64px;
-	width: 100%;
-	background: white;
-	margin-bottom: 0px;
+  height: 64px;
+  width: 100%;
+  background: white;
+  margin-bottom: 0px;
 }
 
 #mktHeader ul {
-	list-style: none;
-	margin: 0px;
-	padding: 0px;
+  list-style: none;
+  margin: 0px;
+  padding: 0px;
+}
+
+
+
+#mktHeader ul li a {
+  color: #333132;
+}
+
+#mktHeader .tri .hoverTri {
+  position: relative;
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-bottom: 5px solid #fe9e23;
+  margin-left: auto;
+  margin-right: auto;
+  bottom: -10px;
+  -webkit-transition: all 200ms ease-in-out;
+  -moz-transition: all 200ms ease-in-out;
+  -ms-transition: all 200ms ease-in-out;
+  -o-transition: all 200ms ease-in-out;
+  transition: all 200ms ease-in-out;
+}
+
+#mktHeader .tri .hoverTriContainer {
+position: absolute;
+width: 100%;
+height: 10px;
+overflow: hidden;
+bottom: 0;
 }
 
 #mktHeader ul li {
-	display: inline;
-	margin-left: 15px;
-	line-height: 74px;
-	color: #333132;
-	text-transform: uppercase;
-	font-family: 'Montserrat', sans-serif;
-	font-size: 10px;
-	letter-spacing: 0.04em;
+display: inline;
+margin-left: 15px;
+line-height: 74px;
+color: #333132;
+text-transform: uppercase;
+font-family: 'Montserrat', sans-serif;
+font-size: 10px;
+letter-spacing: 0.04em;
 }
 
-#mktHeader ul li a {
-	color: #333132;
+#mktHeader ul {
+font-family: Montserrat,Tahoma,Verdana;
+text-transform: uppercase;
+font-weight: 300;
+font-size: 11px;
+letter-spacing: .06em;
 }
+
 
 
 /* LINE HEADER */
 
 #mktHeaderLine {
-	height: 64px;
-	width: 100%;
-	background: white;
-	margin-bottom: 50px;
+  height: 64px;
+  width: 100%;
+  background: white;
+  margin-bottom: 50px;
 }
 
 #mktHeaderLine .container {
-	border-bottom: 2px solid #CDCDCD;
-	max-height: 64px;
-	overflow: hidden;
+  border-bottom: 2px solid #CDCDCD;
+  max-height: 64px;
+  overflow: hidden;
 }
 
 #mktHeaderLine ul {
-	list-style: none;
-	margin: 0px;
+  list-style: none;
+  margin: 0px;
 }
 
 #mktHeaderLine ul li {
-	display: inline;
-	margin-left: 15px;
-	line-height: 74px;
-	color: #333132;
-	text-transform: uppercase;
-	font-family: 'Montserrat', sans-serif;
-	font-size: 10px;
-	letter-spacing: 0.04em;
+  display: inline;
+  margin-left: 15px;
+  line-height: 74px;
+  color: #333132;
+  text-transform: uppercase;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.04em;
 }
 
 #mktHeaderLine ul li a {
-	color: #333132;
+  color: #333132;
 }
 
 
@@ -68,77 +104,77 @@
 
 /* PAGE */
 .heroImage {
-	width: 100%;
-	background: url('../../images/mainBG.jpg');
-	background-repeat: no-repeat;
-	background-size: 100%;
-	margin: 0px;
-	padding: 0px;
-	min-height: 360px;
+  width: 100%;
+  background: url('../../images/mainBG.jpg');
+  background-repeat: no-repeat;
+  background-size: 100%;
+  margin: 0px;
+  padding: 0px;
+  min-height: 360px;
 }
 
 .heroImage h3 {
-	font-family: 'Montserrat', sans-serif;
-	font-size: 12px;
-	color: white;
-	letter-spacing: 0.06em;
-	text-align: center;
-	font-weight: 400;
-	margin-bottom: 14px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 12px;
+  color: white;
+  letter-spacing: 0.06em;
+  text-align: center;
+  font-weight: 400;
+  margin-bottom: 14px;
 }
 
 .regForm {
-	background-color: rgba(0, 0, 0, 0.16);
-	min-height: 360px;
-	height: 100%;
-	margin-top: -10px;
+  background-color: rgba(0, 0, 0, 0.16);
+  min-height: 360px;
+  height: 100%;
+  margin-top: -10px;
 }
 
 .regForm input {
-	width: 100%;
-	margin-bottom: 10px;
-	height: 37px;
-	line-height: 37px;
-	padding-left: 10px;
-	font-family: 'Roboto', sans-serif;
-	font-weight: 300;
-	border: 0px none;
-	font-size: 11px;
-	letter-spacing: 0.05em;
+  width: 100%;
+  margin-bottom: 10px;
+  height: 37px;
+  line-height: 37px;
+  padding-left: 10px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  border: 0px none;
+  font-size: 11px;
+  letter-spacing: 0.05em;
 }
 
 .regForm button {
-	width: 100%;
-	margin-bottom: 10px;
-	height: 37px;
-	line-height: 37px;
-	padding-left: 10px;
-	font-family: 'Montserrat', sans-serif;
-	font-weight: 400;
-	border: 0px none;
-	background: #FD9237;
-	color: white;
-	letter-spacing: 0.08em;
-	font-size: 11px;
+  width: 100%;
+  margin-bottom: 10px;
+  height: 37px;
+  line-height: 37px;
+  padding-left: 10px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  border: 0px none;
+  background: #FD9237;
+  color: white;
+  letter-spacing: 0.08em;
+  font-size: 11px;
 }
 
 .launchingSoon h2 {
-	font-family: 'Roboto', sans-serif;
-	font-weight: 100;
-	letter-spacing: 0.06em;
-	color: #999;
-	font-size: 26px;
-	text-align: right;
-	margin-top: 50px;
-	margin-bottom: 25px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 100;
+  letter-spacing: 0.06em;
+  color: #999;
+  font-size: 26px;
+  text-align: right;
+  margin-top: 50px;
+  margin-bottom: 25px;
 }
 
 .launchingSoon p {
-	font-family: 'Roboto', sans-serif;
-	font-size: 14px;
-	text-align: right;
-	line-height: 1.8em;
-	color: #444142;
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  text-align: right;
+  line-height: 1.8em;
+  color: #444142;
 }
 
 #mktHeaderLine {
@@ -163,12 +199,12 @@ color:#000!important;
 }
 
 #mktHeaderLine .special a {
-	color: #999!important;
+  color: #999!important;
 }
 
 #mktHeaderLine .special:hover a {
-	color:orange!important;
-	background:none transparent;
+  color:orange!important;
+  background:none transparent;
 }
 
 #mktHeaderLine li:hover a {
@@ -263,17 +299,200 @@ background-repeat:no-repeat;
 }
 
 #mktHeaderLine .joinNow a {
-	border: 2px solid #fe9e23;
-	padding-top: 5px;
-	padding-bottom: 5px;
-	top: 7px;
+  border: 2px solid #fe9e23;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  top: 7px;
 }
 
 #mktHeaderLine .joinNow:hover a {
-	background-color: #fe9e23;
-	color: white!important;
+  background-color: #fe9e23;
+  color: white!important;
 }
 
 #mktHeaderLine {
-	padding-top: 20px;
+  padding-top: 20px;
 }
+
+.indexMid .midSecRight h1 {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 20px;
+  font-weight: 300;
+  color: #5c5c5c;
+  line-height: 25px;
+}
+
+.indexMid .midSecRight hr {
+  height: 2px;
+  background-color: #f7931d;
+  color: #f7931d;
+  width: 15%;
+}
+
+.indexMid .midSecRight p {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  letter-spacing: 0.06em;
+  font-size: 10px;
+  line-height: 22px;
+  color: #7f7f7f;
+}
+
+.indexMid .midSecRight a {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  letter-spacing: 0.08em;
+  font-size: 9px;
+  line-height: 22px;
+  color: #ffffff;
+}
+
+.indexMid .midSecRight a:hover {
+  text-decoration: none;
+}
+
+.indexMid .midSecRight .buttonLeft {
+  padding: 11px;
+  background-color: #5c5c5c;
+  border-radius: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.indexMid .midSecRight .buttonRight {
+  padding: 11px;
+  background-color: #81cf81;
+  margin-left: 0;
+  border-radius: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.indexMid .midSecRight .BL {
+  margin-bottom: 25px;
+}
+
+.indexMid .midSecRight .buttonRow {
+  padding-top: 20px;
+}
+
+
+#homeCarousel .grayBox {
+  width: 100%;
+  height: 333px;
+  background-color: #7f7f7f;
+}
+
+.clickerWrapper {
+  border: 2px solid black;
+  display: inline;
+}
+
+
+
+
+.carousel-caption h4 {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  letter-spacing: 0.06em;
+  font-size: 10px;
+  line-height: 22px;
+  color: white;
+}
+
+.carousel-caption h3 {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 20px;
+  font-weight: 100;
+  letter-spacing: 0.06em;
+  color: white;
+  line-height: 30px;
+}
+
+.carousel-caption li {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  letter-spacing: 0.08em;
+  font-size: 9px;
+  line-height: 18px;
+  color: white;
+}
+
+.carousel-caption ul {
+  padding-left: 15px;
+}
+
+.carousel-caption {
+  left: 0;
+  right: 0;
+  margin-left:20px;
+  margin-right:20px;
+  text-align: left;
+}
+
+.carousel-indicators {
+  text-align: left;
+  margin-left: 20px;
+  left: 0px;
+  bottom: 0px;
+
+}
+
+.carousel-indicators li {
+  border: none;
+  background-color: #b8b8b8;
+  margin: 0px;
+}
+
+.carousel-indicators .active {
+  width:10px;
+  height: 10px;
+}
+
+.glyphicon-chevron-left {
+}
+
+.glyphicon-chevron-right {
+}
+
+
+
+.carousel-control.left {
+  position: relative;
+  background-image: none;
+  z-index: 40;
+  float: right;
+  display: inline;
+  height: 50px;
+  width: 50px;
+  bottom: 0px;
+  top: -50px;
+}
+
+.carousel-control.right {
+  position: relative;
+  background-image: none;
+  z-index: 40;
+  float:right;
+  width: 50px;
+  height: 50px;
+  display: inline;
+  bottom: 0px;
+  top:-51px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

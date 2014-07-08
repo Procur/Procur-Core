@@ -1,4 +1,4 @@
-<script src="/countries.js"></script>
+<script src="/linker/js/countries.js"></script>
 <form action="/supplier/update" method="post" id="supplier-update-form" enctype="multipart/form-data">
 
 	<%- partial('_update_company') %>
@@ -190,7 +190,7 @@
 
     <h4>Environmental Sustainability</h4>
     <textarea name="environmentalSustainability" placeholder=""
-              rows="4" cols="50"><%= supplier.companyDescription %>
+              rows="4" cols="50"><%= supplier.environmentalSustainability %>
     </textarea>
 
     <h4>Quality Sourcing</h4>

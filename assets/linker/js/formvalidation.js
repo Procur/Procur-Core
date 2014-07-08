@@ -45,6 +45,15 @@ jQuery.validator.addMethod("alphanumeric+punct+whitespace", function(value, elem
   return value === "" || regex.test(value);
 }, jQuery.validator.format("Simple characters, punctuation, and spaces only."));
 
+jQuery.validator.addMethod("companyHandleFormat", function(value, element, params) {
+  //breakdown of regex:
+  // allow only these symbols: A-Z a-z 0-9 _
+  // and not just underscores.
+  var regex = /^[A-Za-z0-9_]*[A-Za-z0-9][A-Za-z0-9_]*$/;
+  return value === "" || regex.test(value);
+}, jQuery.validator.format("Alphanumeric characters and underscores only."));
+
+
 
 /*
 
@@ -60,6 +69,7 @@ var dnsMsg = "Please enter a 9-digit DNS Number.";
 Form Validation
 
 */
+
 $('#registration-form').validate({
   rules: {
     firstName: {
@@ -91,11 +101,68 @@ $('#registration-form').validate({
   }
 });
 
+$('#signup-form').validate({
+  rules: {
+    firstName: {
+      required: true,
+      minlength: 1,
+      maxlength: 100
+    },
+    lastName: {
+      required: true,
+      minlength: 1,
+      maxlength: 100
+    },
+      email: {
+      required: true,
+      email: true,
+      minlength: 1,
+      maxlength: 100
+    },
+    password: {
+      required: true,
+      minlength: 8,
+      strongPassword: true,
+      maxlength: 50
+    },
+    passwordConfirm: {
+      required: true,
+      equalTo: "#signUpPassword"
+    }
+  }
+});
+
+$('#login-form').validate({
+  rules: {
+    email: {
+      required: true,
+      email: true,
+      minlength: 1,
+      maxlength: 100
+    },
+    password: {
+      required: true
+    }
+  }
+});
+
+$('#select-handle-form').validate({
+  rules: {
+    handle: {
+      required: true,
+      minlength: 2,
+      maxlength: 50,
+      companyHandleFormat: true
+    }
+  }
+});
+
 $('#change-handle-form').validate({
   rules: {
     handle: {
       minlength: 2,
-      maxlength: 50
+      maxlength: 50,
+      companyHandleFormat: true
     }
   }
 });

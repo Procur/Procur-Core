@@ -248,7 +248,6 @@ module.exports.routes = {
     action: 'setDefault'
   },
 
-  // TODO: BUILD BOTH LOGIC ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
   //BUYER ROUTES
   'post /buyer/create': {
@@ -314,8 +313,8 @@ module.exports.routes = {
     action: 'checkHandleExists'
   },
 
-  //This should get deprecated
-  'get /company/update': {
+  //deprecated 7/3/14
+  /*'get /company/update': {
     controller: 'CompanyController',
     action: 'update'
   },
@@ -323,12 +322,78 @@ module.exports.routes = {
   'post /company/update': {
     controller: 'CompanyController',
     action: 'setUpdate'
+  },*/
+
+  //COMPANY UPDATE ACTIONS
+
+  'get /company/update': {
+    controller: 'CompanyController',
+    action: 'update'
+  },
+
+  'post /company/update/basicCompanyDetails': {
+    controller: 'CompanyController',
+    action: 'updateBasicCompanyDetails'
   },
 
   //ERROR ROUTES
   'get /error/notfound': {
     controller: 'CompanyController',
     action: 'notFound'
+  },
+
+  //BUYER UPDATE ACTIONS
+
+  'post /buyer/update/logo': {
+    controller: 'BuyerController',
+    action: 'updateLogo'
+  },
+
+  'post /buyer/update/information': {
+    controller: 'BuyerController',
+    action: 'updateInformation'
+  },
+
+  'post /buyer/update/descriptions': {
+    controller: 'BuyerController',
+    action: 'updateDescriptions'
+  },
+
+  'post /buyer/update/preferences': {
+    controller: 'BuyerController',
+    action: 'updatePreferences'
+  },
+
+  'post /buyer/update/socialoutlets': {
+    controller: 'BuyerController',
+    action: 'updateSocialOutlets'
+  },
+
+  //SUPPLIER UPDATE ACTIONS
+
+  'post /supplier/update/logo': {
+    controller: 'SupplierController',
+    action: 'updateLogo'
+  },
+
+  'post /supplier/update/information': {
+    controller: 'SupplierController',
+    action: 'updateInformation'
+  },
+
+  'post /supplier/update/descriptions': {
+    controller: 'SupplierController',
+    action: 'updateDescriptions'
+  },
+
+  'post /supplier/update/preferences': {
+    controller: 'SupplierController',
+    action: 'updatePreferences'
+  },
+
+  'post /supplier/update/socialoutlets': {
+    controller: 'SupplierController',
+    action: 'updateSocialOutlets'
   }
 
 }; //USE THIS VIEW FOR ING, DEBUGGING, AND PROTOTYPING

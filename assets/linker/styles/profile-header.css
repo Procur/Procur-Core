@@ -1,0 +1,94 @@
+/* COMPANY PROFILE HEADER HERE */
+
+#profileWrapper {
+  width: 100%;
+  height: 50px;
+  position: fixed;
+  top: 0;
+
+  border-bottom: 3px solid #E6E7E8;
+  background: #FFFFFF;
+  z-index: 1;
+}
+
+.profile-header:nth-child(2) { /* pushing content below fixed header */
+  margin-top: 50px;
+}
+
+#profileWrapper .logoImage {
+  display: inline;
+  padding-left: 15px;
+}
+
+#profileWrapper .header-right {
+  float: right;
+  display: inline;
+  padding-right: 15px;
+  width: auto;
+  list-style: none;
+}
+
+#profileWrapper .header-right li {
+  display: inline;
+}
+
+#profileWrapper .header-right .newText a {
+  line-height: 45px;
+  
+  color: #7F7F7F;
+  font-size: 12px;
+  font-family: 'Montserrat', sans-serif;
+  text-decoration: none;
+}
+
+#profileWrapper .header-right .createPill a {
+  line-height: 45px;
+  padding: 7px 10px 7px 10px;
+  margin: 5px 0px 0px 15px;
+  border: 2px solid #FBAC27;
+  border-radius: 30px;
+  
+  color: #231F20;
+  letter-spacing: 0.06em;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: 'Montserrat', sans-serif;
+}
+
+#profileWrapper .header-right .createPill a:hover {
+  color: #FFFFFF;
+  background: #FBAC27;
+  text-decoration: none;
+}
+
+#profileWrapper .header-right .procurPill a {
+  line-height: 45px;
+  padding: 7px 10px 7px 10px;
+  margin: 5px 0px 0px 0px;
+  border: 2px solid #E6E7E8;
+  border-radius: 30px;
+  
+  color: #231F20;
+  letter-spacing: 0.06em;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: 'Montserrat', sans-serif;
+}
+
+#profileWrapper .header-right .procurPill a:hover {
+  color: #FFFFFF;
+  background: #E6E7E8;
+  text-decoration: none;
+}
+
+/* LOGGED IN */
+
+#profileWrapper h1 {
+  display: inline;
+  font-size: 12px;
+  margin-left: 5px;
+}
+
+#profileWrapper .profileCompany {
+  color: #7F7F7F;
+}

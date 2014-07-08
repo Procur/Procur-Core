@@ -23,10 +23,8 @@ module.exports = {
     process: function(req, res){
       passport.authenticate('local', function(err, user, info) {
         if ((err) || (!user)) {
-          return res.send({
-          message: 'login failed'
-          });
-        //return res.redirect('/dashboard');
+          req.flash('error', "The username or password you entered is incorrect.");
+          return res.redirect('/login');
         }
         req.logIn(user, function(err) {
           if (err) { return res.redirect('/dashboard'); }
@@ -133,9 +131,9 @@ module.exports = {
 
               smtpTransport.sendMail(mailOptions, function(err, response){
                 if(err){ console.log(err); }
+                req.flash('message', 'Password changed.');
+                res.redirect('/dashboard');
               });
-              req.flash('message', 'Password changed.');
-              res.redirect('/dashboard');
             });
           });
         });
@@ -170,6 +168,8 @@ module.exports = {
             };
             smtpTransport.sendMail(mailOptions, function(err, response){
               if(err){res.serverError();}
+              req.flash('message', 'Password reset request sent.');
+              res.redirect('/forgotpassword');
             });
           });
         });
@@ -277,7 +277,7 @@ module.exports = {
         crypto.randomBytes(256, function(err, hash) {
           if(err) { return res.redirect('/dashboard'); }
           token = hash.toString('base64').replace(/\//g,'_').replace(/\+/g,'-');
-          EmailVerification.update(emailVerification, {token: token }, function(err, emailVerification){
+          EmailVerification.update(emailVerification, { token: token }, function(err, emailVerification){
             if(err) { return res.redirect('/dashboard'); }
             var htmlContent = '<a href="http://' + address + '/verify?token=' + token + '">Click to verify your Procur account!</a>';
             var mailOptions = {
@@ -290,6 +290,7 @@ module.exports = {
 
             smtpTransport.sendMail(mailOptions, function(err, response){
               if(err){res.serverError();}
+              res.redirect('/dashboard');
             });
           });
         });

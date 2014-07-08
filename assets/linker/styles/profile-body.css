@@ -1,0 +1,199 @@
+/* BEGIN COMPANY PROFILE PAGE */
+.profile-container {
+  margin-top: 100px;
+}
+  .profile-container a {
+    color: #FBAC27;
+  }
+  .profile-container a:hover {
+    text-decoration: none;
+    color: #FBAC27;
+    border-bottom: 1px solid black; 
+  }
+
+/* LEFT COLUMN */
+.company-header {
+  height: 60px;
+  border-bottom: 3px solid #E6E7E8;
+}
+
+.company-header h1 {
+  font-size: 18px; 
+  margin: 0;
+  font-weight: 300;
+}
+
+.company-header h2 {
+  font-size: 10px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: 5px;
+}
+
+.company-header a {
+  color: #7F7F7F;
+}
+.company-header a:hover {
+  /* What shall we do here? */
+}
+
+/* FOR INFO BOXES */
+.company-info-box {
+  margin: 20px 0px;
+}
+  .info-glyph {
+    display: inline;
+    font-size: 24px;
+    color: #E6E7E8;
+    padding-bottom: 10px;
+  }
+  .info-title {
+    font-size: 11px;
+    text-transform: uppercase;
+    color: #231F20;
+    margin-left: 10px;
+    letter-spacing: 0.05em;
+  }
+  .company-info-box p {
+    font-size: 14px;
+    margin: 0;
+  }
+  .company-info-box p:nth-child(2) {
+    border-top: 2px dotted #E6E7E8;
+    margin-top: 10px;
+    padding-top: 5px;
+  }
+
+/* FOR DETAIL BOXES */
+.company-detail-box {
+  margin: 40px 0px;
+}
+  .company-detail-box h3 {
+    text-transform: uppercase;
+    font-size: 14px;
+    color: #231F20;
+    letter-spacing: 0.05em;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    
+    border-bottom: 3px solid #E6E7E8;
+  }
+  .company-detail-box p {
+    margin-top: 5px;
+    font-weight: 600;
+    font-size: 14px;
+    letter-spacing: 0.01em;
+  }
+
+.capability-box {
+  display: inline-block;
+  height: 40px;
+  line-height: 40px;
+  padding: 0px 10px 0px 10px;
+  margin: 5px 5px 5px 0;
+  background: #E6E7E8;
+}
+
+/* FOR TWO COLUMN BOX */
+.company-two-col-box {
+  margin: 40px 0px;
+  position: relative;
+}
+  .company-two-col-box h3 {
+    text-transform: uppercase;
+    font-size: 14px;
+    color: #231F20;
+    letter-spacing: 0.05em;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    
+    border-bottom: 3px solid #E6E7E8;
+  }
+  .company-col-left {
+    margin: 0;
+    padding: 0;
+    position: relative;
+    width: 50%;
+    float: left;
+  }
+  .company-col-right {
+    margin: 0;
+    padding: 0;
+    position: relative;
+    width: 50%;
+    float: right;
+  }
+  .company-col-clear {
+    clear: both; 
+  }
+
+.company-col-detail {
+  margin-bottom: 20px;
+}
+  .company-col-detail p {
+    margin: 0;
+  }
+  .detail-header {
+    font-size: 11px;
+    font-weight: 600;
+    color: #7F7F7F;
+  }
+  .detail-body {
+    font-size: 14px;
+  }
+
+/* RIGHT COLUMN */
+.profile-nav {
+  height: 30px;
+  border-bottom: 3px solid #E6E7E8;
+}
+
+.profile-nav ul {
+  height: 50px;
+  padding: 0;
+}
+
+.profile-nav li {
+  list-style: none;
+  display: inline;
+  
+  text-transform: uppercase;
+  font-size: 12px;
+}
+
+.profile-nav a {
+  color: #231F20;
+}
+
+.profile-nav a:hover {
+  text-decoration: none;
+  color: #7F7F7F;
+  /* What to do here? */
+}
+
+.nav-left {
+  float: left;
+}
+
+.nav-left li {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.nav-right {
+  float: right;
+  font-weight: 500;
+}
+
+.nav-right li {
+  margin-left: 10px; 
+}
+
+.profile-content {
+  margin-top: 10px; 
+}
+
+.profile-content p {
+  font-size: 14px;
+  padding: 8px 0;
+}

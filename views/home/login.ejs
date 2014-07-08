@@ -1,10 +1,14 @@
 <%- partial('../partials/mktheaderline') %>
 
+<% if (req.session.flash) { %>
+  <div style="text-align: center;" id="incorrect-login-error"><%= req.flash('error') %></div>
+<% } %>
+
 <div class="container">
 	<div class="row">
     <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 loginForm">
       <h1>Welcome back.<br/>Please sign in to your account: </h1>
-      <form action="/login" method="post">
+      <form action="/login" id="login-form" method="post">
 		    <div><input type="text" name="email" placeholder="Email Address*" tabindex="1"></div>
 		    <div><input type="password" name="password" placeholder="Password*" tabindex="2"></div>
         <div class="forgotPass"><a href="/forgotpassword" tabindex="5">Forgot Your Password? Click here to reset.</a></div>

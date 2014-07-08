@@ -1,4 +1,4 @@
-<script src="/countries.js"></script>
+<script src="/linker/js/countries.js"></script>
 <div id="regWizard">
   <div class="container">
     <div class="row">
@@ -15,13 +15,13 @@
               <div class="breakForm"><input type="text" name="companyName" placeholder="Your Company Name"></div>
 
               <!-- Telephone Info -->
-              <h4>Company Phone*</h4>
+              <h4>Company Phone*&nbsp;&nbsp;<a class="regWizYellowLink" href="#">Country Code Look-Up</a></h4>
               <div class="row insideForm">
                 <div class="col-sm-5 inputColumnL">
-                    <div><input type="text" name="companyPhoneCountryCode" placeholder="Country Code"></div>
+                    <div><input type="text" name="companyPhoneCountryCode" placeholder="Country Code*"></div>
                 </div>
                 <div class="col-sm-7 inputColumnR">
-                    <div><input type="text" name="companyPhone" placeholder="Company Phone"></div>
+                    <div><input type="text" name="companyPhone" placeholder="Company Phone*"></div>
                 </div>
               </div>
               <div class="row insideForm">
@@ -73,9 +73,10 @@
               <h4>Is the above address the headquarters?</h4>
               <div><input class="checkbox hqbox" type="checkbox" name="companyIsHq"><div class="checkboxtext breakForm">Yes; please copy my details below.</div></div>
 
+
               <h4>Company Headquarters Address*</h4>
-              <div><input class="hqfield hqaddress1" type="text" name="hqAddress1" placeholder="Address Line 1"></div>
-              <div><input  class="hqfield hqaddress2" type="text" name="hqAddress2" placeholder="Address Line 2"></div>
+              <div><input class="hqfield hqaddress1" type="text" name="hqAddress1" placeholder="Address Line #1"></div>
+              <div><input  class="hqfield hqaddress2" type="text" name="hqAddress2" placeholder="Address Line #2"></div>
 
               <div class="styledSelect">
                 <select class="hqfield hqcompanyCountry" name="hqCountry" id="hqcompanyCountry" onchange="print_state('hqcompanyProvince',this.selectedIndex);">
