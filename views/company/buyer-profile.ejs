@@ -114,7 +114,11 @@
       </ul>
     </div>
     <div id="profile-content">
-      <div class="content-desc"><%= buyer.companyDescription %></div>
+      <% if (buyer.companyDescription !== undefined) { %>
+        <div class="content-desc"><%= buyer.companyDescription %></div>
+      <% } else { %>
+        <div class="content-desc">This company does not have a buyer company description.</div>
+      <% } %>
       <div class="content-interest" id="inactive"><%= buyer.productsOfInterest %></div>
       <div class="content-statement" id="inactive">
         <h4>Environmental Sustainability</h4>
