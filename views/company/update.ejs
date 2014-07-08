@@ -270,13 +270,13 @@
                 <h4>Social Outlets</h4>
                 <div class="formWrapper">
                   <form action="/buyer/update/socialoutlets" method="post" id="buyerSocialOutletsForm">
-                      <div><input type="text" name="facebook" value="<%= buyer.facebook %>"></div>
-                      <div><input type="text" name="twitter" value="<%= buyer.twitter %>"></div>
-                      <div><input type="text" name="google" value="<%= buyer.google %>"></div>
-                      <div><input type="text" name="linkedin" value="<%= buyer.linkedin %>"></div>
-                      <div><input type="text" name="pinterest" value="<%= buyer.pinterest %>"></div>
-                      <div><input type="text" name="instagram" value="<%= buyer.instagram %>"></div>
-                      <div><input type="text" name="tumblr" value="<%= buyer.tumblr %>"></div>
+                      <div><input type="text" name="facebook" <% if(buyer.facebook !== undefined) { %>value="<%= buyer.facebook %>"<% } else { %> placeholder="Facebook" <% } %>></div>
+                      <div><input type="text" name="twitter" <% if(buyer.twitter !== undefined) { %>value="<%= buyer.twitter %>"<% } else { %> placeholder="Twitter" <% } %>></div>
+                      <div><input type="text" name="google" <% if(buyer.google !== undefined) { %>value="<%= buyer.google %>"<% } else { %> placeholder="Google" <% } %>></div>
+                      <div><input type="text" name="linkedin" <% if(buyer.linkedin !== undefined) { %>value="<%= buyer.linkedin %>"<% } else { %> placeholder="Linkedin" <% } %>></div>
+                      <div><input type="text" name="pinterest" <% if(buyer.pinterest !== undefined) { %>value="<%= buyer.pinterest %>"<% } else { %> placeholder="Pinterest" <% } %>></div>
+                      <div><input type="text" name="instagram" <% if(buyer.instagram !== undefined) { %>value="<%= buyer.instagram %>"<% } else { %> placeholder="Instagram" <% } %>></div>
+                      <div><input type="text" name="tumblr" <% if(buyer.tumblr !== undefined) { %>value="<%= buyer.tumblr %>"<% } else { %> placeholder="Tumblr" <% } %>></div>
                       <div><input type="submit"></div>
                   </form>
                 </div>
