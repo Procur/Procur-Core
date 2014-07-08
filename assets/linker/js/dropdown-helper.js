@@ -1,9 +1,9 @@
 
 	$('.container').waypoint(function(direction){
 		if (direction == 'down'){
-			$(".sticky-header").slideDown(200,'linear');
+			$(".sticky-header").animate({top:["0px","easeOutExpo"]},600);
 		} else {
-			$(".sticky-header").slideUp(200,'linear');
+			$(".sticky-header").animate({top:["-54px","easeOutExpo"]},600);
 		}
 		
 	},{ offset: -80});

@@ -1,0 +1,315 @@
+#pricing #heroArea {
+  width: 100%;
+  background: #e3e3e3;
+  height: 250px;
+  margin-bottom: 30px;
+}
+
+#pricing #heroArea .textArea {
+  background: rgba(255,255,255,0.8);
+  padding: 35px 50px;
+  margin-top: 50px;
+}
+
+#pricing #heroArea .textArea h1 {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 22px;
+  font-weight: 300;
+  margin: 0px;
+  padding: 0px;
+  line-height: 36px;
+}
+
+#pricing #heroArea .pill {
+    border-radius: 25px 25px 25px 25px;
+    height: 50px;
+    background: rgba(0,0,0,0.7);
+    padding: 10px;
+    text-align: center;
+    margin-top: 130px;
+    line-height: 30px;
+}
+
+#pricing #heroArea a {
+  font-family: 'Montserrat', sans-serif;
+  color: white;
+  letter-spacing: 0.06em;
+}
+
+/* Coming Soon! Section */
+
+#pricing .comingSoon h1 {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300;
+  color: #fcab27;
+  font-size: 25px;
+  margin: 30px 0px 20px;
+}
+
+#pricing .comingSoon p {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  color: #444;
+  font-size: 16px;
+  line-height: 28px;
+}
+
+#pricing .comingSoon p b {
+  font-weight: 500;
+}
+
+#pricing #registerNow {
+  padding-top: 30px;
+  margin-bottom: 30px;
+}
+
+#pricing #registerNow a:hover {
+  text-decoration: none;
+}
+
+#pricing #registerNow .registerNowButton {
+  border: 2px solid #fcab27;
+  padding: 6px 12px;
+  color: #333132;
+  font-family: 'Montserrat', sans-serif;
+  text-transform: uppercase;
+  font-weight: 300;
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-align: center;
+}
+
+#pricing #registerNow .registerNowButton:hover {
+  background: #fcab27;
+  color: white;
+  text-decoration: none;
+}
+
+#pricing #registerNow .helper {
+  float: right;
+  margin-top: 10px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 300;
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  color: #7f7f7f;
+}
+
+/* Pricing Comparison Section */
+
+.pricingComparison h1 {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300;
+  color: #d3d3d3;
+}
+
+.pricingComparison h2 {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300;
+  color: #7f7f7f;
+  font-size: 22px;
+}
+
+#pricing .basicMember .memberTitle {
+  text-align: center;
+  font-family: 'Montserrat', sans-serif;
+  color: white;
+  font-weight: 300;
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  background: #7b7c79;
+  padding: 12px;
+}
+
+#pricing .basicMember .memberPrice {
+  text-align: center;
+  font-family: 'Open Sans', sans-serif;
+  color: #333132;
+  font-weight: 300;
+  font-size: 36px;
+  background: #e8e7e3;
+  padding: 20px 0px;
+}
+
+#pricing .basicMember .memberDetails {
+  text-align: center;
+  font-family: 'Montserrat', sans-serif;
+  color: #7b7c79;
+  font-weight: 300;
+  font-size: 10px;
+  background: #e8e7e3;
+  padding: 10px 20px 20px;
+}
+
+#pricing .premiumMember .memberTitle {
+  text-align: center;
+  font-family: 'Montserrat', sans-serif;
+  color: white;
+  font-weight: 300;
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  background: #2da163;
+  padding: 12px;
+}
+
+#pricing .premiumMember .memberPrice {
+  text-align: center;
+  font-family: 'Open Sans', sans-serif;
+  color: #333132;
+  font-weight: 300;
+  font-size: 36px;
+  background: #e8e7e3;
+  padding: 20px 0px;
+}
+
+#pricing .premiumMember .memberDetails {
+  text-align: center;
+  font-family: 'Montserrat', sans-serif;
+  color: #7b7c79;
+  font-weight: 300;
+  font-size: 10px;
+  background: #e8e7e3;
+  padding: 10px 20px 20px;
+}
+
+#pricing .sectionTitle {
+  background: #fcab27;
+}
+
+#pricing .sectionTitle h4 {
+  font-family: 'Montserrat', sans-serif;
+  color: white;
+  font-weight: 300;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+#pricing .itemRow {
+  background: #ededed;
+  -webkit-transition: all 200ms ease-in-out;
+  -moz-transition: all 200ms ease-in-out;
+  -ms-transition: all 200ms ease-in-out;
+  -o-transition: all 200ms ease-in-out;
+  transition: all 200ms ease-in-out;
+  border-bottom: 1px dotted #d3d3d3;
+}
+
+#pricing .rowTitle {
+  padding: 10px 20px 10px 0px;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300;
+}
+
+#pricing .checkColumn {
+  background: #e6e6e6;
+  text-align: center;
+  padding: 10px 20px;
+  font-size: 18px;
+  -webkit-transition: all 200ms ease-in-out;
+  -moz-transition: all 200ms ease-in-out;
+  -ms-transition: all 200ms ease-in-out;
+  -o-transition: all 200ms ease-in-out;
+  transition: all 200ms ease-in-out;
+}
+
+#pricing .checkColumn .fa-check {
+  color: #2da163;
+}
+
+#pricing .itemRow:hover {
+  background: #f7f7f7;
+  -webkit-transition: all 200ms ease-in-out;
+  -moz-transition: all 200ms ease-in-out;
+  -ms-transition: all 200ms ease-in-out;
+  -o-transition: all 200ms ease-in-out;
+  transition: all 200ms ease-in-out;
+  cursor: pointer;
+}
+
+#pricing .itemRow:hover .checkColumn {
+  background: none transparent;
+  background: #f1f1f1;
+  -webkit-transition: all 200ms ease-in-out;
+  -moz-transition: all 200ms ease-in-out;
+  -ms-transition: all 200ms ease-in-out;
+  -o-transition: all 200ms ease-in-out;
+  transition: all 200ms ease-in-out;
+}
+
+#pricing .col-xs-3{
+  padding-right: 0px;
+}
+
+#pricing .spacerRow {
+  height: 10px;
+}
+
+#pricing .spacerRow .checkColumn {
+  padding: 0px;
+  height: 10px;
+}
+
+#pricing .startedRow .checkColumn {
+  padding: 0px;
+}
+
+#pricing .startedRow .checkColumn p {
+  font-family: 'Montserrat', sans-serif;
+  padding: 20px 20px 10px;
+}
+
+#pricing .startedRow .checkColumn .basicComingSoon {
+  background: #7b7c79;
+  padding: 8px;
+  font-family: 'Montserrat', sans-serif;
+  color: white;
+  font-size: 12px;
+  letter-spacing: 0.06em;
+}
+
+#pricing .startedRow .checkColumn .premiumComingSoon {
+  background: #2da163;
+  padding: 8px;
+  font-family: 'Montserrat', sans-serif;
+  color: white;
+  font-size: 12px;
+  letter-spacing: 0.06em;
+}
+
+#pricing .commonQuestions h3 {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 22px;
+  font-weight: 300;
+  color: #444;
+  margin-top: 0px;
+}
+
+#pricing .commonQuestions h4 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 12px;
+  font-weight: 300px;
+  letter-spacing: 0.06em;
+  border-bottom: 2px solid #d3d3d3;
+  padding-bottom: 8px;
+}
+
+#pricing .invitation h4 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 12px;
+  font-weight: 300px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  line-height: 20px;
+  color: #333132;
+}
+
+#pricing .invitation p {
+  font-size: 13px;
+}
+
+#pricing .invitation a {
+  color: #fcab27;
+}

@@ -547,7 +547,6 @@ ul.ui-autocomplete {
 
 .ui-menu-item a{
   color: #333132;
-  text-transform: capitalize;
   padding: 0px 10px;
   cursor: pointer;
   font-family: 'Roboto', sans-serif;
@@ -634,4 +633,27 @@ ul.ui-autocomplete {
   -ms-transition: all 200ms ease-in-out;
   -o-transition: all 200ms ease-in-out;
   transition: all 200ms ease-in-out;
+}
+
+.transition-200 {
+  -webkit-transition: all 200ms ease-in-out;
+  -moz-transition: all 200ms ease-in-out;
+  -ms-transition: all 200ms ease-in-out;
+  -o-transition: all 200ms ease-in-out;
+  transition: all 200ms ease-in-out;
+}
+
+.dark {
+  color: #333132;
+}
+
+hr.separator {
+  background: none transparent;
+  border-top: 1px dotted #e3e3e3;
+}
+
+hr.darkseparator {
+  background: none transparent;
+  border-top: 1px dotted #7f7f7f;
+  margin: 50px 0px;
 }

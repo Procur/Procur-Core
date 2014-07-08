@@ -37,13 +37,16 @@
   border-right: none;
 }
 
-#faq a:hover {
+#faq a:hover,
+#faq li.active {
   background-color: white;
   border-left: 2px solid orange;
   border-top: none;
   border-bottom: none;
   border-right: none;
 }
+
+
 
 #faq .nav-tabs>li>a {
   border-radius: 0;
@@ -55,16 +58,20 @@
 
 
 #faq #nav.affix {
-    position: fixed;
-    top: 0;
-    width:27%
+  position: fixed;
+  top: 0;
+  width:27%;
 }
 
 #faq #nav > .navbar-inner {
-    border-left: 0;
-    border-right: 0;
-    border-radius: 0;
-    -webkit-border-radius: 0;
-    -moz-border-radius: 0;
-    -o-border-radius: 0;
+  border-left: 0;
+  border-right: 0;
+  border-radius: 0;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  -o-border-radius: 0;
+}
+
+#textContainer {
+  position: relative !important !important;
 }

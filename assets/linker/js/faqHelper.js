@@ -6,13 +6,6 @@
 
         offset: { top: $('#nav').offset().top }
     });
-  };
 
-  var a = document.createElement('a');
-  a.href = '';
-
-  if (a.href.indexOf('faq') != -1) {Affixing()}
-  
-
-
-
+    $('body').scrollspy({ target: '.navbar-example' })
+});

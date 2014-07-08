@@ -83,7 +83,21 @@
 	color: white;
 	letter-spacing: 0.08em;
 	font-size: 11px;
+  -webkit-transition: all 200ms ease-in-out;
+  -moz-transition: all 200ms ease-in-out;
+  -ms-transition: all 200ms ease-in-out;
+  -o-transition: all 200ms ease-in-out;
+  transition: all 200ms ease-in-out;
 }
+
+.loginButton button:hover {
+  background: #444;
+  -webkit-transition: all 200ms ease-in-out;
+  -moz-transition: all 200ms ease-in-out;
+  -ms-transition: all 200ms ease-in-out;
+  -o-transition: all 200ms ease-in-out;
+  transition: all 200ms ease-in-out;
+} 
 
 .moreInfo h1 {
 	font-family: 'Roboto', sans-serif;

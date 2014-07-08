@@ -55,6 +55,25 @@
 	text-align: center;
 	line-height: 40px;
 	height: 44px;
+  -webkit-transition: all 200ms ease-in-out;
+  -moz-transition: all 200ms ease-in-out;
+  -ms-transition: all 200ms ease-in-out;
+  -o-transition: all 200ms ease-in-out;
+  transition: all 200ms ease-in-out;
+}
+
+.loginForm .registerLink:hover {
+  border: 2px solid #fcab72;
+  text-decoration: none;
+  -webkit-transition: all 200ms ease-in-out;
+  -moz-transition: all 200ms ease-in-out;
+  -ms-transition: all 200ms ease-in-out;
+  -o-transition: all 200ms ease-in-out;
+  transition: all 200ms ease-in-out;
+}
+
+.loginForm a:hover {
+  text-decoration: none;
 }
 
 .loginForm a{
