@@ -302,15 +302,15 @@
                       </select>
                       <div><input type="text" name="acceptedCurrencies" value="<%= supplier.acceptedCurrency[0] %>"></div>
                       <div><input type="text" name="acceptedPaymentTerms" value="<%= supplier.acceptedPaymentTerms %>"></div>
-                      <div><input type="text" name="acceptedDeliveryTerms" value="<%= supplier.acceptedDeliveryTerms %>"></div>
-                      <div><input type="text" name="typeOfCompany" value="<%= supplier.typeOfCompany %>"></div>
-                      <div><input type="text" name="privateLabeler" value="<%= supplier.privateLabeler %>"></div>
-                      <div><input type="text" name="contactName" value="<%= supplier.contactName %>"></div>
-                      <div><input type="text" name="contactPosition" value="<%= supplier.contactPosition %>"></div>
-                      <div><input type="text" name="contactEmail" value="<%= supplier.contactEmail %>"></div>
-                      <div><input type="text" name="gsaApprovedSupplier" value="<%= supplier.gsaApprovedSupplier %>"></div>
-                      <div><input type="text" name="dunsNumber" value="<%= supplier.dunsNumber %>"></div>
-                      <div><input type="text" name="cageCode" value="<%= supplier.cageCode %>"></div>
+                      <div><input type="text" name="acceptedDeliveryTerms" <% if(supplier.acceptedDeliveryTerms !== undefined) { %>value="<%= supplier.acceptedDeliveryTerms %>"<% } else { %> placeholder="Accepted Delivery Terms" <% } %>></div>
+                      <div><input type="text" name="typeOfCompany" <% if(supplier.typeOfCompany !== undefined) { %>value="<%= supplier.typeOfCompany %>"<% } else { %> placeholder="typeOfCompany" <% } %>></div>
+                      <div><input type="text" name="privateLabeler" <% if(supplier.privateLabeler !== undefined) { %>value="<%= supplier.privateLabeler %>"<% } else { %> placeholder="Private Labeler" <% } %>></div>
+                      <div><input type="text" name="contactName" <% if(supplier.contactName !== undefined) { %>value="<%= supplier.contactName %>"<% } else { %> placeholder="Contact Name" <% } %>></div>
+                      <div><input type="text" name="contactPosition" <% if(supplier.contactPosition !== undefined) { %>value="<%= supplier.contactPosition %>"<% } else { %> placeholder="Contact Position" <% } %>></div>
+                      <div><input type="text" name="contactEmail" <% if(supplier.contactEmail !== undefined) { %>value="<%= supplier.contactEmail %>"<% } else { %> placeholder="Contact Email" <% } %>></div>
+                      <div><input type="text" name="gsaApprovedSupplier" <% if(supplier.gsaApprovedSupplier !== undefined) { %>value="<%= supplier.gsaApprovedSupplier %>"<% } else { %> placeholder="GSA Approved Supplier" <% } %>></div>
+                      <div><input type="text" name="dunsNumber" <% if(supplier.dunsNumber !== undefined) { %>value="<%= supplier.dunsNumber %>"<% } else { %> placeholder="DUNS Number" <% } %>></div>
+                      <div><input type="text" name="cageCode" <% if(supplier.cageCode !== undefined) { %>value="<%= supplier.cageCode %>"<% } else { %> placeholder="CAGE Code" <% } %>></div>
                       <div><input type="submit"></div>
                   </form>
                 </div>
@@ -319,14 +319,16 @@
                 <h4>Production Details</h4>
                 <div class="formWrapper">
                   <form action="/supplier/update/productionDetails" method="post" id="supplierProductionDetailsForm">
-                      <div><input type="text" name="annualSalesValue" value="<%= supplier.annualSalesValue %>"></div>
-                      <div><input type="text" name="totalFactorySize" value="<%= supplier.totalFactorySize %>"></div>
-                      <div><input type="text" name="totalQCStaff" value="<%= supplier.totalQCStaff %>"></div>
+                      <select name="annualSalesValue">
+                          <option value="<%= supplier.annualSalesValue %>" selected="selected"><%= supplier.annualSalesValue %></option>
+                          <%- partial('../partials/edit-dropdowns/edit-language') %>
+                      </select>
+                      <div><input type="text" name="totalFactorySize" value="<%= supplier.totalFactorySize %>">???????</div>
+                      <div><input type="text" name="totalQCStaff" value="<%= supplier.totalQCStaff %>">????????</div>
                       <div>ADD OTHER LOCATIONS</div>
                       <div>ADD NEAREST PORT</div>
-                      <div><input type="text" name="primaryProductSpecialty" value="<%= supplier.primaryProductSpecialty %>"></div>
-                      <div><input type="text" name="companyCapabilities" value="<%= supplier.companyCapabilities %>"></div>
-                      <div><input type="text" name="annualSalesValue" value="<%= supplier.annualSalesValue %>"></div>
+                      <div><input type="text" name="primaryProductSpecialty" <% if(supplier.primaryProductSpecialty !== undefined) { %>value="<%= supplier.primaryProductSpecialty %>"<% } else { %> placeholder="Primary Product Specialty" <% } %>></div>
+                      <div><input type="text" name="companyCapabilities"  <% if(supplier.companyCapabilities !== undefined) { %>value="<%= supplier.companyCapabilities %>"<% } else { %> placeholder="Company Capabilities" <% } %>></div>
                       <div><input type="submit"></div>
                   </form>
                 </div>
