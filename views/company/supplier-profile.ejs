@@ -1,6 +1,11 @@
 <div class="container profile-container">
   <div class="col-sm-12 col-md-4">
-    <img src="/images/profile-logo.png">
+    <% if (supplier.logoUrl) { %>
+      <img src="<%= supplier.logoUrl %>">
+    <% } else { %>
+      <!-- ADD PLACEHOLDER IMAGE HERE -->
+      <img src="/images/profile-logo.png">
+    <% } %>
     <div class="company-header">
       <h2>
         <span>Supplier Profile </span>
