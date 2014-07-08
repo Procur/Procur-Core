@@ -336,15 +336,15 @@
             <div id="descriptionsSupplier">
                 <h4>Descriptions</h4>
                 <div class="formWrapper">
-                  <form action="/supplier/update/descriptions" method="post" id="supplierDescriptionsForm">
-                      <div><input type="text" name="companyDescription" value="<%= supplier.companyDescription %>"></div>
-                      <div><textarea name="environmentalSustainability" form="supplierDescriptionsForm">Environmental Sustainability</textarea></div>
-                      <div><textarea name="qualitySourcing" form="supplierDescriptionsForm">Quality Sourcing</textarea></div>
-                      <div><textarea name="workplaceSafety" form="supplierDescriptionsForm">Workplace Safety</textarea></div>
-                      <div><textarea name="laborEducationTraining" form="supplierDescriptionsForm">Labor Education Training</textarea></div>
-                      <div><textarea name="reinvestment" form="supplierDescriptionsForm">Reinvestment</textarea></div>
-                      <div><input type="submit"></div>
-                  </form>
+                    <form action="/supplier/update/descriptions" method="post" id="supplierDescriptionsForm">
+                        <div><input type="text" name="companyDescription" <% if(supplier.companyDescription !== undefined) { %>value="<%= supplier.companyDescription %>"<% } else { %> placeholder="Company Description" <% } %>></div>
+                        <div><textarea name="environmentalSustainability" form="buyerDescriptionsForm" <% if(supplier.environmentalSustainability === undefined){ %> placeholder="Environmental Sustainability" <% } else{ %> ><%= supplier.environmentalSustainability %>  <% } %>></textarea></div>
+                        <div><textarea name="qualitySourcing" form="buyerDescriptionsForm" <% if(supplier.qualitySourcing === undefined){ %> placeholder="Quality Sourcing" <% } else{ %> ><%= supplier.environmentalSustainability  %><% } %>></textarea></div>
+                        <div><textarea name="workplaceSafety" form="buyerDescriptionsForm"<% if(supplier.workplaceSafety === undefined){ %> placeholder="Workplace Safety" <% } else{ %> ><%= supplier.workplaceSafety  %><% } %>></textarea></div>
+                        <div><textarea name="laborEducationTraining" form="buyerDescriptionsForm"<% if(supplier.laborEducationTraining === undefined){ %> placeholder="Labor Education Training" <% } else{ %> ><%= supplier.laborEducationTraining  %><% } %>></textarea></div>
+                        <div><textarea name="reinvestment" form="buyerDescriptionsForm"<% if(supplier.reinvestment === undefined){ %> placeholder="Reinvestment" <% } else{ %> ><%= supplier.reinvestment  %><% } %>></textarea></div>
+                        <div><input type="submit"></div>
+                    </form>
                 </div>
             </div>
             <div id="preferencesSupplier">
@@ -359,7 +359,9 @@
                           <option value="<%= supplier.preferredBuyerLanguage %>" selected="selected"><%= supplier.preferredBuyerLanguage %></option>
                           <%- partial('../partials/edit-dropdowns/edit-pref-buyer-language') %>
                       </select></div>
-                      <div><input type="text" name="preferredBuyerLocation" value="<%= supplier.preferredBuyerLocaion %>"></div>
+                      <div><select name="preferredBuyerLocation" id="preferredBuyerLocation">
+                              <option>Preferred Buyer Location</option>
+                          </select></div>
                       <div><input type="submit"></div>
                   </form>
                 </div>
@@ -367,17 +369,16 @@
             <div id="socialOutletsSupplier">
                 <h4>Social Outlets</h4>
                 <div class="formWrapper">
-                  <form action="/supplier/update/socialoutlets" method="post" id="supplierSocialOutletsForm">
-                      <div><input type="text" name="facebook" value="<%= supplier.facebook %>"></div>
-                      <div><input type="text" name="twitter" value="<%= supplier.twitter %>"></div>
-                      <div><input type="text" name="google" value="<%= supplier.google %>"></div>
-                      <div><input type="text" name="linkedin" value="<%= supplier.linkedin %>"></div>
-                      <div><input type="text" name="pinterest" value="<%= supplier.pinterest %>"></div>
-                      <div><input type="text" name="instagram" value="<%= supplier.instagram %>"></div>
-                      <div><input type="text" name="tumblr" value="<%= supplier.tumblr %>"></div>
-                      <div><input type="text" name="google" value="<%= supplier.google %>"></div>
-                      <div><input type="submit"></div>
-                  </form>
+                    <form action="/supplier/update/socialoutlets" method="post" id="supplierSocialOutletsForm">
+                        <div><input type="text" name="facebook" <% if(supplier.facebook !== undefined) { %>value="<%= supplier.facebook %>"<% } else { %> placeholder="Facebook" <% } %>></div>
+                        <div><input type="text" name="twitter" <% if(supplier.twitter !== undefined) { %>value="<%= supplier.twitter %>"<% } else { %> placeholder="Twitter" <% } %>></div>
+                        <div><input type="text" name="google" <% if(supplier.google !== undefined) { %>value="<%= supplier.google %>"<% } else { %> placeholder="Google" <% } %>></div>
+                        <div><input type="text" name="linkedin" <% if(supplier.linkedin !== undefined) { %>value="<%= supplier.linkedin %>"<% } else { %> placeholder="Linkedin" <% } %>></div>
+                        <div><input type="text" name="pinterest" <% if(supplier.pinterest !== undefined) { %>value="<%= supplier.pinterest %>"<% } else { %> placeholder="Pinterest" <% } %>></div>
+                        <div><input type="text" name="instagram" <% if(supplier.instagram !== undefined) { %>value="<%= supplier.instagram %>"<% } else { %> placeholder="Instagram" <% } %>></div>
+                        <div><input type="text" name="tumblr" <% if(supplier.tumblr !== undefined) { %>value="<%= supplier.tumblr %>"<% } else { %> placeholder="Tumblr" <% } %>></div>
+                        <div><input type="submit"></div>
+                    </form>
                 </div>
             </div>
         <% } %>
