@@ -35,12 +35,12 @@ module.exports = {
     },
     preferredSupplierLanguage: {
       type: 'array',
-      minLength: 1,
+      minLength: 0, //not required 
       maxLength: 100
     },
     preferredSupplierLocation: {
       type: 'array',
-      minLength: 1,
+      minLength: 0, //not required 
       maxLength: 100
     },
     typeOfCompany: {
@@ -198,27 +198,29 @@ module.exports = {
     },
     locationName: {
       type: 'array',
-      minLength: 1,
+      minLength: 0, //not required 
+      //Note: *array* min length of 0; length of string checked in client-side valdation
       maxLength: 100
     },
     locationType: {
       type: 'array',
-      minLength: 1,
+      minLength: 0, //not required 
       maxLength: 100
     },
     locationCountry: {
       type: 'array',
-      minLength: 1,
+      minLength: 0, //not required 
       maxLength: 100
     },
     locationProvince: {
       type: 'array',
-      minLength: 1,
+      minLength: 0, //not required 
       maxLength: 100
     },
     locationCity: {
       type: 'array',
-      minLength: 1,
+      minLength: 0, //not required 
+      //Note: *array* min length of 0; length of string checked in client-side valdation
       maxLength: 100
     },
 

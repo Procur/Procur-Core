@@ -56,12 +56,12 @@
     },
     preferredBuyerLanguage: {
       type: 'array',
-      minLength: 1,
+      minLength: 0, //not required
       maxLength: 100
     },
     preferredBuyerLocation: {
       type: 'array',
-      minLength: 1,
+      minLength: 0, //not required
       maxLength: 100
     },
     acceptedDeliveryTerms: {
@@ -294,27 +294,29 @@
     },
     locationName: {
       type: 'array',
-      minLength: 2,
+      minLength: 0, //not required 
+      //Note: *array* min length of 0; length of string checked in client-side valdation
       maxLength: 50
     },
     locationType: {
       type: 'array',
-      minLength: 1,
+      minLength: 0, //not required
       maxLength: 100
     },
     locationCountry: {
       type: 'array',
-      minLength: 1,
+      minLength: 0, //not required
       maxLength: 100
     },
     locationProvince: {
       type: 'array',
-      minLength: 1,
+      minLength: 0, //not required
       maxLength: 100
     },
     locationCity: {
       type: 'array',
-      minLength: 2,
+      minLength: 0, //not required
+      //Note: *array* min length of 0; length of string checked in client-side valdation
       maxLength: 50
     },
 
