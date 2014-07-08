@@ -2,7 +2,7 @@
  * CompanyController
  *
  * @module      :: Controller
- * @description	:: A set of functions called `actions`.
+ * @description :: A set of functions called `actions`.
  *
  *                 Actions contain code telling Sails how to respond to a certain type of request.
  *                 (i.e. do stuff, then send some JSON, show an HTML page, or redirect to another URL)
@@ -384,6 +384,15 @@ module.exports = {
     return Company.findOne({ handle: desiredHandle }, function(err, company) {
       if (err === undefined) { return res.send(false); }
       if (company) { return res.send(true); }
+    });
+  },
+
+  checkCompanyExists: function(req, res){
+    if (req.isAjax === false) { res.redirect('404'); }
+    var desiredCompanyName = req.param('newCompanyName');
+    return Company.findOne({ name: desiredCompanyName }, function(err, company) {
+      if (err === undefined) { return res.send(false); }
+      if (company) {return res.send(true); }
     });
   },
 
