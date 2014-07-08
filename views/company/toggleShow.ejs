@@ -7,11 +7,9 @@
 
 <% if (company.buyer === true && company.supplier === true) { %>
   <% if (type === "buyer") { %>
-    <% console.log("type is buyer"); %>
     <%- partial('../company/buyer-profile') %>
     <% } %>
   <% if (type === "supplier") { %>
-    <% console.log("type is supplier"); %>
     <%- partial('../company/supplier-profile') %>
   <% } %>
 <% } %>

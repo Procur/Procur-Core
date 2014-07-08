@@ -159,11 +159,9 @@ module.exports = {
               function(err, data) {
                 switch(profileType) {
                   case ("supplier"):
-                    console.log("Case - supplier");
                     res.view({ company: payload[0], user: payload[1], supplier: payload[3], locations: viewLocations, loggedin: loggedin, type: profileType });
                     break;
                   case ("buyer"):
-                    console.log("Case - buyer");
                     res.view({ company: payload[0], user: payload[1], buyer: payload[2], locations: viewLocations, loggedin: loggedin, type: profileType });
                 }
               }
