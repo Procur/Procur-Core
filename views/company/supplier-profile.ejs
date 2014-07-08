@@ -1,0 +1,139 @@
+<div class="container profile-container">
+  <div class="col-sm-12 col-md-4">
+    <img src="/images/profile-logo.png">
+    <div class="company-header">
+      <h2>
+        <span>Supplier Profile </span>
+        <% if (company.buyer=== true ) { %>&middot;<span><a href="/companies/<%= company.handle %>/buyer"> View Buyer Profile</a></span><% } %>
+      </h2>
+      <h1><%= company.name %></h1>
+    </div>
+    
+    <% if (locations["showHq"] === false) { %>
+      <div class="company-info-box company-business-address">
+        <h3><span class="glyphicon glyphicon-map-marker info-glyph"></span><span class="info-title">Official Business Address</span></h3>
+        <p><%= locations["company-isHq"].addressLine1 %></p>
+        <p><%= locations["company-isHq"].addressLine2 %></p>
+        <p><%= locations["company-isHq"].country %></p>
+      </div>
+    <% } else { %>
+      <div class="company-info-box company-business-address">
+        <h3><span class="glyphicon glyphicon-map-marker info-glyph"></span><span class="info-title">Official Business Address</span></h3>
+        <p><%= locations["company-notHq"][0].addressLine1 %></p>
+        <p><%= locations["company-notHq"][0].addressLine2 %></p>
+        <p><%= locations["company-notHq"][0].country %></p>
+      </div>
+      <div class="company-info-box">
+        <h3><span class="glyphicon glyphicon-globe info-glyph"></span><span class="info-title">Headquarters</span></h3>
+        <p><%= locations["company-isHq"].addressLine1 %></p>
+        <p><%= locations["company-isHq"].addressLine2 %></p>
+        <p><%= locations["company-isHq"].country %></p>
+      </div>
+    <% } %>
+    
+    <div class="company-info-box">
+      <h3><span class="glyphicon glyphicon-earphone info-glyph"></span><span class="info-title">Company Phone &amp; Fax</span></h3>
+      <p>Telephone: +<%= company.phoneNumberCountryCode %> <%= company.phoneNumber %> Ext: <%= company.phoneExtension %></p>
+      <p>Fax: +<%= company.faxCountryCode%> <%= company.faxNumber %> Ext: <%= company.faxExtension %></p>
+    </div>
+
+    <div class="company-info-box">
+      <h3><span class="glyphicon glyphicon-send info-glyph"></span><span class="info-title">Company Email Address</span></h3>
+      <p><%= company.email %></p>
+    </div>
+
+    <div class="company-info-box">
+      <h3><span class="glyphicon glyphicon-send info-glyph"></span><span class="info-title">Company Website</span></h3>
+      <p><a href="<%= company.website %>" target="_blank"><%= company.website %></a></p>
+    </div>
+
+    <div class="company-detail-box">
+      <h3><span>Product Specialties</span></h3>
+      <p><%= supplier.viewCategoryList %></p>
+    </div>
+
+    <!--Class "capability-box" can be used for grey rectangular boxes-->
+    <!--<div class="company-detail-box">
+      <h3><span>Capabilities</span></h3>
+      <div class="capability-box">Apparel Design Services</div>
+      <div class="capability-box">Fabrics &amp; Trim</div>
+      <div class="capability-box">Digital Printing</div>
+    </div>-->
+    
+    <div class="company-two-col-box">
+      <h3><span>Supplier Details</span></h3>
+      <div class="company-col-left">
+        <div class="company-col-detail">
+          <p class="detail-header">Type of Company</p>
+          <p class="detail-body">Supplier</p>
+        </div>
+        <div class="company-col-detail">
+          <p class="detail-header">Total # of Employees</p>
+          <p class="detail-body"><%= company.employeeCount %></p>
+        </div>
+        <div class="company-col-detail">
+          <p class="detail-header">Industry</p>
+          <p class="detail-body"><%= company.industry %></p>
+        </div>
+        <div class="company-col-detail">
+          <p class="detail-header">Languages</p>
+          <p class="detail-body">
+            <% supplier["language"].forEach(function(language) { %>
+              <%= language %>
+            <% }) %>
+          </p>
+        </div>
+        <div class="company-col-detail">
+          <p class="detail-header">DUNS Number</p>
+          <p class="detail-body"><%= supplier.dunsNumber  %></p>
+        </div>
+        <div class="company-col-detail">
+          <p class="detail-header">Cage Code</p>
+          <p class="detail-body">2MFA5</p>
+        </div>
+      </div><!-- END LEFT DETAIL COLUMN -->
+      <div class="company-col-right">
+        <div class="company-col-detail">
+          <p class="detail-header">Certifications</p>
+          <p class="detail-body">ISO Compliant</p>
+        </div>
+        <div class="company-col-detail">
+          <p class="detail-header">Links</p>
+          <p class="detail-body"><a href="<%= company.website %>" target="_blank">Our Website</a></p>
+        </div>
+      </div><!-- END RIGHT DETAIL COLUMN -->
+      <div class="company-col-clear"></div>
+    </div>
+  </div><!-- END LEFT COLUMN -->
+  
+  <div class="col-sm-12 col-md-8">
+    <div class="profile-nav">
+      <ul>
+        <div class="nav-left">
+          <li>About</li>
+        </div>
+        <div class="nav-right">
+          <li><a id="company-description">Company Description</a></li>
+          <li><a id="products-of-interest">Product Overview</a></li>
+          <li><a id="statements-of-responsibility">Statements of Responsibility</a></li>
+        </div>
+      </ul>
+    </div>
+    <div id="profile-content">
+      <div class="content-desc"><%= supplier.companyDescription %></div>
+      <div class="content-interest" id="inactive"><%= supplier.productsOfInterest %></div>
+      <div class="content-statement" id="inactive">
+        <h4>Environmental Sustainability</h4>
+        <%= supplier.environmentalSustainability %><br /><br />
+        <h4>Quality Sourcing</h4>
+        <%= supplier.qualitySourcing %><br /><br />
+        <h4>Workplace Safety</h4>
+        <%= supplier.workplaceSafety %><br /><br />
+        <h4>Labor, Education, and Trainig</h4>
+        <%= supplier.laborEducationTraining %><br /><br />
+        <h4>Reinvestment</h4>
+        <%= supplier.reinvestment %>
+      </div>
+    </div>
+  </div><!-- END RIGHT COLUMN -->
+</div>
