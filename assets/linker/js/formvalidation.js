@@ -63,6 +63,7 @@ Custom Validation Messages
 var checkBoxMsg = "Please select at least one option.";
 var urlHintMsg = "Please enter a valid URL preceded by http://";
 var dnsMsg = "Please enter a 9-digit DNS Number.";
+var otherLocationsMsg = "Include the name, type, & country when providing a location.";
 
 /*
 
@@ -423,7 +424,8 @@ $('#buyer-wizard-form').validate({
 });
 
 
-$('#supplier-wizard-form').validate({
+
+var supplierValidateObj = {
   rules: {
     logoUrl: {
       required: false
@@ -462,7 +464,7 @@ $('#supplier-wizard-form').validate({
       //(provided) 
       //TODO: This should be a dropdown (and provided)
     },
-    otherLocationName: {
+    supplierOtherLocationName: {
       required: false,
       "internationalphanumeric+punct+whitespace": true,
       minlength: 3,
@@ -470,25 +472,25 @@ $('#supplier-wizard-form').validate({
       //Buyer model says this is stored as an array, (length 1-100) but it is a single dropdown in the UI.
       //TODO: ask about this.
     },
-    otherLocationType: {
+    supplierOtherLocationType: {
       required: false
       // (provided)
       //Buyer model says this is stored as an array, (length 1-100) but it is a single dropdown in the UI.
       //TODO: ask about this.
     },
-    otherLocationCountry: {
+    supplierOtherLocationCountry: {
       required: false
       // (provided)
       //Buyer model says this is stored as an array, (length 1-100) but it is a single dropdown in the UI.
       //TODO: ask about this.
     },
-    otherLocationProvince: {
+    supplierOtherLocationProvince: {
       required: false
       // (provided)
       //Buyer model says this is stored as an array, (length 1-100) but it is a single dropdown in the UI.
       //TODO: ask about this.
     },
-    otherLocationCity: {
+    supplierOtherLocationCity: {
       required: false,
       "internationalphanumeric+punct+whitespace": true,
       minlength: 2,
@@ -547,9 +549,65 @@ $('#supplier-wizard-form').validate({
     },
     acceptedPaymentTerms: {
       required: checkBoxMsg
+    },
+    supplierOtherLocationType: {
+    	required: otherLocationsMsg
+    },
+    supplierOtherLocationName: {
+    	required: otherLocationsMsg
+    },
+    supplierOtherLocationCountry: {
+    	required: otherLocationsMsg
     }
   }
+};
+
+  // Setup the default validation rules
+$('#supplier-wizard-form').validate(supplierValidateObj);
+
+
+/*
+	Update if any of the other location fields are filled
+*/
+var updateOtherLocationRules = function () {
+  // Get the jQuery validation plugin's settings
+  var settings = $('#supplier-wizard-form').validate().settings;
+
+  var flag = $('#supplierOtherLocationName').val()!=""|| $('#supplierOtherLocationType').val()!="" ||
+  $('#supplierOtherLocationCountry').val()!="" || $('#supplierOtherLocationCity').val()!="";
+
+  $.extend(true, settings, {
+    rules: {
+      "supplierOtherLocationType": {
+        required: flag
+      },
+      "supplierOtherLocationName": {
+        required: flag
+      },
+      "supplierOtherLocationCountry": {
+        required: flag
+      }
+    }
+  });
+}
+
+$('#supplierOtherLocationName').change(function () {
+	updateOtherLocationRules();
 });
+
+$('#supplierOtherLocationType').change(function () {
+	updateOtherLocationRules();
+});
+
+$('#supplierOtherLocationCountry').change(function () {
+	updateOtherLocationRules();
+});
+
+$('#supplierOtherLocationCity').change(function () {
+	updateOtherLocationRules();
+});
+
+
 
 
 $('#buyer-update-form').validate({
