@@ -313,6 +313,11 @@ module.exports.routes = {
     action: 'checkHandleExists'
   },
 
+  'get /checkCompanyExists': {
+  	controller: 'CompanyController',
+  	action: 'checkCompanyExists'
+  },
+
   //deprecated 7/3/14
   /*'get /company/update': {
     controller: 'CompanyController',

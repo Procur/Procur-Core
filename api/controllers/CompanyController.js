@@ -257,6 +257,15 @@ module.exports = {
     });
   },
 
+  checkCompanyExists: function(req, res){
+  	if (req.isAjax === false) { res.redirect('404'); }
+  	var desiredCompanyName = req.param('newCompanyName');
+  	return Company.findOne({ name: desiredCompanyName }, function(err, company) {
+  		if (err === undefined) { return res.send(false); }
+  		if (company) {return res.send(true); }
+  	});
+  },
+
   updateHandle: function(req, res){
     var b = req.body;
     Company.findOne({ handle: b.handle }, function(err, company){
