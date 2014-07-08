@@ -289,6 +289,11 @@ module.exports.routes = {
     action: 'show'
   },
 
+  'get /companies/:id/:type': {
+    controller: 'CompanyController',
+    action: 'toggleShow'
+  },
+
   'post /company/create': {
     controller: 'CompanyController',
     action: 'create'
