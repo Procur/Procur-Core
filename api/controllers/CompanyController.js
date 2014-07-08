@@ -20,27 +20,157 @@ module.exports = {
   show: function(req, res){
     //TODO: Add user lookup functionality + add company Slug
     var handle = req.param('id');
+    var async = require('async');
     var currentUser = req.session.passport.user;
+    var locationsHelper = sails.config.locationsHelper;
+    var waterlineHelper = sails.config.waterlineHelper;
+    var productCategoryHelper = sails.config.productCategoryHelper;
+    var payload = [];
+    var locationsPayload = {};
+    var viewLocations = {};
+    var loggedin;
+
+    currentUser === undefined ? loggedin = false : loggedin = true;
 
     Company.findOne({ handle: handle }, function(err, company) {
       if (err) { return res.redirect('/error/notfound'); }
       if (!company) { return res.redirect('/404'); }
       if (company !== undefined) {
-        if (currentUser !== undefined) {
-          User.findOne({ id: currentUser }, function(err, user) {
-            if (err) { return res.redirect('/dashboard'); }
-            if (user !== undefined) {
-              res.view({ company: company, user: user, loggedin: true });
-            }
-            else {
-              res.view({ company: company, loggedin: false });
-            }
+        payload.push(company);
+        User.findOne({ id: currentUser }, function(err, user) {
+          if (err) { return res.redirect('/dashboard'); }
+          payload.push(user);
+          if (err) { return res.redirect('/dashboard'); }
+          Location.find({ company: company.id }).exec(function(err, location) {
+            locationsPayload["company"] = location;
+            locationsPayload["buyer"] = []; // trash value until merge
+            viewLocations = locationsHelper.parseLocations(locationsPayload, "buyer"); // trash argument until merge
+
+            async.parallel(
+              {
+                buyer: function(callback) {
+                  Buyer
+                    .findOne({ company: payload[0].id })
+                    .exec(function(err, buyer) {
+                      if (err) { callback(err, null); }
+                      else if (!buyer) { callback(null, undefined); }
+                      else {
+                        buyer = waterlineHelper.fixBuyerArrays(buyer);
+                        buyer = productCategoryHelper.getCategoryChild(buyer);
+                        payload.push(buyer);
+                        callback(null, buyer);
+                      }
+                    });
+                },
+                supplier: function(callback) {
+                  Supplier
+                    .findOne({ company: payload[0].id })
+                    .exec(function(err, supplier) {
+                      if (err) { callback(err, null); }
+                      else if (!supplier) { callback(null, undefined); }
+                      else {
+                        supplier = waterlineHelper.fixSupplierArrays(supplier);
+                        supplier = productCategoryHelper.getCategoryChild(supplier);
+                        payload.push(supplier);
+                        callback(null, supplier);
+                      }
+                    });
+                }
+              },
+              function(err, data) {
+                if (data.buyer && data.supplier) {
+                  res.view({ company: payload[0], user: payload[1], buyer: payload[2], supplier: payload[3], locations: viewLocations, loggedin: loggedin });
+                }
+                else if (data.buyer && (data.supplier === undefined)) {
+                  res.view({ company: payload[0], user: payload[1], buyer: payload[2], locations: viewLocations, loggedin: loggedin });
+                }
+                else if ((data.buyer === undefined) && data.supplier) {
+                  res.view({ company: payload[0], user: payload[1], supplier: payload[2], locations: viewLocations, loggedin: loggedin });
+                }
+              }
+            )
           });
-        } else {
-          res.view({ company: company, loggedin: false });
-        }
+        });
       }
     });
+
+  },
+
+  toggleShow: function(req, res){
+    var handle = req.param('id');
+    var profileType = req.param('type');
+    var async = require('async');
+    var currentUser = req.session.passport.user;
+    var locationsHelper = sails.config.locationsHelper;
+    var waterlineHelper = sails.config.waterlineHelper;
+    var productCategoryHelper = sails.config.productCategoryHelper;
+    var payload = [];
+    var locationsPayload = {};
+    var viewLocations = {};
+    var loggedin;
+
+    currentUser === undefined ? loggedin = false : loggedin = true;
+
+    Company.findOne({ handle: handle }, function(err, company) {
+      if (err) { return res.redirect('/error/notfound'); }
+      if (!company) { return res.redirect('/404'); }
+      if (company !== undefined) {
+        payload.push(company);
+        User.findOne({ id: currentUser }, function(err, user) {
+          if (err) { return res.redirect('/dashboard'); }
+          payload.push(user);
+          if (err) { return res.redirect('/dashboard'); }
+          Location.find({ company: company.id }).exec(function(err, location) {
+            locationsPayload["company"] = location;
+            locationsPayload["buyer"] = []; // trash value until merge
+            viewLocations = locationsHelper.parseLocations(locationsPayload, "buyer"); // trash argument until merge
+
+            async.parallel(
+              {
+                buyer: function(callback) {
+                  Buyer
+                    .findOne({ company: payload[0].id })
+                    .exec(function(err, buyer) {
+                      if (err) { callback(err, null); }
+                      else if (!buyer) { callback(null, undefined); }
+                      else {
+                        buyer = waterlineHelper.fixBuyerArrays(buyer);
+                        buyer = productCategoryHelper.getCategoryChild(buyer);
+                        payload.push(buyer);
+                        callback(null, buyer);
+                      }
+                    });
+                },
+                supplier: function(callback) {
+                  Supplier
+                    .findOne({ company: payload[0].id })
+                    .exec(function(err, supplier) {
+                      if (err) { callback(err, null); }
+                      else if (!supplier) { callback(null, undefined); }
+                      else {
+                        supplier = waterlineHelper.fixSupplierArrays(supplier);
+                        supplier = productCategoryHelper.getCategoryChild(supplier);
+                        payload.push(supplier);
+                        callback(null, supplier);
+                      }
+                    });
+                }
+              },
+              function(err, data) {
+                switch(profileType) {
+                  case ("supplier"):
+                    res.view({ company: payload[0], user: payload[1], supplier: payload[3], locations: viewLocations, loggedin: loggedin, type: profileType });
+                    break;
+                  case ("buyer"):
+                    res.view({ company: payload[0], user: payload[1], buyer: payload[2], locations: viewLocations, loggedin: loggedin, type: profileType });
+                }
+              }
+            )
+          });
+        });
+      }
+    });
+
   },
 
   setup: function(req, res){
