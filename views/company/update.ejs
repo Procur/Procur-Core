@@ -237,12 +237,12 @@
               <h4>Descriptions</h4>
                 <div class="formWrapper">
                   <form action="/buyer/update/descriptions" method="post" id="buyerDescriptionsForm">
-                      <div><input type="text" name="companyDescription" value="<%= buyer.companyDescription %>"></div>
-                      <div><textarea name="environmentalSustainability" form="buyerDescriptionsForm"><%= buyer.environmentalSustainability %></textarea></div>
-                      <div><textarea name="qualitySourcing" form="buyerDescriptionsForm"><%= buyer.qualitySourcing %></textarea></div>
-                      <div><textarea name="workplaceSafety" form="buyerDescriptionsForm"><%= buyer.workplaceSafety %></textarea></div>
-                      <div><textarea name="laborEducationTraining" form="buyerDescriptionsForm"><%= buyer.laborEducationTraining %></textarea></div>
-                      <div><textarea name="reinvestment" form="buyerDescriptionsForm"><%= buyer.reinvestment %></textarea></div>
+                      <div><input type="text" name="companyDescription" <% if(buyer.companyDescription !== undefined) { %>value="<%= buyer.companyDescription %>"<% } else { %> placeholder="Company Description" <% } %>></div>
+                      <div><textarea name="environmentalSustainability" form="buyerDescriptionsForm" <% if(buyer.environmentalSustainability === undefined){ %> placeholder="Environmental Sustainability" <% } else{ %> ><%= buyer.environmentalSustainability %>  <% } %>></textarea></div>
+                      <div><textarea name="qualitySourcing" form="buyerDescriptionsForm" <% if(buyer.qualitySourcing === undefined){ %> placeholder="Quality Sourcing" <% } else{ %> ><%= buyer.environmentalSustainability  %><% } %>></textarea></div>
+                      <div><textarea name="workplaceSafety" form="buyerDescriptionsForm"<% if(buyer.workplaceSafety === undefined){ %> placeholder="Workplace Safety" <% } else{ %> ><%= buyer.workplaceSafety  %><% } %>></textarea></div>
+                      <div><textarea name="laborEducationTraining" form="buyerDescriptionsForm"<% if(buyer.laborEducationTraining === undefined){ %> placeholder="Labor Education Training" <% } else{ %> ><%= buyer.laborEducationTraining  %><% } %>></textarea></div>
+                      <div><textarea name="reinvestment" form="buyerDescriptionsForm"<% if(buyer.reinvestment === undefined){ %> placeholder="Reinvestment" <% } else{ %> ><%= buyer.reinvestment  %><% } %>></textarea></div>
                       <div><input type="submit"></div>
                   </form>
                 </div>
