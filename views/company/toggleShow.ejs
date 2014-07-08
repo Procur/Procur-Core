@@ -6,16 +6,10 @@
 <% } %>
 
 <% if (company.buyer === true && company.supplier === true) { %>
-  <% if (company.primaryMode === "buyer") { %>
+  <% if (type === "buyer") { %>
     <%- partial('../company/buyer-profile') %>
     <% } %>
-  <% if (company.primaryMode === "supplier") { %>
+  <% if (type === "supplier") { %>
     <%- partial('../company/supplier-profile') %>
   <% } %>
-<% } %>
-<% if (company.buyer === true && company.supplier === false) { %>
-  <%- partial('../company/buyer-profile') %>
-<% } %>
-<% if (company.supplier === true && company.buyer === false) { %>
-  <%- partial('../company/supplier-profile') %>
 <% } %>

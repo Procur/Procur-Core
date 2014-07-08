@@ -189,11 +189,15 @@
   margin-left: 10px; 
 }
 
-.profile-content {
+#profile-content {
   margin-top: 10px; 
 }
 
-.profile-content p {
+#profile-content p {
   font-size: 14px;
   padding: 8px 0;
+}
+
+#inactive {
+  display: none;
 }

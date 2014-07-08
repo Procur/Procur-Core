@@ -1,0 +1,128 @@
+<div class="container profile-container">
+  <div class="col-sm-12 col-md-4">
+    <img src="/images/profile-logo.png">
+    <div class="company-header">
+      <h2>
+        <span>Buyer Profile </span>
+        <% if (company.supplier === true ) { %>&middot;<span><a href="/companies/<%= company.handle %>/supplier"> View Supplier Profile</a></span><% } %>
+      </h2>
+      <h1><%= company.name %></h1>
+    </div>
+
+    <% if (locations["showHq"] === false) { %>
+      <div class="company-info-box company-business-address">
+        <h3><span class="glyphicon glyphicon-map-marker info-glyph"></span><span class="info-title">Official Business Address</span></h3>
+        <p><%= locations["company-isHq"].addressLine1 %></p>
+        <p><%= locations["company-isHq"].addressLine2 %></p>
+        <p><%= locations["company-isHq"].country %></p>
+      </div>
+    <% } else { %>
+      <div class="company-info-box company-business-address">
+        <h3><span class="glyphicon glyphicon-map-marker info-glyph"></span><span class="info-title">Official Business Address</span></h3>
+        <p><%= locations["company-notHq"][0].addressLine1 %></p>
+        <p><%= locations["company-notHq"][0].addressLine2 %></p>
+        <p><%= locations["company-notHq"][0].country %></p>
+      </div>
+      <div class="company-info-box">
+        <h3><span class="glyphicon glyphicon-globe info-glyph"></span><span class="info-title">Headquarters</span></h3>
+        <p><%= locations["company-isHq"].addressLine1 %></p>
+        <p><%= locations["company-isHq"].addressLine2 %></p>
+        <p><%= locations["company-isHq"].country %></p>
+      </div>
+    <% } %>
+
+    <div class="company-info-box">
+      <h3><span class="glyphicon glyphicon-earphone info-glyph"></span><span class="info-title">Company Phone &amp; Fax</span></h3>
+      <p>Telephone: +<%= company.phoneNumberCountryCode %> <%= company.phoneNumber %> Ext: <%= company.phoneExtension %></p>
+      <p>Fax: +<%= company.faxCountryCode%> <%= company.faxNumber %> Ext: <%= company.faxExtension %></p>
+    </div>
+
+    <div class="company-info-box">
+      <h3><span class="glyphicon glyphicon-send info-glyph"></span><span class="info-title">Company Email Address</span></h3>
+      <p><%= company.email %></p>
+    </div>
+
+    <div class="company-info-box">
+      <h3><span class="glyphicon glyphicon-send info-glyph"></span><span class="info-title">Company Website</span></h3>
+      <p><a href="<%= company.website %>" target="_blank"><%= company.website %></a></p>
+    </div>
+    
+    <div class="company-detail-box">
+      <h3><span>Product Categories</span></h3>
+      <p><%= buyer.viewCategoryList %></p>
+    </div>
+
+    <div class="company-two-col-box">
+      <h3><span>Buyer Details</span></h3>
+      <div class="company-col-left">
+        <div class="company-col-detail">
+          <p class="detail-header">Type of Company</p>
+          <p class="detail-body">Buyer</p>
+        </div>
+        <div class="company-col-detail">
+          <p class="detail-header">Total # of Employees</p>
+          <p class="detail-body"><%= company.employeeCount %></p>
+        </div>
+        <div class="company-col-detail">
+          <p class="detail-header">Industry</p>
+          <p class="detail-body"><%= company.industry %></p>
+        </div>
+        <div class="company-col-detail">
+          <p class="detail-header">Languages</p>
+          <p class="detail-body">
+            <% buyer["language"].forEach(function(language) { %>
+              <%= language %>
+            <% }) %>
+          </p>
+        </div>
+        <div class="company-col-detail">
+          <p class="detail-header">DUNS Number</p>
+          <p class="detail-body"><%= buyer.dunsNumber  %></p>
+        </div>
+      </div><!-- END LEFT DETAIL COLUMN -->
+      <div class="company-col-right">
+        <div class="company-col-detail">
+          <p class="detail-header">Certifications</p>
+          <p class="detail-body">ISO Compliant</p>
+        </div>
+        <div class="company-col-detail">
+          <p class="detail-header">Links</p>
+          <p class="detail-body"><a href="<%= company.website %>" target="_blank">Our Website</a></p>
+        </div>
+      </div><!-- END RIGHT DETAIL COLUMN -->
+      <div class="company-col-clear"></div>
+    </div>
+
+  </div><!-- END LEFT COLUMN -->
+
+  <div class="col-sm-12 col-md-8">
+    <div class="profile-nav">
+      <ul>
+        <div class="nav-left">
+          <li>About</li>
+        </div>
+        <div class="nav-right">
+          <li><a id="company-description">Company Description</a></li>
+          <li><a id="products-of-interest">Products of Interest</a></li>
+          <li><a id="statements-of-responsibility">Statements of Responsibility</a></li>
+        </div>
+      </ul>
+    </div>
+    <div id="profile-content">
+      <div class="content-desc"><%= buyer.companyDescription %></div>
+      <div class="content-interest" id="inactive"><%= buyer.productsOfInterest %></div>
+      <div class="content-statement" id="inactive">
+        <h4>Environmental Sustainability</h4>
+        <%= buyer.environmentalSustainability %><br /><br />
+        <h4>Quality Sourcing</h4>
+        <%= buyer.qualitySourcing %><br /><br />
+        <h4>Workplace Safety</h4>
+        <%= buyer.workplaceSafety %><br /><br />
+        <h4>Labor, Education, and Trainig</h4>
+        <%= buyer.laborEducationTraining %><br /><br />
+        <h4>Reinvestment</h4>
+        <%= buyer.reinvestment %>
+      </div>
+    </div>
+  </div><!-- END RIGHT COLUMN -->
+</div>

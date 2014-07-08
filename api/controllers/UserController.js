@@ -50,7 +50,15 @@ module.exports = {
   updateAccount: function(req, res){
     User.findOne({ id: req.session.passport.user }, function(err, user){
       if(err) { return res.redirect('/dashboard'); }
-      res.view({ user: user });
+      Company.findOne({ user: user.id }, function(err, company){
+        if(err) { return res.redirect('/dashboard'); }
+        if(company !== undefined){
+          res.view({ user: user, company: company });
+        }
+        else {
+          return res.redirect('/dashboard');
+        }
+      });
     });
   },
 
