@@ -532,7 +532,6 @@ ul.ui-autocomplete {
 
 .ui-menu-item a{
   color: #333132;
-  text-transform: capitalize;
   padding: 0px 10px;
   cursor: pointer;
   font-family: 'Roboto', sans-serif;
