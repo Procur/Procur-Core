@@ -769,7 +769,7 @@
 
                       <h5>Nearest Port</h5>
                       <section id="port">
-                        <div><input type="text" name="portCity" <% if(supplier.portCity !== undefined) { %>value="<%= buyer.portCity %>"<% } else { %> placeholder="City" <% } %>></div>
+                        <div><input type="text" name="portCity" <% if(supplier.portCity !== undefined) { %>value="<%= supplier.portCity %>"<% } else { %> placeholder="City" <% } %>></div>
                         <div class="styledSelect">
                           <select name="portCountry" id="portCountry" onchange="print_state('province',this.selectedIndex);">
                             <option>Select Country</option>
