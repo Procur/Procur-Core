@@ -422,10 +422,12 @@ module.exports = {
                             Location.findOne({ company: company.id, isHq: true }, function(err, locationsHq){
                               if(err){ return res.redirect('/dashboard'); }
                               hqLocation = locationsHq;
+                              targetBuyer2 = waterlineHelper.fixBuyerArrays(targetBuyer);
                               res.view({
                                 user: targetUser,
                                 company: targetCompany,
                                 buyer: targetBuyer,
+                                buyer2: targetBuyer2,
                                 supplier: targetSupplier,
                                 companyLocations: companyLocations,
                                 buyerLocations: buyerLocations,

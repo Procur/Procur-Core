@@ -275,8 +275,8 @@
                             <% var currencies = ["USD","EUR","JPY","GBP","AUD","CHF","CAD","MXN","CNY","NZD","SEK","RUB","HKD","SGD"]; %>
                             <% for(var x = 0; x < currencies.length; x++) { %>
                             <% var matchFound = false; %>
-                            <% for (var y = 0; y < buyer["acceptedCurrency"].length; y++) { %>
-                            <% if (currencies[x] == buyer.acceptedCurrency[y]) { %>
+                            <% for (var y = 0; y < buyer2["acceptedCurrency"].length; y++) { %>
+                            <% if (currencies[x] == buyer2.acceptedCurrency[y]) { %>
                             <% matchFound = true; %>
                             <input class="checkbox" type="checkbox" name="acceptedCurrency" value="<%= currencies[x] %>" checked><div class="checkboxtext"><%= currencies[x] %></div><br>
                             <% break; %>
@@ -316,8 +316,8 @@
                             <% if(buyer.acceptedPaymentTerms !== undefined){ %>
                             <% for(var x = 0; x < payment.length; x++) { %>
                             <% var matchFound = false; %>
-                            <% for (var y = 0; y < buyer["acceptedPaymentTerms"].length; y++) { %>
-                            <% if (payment[x] == buyer.acceptedPaymentTerms[y]) { %>
+                            <% for (var y = 0; y < buyer2["acceptedPaymentTerms"].length; y++) { %>
+                            <% if (payment[x] == buyer2.acceptedPaymentTerms[y]) { %>
                             <% matchFound = true; %>
                             <input class="checkbox" type="checkbox" name="acceptedPaymentTerms" value="<%= payment[x] %>" checked><div class="checkboxtext"><%= payment[x] %></div><br>
                             <% break; %>
@@ -350,8 +350,8 @@
                             <% var terms = ["EXW","FCA","CPT","CIP","DAT","DAP","DDP","FAS","FOB","CFR","CIF","Custom"]; %>
                             <% for (var x = 0; x < terms.length; x++) { %>
                             <% var matchFound = false; %>
-                            <% for (var y = 0; y < buyer["acceptedDeliveryTerms"].length; y++) { %>
-                            <% if (terms[x] == buyer.acceptedDeliveryTerms[y]) { %>
+                            <% for (var y = 0; y < buyer2["acceptedDeliveryTerms"].length; y++) { %>
+                            <% if (terms[x] == buyer2.acceptedDeliveryTerms[y]) { %>
                             <% matchFound = true; %>
                             <input class="checkbox" type="checkbox" name="acceptedDeliveryTerms" value="<%= terms[x] %>" checked><div class="checkboxtext"><%= terms[x] %></div><br>
                             <% break; %>
