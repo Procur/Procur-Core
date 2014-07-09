@@ -15,6 +15,8 @@
  * @docs        :: http://sailsjs.org/#!documentation/controllers
  */
 
+
+
 module.exports = {
 
   show: function(req, res){
@@ -388,7 +390,8 @@ module.exports = {
         buyerLocations,
         supplierLocations,
         companyLocations,
-        hqLocation;
+        hqLocation,
+        waterlineHelper = sails.config.waterlineHelper;
 
     User.findOne({ id: userId }, function(err, user){
       if(err){ return res.redirect('/dashboard'); }
