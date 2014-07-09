@@ -158,8 +158,6 @@
 }
 
 /* ERRORS */
-.login-error {
-}
 
 #incorrect-login-error {
   color: #FF5A5A;
@@ -171,7 +169,7 @@
   width: 100%;
 }
 
-label.error {
+#login label.error {
   color: #FF5A5A;
   text-align: center;
   font-family: 'Montserrat', sans-serif;
