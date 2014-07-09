@@ -1,6 +1,11 @@
 <div class="container profile-container">
   <div class="col-sm-12 col-md-4">
-    <img src="/images/profile-logo.png">
+    <% if (buyer.logoUrl) { %>
+      <img src="<%= buyer.logoUrl %>">
+    <% } else { %>
+      <!-- ADD PLACEHOLDER IMAGE HERE -->
+      <img src="/images/profile-logo.png">
+    <% } %>
     <div class="company-header">
       <h2>
         <span>Buyer Profile </span>
@@ -104,25 +109,28 @@
         <div class="nav-right">
           <li><a id="company-description">Company Description</a></li>
           <li><a id="products-of-interest">Products of Interest</a></li>
-          <li><a id="statements-of-responsibility">Statements of Responsibility</a></li>
+          <% if (buyer.showSORTab === true) { %><li><a id="statements-of-responsibility">Statements of Responsibility</a></li><% } %>
         </div>
       </ul>
     </div>
     <div id="profile-content">
-      <div class="content-desc"><%= buyer.companyDescription %></div>
+      <% if (buyer.companyDescription !== undefined) { %>
+        <div class="content-desc"><%= buyer.companyDescription %></div>
+      <% } else { %>
+        <div class="content-desc">This company does not have a buyer company description.</div>
+      <% } %>
       <div class="content-interest" id="inactive"><%= buyer.productsOfInterest %></div>
-      <div class="content-statement" id="inactive">
-        <h4>Environmental Sustainability</h4>
-        <%= buyer.environmentalSustainability %><br /><br />
-        <h4>Quality Sourcing</h4>
-        <%= buyer.qualitySourcing %><br /><br />
-        <h4>Workplace Safety</h4>
-        <%= buyer.workplaceSafety %><br /><br />
-        <h4>Labor, Education, and Trainig</h4>
-        <%= buyer.laborEducationTraining %><br /><br />
-        <h4>Reinvestment</h4>
-        <%= buyer.reinvestment %>
-      </div>
+      <% if (buyer.showSORTab === true) { %>
+        <div class="content-statement" id="inactive">
+          <% var sorKeys = Object.keys(buyer["sorViewFields"]); %>
+          <% for (var x = 0; x < sorKeys.length; x++) { %>
+            <% if (buyer[sorKeys[x]] !== undefined) { %>
+              <h4><%= buyer.sorViewFields[sorKeys[x]]  %></h4>
+              <p><%= buyer[sorKeys[x]] %></p>
+            <% } %>
+          <% } %>
+        </div>
+      <% } %><!-- end if -->
     </div>
   </div><!-- END RIGHT COLUMN -->
 </div>

@@ -27,6 +27,7 @@ module.exports = {
     var locationsHelper = sails.config.locationsHelper;
     var waterlineHelper = sails.config.waterlineHelper;
     var productCategoryHelper = sails.config.productCategoryHelper;
+    var sorHelper = sails.config.sorHelper;
     var payload = [];
     var locationsPayload = {};
     var viewLocations = {};
@@ -45,8 +46,7 @@ module.exports = {
           if (err) { return res.redirect('/dashboard'); }
           Location.find({ company: company.id }).exec(function(err, location) {
             locationsPayload["company"] = location;
-            locationsPayload["buyer"] = []; // trash value until merge
-            viewLocations = locationsHelper.parseLocations(locationsPayload, "buyer"); // trash argument until merge
+            viewLocations = locationsHelper.parseLocations(locationsPayload);
 
             async.parallel(
               {
@@ -59,6 +59,7 @@ module.exports = {
                       else {
                         buyer = waterlineHelper.fixBuyerArrays(buyer);
                         buyer = productCategoryHelper.getCategoryChild(buyer);
+                        buyer = sorHelper.appendViewFields(buyer);
                         payload.push(buyer);
                         callback(null, buyer);
                       }
@@ -73,6 +74,7 @@ module.exports = {
                       else {
                         supplier = waterlineHelper.fixSupplierArrays(supplier);
                         supplier = productCategoryHelper.getCategoryChild(supplier);
+                        supplier = sorHelper.appendViewFields(supplier);
                         payload.push(supplier);
                         callback(null, supplier);
                       }
@@ -124,8 +126,7 @@ module.exports = {
           if (err) { return res.redirect('/dashboard'); }
           Location.find({ company: company.id }).exec(function(err, location) {
             locationsPayload["company"] = location;
-            locationsPayload["buyer"] = []; // trash value until merge
-            viewLocations = locationsHelper.parseLocations(locationsPayload, "buyer"); // trash argument until merge
+            viewLocations = locationsHelper.parseLocations(locationsPayload);
 
             async.parallel(
               {
