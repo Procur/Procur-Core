@@ -11,7 +11,6 @@ module.exports.sorHelper = {
   },
   
   addViewTabStatus: function(inData) {
-    
     var valuesExist = sorHelper.hasAnyValues(inData);
     valuesExist === true ? inData["showSORTab"] = true : inData["showSORTab"] = false;
 
