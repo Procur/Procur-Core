@@ -23,7 +23,7 @@ module.exports = {
     process: function(req, res){
       passport.authenticate('local', function(err, user, info) {
         if ((err) || (!user)) {
-          req.flash('error', "The username or password you entered is incorrect.");
+          req.flash('error', "The username or password you entered is incorrect. Please try again.");
           return res.redirect('/login');
         }
         req.logIn(user, function(err) {
