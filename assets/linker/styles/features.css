@@ -8,83 +8,83 @@
 }
 
 #features h2 {
-	font-family: 'Montserrat', sans-serif;
-	color: white;
-	text-transform: uppercase;
+  font-family: 'Montserrat', sans-serif;
+  color: white;
+  text-transform: uppercase;
 }
 
 #features h3 {
-	font-family: 'Montserrat', sans-serif;
-	color: white;
+  font-family: 'Montserrat', sans-serif;
+  color: white;
 }
 
 #features h5 {
-	font-family: 'Montserrat', sans-serif;
-	color: #7f7f7f;
-	letter-spacing: 0.06em;
-	font-size: 10px;
-	text-transform: uppercase;
-	margin-top: 16px;
+  font-family: 'Montserrat', sans-serif;
+  color: #7f7f7f;
+  letter-spacing: 0.06em;
+  font-size: 10px;
+  text-transform: uppercase;
+  margin-top: 16px;
 }
 
 #features h6 {
-	font-family: 'Montserrat', sans-serif;
-	color: #7f7f7f;
-	letter-spacing: 0.06em;
-	font-size: 9px;
-	margin-top: 16px;
+  font-family: 'Montserrat', sans-serif;
+  color: #7f7f7f;
+  letter-spacing: 0.06em;
+  font-size: 9px;
+  margin-top: 16px;
 }
 
 #features p {
-	line-height: 25px;
-	font-size: 14px;
-	padding-bottom: 15px;
+  line-height: 25px;
+  font-size: 14px;
+  padding-bottom: 15px;
 }
 
 #features hr {
-	padding-bottom: 10px;
+  padding-bottom: 10px;
 }
 
 #features ul {
-	padding-left: 0;
-	margin-left: 20px;
+  padding-left: 0;
+  margin-left: 20px;
 }
 
 #features li {
-	margin-bottom: 10px;
-	font-family: 'Open Sans', sans-serif;
-	font-size: 18px;
-	color: #7f7f7f;
-	font-weight: 100
+  margin-bottom: 10px;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 18px;
+  color: #7f7f7f;
+  font-weight: 100
 }
 
 #features .fa-li {
-	color:green;
+  color:green;
 }
 
 #features .featuresColumn {
-	margin-top: 78px;
+  margin-top: 78px;
 }
 
 #features .bottomRightClicker {
-	float: right;
-	margin-top: 20px;
+  float: right;
+  margin-top: 20px;
 }
 
 #features #registerNow {
-	border: 2px solid #f7931d;
-	padding: 7px;
-	text-decoration: none;
-	color: black;
-	font-family: 'Montserrat', sans-serif;
-	text-transform: uppercase;
-	font-size: 10px;
+  border: 2px solid #f7931d;
+  padding: 7px;
+  text-decoration: none;
+  color: black;
+  font-family: 'Montserrat', sans-serif;
+  text-transform: uppercase;
+  font-size: 10px;
 }
 
 #features #registerNow:hover {
-	color: white;
-	background: #f7931d;
-	-webkit-transition: all 200ms ease-in-out;
+  color: white;
+  background: #f7931d;
+  -webkit-transition: all 200ms ease-in-out;
   -moz-transition: all 200ms ease-in-out;
   -ms-transition: all 200ms ease-in-out;
   -o-transition: all 200ms ease-in-out;
@@ -93,88 +93,91 @@
 }
 
 #features #faqLink {
-	text-decoration: none;
-	color: #7f7f7f;
+  text-decoration: none;
+  color: #7f7f7f;
 }
 
 #features #blackBox {
-	background-color: black;
+  background-color: black;
 }
 
 #features #tech {
-	background: black;
-	width: 100%;
-	color: white;
-	padding: 40px 0px;
+  background: black;
+  width: 100%;
+  color: white;
+  padding: 40px 0px;
 }
 
 #features #communityRow {
-	display: none;
+  display: none;
 }
 
 #features .expander-contractor {
-	background: #5c5c5c;
+  background: #5c5c5c;
 }
 
 #features .toggleText {
-	text-align: center;
-	color: white;
-	margin-top: 20px;
-	margin-bottom: 30px;
-	cursor: pointer;
+  text-align: center;
+  color: white;
+  margin-top: 20px;
+  margin-bottom: 30px;
+  cursor: pointer;
 }
 
 #features .heroImage {
-	width: 100%;
-	background: url('../../images/featuresHero.png');
-	background-repeat: no-repeat;
-	background-size: 100%;
-	margin: 0px;
-	padding: 0px;
-	min-height: 360px;
+  width: 100%;
+  height: auto;
+  min-height: 360px;
+  background: url('../../images/featuresHero.png');
+  background-repeat: no-repeat;
+  background-size: 100%;
+  margin: 0px;
+  padding: 0px;
+  
 }
 
 #features .heroOverLay {
-	margin-left: 0;
-	padding-left: 0;
+  margin-left: 0;
+  padding-left: 0;
 }
 
 #features .heroOverLay2 {
-	margin-left: 30px;
-	padding-left: 0;
+  margin-left: 15px;
+  padding-left: 0;
+  margin-top: 50px;
 }
 
 #features #heroWhite {
-	padding: 15px;
-	margin-top: 50px;
-	font-family: 'Open Sans', sans-serif;
-	font-size: 20px;
-	font-weight: 300;
-	color: #7f7f7f;
-	background-color: rgba(245, 245, 245, 0.5);
+  padding: 15px;
+  margin-top: 50px;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 20px;
+  font-weight: 300;
+  color: #7f7f7f;
+  background-color: rgba(245, 245, 245, 0.5);
 }
 
 #features #heroButton:hover {
-	text-decoration: none;
+  text-decoration: none;
 }
 
 #features #heroButton {
-	padding: 11px;
-	background-color: rgba(100,100,100,0.5);
-	border-radius: 20px;
-	padding-left: 20px;
-	padding-right: 20px;
-	font-family: 'Roboto', sans-serif;
-	font-weight: 300;
-	letter-spacing: 0.08em;
-	font-size: 9px;
-	line-height: 22px;
-	color: #ffffff;
-	margin-left: 5px;
+  padding: 11px;
+  background-color: rgba(100,100,100,0.5);
+  border-radius: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  letter-spacing: 0.08em;
+  font-size: 9px;
+  line-height: 22px;
+  color: #ffffff;
+  margin-left: 5px;
 }
 
 #features .buttonWrapper {
-	float: left;
-	margin-top: 15%;
+  float: left;
+  margin-top: 0;
 }
 
