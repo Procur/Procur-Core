@@ -101,7 +101,9 @@ module.exports = {
         })//END OF USER.CREATE
       }
       else {
-        res.send({message: 'Email address is unavailable.'});
+        req.flash('error', "There is already an account associated with "+ b.email +". Would you like to login?");
+        res.redirect('back');
+        //res.redirect('/login'); //<-- toggle this for proof that the flash just doesn't show up on '/' & '/signup'
       }
     });
   },
