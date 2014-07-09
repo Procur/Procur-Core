@@ -147,6 +147,16 @@ $('#login-form').validate({
   }
 });
 
+$('#forgot-password-form').validate({
+  rules: {
+    email: {
+      required: true,
+      email: true
+    }
+  }
+});
+
+
 $('#select-handle-form').validate({
   rules: {
     handle: {
