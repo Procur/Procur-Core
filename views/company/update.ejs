@@ -748,7 +748,7 @@
 
                       <h5>Additional Location</h5>
                       <section id="otherLocation1">
-                        <div><input type="text" name="otherLocationName" <% if(supplier.locationName !== undefined) { %>value="<%= buyer.locationName %>"<% } else { %> placeholder="Location Title" <% } %>></div>
+                        <div><input type="text" name="otherLocationName" <% if(supplier.locationName !== undefined) { %>value="<%= supplier.locationName %>"<% } else { %> placeholder="Location Title" <% } %>></div>
                         <div class="styledSelect">
                           <select name="otherLocationType">
                             <%- partial('../partials/dropdowns/other-location-type') %>
