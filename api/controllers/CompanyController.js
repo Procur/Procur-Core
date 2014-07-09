@@ -43,8 +43,7 @@ module.exports = {
           if (err) { return res.redirect('/dashboard'); }
           Location.find({ company: company.id }).exec(function(err, location) {
             locationsPayload["company"] = location;
-            locationsPayload["buyer"] = []; // trash value until merge
-            viewLocations = locationsHelper.parseLocations(locationsPayload, "buyer"); // trash argument until merge
+            viewLocations = locationsHelper.parseLocations(locationsPayload);
 
             async.parallel(
               {
@@ -122,8 +121,7 @@ module.exports = {
           if (err) { return res.redirect('/dashboard'); }
           Location.find({ company: company.id }).exec(function(err, location) {
             locationsPayload["company"] = location;
-            locationsPayload["buyer"] = []; // trash value until merge
-            viewLocations = locationsHelper.parseLocations(locationsPayload, "buyer"); // trash argument until merge
+            viewLocations = locationsHelper.parseLocations(locationsPayload);
 
             async.parallel(
               {
