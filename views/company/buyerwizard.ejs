@@ -38,23 +38,23 @@
 
                 <h4>Other Locations</h4>
                 <section id="otherLocation1">
-                  <div><input type="text" name="locationName" placeholder="Location Title"></div>
+                  <div><input type="text" name="buyerOtherLocationName" id="buyerOtherLocationName" placeholder="Location Title"></div>
                   <div class="styledSelect">
-                    <select name="locationType">
+                    <select name="buyerOtherLocationType" id="buyerOtherLocationType">
                       <%- partial('../partials/dropdowns/other-location-type') %>
                     </select>
                   </div>
                   <div class="styledSelect">
-                    <select name="locationCountry" id="locationCountry" onchange="print_state('locationProvince',this.selectedIndex);">
+                    <select name="buyerOtherLocationCountry" id="buyerOtherLocationCountry" onchange="print_state('buyerOtherLocationProvince',this.selectedIndex);">
                       <option>Select Country</option>
                     </select>
                   </div>
                   <div class="styledSelect">
-                    <select name="locationProvince" id="locationProvince">
+                    <select name="buyerOtherLocationProvince" id="buyerOtherLocationProvince">
                       <option>Select State/Province</option>
                     </select>
-                  </div><script language="javascript">print_country("locationCountry");</script><!--TODO:question for Cael-->
-                  <div><input type="text" name="locationCity" placeholder="City"></div>
+                  </div><script language="javascript">print_country("buyerOtherLocationCountry");</script><!--TODO:question for Cael-->
+                  <div><input type="text" name="buyerOtherLocationCity" id="buyerOtherLocationCity" placeholder="City"></div>
                 </section>
               </div><!-- End first column -->
 
@@ -121,12 +121,18 @@
 
               </div><!-- End second column -->
               <div class="col-sm-12">
-                <label  for="autocomplete"><h4>Select your Category Preferences</h4></label>
-                <input id="autocomplete1" name="autocomplete" placeholder="Begin typing to search categories...">
-                <label  for="autocomplete"><h4>Select your Category Preferences</h4></label>
-                <input id="autocomplete2" name="autocomplete" placeholder="Begin typing to search categories...">
-                <label  for="autocomplete"><h4>Select your Category Preferences</h4></label>
-                <input id="autocomplete3" name="autocomplete" placeholder="Begin typing to search categories...">
+                <div class="autocompleteWrapper1">
+                  <label  for="autocomplete"><h4>Select your Category Preferences</h4></label>
+                  <input id="autocomplete1" name="autocomplete" placeholder="Begin typing to search categories...">
+                </div>
+                <div class="autocompleteWrapper2">
+                  <label  for="autocomplete"><h4>Select your Category Preferences</h4></label>
+                  <input id="autocomplete2" name="autocomplete" placeholder="Begin typing to search categories...">
+                </div>
+                <div class="autocompleteWrapper3">
+                  <label  for="autocomplete"><h4>Select your Category Preferences</h4></label>
+                  <input id="autocomplete3" name="autocomplete" placeholder="Begin typing to search categories...">
+                </div>
               </div>
             </div><!-- End "row" -->
           </section>

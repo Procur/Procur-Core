@@ -63,11 +63,11 @@ module.exports = {
           typeOfCompany: b.typeOfCompany,
           acceptedCurrency: [b.acceptedCurrency],
           acceptedPaymentTerms: [b.acceptedPaymentTerms],
-          locationName: [b.locationName],
-          locationType: [b.locationType],
-          locationCountry: [b.locationCountry],
-          locationProvince: [b.locationProvince],
-          locationCity: [b.locationCity],
+          locationName: [b.buyerOtherLocationName],
+          locationType: [b.buyerOtherLocationType],
+          locationCountry: [b.buyerOtherLocationCountry],
+          locationProvince: [b.buyerOtherLocationProvince],
+          locationCity: [b.buyerOtherLocationCity],
           productCategory: [b.autocomplete],
           active: true
         }, function (err, buyer) {

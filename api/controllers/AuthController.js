@@ -23,7 +23,7 @@ module.exports = {
     process: function(req, res){
       passport.authenticate('local', function(err, user, info) {
         if ((err) || (!user)) {
-          req.flash('error', "The username or password you entered is incorrect.");
+          req.flash('error', "The username or password you entered is incorrect. Please try again.");
           return res.redirect('/login');
         }
         req.logIn(user, function(err) {
@@ -101,7 +101,9 @@ module.exports = {
         })//END OF USER.CREATE
       }
       else {
-        res.send({message: 'Email address is unavailable.'});
+        req.flash('error', "There is already an account associated with "+ b.email +". Would you like to login?");
+        res.redirect('back');
+        //res.redirect('/login'); //<-- toggle this for proof that the flash just doesn't show up on '/' & '/signup'
       }
     });
   },

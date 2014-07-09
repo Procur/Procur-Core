@@ -54,3 +54,21 @@
   padding: 0px 7px;
   font-weight: 300;
 }
+
+#companyUpdate button {
+  position: relative;
+  background: white;
+  border: 0px none;
+  float: right;
+  top: 15px;
+  right: 15px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 12px;
+  display: inline;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+#companyUpdate button i {
+  color: #5cc56c;
+}
