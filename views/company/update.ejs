@@ -248,7 +248,8 @@
         </div>
 
         <!-- ACTIVE MODE BUYER  -->
-        <% if (user.activeMode == 'buyer') { %>
+        <% if (company.buyer == true) { %>
+          <% if ((user.activeMode == 'buyer') || (user.activeMode === undefined)) { %>
             <div id="buyerInformation">
               <h4>Buyer Information</h4>
                 <div class="formWrapper">
@@ -532,9 +533,11 @@
                 </div>
             </div>
         <% } %>
+        <% } %>
 
         <!-- ACTIVE MODE SUPPLIER  -->
-        <% if (user.activeMode == 'supplier') { %>
+        <% if (company.supplier == true) { %>
+          <% if ((user.activeMode == 'supplier') || (user.activeMode === undefined)) { %>
             <div id="supplierInformation">
                 <h4>Supplier Information</h4>
                 <div class="formWrapper">
@@ -764,7 +767,7 @@
                             <option>Select State/Province</option>
                           </select>
                         </div><script language="javascript">print_country("country");</script>
-                        <div><input type="text" name="otherLocationCity" <% if(supplier.locationCity !== undefined) { %>value="<%= buyer.locationCity %>"<% } else { %> placeholder="City" <% } %>></div>
+                        <div><input type="text" name="otherLocationCity" <% if(supplier.locationCity !== undefined) { %>value="<%= supplier.locationCity %>"<% } else { %> placeholder="City" <% } %>></div>
                       </section>
 
                       <h5>Nearest Port</h5>
@@ -868,6 +871,7 @@
                     </form>
                 </div>
             </div>
+        <% } %>
         <% } %>
       </div><!-- END COL-SM-8 -->
     </div> <!-- END TABS -->
