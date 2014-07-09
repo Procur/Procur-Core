@@ -1,16 +1,9 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <!--
-        For demonstration purposes, the `title` is dynamically set here based on
-        your `sails.config.appName` to show that you can inject data into layouts
-        exactly the same way as with your other view templates.
-    -->
     <% if(title){ %><title id="siteTitle"><%- title %></title><% }else{%><title>Procur - Placeholder Sitewide Title</title><%}%>
     <link rel="icon" href="/linker/favicon.ico" type="image/x-icon">
-    <!-- Viewport mobile tag for sensible mobile support -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    
 
     <!-- Font Awesome 4.1.0 -->
     <link href="https://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
@@ -37,6 +30,7 @@
     <link rel="stylesheet" href="/linker/styles/profile-body.css">
     <link rel="stylesheet" href="/linker/styles/profile-header.css">
     <link rel="stylesheet" href="/linker/styles/signup.css">
+    <link rel="stylesheet" href="/linker/styles/updatecompany.css">
     <!--STYLES END-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.0/jquery-ui.min.js"></script>
@@ -44,7 +38,6 @@
 
   <body>
 
-    <!-- Include the view file for the current controller/route -->
     <%- body %>
 
     <!--SCRIPTS-->

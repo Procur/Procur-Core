@@ -70,6 +70,4 @@ module.exports.waterlineHelper = {
 
     return viewObj;
   }
-
-  
 };

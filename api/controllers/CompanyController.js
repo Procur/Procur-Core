@@ -15,6 +15,8 @@
  * @docs        :: http://sailsjs.org/#!documentation/controllers
  */
 
+
+
 module.exports = {
 
   show: function(req, res){
@@ -524,10 +526,9 @@ module.exports = {
         targetBuyer,
         targetSupplier,
         targetCompany,
-        buyerLocations,
-        supplierLocations,
         companyLocations,
-        hqLocation;
+        waterlineHelper = sails.config.waterlineHelper,
+        locationsHelper = sails.config.locationsHelper;
 
     User.findOne({ id: userId }, function(err, user){
       if(err){ return res.redirect('/dashboard'); }
@@ -548,28 +549,19 @@ module.exports = {
                       targetSupplier = supplier;
                       Location.find().where({ company: company.id }).exec(function(err, locations){
                         if(err){ return res.redirect('/dashboard'); }
-                        companyLocations = locations;
-                        Location.find().where({ buyer: targetBuyer.id }).exec(function(err, locationsBuyer){
-                          if(err){ return res.redirect('/dashboard'); }
-                          buyerLocations = locationsBuyer;
-                          Location.find().where({ supplier: targetSupplier.id }).exec(function(err, locationsSupplier){
-                            if(err){ return res.redirect('/dashboard'); }
-                            supplierLocations = locationsSupplier;
-                            Location.findOne({ company: company.id, isHq: true }, function(err, locationsHq){
-                              if(err){ return res.redirect('/dashboard'); }
-                              hqLocation = locationsHq;
-                              res.view({
-                                user: targetUser,
-                                company: targetCompany,
-                                buyer: targetBuyer,
-                                supplier: targetSupplier,
-                                companyLocations: companyLocations,
-                                buyerLocations: buyerLocations,
-                                supplierLocations: supplierLocations,
-                                companyHq: hqLocation
-                              });
-                            });
-                          });
+                        var locationsPayload = [];
+                        locationsPayload["company"] = locations;
+                        var parsedLocations = locationsHelper.parseLocations(locationsPayload);
+                        var targetBuyer2 = waterlineHelper.fixBuyerArrays(targetBuyer);
+                        var targetSupplier2 = waterlineHelper.fixSupplierArrays(targetSupplier);
+                        res.view({
+                          user: targetUser,
+                          company: targetCompany,
+                          buyer: targetBuyer,
+                          buyer2: targetBuyer2,
+                          supplier: targetSupplier,
+                          supplier2: targetSupplier2,
+                          companyLocations: parsedLocations
                         });
                       });
                     }
@@ -588,19 +580,18 @@ module.exports = {
                 if(err){ return res.redirect('/dashboard'); }
                 if(buyer !== undefined){
                   targetBuyer = buyer;
-                  Location.find().where({ company: company.id }).exec(function(err, locationsCompany){
+                  Location.find().where({ company: company.id }).exec(function(err, locations){
                     if(err){ return res.redirect('/dashboard'); }
-                    companyLocations = locationsCompany;
-                    Location.find().where({ buyer: buyer.id }).exec(function(err, locationsBuyer){
-                      if(err){ return res.redirect('/dashboard'); }
-                      buyerLocations = locationsBuyer;
-                      res.view({
-                        user: targetUser,
-                        company: targetCompany,
-                        buyer: targetBuyer,
-                        companyLocations: companyLocations,
-                        buyerLocations: buyerLocations
-                      });
+                    var locationsPayload = [];
+                    locationsPayload["company"] = locations;
+                    var parsedLocations = locationsHelper.parseLocations(locationsPayload);
+                    var targetBuyer2 = waterlineHelper.fixBuyerArrays(targetBuyer);
+                    res.view({
+                      user: targetUser,
+                      company: targetCompany,
+                      buyer: targetBuyer,
+                      buyer2: targetBuyer2,
+                      companyLocations: parsedLocations
                     });
                   });
                 }
@@ -614,19 +605,17 @@ module.exports = {
                 if(err){ return res.redirect('/dashboard'); }
                 if(supplier !== undefined){
                   targetSupplier = supplier;
-                  Location.find().where({ company: company.id }).exec(function(err, locationsCompany){
+                  Location.find().where({ company: company.id }).exec(function(err, locations){
                     if(err){ return res.redirect('/dashboard'); }
-                    companyLocations = locationsCompany;
-                    Location.find().where({ supplier: supplier.id }).exec(function(err, locationsSupplier){
-                      if(err){ return res.redirect('/dashboard'); }
-                      supplierLocations = locationsSupplier;
-                      res.view({
-                        user: targetUser,
-                        company: targetCompany,
-                        supplier: targetSupplier,
-                        companyLocations: companyLocations,
-                        supplierLocations: supplierLocations
-                      });
+                    var locationsPayload = [];
+                    locationsPayload["company"] = locations;
+                    var parsedLocations = locationsHelper.parseLocations(locationsPayload);
+                    var targetSupplier2 = waterlineHelper.fixBuyerArrays(targetSupplier);                    res.view({
+                      user: targetUser,
+                      company: targetCompany,
+                      supplier: targetSupplier,
+                      supplier2: targetSupplier2,
+                      companyLocations: parsedLocations
                     });
                   });
                 }

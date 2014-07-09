@@ -15,6 +15,8 @@
  * @docs        :: http://sailsjs.org/#!documentation/controllers
  */
 
+
+
 module.exports = {
 
   index: function (req, res) {
@@ -71,11 +73,12 @@ module.exports = {
         }, function (err, buyer) {
           if (err) { return res.redirect('/dashboard'); }
           if (imageExists) {
-            imageHelper.uploadBuyerImage(req, res, buyer, image);
+            imageHelper.uploadBuyerImage(req, res, buyer, image, function(){
+              //console.log(Buyer);
+              res.redirect('/dashboard');
+            });
           }
         });
-        //console.log(Buyer);
-        res.redirect('/dashboard');
       });
     });
   },
@@ -432,6 +435,24 @@ module.exports = {
   destroy: function (req, res) {
     var activeUser = req.session.passport.user,
         p = req.params;
+  },
+
+  test: function(req, res){
+    var locationsHelper = sails.config.locationsHelper;
+    var myLocations = [];
+    User.findOne({ id: req.session.passport.user }, function(err, user){
+      Company.findOne({ user: user.id }, function(err, company){
+        Buyer.findOne({ company: company.id }, function(err, buyer){
+          Location.find().where({ company: company.id }).exec(function(err, locations){
+            console.log(locations);
+            myLocations["company"] = locations;
+            var myNewLocations = locationsHelper.parseLocations(myLocations);
+            console.log(myNewLocations);
+          });
+        });
+      });
+    });
+
   }
 
 };
