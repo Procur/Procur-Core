@@ -195,18 +195,18 @@
 
                 <div class="col-sm-5 inputColumnR">
                   <div class="breakForm">
-                    <input type="text" class="companyPostalCode" name="companyPostalCode" placeholder="Postal Code">
+                    <input type="text" class="companyPostalCode" name="companyPostalCode" <% if(companyLocations["company-notHq"].postalCode !== undefined) { %>value="<%= companyLocations["company-notHq"].postalCode %>"<% } else { %> placeholder="PostalCode"><% } %></div>
                   </div>
                 </div>
               </div>
-
+              <% if (companyLocations["company-isHq"].id === undefined) { %>
               <h5>Is the above address the headquarters?</h5>
               <div><input class="checkbox hqbox" type="checkbox" name="companyIsHq"><div class="checkboxtext breakForm">Yes; please copy my details below.</div></div>
-
+              <% } %>
 
               <h5>Company Headquarters Address*</h5>
               <div><input class="hqfield hqaddress1" type="text" name="hqAddress1" <% if(companyLocations["company-isHq"].addressLine1 !== undefined) { %>value="<%= companyLocations["company-isHq"].addressLine1 %>"<% } else { %> placeholder="Address Line #1">><% } %></div>
-              <div><input  class="hqfield hqaddress2" type="text" name="hqAddress2" placeholder="Address Line #2"></div>
+              <div><input  class="hqfield hqaddress2" type="text" name="hqAddress2" <% if(companyLocations["company-isHq"].addressLine2 !== undefined) { %>value="<%= companyLocations["company-isHq"].addressLine2 %>"<% } else { %> placeholder="Address Line #2">><% } %></div>
 
               <div class="styledSelect">
                 <select class="hqfield hqcompanyCountry" name="hqCountry" id="hqcompanyCountry" onchange="print_state('hqcompanyProvince',this.selectedIndex);">
@@ -227,7 +227,7 @@
 
                 <div class="col-sm-5 inputColumnR">
                   <div class="breakForm">
-                    <input class="hqfield hqPostalCode" type="text" name="hqPostalCode" placeholder="Postal Code">
+                    <input class="hqfield hqPostalCode" type="text" name="hqPostalCode" <% if(companyLocations["company-isHq"].postalCode !== undefined) { %>value="<%= companyLocations["company-isHq"].postalCode %>"<% } else { %> placeholder="Postal Code">><% } %></div>
                   </div>
                 </div>
               </div>
