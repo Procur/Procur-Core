@@ -308,7 +308,7 @@ $('#basic-company-details-form').validate({
 });
 
 
-$('#buyer-wizard-form').validate({
+var buyerValidateObj = {
   rules: {
     logoUrl: {
       required: false
@@ -331,6 +331,7 @@ $('#buyer-wizard-form').validate({
       //(provided) 
       //Note: the required rule will only work on select menus if the dummy data has value="".
     },
+    /*
     portCity: {
       required: false,
       "internationalphanumeric+punct+whitespace": true,
@@ -347,7 +348,8 @@ $('#buyer-wizard-form').validate({
       //(provided) 
       //TODO: This should be a dropdown (and provided)
     },
-    locationName: {
+    */
+    buyerOtherLocationName: {
       required: false,
       "internationalphanumeric+punct+whitespace": true,
       minlength: 3,
@@ -355,25 +357,25 @@ $('#buyer-wizard-form').validate({
       //Buyer model says this is stored as an array, (length 1-100) but it is a single dropdown in the UI.
       //TODO: ask about this.
     },
-    locationType: {
+    buyerOtherLocationType: {
       required: false
       // (provided)
       //Buyer model says this is stored as an array, (length 1-100) but it is a single dropdown in the UI.
       //TODO: ask about this.
     },
-    locationCountry: {
+    buyerOtherLocationCountry: {
       required: false
       // (provided)
       //Buyer model says this is stored as an array, (length 1-100) but it is a single dropdown in the UI.
       //TODO: ask about this.
     },
-    locationProvince: {
+    buyerOtherLocationProvince: {
       required: false
       // (provided)
       //Buyer model says this is stored as an array, (length 1-100) but it is a single dropdown in the UI.
       //TODO: ask about this.
     },
-    locationCity: {
+    buyerOtherLocationCity: {
       required: false,
       "internationalphanumeric+punct+whitespace": true,
       minlength: 2,
@@ -381,10 +383,12 @@ $('#buyer-wizard-form').validate({
       //Buyer model says this is stored as an array, (length 1-100) but it is a single dropdown in the UI.
       //TODO: ask about this.
     },
+    /*
     acceptedDeliveryTerms: {
       required: true
       //multiple checkboxes with name="acceptedDeliveryTerms". This requires at least one be checked.
     },
+    */
     acceptedCurrency: {
       required: true
       //multiple checkboxes with name="acceptedCurrency". This requires at least one be checked.
@@ -411,9 +415,11 @@ $('#buyer-wizard-form').validate({
     }
   },
   messages:{
+    /*
     acceptedDeliveryTerms: {
       required: checkBoxMsg
     },
+    */
     acceptedCurrency: {
       required: checkBoxMsg
     },
@@ -421,6 +427,47 @@ $('#buyer-wizard-form').validate({
       required: checkBoxMsg
     }
   }
+};
+
+// Setup the default validation rules
+$('#buyer-wizard-form').validate(buyerValidateObj);
+
+var updateBuyerOtherLocationRules = function () {
+  // Get the jQuery validation plugin's settings
+  var settings = $('#buyer-wizard-form').validate().settings;
+
+  var flag = $('#buyerOtherLocationName').val()!=""|| $('#buyerOtherLocationType').val()!="" ||
+  $('#buyerOtherLocationCountry').val()!="" || $('#buyerOtherLocationCity').val()!="";
+
+  $.extend(true, settings, {
+    rules: {
+      "buyerOtherLocationType": {
+        required: flag
+      },
+      "buyerOtherLocationName": {
+        required: flag
+      },
+      "buyerOtherLocationCountry": {
+        required: flag
+      }
+    }
+  });
+};
+
+$('#buyerOtherLocationName').change(function () {
+  updateBuyerOtherLocationRules();
+});
+
+$('#buyerOtherLocationType').change(function () {
+  updateBuyerOtherLocationRules();
+});
+
+$('#buyerOtherLocationCountry').change(function () {
+  updateBuyerOtherLocationRules();
+});
+
+$('#buyerOtherLocationCity').change(function () {
+  updateBuyerOtherLocationRules();
 });
 
 
@@ -565,7 +612,6 @@ var supplierValidateObj = {
   // Setup the default validation rules
 $('#supplier-wizard-form').validate(supplierValidateObj);
 
-
 /*
 	Update if any of the other location fields are filled
 */
@@ -589,7 +635,7 @@ var updateOtherLocationRules = function () {
       }
     }
   });
-}
+};
 
 $('#supplierOtherLocationName').change(function () {
 	updateOtherLocationRules();
