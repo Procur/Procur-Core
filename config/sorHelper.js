@@ -1,11 +1,8 @@
 module.exports.sorHelper = {
+
   appendViewFields: function(inObject) {
-    SOR_FIELDS = ["environmentalSustainability",
-                 "qualitySourcing",
-                 "workplaceSafety",
-                 "laborEducationTraining",
-                 "reinvestment"];
     sorHelper = sails.config.sorHelper;
+    sorHelper.initializeVars();
     
     inObject = sorHelper.addViewTabStatus(inObject);
     inObject["showSORTab"] === true ? inObject = sorHelper.fieldsToShow(inObject) : inObject["sorViewFields"] = [];
@@ -24,7 +21,7 @@ module.exports.sorHelper = {
   hasAnyValues: function(inData) {
     var hasAnyValues = false;
     
-    SOR_FIELDS.forEach(function(field){
+    SOR_KEYS.forEach(function(field){
       inData[field] === undefined ? hasAnyValues = false : hasAnyValues = true; 
     });
 
@@ -32,14 +29,25 @@ module.exports.sorHelper = {
   },
 
   fieldsToShow: function(inData) {
-    var fieldsToShow = [];
+    var fieldsToShow = {};
 
-    SOR_FIELDS.forEach(function(field) {
-      if (inData[field] !== undefined) { fieldsToShow.push(field); }
+    SOR_KEYS.forEach(function(field) {
+      if (inData[field] !== undefined) { fieldsToShow[field] = SOR_FIELDS[field]; }
     });
 
     inData["sorViewFields"] = fieldsToShow;
     return inData;
+  },
+
+  initializeVars: function() {
+    SOR_FIELDS = {
+      "environmentalSustainability": "Environmental Sustainability",
+      "qualitySourcing": "Quality Sourcing",
+      "workplaceSafety": "Workplace Safety",
+      "laborEducationTraining": "Labor, Education, and Training",
+      "reinvestment": "Reinvestment"
+    }
+    SOR_KEYS = Object.keys(SOR_FIELDS);
   }
 
 }

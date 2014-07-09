@@ -120,7 +120,7 @@
         <div class="nav-right">
           <li><a id="company-description">Company Description</a></li>
           <li><a id="products-of-interest">Product Overview</a></li>
-          <li><a id="statements-of-responsibility">Statements of Responsibility</a></li>
+          <% if (supplier.showSORTab === true) { %><li><a id="statements-of-responsibility">Statements of Responsibility</a></li><% } %>
         </div>
       </ul>
     </div>
@@ -131,18 +131,17 @@
         <div class="content-desc">This company does not have a buyer company description.</div>
       <% } %>
       <div class="content-interest" id="inactive"><%= supplier.productsOfInterest %></div>
-      <div class="content-statement" id="inactive">
-        <h4>Environmental Sustainability</h4>
-        <%= supplier.environmentalSustainability %><br /><br />
-        <h4>Quality Sourcing</h4>
-        <%= supplier.qualitySourcing %><br /><br />
-        <h4>Workplace Safety</h4>
-        <%= supplier.workplaceSafety %><br /><br />
-        <h4>Labor, Education, and Trainig</h4>
-        <%= supplier.laborEducationTraining %><br /><br />
-        <h4>Reinvestment</h4>
-        <%= supplier.reinvestment %>
-      </div>
+      <% if (supplier.showSORTab === true) { %>
+        <div class="content-statement" id="inactive">
+          <% var sorKeys = Object.keys(supplier["sorViewFields"]); %>
+          <% for (var x = 0; x < sorKeys.length; x++) { %>
+            <% if (supplier[sorKeys[x]] !== undefined) { %>
+              <h4><%= supplier.sorViewFields[sorKeys[x]]  %></h4>
+              <p><%= supplier[sorKeys[x]] %></p>
+            <% } %>
+          <% } %>
+        </div>
+      <% } %><!-- end if -->
     </div>
   </div><!-- END RIGHT COLUMN -->
 </div>

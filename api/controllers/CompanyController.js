@@ -25,6 +25,7 @@ module.exports = {
     var locationsHelper = sails.config.locationsHelper;
     var waterlineHelper = sails.config.waterlineHelper;
     var productCategoryHelper = sails.config.productCategoryHelper;
+    var sorHelper = sails.config.sorHelper;
     var payload = [];
     var locationsPayload = {};
     var viewLocations = {};
@@ -56,6 +57,7 @@ module.exports = {
                       else {
                         buyer = waterlineHelper.fixBuyerArrays(buyer);
                         buyer = productCategoryHelper.getCategoryChild(buyer);
+                        buyer = sorHelper.appendViewFields(buyer);
                         payload.push(buyer);
                         callback(null, buyer);
                       }
@@ -70,6 +72,7 @@ module.exports = {
                       else {
                         supplier = waterlineHelper.fixSupplierArrays(supplier);
                         supplier = productCategoryHelper.getCategoryChild(supplier);
+                        supplier = sorHelper.appendViewFields(supplier);
                         payload.push(supplier);
                         callback(null, supplier);
                       }
