@@ -100,7 +100,7 @@ module.exports = {
           Location.findOne({ company: companyId, isHq: true }, function(err, hqLocation) {
             if (err) { return res.redirect('/dashboard'); }
             hqId = hqLocation.id;
-          })
+          });
           //Company only has HQ location
           if (b.companyIsHq === 'on') {
             Location.update(hqId, {
