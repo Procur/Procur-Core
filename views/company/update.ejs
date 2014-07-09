@@ -748,7 +748,7 @@
 
                       <h5>Additional Location</h5>
                       <section id="otherLocation1">
-                        <div><input type="text" name="otherLocationName" placeholder="Location Title"></div>
+                        <div><input type="text" name="otherLocationName" <% if(supplier.locationName !== undefined) { %>value="<%= buyer.locationName %>"<% } else { %> placeholder="Location Title" <% } %>></div>
                         <div class="styledSelect">
                           <select name="otherLocationType">
                             <%- partial('../partials/dropdowns/other-location-type') %>
@@ -764,14 +764,22 @@
                             <option>Select State/Province</option>
                           </select>
                         </div><script language="javascript">print_country("country");</script>
-                        <div><input type="text" name="otherLocationCity" placeholder="City"></div>
+                        <div><input type="text" name="otherLocationCity" <% if(supplier.locationCity !== undefined) { %>value="<%= buyer.locationCity %>"<% } else { %> placeholder="City" <% } %>></div>
                       </section>
 
                       <h5>Nearest Port</h5>
                       <section id="port">
-                        <div><input type="text" name="portCity" placeholder="City"></div>
-                        <div><input type="text" name="portProvince" placeholder="State / Province"></div>
-                        <div><input class="breakForm" type="text" name="portCountry" placeholder="Country"></div>
+                        <div><input type="text" name="portCity" <% if(supplier.portCity !== undefined) { %>value="<%= buyer.portCity %>"<% } else { %> placeholder="City" <% } %>></div>
+                        <div class="styledSelect">
+                          <select name="portCountry" id="portCountry" onchange="print_state('province',this.selectedIndex);">
+                            <option>Select Country</option>
+                          </select>
+                        </div>
+                        <div class="styledSelect">
+                          <select name="otherLocationProvince" id="province">
+                            <option>Select State/Province</option>
+                          </select>
+                        </div><script language="javascript">print_country("portCountry");</script>
                       </section>
 
                       <h5>Product Specialty</h5>
