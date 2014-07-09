@@ -59,9 +59,10 @@
                   <div class="styledSelect inputColumnL">
                     <select class="companyProvince" name="companyProvince" id="companyProvince">
                       <option value="">Select Province/State</option>
-                      <option value="1">Fakeland</option>
+                      
                     </select><script language="javascript">print_country("companyCountry");</script>
-                  </div>
+
+                  </div><span id="noCountryWarning"></span>
                 </div>
 
                 <div class="col-sm-5 inputColumnR">
@@ -70,6 +71,7 @@
                   </div>
                 </div>
               </div>
+
 
               <h4>Is the above address the headquarters?</h4>
               <div><input class="checkbox hqbox" type="checkbox" name="companyIsHq"><div class="checkboxtext breakForm">Yes; please copy my details below.</div></div>
@@ -93,7 +95,7 @@
                       <option value="">Select Province/State</option>
                       <option value="1">Fakeland</option>
                     </select>
-                  </div><script language="javascript">print_country("hqcompanyCountry");</script>
+                  </div><span id="noHQCountryWarning"></span><script language="javascript">print_country("hqcompanyCountry");</script>
                 </div>
 
                 <div class="col-sm-5 inputColumnR">
