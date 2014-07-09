@@ -180,3 +180,15 @@
   top: -15px;
   font-weight: 500;
 }
+
+#forgot-password-form label.error {
+  color: #FF5A5A;
+  text-align: center;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 12px;
+  text-transform: uppercase;
+  line-height: 1.8em;
+  width: 100%;
+  top: -15px;
+  font-weight: 500;
+}
