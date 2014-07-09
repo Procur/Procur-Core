@@ -399,7 +399,7 @@ text-decoration: none;
 
 .middleHeader {
   width: 100%;
-  background: #333132;
+  background: #5dc672;
 }
 
 .middleHeader h1 {
@@ -472,6 +472,11 @@ text-decoration: none;
 .middleList ul li i {
   margin-right: 10px;
   color: #b3b3b3;
+}
+
+.middleList ul li .fa-check-circle {
+margin-right: 10px;
+color: #5dc692;
 }
 
 .featuresColumn h4 {
