@@ -610,7 +610,7 @@ module.exports = {
                     var locationsPayload = [];
                     locationsPayload["company"] = locations;
                     var parsedLocations = locationsHelper.parseLocations(locationsPayload);
-                    var targetSupplier2 = waterlineHelper.fixBuyerArrays(targetSupplier);                    res.view({
+                    var targetSupplier2 = waterlineHelper.fixSupplierArrays(targetSupplier);                    res.view({
                       user: targetUser,
                       company: targetCompany,
                       supplier: targetSupplier,
