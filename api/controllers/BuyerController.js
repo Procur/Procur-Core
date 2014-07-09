@@ -258,13 +258,25 @@ module.exports = {
               if(buyer !== undefined){
                 console.log('buyer found');
                 Buyer.update(buyer.id, {
-
-
-
-                  //FILL IT UP with things
-
-
-
+                  dbaName: p.dbaName,
+                  language: p.language,
+                  acceptedCurrency: p.acceptedCurrency,
+                  acceptedPaymentTerms: p.acceptedPaymentTerms,
+                  acceptedDeliveryTerms: p.acceptedDeliveryTerms,
+                  typeOfCompany: p.typeOfCompany,
+                  contactname: p.contactName,
+                  contactPosition: p.contactPosition,
+                  contactEmail: p.contactEmail,
+                  dunsNumber: p.dunsNumber,
+                  productCategory: p.productCategory,
+                  locationName: p.locationName,
+                  locationType: p.locationType,
+                  locationCountry: p.locationCountry,
+                  locationProvince: p.locationProvince,
+                  locationCity: p.locationCity,
+                  portCity: p.portCity,
+                  portCountry: p.portCountry,
+                  portProvince: p.portProvince
                 }, function(err, buyer){
                   if(err){ return res.redirect('/company/update#descriptionsSupplier'); }
                   if(buyer){
