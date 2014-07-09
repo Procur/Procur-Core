@@ -39,23 +39,23 @@
 
                 <h4>Other Locations</h4>
                 <section id="otherLocation1">
-                  <div><input type="text" name="otherLocationName" placeholder="Location Title"></div>
+                  <div><input type="text" name="supplierOtherLocationName" id="supplierOtherLocationName"placeholder="Location Title"></div>
                   <div class="styledSelect">
-                    <select name="otherLocationType">
+                    <select name="supplierOtherLocationType" id="supplierOtherLocationType">
                       <%- partial('../partials/dropdowns/other-location-type') %>
                     </select>
                   </div>
                   <div class="styledSelect">
-                    <select name="otherLocationCountry" id="country" onchange="print_state('province',this.selectedIndex);">
+                    <select name="supplierOtherLocationCountry" id="supplierOtherLocationCountry" onchange="print_state('supplierOtherLocationProvince',this.selectedIndex);">
                       <option>Select Country</option>
                     </select>
                   </div>
                   <div class="styledSelect">
-                    <select name="otherLocationProvince" id="province">
+                    <select name="supplierOtherLocationProvince" id="supplierOtherLocationProvince">
                       <option>Select State/Province</option>
                     </select>
-                  </div><script language="javascript">print_country("country");</script>
-                  <div><input type="text" name="otherLocationCity" placeholder="City"></div>
+                  </div><script language="javascript">print_country("supplierOtherLocationCountry");</script>
+                  <div><input type="text" name="supplierOtherLocationCity" id="supplierOtherLocationCity"placeholder="City"></div>
                 </section>
               </div><!-- End first column -->
 
