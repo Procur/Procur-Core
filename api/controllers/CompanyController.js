@@ -409,11 +409,10 @@ module.exports = {
                     if(supplier !== undefined) {
                       targetSupplier = supplier;
                       Location.find().where({ company: company.id }).exec(function(err, locations){
+                        if(err){ return res.redirect('/dashboard'); }
                         var locationsPayload = [];
                         locationsPayload["company"] = locations;
-                        if(err){ return res.redirect('/dashboard'); }
                         var parsedLocations = locationsHelper.parseLocations(locationsPayload);
-                        console.log(parsedLocations);
                         var targetBuyer2 = waterlineHelper.fixBuyerArrays(targetBuyer);
                         res.view({
                           user: targetUser,
@@ -440,14 +439,18 @@ module.exports = {
                 if(err){ return res.redirect('/dashboard'); }
                 if(buyer !== undefined){
                   targetBuyer = buyer;
-                  Location.find().where({ company: company.id }).exec(function(err, locationsCompany){
+                  Location.find().where({ company: company.id }).exec(function(err, locations){
                     if(err){ return res.redirect('/dashboard'); }
-                    companyLocations = locationsCompany;
+                    var locationsPayload = [];
+                    locationsPayload["company"] = locations;
+                    var parsedLocations = locationsHelper.parseLocations(locationsPayload);
+                    var targetBuyer2 = waterlineHelper.fixBuyerArrays(targetBuyer);
                     res.view({
                       user: targetUser,
                       company: targetCompany,
                       buyer: targetBuyer,
-                      companyLocations: companyLocations
+                      buyer2: targetBuyer2,
+                      companyLocations: parsedLocations
                     });
                   });
                 }
@@ -461,14 +464,17 @@ module.exports = {
                 if(err){ return res.redirect('/dashboard'); }
                 if(supplier !== undefined){
                   targetSupplier = supplier;
-                  Location.find().where({ company: company.id }).exec(function(err, locationsCompany){
+                  Location.find().where({ company: company.id }).exec(function(err, locations){
                     if(err){ return res.redirect('/dashboard'); }
-                    companyLocations = locationsCompany;
-                    res.view({
+                    var locationsPayload = [];
+                    locationsPayload["company"] = locations;
+                    var parsedLocations = locationsHelper.parseLocations(locationsPayload);
+                    var targetSupplier2 = waterlineHelper.fixBuyerArrays(targetSupplier);                    res.view({
                       user: targetUser,
                       company: targetCompany,
                       supplier: targetSupplier,
-                      companyLocations: companyLocations
+                      supplier2: targetSupplier2,
+                      companyLocations: parsedLocations
                     });
                   });
                 }
