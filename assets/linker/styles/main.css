@@ -59,6 +59,12 @@ input {
   padding: 0px 7px;
   font-weight: 100;
 }
+#regWizard .hqcompanyCountry {
+  height: 16px;
+}
+#regWizard .hqcompanyProvince {
+  height: 16px;
+}
 #regWizard .checkbox {
   height: auto;
   width: auto;
