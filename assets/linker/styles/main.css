@@ -663,3 +663,46 @@ hr.darkseparator {
   border-top: 1px dotted #7f7f7f;
   margin: 50px 0px;
 }
+
+/* VALIDATION MESSAGES */
+#regWizard label.error {
+  color: #FF5A5A;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 10px;
+  text-transform: uppercase;
+  line-height: 1.8em;
+  width: 100%;
+  top: -15px;
+  font-weight: 500;
+}
+
+#regWizard .styledSelect label.error {
+  visibility: hidden;
+  font-size: 0px;
+}
+
+#regWizard .styledSelect label.error::after {
+  visibility: visible;
+  content: "This field is required";
+  font-size: 10px;
+}
+
+#regWizard span.pos-feedback {
+  color: #5dc672;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 10px;
+  text-transform: uppercase;
+  line-height: 1.8em;
+  width: 100%;
+  font-weight: 500;
+}
+
+#regWizard span.neg-feedback {
+  color: #FF5A5A;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 10px;
+  text-transform: uppercase;
+  line-height: 1.8em;
+  width: 100%;
+  font-weight: 500;
+}
