@@ -272,7 +272,21 @@
 <!--                       <div><input type="text" name="acceptedCurrencies" value="<%= buyer.acceptedCurrency[0] %>"></div>
  -->                      <section id="acceptedCurrencies">
                         <div class="row breakForm">
-                          <div class="col-sm-6">
+                            <% var currencies = ["USD","EUR","JPY","GBP","AUD","CHF","CAD","MXN","CNY","NZD","SEK","RUB","HKD","SGD"]; %>
+                            <% for(var x = 0; x < currencies.length; x++) { %>
+                            <% var matchFound = false; %>
+                            <% for (var y = 0; y < buyer["acceptedCurrency"].length; y++) { %>
+                            <% if (currencies[x] == buyer.acceptedCurrency[y]) { %>
+                            <% matchFound = true; %>
+                            <input class="checkbox" type="checkbox" name="acceptedCurrency" value="<%= currencies[x] %>" checked><div class="checkboxtext"><%= currencies[x] %></div><br>
+                            <% break; %>
+                            <% } %>
+                            <% } %>
+                            <% if (matchFound === false) { %>
+                            <input class="checkbox" type="checkbox" name="acceptedCurrency" value="<%= currencies[x] %>"><div class="checkboxtext"><%= currencies[x] %></div><br>
+                            <% } %>
+                            <% } %>
+                          <!--<div class="col-sm-6">
                             <input class="checkbox" type="checkbox" name="acceptedCurrency" value="USD"><div class="checkboxtext">USD</div><br>
                             <input class="checkbox" type="checkbox" name="acceptedCurrency" value="EUR"><div class="checkboxtext">EUR</div><br>
                             <input class="checkbox" type="checkbox" name="acceptedCurrency" value="JPY"><div class="checkboxtext">JPY</div><br>
@@ -289,7 +303,7 @@
                             <input class="checkbox" type="checkbox" name="acceptedCurrency" value="RUB"><div class="checkboxtext">RUB</div><br>
                             <input class="checkbox" type="checkbox" name="acceptedCurrency" value="HKD"><div class="checkboxtext">HKD</div><br>
                             <input class="checkbox" type="checkbox" name="acceptedCurrency" value="SGD"><div class="checkboxtext">SGD</div><br>
-                          </div>
+                          </div>-->
                         </div>
                       </section>
 
@@ -298,6 +312,22 @@
  -->
                       <section id="acceptedPaymentTerms">
                         <div class="row breakForm">
+                            <% var payment = ["MoneyGram","Western Union","T/T","Credit Card","Escrow","PayPal","D/P D/A","Cash"]; %>
+                            <% if(buyer.acceptedPaymentTerms !== undefined){ %>
+                            <% for(var x = 0; x < payment.length; x++) { %>
+                            <% var matchFound = false; %>
+                            <% for (var y = 0; y < buyer["acceptedPaymentTerms"].length; y++) { %>
+                            <% if (payment[x] == buyer.acceptedPaymentTerms[y]) { %>
+                            <% matchFound = true; %>
+                            <input class="checkbox" type="checkbox" name="acceptedPaymentTerms" value="<%= payment[x] %>" checked><div class="checkboxtext"><%= payment[x] %></div><br>
+                            <% break; %>
+                            <% } %>
+                            <% } %>
+                            <% if (matchFound === false) { %>
+                            <input class="checkbox" type="checkbox" name="acceptedPaymentTerms" value="<%= payment[x] %>"><div class="checkboxtext"><%= payment[x] %></div><br>
+                            <% } %>
+                            <% } %>
+                            <% } else { %>
                           <div class="col-sm-6">
                             <input class="checkbox" type="checkbox" name="acceptedPaymentTerms" value="MoneyGram"><div class="checkboxtext">MoneyGram</div><br>
                             <input class="checkbox" type="checkbox" name="acceptedPaymentTerms" value="Western Union"><div class="checkboxtext">Western Union</div><br>
@@ -309,13 +339,29 @@
                             <input class="checkbox" type="checkbox" name="acceptedPaymentTerms" value="PayPal"><div class="checkboxtext">PayPal</div><br>
                             <input class="checkbox" type="checkbox" name="acceptedPaymentTerms" value="D/P D/A"><div class="checkboxtext">D/P D/A</div><br>
                             <input class="checkbox" type="checkbox" name="acceptedPaymentTerms" value="Cash"><div class="checkboxtext">Cash</div><br>
-                          </div>
+                          </div><% } %>
                         </div>
                       </section>
                       <h5>Accepted Delivery Terms</h5>
 <!--                       <div><input type="text" name="acceptedDeliveryTerms" <% if(buyer.acceptedDeliveryTerms !== undefined) { %>value="<%= buyer.acceptedDeliveryTerms %>"<% } else { %> placeholder="Accepted Delivery Terms" <% } %>></div> -->
                       <section id="acceptedDeliveryTerms">
                         <div class="row breakForm">
+                            <% if(buyer.acceptedDeliveryTerms !== undefined){ %>
+                            <% var terms = ["EXW","FCA","CPT","CIP","DAT","DAP","DDP","FAS","FOB","CFR","CIF","Custom"]; %>
+                            <% for (var x = 0; x < terms.length; x++) { %>
+                            <% var matchFound = false; %>
+                            <% for (var y = 0; y < buyer["acceptedDeliveryTerms"].length; y++) { %>
+                            <% if (terms[x] == buyer.acceptedDeliveryTerms[y]) { %>
+                            <% matchFound = true; %>
+                            <input class="checkbox" type="checkbox" name="acceptedDeliveryTerms" value="<%= terms[x] %>" checked><div class="checkboxtext"><%= terms[x] %></div><br>
+                            <% break; %>
+                            <% } %>
+                            <% } %>
+                            <% if (matchFound === false) { %>
+                            <input class="checkbox" type="checkbox" name="acceptedDeliveryTerms" value="<%= terms[x] %>"><div class="checkboxtext"><%= terms[x] %></div><br>
+                            <% } %>
+                            <% } %>
+                            <% } else { %>
                           <div class="col-sm-6">
                             <input class="checkbox" type="checkbox" name="acceptedPaymentTerms" value="EXW"><div class="checkboxtext">EXW</div><br>
                             <input class="checkbox" type="checkbox" name="acceptedPaymentTerms" value="FCA"><div class="checkboxtext">FCA</div><br>
@@ -331,7 +377,7 @@
                             <input class="checkbox" type="checkbox" name="acceptedPaymentTerms" value="CFR"><div class="checkboxtext">CFR</div><br>
                             <input class="checkbox" type="checkbox" name="acceptedPaymentTerms" value="CIF"><div class="checkboxtext">CIF</div><br>
                             <input class="checkbox" type="checkbox" name="acceptedPaymentTerms" value="Custom"><div class="checkboxtext">Custom</div><br>
-                          </div>
+                          </div><% } %>
                         </div>
                       </section>
 
