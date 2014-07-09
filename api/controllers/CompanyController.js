@@ -414,12 +414,14 @@ module.exports = {
                         locationsPayload["company"] = locations;
                         var parsedLocations = locationsHelper.parseLocations(locationsPayload);
                         var targetBuyer2 = waterlineHelper.fixBuyerArrays(targetBuyer);
+                        var targetSupplier2 = waterlineHelper.fixSupplierArrays(targetSupplier);
                         res.view({
                           user: targetUser,
                           company: targetCompany,
                           buyer: targetBuyer,
                           buyer2: targetBuyer2,
                           supplier: targetSupplier,
+                          supplier2: targetSupplier2,
                           companyLocations: parsedLocations
                         });
                       });
