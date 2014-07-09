@@ -154,7 +154,10 @@ module.exports = {
   processForgotPassword: function(req, res){
     var b = req.body;
     User.findOne({ email: b.email }, function(err, user){
-      if(err){ return res.redirect('/dashboard') };
+      if(err === undefined) {
+        req.flash("error", "The email address you entered cannot be found.");
+        return res.redirect('/forgotpassword');
+      }
       if(user){
         crypto.randomBytes(256, function(err, hash) {
           token = hash.toString('base64').replace(/\//g,'_').replace(/\+/g,'-');
