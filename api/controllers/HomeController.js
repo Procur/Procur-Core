@@ -29,7 +29,6 @@ function MailChimpConfig () {
   this.apikey = process.env.MAILCHIMP_APIKEY || 'eb531267a844e3881e4b16d8482ed998-us3';
   this.apiurl = process.env.MAILCHIMP_APIURL || 'us3.api.mailchimp.com';
   if (sails.config.environment == 'development'){
-    //console.log("Dev");
     this.listid1 = "58856a57f6"; //Procur.com Changes and Updates -  Dev
     this.listid2 = "f24155909b"; //Trade & Industry Newsletter - Dev
     this.listid3 = "152b1cd8d5"; //General News & Announcements - Dev
@@ -128,12 +127,12 @@ module.exports = {
     var b = req.body;
     var email = b.subscriberEmail;
     if(!email){
-      req.flash('failure',"Email address is blank.");
+      req.flash('status',"Email address is blank.");
       res.redirect('/contact');
     }
     else if (email) {
       var subscribeToList = function (email, listId) {
-        var https = require('https');
+        var request = require('request');
         var subscriber = {
           "apikey": mcConfig.apikey,
           "email": {"email": email},
@@ -141,38 +140,24 @@ module.exports = {
         };
         var subscriberString = JSON.stringify(subscriber);
         var options = {
-          host: mcConfig.apiurl,
-          port: 443,
-          path: '/2.0/lists/subscribe.json',
-          method: 'POST',
+          url: 'https://' + mcConfig.apiurl + '/2.0/lists/subscribe.json',
+          body: subscriberString,
           headers: {
             'Content-Type': 'application/json',
             'Content-Length': subscriberString.length
           }
         };
-        var req = https.request(options, function (res) {
-          res.setEncoding('utf-8');
-          var responseString = '';
-          res.on('data', function (data) {
-            responseString += data;
-          });
-          res.on('end', function () {
-           var resultObject = JSON.parse(responseString);
-           if(res.statusCode != 200 || resultObject.status == 'error') {
-             console.log(responseString);
-           }
-          });
+        request.post(options, function(error, response, body){
+          if (!error && response.statusCode == 200) {
+          }
+          else if (error || response.statusCode != 200) {
+          }
         });
-        req.on('error', function (err) {
-          console.log("Error with request:" + err);
-        });
-        req.write(subscriberString);
-        req.end();
       };
-      if (b.chkList1 != 'undefined') { subscribeToList(email, mcConfig.listid1); }
-      if (b.chkList2 != 'undefined') { subscribeToList(email, mcConfig.listid2); }
-      if (b.chkList3 != 'undefined') { subscribeToList(email, mcConfig.listid3); }
-      req.flash('success', "Thank you! Please check your inbox for confirmation.");
+      if (b.chkList1 != undefined) { subscribeToList(email, mcConfig.listid1); }
+      if (b.chkList2 != undefined) { subscribeToList(email, mcConfig.listid2); }
+      if (b.chkList3 != undefined) { subscribeToList(email, mcConfig.listid3); }
+      req.flash('status', "Thank you! Please check your inbox for confirmation.");
       res.redirect('/contact');
     }
   },

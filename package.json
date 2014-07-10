@@ -22,6 +22,7 @@
     "optimist": "0.3.4",
     "passport": "~0.1.16",
     "passport-local": "~0.1.6",
+    "request": "^2.37.0",
     "sails": "0.9.16",
     "sails-disk": "~0.9.0",
     "sails-mongo": "^0.9.8",

@@ -1,6 +1,5 @@
 <h1>Contact Us</h1>
-<%- req.flash('success') %>
-<%- req.flash('failure') %>
+<%- req.flash('status') %>
 <form action="/contact/subscribe" method="post" id="subscriberForm">
 	<div><input type="text" name="subscriberEmail" placeholder="email@your-address.com"></div>
 	<div>
@@ -10,8 +9,6 @@
 	</div>
 	<div><button type="submit">Submit</button></div>
 </form>
-
-
 <form action="/contact" method="post" id="contactForm">
    <div><input type="text" name="email" placeholder="Email"></div>
    <div><textarea name="content" form="contactForm" rows="15" cols="90" placeholder="Write something, fool."></textarea></div>
