@@ -94,6 +94,16 @@ module.exports.routes = {
     action: 'processContact'
   },
 
+  'get /contact/subscribe': {
+    controller: 'HomeController',
+    action: 'contact'
+  },
+
+  'post /contact/subscribe': {
+    controller: 'HomeController',
+    action: 'subscribe'
+  },
+
   'get /faq': {
     controller: 'HomeController',
     action: 'faq'

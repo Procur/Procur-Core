@@ -25,6 +25,20 @@ var nodemailer = require('nodemailer'),
     }),
     address = process.env.ENVIRONMENT_URL || 'localhost:1337';
 
+function MailChimpConfig () {
+  this.apikey = process.env.MAILCHIMP_APIKEY || 'eb531267a844e3881e4b16d8482ed998-us3';
+  this.apiurl = process.env.MAILCHIMP_APIURL || 'us3.api.mailchimp.com';
+  if (sails.config.environment == 'development'){
+    this.listid1 = "58856a57f6"; //Procur.com Changes and Updates -  Dev
+    this.listid2 = "f24155909b"; //Trade & Industry Newsletter - Dev
+    this.listid3 = "152b1cd8d5"; //General News & Announcements - Dev
+  }
+  else if (process.env.NODE_ENV != 'development'){
+    this.listid1 = "3a428c0b74"; //Procur.com Changes and Updates
+    this.listid2 = "d96c07d54f"; //Trade & Industry Newsletter
+    this.listid3 = "5ab736fb54"; //General News & Announcements
+  }
+}
 
 module.exports = {
 
@@ -46,7 +60,6 @@ module.exports = {
     }
 
   },
-
 
   //HEADER ACTIONS
   features: function(req, res){
@@ -107,6 +120,46 @@ module.exports = {
       req.flash('success',"Message sent! We'll get back to you as soon as possible.");
       res.redirect('/contact');
     });
+  },
+
+  subscribe: function(req, res){
+    var mcConfig = new MailChimpConfig();
+    var b = req.body;
+    var email = b.subscriberEmail;
+    if(!email){
+      req.flash('status',"Email address is blank.");
+      res.redirect('/contact');
+    }
+    else if (email) {
+      var subscribeToList = function (email, listId) {
+        var request = require('request');
+        var subscriber = {
+          "apikey": mcConfig.apikey,
+          "email": {"email": email},
+          "id": listId
+        };
+        var subscriberString = JSON.stringify(subscriber);
+        var options = {
+          url: 'https://' + mcConfig.apiurl + '/2.0/lists/subscribe.json',
+          body: subscriberString,
+          headers: {
+            'Content-Type': 'application/json',
+            'Content-Length': subscriberString.length
+          }
+        };
+        request.post(options, function(error, response, body){
+          if (!error && response.statusCode == 200) {
+          }
+          else if (error || response.statusCode != 200) {
+          }
+        });
+      };
+      if (b.chkList1 != undefined) { subscribeToList(email, mcConfig.listid1); }
+      if (b.chkList2 != undefined) { subscribeToList(email, mcConfig.listid2); }
+      if (b.chkList3 != undefined) { subscribeToList(email, mcConfig.listid3); }
+      req.flash('status', "Thank you! Please check your inbox for confirmation.");
+      res.redirect('/contact');
+    }
   },
 
   ////////////////////////////
