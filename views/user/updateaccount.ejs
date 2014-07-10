@@ -71,7 +71,7 @@
                 </div>
                 <div class="col-sm-6">
                   <h5>Job Title</h5>
-                  <div><input type="text" name="jobTitle" <% if (user.jobTitle) { %><%= user.jobTitle %><% } else{ %> placeholder="Job Title" <% } %>></div><br/>
+                  <div><input type="text" name="jobTitle" <% if (user.jobTitle) { %>value="<%= user.jobTitle %>"<% } else{ %> placeholder="Job Title" <% } %>></div><br/>
                   <% if(user.image){ %>
                   <div><img src="<%= user.image %>"></div><% } %>
 
