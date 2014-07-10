@@ -53,6 +53,12 @@ jQuery.validator.addMethod("companyHandleFormat", function(value, element, param
   return value === "" || regex.test(value);
 }, jQuery.validator.format("Alphanumeric characters and underscores only."));
 
+jQuery.validator.addMethod("companyNameFormat", function(value, element, params) {
+  //IMPLEMENT ME
+  return true;
+}, jQuery.validator.format("International characters, simple punctuation, and spaces only."));
+
+
 
 jQuery.validator.addMethod("uniqueCompanyName", function(value, element, params) {
  return !(companyNameTaken);
