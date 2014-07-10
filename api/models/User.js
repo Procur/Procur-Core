@@ -34,7 +34,7 @@ module.exports = {
       type: 'string',
       required: true,
       minLength: 8,
-      maxLength: 50
+      maxLength: 100
     },
     emailVerified: {
       type: 'boolean',

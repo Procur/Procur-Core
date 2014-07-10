@@ -215,18 +215,19 @@ module.exports = {
     var newPassword;
     var consumeToken = req.session.token;
     PasswordReset.findOne({ token: consumeToken }, function(err, reset){
-      if(err){ return res.redirect('/dashboard') };
+      console.log('1. found pw reset obj: ' + reset);
+      if(err){ console.log(err); return res.redirect('/dashboard'); }
       if(reset){
         bcrypt.genSalt(10, function(err, salt){
           bcrypt.hash(b.password, salt, function(err, hash){
             newPassword = hash;
             User.findOne({ id: reset.user }, function(err, user){
-              if(err){ return res.redirect('/dashboard') };
+              if(err){ return res.redirect('/dashboard'); }
               if(user){
                 User.update(user, { password: newPassword }, function(err, user){
-                  if(err){ return res.redirect('/dashboard') };
+                  if(err){ return res.redirect('/dashboard'); }
                   PasswordReset.update(reset, { consumed: true }, function(err, reset){
-                    if(err){ return res.redirect('/dashboard') };
+                    if(err){ return res.redirect('/dashboard'); }
                     if(reset.consumed == true){
                       req.flash('message', 'Password changed. Please log in.');
                       res.redirect('/resetsuccess');
