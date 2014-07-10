@@ -725,6 +725,35 @@ hr.darkseparator {
   font-weight: 500;
 }
 
+/* COMPANY UPDATE */
+#tabs .styledSelect {
+margin-top: 5px;
+margin-bottom: 10px;
+width: 100%;
+overflow: hidden;
+background: url(/images/ddarrow.png) no-repeat white;
+background-position: right top;
+}
+
+#tabs .styledSelect select {
+  width: 115%;
+  background: transparent;
+  border: none 0px;
+  margin: 4px 0px 4px;
+  height: 18px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 100;
+  font-size: 11px;
+  padding: 0px 4px;
+  -webkit-appearance: none;
+  color: #b2b2b2;
+}
+
+#tabs .styledSelect option {
+color: black;
+font-weight: 500;
+}
+
 #regWizard div.pos-feedback {
   color: #5dc672;
   font-family: 'Montserrat', sans-serif;
