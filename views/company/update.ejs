@@ -168,84 +168,106 @@
                   </div>
                   <!-- End 1st Column -->
                   <div class="col-sm-6">
-                    
                     <h5>Company Industry</h5>
-                    <div><select name="companyIndustry">
-                      <option value="<%= company.industry %>" selected="selected"><%= company.industry %></option>
-                      <%- partial('../partials/edit-dropdowns/edit-industry') %>
-                    </select></div><br/>
-                    <h5>Official Address</h5>
-                    <div><input class="address1" type="text" name="companyAddress1" <% if(companyLocations["company-notHq"].addressLine1 !== undefined) { %>value="<%= companyLocations["company-notHq"].addressLine1 %>"<% } else { %> placeholder="Address Line #1"><% } %></div>
-              <div><input class="address2" type="text" name="companyAddress2" <% if(companyLocations["company-notHq"].addressLine2 !== undefined) { %>value="<%= companyLocations["company-notHq"].addressLine2 %>"<% } else { %> placeholder="Address Line #2"><% } %></div>
-              <div class="styledSelect"><select class="companyCountry" name="companyCountry" id="companyCountry" onchange="print_state('companyProvince',this.selectedIndex);"> 
-                  <option value="">Select Country</option>
-                  <option value="1">1</option>
-                </select>
-              </div>
-
-              <div class="row insideForm">
-                <div class="col-sm-7">
-                  <div class="styledSelect inputColumnL">
-                    <select class="companyProvince" name="companyProvince" id="companyProvince">
-                      <option value="">Select Province/State</option>
-                      <option value="1">Fakeland</option>
-                    </select><script language="javascript">print_country("companyCountry");</script>
-                  </div>
-                </div>
-
-                <div class="col-sm-5 inputColumnR">
-                  <div class="breakForm">
-                    <input type="text" class="companyPostalCode" name="companyPostalCode" <% if(companyLocations["company-notHq"].postalCode !== undefined) { %>value="<%= companyLocations["company-notHq"].postalCode %>"<% } else { %> placeholder="PostalCode"><% } %></div>
-                  </div>
-                </div>
-              </div>
-              <% if (companyLocations["company-isHq"].id === undefined) { %>
-              <h5>Is the above address the headquarters?</h5>
-              <div><input class="checkbox hqbox" type="checkbox" name="companyIsHq"><div class="checkboxtext breakForm">Yes; please copy my details below.</div></div>
-              <% } %>
-
-              <h5>Company Headquarters Address*</h5>
-              <div><input class="hqfield hqaddress1" type="text" name="hqAddress1" <% if(companyLocations["company-isHq"].addressLine1 !== undefined) { %>value="<%= companyLocations["company-isHq"].addressLine1 %>"<% } else { %> placeholder="Address Line #1">><% } %></div>
-              <div><input  class="hqfield hqaddress2" type="text" name="hqAddress2" <% if(companyLocations["company-isHq"].addressLine2 !== undefined) { %>value="<%= companyLocations["company-isHq"].addressLine2 %>"<% } else { %> placeholder="Address Line #2">><% } %></div>
-
-              <div class="styledSelect">
-                <select class="hqfield hqcompanyCountry" name="hqCountry" id="hqcompanyCountry" onchange="print_state('hqcompanyProvince',this.selectedIndex);">
-                  <option value="">Select Country</option>
-                  <option value="1">1</option>
-                </select>
-              </div>
-
-              <div class="row insideForm">
-                <div class="col-sm-7">
-                  <div class="styledSelect inputColumnL">
-                    <select class="hqfield hqcompanyProvince" name="hqProvince" id="hqcompanyProvince">
-                      <option value="">Select Province/State</option>
-                      <option value="1">Fakeland</option>
-                    </select>
-                  </div><script language="javascript">print_country("hqcompanyCountry");</script>
-                </div>
-
-                <div class="col-sm-5 inputColumnR">
-                  <div class="breakForm">
-                    <input class="hqfield hqPostalCode" type="text" name="hqPostalCode" <% if(companyLocations["company-isHq"].postalCode !== undefined) { %>value="<%= companyLocations["company-isHq"].postalCode %>"><% } else { %> placeholder="Postal Code">><% } %></div>
-                  </div>
-                </div>
-              </div>
-                    <br />
-                    <h5>Total Number of Employees</h5>
                     <div>
-                      <select name="employeeCount">
-                          <option value="<%= company.employeeCount %>" selected="selected"><%= company.employeeCount %></option>
-                          <%- partial('../partials/edit-dropdowns/edit-total-employees') %>
-                      </select>
+                    	<select name="companyIndustry">
+                      <option value="<%= company.industry %>" selected="selected">
+                      	<%= company.industry %>
+                      </option>
+                      <%- partial('../partials/edit-dropdowns/edit-industry') %>
+                    	</select>
+                    </div><br/>
+                    <h5>Official Address</h5>
+                    <div>
+                    	<input class="address1" type="text" name="companyAddress1" <% if(companyLocations["company-notHq"].addressLine1 !== undefined) { %>value="<%= companyLocations["company-notHq"].addressLine1 %>"<% } else { %> placeholder="Address Line #1"><% } %>
                     </div>
-                  </div>
+              			<div>
+              				<input class="address2" type="text" name="companyAddress2" <% if(companyLocations["company-notHq"].addressLine2 !== undefined) { %>value="<%= companyLocations["company-notHq"].addressLine2 %>"<% } else { %> placeholder="Address Line #2"><% } %>
+              			</div>
+              			<div class="styledSelect">
+              				<select class="companyCountry" name="companyCountry" id="companyCountry" onchange="print_state('companyProvince',this.selectedIndex);"> 
+                  			<option value="">Select Country</option>
+                  			<option value="1">1</option>
+                			</select>
+              			</div>
+
+              			<div class="row insideForm">
+                			<div class="col-sm-7">
+                  			<div class="styledSelect inputColumnL">
+                    			<select class="companyProvince" name="companyProvince" id="companyProvince">
+                      			<option value="">Select Province/State</option>
+                      			<option value="1">Fakeland</option>
+                    			</select><script language="javascript">print_country("companyCountry");</script>
+                  			</div>
+                			</div>
+
+                			<div class="col-sm-5 inputColumnR">
+                  			<div class="breakForm">
+                    			<input type="text" class="companyPostalCode" name="companyPostalCode" <% if(companyLocations["company-notHq"].postalCode !== undefined) { %>value="<%= companyLocations["company-notHq"].postalCode %>"<% } else { %> placeholder="PostalCode"><% } %>
+                    		</div>
+                  		</div>
+                		</div>
+              		
+              
+              			<% if (companyLocations["company-isHq"].id === undefined) { %>
+              				<h5>Is the above address the headquarters?</h5>
+              				<div>
+              					<input class="checkbox hqbox" type="checkbox" name="companyIsHq">
+              					<div class="checkboxtext breakForm">
+              						Yes; please copy my details below.
+              					</div>
+              				</div>
+              			<% } %>
+
+              			<h5>Company Headquarters Address*</h5>
+              			<div>
+              				<input class="hqfield hqaddress1" type="text" name="hqAddress1" <% if(companyLocations["company-isHq"].addressLine1 !== undefined) { %>value="<%= companyLocations["company-isHq"].addressLine1 %>"<% } else { %> placeholder="Address Line #1">><% } %>
+              			</div>
+              			<div>
+              				<input  class="hqfield hqaddress2" type="text" name="hqAddress2" <% if(companyLocations["company-isHq"].addressLine2 !== undefined) { %>value="<%= companyLocations["company-isHq"].addressLine2 %>"<% } else { %> placeholder="Address Line #2">><% } %>
+              			</div>
+
+              			<div class="styledSelect">
+                			<select class="hqfield hqcompanyCountry" name="hqCountry" id="hqcompanyCountry" onchange="print_state('hqcompanyProvince',this.selectedIndex);">
+                  			<option value="">Select Country</option>
+                  			<option value="1">1</option>
+                			</select>
+              			</div>
+
+              			<div class="row insideForm">
+                			<div class="col-sm-7">
+                  			<div class="styledSelect inputColumnL">
+                    			<select class="hqfield hqcompanyProvince" name="hqProvince" id="hqcompanyProvince">
+                      			<option value="">Select Province/State</option>
+                      			<option value="1">Fakeland</option>
+                    			</select>
+                  			</div><script language="javascript">print_country("hqcompanyCountry");</script>
+                			</div>
+
+                			<div class="col-sm-5 inputColumnR">
+                  			<div class="breakForm">
+                    			<input class="hqfield hqPostalCode" type="text" name="hqPostalCode" <% if(companyLocations["company-isHq"].postalCode !== undefined) { %>value="<%= companyLocations["company-isHq"].postalCode %>"><% } else { %> placeholder="Postal Code">><% } %>
+                    		</div>
+                  		</div>
+                		</div>
+              			<br />
+
+              			<h5>Total Number of Employees</h5>
+              			<div>
+                			<select name="employeeCount">
+                  			<option value="<%= company.employeeCount %>" selected="selected"><%= company.employeeCount %></option>
+                    		<%- partial('../partials/edit-dropdowns/edit-total-employees') %>
+                			</select>
+              			</div>
+             			</div>
                   <!-- End 2nd Column -->
                 <div><input type="submit"></div>
                 </div>
               </form>
             </div>
-        </div>
+          </div>
+        
+
 
         <!-- ACTIVE MODE BUYER  -->
         <% if (company.buyer == true) { %>
