@@ -589,10 +589,12 @@
                   <h5>DBA Name</h5>
                     <div><input type="text" name="dba" value="<%= supplier.dbaName %>"></div>
                       <h5>Language</h5>
+                      <div class="styledSelect">
                       <select name="language">
                          <option value="<%= supplier.language %>" selected="selected"><%= supplier.language %></option>
                           <%- partial('../partials/edit-dropdowns/edit-language') %>
                       </select>
+                      </div>
                       <h5>Accepted Currencies</h5>
                        <!--<div><input type="text" name="acceptedCurrencies" value="<%= supplier.acceptedCurrency[0] %>"></div>-->
                       <section id="acceptedCurrencies">
@@ -766,22 +768,28 @@
                 <div class="formWrapper">
                   <form action="/supplier/update/productionDetails" method="post" id="supplierProductionDetailsForm">
                     <h5>Annual Sales Value</h5>
+                    	<div class="styledSelect">
                       <select name="annualSalesValue">
                         <option value="XXXXXXXXX" selected="selected"></option>
                          <%- partial('../partials/edit-dropdowns/edit-annual-sales-value') %>
                       </select>
+                      </div>
                       <h5>Total Factory Size</h5>
                       	<!--<div><input type="text" name="totalFactorySize" value="<%= supplier.totalFactorySize %>">???????</div>-->
+                      <div class='styledSelect'>
                       <select name="annualSalesValue">
                         <option value="<%= supplier.totalFactorySize %>" selected="selected"><%= supplier.totalFactorySize %></option>
                         <%- partial('../partials/edit-dropdowns/edit-factory-size') %>
                       </select>
+                      </div>
                       <h5>Total QC Staff</h5>
                       <!-- <div><input type="text" name="totalQCStaff" value="<%= supplier.totalQCStaff %>">????????</div> -->
+                      <div class="styledSelect">
                       <select name="annualSalesValue">
                         <option value="<%= supplier.totalQCStaff %>" selected="selected"><%= supplier.totalQCStaff %></option>
                         <%- partial('../partials/edit-dropdowns/edit-qc-staff') %>
                       </select>
+                      </div>
                       <h5>Additional Location</h5>
                       <section id="otherLocation1">
                         <div><input type="text" name="otherLocationName" <% if(supplier.locationName !== undefined) { %>value="<%= supplier.locationName %>"<% } else { %> placeholder="Location Title" <% } %>></div>
@@ -852,21 +860,21 @@
                	<div class="formWrapper">
                   <form action="/supplier/update/preferences" method="post" id="supplierPreferencesForm">
                       <h5>Preferred Buyer Type</h5>
-                      <div>
+                      <div class="styledSelect">
                       	<select name="preferredBuyerType">
                         	<option value="<%= supplier.preferredBuyerType %>" selected="selected"><%= supplier.preferredBuyerType %></option>
                         	<%- partial('../partials/edit-dropdowns/edit-pref-buyer-type') %>
                       	</select>
                       </div>
                       <h5>Preferred Buyer Language</h5>
-                      <div>
+                      <div class="styledSelect">
                       	<select name="preferredBuyerLanguage">
                           <option value="<%= supplier.preferredBuyerLanguage %>" selected="selected"><%= supplier.preferredBuyerLanguage %></option>
                           <%- partial('../partials/edit-dropdowns/edit-pref-buyer-language') %>
                       	</select>
                       </div>
                     	<h5>Preferred Buyer Location</h5>
-                      <div>
+                      <div class="styledSelect">
                       	<select name="preferredBuyerLocation" id="preferredBuyerLocation">
                           <option>Preferred Buyer Location</option>
                           </select>
