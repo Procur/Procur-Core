@@ -21,13 +21,16 @@
 
 /* HEADER*/
 #marketing-header {
+  position: relative;
   height: 64px;
   width: 100%;
   background: white;
   margin-bottom: 0px;
+  z-index: 99999;
 }
 
 #marketing-header ul {
+  position: relative;
   list-style: none;
   margin: 0px;
   padding: 0px;
@@ -56,6 +59,24 @@
   transition: all 200ms ease-in-out;
 }
 
+@media (max-width: 767px) {
+  #marketing-header ul li a.loginLink {
+    color: #333132;
+    -webkit-transition: all 200ms ease-in-out;
+    -moz-transition: all 200ms ease-in-out;
+    -ms-transition: all 200ms ease-in-out;
+    -o-transition: all 200ms ease-in-out;
+    transition: all 200ms ease-in-out;
+  }
+
+  #marketing-header  ul li a.joinLink {
+  margin-bottom: 20px;
+  text-align: center;
+  }
+}
+
+
+
 #marketing-header ul li a.joinLink {
   margin-top: 7px;
   padding: 6px 8px;
@@ -81,6 +102,8 @@
   -o-transition: all 200ms ease-in-out;
   transition: all 200ms ease-in-out;
 }
+
+
 
 #marketing-header .tri .hoverTri {
   position: relative;
