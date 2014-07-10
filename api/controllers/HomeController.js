@@ -105,7 +105,7 @@ module.exports = {
 
   processContact: function(req, res){
     var b = req.body;
-    var htmlContent = b.content;
+    var htmlContent = (b.field1 || "") + '<br>' + (b.field2 || "") + '<br>' + (b.field3 || "") + '<br>' + b.content;
     var mailOptions = {
       from: b.email,
       to: 'dev@procur.com',
