@@ -25,9 +25,6 @@ module.exports.imageUploadHelper = {
       format: 'jpg',
       width: 150,
       height: 150,
-      crop: 'thumb',
-      gravity: 'face',
-      radius: 'max'
     });
   },
 
@@ -42,9 +39,6 @@ module.exports.imageUploadHelper = {
       format: 'jpg',
       width: 150,
       height: 150,
-      crop: 'thumb',
-      gravity: 'face',
-      radius: 'max'
     });
   }
 
