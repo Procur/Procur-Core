@@ -4,7 +4,7 @@
 }
 
 #marketing-header .container {
-  padding: 8px 15x 4px;
+  padding: 8px 15px 4px;
 }
 
 #marketing-header .navbar,
@@ -75,8 +75,6 @@
   }
 }
 
-
-
 #marketing-header ul li a.joinLink {
   margin-top: 7px;
   padding: 6px 8px;
@@ -102,8 +100,6 @@
   -o-transition: all 200ms ease-in-out;
   transition: all 200ms ease-in-out;
 }
-
-
 
 #marketing-header .tri .hoverTri {
   position: relative;
@@ -147,6 +143,37 @@ font-size: 11px;
 letter-spacing: .06em;
 }
 
+
+/* MARKETING HEADER LINE */
+
+#marketing-header.line .container {
+  padding: 8px 0px 4px;
+  border-bottom: 2px solid #e3e3e3;
+}
+
+#marketing-header.line ul li a.joinLink {
+  margin-right: 0px;
+}
+
+#marketing-header.line .navbar-collapse {
+  padding-right: 0px;
+}
+
+@media (max-width: 767px) {
+  #marketing-header.line .container {
+    padding: 8px 15px 4px;
+    border-bottom: 2px solid #e3e3e3;
+  }
+
+  #marketing-header.line ul li a.joinLink {
+    margin-right: 7px;
+  }
+
+  #marketing-header.line .navbar-collapse {
+  padding-right: 15px;
+}
+
+}
 
 
 /* MARKETING FOOTER */

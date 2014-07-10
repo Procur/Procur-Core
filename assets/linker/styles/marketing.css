@@ -5,38 +5,7 @@
 
 /* LINE HEADER */
 
-#mktHeaderLine {
-  height: 64px;
-  width: 100%;
-  background: white;
-  margin-bottom: 50px;
-}
 
-#mktHeaderLine .container {
-  border-bottom: 2px solid #CDCDCD;
-  max-height: 64px;
-  overflow: hidden;
-}
-
-#mktHeaderLine ul {
-  list-style: none;
-  margin: 0px;
-}
-
-#mktHeaderLine ul li {
-  display: inline;
-  margin-left: 15px;
-  line-height: 74px;
-  color: #333132;
-  text-transform: uppercase;
-  font-family: 'Montserrat', sans-serif;
-  font-size: 10px;
-  letter-spacing: 0.04em;
-}
-
-#mktHeaderLine ul li a {
-  color: #333132;
-}
 
 
 
