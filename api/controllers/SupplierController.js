@@ -238,11 +238,9 @@ module.exports = {
         Company.findOne({ user: user.id }, function(err, company){
           if(err){ return res.redirect('/dashboard'); }
           if(company !== undefined){
-            console.log('company found');
             Supplpier.findOne({ company: company.id }, function(err, supplier){
               if(err){ return res.redirect('/dashboard'); }
               if(supplier !== undefined){
-                console.log('supplier found');
                 Supplier.update(supplier.id, {
 
 
@@ -286,11 +284,9 @@ module.exports = {
         Company.findOne({ user: user.id }, function(err, company){
           if(err){ return res.redirect('/dashboard'); }
           if(company !== undefined){
-            console.log('company found');
             Supplier.findOne({ company: company.id }, function(err, supplier){
               if(err){ return res.redirect('/dashboard'); }
               if(supplier !== undefined){
-                console.log('supplier found');
                 Supplier.update(supplier.id, {
                   companyDescription: p.companyDescription,
                   environmentalSustainability: p.environmentalSustainability,
@@ -335,17 +331,15 @@ module.exports = {
         Company.findOne({ user: user.id }, function(err, company){
           if(err){ return res.redirect('/dashboard'); }
           if(company !== undefined){
-            console.log('company found');
             Supplier.findOne({ company: company.id }, function(err, supplier){
               if(err){ return res.redirect('/dashboard'); }
               if(supplier !== undefined){
-                console.log('supplier found');
                 Supplier.update(supplier.id, {
                   preferredBuyerType: p.preferredSupplierType,
                   preferredBuyerLanguage: buyerLanguage,
                   preferredBuyerLocation: buyerLocation
                 }, function(err, supplier){
-                  if(err){ console.log(err)} //return res.redirect('/company/update#descriptionsSupplier'); }
+                  if(err){} //return res.redirect('/company/update#descriptionsSupplier'); }
                   if(supplier){
                     return "success";
                   }
@@ -373,7 +367,6 @@ module.exports = {
   updateSocialOutlets: function (req, res) {
     var activeUser = req.session.passport.user,
         p = req.body;
-    console.log(p.twitter);
     User.findOne({ id: activeUser }, function(err, user){
       if(err){ return res.redirect('/dashboard'); }
       if(user !== undefined){
@@ -383,7 +376,6 @@ module.exports = {
             Supplier.findOne({ company: company.id }, function(err, supplier){
               if(err){ return res.redirect('/dashboard'); }
               if(supplier !== undefined){
-                console.log(supplier);
                 Supplier.update(supplier.id, {
                   facebook: p.facebook,
                   twitter: p.twitter,
