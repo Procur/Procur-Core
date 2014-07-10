@@ -44,3 +44,20 @@
   text-transform: uppercase;
   padding-top: 4px;
 }
+
+/* REGISTRATION FOOTER */
+
+#registration-footer {
+  background: white;
+}
+
+#registration-footer .navbar,
+#registration-footer .navbar-default,
+#registration-footer .navbar-fixed-top {
+  border: 0px none;
+  background: white;
+}
+
+#registration-footer .navbar {
+  border-top: 1px dotted #e3e3e3
+}
