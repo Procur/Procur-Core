@@ -58,7 +58,6 @@ module.exports = {
         res.view();
       }
     }
-
   },
 
   //HEADER ACTIONS

@@ -130,9 +130,8 @@ module.exports = {
                 generateTextFromHTML: true,
                 html: htmlContent
               };
-
               smtpTransport.sendMail(mailOptions, function(err, response){
-                if(err){ console.log(err); }
+                if(err){}
                 req.flash('message', 'Password changed.');
                 res.redirect('/dashboard');
               });
