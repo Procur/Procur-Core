@@ -1,67 +1,6 @@
-/* HEADER*/
-#mktHeader {
-  height: 64px;
-  width: 100%;
-  background: white;
-  margin-bottom: 0px;
+#homePage {
+  padding-top: 10px;
 }
-
-#mktHeader ul {
-  list-style: none;
-  margin: 0px;
-  padding: 0px;
-}
-
-
-
-#mktHeader ul li a {
-  color: #333132;
-}
-
-#mktHeader .tri .hoverTri {
-  position: relative;
-  width: 0;
-  height: 0;
-  border-left: 5px solid transparent;
-  border-right: 5px solid transparent;
-  border-bottom: 5px solid #fe9e23;
-  margin-left: auto;
-  margin-right: auto;
-  bottom: -10px;
-  -webkit-transition: all 200ms ease-in-out;
-  -moz-transition: all 200ms ease-in-out;
-  -ms-transition: all 200ms ease-in-out;
-  -o-transition: all 200ms ease-in-out;
-  transition: all 200ms ease-in-out;
-}
-
-#mktHeader .tri .hoverTriContainer {
-position: absolute;
-width: 100%;
-height: 10px;
-overflow: hidden;
-bottom: 0;
-}
-
-#mktHeader ul li {
-display: inline;
-margin-left: 15px;
-line-height: 74px;
-color: #333132;
-text-transform: uppercase;
-font-family: 'Montserrat', sans-serif;
-font-size: 10px;
-letter-spacing: 0.04em;
-}
-
-#mktHeader ul {
-font-family: Montserrat,Tahoma,Verdana;
-text-transform: uppercase;
-font-weight: 300;
-font-size: 11px;
-letter-spacing: .06em;
-}
-
 
 
 /* LINE HEADER */
