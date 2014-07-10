@@ -95,7 +95,8 @@ input {
   margin-bottom: 10px;
   width: 100%;
   overflow: hidden;
-  background: url(/images/ddarrow.png) no-repeat right white;
+  background: url(/images/ddarrow.png) no-repeat white;
+  background-position: right top;
 }
 #regWizard .insideForm .inputColumnL {
   padding-right: 0px;
@@ -681,14 +682,10 @@ hr.darkseparator {
 }
 
 #regWizard .styledSelect label.error {
-  visibility: hidden;
-  font-size: 0px;
-}
-
-#regWizard .styledSelect label.error::after {
-  visibility: visible;
-  content: "This field is required";
-  font-size: 10px;
+  display: block;
+  background: #ECEBE6;
+  margin: 0;
+  padding-top: 5px;
 }
 
 #regWizard span.pos-feedback {
