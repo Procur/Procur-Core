@@ -74,7 +74,6 @@ module.exports = {
           if (err) { return res.redirect('/dashboard'); }
           if (imageExists) {
             imageHelper.uploadBuyerImage(req, res, buyer, image, function(){
-              //console.log(Buyer);
               res.redirect('/dashboard');
             });
           }
@@ -252,11 +251,9 @@ module.exports = {
         Company.findOne({ user: user.id }, function(err, company){
           if(err){ return res.redirect('/dashboard'); }
           if(company !== undefined){
-            console.log('company found');
             Buyer.findOne({ company: company.id }, function(err, buyer){
               if(err){ return res.redirect('/dashboard'); }
               if(buyer !== undefined){
-                console.log('buyer found');
                 Buyer.update(buyer.id, {
 
 
@@ -300,11 +297,9 @@ module.exports = {
         Company.findOne({ user: user.id }, function(err, company){
           if(err){ return res.redirect('/dashboard'); }
           if(company !== undefined){
-            console.log('company found');
             Buyer.findOne({ company: company.id }, function(err, buyer){
               if(err){ return res.redirect('/dashboard'); }
               if(buyer !== undefined){
-                console.log('buyer found');
                 Buyer.update(buyer.id, {
                   companyDescription: p.companyDescription,
                   environmentalSustainability: p.environmentalSustainability,
@@ -349,17 +344,15 @@ module.exports = {
         Company.findOne({ user: user.id }, function(err, company){
           if(err){ return res.redirect('/dashboard'); }
           if(company !== undefined){
-            console.log('company found');
             Buyer.findOne({ company: company.id }, function(err, buyer){
               if(err){ return res.redirect('/dashboard'); }
               if(buyer !== undefined){
-                console.log('buyer found');
                 Buyer.update(buyer.id, {
                   preferredSupplierType: p.preferredSupplierType,
                   preferredSupplierLanguage: supplierLanguage,
                   preferredSupplierLocation: supplierLocation
                 }, function(err, buyer){
-                  if(err){ console.log(err)} //return res.redirect('/company/update#descriptionsSupplier'); }
+                  if(err){} //return res.redirect('/company/update#descriptionsSupplier'); }
                   if(buyer){
                     return "success";
                   }
@@ -387,7 +380,6 @@ module.exports = {
   updateSocialOutlets: function (req, res) {
     var activeUser = req.session.passport.user,
         p = req.body;
-    console.log(p.twitter);
     User.findOne({ id: activeUser }, function(err, user){
       if(err){ return res.redirect('/dashboard'); }
       if(user !== undefined){
@@ -397,7 +389,6 @@ module.exports = {
             Buyer.findOne({ company: company.id }, function(err, buyer){
               if(err){ return res.redirect('/dashboard'); }
               if(buyer !== undefined){
-                console.log(buyer);
                 Buyer.update(buyer.id, {
                   facebook: p.facebook,
                   twitter: p.twitter,
@@ -444,10 +435,8 @@ module.exports = {
       Company.findOne({ user: user.id }, function(err, company){
         Buyer.findOne({ company: company.id }, function(err, buyer){
           Location.find().where({ company: company.id }).exec(function(err, locations){
-            console.log(locations);
             myLocations["company"] = locations;
             var myNewLocations = locationsHelper.parseLocations(myLocations);
-            console.log(myNewLocations);
           });
         });
       });
