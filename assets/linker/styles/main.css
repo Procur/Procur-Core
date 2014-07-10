@@ -86,6 +86,10 @@ input {
   -webkit-appearance: none;
   color: #b2b2b2;
 }
+#regWizard .styledSelect option { /* Dropdown font fix for Firefox */
+  color: black; 
+  font-weight: 500;
+}
 #regWizard .styledSelect {
   margin-top: 5px;
   margin-bottom: 10px;
