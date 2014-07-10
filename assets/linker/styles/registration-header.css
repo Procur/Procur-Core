@@ -1,0 +1,63 @@
+#registration-header {
+  background: white;
+}
+
+#registration-header .container {
+  padding: 8px 0px 4px;
+}
+
+#registration-header .navbar,
+#registration-header .navbar-default,
+#registration-header .navbar-fixed-top {
+  border: 0px none;
+  background: white;
+}
+
+#registration-header .container {
+  border-bottom: 2px #e3e3e3 solid;
+}
+
+#registration-header .navbar-text {
+  margin: 15px 7px;
+}
+
+#registration-header .navbar-brand {
+  padding-top: 20px;
+}
+
+#registration-header .earlyaccess-pill {
+  background: #a7a8ac;
+  border-radius: 5px;
+  padding: 5px 10px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 300;
+  font-size: 9px;
+  color: #f7f7f7;
+  text-transform: uppercase;
+}
+
+#registration-header .account-registration {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 300;
+  font-size: 11px;
+  color: #333132;
+  text-transform: uppercase;
+  padding-top: 4px;
+}
+
+/* REGISTRATION FOOTER */
+
+#registration-footer {
+  background: white;
+}
+
+#registration-footer .navbar,
+#registration-footer .navbar-default,
+#registration-footer .navbar-fixed-top {
+  border: 0px none;
+  background: white;
+}
+
+#registration-footer .navbar {
+  border-top: 1px dotted #e3e3e3
+}
