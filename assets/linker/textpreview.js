@@ -1,4 +1,3 @@
-
-    $('#someTextBox').keyup(function(){
-      $('.urlDynamic').html($(this).val());
-    });
+$('#handlePreview').keyup(function(){
+  $('.urlDynamic').html($(this).val());
+});
