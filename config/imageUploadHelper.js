@@ -23,8 +23,8 @@ module.exports.imageUploadHelper = {
     },
     {
       format: 'jpg',
-      width: 150,
-      height: 150,
+      width: 357,
+      height: 140
     });
   },
 
@@ -37,9 +37,9 @@ module.exports.imageUploadHelper = {
     },
     {
       format: 'jpg',
-      width: 150,
-      height: 150,
+      width: 357,
+      height: 140
     });
   }
 
-}
+};
