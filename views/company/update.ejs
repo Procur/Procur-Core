@@ -1,4 +1,5 @@
 <%- partial('../partials/dashboard-header.ejs') %>
+<script src="/linker/js/countries.js"></script>
 <div class="container" id="companyUpdate">
     <script>
         $(document).ready(function() {
@@ -457,15 +458,15 @@
                           					</select>
                         					</div>
                         					<div class="styledSelect">
-                          					<select name="otherLocationCountry" id="country" onchange="print_state('province',this.selectedIndex);">
+                          					<select name="otherLocationCountry" id="otherLocationCountry" class="otherLocationCountry" onchange="print_state('otherLocationProvince',this.selectedIndex);">
                             					<option>Select Country</option>
                           					</select>
                         					</div>
                         					<div class="styledSelect">
-                          					<select name="otherLocationProvince" id="province">
+                          					<select name="otherLocationProvince" id="otherLocationProvince">
                             					<option>Select State/Province</option>
                           					</select>
-                        					</div><script language="javascript">print_country("country");</script>
+                        					</div><script language="javascript">print_country("otherLocationCountry");</script>
                         					<div>
                         						<input type="text" name="otherLocationCity" placeholder="City">
                         					</div>
