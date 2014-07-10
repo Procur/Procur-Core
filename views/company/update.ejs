@@ -169,7 +169,7 @@
                   <!-- End 1st Column -->
                   <div class="col-sm-6">
                     <h5>Company Industry</h5>
-                    <div>
+                    <div class="styledSelect">
                     	<select name="companyIndustry">
                       <option value="<%= company.industry %>" selected="selected">
                       	<%= company.industry %>
@@ -253,7 +253,7 @@
               			<br />
 
               			<h5>Total Number of Employees</h5>
-              			<div>
+              			<div class="styledSelect">
                 			<select name="employeeCount">
                   			<option value="<%= company.employeeCount %>" selected="selected"><%= company.employeeCount %></option>
                     		<%- partial('../partials/edit-dropdowns/edit-total-employees') %>
