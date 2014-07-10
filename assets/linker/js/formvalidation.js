@@ -54,6 +54,9 @@ jQuery.validator.addMethod("companyHandleFormat", function(value, element, param
 }, jQuery.validator.format("Alphanumeric characters and underscores only."));
 
 
+jQuery.validator.addMethod("uniqueCompanyName", function(value, element, params) {
+ return !(companyNameTaken);
+}, jQuery.validator.format("This company name is not unique."));
 
 /*
 
@@ -114,7 +117,7 @@ $('#signup-form').validate({
       minlength: 1,
       maxlength: 100
     },
-      email: {
+    email: {
       required: true,
       email: true,
       minlength: 1,
@@ -184,7 +187,8 @@ $('#basic-company-details-form').validate({
       required: true,
       "internationalphanumeric+punct+whitespace": true,
       minlength: 3,
-      maxlength: 50
+      maxlength: 50,
+      uniqueCompanyName: true
     },
     companyPhoneCountryCode:{
       required: true,
