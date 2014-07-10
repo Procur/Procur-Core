@@ -27,6 +27,11 @@
   margin-top: 16px;
 }
 
+#features h5 a,
+#features h5 a:hover {
+  color: #7f7f7f;
+}
+
 #features h6 {
   font-family: 'Montserrat', sans-serif;
   color: #7f7f7f;
