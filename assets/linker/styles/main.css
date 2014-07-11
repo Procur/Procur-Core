@@ -776,3 +776,30 @@ background-position: right top;
 color: black;
 font-weight: 500;
 }
+
+/*Dash*/
+
+.orangeButton {
+	font-family: 'Montserrat', sans-serif;
+line-height: 48px;
+margin-left: 60px;
+font-size: 10px;
+text-transform: uppercase;
+color: #4d4d4d;
+letter-spacing: 0.06em;
+margin-top: 0;
+margin-bottom: 0;
+}
+.rightSec:hover .orangeButton:hover {
+color: white;
+text-decoration: none;
+-webkit-transition: all 200ms ease-in-out;
+-moz-transition: all 200ms ease-in-out;
+-ms-transition: all 200ms ease-in-out;
+-o-transition: all 200ms ease-in-out;
+transition: all 200ms ease-in-out;
+}
+
+.orangeWrap:hover {
+	text-decoration: none
+}

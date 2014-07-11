@@ -60,8 +60,10 @@
 #faq #nav.affix {
   position: fixed;
   top: 0;
-  width:19%;
+  width:18%;
 }
+
+
 
 #faq #nav > .navbar-inner {
   border-left: 0;
