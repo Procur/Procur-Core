@@ -33,9 +33,8 @@ module.exports.policies = {
   },
 
   HomeController: {
-    test: 'isAuthenticated',
-    signup: ['isAuthenticatedReverse'],
-    login: ['isAuthenticatedreverse']
+    signup: ['isNotAuthenticated'],
+    login: ['isNotAuthenticated']
   },
 
   CompanyController: {
