@@ -8,7 +8,7 @@ exports.config = {
   /**
    * Array of application names.
    */
-  app_name : 'procur-core-production',
+  app_name : ['CORE PRODUCTION'],
   /**
    * Your New Relic license key.
    */
