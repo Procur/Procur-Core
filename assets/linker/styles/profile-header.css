@@ -35,7 +35,6 @@
   margin: 5px 0px 0px 15px;
   border: 2px solid #FBAC27;
   border-radius: 30px;
-  
   color: #231F20;
   font-size: 12px;
   letter-spacing: 0.04em;
@@ -50,22 +49,22 @@
 }
 
 #profile-header .procurPill a {
-  line-height: 45px;
-  margin: 5px 0px 0px 0px;
+  padding: 3px 20px 3px 20px;
+  margin: 5px 0px 0px 15px;
   border: 2px solid #E6E7E8;
-  border-radius: 10px;
-  
+  border-radius: 30px;
   color: #231F20;
-  letter-spacing: 0.06em;
   font-size: 12px;
+  letter-spacing: 0.04em;
   font-weight: 400;
   font-family: 'Montserrat', sans-serif;
 }
 
 #profile-header .procurPill a:hover {
   color: #FFFFFF;
-  background: #E6E7E8;
+  background: #FBAC27;
   text-decoration: none;
+  border: 2px solid #FBAC27;
 }
 
 @media (max-width: 767px) {
@@ -84,9 +83,11 @@
 /* LOGGED IN */
 
 #profile-header h1 {
-  display: inline;
+  display: inline-block;
   font-size: 12px;
   margin-left: 5px;
+  margin-top: 18px;
+  letter-spacing: 0.04em;
 }
 
 #profile-header .profileCompany {
