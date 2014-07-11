@@ -58,11 +58,13 @@ jQuery.validator.addMethod("companyNameFormat", function(value, element, params)
   return true;
 }, jQuery.validator.format("International characters, simple punctuation, and spaces only."));
 
-
-
 jQuery.validator.addMethod("uniqueCompanyName", function(value, element, params) {
  return !(companyNameTaken);
 }, jQuery.validator.format("This company name is not unique."));
+
+jQuery.validator.addMethod("uniqueCompanyHandle", function(value, element, params) {
+  return !(companyHandleTaken);
+}, jQuery.validator.format("This company handle is not available."));
 
 /*
 
@@ -172,7 +174,8 @@ $('#select-handle-form').validate({
       required: true,
       minlength: 2,
       maxlength: 50,
-      companyHandleFormat: true
+      companyHandleFormat: true,
+      uniqueCompanyHandle: true
     }
   }
 });
