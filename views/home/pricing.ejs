@@ -2,13 +2,13 @@
 
 <div id="pricing">  
   <div id="heroArea">
-    <div class="container">
+    <div class="container" id="heroContainer">
       <div class="row">
-      <div class="col-sm-7 textArea">
+      <div class="col-sm-8 col-md-8 col-lg-8 textArea">
         <h1>Joining the Procur community is more than access to an international audience of buyers and suppliers - it's a statement to the market of your commitment to excellence.</h1>
       </div>
-      <div class="col-sm-3 pull-right">
-      <a href="/features"><div class="pill">View upcoming features ></div></a>
+      <div class="col-sm-3 col-md-3 col-lg-3 pull-right">
+      <a href="/features"><div class="pill">View upcoming features&nbsp;<span class="glyphicon glyphicon-chevron-right"</span></div></a>
       </div>
       </div>
     </div>
@@ -36,7 +36,9 @@
       <div class="col-md-10 col-md-offset-1 pricingComparison">
         <div class="row">
           <div class="col-sm-6">
-            <h1>Supplier Memebership Pricing &amp; Comparison</h1>
+            <h1>Supplier Membership Pricing &amp; Comparison</h1>
+            <div id="fatWrapper"><hr id="fatHR"></div>
+            
             <h2>Included Account Features</h2>
           </div>
           <div class="col-sm-3">
@@ -48,7 +50,7 @@
                 FREE
               </div>
               <div class="memberDetails">
-                No annual contract or commitment.
+                No annual commitment or contract.
               </div>
             </div>
           </div>
@@ -58,10 +60,14 @@
                 Premium Member
               </div>
               <div class="memberPrice">
-                UNFREE
+                $90<span id="priceRate">USD/MONTH</span> 
+                
               </div>
               <div class="memberDetails">
-                Lots of annual contract <i>AND</i> commitment.
+                <h4 >for 2-year membership or</h4>
+                <h3 >$119 per month for one year</h3>
+                <h3 >$149 per month for auto-renew</h3>
+                <h5 >view pricing details</h4>
               </div>
             </div>
           </div>
@@ -671,11 +677,13 @@
         </div>
       </div>
 
-      <div class="col-md-10 col-md-offset-1">
-        <p>
-        *Pricing Details: Premium membership Account Holders will be charged fee in full for one-year or two-year contracts at the time of 
-        upgrading. Memberships cannot be canceled. We do not offer refunds. Please view our FAQ on Membership and Pricing &amp; Fees if you have 
+      <div class="col-md-10 col-md-offset-1" id="pricingDetailsBottom">
+        <p id="pricingDetailsAdditional">
+        <strong>*Pricing Details:</strong> Premium membership Account Holders will be charged fee in full for one-year or two-year contracts at the time of 
+        upgrading. Memberships cannot be canceled. We do not offer refunds. Please view our FAQ on <a href="/faq">Membership</a> and <a href="/faq">Pricing &amp; Fees</a> if you have 
         additional questions.
+        <br/><br/>
+        This list is not intended to be exclusive or comprehensive of the final features of Procur membership. All technologies listed here are subject to change and may not be included in the final launch of the platform.
         </p>
       </div>
 
@@ -690,17 +698,23 @@
           </div>
         </div>
         <div class="row">
-          <div class="col-md-4 col-sm-6">
-            <h4>This is a question title!</h4>
-            <p>This is the answer to a question. How very exciting! I'm sure there will be more text than that.</p>
+          <div class="col-md-4 col-sm-6 commonQuestions">
+            <h4>Can I go ahead and sign up for a full Premium or Basic membership right now?</h4>
+            <p>No. We are currently allowing users to <a href="/signup">sign up for Early Access</a> accounts with access to limited features.  We will be launching our full platform soon.</p>
+            <h4>Will I need to sign up again for a membership once you launch the full Procur platform?</h4>
+            <p>No. Once you've signed up for an account, you will not need to register again when we launch our full platform soon. Existing members will have the option to choose between a Premium or Basic membership at that time.</p>
           </div>
-          <div class="col-md-4 col-sm-6">
-            <h4>This is a question title!</h4>
-            <p>This is the answer to a question. How very exciting! I'm sure there will be more text than that.</p>
+          <div class="col-md-4 col-sm-6 commonQuestions">
+            <h4>How do I sign up?</h4>
+            <p>You may register now for a free account to gain access to Early Access platform features by <a href="/signup">clicking here</a>. Simply follow the steps to complete you early access membership.</p>
+            <h4>Can I switch my account type?</h4>
+            <p>Once we launch, you may upgrade you account at any time. Once you upgraded to a paid membership, your Premium member status will remain active until it expires</p>
           </div>
-          <div class="col-md-4 col-sm-6">
-            <h4>This is a question title!</h4>
-            <p>This is the answer to a question. How very exciting! I'm sure there will be more text than that.</p>
+          <div class="col-md-4 col-sm-6 commonQuestions">
+            <h4>Can I download Procur?</h4>
+            <p>No. Procur is a web service.  We do not have plans to make a downloadable version.  In the future, we hope to offer complementary applications that will help you manage your account more easily</p>
+            <h4>Can I cancel my plan?</h4>
+            <p>Membership plans are based on an annual contract, billed yearly or monthly. You can turn off auto-renewal in your Account Settings if you do not wish to renew your plan.</p>
           </div>
         </div>
       </div>
@@ -711,9 +725,9 @@
 
       <div class="col-sm-12">
         <div class="row invitation">
-          <div class="col-sm-5 pull-right text-right">
+          <div class="col-sm-4 pull-right text-right">
             <h4>We invite you to join our network and expand your business over our international soundboard.</h4>
-            <p>If you have any additional questions, please visit our <a href="#">FAQ</a> regarding Membership, or contact us at:
+            <p>If you have any additional questions, please <a href="/faq">visit our FAQ</a> regarding Membership, or contact us at:
             <a href="mailto:sales@procur.com">sales@procur.com</a></p>
           </div>
         </div>

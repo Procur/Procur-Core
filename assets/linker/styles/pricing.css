@@ -7,8 +7,10 @@
 
 #pricing #heroArea .textArea {
   background: rgba(255,255,255,0.8);
-  padding: 35px 50px;
-  margin-top: 50px;
+  padding: 20px 30px;
+  margin-top: 30px;
+  float: left;
+
 }
 
 #pricing #heroArea .textArea h1 {
@@ -36,6 +38,13 @@
   letter-spacing: 0.06em;
 }
 
+#pricing #heroContainer {
+	margin-left: 0;
+	margin-right: 0;
+	width: 100%;
+	padding-right: 30px;
+}
+
 /* Coming Soon! Section */
 
 #pricing .comingSoon h1 {
@@ -61,6 +70,7 @@
 #pricing #registerNow {
   padding-top: 30px;
   margin-bottom: 30px;
+  margin-top: 55px;
 }
 
 #pricing #registerNow a:hover {
@@ -97,6 +107,21 @@
 
 /* Pricing Comparison Section */
 
+.pricingComparison #fatHR {
+	width: 25%;
+	float:left;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	border: 3px solid #d3d3d3;
+}
+
+.pricingComparison #fatWrapper {
+	width:100%;
+	height:30px;
+	margin-top: 30px;
+	
+}
+
 .pricingComparison h1 {
   font-family: 'Open Sans', sans-serif;
   font-weight: 300;
@@ -108,6 +133,7 @@
   font-weight: 300;
   color: #7f7f7f;
   font-size: 22px;
+  margin-top: 0;
 }
 
 #pricing .basicMember .memberTitle {
@@ -140,6 +166,7 @@
   font-size: 10px;
   background: #e8e7e3;
   padding: 10px 20px 20px;
+  padding-bottom: 40px;
 }
 
 #pricing .premiumMember .memberTitle {
@@ -162,6 +189,7 @@
   font-size: 36px;
   background: #e8e7e3;
   padding: 20px 0px;
+  padding-bottom: 0;
 }
 
 #pricing .premiumMember .memberDetails {
@@ -173,6 +201,46 @@
   background: #e8e7e3;
   padding: 10px 20px 20px;
 }
+
+#pricing .premiumMember #priceRate {
+	font-family: 'Montserrat', sans-serif;
+	color: black;
+	font-weight: 300;
+	font-size: 10px;
+}
+
+#pricing .premiumMember h4{
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 300;
+	font-size: 8px;
+	letter-spacing: 0.04em;
+	color: #7f7f7f;
+	text-transform: uppercase;
+	margin: 0;
+	margin-bottom: 6px;
+}
+
+#pricing .premiumMember h3{
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 100;
+	font-size: 10px;
+	letter-spacing: 0.04em;
+	color: #7f7f7f;
+	margin: 0;
+	margin-bottom: 3px;
+}
+
+#pricing .premiumMember h5{
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 300;
+	font-size: 8px;
+	letter-spacing: 0.04em;
+	color: black;
+	text-transform: uppercase;
+	margin: 0;
+	margin-top: 7px;
+}
+
 
 #pricing .sectionTitle {
   background: #fcab27;
@@ -313,3 +381,38 @@
 #pricing .invitation a {
   color: #fcab27;
 }
+
+#pricing .col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, .col-sm-3, .col-md-3, .col-lg-3, .col-xs-4, .col-sm-4, .col-md-4, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, .col-sm-6, .col-md-6, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, .col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .col-sm-12, .col-md-12, .col-lg-12 {
+
+padding-right: 0
+}
+
+#pricing #pricingDetailsBottom {
+	margin-top: 50px;
+}
+
+#pricing #pricingDetailsAdditional a:hover{
+	text-decoration: underline;
+}
+
+#pricing #pricingDetailsAdditional a{
+	color: #ef9818;
+}
+
+#pricing .commonQuestions p {
+	margin-bottom: 20px;
+}
+
+#pricing .commonQuestions a:hover {
+	text-decoration: underline;
+}
+
+#pricing .commonQuestions a {
+	color: #ef9818;
+}
+
+#pricing .invitation h4{
+	margin-bottom: 0;
+	font-size: 11px; 
+}
+
