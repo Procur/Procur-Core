@@ -18,92 +18,14 @@
       <% if(user.activeMode == 'supplier') { %><h3>Edit Supplier Profile</h3><% } %>
       <div class="featuresColumn">
         <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all" role="tablist">
-          <!-- Company Tab -->
-          <li class="ui-state-default ui-corner-left">
-            <div class="rightSec">
-              <div class="rightSecBox">
-                <i class="fa fa-gear fa-fw"></i>
-              </div>
-              <a href="#companyDetails">COMPANY DETAILS</a>
-            </div>
-          </li>
+          <%- partial('../partials/update-company/sidebar-company-tab') %>
 
           <% if(user.activeMode == 'buyer') { %>
-          <li class="ui-state-default ui-corner-left">
-            <div class="rightSec rightAlt">
-              <div class="rightSecBox">
-                <i class="fa fa-gear fa-fw"></i>
-              </div>
-              <a href="#buyerInformation">BUYER INFORMATION</a>
-            </div>
-          </li>
-          <li class="ui-state-default ui-corner-left">
-            <div class="rightSec">
-              <div class="rightSecBox">
-                <i class="fa fa-gear fa-fw"></i>
-              </div>
-              <a href="#descriptionsBuyer">DESCRIPTIONS</a>
-            </div>
-          </li>
-          <li class="ui-state-default ui-corner-left">
-            <div class="rightSec rightAlt">
-              <div class="rightSecBox">
-                <i class="fa fa-gear fa-fw"></i>
-              </div>
-              <a href="#preferencesBuyer">PREFERENCES</a>
-            </div>
-          </li>
-          <li class="ui-state-default ui-corner-left">
-            <div class="rightSec">
-              <div class="rightSecBox">
-                <i class="fa fa-gear fa-fw"></i>
-              </div>
-              <a href="#socialOutletsBuyer">SOCIAL MEDIA</a>
-            </div>
-          </li>
+            <%- partial('../partials/update-company/sidebar-buyer-tabs') %>
           <% } %>
 
           <% if(user.activeMode == 'supplier') { %>
-            <li class="ui-state-default ui-corner-left">
-              <div class="rightSec rightAlt">
-                <div class="rightSecBox">
-                  <i class="fa fa-gear fa-fw"></i>
-                </div>
-                <a href="#supplierInformation">SUPPLIER INFORMATION</a>
-              </div>
-            </li>
-            <li class="ui-state-default ui-corner-left">
-              <div class="rightSec">
-                <div class="rightSecBox">
-                  <i class="fa fa-gear fa-fw"></i>
-                </div>
-                <a href="#productionDetails">PRODUCTION DETAILS</a>
-              </div>
-            </li>
-            <li class="ui-state-default ui-corner-left">
-              <div class="rightSec rightAlt">
-                <div class="rightSecBox">
-                  <i class="fa fa-gear fa-fw"></i>
-                </div>
-                <a href="#descriptionsSupplier">DESCRIPTIONS</a>
-              </div>
-            </li>
-            <li class="ui-state-default ui-corner-left">
-              <div class="rightSec">
-                <div class="rightSecBox">
-                  <i class="fa fa-gear fa-fw"></i>
-                </div>
-                <a href="#preferencesSupplier">PREFERENCES</a>
-              </div>
-            </li>
-            <li class="ui-state-default ui-corner-left">
-              <div class="rightSec rightAlt">
-                <div class="rightSecBox">
-                  <i class="fa fa-gear fa-fw"></i>
-                </div>
-                <a href="#socialOutletsSupplier">SOCIAL MEDIA</a>
-              </div>
-            </li>
+            <%- partial('..partials/update-company/sidebar-supplier-tabs') %>
           <% } %>
         </ul>
       </div> <!-- END FEATURES COLUMN -->
@@ -112,11 +34,11 @@
         <h3>Your Company Username</h3>
         <p>procur.com/companies/<strong><%= company.handle %>  </strong><a href="/company/changehandle">Edit</a></p>
       </div>
-    </div> <!-- END COL-SM-4 -->
+    </div><!-- END col-sm-4 -->
 
     <%- partial('../partials/update-company/basic-company-details') %>
 
-    
+
 
   </div>
 </div>
