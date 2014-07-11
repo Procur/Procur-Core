@@ -59,8 +59,8 @@ jQuery.validator.addMethod("companyNameFormat", function(value, element, params)
 }, jQuery.validator.format("International characters, simple punctuation, and spaces only."));
 
 jQuery.validator.addMethod("uniqueCompanyName", function(value, element, params) {
- return !(companyNameTaken);
-}, jQuery.validator.format("This company name is not unique."));
+  return !(companyNameTaken);
+}, jQuery.validator.format("This company name is not available."));
 
 jQuery.validator.addMethod("uniqueCompanyHandle", function(value, element, params) {
   return !(companyHandleTaken);
@@ -75,6 +75,8 @@ var checkBoxMsg = "Please select at least one option.";
 var urlHintMsg = "Please enter a valid URL preceded by http://";
 var dnsMsg = "Please enter a 9-digit DNS Number.";
 var otherLocationsMsg = "Include the name, type, & country when providing a location.";
+var agreeTermsMsg = "You must read & agree to all of the above.";
+var responsiblePartyMsg = "You must assert the above.";
 
 /*
 
@@ -321,11 +323,23 @@ $('#basic-company-details-form').validate({
       //(provided) 
       //Note: the required rule will only work on select menus if the dummy data has value="".
       //Ex: <option value="">Select Employee Count</option>
+    },
+    agreeTerms: {
+      required: true
+    },
+    responsibleParty: {
+      required: true
     }
   },
   messages:{
     companyWebsite: {
       url: urlHintMsg
+    },
+    agreeTerms: {
+      required: agreeTermsMsg
+    },
+    responsibleParty: {
+      required: responsiblePartyMsg
     }
   }
 });
