@@ -76,6 +76,9 @@ input {
   display: inline-block;
   margin-right: 8px;
 }
+#regWizard .terms {
+	float: left;
+}
 #regWizard .checkboxtext {
   font-family: 'Open Sans', sans-serif;
   font-size: 11px;
