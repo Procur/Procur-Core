@@ -28,9 +28,10 @@ module.exports.policies = {
     updateAccount: ['sessionCheck', 'isAuthenticated', 'profileComplete', 'wizardComplete']
   },
 
-  AuthController: {
+  HomeController: {
     test: 'isAuthenticated',
-    //register: ['isAuthenticatedReverse']
+    signup: ['isAuthenticatedReverse'],
+    login: ['isAuthenticatedreverse']
   },
 
   CompanyController: {
