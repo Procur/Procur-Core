@@ -1184,3 +1184,30 @@ $('#password-update-form').validate({
     }
   }
 });
+
+$('#subscriberForm').validate({
+  rules:{
+    subscriberEmail: {
+      required: true,
+      email:true,
+      minlength:4,
+      maxlength: 50
+    }
+  }
+});
+
+$('#contactForm').validate({
+  rules:{
+    email: {
+      required: true,
+      email:true,
+      minlength:4,
+      maxlength: 50
+    },
+    content : {
+      required: true
+    }
+  }
+});
+
+

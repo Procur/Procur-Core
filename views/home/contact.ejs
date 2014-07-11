@@ -1,3 +1,5 @@
+<%- partial('../partials/mktheaderline') %>
+
 <h1>Contact Us</h1>
 <%- req.flash('status') %>
 <form action="/contact/subscribe" method="post" id="subscriberForm">
@@ -11,8 +13,30 @@
 </form>
 <form action="/contact" method="post" id="contactForm">
    <div><input type="text" name="email" placeholder="Email"></div>
-   <div><textarea name="content" form="contactForm" rows="15" cols="90" placeholder="Write something, fool."></textarea></div>
+	<div><select name="field1">
+			<option value="" disabled selected>What's your reason for contacting us?*</option>
+			<option value="The first reason" >The first reason.</option>
+			<option value="The second reason" >The second reason.</option>
+			<option value="The third reason" >The third reason.</option>
+	</select>
+	</div>
+	<div><select name="field2">
+			<option value="" disabled selected>Field 2*</option>
+			<option value="The first reason" >The first reason.</option>
+			<option value="The second reason" >The second reason.</option>
+			<option value="The third reason" >The third reason.</option>
+		</select>
+	</div>
+	<div><select name="field3">
+			<option value="" disabled selected>Field 3*</option>
+			<option value="The first reason" >The first reason.</option>
+			<option value="The second reason" >The second reason.</option>
+			<option value="The third reason" >The third reason.</option>
+		</select>
+	</div>
+   <div><textarea name="content" form="contactForm" rows="15" cols="90" placeholder="Write a message here."></textarea></div>
    <div><button type="submit">Send</button></div>
 </form>
-<script></script>
+<script>
+</script>
 

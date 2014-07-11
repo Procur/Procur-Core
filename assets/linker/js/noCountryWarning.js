@@ -5,6 +5,7 @@ $('#companyProvince').on('focus mousedown', function(e) {
   //if ($.browser.webkit||$.browser.msie) {
     e.preventDefault();
     $('#noCountryWarning').html('no country selected').css('display','inline');
+    $('#noCountryWarning').addClass("neg-feedback");
       //}else{
       //    this.blur();
       //    window.focus();
@@ -24,6 +25,7 @@ $('#hqcompanyProvince').on('focus mousedown', function(e) {
   //if ($.browser.webkit||$.browser.msie) {
     e.preventDefault();
     $('#noHQCountryWarning').html('no country selected').css('display','inline');
+    $('#noHQCountryWarning').addClass("neg-feedback");
       //}else{
       //    this.blur();
       //    window.focus();
@@ -50,6 +52,7 @@ $('#buyerOtherLocationProvince').on('focus mousedown', function(e) {
   //if ($.browser.webkit||$.browser.msie) {
     e.preventDefault();
     $('#noOtherCountryWarning').html('no country selected').css('display','inline');
+    $('#noOtherCountryWarning').addClass("neg-feedback");
       //}else{
       //    this.blur();
       //    window.focus();
@@ -68,6 +71,7 @@ $('#supplierOtherLocationProvince').on('focus mousedown', function(e) {
   //if ($.browser.webkit||$.browser.msie) {
     e.preventDefault();
     $('#noOtherSupplierCountryWarning').html('no country selected').css('display','inline');
+    $('#noOtherSUpplierCountryWarning').addClass("neg-feedback");
       //}else{
       //    this.blur();
       //    window.focus();

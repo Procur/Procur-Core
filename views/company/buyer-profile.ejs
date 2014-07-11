@@ -119,7 +119,11 @@
       <% } else { %>
         <div class="content-desc">This company does not have a buyer company description.</div>
       <% } %>
-      <div class="content-interest" id="inactive"><%= buyer.productsOfInterest %></div>
+      <% if (buyer.productsOfInterest !== undefined) { %>
+        <div class="content-interest" id="inactive"><%= buyer.productsOfInterest %></div>
+      <% } else { %>
+        <div class="content-interest" id="inactive">This company does not have products of interest.</div>
+      <% } %>
       <% if (buyer.showSORTab === true) { %>
         <div class="content-statement" id="inactive">
           <% var sorKeys = Object.keys(buyer["sorViewFields"]); %>

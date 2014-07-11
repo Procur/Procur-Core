@@ -76,12 +76,22 @@ input {
   display: inline-block;
   margin-right: 8px;
 }
+#regWizard .terms {
+	float: left;
+}
 #regWizard .checkboxtext {
   font-family: 'Open Sans', sans-serif;
   font-size: 11px;
   display: inline-block;
   position: relative;
-  top: -3px;
+  /*top: -3px;*/
+  margin: 0;
+  padding: 0;
+}
+@-moz-document url-prefix() { /* Checkboxtext vertical align fix for Firefox */
+  #regWizard .checkboxtext {
+    top: -4px;
+  }
 }
 #regWizard .styledSelect select {
   width: 115%;
@@ -89,7 +99,6 @@ input {
   border: none 0px;
   margin: 4px 0px 4px;
   height: 18px;
-  line-height: 25px;
   font-family: 'Roboto', sans-serif;
   font-weight: 100;
   font-size: 11px;
@@ -97,12 +106,17 @@ input {
   -webkit-appearance: none;
   color: #b2b2b2;
 }
+#regWizard .styledSelect option { /* Dropdown font fix for Firefox */
+  color: black; 
+  font-weight: 500;
+}
 #regWizard .styledSelect {
   margin-top: 5px;
   margin-bottom: 10px;
   width: 100%;
   overflow: hidden;
-  background: url(/images/ddarrow.png) no-repeat right white;
+  background: url(/images/ddarrow.png) no-repeat white;
+  background-position: right top;
 }
 #regWizard .insideForm .inputColumnL {
   padding-right: 0px;
@@ -673,4 +687,92 @@ hr.darkseparator {
   background: none transparent;
   border-top: 1px dotted #7f7f7f;
   margin: 50px 0px;
+}
+
+/* VALIDATION MESSAGES */
+#regWizard label.error {
+  color: #FF5A5A;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 10px;
+  text-transform: uppercase;
+  line-height: 1.8em;
+  width: 100%;
+  top: -15px;
+  font-weight: 500;
+}
+
+#regWizard .styledSelect label.error {
+  display: block;
+  background: #ECEBE6;
+  margin: 0;
+  padding-top: 5px;
+}
+
+#regWizard span.pos-feedback {
+  color: #5dc672;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 10px;
+  text-transform: uppercase;
+  line-height: 1.8em;
+  width: 100%;
+  font-weight: 500;
+}
+
+#regWizard span.neg-feedback {
+  color: #FF5A5A;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 10px;
+  text-transform: uppercase;
+  line-height: 1.8em;
+  width: 100%;
+  font-weight: 500;
+}
+
+#regWizard div.pos-feedback {
+  color: #5dc672;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 10px;
+  text-transform: uppercase;
+  line-height: 1.8em;
+  width: 100%;
+  font-weight: 500;
+}
+
+#regWizard div.neg-feedback {
+  color: #FF5A5A;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 10px;
+  text-transform: uppercase;
+  line-height: 1.8em;
+  width: 100%;
+  font-weight: 500;
+}
+
+/* COMPANY UPDATE */
+#tabs .styledSelect {
+margin-top: 5px;
+margin-bottom: 10px;
+width: 100%;
+overflow: hidden;
+background: url(/images/ddarrow.png) no-repeat white;
+background-position: right top;
+}
+
+#tabs .styledSelect select {
+  width: 115%;
+  background: transparent;
+  border: none 0px;
+  margin: 4px 0px 4px;
+  height: 18px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 100;
+  font-size: 11px;
+  padding: 0px 4px;
+  -webkit-appearance: none;
+  color: #b2b2b2;
+}
+
+#tabs .styledSelect option {
+color: black;
+font-weight: 500;
 }
