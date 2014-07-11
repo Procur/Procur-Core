@@ -445,10 +445,10 @@ module.exports = {
 
     User.findOne({ id: currentUser }, function(err, user) {
       if (err) { return res.redirect('/dashboard'); }
-      payload["user"] = user;
+      if (user !== undefined) { payload["user"] = user; }
       Company.findOne({ user: payload.user.id }, function(err, company) {
         if (err) { return res.redirect('/dashboard'); }
-        payload["company"] = company;
+        if (company) { payload["company"] = company; }
         Location.find().where({ company: payload["company"].id }).exec(function(err, locations) {
           if (err) { return res.redirect('/dashboard'); }
           locationsPayload["company"] = locations;
@@ -465,6 +465,8 @@ module.exports = {
                       else {
                         buyer = waterlineHelper.fixBuyerArrays(buyer);
                         payload["buyer"] = buyer;
+                        buyer2 = waterlineHelper.fixBuyerArrays(buyer); //temp
+                        payload["buyer2"] = buyer2; //temp
                         callback(null, buyer);
                       }
                     });
@@ -478,6 +480,8 @@ module.exports = {
                       else {
                         supplier = waterlineHelper.fixSupplierArrays(supplier);
                         payload["supplier"] = supplier;
+                        supplier2 = waterlineHelper.fixSupplierArrays(supplier);
+                        payload["supplier2"] = supplier2;
                         callback(null, supplier);
                       }
                     });
@@ -487,6 +491,9 @@ module.exports = {
                 console.log("Data is " + JSON.stringify(payload, null, ' '));
                 console.log("Locations is " + JSON.stringify(viewLocations, null, ' '));
                 /* Render views */
+                if (payload["buyer"] !== undefined && payload["supplier"] === undefined) {
+                  res.view({ user: payload["user"], company: payload["company"], buyer: payload["buyer"], buyer2: payload["buyer2"], supplier: payload["supplier"], supplier2: payload["supplier2"], companyLocations: viewLocations });
+                }
               }
             ) /* End async */
         });
