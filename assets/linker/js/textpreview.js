@@ -1,4 +1,4 @@
-    $('#someTextBox').keyup(function(){
+    $('#desiredHandle').keyup(function(){
       $('#target').html($(this).val());
     });
  
