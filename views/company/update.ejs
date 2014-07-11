@@ -25,7 +25,7 @@
           <% } %>
 
           <% if(user.activeMode == 'supplier') { %>
-            <%- partial('..partials/update-company/sidebar-supplier-tabs') %>
+            <%- partial('../partials/update-company/sidebar-supplier-tabs') %>
           <% } %>
         </ul>
       </div> <!-- END FEATURES COLUMN -->
@@ -37,15 +37,30 @@
     </div><!-- END col-sm-4 -->
 
     <div class="col-sm-8">
-      <%- partial('../partials/update-company/basic-company-details') %>
+      <% if (company.buyer === true) { %>
+        <%- partial('../partials/update-company/basic-company-details') %>
 
-      <%- partial('../partials/update-company/buyer-information') %>
+        <%- partial('../partials/update-company/buyer-information') %>
 
-      <%- partial('../partials/update-company/descriptions') %>
+        <%- partial('../partials/update-company/buy-descriptions') %>
 
-      <%- partial('../partials/update-company/preferences') %>
+        <%- partial('../partials/update-company/buy-preferences') %>
 
-      <%- partial('../partials/update-company/social-media') %>
+        <%- partial('../partials/update-company/buy-social-media') %>
+      <% } %>
+      <% if (company.supplier === true) { %>
+        <%- partial('../partials/update-company/basic-company-details') %>
+
+        <%- partial('../partials/update-company/supplier-information') %>
+
+        <%- partial('../partials/update-company/production-details') %>
+
+        <%- partial('../partials/update-company/sup-descriptions') %>
+
+        <%- partial('../partials/update-company/sup-preferences') %>
+
+        <%- partial('../partials/update-company/sup-social-media') %>
+      <% } %>
     </div><!-- END col-sm-8 -->
 
   </div>

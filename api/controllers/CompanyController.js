@@ -480,8 +480,8 @@ module.exports = {
                       else {
                         supplier = waterlineHelper.fixSupplierArrays(supplier);
                         payload["supplier"] = supplier;
-                        supplier2 = waterlineHelper.fixSupplierArrays(supplier);
-                        payload["supplier2"] = supplier2;
+                        supplier2 = waterlineHelper.fixSupplierArrays(supplier); //temp
+                        payload["supplier2"] = supplier2; //temp
                         callback(null, supplier);
                       }
                     });
@@ -490,8 +490,10 @@ module.exports = {
               function(err, data) {
                 //console.log("Data is " + JSON.stringify(payload, null, ' '));
                 //console.log("Locations is " + JSON.stringify(viewLocations, null, ' '));
-                // Render views
                 if (payload["buyer"] !== undefined && payload["supplier"] === undefined) {
+                  res.view({ user: payload["user"], company: payload["company"], buyer: payload["buyer"], buyer2: payload["buyer2"], supplier: payload["supplier"], supplier2: payload["supplier2"], companyLocations: viewLocations });
+                }
+                if (payload["buyer"] === undefined && payload["supplier"] !== undefined) {
                   res.view({ user: payload["user"], company: payload["company"], buyer: payload["buyer"], buyer2: payload["buyer2"], supplier: payload["supplier"], supplier2: payload["supplier2"], companyLocations: viewLocations });
                 }
               }
