@@ -6,4 +6,4 @@
 			$(".sticky-header").animate({top:["-54px","easeOutExpo"]},600);
 		}
 		
-	},{ offset: -80});
+	},{ offset: -120});
