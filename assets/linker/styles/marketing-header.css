@@ -1,3 +1,5 @@
+/* GENERAL MARKETING HEADER*/
+
 #marketing-header {
   background: white;
   padding-top: 8px;
@@ -20,7 +22,6 @@
   padding-top: 15px;
 }
 
-/* HEADER*/
 #marketing-header {
   position: relative;
   height: 64px;
@@ -120,30 +121,33 @@
 }
 
 #marketing-header .tri .hoverTriContainer {
-position: absolute;
-width: 100%;
-height: 10px;
-overflow: hidden;
-bottom: -4px;
+  position: absolute;
+  width: 100%;
+  height: 10px;
+  overflow: hidden;
+  bottom: -4px;
 }
 
 #marketing-header ul li {
-display: inline;
-line-height: 74px;
-color: #333132;
-text-transform: uppercase;
-font-family: 'Montserrat', sans-serif;
-font-weight: 500;
-font-size: 11px;
-letter-spacing: 0.04em;
+  display: inline;
+  line-height: 74px;
+  color: #333132;
+  text-transform: uppercase;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  font-size: 11px;
+  letter-spacing: 0.04em;
 }
 
 #marketing-header ul {
-text-transform: uppercase;
-font-size: 11px;
-letter-spacing: .06em;
+  text-transform: uppercase;
+  font-size: 11px;
+  letter-spacing: .06em;
 }
 
+#marketing-header .navbar-collapse {
+  padding-right: 0px;
+}
 
 /* MARKETING HEADER LINE */
 
@@ -171,11 +175,7 @@ letter-spacing: .06em;
   }
 
   #marketing-header.line .navbar-collapse {
-  padding-right: 15px;
-}
+    padding-right: 15px;
+  }
 
 }
-
-
-/* MARKETING FOOTER */
-
