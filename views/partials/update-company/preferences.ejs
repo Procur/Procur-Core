@@ -21,9 +21,10 @@
         <h5>Preferred Supplier Location</h5>
         <div>
           <select name="preferredSupplierLocation" id="preferredSupplierLocation">
-            <option value="<%= buyer.preferredSupplierLocaiton %>" selected="selected"><%= buyer.preferredSupplierLocation %></option>
+            <option value="<%= buyer.preferredSupplierLocation %>" selected="selected"><%= buyer.preferredSupplierLocation %></option>
           </select>
-        </div>
+        </div><script language="javascript">edit_country("<%= buyer.preferredSupplierLocation %>", "preferredSupplierLocation");</script>
+        
         <div><input type="submit"></div>
       </form>
     </div>

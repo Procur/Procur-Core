@@ -87,6 +87,7 @@
           <section id="typeOfCompany">
             <div class="styledSelect breakForm">
               <select name="typeOfCompany">
+                <option value="<%= buyer.typeOfCompany %>" selected="selected"><%= buyer.typeOfCompany %></option>
                 <%- partial('../dropdowns/supplier-type') %>
               </select>
             </div>
@@ -134,7 +135,7 @@
             </div>
             <div class="styledSelect">
               <select name="locationCountry" id="country<%= x %>" onchange="print_state('province<%= x %>',this.selectedIndex);">
-                <!-- edit_country(buyersCountry, countryID) will populate this dropdown -->
+                <!-- edit_country() will populate this dropdown -->
               </select>
             </div>
             <div class="styledSelect">
@@ -155,14 +156,12 @@
             </div>
             <div class="styledSelect">
               <select name="locationCountry" id="country" onchange="print_state('province',this.selectedIndex);">
-                <option value="<%= buyer.portCountry %>" selected="selected"><%= buyer.portCountry %></option>
-                <option>Select Country</option>
+                <!-- edit_country() will populate this dropdown -->
               </select>
             </div>
             <div class="styledSelect">
               <select name="otherLocationProvince" id="province">
                 <option value="<%= buyer.portProvince %>" selected="selected"><%= buyer.portProvince %></option>
-                <option>Select State/Province</option>
               </select>
             </div><script language="javascript">edit_country("<%= buyer.portCountry %>", "country");</script>
           </section>
