@@ -37,29 +37,29 @@
     </div><!-- END col-sm-4 -->
 
     <div class="col-sm-8">
-      <% if (company.buyer === true) { %>
+      <% if (company.buyer === true && company.supplier === false) { %>
         <%- partial('../partials/update-company/basic-company-details') %>
 
         <%- partial('../partials/update-company/buyer-information') %>
 
-        <%- partial('../partials/update-company/buy-descriptions') %>
+        <%- partial('../partials/update-company/buyer-descriptions') %>
 
-        <%- partial('../partials/update-company/buy-preferences') %>
+        <%- partial('../partials/update-company/buyer-preferences') %>
 
-        <%- partial('../partials/update-company/buy-social-media') %>
+        <%- partial('../partials/update-company/buyer-social-media') %>
       <% } %>
-      <% if (company.supplier === true) { %>
+      <% if (company.supplier === true && company.buyer === false) { %>
         <%- partial('../partials/update-company/basic-company-details') %>
 
         <%- partial('../partials/update-company/supplier-information') %>
 
-        <%- partial('../partials/update-company/production-details') %>
+        <%- partial('../partials/update-company/supplier-production-details') %>
 
-        <%- partial('../partials/update-company/sup-descriptions') %>
+        <%- partial('../partials/update-company/supplier-descriptions') %>
 
-        <%- partial('../partials/update-company/sup-preferences') %>
+        <%- partial('../partials/update-company/supplier-preferences') %>
 
-        <%- partial('../partials/update-company/sup-social-media') %>
+        <%- partial('../partials/update-company/supplier-social-media') %>
       <% } %>
     </div><!-- END col-sm-8 -->
 
