@@ -434,7 +434,67 @@ module.exports = {
     });
   },
 
-  update: function(req, res){
+  update: function(req, res) {
+    var currentUser = req.session.passport.user,
+        async = require('async'),
+        locationsHelper = sails.config.locationsHelper,
+        waterlineHelper = sails.config.waterlineHelper,
+        payload = {},
+        locationsPayload = {},
+        viewLocations = {};
+
+    User.findOne({ id: currentUser }, function(err, user) {
+      if (err) { return res.redirect('/dashboard'); }
+      payload["user"] = user;
+      Company.findOne({ user: payload.user.id }, function(err, company) {
+        if (err) { return res.redirect('/dashboard'); }
+        payload["company"] = company;
+        Location.find().where({ company: payload["company"].id }).exec(function(err, locations) {
+          if (err) { return res.redirect('/dashboard'); }
+          locationsPayload["company"] = locations;
+          viewLocations = locationsHelper.parseLocations(locationsPayload);
+
+          async.parallel(
+              {
+                buyer: function(callback) {
+                  Buyer
+                    .findOne({ company: payload["company"].id })
+                    .exec(function(err, buyer) {
+                      if (err) { callback(err, null); }
+                      else if (!buyer) { callback(null, undefined); }
+                      else {
+                        buyer = waterlineHelper.fixBuyerArrays(buyer);
+                        payload["buyer"] = buyer;
+                        callback(null, buyer);
+                      }
+                    });
+                },
+                supplier: function(callback) {
+                  Supplier
+                    .findOne({ company: payload["company"].id })
+                    .exec(function(err, supplier) {
+                      if (err) { callback(err, null); }
+                      else if (!supplier) { callback(null, undefined); }
+                      else {
+                        supplier = waterlineHelper.fixSupplierArrays(supplier);
+                        payload["supplier"] = supplier;
+                        callback(null, supplier);
+                      }
+                    });
+                }
+              },
+              function(err, data) {
+                console.log("Data is " + JSON.stringify(payload, null, ' '));
+                console.log("Locations is " + JSON.stringify(viewLocations, null, ' '));
+                /* Render views */
+              }
+            ) /* End async */
+        });
+      });
+    });
+  },
+
+  /*update: function(req, res){
     var userId = req.session.passport.user,
         targetUser,
         targetBuyer,
@@ -548,7 +608,7 @@ module.exports = {
         return res.redirect('/dashboard');
       }
     });
-  },
+  },*/
 
   updateBasicCompanyDetails: function(req, res){
     var p = req.params.all(),
