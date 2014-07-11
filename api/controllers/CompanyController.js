@@ -465,8 +465,6 @@ module.exports = {
                       else {
                         buyer = waterlineHelper.fixBuyerArrays(buyer);
                         payload["buyer"] = buyer;
-                        buyer2 = waterlineHelper.fixBuyerArrays(buyer); //temp
-                        payload["buyer2"] = buyer2; //temp
                         callback(null, buyer);
                       }
                     });
@@ -480,21 +478,20 @@ module.exports = {
                       else {
                         supplier = waterlineHelper.fixSupplierArrays(supplier);
                         payload["supplier"] = supplier;
-                        supplier2 = waterlineHelper.fixSupplierArrays(supplier); //temp
-                        payload["supplier2"] = supplier2; //temp
                         callback(null, supplier);
                       }
                     });
                 }
               },
               function(err, data) {
-                //console.log("Data is " + JSON.stringify(payload, null, ' '));
-                //console.log("Locations is " + JSON.stringify(viewLocations, null, ' '));
                 if (payload["buyer"] !== undefined && payload["supplier"] === undefined) {
-                  res.view({ user: payload["user"], company: payload["company"], buyer: payload["buyer"], buyer2: payload["buyer2"], supplier: payload["supplier"], supplier2: payload["supplier2"], companyLocations: viewLocations });
+                  res.view({ user: payload["user"], company: payload["company"], buyer: payload["buyer"], supplier: payload["supplier"], companyLocations: viewLocations });
                 }
                 if (payload["buyer"] === undefined && payload["supplier"] !== undefined) {
-                  res.view({ user: payload["user"], company: payload["company"], buyer: payload["buyer"], buyer2: payload["buyer2"], supplier: payload["supplier"], supplier2: payload["supplier2"], companyLocations: viewLocations });
+                  res.view({ user: payload["user"], company: payload["company"], buyer: payload["buyer"], supplier: payload["supplier"], companyLocations: viewLocations });
+                }
+                if (payload["buyer"] !== undefined && payload["supplier"] !== undefined) {
+                  res.view({ user: payload["user"], company: payload["company"], buyer: payload["buyer"], supplier: payload["supplier"], companyLocations: viewLocations });
                 }
               }
             ) // End async

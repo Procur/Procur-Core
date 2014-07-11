@@ -39,29 +39,37 @@
     <div class="col-sm-8">
       <% if (company.buyer === true && company.supplier === false) { %>
         <%- partial('../partials/update-company/basic-company-details') %>
-
         <%- partial('../partials/update-company/buyer-information') %>
-
         <%- partial('../partials/update-company/buyer-descriptions') %>
-
         <%- partial('../partials/update-company/buyer-preferences') %>
-
         <%- partial('../partials/update-company/buyer-social-media') %>
       <% } %>
       <% if (company.supplier === true && company.buyer === false) { %>
         <%- partial('../partials/update-company/basic-company-details') %>
-
         <%- partial('../partials/update-company/supplier-information') %>
-
         <%- partial('../partials/update-company/supplier-production-details') %>
-
         <%- partial('../partials/update-company/supplier-descriptions') %>
-
         <%- partial('../partials/update-company/supplier-preferences') %>
-
         <%- partial('../partials/update-company/supplier-social-media') %>
+      <% } %>
+      <% if (company.buyer === true && company.supplier === true) { %>
+        <% if (user.activeMode === "buyer") { %>
+          <%- partial('../partials/update-company/basic-company-details') %>
+          <%- partial('../partials/update-company/buyer-information') %>
+          <%- partial('../partials/update-company/buyer-descriptions') %>
+          <%- partial('../partials/update-company/buyer-preferences') %>
+          <%- partial('../partials/update-company/buyer-social-media') %>
+        <% } %>
+        <% if (user.activeMode === "supplier") { %>
+          <%- partial('../partials/update-company/basic-company-details') %>
+          <%- partial('../partials/update-company/supplier-information') %>
+          <%- partial('../partials/update-company/supplier-production-details') %>
+          <%- partial('../partials/update-company/supplier-descriptions') %>
+          <%- partial('../partials/update-company/supplier-preferences') %>
+          <%- partial('../partials/update-company/supplier-social-media') %>
+        <% } %>
       <% } %>
     </div><!-- END col-sm-8 -->
 
   </div>
-</div>
+</div>  
