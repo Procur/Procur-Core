@@ -488,14 +488,14 @@ module.exports = {
                 }
               },
               function(err, data) {
-                console.log("Data is " + JSON.stringify(payload, null, ' '));
-                console.log("Locations is " + JSON.stringify(viewLocations, null, ' '));
-                /* Render views */
+                //console.log("Data is " + JSON.stringify(payload, null, ' '));
+                //console.log("Locations is " + JSON.stringify(viewLocations, null, ' '));
+                // Render views
                 if (payload["buyer"] !== undefined && payload["supplier"] === undefined) {
                   res.view({ user: payload["user"], company: payload["company"], buyer: payload["buyer"], buyer2: payload["buyer2"], supplier: payload["supplier"], supplier2: payload["supplier2"], companyLocations: viewLocations });
                 }
               }
-            ) /* End async */
+            ) // End async
         });
       });
     });
