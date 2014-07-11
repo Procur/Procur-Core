@@ -31,10 +31,9 @@ module.exports.waterlineHelper = {
 
   fixBuyerArrays: function(inObject) {
     var arrFields = ["language","locationName","locationType","locationCity",
-                     "locationProvince","locationCountry","preferredSupplierType",
-                     "preferredSupplierLanguage","preferredSupplierLocation",
-                     "acceptedCurrency","acceptedDeliveryTerms","acceptedPaymentTerms",
-                     "productCategory"];
+                     "locationProvince","locationCountry","preferredSupplierLanguage",
+                     "preferredSupplierLocation","acceptedCurrency","acceptedDeliveryTerms",
+                     "acceptedPaymentTerms","productCategory"];
     var modelKeys = Object.keys(inObject);
     var newObject = {};
 
