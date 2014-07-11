@@ -18,6 +18,10 @@ module.exports.policies = {
   // (`true` allows public access)
   '*': true,
 
+  AuthController: {
+    verifyEmail: ['isAuthenticated']
+  },
+
   DashboardController: {
     index: ['sessionCheck', 'isAuthenticated', 'profileComplete', 'wizardComplete', 'isVerified', 'hasHandle']
   },
