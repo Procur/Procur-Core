@@ -24,10 +24,10 @@
 
     <div class="row ui-tabs ui-widget ui-widget-content ui-corner-all ui-tabs-vertical ui-helper-clearfix" id="tabs">
       <div class="col-sm-4">
-        <% if(user.activeMode == 'buyer') { %>   
+        <% if(user.activeMode == 'buyer') { %>
           <h3>Edit Buyer Profile</h3>
         <% } %>
-        <% if(user.activeMode == 'supplier') { %>   
+        <% if(user.activeMode == 'supplier') { %>
           <h3>Edit Supplier Profile</h3>
         <% } %>
         <div class="featuresColumn">
@@ -186,7 +186,7 @@
               				<input class="address2" type="text" name="companyAddress2" <% if(companyLocations["company-notHq"].addressLine2 !== undefined) { %>value="<%= companyLocations["company-notHq"].addressLine2 %>"<% } else { %> placeholder="Address Line #2"><% } %>
               			</div>
               			<div class="styledSelect">
-              				<select class="companyCountry" name="companyCountry" id="companyCountry" onchange="print_state('companyProvince',this.selectedIndex);"> 
+              				<select class="companyCountry" name="companyCountry" id="companyCountry" onchange="print_state('companyProvince',this.selectedIndex);">
                   			<option value="">Select Country</option>
                   			<option value="1">1</option>
                 			</select>
@@ -197,7 +197,6 @@
                   			<div class="styledSelect inputColumnL">
                     			<select class="companyProvince" name="companyProvince" id="companyProvince">
                       			<option value="">Select Province/State</option>
-                      			<option value="1">Fakeland</option>
                     			</select><script language="javascript">print_country("companyCountry");</script>
                   			</div>
                 			</div>
@@ -208,8 +207,8 @@
                     		</div>
                   		</div>
                 		</div>
-              		
-              
+
+
               			<% if (companyLocations["company-isHq"].id === undefined) { %>
               				<h5>Is the above address the headquarters?</h5>
               				<div>
@@ -240,7 +239,6 @@
                   			<div class="styledSelect inputColumnL">
                     			<select class="hqfield hqcompanyProvince" name="hqProvince" id="hqcompanyProvince">
                       			<option value="">Select Province/State</option>
-                      			<option value="1">Fakeland</option>
                     			</select>
                   			</div><script language="javascript">print_country("hqcompanyCountry");</script>
                 			</div>
@@ -262,16 +260,16 @@
               			</div>
              			</div>
                   <!-- End 2nd Column -->
-                
+
                 </div>
               </form>
             </div>
           </div><div><input type="submit"></div>
-        
+
       </div>
     </div>
 
-        
+
 
 
         <!-- ACTIVE MODE BUYER  -->
@@ -280,7 +278,7 @@
             <div id="buyerInformation">
               <h4>Buyer Information</h4>
                 <div class="formWrapper">
-                	<h5>Logo Image</h5>  
+                	<h5>Logo Image</h5>
                   	<div><img src="<%= buyer.logoUrl %>"></div>
                   	<form id="buyerLogoForm" action="/buyer/update/logo" method="post" enctype="multipart/form-data">
                       <input type="file" name="logo" accept="image/*"/>
@@ -551,10 +549,10 @@
 
                       <h5>Twitter</h5>
                       <div><input type="text" name="twitter" <% if(buyer.twitter !== undefined) { %>value="<%= buyer.twitter %>"<% } else { %> placeholder="Twitter" <% } %>></div>
-                      
+
                       <h5>Google+</h5>
                       <div><input type="text" name="google" <% if(buyer.google !== undefined) { %>value="<%= buyer.google %>"<% } else { %> placeholder="Google" <% } %>></div>
-                      
+
                       <h5>LinkedIn</h5>
                       <div><input type="text" name="linkedin" <% if(buyer.linkedin !== undefined) { %>value="<%= buyer.linkedin %>"<% } else { %> placeholder="Linkedin" <% } %>></div>
 
