@@ -19,7 +19,17 @@ module.exports.policies = {
   '*': true,
 
   AuthController: {
-    verifyEmail: ['isAuthenticated']
+    verifyEmail: ['isAuthenticated'],
+    process: ['isNotAuthenticated'],
+    register: ['isNotAuthenticated'],
+    processChangePassword: ['isAuthenticated'],
+    logout: ['isAuthenticated'],
+    pleaseVerify: ['isAuthenticated'],
+    forgotPassword: ['isNotAuthenticated'],
+    selectNewPassword: ['isNotAuthenticated'],
+    resetRequestMade: ['isNotAuthenticated'],
+    processSelectNewPassword: ['isNotAuthenticated'],
+    passwordResetSuccess: ['isNotAuthenticated']
   },
 
   DashboardController: {
