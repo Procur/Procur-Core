@@ -101,7 +101,7 @@ input {
   margin: 4px 0px 4px;
   height: 18px;
   font-family: 'Roboto', sans-serif;
-  font-weight: 100;
+  font-weight: 400;
   font-size: 11px;
   padding: 0px 4px;
   -webkit-appearance: none;
@@ -810,6 +810,12 @@ transition: all 200ms ease-in-out;
 
 /* Drop Down change font */
 
-.your-class::-webkit-input-placeholder {
-	color: #ff6600;
+#regWizard input::-webkit-input-placeholder {
+	color: #A9A9A9;
+	font-weight: 400;
+}
+
+#regWizard select::-webkit-select-placeholder {
+	color: #A9A9A9;
+	font-weight: 400;
 }
