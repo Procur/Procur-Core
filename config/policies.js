@@ -64,17 +64,26 @@ module.exports.policies = {
 
   BuyerController: {
     index: ['sessionCheck', 'isAuthenticated', 'profileComplete'],
-    create: ['sessionCheck', 'isAuthenticated', 'profileComplete'],
-    update: ['sessionCheck', 'isAuthenticated', 'profileComplete', 'wizardComplete'],
+    create: ['sessionCheck', 'isAuthenticated', 'profileComplete', 'isBuyer'],
+    update: ['sessionCheck', 'isAuthenticated', 'profileComplete', 'wizardComplete', 'isBuyer'],
     destroy: ['sessionCheck', 'isAuthenticated', 'profileComplete', 'wizardComplete', 'denyAllAccess'],
-    updateLogo: ['sessionCheck', 'isAuthenticated', 'profileComplete', 'wizardComplete']
+    updateLogo: ['sessionCheck', 'isAuthenticated', 'profileComplete', 'wizardComplete'],
+    updateInformation: ['sessionCheck', 'isAuthenticated', 'profileComplete', 'wizardComplete', 'isBuyer'],
+    updateDescriptions: ['sessionCheck', 'isAuthenticated', 'profileComplete', 'wizardComplete', 'isBuyer'],
+    updatePreferences: ['sessionCheck', 'isAuthenticated', 'profileComplete', 'wizardComplete', 'isBuyer'],
+    updateSocialOutlets: ['sessionCheck', 'isAuthenticated', 'profileComplete', 'wizardComplete', 'isBuyer']
   },
 
   SupplierController: {
     index: ['sessionCheck', 'isAuthenticated', 'profileComplete'],
-    create: ['sessionCheck', 'isAuthenticated', 'profileComplete'],
-    update: ['sessionCheck', 'isAuthenticated', 'profileComplete', 'wizardComplete'],
-    destroy: ['sessionCheck', 'isAuthenticated', 'profileComplete', 'wizardComplete', 'denyAllAccess']
+    create: ['sessionCheck', 'isAuthenticated', 'profileComplete', 'isSupplier'],
+    update: ['sessionCheck', 'isAuthenticated', 'profileComplete', 'wizardComplete', 'isSupplier'],
+    destroy: ['sessionCheck', 'isAuthenticated', 'profileComplete', 'wizardComplete', 'denyAllAccess'],
+    updateLogo: ['sessionCheck', 'isAuthenticated', 'profileComplete', 'wizardComplete', 'isSupplier'],
+    updateInformation: ['sessionCheck', 'isAuthenticated', 'profileComplete', 'wizardComplete', 'isSupplier'],
+    updateDescriptions: ['sessionCheck', 'isAuthenticated', 'profileComplete', 'wizardComplete', 'isSupplier'],
+    updatePreferences: ['sessionCheck', 'isAuthenticated', 'profileComplete', 'wizardComplete', 'isSupplier'],
+    updateSocialOutlets: ['sessionCheck', 'isAuthenticated', 'profileComplete', 'wizardComplete', 'isSupplier']
   }
 
   /*
