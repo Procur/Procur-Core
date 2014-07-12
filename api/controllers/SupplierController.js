@@ -304,48 +304,33 @@ module.exports = {
   },
 
   updateDescriptions: function (req, res) {
-    var activeUser = req.session.passport.user,
-        p = req.body;
-    User.findOne({ id: activeUser }, function(err, user){
-      if(err){ return res.redirect('/dashboard'); }
-      if(user !== undefined){
-        Company.findOne({ user: user.id }, function(err, company){
-          if(err){ return res.redirect('/dashboard'); }
-          if(company !== undefined){
-            Supplier.findOne({ company: company.id }, function(err, supplier){
-              if(err){ return res.redirect('/dashboard'); }
-              if(supplier !== undefined){
-                Supplier.update(supplier.id, {
-                  companyDescription: p.companyDescription,
-                  environmentalSustainability: p.environmentalSustainability,
-                  qualitySourcing: p.qualitySourcing,
-                  workplaceSafety: p.workplaceSafety,
-                  laborEducationTraining: p.laborEducationTraining,
-                  reinvestment: p.reinvestment
-                }, function(err, supplier){
-                  if(err){ return res.redirect('/company/update#descriptionsSupplier'); }
-                  if(supplier){
-                    return "success";
-                  }
-                  else {
-                    return "failed"
-                  }
-                });
-              }
-              else {
-                return res.redirect('/dashboard');
-              }
-            });
-          }
-          else {
-            return res.redirect('/dashboard');
-          }
+    var user = req.session.passport.user;
+    var b = req.body;
+
+    User.findOne({ id: user }, function(err, user) {
+      if (err) { /* do something here */ }
+      if (user === undefined) { /* do something here */ }
+      Company.findOne({ user: user.id }, function(err, company) {
+        if (err) { /* do something here */ }
+        if (company === undefined) { /* do something here */ }
+        Supplier.findOne({ company: company.id }, function(err, supplier) {
+          if (err) { /* do something here */ }
+          if (supplier === undefined) { /* do something here */ }
+          Supplier.update(supplier.id, {
+            companyDescription: b.companyDescription,
+            environmentalSustainability: b.environmentalSustainability,
+            qualitySourcing: b.qualitySourcing,
+            workplaceSafety: b.workplaceSafety,
+            laborEducationTraining: b.laborEducationTraining,
+            reinvestment: b.reinvestment
+          }).exec(function(err, newSupplier) {
+            if (err) { /* do something here */ }
+            return res.redirect('/company/update#descriptionsSupplier')
+          });
         });
-      }
-      else{
-        return res.redirect('/dashboard');
-      }
+      });
     });
+
   },
 
   updatePreferences: function (req, res) {
