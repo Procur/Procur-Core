@@ -508,7 +508,6 @@ module.exports = {
 
     User.findOne({ id: user }, function(err, user) { 
       if (err) { /* do something here */ }
-      if (user) { console.log("User is " + user.firstName ); }
       Company.findOne({ user: user.id }, function(err, company) {
         if (err) { /* do something here */ }
         companyID = company.id;

@@ -401,6 +401,11 @@ module.exports.routes = {
     action: 'updateInformation'
   },
 
+  'post /supplier/update/productionDetails': {
+    controller: 'SupplierController',
+    action: 'updateProductionDetails'
+  },
+
   'post /supplier/update/descriptions': {
     controller: 'SupplierController',
     action: 'updateDescriptions'

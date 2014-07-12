@@ -57,20 +57,17 @@
         <div><input type="text" name="portCity" value="<%= supplier.portCity %>" placeholder="City"></div>
 
         <div class="styledSelect">
-          <select name="portCountry" id="portCountry" onchange="print_state('province',this.selectedIndex);">
+          <select name="portCountry" id="portCountry" onchange="print_state('portProvince',this.selectedIndex);">
             <!-- edit_country() will populate this dropdown -->
           </select>
         </div>
 
         <div class="styledSelect">
-          <select name="otherLocationProvince" id="province">
+          <select name="portProvince" id="portProvince">
             <option value="<%= supplier.portProvince %>" selected="selected"><%= supplier.portProvince %></option>
           </select>
         </div><script language="javascript">edit_country("<%= supplier.portCountry %>", "portCountry");</script>
       </section>
-
-      <h5>Product Specialty</h5>
-      <div><input type="text" name="primaryProductSpecialty" value="<%= supplier.primaryProductSpecialty %>" placeholder="Primary Product Specialty"></div>
 
       <div><input type="submit"></div>
     </form>

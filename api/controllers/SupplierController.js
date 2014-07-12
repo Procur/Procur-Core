@@ -269,6 +269,40 @@ module.exports = {
     });
   },
 
+  updateProductionDetails: function(req, res) {
+    var user = req.session.passport.user;
+    var b = req.body;
+
+    User.findOne({ id: user }, function(err, user) {
+      if (err) { /* do something here */ }
+      if (user === undefined) { /* do something here */ }
+      Company.findOne({ user: user.id }, function(err, company) {
+        if (err) { /* do something here */ }
+        if (company === undefined) { /* do something here */ }
+        Supplier.findOne({ company: company.id }, function(err, supplier) {
+          if (err) { /* do something here */ }
+          if (supplier === undefined) { /* do something here */ }
+          Supplier.update(supplier.id, {
+            annualSalesValue: b.annualSalesValue,
+            totalFactorySize: b.totalFactorySize,
+            totalQCStaff: b.totalQCStaff,
+            locationName: [b.locationName],
+            locationType: [b.locationType],
+            locationCountry: [b.locationCountry],
+            locationProvince: [b.locationProvince],
+            locationCity: [b.locationCity],
+            portCity: b.portCity,
+            portCountry: b.portCountry,
+            portProvince: b.portProvince
+          }).exec(function(err, newSupplier) {
+            if (err) { /* do something here */ }
+            return res.redirect('/company/update#productionDetails');
+          });
+        });
+      });
+    });
+  },
+
   updateDescriptions: function (req, res) {
     var activeUser = req.session.passport.user,
         p = req.body;
