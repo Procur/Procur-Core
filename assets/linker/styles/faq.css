@@ -60,10 +60,27 @@
 #faq #nav.affix {
   position: fixed;
   top: 0;
-  width:18%;
+  width:28%;
 }
 
+@-moz-document url-prefix() {
+	#faq #nav.affix {
+  position: fixed;
+  top: 0;
+  width:24%;
+}
+}
 
+/*
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+ #faq #nav.affix {
+  position: fixed;
+  top: 0;
+  width:27%;
+} 
+}
+*/
 
 #faq #nav > .navbar-inner {
   border-left: 0;
