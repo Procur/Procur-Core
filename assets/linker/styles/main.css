@@ -809,3 +809,7 @@ transition: all 200ms ease-in-out;
 
 
 /* Drop Down change font */
+
+.your-class::-webkit-input-placeholder {
+	color: #ff6600;
+}
