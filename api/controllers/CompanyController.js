@@ -514,7 +514,7 @@ module.exports = {
         if (err) { /* do something here */ }
         if (company) { console.log("Company is " + company.name); }
         companyID = company.id;
-        Company.update(company, {
+        Company.update(companyID, {
           name: b.name,
           phoneNumberCountryCode: b.phoneNumberCountryCode,
           phoneNumber: b.phoneNumber,
@@ -527,6 +527,7 @@ module.exports = {
           industry: b.companyIndustry,
           employeeCount: b.employeeCount
         }, function(err, newCompany) {
+          if (err) { /* do something here */ }
           Location.find({ company: companyID}, function(err, locations) {
             numOfLocations = locations.length;
             if (b.companyIsHq == "on" && numOfLocations === 1) {
@@ -550,6 +551,32 @@ module.exports = {
             }
             if (b.companyIsHq == undefined && numOfLocations === 2) {
               console.log("The checkbox is NOT checked and there are TWO locations.");
+              var nonhq, hq;
+              locations.forEach(function(location) {
+                if (location.isHq === false) { nonhq = location; }
+                if (location.isHq === true) { hq = location; }
+              });
+
+              Location.update(nonhq.id, {
+                addressLine1: b.companyAddress1,
+                addressLine2: b.companyAddress2,
+                country: b.companyCountry,
+                province: b.companyProvince,
+                postalCode: b.companyPostalCode
+              }).exec(function(err, newNonHQ) {
+                if (err) { /* do something here */ }
+              });
+
+              Location.update(hq.id, {
+                addressLine1: b.hqAddress1,
+                addressLine2: b.hqAddress2,
+                country: b.hqCountry,
+                province: b.hqProvince,
+                postalCode: b.hqPostalCode
+              }).exec(function(err, newHQ) {
+                if (err) { /* do something here */ }
+              });
+              return res.redirect('/company/update'); /* Success message? */
             }
           });
           //return res.redirect('/company/update');
