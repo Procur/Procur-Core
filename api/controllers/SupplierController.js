@@ -339,21 +339,17 @@ module.exports = {
     User.findOne({ id: user }, function(err, user) {
       if (err) { /* do something here */ }
       if (user === undefined) { /* do something here */ }
-      console.log("User is " + user.firstName);
       Company.findOne({ user: user.id }, function(err, company) {
         if (err) { /* do something here */ }
         if (company === undefined) { /* do something here */ }
-        console.log("Company is " + company.name);
         Supplier.findOne({ company: company.id }, function(err, supplier) {
           if (err) { /* do something here */ }
           if (supplier === undefined) { /* do something here */ }
-          console.log("Old Supplier is " + JSON.stringify(supplier, null, ' '));
           Supplier.update(supplier.id, {
             preferredBuyerType: b.preferredBuyerType,
             preferredBuyerLanguage: [b.preferredBuyerLanguage],
             preferredBuyerLocation: [b.preferredBuyerLocation]
           }).exec(function(err, newSupplier) {
-            console.log("New Supplier is " + JSON.stringify(newSupplier, null, ' '));
             if (err) { /* do something here */ }
             return res.redirect('/company/update#preferencesSupplier')
           });
