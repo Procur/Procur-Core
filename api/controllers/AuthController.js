@@ -172,15 +172,15 @@ module.exports = {
             };
             smtpTransport.sendMail(mailOptions, function(err, response){
               if(err){res.serverError();}
-              req.flash('message', 'Password reset request sent.');
+              req.flash('error', 'Password reset request sent.');
               res.redirect('/forgotpassword');
             });
           });
         });
       }
       else {
-        req.flash('message', 'User not found.');
-        res.redirect('/forgotpassword');
+        //req.flash('message', 'User not found.');
+        //res.redirect('/forgotpassword');
       }
     });
   },
