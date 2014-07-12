@@ -93,41 +93,39 @@ If the amount of data in your local MongoDB instance becomes to great to comfort
 ##Routes
 
 ###Marketing Pages
-`/` - Displays front page<br/>
-`/features` - Features page<br/>
-`/pricing` - Pricing page<br/>
-`/about` - About page<br/>
-`/earlyaccess` - Early Access page<br/>
-`/faq` - FAQ page<br/>
-`/privacy` - Privacy Policy page<br/>
+`/` - Displays front page  
+`/features` - Features page  
+`/pricing` - Pricing page  
+`/about` - About page  
+`/earlyaccess` - Early Access page  
+`/faq` - FAQ page  
+`/privacy` - Privacy Policy page  
 
 
 ###Action Views
 ####GET
-`/login` - Login Page<br/>
-`/signup` - Registration page<br/>
-`/contact` - Contact page<br/>
-`/contact/subscribe` - Mailing list subscription action<br/>
+`/login` - Login Page  
+`/signup` - Registration page  
+`/contact` - Contact page  
+`/contact/subscribe` - Mailing list subscription action  
 
 ####POST
-`/contact` - Submits contact message and sends email to Procur<br/>
+`/contact` - Submits contact message and sends email to Procur  
 
 ###Authentication Routes
 ####GET
-`/logout` - Destroys the user session and redirects to `/goodbye`<br/>
-`/goodbye` - Logout Confirmation view<br/>
-`/pleaseverify` - View asking user to click the activation email before continuing to `/dashboard`<br/>
-`/verify` - Handles email activation link click and redirects to next step in wizard or to `/dashboard` if wizard is complete<br/>
-`/resendverification` - Handles user request to resend activation email<br/>
-`/forgotpassword` - Forgot password view<br/>
-`/resetpassword` - View for new password selection<br/>
-`/resetpassword/confirm` - Confirmation page for password reset request<br/>
+`/logout` - Destroys the user session and redirects to `/goodbye`  
+`/goodbye` - Logout Confirmation view  
+`/pleaseverify` - View asking user to click the activation email before continuing to `/dashboard`  
+`/verify` - Handles email activation link click and redirects to next step in wizard or to `/dashboard` if wizard is complete  
+`/resendverification` - Handles user request to resend activation email  
+`/forgotpassword` - Forgot password view  
+`/resetpassword` - View for new password selection  
+`/resetpassword/confirm` - Confirmation page for password reset request  
 
 ####POST
-`/login` - Authenticates the user<br/>
-`/register` - Creates a user account<br/>
-`/user/changepassword` - Changes the password of the authenticated user<br/>
-`/forgotpassword` - Handles Email input for 'Forgot Password'<br/>
-`/resetpassword` - Processes password change<br/>
-
-
+`/login` - Authenticates the user  
+`/register` - Creates a user account  
+`/user/changepassword` - Changes the password of the authenticated user  
+`/forgotpassword` - Handles Email input for 'Forgot Password'  
+`/resetpassword` - Processes password change  
