@@ -258,7 +258,6 @@ module.exports.routes = {
     action: 'setDefault'
   },
 
-
   //BUYER ROUTES
   'post /buyer/create': {
     controller: 'BuyerController',

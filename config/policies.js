@@ -48,6 +48,7 @@ module.exports.policies = {
   },
 
   CompanyController: {
+    create: ['sessionCheck', 'isAuthenticated', 'hasCompanyDenyAction'],
     buyerOrSupplier: ['sessionCheck', 'isAuthenticated', 'profileComplete'],
     createBuyer: ['sessionCheck', 'isAuthenticated', 'profileComplete'],
     createSupplier: ['sessionCheck', 'isAuthenticated', 'profileComplete'],
