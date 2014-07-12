@@ -39,7 +39,9 @@ module.exports.policies = {
   UserController: {
     welcome: ['sessionCheck', 'isAuthenticated'],
     pleaseVerify: ['sessionCheck', 'isAuthenticated', 'wizardComplete'],
-    updateAccount: ['sessionCheck', 'isAuthenticated', 'profileComplete', 'wizardComplete']
+    updateAccount: ['sessionCheck', 'isAuthenticated', 'profileComplete', 'wizardComplete'],
+    processUpdateAccount: ['sessionCheck', 'isAuthenticated', 'profileComplete', 'wizardComplete'],
+    toggleMode: ['sessionCheck', 'isAuthenticated', 'profileComplete', 'wizardComplete', 'isBuyerAndSupplier']
   },
 
   HomeController: {
