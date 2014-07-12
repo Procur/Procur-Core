@@ -109,10 +109,10 @@ module.exports.routes = {
     action: 'faq'
   }, //Displays FAQ Page
 
-  /*'get /support': {
+  'get /support': {
     controller: 'HomeController',
     action: 'support'
-  },*/ //Displays Support Page
+  }, //Displays Support Page
 
   'get /privacy': {
     controller: 'HomeController',
