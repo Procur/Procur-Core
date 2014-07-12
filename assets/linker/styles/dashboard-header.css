@@ -1,0 +1,91 @@
+/* DASHBOARD FOOTER */
+
+#dashboard-footer {
+  background: #333;
+}
+
+#dashboard-footer .navbar,
+#dashboard-footer .navbar-default,
+#dashboard-footer .navbar-fixed-top {
+  border: 0px none;
+  background: #333;
+}
+
+#dashboard-footer .navbar-text a {
+  color: #e3e3e3;
+}
+
+#dashboard-footer .linkText a {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 300;
+  letter-spacing: 0.08em;
+  font-size: 10px;
+}
+
+#dashboard-footer .linkText a:hover {
+  color: #807e7e;
+  text-decoration: none;
+}
+
+#dashboard-footer .linkText a i {
+  font-size: 12px;
+  margin-right: 5px;
+  color: #807e7e;
+}
+
+#dashboard-footer .navbar-right p {
+  margin-left: 8px;
+  margin-right: 8px;
+  font-size: 11px;
+}
+
+#dashboard-footer .socialBar {
+  display: inline;
+}
+
+#dashboard-footer .socialBar p {
+  margin-left: 8px;
+  margin-right: 8px;
+}
+
+#dashboard-footer .socialBar p a {
+  color: #807e7e;
+}
+
+#dashboard-footer .socialBar p a:hover {
+  color: white;
+}
+
+@media (max-width: 991px) {
+
+  #dashboard-footer nav {
+    padding-left: 25px;
+  }
+
+  #dashboard-footer .navbar-left {
+    float: none;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0px;
+    margin: 0px;
+  }
+
+  #dashboard-footer .navbar-right {
+    float: none;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0px;
+    margin: 0px;
+  }
+
+  #dashboard-footer .navbar-left p.navbar-text {
+    margin: 15px 15px 5px;
+  }
+
+  #dashboard-footer .navbar-right p.navbar-text {
+    margin: 5px 15px 15px;
+  }
+
+}
