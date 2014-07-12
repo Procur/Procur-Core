@@ -48,10 +48,8 @@
           <h5>Company Industry</h5>
           <div class="styledSelect">
             <select name="companyIndustry">
-            <option value="<%= company.industry %>" selected="selected">
-              <%= company.industry %>
-            </option>
-            <%- partial('../edit-dropdowns/edit-industry') %>
+              <option value="<%= company.industry %>" selected="selected"><%= company.industry %></option>
+              <%- partial('../edit-dropdowns/edit-industry') %>
             </select>
           </div><br/>
 
@@ -68,7 +66,7 @@
         </div><!-- END col-sm-6 (RIGHT) -->
 
       </div><!-- END row -->
+      <div><input type="submit"></div>
     </form>
-    <div><input type="submit"></div>
   </div><!-- END .formWrapper -->
 </div><!-- END #companyDetails -->
