@@ -5,7 +5,7 @@
             <div class="row">
                 <div id="textContainer">
                     <div class="col-lg-5 col-md-6 col-sm-5 col-xs-5" id="nav-wrapper">
-                        <div id="nav" class="navbar" data-spy="affix" data-offset-top="115" data-offset-bottom="200">
+                        <div id="nav" class="navbar" data-spy="affix" data-offset-top="115">
                             <div class="navbar-example">
                                 <h2>SUPPORT</h2>
                                 <ul class="nav nav-tabs" role="tablist">
@@ -88,9 +88,3 @@
 </div>
 
 <%- partial('../partials/dashboard-footer.ejs') %>
-
-<!-- THESE ADD ATTRIBUTES TO THE BODY ELEMENT SO THAT SCROLLSPY WILL WORK -->
-<script>
-    document.getElementsByTagName("body")[0].setAttribute("data-spy","scroll");
-    document.getElementsByTagName("body")[0].setAttribute("data-target",".navbar-example");
-</script>
