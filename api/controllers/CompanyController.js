@@ -501,7 +501,6 @@ module.exports = {
   },
 
   updateBasicCompanyDetails: function(req, res) {
-    console.log("We're in the controller.");
     var user = req.session.passport.user;
     var b = req.body;
     var companyID;
@@ -512,7 +511,6 @@ module.exports = {
       if (user) { console.log("User is " + user.firstName ); }
       Company.findOne({ user: user.id }, function(err, company) {
         if (err) { /* do something here */ }
-        if (company) { console.log("Company is " + company.name); }
         companyID = company.id;
         Company.update(companyID, {
           name: b.name,
@@ -530,6 +528,7 @@ module.exports = {
           if (err) { /* do something here */ }
           Location.find({ company: companyID}, function(err, locations) {
             numOfLocations = locations.length;
+
             if (b.companyIsHq == "on" && numOfLocations === 1) {
               console.log("The checkbox IS checked and there is ONE location.");
               Location.update(locations[0].id, {
@@ -543,12 +542,61 @@ module.exports = {
                 return res.redirect('/company/update'); /* Success message? */
               });
             }
-            if (b.companyisHq == "on" && numOfLocations === 2) {
+
+            if (b.companyIsHq == "on" && numOfLocations === 2) {
               console.log("The checkbox IS checked and there are TWO locations.");
+              var nonhq, hq;
+              locations.forEach(function(location) {
+                if (location.isHq === false) { nonhq = location; }
+                if (location.isHq === true) { hq = location; }
+              });
+
+              Location.update(hq.id, {
+                addressLine1: b.companyAddress1,
+                addressLine2: b.companyAddress2,
+                country: b.companyCountry,
+                province: b.companyProvince,
+                postalCode: b.companyPostalCode
+              }).exec(function(err, updatedHq) {
+                if (err) { /* do something here */ }
+              });
+
+              Location.destroy({ id: nonhq.id }).exec(function(err){
+                if (err) { /* do something here */ }
+              });
+
+              return res.redirect('/company/update');
             }
-            if (b.companyIsHq == undefined && numOfLocations === 1) {
+
+            if (b.companyIsHq == undefined && numOfLocations === 1) {  //LOOK INTO THIS MORE
               console.log("The checkbox is NOT checked and there is ONE location.");
+
+              Location.update(locations[0].id, {
+                addressLine1: b.hqAddress1,
+                addressLine2: b.hqAddress2,
+                country: b.hqcompanyCountry,
+                province: b.hqcompanyProvince,
+                postalCode: b.hqPostalCode
+              }).exec(function(err, updatedHQ) {
+                if (err) { /* do something here */ }
+              });
+
+              Location.create({
+                company: companyID,
+                addressLine1: b.companyAddress1,
+                addressLine2: b.companyAddress2,
+                country: b.companyCountry,
+                province: b.companyProvince,
+                postalCode: b.companyPostalCode,
+                isHq: false,
+                type: "Other"
+              }, function(err, newLocation) {
+                if (err) { /* do something here */ }
+              });
+
+              return res.redirect('/company/update');
             }
+
             if (b.companyIsHq == undefined && numOfLocations === 2) {
               console.log("The checkbox is NOT checked and there are TWO locations.");
               var nonhq, hq;
@@ -570,8 +618,8 @@ module.exports = {
               Location.update(hq.id, {
                 addressLine1: b.hqAddress1,
                 addressLine2: b.hqAddress2,
-                country: b.hqCountry,
-                province: b.hqProvince,
+                country: b.hqcompanyCountry,
+                province: b.hqcompanyProvince,
                 postalCode: b.hqPostalCode
               }).exec(function(err, newHQ) {
                 if (err) { /* do something here */ }
@@ -579,7 +627,6 @@ module.exports = {
               return res.redirect('/company/update'); /* Success message? */
             }
           });
-          //return res.redirect('/company/update');
         });
       });
     });
