@@ -423,6 +423,7 @@ text-decoration: none;
 }
 
 .middleHeader {
+  margin-top: 25px;
   width: 100%;
   background: #5dc672;
 }
