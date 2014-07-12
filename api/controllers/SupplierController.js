@@ -359,48 +359,31 @@ module.exports = {
   },
 
   updateSocialOutlets: function (req, res) {
-    var activeUser = req.session.passport.user,
-        p = req.body;
-    User.findOne({ id: activeUser }, function(err, user){
-      if(err){ return res.redirect('/dashboard'); }
-      if(user !== undefined){
-        Company.findOne({ user: user.id }, function(err, company){
-          if(err){ return res.redirect('/dashboard'); }
-          if(company !== undefined){
-            Supplier.findOne({ company: company.id }, function(err, supplier){
-              if(err){ return res.redirect('/dashboard'); }
-              if(supplier !== undefined){
-                Supplier.update(supplier.id, {
-                  facebook: p.facebook,
-                  twitter: p.twitter,
-                  google: p.google,
-                  linkedin: p.linkedin,
-                  pinterest: p.pinterest,
-                  instagram: p.instagram,
-                  tumblr: p.tumblr
-                }, function(err, supplier){
-                  if(err){ return res.redirect('/company/update#socialOutletsBuyer') }
-                  if(supplier){
-                    return res.send('success');
-                  }
-                  else{
-                    return res.send('failed');
-                  }
-                });
-              }
-              else {
-                return res.redirect('/dashboard');
-              }
-            });
-          }
-          else {
-            return res.redirect('/dashboard');
-          }
+    var user = req.session.passport.user;
+    var b = req.body;
+    User.findOne({ id: user }, function(err, user) {
+      if (err) { /* do something here */ }
+      if (user === undefined) { /* do something here */ }
+      Company.findOne({ user: user.id }, function(err, company) {
+        if (err) { /* do something here */ }
+        if (company === undefined) { /* do something here */ }
+        Supplier.findOne({ company: company.id }, function(err, supplier) {
+          if (err) { /* do something here */ }
+          if (supplier === undefined) { /* do something here */ }
+          Supplier.update(supplier.id, {
+            facebook: b.facebook,
+            twitter: b.twitter,
+            google: b.google,
+            linkedin: b.linkedin,
+            pinterest: b.pinterest,
+            instagram: b.instagram,
+            tumblr: b.tumblr
+          }).exec(function(err, newSupplier) {
+            if (err) { /* do something here */ }
+            return res.redirect('/company/update#socialOutletsSupplier')
+          });
         });
-      }
-      else{
-        return res.redirect('/dashboard');
-      }
+      });
     });
   },
 
