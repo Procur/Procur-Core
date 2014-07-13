@@ -14,8 +14,8 @@
             <div class="col-sm-6">
 
               <h4>Company Name*</h4>
-              <div class="breakForm"><input id="desiredCompanyName" type="text" name="companyName" placeholder="Your Company Name">
-              <span id="desiredCompanyNameStatus"></span></div>
+              <div class="breakForm"><input id="desiredCompanyName" type="text" name="companyName" placeholder="Your Company Name"></div>
+              <!--<span id="desiredCompanyNameStatus"></span></div> -->
 
               <!-- Telephone Info -->
               <h4>Company Phone*</h4>
@@ -50,7 +50,7 @@
               <h4>Official Business Address*</h4>
               <div><input class="address1" type="text" name="companyAddress1" placeholder="Address Line #1"></div>
               <div><input class="address2" type="text" name="companyAddress2" placeholder="Address Line #2"></div>
-              <div class="styledSelect"><select class="companyCountry" name="companyCountry" id="companyCountry" onchange="print_state('companyProvince',this.selectedIndex);"> 
+              <div class="styledSelect"><select class="companyCountry" name="companyCountry" id="companyCountry" onchange="print_state('companyProvince',this.selectedIndex);">
                   <option value="">Select Country</option>
                   <option value="1">1</option>
                 </select>
@@ -61,7 +61,7 @@
                   <div class="styledSelect inputColumnL">
                     <select class="companyProvince" name="companyProvince" id="companyProvince">
                       <option value="">Select Province/State</option>
-                      
+
                     </select><script language="javascript">print_country("companyCountry");</script>
 
                   </div><span id="noCountryWarning"></span>
@@ -86,7 +86,6 @@
               <div class="styledSelect">
                 <select class="hqfield hqcompanyCountry" name="hqCountry" id="hqcompanyCountry" onchange="print_state('hqcompanyProvince',this.selectedIndex);">
                   <option value="">Select Country</option>
-                  <option value="1">1</option>
                 </select>
               </div>
 
@@ -95,7 +94,6 @@
                   <div class="styledSelect inputColumnL">
                     <select class="hqfield hqcompanyProvince" name="hqProvince" id="hqcompanyProvince">
                       <option value="">Select Province/State</option>
-                      <option value="1">Fakeland</option>
                     </select>
                   </div><span id="noHQCountryWarning"></span><script language="javascript">print_country("hqcompanyCountry");</script>
                 </div>
@@ -111,7 +109,8 @@
               <div class="styledSelect"><select name="companyEmployeeCount">
                 <%- partial('../partials/dropdowns/total-employees') %>
               </select></div>
-
+							<div><div class="checkboxtext"><input class="checkbox terms" type="checkbox" name="agreeTerms">I have read and agree to the <a href="/termsofservice">Terms of Service</a> and <a href="/privacy">Privacy Policy</a>. </div></div>
+							<div><input class="checkbox" type="checkbox" name="responsibleParty"><div class="checkboxtext">I assert than I am authorized by the company I enter above to use Procur.com on their behalf in accordance with the Terms of Service and Privacy Policy.</div></div>
             </div><!-- End of Second Column -->
           </div><!-- End "row" -->
         </div><!-- End "col-sm-6 col-sm-offset-3 fieldBox" -->

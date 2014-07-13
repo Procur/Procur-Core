@@ -18,6 +18,20 @@ module.exports.policies = {
   // (`true` allows public access)
   '*': true,
 
+  AuthController: {
+    verifyEmail: ['isAuthenticated'],
+    process: ['isNotAuthenticated'],
+    register: ['isNotAuthenticated'],
+    processChangePassword: ['isAuthenticated'],
+    logout: ['isAuthenticated'],
+    pleaseVerify: ['isAuthenticated'],
+    forgotPassword: ['isNotAuthenticated'],
+    selectNewPassword: ['isNotAuthenticated'],
+    resetRequestMade: ['isNotAuthenticated'],
+    processSelectNewPassword: ['isNotAuthenticated'],
+    passwordResetSuccess: ['isNotAuthenticated']
+  },
+
   DashboardController: {
     index: ['sessionCheck', 'isAuthenticated', 'profileComplete', 'wizardComplete', 'isVerified', 'hasHandle']
   },
@@ -25,15 +39,18 @@ module.exports.policies = {
   UserController: {
     welcome: ['sessionCheck', 'isAuthenticated'],
     pleaseVerify: ['sessionCheck', 'isAuthenticated', 'wizardComplete'],
-    updateAccount: ['sessionCheck', 'isAuthenticated', 'profileComplete', 'wizardComplete']
+    updateAccount: ['sessionCheck', 'isAuthenticated', 'profileComplete', 'wizardComplete'],
+    processUpdateAccount: ['sessionCheck', 'isAuthenticated', 'profileComplete', 'wizardComplete'],
+    toggleMode: ['sessionCheck', 'isAuthenticated', 'profileComplete', 'wizardComplete', 'isBuyerAndSupplier']
   },
 
-  AuthController: {
-    test: 'isAuthenticated',
-    //register: ['isAuthenticatedReverse']
+  HomeController: {
+    signup: ['isNotAuthenticated'],
+    login: ['isNotAuthenticated']
   },
 
   CompanyController: {
+    create: ['sessionCheck', 'isAuthenticated', 'hasCompanyDenyAction'],
     buyerOrSupplier: ['sessionCheck', 'isAuthenticated', 'profileComplete'],
     createBuyer: ['sessionCheck', 'isAuthenticated', 'profileComplete'],
     createSupplier: ['sessionCheck', 'isAuthenticated', 'profileComplete'],
@@ -41,7 +58,7 @@ module.exports.policies = {
     update: ['sessionCheck', 'isAuthenticated', 'profileComplete', 'wizardComplete'],
     setUpdate: ['sessionCheck', 'isAuthenticated', 'profileComplete', 'wizardComplete'],
     selectDefault: ['sessionCheck', 'isAuthenticated', 'profileComplete'],
-    setDefault: ['sessionCheck', 'isAuthenticated', 'profileComplete'],
+    setDefault: ['sessionCheck', 'isAuthenticated', 'profileComplete', 'isBuyerAndSupplier'],
     setBoth: ['sessionCheck', 'isAuthenticated', 'profileComplete'],
     supplierWizard: ['sessionCheck', 'isAuthenticated', 'profileComplete'],
     buyerWizard: ['sessionCheck', 'isAuthenticated', 'profileComplete']
@@ -49,17 +66,26 @@ module.exports.policies = {
 
   BuyerController: {
     index: ['sessionCheck', 'isAuthenticated', 'profileComplete'],
-    create: ['sessionCheck', 'isAuthenticated', 'profileComplete'],
-    update: ['sessionCheck', 'isAuthenticated', 'profileComplete', 'wizardComplete'],
+    create: ['sessionCheck', 'isAuthenticated', 'profileComplete', 'isBuyer'],
+    update: ['sessionCheck', 'isAuthenticated', 'profileComplete', 'wizardComplete', 'isBuyer'],
     destroy: ['sessionCheck', 'isAuthenticated', 'profileComplete', 'wizardComplete', 'denyAllAccess'],
-    updateLogo: ['sessionCheck', 'isAuthenticated', 'profileComplete', 'wizardComplete']
+    updateLogo: ['sessionCheck', 'isAuthenticated', 'profileComplete', 'wizardComplete'],
+    updateInformation: ['sessionCheck', 'isAuthenticated', 'profileComplete', 'wizardComplete', 'isBuyer'],
+    updateDescriptions: ['sessionCheck', 'isAuthenticated', 'profileComplete', 'wizardComplete', 'isBuyer'],
+    updatePreferences: ['sessionCheck', 'isAuthenticated', 'profileComplete', 'wizardComplete', 'isBuyer'],
+    updateSocialOutlets: ['sessionCheck', 'isAuthenticated', 'profileComplete', 'wizardComplete', 'isBuyer']
   },
 
   SupplierController: {
     index: ['sessionCheck', 'isAuthenticated', 'profileComplete'],
-    create: ['sessionCheck', 'isAuthenticated', 'profileComplete'],
-    update: ['sessionCheck', 'isAuthenticated', 'profileComplete', 'wizardComplete'],
-    destroy: ['sessionCheck', 'isAuthenticated', 'profileComplete', 'wizardComplete', 'denyAllAccess']
+    create: ['sessionCheck', 'isAuthenticated', 'profileComplete', 'isSupplier'],
+    update: ['sessionCheck', 'isAuthenticated', 'profileComplete', 'wizardComplete', 'isSupplier'],
+    destroy: ['sessionCheck', 'isAuthenticated', 'profileComplete', 'wizardComplete', 'denyAllAccess'],
+    updateLogo: ['sessionCheck', 'isAuthenticated', 'profileComplete', 'wizardComplete', 'isSupplier'],
+    updateInformation: ['sessionCheck', 'isAuthenticated', 'profileComplete', 'wizardComplete', 'isSupplier'],
+    updateDescriptions: ['sessionCheck', 'isAuthenticated', 'profileComplete', 'wizardComplete', 'isSupplier'],
+    updatePreferences: ['sessionCheck', 'isAuthenticated', 'profileComplete', 'wizardComplete', 'isSupplier'],
+    updateSocialOutlets: ['sessionCheck', 'isAuthenticated', 'profileComplete', 'wizardComplete', 'isSupplier']
   }
 
   /*

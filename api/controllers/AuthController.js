@@ -153,34 +153,60 @@ module.exports = {
   processForgotPassword: function(req, res){
     var b = req.body;
     User.findOne({ email: b.email }, function(err, user){
-      if(err === undefined) {
+      if(user === undefined) {
         req.flash("error", "The email address you entered cannot be found.");
         return res.redirect('/forgotpassword');
       }
       if(user){
         crypto.randomBytes(256, function(err, hash) {
           token = hash.toString('base64').replace(/\//g,'_').replace(/\+/g,'-');
-          PasswordReset.create({ user: user.id, token: token, consumed: false }, function(err, reset){
-            if(err){ return res.redirect('/dashboard') };
-            var htmlContent = 'Click the link below to reset your password. <br /><a href="http://' + address + '/resetpassword?token=' + reset.token + '">Here</a>';
-            var mailOptions = {
-              from: "support@procur.com",
-              to: user.email,
-              subject: "Procur Password Assistance",
-              generateTextFromHTML: true,
-              html: htmlContent
-            };
-            smtpTransport.sendMail(mailOptions, function(err, response){
-              if(err){res.serverError();}
-              req.flash('message', 'Password reset request sent.');
-              res.redirect('/forgotpassword');
-            });
+          PasswordReset.findOne({ user: user.id }, function(err, reset){
+            if(err){ return res.redirect('/'); }
+            if(reset){
+              PasswordReset.update(reset, { consumed: true }, function(err, reset){
+                if(err){ return res.redirect('/'); }
+                PasswordReset.create({ user: user.id, token: token, consumed: false }, function(err, reset){
+                  if(err){ return res.redirect('/dashboard') };
+                  var htmlContent = 'Click the link below to reset your password. <br /><a href="http://' + address + '/resetpassword?token=' + reset.token + '">Here</a>';
+                  var mailOptions = {
+                    from: "support@procur.com",
+                    to: user.email,
+                    subject: "Procur Password Assistance",
+                    generateTextFromHTML: true,
+                    html: htmlContent
+                  };
+                  smtpTransport.sendMail(mailOptions, function(err, response){
+                    if(err){res.serverError();}
+                    req.flash('error', 'Password reset request sent.');
+                    res.redirect('/forgotpassword');
+                  });
+                });
+              });
+            }
+            else {
+              PasswordReset.create({ user: user.id, token: token, consumed: false }, function(err, reset){
+                if(err){ return res.redirect('/dashboard') };
+                var htmlContent = 'Click the link below to reset your password. <br /><a href="http://' + address + '/resetpassword?token=' + reset.token + '">Here</a>';
+                var mailOptions = {
+                  from: "support@procur.com",
+                  to: user.email,
+                  subject: "Procur Password Assistance",
+                  generateTextFromHTML: true,
+                  html: htmlContent
+                };
+                smtpTransport.sendMail(mailOptions, function(err, response){
+                  if(err){res.serverError();}
+                  req.flash('error', 'Password reset request sent.');
+                  res.redirect('/forgotpassword');
+                });
+              });
+            }
           });
         });
       }
       else {
         req.flash('message', 'User not found.');
-        res.redirect('/forgotpassword');
+        return res.redirect('/forgotpassword');
       }
     });
   },

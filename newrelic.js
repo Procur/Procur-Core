@@ -8,17 +8,20 @@ exports.config = {
   /**
    * Array of application names.
    */
-  app_name : 'procur-core-production',
+  app_name : ['CORE PRODUCTION'],
   /**
    * Your New Relic license key.
    */
-  license_key : '0286c2001595d1fbd0068c8611644ca225df9fbd',
+  license_key : process.env.NEW_RELIC_LICENSE_KEY,
   logging : {
     /**
      * Level at which to log. 'trace' is most useful to New Relic when diagnosing
      * issues with the agent, 'info' and higher will impose the least overhead on
      * production applications.
      */
-    level : 'trace'
+    level : 'warn',
+    rules: {
+      ignore: ['^/socket.io/*/xhr-polling']
+    }
   }
 };

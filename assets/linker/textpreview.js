@@ -1,3 +1,3 @@
-$('#handlePreview').keyup(function(){
-  $('.urlDynamic').html($(this).val());
-});
+    $('#desiredHandle').keyup(function(){
+      $('.urlDynamic').html($(this).val());
+    });

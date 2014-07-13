@@ -4,17 +4,17 @@
 
 <%- partial('../partials/mktheaderline') %>
 
-<div class="container">
+<div class="container" id="signUp">
   <div class="row">
     <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 col-sm-12 col-sm-offset-0">
       <div class="row">
         <div class="col-sm-6 col-sm-push-6 signUpForm">
           <h2>Welcome to Procur.<br/>Sign up for Early Access below:</h2>
-          <form action="/register" method="post">
+          <form action="/register" id="signup-form" method="post">
             <div><input type="text" name="firstName" placeholder="First Name*"></div>
             <div><input type="text" name="lastName" placeholder="Last Name*"></div>
             <div><input type="text" name="email" placeholder="Business Email Address*"></div>
-            <div><input type="password" name="password" placeholder="Create a Password*"></div>
+            <div><input type="password" name="password" id="signUpPassword" placeholder="Create a Password*"></div>
             <div><input type="password" name="passwordConfirm" placeholder="Create a Password*"></div>
             <div><button type="submit" class="registerButton">Create my account</button></div>
           </form>
@@ -27,47 +27,65 @@
           <div class="dottedLine"></div>
           <div class="featuresColumn">
             <h4>Currently Accessible:</h4>
-            <div class="rightSec">
-              <div class="rightSecBox">
-              <i class="fa fa-gear fa-fw"></i>
-              </div>
-              <a href="/earlyaccess#ea-companyProfiles">Company Profile</a>
-            </div>
+            <a class="orangeWrap" href="/earlyaccess#ea-companyProfiles">
+            	<div class="rightSec">
+              	<div class="rightSecBox">
+              		<i class="fa fa-gear fa-fw"></i>
+              	</div>
+              	<h3 class="orangeButton">Company Profile</h3>
+            	</div>
+            </a>
 
             <h4>Features Coming Soon:</h4>
-            <div class="rightSec">
-              <div class="rightSecBox">
-              <i class="fa fa-envelope fa-fw"></i>
+            <a class="orangeWrap" href="/earlyaccess#ea-uploadPhotos">
+            	<div class="rightSec">
+              	<div class="rightSecBox">
+              		<i class="fa fa-envelope fa-fw"></i>
+              	</div>
+              	<h3 class="orangeButton">Company Photos</h3>
+            	</div>
+            </a>
+
+            <a class="orangeWrap" href="/earlyaccess#ea-supplierCapabilities">
+            	<div class="rightSec rightAlt">
+              	<div class="rightSecBox">
+              		<i class="fa fa-search fa-fw"></i>
+              	</div>
+              	<h3 class="orangeButton">Supplier Capabilities</h3>
+            	</div>
+            </a>
+
+            <a class="orangeWrap" href="/earlyaccess#ea-downloadableFiles">
+            	<div class="rightSec">
+              	<div class="rightSecBox">
+              		<i class="fa fa-truck fa-fw"></i>
+              	</div>
+              	<h3 class="orangeButton">Downloadable Files</h3>
+            	</div>
+            </a>
+
+            <a class="orangeWrap" href="/earlyaccess#ea-communityResources">
+            	<div class="rightSec rightAlt">
+              	<div class="rightSecBox">
+              		<i class="fa fa-th-large fa-fw"></i>
+              	</div>
+              	<h3 class="orangeButton">Community Resources</h3>
+            	</div>
+            </a>
+
+            <a class="orangeWrap" href="/earlyaccess#ea-productProfiles">
+            	<div class="rightSec">
+              	<div class="rightSecBox">
+              		<i class="fa fa-user fa-fw"></i>
+              	</div>
+              <h3 class="orangeButton">Product Profiles</h3>
               </div>
-              <a href="/earlyaccess#ea-uploadPhotos">Company Photos</a>
-            </div>
-            <div class="rightSec rightAlt">
-              <div class="rightSecBox">
-              <i class="fa fa-search fa-fw"></i>
-              </div>
-              <a href="/earlyaccess#ea-supplierCapabilities">Supplier Capabilities</a>
-            </div>
-            <div class="rightSec">
-              <div class="rightSecBox">
-              <i class="fa fa-truck fa-fw"></i>
-              </div>
-              <a href="/earlyaccess#ea-downloadableFiles">Downloadable Files</a>
-            </div>
-            <div class="rightSec rightAlt">
-              <div class="rightSecBox">
-              <i class="fa fa-th-large fa-fw"></i>
-              </div>
-              <a href="/earlyaccess#ea-communityResources">Community Resources</a>
-            </div>
-            <div class="rightSec">
-              <div class="rightSecBox">
-              <i class="fa fa-user fa-fw"></i>
-              </div>
-              <a href="/earlyaccess#ea-productProfiles">Product Profiles</a>
-            </div>
+            </a>
           </div>
         </div>
       </div>
     </div>    
   </div>
 </div>
+
+<%- partial('../partials/dashboard-footer.ejs') %>

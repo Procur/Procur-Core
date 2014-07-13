@@ -1,9 +1,4 @@
-$(document).ready(function() {
-var termTemplate = "<span class='ui-autocomplete-term'>%s</span>";
-
-$("#autocomplete1,#autocomplete2,#autocomplete3").autocomplete({minLength: 3},
-{
-  source: [
+var autocompleteCategoriesList = [
 	"Raw Materials",
 	"Raw Materials > Minerals & Metals",
 	"Raw Materials > Minerals & Metals > Aluminum",
@@ -4081,7 +4076,14 @@ $("#autocomplete1,#autocomplete2,#autocomplete3").autocomplete({minLength: 3},
 	"Transportation > Other Parts > Personal Watercraft Parts > Marine Propeller",
 	"Transportation > Other Parts > Personal Watercraft Parts > Marine Pump",
 	"Transportation > Other Parts > Snowmobile Parts"
-],
+];
+
+$(document).ready(function() {
+var termTemplate = "<span class='ui-autocomplete-term'>%s</span>";
+
+$("#autocomplete1,#autocomplete2,#autocomplete3").autocomplete({minLength: 3},
+{
+  source: autocompleteCategoriesList,
 open: function(e,ui) {
   var
     input = $(this).data('uiAutocomplete'),

@@ -31,14 +31,14 @@
                   </div>
                 </section>
 
-                <h4>Language(s)*</h4>
+                <h4>Language*</h4>
                 <div class="styledSelect">
                   <select name="language">
                     <%- partial('../partials/dropdowns/language') %>
                   </select>
                 </div>
 
-                <h4>Other Locations</h4>
+                <h4>Secondary Location</h4>
                 <section id="otherLocation1">
                   <div><input type="text" name="buyerOtherLocationName" id="buyerOtherLocationName" placeholder="Location Title"></div>
                   <div class="styledSelect">
@@ -53,7 +53,7 @@
                   </div><span id="noOtherCountryWarning"></span>
                   <div class="styledSelect">
                     <select name="buyerOtherLocationProvince" id="buyerOtherLocationProvince">
-                      <option>Select State/Province</option>
+                      <option value="">Select State/Province</option>
                     </select>
                   </div><script language="javascript">print_country("buyerOtherLocationCountry");</script><!--TODO:question for Cael-->
                   <div><input type="text" name="buyerOtherLocationCity" id="buyerOtherLocationCity" placeholder="City"></div>
@@ -62,7 +62,7 @@
 
               <div class="col-sm-6">
 
-                <h4>Accepted Currencies*</h4>
+                <h4>Preferred Currencies*</h4>
                 <section id="acceptedCurrencies">
                   <div class="row breakForm">
                     <div class="col-sm-6">
@@ -104,7 +104,7 @@
                   </div>
                 </section>
 
-                <h4>Your Supplier Preferences*</h4>
+                <h4>Your Supplier Preference*</h4>
                 <section id="preferredSupplierType" class="styledSelect">
                   <select name="preferredSupplierType">
                     <%- partial('../partials/dropdowns/pref-supplier-type') %>
@@ -124,15 +124,13 @@
               </div><!-- End second column -->
               <div class="col-sm-12">
                 <div class="autocompleteWrapper1">
-                  <label  for="autocomplete"><h4>Select your Category Preferences</h4></label>
+                  <label  for="autocomplete"><h4> Enter Product Categories of Interest</h4></label>
                   <input id="autocomplete1" name="autocomplete" placeholder="Begin typing to search categories...">
                 </div>
                 <div class="autocompleteWrapper2">
-                  <label  for="autocomplete"><h4>Select your Category Preferences</h4></label>
                   <input id="autocomplete2" name="autocomplete" placeholder="Begin typing to search categories...">
                 </div>
                 <div class="autocompleteWrapper3">
-                  <label  for="autocomplete"><h4>Select your Category Preferences</h4></label>
                   <input id="autocomplete3" name="autocomplete" placeholder="Begin typing to search categories...">
                 </div>
               </div>

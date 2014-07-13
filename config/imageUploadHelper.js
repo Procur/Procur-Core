@@ -24,7 +24,8 @@ module.exports.imageUploadHelper = {
     {
       format: 'jpg',
       width: 357,
-      height: 140
+      height: 140,
+      crop:'fit'
     });
   },
 
@@ -38,8 +39,9 @@ module.exports.imageUploadHelper = {
     {
       format: 'jpg',
       width: 357,
-      height: 140
+      height: 140,
+      crop: 'fit'
     });
   }
 
-}
+};

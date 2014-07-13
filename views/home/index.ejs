@@ -5,18 +5,18 @@
 <%- partial('../partials/mktheader') %>
 
 <!--Start Header Pic -->
-<div class="row heroImage">
+<div class="row heroImage" id="homePage">
   <div class="container">
     <div class="row">
       <div class="col-sm-4 col-sm-offset-8 regForm">
-        <h3>Sign up for Early Access:</h3>
+        <h3>Sign up for Early Access</h3>
         <form action="/register" id="registration-form" method="post">
           <div><input type="text" name="firstName" placeholder="First Name*" tabindex="1"></div>
           <div><input type="text" name="lastName" placeholder="Last Name*" tabindex="2"></div>
           <div><input type="text" name="email" id="regEmail" placeholder="Business Email Address*" tabindex="3"></div>
           <div><input type="password" name="password" id="regPassword" placeholder="Create a Password*" tabindex="5"></div>
           <div><input type="password" name="passwordConfirm" placeholder="Confirm Password*" tabindex="6"></div>
-          <div><button type="submit" class="registerButton" tabindex="7">Register Now for Early Access</button></div>
+          <div><button type="submit" class="registerButton" tabindex="7">Create my free account now</button></div>
         </form>
       </div>
     </div>
@@ -109,3 +109,4 @@
 </div>
 </div>
 
+<%- partial('../partials/dashboard-footer.ejs') %>

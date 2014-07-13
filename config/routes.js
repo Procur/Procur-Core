@@ -49,10 +49,10 @@ module.exports.routes = {
     action: 'pricing'
   }, //Displays Pricing
 
-  'get /tradeshows': {
+  /*'get /tradeshows': {
     controller: 'HomeController',
     action: 'tradeShows'
-  }, //Displays Trade Shows
+  },*/ //Displays Trade Shows
 
   'get /about': {
     controller: 'HomeController',
@@ -64,10 +64,10 @@ module.exports.routes = {
     action: 'earlyaccess'
   }, //Displays 'early action' View
 
-  'get /press': {
+  /*'get /press': {
     controller: 'HomeController',
     action: 'press'
-  }, //Displays Press Page
+  },*/ //Displays Press Page
 
   'get /login': {
     controller: 'HomeController',
@@ -79,10 +79,10 @@ module.exports.routes = {
     action: 'signup'
   }, //Displays Signup Page
 
-  'get /careers': {
+  /*'get /careers': {
     controller: 'HomeController',
     action: 'careers'
-  }, //Displays Careers Page
+  },*/ //Displays Careers Page
 
   'get /contact': {
     controller: 'HomeController',
@@ -258,7 +258,6 @@ module.exports.routes = {
     action: 'setDefault'
   },
 
-
   //BUYER ROUTES
   'post /buyer/create': {
     controller: 'BuyerController',
@@ -419,12 +418,12 @@ module.exports.routes = {
   'post /supplier/update/socialoutlets': {
     controller: 'SupplierController',
     action: 'updateSocialOutlets'
-  },
+  }
 
-  'get /locationstest': {
+  /*'get /locationstest': {
     controller: 'BuyerController',
     action: 'test'
-  }
+  }*/
 
 }; //USE THIS VIEW FOR ING, DEBUGGING, AND PROTOTYPING
 

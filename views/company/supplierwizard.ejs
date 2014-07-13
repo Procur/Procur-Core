@@ -17,7 +17,7 @@
           <section class="supplierWizard">
             <div class="row">
               <div class="col-sm-6">
-                <h4>Logo Image&nbsp;&nbsp;<a class="regWizYellowLink" href="#">Get Help</a></h4>
+                <h4>Logo Image&nbsp;&nbsp;</h4>
                 <div><input class="breakForm" type="file" name="logoUrl"></div>
                 <h4>DBA (Doing Business As) Name</h4>
                 <div><input class="breakForm" type="text" name="dba" placeholder="Alternate Company Name"></div>
@@ -31,14 +31,14 @@
                   </div>
                 </section>
 
-                <h4>Language(s)*</h4>
+                <h4>Language*</h4>
                 <div class="styledSelect">
                   <select name="language">
                     <%- partial('../partials/dropdowns/language') %>
                   </select>
                 </div>
 
-                <h4>Other Locations</h4>
+                <h4>Secondary Location</h4>
                 <section id="otherLocation1">
                   <div><input type="text" name="supplierOtherLocationName" id="supplierOtherLocationName"placeholder="Location Title"></div>
                   <div class="styledSelect">
@@ -53,7 +53,7 @@
                   </div><span id="noOtherSupplierCountryWarning"></span>
                   <div class="styledSelect">
                     <select name="supplierOtherLocationProvince" id="supplierOtherLocationProvince">
-                      <option>Select State/Province</option>
+                      <option value="">Select State/Province</option>
                     </select>
                   </div><script language="javascript">print_country("supplierOtherLocationCountry");</script>
                   <div><input type="text" name="supplierOtherLocationCity" id="supplierOtherLocationCity"placeholder="City"></div>
@@ -144,15 +144,13 @@
 
               <div class="col-sm-12">
                 <div class="autocompleteWrapper1">
-                  <label  for="autocomplete"><h4>Select your Category Preferences</h4></label>
-                  <input id="autocomplete1" name="autocomplete" placeholder="Begin typing to search categories...">
+                  <label  for="autocomplete"><h4>Enter Product Specialties*</h4></label>
+                  <input id="autocomplete1" name="autocompleteReq" placeholder="Begin typing to search categories...*">
                 </div>
                 <div class="autocompleteWrapper2">
-                  <label  for="autocomplete"><h4>Select your Category Preferences</h4></label>
                   <input id="autocomplete2" name="autocomplete" placeholder="Begin typing to search categories...">
                 </div>
                 <div class="autocompleteWrapper3">
-                  <label  for="autocomplete"><h4>Select your Category Preferences</h4></label>
                   <input id="autocomplete3" name="autocomplete" placeholder="Begin typing to search categories...">
                 </div>
               </div>
