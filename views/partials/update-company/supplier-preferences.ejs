@@ -1,31 +1,36 @@
 <div id="preferencesSupplier">
   <h4>Preferences</h4>
-    <div class="formWrapper">
+  <div class="formWrapper">
+    <div class="row">
       <form action="/supplier/update/preferences" method="post" id="supplierPreferencesForm">
-        <h5>Preferred Buyer Type</h5>
-        <div class="styledSelect">
-          <select name="preferredBuyerType">
-            <option value="<%= supplier.preferredBuyerType %>" selected="selected"><%= supplier.preferredBuyerType %></option>
-            <%- partial('../edit-dropdowns/edit-pref-buyer-type') %>
-          </select>
-        </div>
 
-        <h5>Preferred Buyer Language</h5>
-        <div class="styledSelect">
-          <select name="preferredBuyerLanguage">
-            <option value="<%= supplier.preferredBuyerLanguage %>" selected="selected"><%= supplier.preferredBuyerLanguage %></option>
-            <%- partial('../edit-dropdowns/edit-pref-buyer-language') %>
-          </select>
-        </div>
+        <div class="col-sm-6">
+          <h5>Preferred Buyer Type</h5>
+          <div class="styledSelect">
+            <select name="preferredBuyerType">
+              <option value="<%= supplier.preferredBuyerType %>" selected="selected"><%= supplier.preferredBuyerType %></option>
+              <%- partial('../edit-dropdowns/edit-pref-buyer-type') %>
+            </select>
+          </div>
+          <h5>Preferred Buyer Language</h5>
+          <div class="styledSelect">
+            <select name="preferredBuyerLanguage">
+              <option value="<%= supplier.preferredBuyerLanguage %>" selected="selected"><%= supplier.preferredBuyerLanguage %></option>
+              <%- partial('../edit-dropdowns/edit-pref-buyer-language') %>
+            </select>
+          </div>
+        </div> <!-- End of First Column -->
 
-        <h5>Preferred Buyer Location</h5>
-        <div class="styledSelect">
-          <select name="preferredBuyerLocation" id="preferredBuyerLocation">
-            <option value="<%= supplier.preferredBuyerLocation %>" selected="selected"><%= supplier.preferredBuyerLocation %></option>
-          </select>
-        </div><script language="javascript">edit_country("<%= supplier.preferredBuyerLocation %>", "preferredBuyerLocation");</script>
-
+        <div class="col-sm-6">
+          <h5>Preferred Buyer Location</h5>
+          <div class="styledSelect">
+            <select name="preferredBuyerLocation" id="preferredBuyerLocation">
+              <option value="<%= supplier.preferredBuyerLocation %>" selected="selected"><%= supplier.preferredBuyerLocation %></option>
+            </select>
+          </div><script language="javascript">edit_country("<%= supplier.preferredBuyerLocation %>", "preferredBuyerLocation");</script>
+        </div> <!-- End of Second Column -->
         <div><input type="submit"></div>
       </form>
-    </div>
+    </div><!-- End of outside row -->
+  </div><!-- End of formWrapper -->
 </div>
