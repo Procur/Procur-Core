@@ -51,6 +51,14 @@
   margin-bottom: 20px;
 }
 
+#contact .infoSection a {
+  color: orange;
+}
+
+#contact .infoSection p {
+  line-height: 1.8em;
+}
+
 #contact .infoSection .emails a {
   color: #a3a3a3;
   font-family: 'Montserrat';
