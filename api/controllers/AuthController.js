@@ -253,7 +253,7 @@ module.exports = {
                   if(err){ return res.redirect('/dashboard'); }
                   PasswordReset.update(reset, { consumed: true }, function(err, reset){
                     if(err){ return res.redirect('/dashboard'); }
-                    if(reset.consumed == true){
+                    if(reset){
                       req.flash('message', 'Password changed. Please log in.');
                       res.redirect('/resetsuccess');
                     }
