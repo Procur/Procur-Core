@@ -9,6 +9,8 @@
         <ul>
           <li><a href="http://facebook.com/procurintl"><i class="fa fa-facebook"></i></a></li>
           <li><a href="http://twitter.com/procur_intl"><i class="fa fa-twitter"></i></a></li>
+          <li><a href="http://plus.google.com/+ProcurIntl/about"><i class="fa fa-google"></i></a></li>
+          <li><a href="http://instagram.com/procur_intl"><i class="fa fa-instagram"></i></a></li>
           <li><a href="https://www.linkedin.com/company/procur"><i class="fa fa-linkedin"></i></a></li>
           <li><a href="http://pinterest.com/procurintl"><i class="fa fa-pinterest"></i></a></li>
           <li><a href="http://www.good.is/members/procurintl"><i class="fa fa-plus-square"></i></a></li>
@@ -18,7 +20,7 @@
       </div>
       <div class="col-sm-4 middleColumn">
         <h4>Additional Help &amp; Support</h4>
-        <p>Visit our FAQ or take a look at our Early Access page for more information on existing and upcoming features.</p>
+        <p>Visit our <a class="copy-link" href="/earlyaccess" target="_blank">FAQ</a> or take a look at our <a class="copy-link" href="/earlyaccess" target="_blank">Early Access</a> page for more information on existing and upcoming features.</p>
         <h4>Get a Look at What's Next</h4>
         <p>Take a look at our Features page for information about all our intended features.</p>
       </div>
@@ -30,7 +32,7 @@
           <div class="col-sm-8">
             <input class="mailingListInput" type="text" name="subscriberEmail" placeholder="email@your-address.com">
           </div>
-          <div class="col-sm-4">
+          <div class="col-sm-4 subscribe-submit">
             <button type="submit">Submit</button>
           </div>
         </div>
@@ -68,69 +70,44 @@
 
           <form action="/contact" method="post" id="contactForm">
           <div class="col-sm-5">
-            <div>
-              <input name="email" placeholder="Email" type="text">
+            <div class="contact-email">
+              <input name="email" placeholder="email@your-address.com" type="text">
             </div>
 
 
-            <div>
-              <select name="field1">
+            <div class="styledSelect">
+              <select name="field1" class="contact-first-dropdown">
                 <option disabled selected value="">
                   What's your reason for contacting us?*
                 </option>
 
-                <option value="The first reason">
-                  The first reason.
+                <option value="Help &amp; Support">
+                  Help &amp; Support
                 </option>
 
-                <option value="The second reason">
-                  The second reason.
+                <option value="Partnerships">
+                  Partnerships
                 </option>
 
-                <option value="The third reason">
-                  The third reason.
+                <option value="Press &amp; Media">
+                  Press &amp; Media
+                </option>
+
+                <option value="Feedback">
+                  Feedback
+                </option>
+
+                <option value="General Inquiries">
+                  General Inquiries
                 </option>
               </select>
             </div>
 
 
-            <div>
-              <select name="field2">
+            <div class="styledSelect">
+              <select name="field2" class="contact-second-dropdown" disabled="disabled">
                 <option disabled selected value="">
                   Field 2*
-                </option>
-
-                <option value="The first reason">
-                  The first reason.
-                </option>
-
-                <option value="The second reason">
-                  The second reason.
-                </option>
-
-                <option value="The third reason">
-                  The third reason.
-                </option>
-              </select>
-            </div>
-
-
-            <div>
-              <select name="field3">
-                <option disabled selected value="">
-                  Field 3*
-                </option>
-
-                <option value="The first reason">
-                  The first reason.
-                </option>
-
-                <option value="The second reason">
-                  The second reason.
-                </option>
-
-                <option value="The third reason">
-                  The third reason.
                 </option>
               </select>
             </div>
@@ -140,11 +117,10 @@
 
             <div>
               <textarea cols="90" form="contactForm" name="content" placeholder=
-              "Write a message here." rows="15">
-              </textarea>
+              "Write a message here." rows="15"></textarea>
             </div>
 
-            <div>
+            <div class="contact-submit">
               <button type="submit">Send</button>
             </div>
 
