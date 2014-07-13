@@ -1,0 +1,97 @@
+<h5>Official Address</h5>
+<% if (companyLocations["showHq"] === false) { %>
+  <div><input class="address1" type="text" name="companyAddress1" value="<%= companyLocations["company-isHq"].addressLine1 %>" placeholder="Address Line #1"></div>
+  <div><input class="address2" type="text" name="companyAddress2" value="<%= companyLocations["company-isHq"].addressLine2 %>" placeholder="Address Line #2"></div>
+  <div class="styledSelect">
+    <select class="companyCountry" name="companyCountry" id="companyCountry" onchange="print_state('companyProvince',this.selectedIndex);"> 
+      
+    </select>
+  </div>
+
+  <div class="row insideForm">
+    <div class="col-sm-7">
+      <div class="styledSelect inputColumnL">
+        <select class="companyProvince" name="companyProvince" id="companyProvince">
+          <option value="<%= companyLocations["company-isHq"].province %>" selected="selected"><%= companyLocations["company-isHq"].province %></option>
+        </select><script language="javascript">edit_country("<%= companyLocations["company-isHq"].country %>", "companyCountry");</script>
+      </div>
+    </div>
+
+    <div class="col-sm-5 inputColumnR">
+      <div class="breakForm">
+        <input type="text" class="companyPostalCode" name="companyPostalCode" value="<%= companyLocations["company-isHq"].postalCode %>" placeholder="Postal Code">
+      </div>
+    </div>
+  </div>
+<% } else { %>
+  <div><input class="address1" type="text" name="companyAddress1" value="<%= companyLocations["company-notHq"][0].addressLine1 %>" placeholder="Address Line #1"></div>
+  <div><input class="address2" type="text" name="companyAddress2" value="<%= companyLocations["company-notHq"][0].addressLine2 %>" placeholder="Address Line #2"></div>
+  <div class="styledSelect">
+    <select class="companyCountry" name="companyCountry" id="companyCountry" onchange="print_state('companyProvince',this.selectedIndex);"> 
+      <!-- edit_country() will populate this dropdown -->
+    </select>
+  </div>
+
+  <div class="row insideForm">
+    <div class="col-sm-7">
+      <div class="styledSelect inputColumnL">
+        <select class="companyProvince" name="companyProvince" id="companyProvince">
+          <option value="<%= companyLocations["company-notHq"][0].province %>" selected="selected"><%= companyLocations["company-notHq"][0].province %></option>
+        </select><script language="javascript">edit_country("<%= companyLocations["company-notHq"][0].country %>", "companyCountry");</script>
+      </div>
+    </div>
+
+    <div class="col-sm-5 inputColumnR">
+      <div class="breakForm">
+        <input type="text" class="companyPostalCode" name="companyPostalCode" value="<%= companyLocations["company-notHq"][0].postalCode %>" placeholder="Postal Code">
+      </div>
+    </div>
+  </div>
+<% } %>
+
+<!-- HQ Checkbox -->
+<% if (companyLocations["showHq"] === true) { %>
+  <h5>Is the above address the headquarters?</h5>
+  <div>
+    <input class="checkbox hqbox" type="checkbox" name="companyIsHq">
+    <div class="checkboxtext breakForm"><h5>Yes; please copy my details below.</h5></div>
+  </div>
+<% } %>
+<% if (companyLocations["showHq"] === false) { %>
+  <h5>Is the above address the headquarters?</h5>
+  <div>
+    <input class="checkbox hqbox" type="checkbox" name="companyIsHq" checked="checked">
+    <div class="checkboxtext breakForm"><h5>Yes; please copy my details below.</h5></div>
+  </div>
+<% } %>
+
+<!-- HQ Address -->
+<h5>Company Headquarters Address*</h5>
+<div>
+  <input class="hqfield hqaddress1" type="text" name="hqAddress1" value="<%= companyLocations["company-isHq"].addressLine1 %>" placeholder="Address Line #1">
+</div>
+<div>
+  <input  class="hqfield hqaddress2" type="text" name="hqAddress2" value="<%= companyLocations["company-isHq"].addressLine2 %>" placeholder="Address Line #2">
+</div>
+
+<div class="styledSelect">
+  <select class="hqfield hqcompanyCountry" name="hqCountry" id="hqcompanyCountry" onchange="print_state('hqcompanyProvince',this.selectedIndex);">
+    <!-- edit_country() will populate this dropdown -->
+  </select>
+</div>
+
+<div class="row insideForm">
+  <div class="col-sm-7">
+    <div class="styledSelect inputColumnL">
+      <select class="hqfield hqcompanyProvince" name="hqProvince" id="hqcompanyProvince">
+        <option value="<%= companyLocations["company-isHq"].province %>" selected="selected"><%= companyLocations["company-isHq"].province %></option>
+      </select>
+    </div><script language="javascript">edit_country("<%= companyLocations["company-isHq"].country %>", "hqcompanyCountry");</script>
+  </div>
+
+  <div class="col-sm-5 inputColumnR">
+    <div class="breakForm">
+      <input class="hqfield hqPostalCode" type="text" name="hqPostalCode" value="<%= companyLocations["company-isHq"].postalCode %>" placeholder="Postal Code">
+    </div>
+  </div>
+</div>

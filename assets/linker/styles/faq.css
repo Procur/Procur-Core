@@ -20,12 +20,16 @@
   font-weight: 300;
   letter-spacing: 0.06em;
   color: #999;
+  line-height: 20px;
+  margin-bottom: 40px;
 }
 
 #faq h4 {
   font-family: 'Open Sans', sans-serif;
   font-size: 19px;
   font-weight: 300;
+  margin-bottom: 20px;
+  line-height: 28px;
 }
 
 #faq a {
@@ -61,6 +65,7 @@
   position: fixed;
   top: 0;
   width:28%;
+  max-width: 295px;
 }
 
 @-moz-document url-prefix() {
@@ -68,6 +73,7 @@
   position: fixed;
   top: 0;
   width:24%;
+  max-width: 295px;
 }
 }
 

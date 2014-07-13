@@ -1,0 +1,26 @@
+<div id="descriptionsBuyer">
+  <h4>Descriptions</h4>
+    <div class="formWrapper">
+      <form action="/buyer/update/descriptions" method="post" id="buyerDescriptionsForm">
+        <h5>Company Description</h5>
+        <div><textarea name="companyDescription" placeholder="Company Description"><%= buyer.companyDescription %></textarea></div>
+
+        <h5>Environmental Sustainability</h5>
+        <div><textarea name="environmentalSustainability" placeholder="Environmental Sustainability"><%= buyer.environmentalSustainability %></textarea></div>
+
+        <h5>Quality Sourcing</h5>
+        <div><textarea name="qualitySourcing" placeholder="Quality Sourcing"><%= buyer.qualitySourcing %></textarea></div>
+
+        <h5>Workplace Safety</h5>
+        <div><textarea name="workplaceSafety" placeholder="Workplace Safety"> ><%= buyer.workplaceSafety  %></textarea></div>
+
+        <h5>Labor Education &amp; Training</h5>
+        <div><textarea name="laborEducationTraining" placeholder="Labor Education Training"> ><%= buyer.laborEducationTraining  %></textarea></div>
+
+        <h5>Community Reinvestment</h5>
+        <div><textarea name="reinvestment" placeholder="Reinvestment"><%= buyer.reinvestment  %></textarea></div>
+        
+        <div><input type="submit"></div>
+      </form>
+    </div>
+</div>
