@@ -66,6 +66,16 @@ jQuery.validator.addMethod("uniqueCompanyHandle", function(value, element, param
   return !(companyHandleTaken);
 }, jQuery.validator.format("This company handle is not available."));
 
+/*
+jQuery.validator.addMethod("uniqueEmailAddress", function(value, element, params) {
+  var result;
+  $.get('/checkEmailExists', { email: value }).done(function(data) {
+    result = data;
+  });
+  return !(result);
+}, jQuery.validator.format("This email address is not available."));
+*/
+
 jQuery.validator.addMethod("actualCategoryOption", function(value, element, params) {
   if (value==""){return true;}
 
@@ -1209,14 +1219,17 @@ $('#user-update-form').validate({
       minlength: 1,
       maxlength: 100
     },
-      email: {
-      required: true,
+    email: {
+      required: false,
       email: true,
+      //uniqueEmailAddress: true,
       minlength: 1,
       maxlength: 100
     },
     emailConfirm: {
-      required: true,
+      required: function(element){
+        return $('#updateEmail').val()!=="";
+      },
       equalTo: "#updateEmail"
     },
     jobTitle: {
@@ -1227,6 +1240,11 @@ $('#user-update-form').validate({
     },
     image: {
       //n/a
+    }
+  },
+  messages:{
+    emailConfirm:{
+      equalTo: "Emails do not match."
     }
   }
 });
