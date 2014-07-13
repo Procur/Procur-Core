@@ -1,10 +1,9 @@
 <div id="socialOutletsBuyer">
   <h4>Social Outlets</h4>
-  <div class="formWrapper">
-    <div class="row">
-      <form action="/buyer/update/socialoutlets" method="post" id="buyerSocialOutletsForm">
+  <form action="/buyer/update/socialoutlets" method="post" id="buyerSocialOutletsForm">
+    <div class="formWrapper">
+      <div class="row">
         <div class="col-sm-6">
-
           <h5>Facebook</h5>
           <div class="input-group"><div class="input-group-addon">facebook.com/<input type="text" name="facebook" value="<%= buyer.facebook %>" placeholder="Facebook"></div></div>
 
@@ -32,8 +31,8 @@
 
         </div>
         <!-- End Second Column -->
-        <div><input type="submit"></div>
-      </form>
-    </div>
-  </div>
-</div>
+      </div><!-- END row -->
+    </div><!-- END .formWrapper -->
+    <div class="row"><button class="continueButton" type="submit">Save&nbsp;&nbsp; <i class="fa fa-arrow-right"></i></button></div>
+  </form>
+</div><!-- END #socialOutletsBuyer -->
