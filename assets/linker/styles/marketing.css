@@ -229,7 +229,7 @@ background-repeat:no-repeat;
 }
 
 .indexMid .midSecRight hr {
-  height: 2px;
+  height: 4px;
   background-color: #f7931d;
   color: #f7931d;
   width: 15%;
@@ -263,12 +263,12 @@ background-repeat:no-repeat;
   padding: 15px 20px;
   font-size: 10px;
   font-family: 'Montserrat';
-  font-weight: 300;
+  font-weight: 100;
 }
 
 .indexMid .midSecRight .buttonRight {
   padding: 15px 20px;
-  background-color: #81cf81;
+  background-color: #5cc672;
   margin-left: 0;
   border-radius: 20px;
   font-size: 10px;
@@ -288,7 +288,7 @@ background-repeat:no-repeat;
 #homeCarousel .grayBox {
   width: 100%;
   min-height: 450px;
-  background-color: #7f7f7f;
+  background-color: #222222;
 }
 
 .clickerWrapper {
@@ -297,7 +297,7 @@ background-repeat:no-repeat;
 }
 
 .carousel-caption h4 {
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-weight: 100;
   letter-spacing: 0.08em;
   font-size: 11px;
@@ -307,7 +307,7 @@ background-repeat:no-repeat;
 
 .carousel-caption h3 {
   font-family: 'Open Sans', sans-serif;
-  font-size: 26px;
+  font-size: 25px;
   font-weight: 100;
   letter-spacing: 0.06em;
   color: white;
@@ -315,13 +315,14 @@ background-repeat:no-repeat;
 }
 
 .carousel-caption li {
-  font-family: 'Roboto', sans-serif;
-  font-weight: 300;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 100;
   letter-spacing: 0.08em;
-  font-size: 11px;
-  line-height: 18px;
+  font-size: 10px;
+  line-height: 15px;
   color: white;
   margin-bottom: 5px;
+  text-transform: uppercase;
 }
 
 .carousel-caption ul {
@@ -403,6 +404,22 @@ background-repeat:no-repeat;
   top:-55px;
 }
 
+.carousel-caption hr {
+	border-top: dotted 1px;
+}
+
+.indexMid .midSecRight .embedLink {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  letter-spacing: 0.06em;
+  font-size: 14px;
+  line-height: 28px;
+  color: #f7931d;
+}
+
+.indexMid .midSecRight .BR {
+margin-bottom: 25px;
+}
 
 
 

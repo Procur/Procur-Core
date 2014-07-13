@@ -230,183 +230,160 @@ module.exports = {
   },
 
   updateInformation: function (req, res) {
-    var activeUser = req.session.passport.user,
-        p = req.body;
-    User.findOne({ id: activeUser }, function(err, user){
-      if(err){ return res.redirect('/dashboard'); }
-      if(user !== undefined){
-        Company.findOne({ user: user.id }, function(err, company){
-          if(err){ return res.redirect('/dashboard'); }
-          if(company !== undefined){
-            Supplpier.findOne({ company: company.id }, function(err, supplier){
-              if(err){ return res.redirect('/dashboard'); }
-              if(supplier !== undefined){
-                Supplier.update(supplier.id, {
+    var user = req.session.passport.user;
+    var b = req.body;
 
+    b.privateLabeler === "privateLabeler" ? b.privateLabeler = true : b.privateLabeler = false;
+    b.gsaApprovedSupplier === "gsaApprovedSupplier" ? b.gsaApprovedSupplier = true : b.gsaApprovedSupplier = false;
 
-
-                  //FILL IT UP
-
-
-
-                }, function(err, supplier){
-                  if(err){ return res.redirect('/company/update#descriptionsSupplier'); }
-                  if(supplier){
-                    return "success";
-                  }
-                  else {
-                    return "failed"
-                  }
-                });
-              }
-              else {
-                return res.redirect('/dashboard');
-              }
-            });
-          }
-          else {
-            return res.redirect('/dashboard');
-          }
+    User.findOne({ id: user }, function(err, user) {
+      if (err) { /* do something here */ }
+      if (user === undefined) { /* do something here */ }
+      Company.findOne({ user: user.id }, function(err, company) {
+        if (err) { /* do something here */ }
+        if (company === undefined) { /* do something here */ }
+        Supplier.findOne({ company: company.id }, function(err, supplier) {
+          if (err) { /* do something here */ }
+          if (supplier === undefined) { /* do something here */ }
+          Supplier.update(supplier.id, {
+            dbaName: b.dba,
+            language: [b.language],
+            acceptedCurrency: [b.acceptedCurrency],
+            acceptedPaymentTerms: [b.acceptedPaymentTerms],
+            acceptedDeliveryTerms: [b.acceptedDeliveryTerms],
+            typeOfCompany: b.typeOfCompany,
+            privateLabeler: b.privateLabeler,
+            contactName: b.contactName,
+            contactPosition: b.contactPosition,
+            contactEmail: b.contactEmail,
+            productCategory: [b.autocomplete],
+            gsaApprovedSupplier: b.gsaApprovedSupplier,
+            dunsNumber: b.dunsNumber,
+            cageCode: b.cageCode
+          }).exec(function(err, newSupplier) {
+            if (err) { /* do something here */ }
+            return res.redirect('/company/update#supplierInformation');
+          });
         });
-      }
-      else{
-        return res.redirect('/dashboard');
-      }
+      });
+    });
+  },
+
+  updateProductionDetails: function(req, res) {
+    var user = req.session.passport.user;
+    var b = req.body;
+
+    User.findOne({ id: user }, function(err, user) {
+      if (err) { /* do something here */ }
+      if (user === undefined) { /* do something here */ }
+      Company.findOne({ user: user.id }, function(err, company) {
+        if (err) { /* do something here */ }
+        if (company === undefined) { /* do something here */ }
+        Supplier.findOne({ company: company.id }, function(err, supplier) {
+          if (err) { /* do something here */ }
+          if (supplier === undefined) { /* do something here */ }
+          Supplier.update(supplier.id, {
+            annualSalesValue: b.annualSalesValue,
+            totalFactorySize: b.totalFactorySize,
+            totalQCStaff: b.totalQCStaff,
+            locationName: [b.locationName],
+            locationType: [b.locationType],
+            locationCountry: [b.locationCountry],
+            locationProvince: [b.locationProvince],
+            locationCity: [b.locationCity],
+            portCity: b.portCity,
+            portCountry: b.portCountry,
+            portProvince: b.portProvince
+          }).exec(function(err, newSupplier) {
+            if (err) { /* do something here */ }
+            return res.redirect('/company/update#productionDetails');
+          });
+        });
+      });
     });
   },
 
   updateDescriptions: function (req, res) {
-    var activeUser = req.session.passport.user,
-        p = req.body;
-    User.findOne({ id: activeUser }, function(err, user){
-      if(err){ return res.redirect('/dashboard'); }
-      if(user !== undefined){
-        Company.findOne({ user: user.id }, function(err, company){
-          if(err){ return res.redirect('/dashboard'); }
-          if(company !== undefined){
-            Supplier.findOne({ company: company.id }, function(err, supplier){
-              if(err){ return res.redirect('/dashboard'); }
-              if(supplier !== undefined){
-                Supplier.update(supplier.id, {
-                  companyDescription: p.companyDescription,
-                  environmentalSustainability: p.environmentalSustainability,
-                  qualitySourcing: p.qualitySourcing,
-                  workplaceSafety: p.workplaceSafety,
-                  laborEducationTraining: p.laborEducationTraining,
-                  reinvestment: p.reinvestment
-                }, function(err, supplier){
-                  if(err){ return res.redirect('/company/update#descriptionsSupplier'); }
-                  if(supplier){
-                    return "success";
-                  }
-                  else {
-                    return "failed"
-                  }
-                });
-              }
-              else {
-                return res.redirect('/dashboard');
-              }
-            });
-          }
-          else {
-            return res.redirect('/dashboard');
-          }
+    var user = req.session.passport.user;
+    var b = req.body;
+
+    User.findOne({ id: user }, function(err, user) {
+      if (err) { /* do something here */ }
+      if (user === undefined) { /* do something here */ }
+      Company.findOne({ user: user.id }, function(err, company) {
+        if (err) { /* do something here */ }
+        if (company === undefined) { /* do something here */ }
+        Supplier.findOne({ company: company.id }, function(err, supplier) {
+          if (err) { /* do something here */ }
+          if (supplier === undefined) { /* do something here */ }
+          Supplier.update(supplier.id, {
+            companyDescription: b.companyDescription,
+            environmentalSustainability: b.environmentalSustainability,
+            qualitySourcing: b.qualitySourcing,
+            workplaceSafety: b.workplaceSafety,
+            laborEducationTraining: b.laborEducationTraining,
+            reinvestment: b.reinvestment
+          }).exec(function(err, newSupplier) {
+            if (err) { /* do something here */ }
+            return res.redirect('/company/update#descriptionsSupplier')
+          });
         });
-      }
-      else{
-        return res.redirect('/dashboard');
-      }
+      });
     });
+
   },
 
   updatePreferences: function (req, res) {
-    var activeUser = req.session.passport.user,
-        p = req.body,
-        buyerLanguage = [p.preferredBuyerLanguage],
-        buyerLocation = [p.preferredBuyerLocation];
-    User.findOne({ id: activeUser }, function(err, user){
-      if(err){ return res.redirect('/dashboard'); }
-      if(user !== undefined){
-        Company.findOne({ user: user.id }, function(err, company){
-          if(err){ return res.redirect('/dashboard'); }
-          if(company !== undefined){
-            Supplier.findOne({ company: company.id }, function(err, supplier){
-              if(err){ return res.redirect('/dashboard'); }
-              if(supplier !== undefined){
-                Supplier.update(supplier.id, {
-                  preferredBuyerType: p.preferredSupplierType,
-                  preferredBuyerLanguage: buyerLanguage,
-                  preferredBuyerLocation: buyerLocation
-                }, function(err, supplier){
-                  if(err){} //return res.redirect('/company/update#descriptionsSupplier'); }
-                  if(supplier){
-                    return "success";
-                  }
-                  else {
-                    return "failed"
-                  }
-                });
-              }
-              else {
-                return res.redirect('/dashboard');
-              }
-            });
-          }
-          else {
-            return res.redirect('/dashboard');
-          }
+    var user = req.session.passport.user;
+    var b = req.body;
+    User.findOne({ id: user }, function(err, user) {
+      if (err) { /* do something here */ }
+      if (user === undefined) { /* do something here */ }
+      Company.findOne({ user: user.id }, function(err, company) {
+        if (err) { /* do something here */ }
+        if (company === undefined) { /* do something here */ }
+        Supplier.findOne({ company: company.id }, function(err, supplier) {
+          if (err) { /* do something here */ }
+          if (supplier === undefined) { /* do something here */ }
+          Supplier.update(supplier.id, {
+            preferredBuyerType: b.preferredBuyerType,
+            preferredBuyerLanguage: [b.preferredBuyerLanguage],
+            preferredBuyerLocation: [b.preferredBuyerLocation]
+          }).exec(function(err, newSupplier) {
+            if (err) { /* do something here */ }
+            return res.redirect('/company/update#preferencesSupplier')
+          });
         });
-      }
-      else{
-        return res.redirect('/dashboard');
-      }
+      });
     });
   },
 
   updateSocialOutlets: function (req, res) {
-    var activeUser = req.session.passport.user,
-        p = req.body;
-    User.findOne({ id: activeUser }, function(err, user){
-      if(err){ return res.redirect('/dashboard'); }
-      if(user !== undefined){
-        Company.findOne({ user: user.id }, function(err, company){
-          if(err){ return res.redirect('/dashboard'); }
-          if(company !== undefined){
-            Supplier.findOne({ company: company.id }, function(err, supplier){
-              if(err){ return res.redirect('/dashboard'); }
-              if(supplier !== undefined){
-                Supplier.update(supplier.id, {
-                  facebook: p.facebook,
-                  twitter: p.twitter,
-                  google: p.google,
-                  linkedin: p.linkedin,
-                  pinterest: p.pinterest,
-                  instagram: p.instagram,
-                  tumblr: p.tumblr
-                }, function(err, supplier){
-                  if(err){ return res.redirect('/company/update#socialOutletsBuyer') }
-                  if(supplier){
-                    return res.send('success');
-                  }
-                  else{
-                    return res.send('failed');
-                  }
-                });
-              }
-              else {
-                return res.redirect('/dashboard');
-              }
-            });
-          }
-          else {
-            return res.redirect('/dashboard');
-          }
+    var user = req.session.passport.user;
+    var b = req.body;
+    User.findOne({ id: user }, function(err, user) {
+      if (err) { /* do something here */ }
+      if (user === undefined) { /* do something here */ }
+      Company.findOne({ user: user.id }, function(err, company) {
+        if (err) { /* do something here */ }
+        if (company === undefined) { /* do something here */ }
+        Supplier.findOne({ company: company.id }, function(err, supplier) {
+          if (err) { /* do something here */ }
+          if (supplier === undefined) { /* do something here */ }
+          Supplier.update(supplier.id, {
+            facebook: b.facebook,
+            twitter: b.twitter,
+            google: b.google,
+            linkedin: b.linkedin,
+            pinterest: b.pinterest,
+            instagram: b.instagram,
+            tumblr: b.tumblr
+          }).exec(function(err, newSupplier) {
+            if (err) { /* do something here */ }
+            return res.redirect('/company/update#socialOutletsSupplier')
+          });
         });
-      }
-      else{
-        return res.redirect('/dashboard');
-      }
+      });
     });
   },
 

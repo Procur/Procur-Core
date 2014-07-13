@@ -9,10 +9,11 @@ module.exports.waterlineHelper = {
     var newObject = {};
 
     for (var x = 0; x < arrFields.length; x++) {
-      if (inObject[arrFields[x]] === undefined) {
+      if (inObject[arrFields[x]] === undefined || inObject[arrFields[x]][0] === null || inObject[arrFields[x]][0].length === 0) {
         newObject[arrFields[x]] = new Array();
         continue;
       }
+
       if (inObject[arrFields[x]][0][0].length == 1) {
         newObject[arrFields[x]] = [];
         newObject[arrFields[x]].push(inObject[arrFields[x]][0]);
@@ -38,10 +39,12 @@ module.exports.waterlineHelper = {
     var newObject = {};
 
     for (var x = 0; x < arrFields.length; x++) {
-      if (inObject[arrFields[x]] === undefined) {
+      
+      if (inObject[arrFields[x]] === undefined || inObject[arrFields[x]][0] === null || inObject[arrFields[x]][0].length === 0) {
         newObject[arrFields[x]] = new Array();
         continue;
       }
+
       if (inObject[arrFields[x]][0][0].length == 1) {
         newObject[arrFields[x]] = [];
         newObject[arrFields[x]].push(inObject[arrFields[x]][0]);
