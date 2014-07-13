@@ -155,15 +155,15 @@
               <input type="text" name="portCity" placeholder="City" value="<%= buyer.portCity %>">
             </div>
             <div class="styledSelect">
-              <select name="locationCountry" id="country" onchange="print_state('province',this.selectedIndex);">
+              <select name="portCountry" id="portCountry" onchange="print_state('portProvince',this.selectedIndex);">
                 <!-- edit_country() will populate this dropdown -->
               </select>
             </div>
             <div class="styledSelect">
-              <select name="otherLocationProvince" id="province">
+              <select name="portProvince" id="portProvince">
                 <option value="<%= buyer.portProvince %>" selected="selected"><%= buyer.portProvince %></option>
               </select>
-            </div><script language="javascript">edit_country("<%= buyer.portCountry %>", "country");</script>
+            </div><script language="javascript">edit_country("<%= buyer.portCountry %>", "portCountry");</script>
           </section>
           <div><input type="submit"></div>
         </form>
