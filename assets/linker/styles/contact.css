@@ -1,3 +1,7 @@
+#contact {
+  margin-top: 8px;
+}
+
 #contact h3 {
   font-family: 'Montserrat', sans-serif;
   font-size: 14px;
@@ -16,6 +20,7 @@
   font-color: #333132;
   letter-spacing: 0.04em;
   text-transform: uppercase;
+  margin: 20px 0px 20px;
 }
 
 #contact h5 {
@@ -25,4 +30,43 @@
   font-color: #333132;
   letter-spacing: 0.04em;
   text-transform: capitalize;
+}
+
+#contact p {
+  margin: 0px;
+  padding-top: 0px;
+}
+
+#contact ul {
+  margin: 0px;
+  padding: 0px;
+}
+
+#contact ul li {
+  list-style: none;
+  display: inline;
+}
+
+#contact ul li i {
+  color: #a3a3a3;
+  margin-right: 12px;
+}
+
+#contact ul li i:hover {
+  color: #333132;
+  text-decoration: none;
+}
+
+
+#contact .topRow {
+  margin-top: 20px;
+}
+
+#contact .col-sm-4.middleColumn {
+  border-left: 1px dotted #a3a3a3;
+  border-right: 1px dotted #a3a3a3;
+}
+
+#contact hr.dotted {
+  border-top: 1px dotted #a3a3a3;
 }
