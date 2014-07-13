@@ -240,7 +240,6 @@ module.exports = {
     var newPassword;
     var consumeToken = req.session.token;
     PasswordReset.findOne({ token: consumeToken }, function(err, reset){
-      console.log('1. found pw reset obj: ' + reset);
       if(err){ console.log(err); return res.redirect('/dashboard'); }
       if(reset){
         bcrypt.genSalt(10, function(err, salt){

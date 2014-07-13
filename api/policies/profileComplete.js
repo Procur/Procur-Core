@@ -13,11 +13,19 @@ module.exports = function (req, res, next) {
   }
   else{
     User.findOne({ id: req.session.passport.user }, function(err, user){
-      if (err) return res.redirect('/adsfasf');
+      if (err) return res.redirect('/dashboard');
       if (user.profileComplete == true) {
         if (req.route.path == '/welcome') {
           res.redirect('/dashboard');
         }
+/* Needs to be 
+        else if((req.route.path == '/welcome/buyer') || (req.route.path == '/welcome/supplier')){
+          if(user.profileComplete == true){
+            res.redirect('/dashboard');
+          }
+        }
+*/
+
         else {
           return next();
         }

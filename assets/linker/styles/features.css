@@ -52,7 +52,21 @@
 
 #features ul {
   padding-left: 0;
-  margin-left: 20px;
+  margin-left: 0px;
+}
+
+#features #signupLink {
+	text-decoration: none;
+	color: black;
+}
+
+#features .indent{
+	margin-left: 27px;
+}
+
+#features .darkFont {
+	color: black;
+	font-weight: 400;
 }
 
 #features li {
