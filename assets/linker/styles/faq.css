@@ -32,7 +32,7 @@
   line-height: 28px;
 }
 
-#faq a {
+#faq .orangeLeft a {
   font-size: 10px;
   color: #999;
   border-left: 2px solid white;
@@ -41,7 +41,7 @@
   border-right: none;
 }
 
-#faq a:hover,
+#faq .orangeLeft a:hover,
 #faq li.active {
   background-color: white;
   border-left: 2px solid orange;
