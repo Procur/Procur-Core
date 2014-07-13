@@ -317,46 +317,28 @@ module.exports = {
   },
 
   updatePreferences: function (req, res) {
-    var activeUser = req.session.passport.user,
-        p = req.body,
-        supplierLanguage = [p.preferredSupplierLanguage],
-        supplierLocation = [p.preferredSupplierLocation];
-    User.findOne({ id: activeUser }, function(err, user){
-      if(err){ return res.redirect('/dashboard'); }
-      if(user !== undefined){
-        Company.findOne({ user: user.id }, function(err, company){
-          if(err){ return res.redirect('/dashboard'); }
-          if(company !== undefined){
-            Buyer.findOne({ company: company.id }, function(err, buyer){
-              if(err){ return res.redirect('/dashboard'); }
-              if(buyer !== undefined){
-                Buyer.update(buyer.id, {
-                  preferredSupplierType: p.preferredSupplierType,
-                  preferredSupplierLanguage: supplierLanguage,
-                  preferredSupplierLocation: supplierLocation
-                }, function(err, buyer){
-                  if(err){} //return res.redirect('/company/update#descriptionsSupplier'); }
-                  if(buyer){
-                    return "success";
-                  }
-                  else {
-                    return "failed"
-                  }
-                });
-              }
-              else {
-                return res.redirect('/dashboard');
-              }
-            });
-          }
-          else {
-            return res.redirect('/dashboard');
-          }
+    var user = req.session.passport.user;
+    var b = req.body;
+
+    User.findOne({ id: user }, function(err, user) {
+      if (err) { /* do something here */ }
+      if (user === undefined) { /* do something here */ }
+      Company.findOne({ user: user.id }, function(err, company) {
+        if (err) { /* do something here */ }
+        if (company === undefined) { /* do something here */ }
+        Buyer.findOne({ company: company.id }, function(err, buyer) {
+          if (err) { /* do something here */ }
+          if (buyer === undefined) { /* do something here */ }
+          Buyer.update(buyer.id, {
+            preferredSupplierType: b.preferredSupplierType,
+            preferredSupplierLanguage: [b.preferredSupplierLanguage],
+            preferredSupplierLocation: [b.preferredSupplierLocation]
+          }).exec(function(err, newBuyer) {
+            if (err) { /* do something here */ }
+            return res.redirect('/company/update#preferencesBuyer');
+          });
         });
-      }
-      else{
-        return res.redirect('/dashboard');
-      }
+      });
     });
   },
 
