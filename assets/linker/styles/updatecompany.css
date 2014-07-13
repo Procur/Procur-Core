@@ -81,3 +81,10 @@
 #companyUpdate button i {
   color: #5cc56c;
 }
+
+#companyUpdate .checkboxtext {
+  margin-top: -23px;
+  margin-left: 20px;
+  margin-bottom: 20px;
+
+}

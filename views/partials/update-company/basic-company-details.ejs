@@ -42,6 +42,15 @@
 
           <h5>Company Website</h5>
           <div><input type="text" name="website" value="<%= company.website %>"></div><br/>
+
+          <h5>Total Number of Employees</h5>
+          <div class="styledSelect">
+            <select name="employeeCount">
+              <option value="<%= company.employeeCount %>" selected="selected"><%= company.employeeCount %></option>
+              <%- partial('../edit-dropdowns/edit-total-employees') %>
+            </select>
+          </div>
+
         </div><!-- END col-sm-6 (LEFT) -->
 
         <div class="col-sm-6">
@@ -54,14 +63,6 @@
           </div><br/>
 
           <%- partial('../update-company/basic-company-details-locations') %>
-
-          <h5>Total Number of Employees</h5>
-          <div class="styledSelect">
-            <select name="employeeCount">
-              <option value="<%= company.employeeCount %>" selected="selected"><%= company.employeeCount %></option>
-              <%- partial('../edit-dropdowns/edit-total-employees') %>
-            </select>
-          </div>
 
         </div><!-- END col-sm-6 (RIGHT) -->
 
