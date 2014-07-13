@@ -11,7 +11,7 @@
         <span>Buyer Profile </span>
         <% if (company.supplier === true ) { %>&middot;<span><a href="/companies/<%= company.handle %>/supplier"> View Supplier Profile</a></span><% } %>
       </h2>
-      <h1><%= company.name %></h1>
+      <h1><%if (company.name) { %><%= company.name %><% } %></h1>
     </div>
 
     <% if (locations["showHq"] === false) { %>
@@ -38,18 +38,18 @@
 
     <div class="company-info-box">
       <h3><span class="glyphicon glyphicon-earphone info-glyph"></span><span class="info-title">Company Phone &amp; Fax</span></h3>
-      <p>Telephone: +<%= company.phoneNumberCountryCode %> <%= company.phoneNumber %> Ext: <%= company.phoneExtension %></p>
-      <p>Fax: +<%= company.faxCountryCode%> <%= company.faxNumber %> Ext: <%= company.faxExtension %></p>
+      <p><% if(company.phoneNumberCountryCode && company.phoneNumber) { %>Telephone: +<%= company.phoneNumberCountryCode %> <%= company.phoneNumber %> <% if (company.phoneExtension) { %> Ext: <%company.phoneExtension %><% } } %></p>
+      <p><% if(company.faxCountryCode && company.faxNumber) { %>Fax: +<%= company.faxCountryCode%> <%= company.faxNumber %><% if(company.faxExtension) { %>Ext: <%= company.faxExtension %><% } } %></p>
     </div>
 
     <div class="company-info-box">
       <h3><span class="glyphicon glyphicon-send info-glyph"></span><span class="info-title">Company Email Address</span></h3>
-      <p><%= company.email %></p>
+      <% if(company.email) { %><p><%= company.email %></p><% } %>
     </div>
 
     <div class="company-info-box">
       <h3><span class="glyphicon glyphicon-send info-glyph"></span><span class="info-title">Company Website</span></h3>
-      <p><a href="<%= company.website %>" target="_blank"><%= company.website %></a></p>
+      <p><% if(company.website) { %><a href="<%= company.website %>" target="_blank"><%= company.website %></a><% } %></p>
     </div>
     
     <div class="company-detail-box">
@@ -66,11 +66,11 @@
         </div>
         <div class="company-col-detail">
           <p class="detail-header">Total # of Employees</p>
-          <p class="detail-body"><%= company.employeeCount %></p>
+          <p class="detail-body"><% if (company.employeeCount) { %><%= company.employeeCount %><% } %></p>
         </div>
         <div class="company-col-detail">
           <p class="detail-header">Industry</p>
-          <p class="detail-body"><%= company.industry %></p>
+          <p class="detail-body"><% if (company.industry) { %><%= company.industry %><% } %></p>
         </div>
         <div class="company-col-detail">
           <p class="detail-header">Languages</p>
@@ -82,17 +82,17 @@
         </div>
         <div class="company-col-detail">
           <p class="detail-header">DUNS Number</p>
-          <p class="detail-body"><%= buyer.dunsNumber  %></p>
+          <p class="detail-body"><% if (buyer.dunsNumber) { %><%= buyer.dunsNumber %><% }%></p>
         </div>
       </div><!-- END LEFT DETAIL COLUMN -->
       <div class="company-col-right">
         <div class="company-col-detail">
           <p class="detail-header">Certifications</p>
-          <p class="detail-body">ISO Compliant</p>
+          <p class="detail-body"></p><!-- example: ISO Compliant-->
         </div>
         <div class="company-col-detail">
           <p class="detail-header">Links</p>
-          <p class="detail-body"><a href="<%= company.website %>" target="_blank">Our Website</a></p>
+          <p class="detail-body"><% if (company.website) { %><a href="<%= company.website %>" target="_blank">Our Website</a><% } %></p>
         </div>
       </div><!-- END RIGHT DETAIL COLUMN -->
       <div class="company-col-clear"></div>
@@ -117,7 +117,7 @@
       <% if (buyer.companyDescription !== undefined) { %>
         <div class="content-desc"><%= buyer.companyDescription %></div>
       <% } else { %>
-        <div class="content-desc">This company does not have a buyer company description.</div>
+        <div class="content-desc">Company Description Here.</div>
       <% } %>
       <% if (buyer.productsOfInterest !== undefined) { %>
         <div class="content-interest" id="inactive"><%= buyer.productsOfInterest %></div>
