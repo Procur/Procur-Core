@@ -1,0 +1,28 @@
+#contact h3 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  font-color: #333132;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  border-bottom: 3px solid #d3d3d3;
+  padding-bottom: 7px;
+}
+
+#contact h4 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  font-color: #333132;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+#contact h5 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 12px;
+  font-weight: 300;
+  font-color: #333132;
+  letter-spacing: 0.04em;
+  text-transform: capitalize;
+}
