@@ -21,7 +21,7 @@
   font-color: #333132;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  margin: 20px 0px 20px;
+  margin: 20px 0px 10px;
 }
 
 #contact h5 {
@@ -40,6 +40,21 @@
   padding-top: 0px;
 }
 
+#contact button,
+#contact .mailingListInput {
+  width: 100%;
+}
+
+#contact .mailingListBoxes {
+  margin-top: 10px;
+}
+
+#contact .checkboxText {
+  display: inline;
+  margin-left: 5px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 10px;
+}
 
 #contact .heroRow p {
   font-size: 22px;
