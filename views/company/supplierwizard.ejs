@@ -17,7 +17,7 @@
           <section class="supplierWizard">
             <div class="row">
               <div class="col-sm-6">
-                <h4>Logo Image&nbsp;&nbsp;<a class="regWizYellowLink" href="#">Get Help</a></h4>
+                <h4>Logo Image&nbsp;&nbsp;</h4>
                 <div><input class="breakForm" type="file" name="logoUrl"></div>
                 <h4>DBA (Doing Business As) Name</h4>
                 <div><input class="breakForm" type="text" name="dba" placeholder="Alternate Company Name"></div>
@@ -31,7 +31,7 @@
                   </div>
                 </section>
 
-                <h4>Language</h4>
+                <h4>Language*</h4>
                 <div class="styledSelect">
                   <select name="language">
                     <%- partial('../partials/dropdowns/language') %>
@@ -144,8 +144,8 @@
 
               <div class="col-sm-12">
                 <div class="autocompleteWrapper1">
-                  <label  for="autocomplete"><h4>Product Specialties</h4></label>
-                  <input id="autocomplete1" name="autocomplete" placeholder="Begin typing to search categories...">
+                  <label  for="autocomplete"><h4>Enter Product Specialties*</h4></label>
+                  <input id="autocomplete1" name="autocompleteReq" placeholder="Begin typing to search categories...*">
                 </div>
                 <div class="autocompleteWrapper2">
                   <input id="autocomplete2" name="autocomplete" placeholder="Begin typing to search categories...">

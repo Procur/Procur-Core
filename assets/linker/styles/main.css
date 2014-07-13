@@ -237,6 +237,14 @@ text-decoration: none;
   padding: 0px 8px;
 }
 
+.progressItem i.activeProgress {
+  color: #FF9500;
+}
+
+.progressItem i.pastProgress {
+  color: #777;
+}
+
 .progressItem p {
   font-family: 'Montserrat', sans-serif;
   font-size: 10px;

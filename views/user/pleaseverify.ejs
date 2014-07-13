@@ -1,11 +1,13 @@
 <%- partial('../partials/registration-header') %>
 
 <div id="regWizard">
-	<div class="container emailVerify"
+	<div class="container emailVerify">
 		<div class="row">
 			<h1>Complete Your Registration</h1><br/>
 			<%- partial('../partials/progressverify') %>
-				
+            <% if (req.session.flash) { %>
+            <div id="incorrect-login-error"><%= req.flash('error') %></div>
+            <% } %>
 
 				<div class="col-sm-6 col-sm-offset-3 text-center topBox">
 					<h1>ALMOST DONE - VERIFY YOUR EMAIL ADDRESS TO FINISH</h1>
@@ -23,7 +25,7 @@
 						</div>
 					</div>
 				</div>
-		</div
+		</div>
 	</div>
 </div>
 

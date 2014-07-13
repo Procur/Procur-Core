@@ -66,6 +66,7 @@ module.exports = {
     var b = req.body;
     var image = req.files.image.path;
     var imageSize = getFileSize(image);
+    var emailUnset;
     var jobTitle;
     if(b.jobTitle) {
       jobTitle = b.jobTitle;
@@ -74,12 +75,20 @@ module.exports = {
       jobTitle = "";
     };
 
+
+
     User.findOne({ id: req.session.passport.user }, function(err, user){
+      if((b.email == "") || (b.email === undefined)){
+        emailUnset = user.email;
+      }
+      else {
+        emailUnset = b.email;
+      }
       if(err){ return res.redirect('/') };
       if(user){
         if(imageSize) {
           cloudinary.uploader.upload(image, function(result){
-            User.update(user, { firstName: b.firstName, lastName: b.lastName, email: b.email, image: result.url, jobTitle: b.jobTitle }, function(err, user){
+            User.update(user, { firstName: b.firstName, lastName: b.lastName, email: emailUnset, image: result.url, jobTitle: b.jobTitle }, function(err, user){
               if(err){ return res.redirect('/') };
               if(user){
                 req.flash('message', 'Account information updated');
@@ -101,7 +110,7 @@ module.exports = {
           });
         }
         else{
-          User.update(user, { firstName: b.firstName, lastName: b.lastName, email: b.email, jobTitle: b.jobTitle }, function(err, user){
+          User.update(user, { firstName: b.firstName, lastName: b.lastName, email: emailUnset, jobTitle: b.jobTitle }, function(err, user){
             if(err){ return res.redirect('/') };
             if(user){
               req.flash('message', 'Account information updated');

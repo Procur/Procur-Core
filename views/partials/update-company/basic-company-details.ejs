@@ -1,0 +1,72 @@
+<div id="companyDetails">
+  <h4>Basic Company Details</h4>
+  <div class="formWrapper">
+    <form action="/company/update/basicCompanyDetails" method="post" id="companyDetailsForm">
+      <div class="row">
+        <div class="col-sm-6">
+          <h5>Company Name</h5>
+          <div><input type="text" name="name" value="<%= company.name %>" placeholder="Company Name"></div><br/>
+
+          <h5>Company Phone</h5>
+          <div class="row insideForm">
+            <div class="col-sm-5 inputColumnL">
+                <div><input type="text" name="phoneNumberCountryCode" value="<%= company.phoneNumberCountryCode %>" placeholder="Country Code"></div>
+            </div>
+            <div class="col-sm-7 inputColumnR">
+                <div><input type="text" name="phoneNumber" value="<%= company.phoneNumber %>" placeholder="Phone Number"></div>
+            </div>
+          </div>
+          <div class="row insideForm">
+            <div class="col-sm-7 col-sm-offset-5 inputColumnR">
+                <div class="breakForm"><input type="text" name="phoneExtension" value="<%= company.phoneExtension %>" placeholder="Extension"></div>
+            </div>
+          </div>
+
+          <h5>Company Fax</h5>
+          <div class="row insideForm">
+            <div class="col-sm-5 inputColumnL">
+                <div><input type="text" name="faxCountryCode" value="<%= company.faxCountryCode %>" placeholder="Country Code"></div>
+            </div>
+            <div class="col-sm-7 inputColumnR">
+                <div><input type="text" name="faxNumber" value="<%= company.faxNumber %>" placeholder="Fax Number"></div>
+            </div>
+          </div>
+          <div class="row insideForm">
+            <div class="col-sm-7 col-sm-offset-5 inputColumnR">
+                <div class="breakForm"><input type="text" name="faxExtension" value="<%= company.faxExtension %>"></div>
+            </div>
+          </div>
+
+          <h5>Company Email</h5>
+          <div><input type="text" name="email" value="<%= company.email %>"></div><br/>
+
+          <h5>Company Website</h5>
+          <div><input type="text" name="website" value="<%= company.website %>"></div><br/>
+        </div><!-- END col-sm-6 (LEFT) -->
+
+        <div class="col-sm-6">
+          <h5>Company Industry</h5>
+          <div class="styledSelect">
+            <select name="companyIndustry">
+              <option value="<%= company.industry %>" selected="selected"><%= company.industry %></option>
+              <%- partial('../edit-dropdowns/edit-industry') %>
+            </select>
+          </div><br/>
+
+          <%- partial('../update-company/basic-company-details-locations') %>
+
+          <h5>Total Number of Employees</h5>
+          <div class="styledSelect">
+            <select name="employeeCount">
+              <option value="<%= company.employeeCount %>" selected="selected"><%= company.employeeCount %></option>
+              <%- partial('../edit-dropdowns/edit-total-employees') %>
+            </select>
+          </div>
+
+        </div><!-- END col-sm-6 (RIGHT) -->
+
+      </div><!-- END row -->
+      <div><input type="submit"></div>
+    </form>
+  </div><!-- END .formWrapper -->
+</div><!-- END #companyDetails -->
