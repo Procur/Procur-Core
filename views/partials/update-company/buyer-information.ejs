@@ -107,18 +107,10 @@
 
           <h5>Product Categories</h5>
           <div class="col-sm-12">
-            <label  for="autocomplete">
-              <h5>Select your Category Preferences</h5>
-            </label>
-            <input id="autocomplete1" name="autocomplete" placeholder="Begin typing to search categories...">
-            <label  for="autocomplete">
-              <h5>Select your Category Preferences</h5>
-            </label>
-            <input id="autocomplete2" name="autocomplete" placeholder="Begin typing to search categories...">
-            <label  for="autocomplete">
-              <h5>Select your Category Preferences</h5>
-            </label>
-            <input id="autocomplete3" name="autocomplete" placeholder="Begin typing to search categories...">
+            <% for (var x = 0; x < buyer["productCategory"].length; x++) { %>
+              <label  for="autocomplete"><h5>Select your Category Preferences</h5></label>
+              <input id="autocomplete<%= x %>" name="autocomplete" placeholder="Begin typing to search categories..." value="<%= buyer["productCategory"][x] %>">
+            <% } %>
           </div>
 
           <h5>Additional Location</h5>
