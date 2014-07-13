@@ -1,59 +1,210 @@
 <%- partial('../partials/mktheaderline') %>
-
+<%- req.flash('status') %>
 <div id="contact">
   <div class="container">
 
     <div class="row topRow">
       <div class="col-sm-4">
+        <h4>Connect With Us</h4>
+        <ul>
+          <li><a href="http://facebook.com/procurintl"><i class="fa fa-facebook"></i></a></li>
+          <li><a href="http://twitter.com/procur_intl"><i class="fa fa-twitter"></i></a></li>
+          <li><a href="http://plus.google.com/+ProcurIntl/about"><i class="fa fa-google"></i></a></li>
+          <li><a href="http://instagram.com/procur_intl"><i class="fa fa-instagram"></i></a></li>
+          <li><a href="https://www.linkedin.com/company/procur"><i class="fa fa-linkedin"></i></a></li>
+          <li><a href="http://pinterest.com/procurintl"><i class="fa fa-pinterest"></i></a></li>
+          <li><a href="http://www.good.is/members/procurintl"><i class="fa fa-plus-square"></i></a></li>
+        </ul>
+        <h4>Tell Us What You Think</h4>
+        <p>Please give us your feedback on our application and features in the form below!</p>
       </div>
       <div class="col-sm-4 middleColumn">
+        <h4>Additional Help &amp; Support</h4>
+        <p>Visit our FAQ or take a look at our Early Access page for more information on existing and upcoming features.</p>
+        <h4>Get a Look at What's Next</h4>
+        <p>Take a look at our Features page for information about all our intended features.</p>
       </div>
       <div class="col-sm-4">
+      <form action="/contact/subscribe" method="post" id="subscriberForm">
+        <div>
+          <input type="text" name="subscriberEmail" placeholder="email@your-address.com">
+        </div>
+
+        <div>
+          <h4>Sign Up for Our Mailing List</h4>
+          <input type="checkbox" name="chkList1" value="list1" checked>Procur.com Changes and Updates<br>
+          <input type="checkbox" name="chkList2" value="list2" checked>Trade &amp; Industry Newsletter<br>
+          <input type="checkbox" name="chkList3" value="list3" checked>General News &amp; Announcements<br>
+        </div>
+
+        <div>
+          <button type="submit">Submit</button>
+        </div>
+      </form>
       </div>
     </div>
 
     <div class="row">
+      <!-- BOTTOM LEFT SECTION -->
       <div class="col-sm-8">
         <div class="row">
           <div class="col-sm-12">
+            <p><span class="dark">At Procur, we are building a community and platform that is designed to be both useful and enjoyable.</span> Whether you'd like to submit feedback, have a question for Support, or have another comment or inquiry, we're glad to help. Contact us.</p>
           </div>
         </div>
 
         <div class="row">
+          <h3>Get In Touch With Us Now</h3>
+          <form action="/contact" method="post" id="contactForm">
           <div class="col-sm-5">
-          </div>
+            <div>
+              <input name="email" placeholder="Email" type="text">
+            </div>
+
+
+            <div>
+              <select name="field1">
+                <option disabled selected value="">
+                  What's your reason for contacting us?*
+                </option>
+
+                <option value="The first reason">
+                  The first reason.
+                </option>
+
+                <option value="The second reason">
+                  The second reason.
+                </option>
+
+                <option value="The third reason">
+                  The third reason.
+                </option>
+              </select>
+            </div>
+
+
+            <div>
+              <select name="field2">
+                <option disabled selected value="">
+                  Field 2*
+                </option>
+
+                <option value="The first reason">
+                  The first reason.
+                </option>
+
+                <option value="The second reason">
+                  The second reason.
+                </option>
+
+                <option value="The third reason">
+                  The third reason.
+                </option>
+              </select>
+            </div>
+
+
+            <div>
+              <select name="field3">
+                <option disabled selected value="">
+                  Field 3*
+                </option>
+
+                <option value="The first reason">
+                  The first reason.
+                </option>
+
+                <option value="The second reason">
+                  The second reason.
+                </option>
+
+                <option value="The third reason">
+                  The third reason.
+                </option>
+              </select>
+            </div>
+
+          </div> <!-- END DROPDOWN SECTION -->
           <div class="col-sm-7">
-          </div>
+
+            <div>
+              <textarea cols="90" form="contactForm" name="content" placeholder=
+              "Write a message here." rows="15">
+              </textarea>
+            </div>
+
+            <div>
+              <button type="submit">Send</button>
+            </div>
+
+          </div> <!-- END TEXTAREA / SUBMIT SECTION -->
         </div>
       </div>
 
+      <!-- BOTTOM RIGHT SECTION -->
       <div class="col-sm-4">
-        <div class="row">
-          <div class="col-sm-12">
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col-sm-6">
-          </div>
-          <div class="col-sm-6">
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col-sm-6">
-          </div>
-          <div class="col-sm-6">
-          </div>
-        </div>
+        <h3>Department</h3>
 
         <div class="row">
           <div class="col-sm-12">
+            <p>Have a specific question? Direct it to one of our departments at the email addresses below.
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-6">
+            <h5>General Inquiries</h5>
+            <a href="mailto:info@procur.com">info@procur.com</a>
+
+            <h5>Support</h5>
+            <a href="mailto:support@procur.com">support@procur.com</a>
+
+            <h5>Sales &amp; Membership</h5>
+            <a href="mailto:sales@procur.com">sales@procur.com</a>
+
+          </div>
+          <div class="col-sm-6">
+            <h5>Press &amp; Membership</h5>
+            <a href="mailto:media@procur.com">media@procur.com</a>
+
+            <h5>Social Media</h5>
+            <a href="mailto:social@procur.com">social@procur.com</a>
+
+            <h5>Careers</h5>
+            <a href="mailto:careers@procur.com">careers@procur.com</a>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-6">
+          <h5>Mailing Address</h5>
+            <p>Procur Systems<br/>
+            3400 Peachtree Rd NE<br/>
+            Suite 900<br/>
+            Atlanta, GA 30326</p>
+          </div>
+          <div class="col-sm-6">
+            <h5>Mailing Address</h5>
+            <p>+1 404 410 1188</p>
+
+            <h5>Mailing Address</h5>
+            <p>+1 404 410 1188</p>
           </div>
         </div>
 
         <div class="row">
           <div class="col-sm-12">
+            <p>MEDIA &amp; PRESS INQUIRIES:<br/>
+            Please contact <a href="mailto:media@procur.com">media@procur.com</a> for more information.
+            </p>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-12">
+            <p>JOBS, CAREERS &amp; INTERNSHIPS:<br/>
+            Please contact <a href="mailto:careers@procur.com">careers@procur.com</a> to find out more about working at Procur.
+            </p>
           </div>
         </div>
 
@@ -61,50 +212,5 @@
     </div>
   </div>
 </div>
-
-
-
-
-
-
-<h1>Contact Us</h1>
-<%- req.flash('status') %>
-<form action="/contact/subscribe" method="post" id="subscriberForm">
-	<div><input type="text" name="subscriberEmail" placeholder="email@your-address.com"></div>
-	<div>
-		<input type="checkbox" name="chkList1" value="list1" checked>Procur.com Changes and Updates<br>
-		<input type="checkbox" name="chkList2" value="list2" checked>Trade & Industry Newsletter<br>
-		<input type="checkbox" name="chkList3" value="list3" checked>General News & Announcements<br>
-	</div>
-	<div><button type="submit">Submit</button></div>
-</form>
-<form action="/contact" method="post" id="contactForm">
-   <div><input type="text" name="email" placeholder="Email"></div>
-	<div><select name="field1">
-			<option value="" disabled selected>What's your reason for contacting us?*</option>
-			<option value="The first reason" >The first reason.</option>
-			<option value="The second reason" >The second reason.</option>
-			<option value="The third reason" >The third reason.</option>
-	</select>
-	</div>
-	<div><select name="field2">
-			<option value="" disabled selected>Field 2*</option>
-			<option value="The first reason" >The first reason.</option>
-			<option value="The second reason" >The second reason.</option>
-			<option value="The third reason" >The third reason.</option>
-		</select>
-	</div>
-	<div><select name="field3">
-			<option value="" disabled selected>Field 3*</option>
-			<option value="The first reason" >The first reason.</option>
-			<option value="The second reason" >The second reason.</option>
-			<option value="The third reason" >The third reason.</option>
-		</select>
-	</div>
-   <div><textarea name="content" form="contactForm" rows="15" cols="90" placeholder="Write a message here."></textarea></div>
-   <div><button type="submit">Send</button></div>
-</form>
-<script>
-</script>
 
 <%- partial('../partials/dashboard-footer.ejs') %>
