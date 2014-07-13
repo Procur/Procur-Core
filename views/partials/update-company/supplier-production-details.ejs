@@ -2,74 +2,82 @@
   <h4>Production Details</h4>
   <div class="formWrapper">
     <form action="/supplier/update/productionDetails" method="post" id="supplierProductionDetailsForm">
-      <h5>Annual Sales Value</h5>
-      <div class="styledSelect">
-      <select name="annualSalesValue">
-        <option value="<%= supplier.annualSalesValue %>" selected="selected"><%= supplier.annualSalesValue %></option>
-        <%- partial('../edit-dropdowns/edit-annual-sales-value') %>
-      </select>
-      </div>
 
-      <h5>Total Factory Size</h5>
-      <div class='styledSelect'>
-      <select name="totalFactorySize">
-        <option value="<%= supplier.totalFactorySize %>" selected="selected"><%= supplier.totalFactorySize %></option>
-        <%- partial('../edit-dropdowns/edit-factory-size') %>
-      </select>
-      </div>
-
-      <h5>Total QC Staff</h5>
-      <div class="styledSelect">
-      <select name="totalQCStaff">
-        <option value="<%= supplier.totalQCStaff %>" selected="selected"><%= supplier.totalQCStaff %></option>
-        <%- partial('../edit-dropdowns/edit-qc-staff') %>
-      </select>
-      </div>
-
-      <h5>Additional Location</h5>
-      <section id="otherLocation1">
-        <div><input type="text" name="locationName" value="<%= supplier.locationName %>" placeholder="Location Title"></div>
-
-        <div class="styledSelect">
-          <select name="locationType">
-            <option value="<%= supplier.locationType %>" checked="checked"><%= supplier.locationType %></option>
-            <%- partial('../edit-dropdowns/edit-other-location-type') %>
+      <div class="row">
+        <div class="col-sm-6">
+          <h5>Annual Sales Value</h5>
+          <div class="styledSelect">
+          <select name="annualSalesValue">
+            <option value="<%= supplier.annualSalesValue %>" selected="selected"><%= supplier.annualSalesValue %></option>
+            <%- partial('../edit-dropdowns/edit-annual-sales-value') %>
           </select>
+          </div>
+
+          <h5>Total Factory Size</h5>
+          <div class='styledSelect'>
+          <select name="totalFactorySize">
+            <option value="<%= supplier.totalFactorySize %>" selected="selected"><%= supplier.totalFactorySize %></option>
+            <%- partial('../edit-dropdowns/edit-factory-size') %>
+          </select>
+          </div>
+
+          <h5>Total QC Staff</h5>
+          <div class="styledSelect">
+          <select name="totalQCStaff">
+            <option value="<%= supplier.totalQCStaff %>" selected="selected"><%= supplier.totalQCStaff %></option>
+            <%- partial('../edit-dropdowns/edit-qc-staff') %>
+          </select>
+          </div>
+
+          <h5>Nearest Port</h5>
+          <section id="port">
+            <div><input type="text" name="portCity" value="<%= supplier.portCity %>" placeholder="City"></div>
+
+            <div class="styledSelect">
+              <select name="portCountry" id="portCountry" onchange="print_state('portProvince',this.selectedIndex);">
+                <!-- edit_country() will populate this dropdown -->
+              </select>
+            </div>
+
+            <div class="styledSelect">
+              <select name="portProvince" id="portProvince">
+                <option value="<%= supplier.portProvince %>" selected="selected"><%= supplier.portProvince %></option>
+              </select>
+            </div><script language="javascript">edit_country("<%= supplier.portCountry %>", "portCountry");</script>
+          </section>
         </div>
 
-        <div class="styledSelect">
-          <select name="locationCountry" id="country" onchange="print_state('province',this.selectedIndex);">
-            <!-- edit_country() will populate this dropdown -->
-          </select>
+        <div class="col-sm-6">
+          <h5>Additional Location</h5>
+          <section id="otherLocation1">
+            <div><input type="text" name="locationName" value="<%= supplier.locationName %>" placeholder="Location Title"></div>
+
+            <div class="styledSelect">
+              <select name="locationType">
+                <option value="<%= supplier.locationType %>" checked="checked"><%= supplier.locationType %></option>
+                <%- partial('../edit-dropdowns/edit-other-location-type') %>
+              </select>
+            </div>
+
+            <div class="styledSelect">
+              <select name="locationCountry" id="country" onchange="print_state('province',this.selectedIndex);">
+                <!-- edit_country() will populate this dropdown -->
+              </select>
+            </div>
+
+            <div class="styledSelect">
+              <select name="locationProvince" id="province">
+                <option value="<%= supplier.locationProvince %>" selected="selected"><%= supplier.locationProvince %></option>
+              </select>
+            </div><script language="javascript">edit_country("<%= supplier.locationCountry %>", "country");</script>
+
+            <div><input type="text" name="locationCity" value="<%= supplier.locationCity %>" placeholder="City"></div>
+          </section>
         </div>
 
-        <div class="styledSelect">
-          <select name="locationProvince" id="province">
-            <option value="<%= supplier.locationProvince %>" selected="selected"><%= supplier.locationProvince %></option>
-          </select>
-        </div><script language="javascript">edit_country("<%= supplier.locationCountry %>", "country");</script>
 
-        <div><input type="text" name="locationCity" value="<%= supplier.locationCity %>" placeholder="City"></div>
-      </section>
-
-      <h5>Nearest Port</h5>
-      <section id="port">
-        <div><input type="text" name="portCity" value="<%= supplier.portCity %>" placeholder="City"></div>
-
-        <div class="styledSelect">
-          <select name="portCountry" id="portCountry" onchange="print_state('portProvince',this.selectedIndex);">
-            <!-- edit_country() will populate this dropdown -->
-          </select>
+        <div><input type="submit"></div>
         </div>
-
-        <div class="styledSelect">
-          <select name="portProvince" id="portProvince">
-            <option value="<%= supplier.portProvince %>" selected="selected"><%= supplier.portProvince %></option>
-          </select>
-        </div><script language="javascript">edit_country("<%= supplier.portCountry %>", "portCountry");</script>
-      </section>
-
-      <div><input type="submit"></div>
     </form>
   </div>
 </div>
