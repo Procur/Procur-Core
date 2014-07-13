@@ -434,210 +434,206 @@ module.exports = {
     });
   },
 
- /* update: function(req, res){
-    var payload = [],
-        locationsPayload = {},
-        viewLocations = {},
-        companyId,
-        buyerId,
-        supplierId,
-        userActiveMode;
-    var error = 0;
-    var locationsHelper = sails.config.locationsHelper;
-    var waterlineHelper = sails.config.waterlineHelper;
-
-    User.findOne({ id: req.session.passport.user }, function(err, user){
-      if(err) { return res.redirect('/dashboard'); }
-      if(user === undefined){ return res.serverError(); }
-      userActiveMode = user.activeMode;
-      Company.findOne({ user: user.id }, function(err, company){
-        if(err) { return res.redirect('/dashboard'); }
-        companyId = company.id;
-        payload.push(company);
-        if (userActiveMode === "buyer") {
-          Buyer.findOne({ company: companyId }, function(err, buyer){
-            if(err) { return res.redirect('/dashboard'); }
-            payload.push(buyer);
-            Location.find().where({ company: companyId }).exec(function(err, locations){
-              if(err) { return res.redirect('/dashboard'); }
-              locationsPayload["company"] = locations;
-              viewLocations = locationsHelper.parseLocations(locationsPayload);
-              payload.push(waterlineHelper.fixBuyerArrays(payload[1]));
-              res.view({ user: userActiveMode, company: payload[0], buyer: payload[1], buyer2: payload[2], locations: viewLocations });
-            });
-          });
-        }
-        else if (userActiveMode === "supplier") {
-          Supplier.findOne({ company: company.id }, function(err, supplier){
-            if(err) { return res.redirect('/dashboard'); }
-            supplierId = supplier.id;
-            payload.push(supplier);
-            Location.find().where({ company: companyId }).exec(function(err, locations){
-              if(err) { return res.redirect('/dashboard'); }
-              locationsPayload["company"] = locations;
-              viewLocations = locationsHelper.parseLocations(locationsPayload);
-              payload.push(waterlineHelper.fixSupplierArrays(payload[1]));
-              res.view({ user: userActiveMode, company: payload[0], supplier: payload[1], supplier2: payload[2], locations: viewLocations });
-            });
-          });
-        }
-      });
-    });
-  },
-
-  /*setUpdate: function(req, res){
-    var b = req.body;
-    User.findOne({ id: req.session.passport.user }, function(err, user){
-      if(err) { return res.redirect('/dashboard'); }
-      Company.findOne({ user: user.id }, function(err, company){
-        if(err) { return res.redirect('/dashboard'); }
-        Company.update(company, {
-          name: b.companyName,
-          phoneNumber: b.companyPhone,
-          phoneExtension: b.companyPhoneExt,
-          //faxCountryCode: b.companyFaxCountryCode,
-          //faxNumber: b.companyFax,
-          //faxExtension: b.companyFaxExt,
-          email: b.companyEmail,
-          website: b.companyWebsite,
-          physicalAddress1: b.companyAddress1,
-          physicalAddress2: b.companyAddress2,
-          country: b.companyCountry,
-          province: b.companyProvince,
-          postalCode: b.companyPostalCode,
-          hqAddress1: b.hqAddress1,
-          hqAddress2: b.hqAddress2,
-          hqCountry: b.hqCountry,
-          hqProvince: b.hqProvince,
-          hqPostalCode: b.hqPostalCode,
-          //deprecated - companyType: b.companyType,
-          industry: b.companyIndustry,
-          employeeCount: b.companyEmployeeCount,
-        }, function(err, company){
-          if(err) { return res.redirect('/dashboard'); }
-          res.redirect('/dashboard'); //TODO: Add success flash
-        });
-      });
-    });
-  },*/
-
-  update: function(req, res){
-    var userId = req.session.passport.user,
-        targetUser,
-        targetBuyer,
-        targetSupplier,
-        targetCompany,
-        companyLocations,
+  update: function(req, res) {
+    var currentUser = req.session.passport.user,
+        async = require('async'),
+        locationsHelper = sails.config.locationsHelper,
         waterlineHelper = sails.config.waterlineHelper,
-        locationsHelper = sails.config.locationsHelper;
+        payload = {},
+        locationsPayload = {},
+        viewLocations = {};
 
-    User.findOne({ id: userId }, function(err, user){
-      if(err){ return res.redirect('/dashboard'); }
-      if(user !== undefined){
-        targetUser = user;
-        Company.findOne({ user: user.id }, function (err, company){
-          if(err){ return res.redirect('/dashboard'); }
-          if(company !== undefined){
-            targetCompany = company;
-            if((company.buyer == true) && (company.supplier == true)){
-              Buyer.findOne({ company: company.id }, function(err, buyer){
-                if(err){ return res.redirect('/dashboard'); }
-                if(buyer !== undefined){
-                  targetBuyer = buyer;
-                  Supplier.findOne({ company: company.id }, function(err, supplier){
-                    if(err){ return res.redirect('/dashboard'); }
-                    if(supplier !== undefined) {
-                      targetSupplier = supplier;
-                      Location.find().where({ company: company.id }).exec(function(err, locations){
-                        if(err){ return res.redirect('/dashboard'); }
-                        var locationsPayload = [];
-                        locationsPayload["company"] = locations;
-                        var parsedLocations = locationsHelper.parseLocations(locationsPayload);
-                        var targetBuyer2 = waterlineHelper.fixBuyerArrays(targetBuyer);
-                        var targetSupplier2 = waterlineHelper.fixSupplierArrays(targetSupplier);
-                        res.view({
-                          user: targetUser,
-                          company: targetCompany,
-                          buyer: targetBuyer,
-                          buyer2: targetBuyer2,
-                          supplier: targetSupplier,
-                          supplier2: targetSupplier2,
-                          companyLocations: parsedLocations
-                        });
-                      });
-                    }
-                    else {
-                      return res.redirect('/dashboard');
-                    }
-                  });
-                }
-                else {
-                  return res.redirect('/dashboard');
-                }
-              });
-            }
-            else if((company.buyer == true) && (company.supplier != true)){
-              Buyer.findOne({ company: company.id }, function(err, buyer){
-                if(err){ return res.redirect('/dashboard'); }
-                if(buyer !== undefined){
-                  targetBuyer = buyer;
-                  Location.find().where({ company: company.id }).exec(function(err, locations){
-                    if(err){ return res.redirect('/dashboard'); }
-                    var locationsPayload = [];
-                    locationsPayload["company"] = locations;
-                    var parsedLocations = locationsHelper.parseLocations(locationsPayload);
-                    var targetBuyer2 = waterlineHelper.fixBuyerArrays(targetBuyer);
-                    res.view({
-                      user: targetUser,
-                      company: targetCompany,
-                      buyer: targetBuyer,
-                      buyer2: targetBuyer2,
-                      companyLocations: parsedLocations
+    User.findOne({ id: currentUser }, function(err, user) {
+      if (err) { return res.redirect('/dashboard'); }
+      if (user !== undefined) { payload["user"] = user; }
+      Company.findOne({ user: payload.user.id }, function(err, company) {
+        if (err) { return res.redirect('/dashboard'); }
+        if (company) { payload["company"] = company; }
+        Location.find().where({ company: payload["company"].id }).exec(function(err, locations) {
+          if (err) { return res.redirect('/dashboard'); }
+          locationsPayload["company"] = locations;
+          viewLocations = locationsHelper.parseLocations(locationsPayload);
+
+          async.parallel(
+              {
+                buyer: function(callback) {
+                  Buyer
+                    .findOne({ company: payload["company"].id })
+                    .exec(function(err, buyer) {
+                      if (err) { callback(err, null); }
+                      else if (!buyer) { callback(null, undefined); }
+                      else {
+                        buyer = waterlineHelper.fixBuyerArrays(buyer);
+                        payload["buyer"] = buyer;
+                        callback(null, buyer);
+                      }
                     });
-                  });
-                }
-                else {
-                  return res.redirect('/dashboard');
-                }
-              });
-            }
-            else if((company.buyer != true) && (company.supplier == true)){
-              Supplier.findOne({ company: company.id }, function(err, supplier){
-                if(err){ return res.redirect('/dashboard'); }
-                if(supplier !== undefined){
-                  targetSupplier = supplier;
-                  Location.find().where({ company: company.id }).exec(function(err, locations){
-                    if(err){ return res.redirect('/dashboard'); }
-                    var locationsPayload = [];
-                    locationsPayload["company"] = locations;
-                    var parsedLocations = locationsHelper.parseLocations(locationsPayload);
-                    var targetSupplier2 = waterlineHelper.fixBuyerArrays(targetSupplier);                    res.view({
-                      user: targetUser,
-                      company: targetCompany,
-                      supplier: targetSupplier,
-                      supplier2: targetSupplier2,
-                      companyLocations: parsedLocations
+                },
+                supplier: function(callback) {
+                  Supplier
+                    .findOne({ company: payload["company"].id })
+                    .exec(function(err, supplier) {
+                      if (err) { callback(err, null); }
+                      else if (!supplier) { callback(null, undefined); }
+                      else {
+                        supplier = waterlineHelper.fixSupplierArrays(supplier);
+                        payload["supplier"] = supplier;
+                        callback(null, supplier);
+                      }
                     });
-                  });
                 }
-                else {
-                  return res.redirect('/dashboard');
+              },
+              function(err, data) {
+                if (payload["buyer"] !== undefined && payload["supplier"] === undefined) {
+                  res.view({ user: payload["user"], company: payload["company"], buyer: payload["buyer"], supplier: payload["supplier"], companyLocations: viewLocations });
                 }
-              });
-            }
-          }
-          else {
-            return res.redirect('/dashboard');
-          }
+                if (payload["buyer"] === undefined && payload["supplier"] !== undefined) {
+                  res.view({ user: payload["user"], company: payload["company"], buyer: payload["buyer"], supplier: payload["supplier"], companyLocations: viewLocations });
+                }
+                if (payload["buyer"] !== undefined && payload["supplier"] !== undefined) {
+                  res.view({ user: payload["user"], company: payload["company"], buyer: payload["buyer"], supplier: payload["supplier"], companyLocations: viewLocations });
+                }
+              }
+            ) // End async
         });
-      }
-      else {
-        return res.redirect('/dashboard');
-      }
+      });
     });
   },
 
-  updateBasicCompanyDetails: function(req, res){
+  updateBasicCompanyDetails: function(req, res) {
+    var user = req.session.passport.user;
+    var b = req.body;
+    var companyID;
+    var numOfLocations;
+
+    User.findOne({ id: user }, function(err, user) { 
+      if (err) { /* do something here */ }
+      Company.findOne({ user: user.id }, function(err, company) {
+        if (err) { /* do something here */ }
+        companyID = company.id;
+        Company.update(companyID, {
+          name: b.name,
+          phoneNumberCountryCode: b.phoneNumberCountryCode,
+          phoneNumber: b.phoneNumber,
+          phoneExtension: b.phoneExtension,
+          faxCountryCode: b.faxCountryCode,
+          faxNumber: b.faxNumber,
+          faxExtension: b.faxExtension,
+          email: b.email,
+          website: b.website,
+          industry: b.companyIndustry,
+          employeeCount: b.employeeCount
+        }, function(err, newCompany) {
+          if (err) { /* do something here */ }
+          Location.find({ company: companyID}, function(err, locations) {
+            numOfLocations = locations.length;
+
+            if (b.companyIsHq == "on" && numOfLocations === 1) {
+              console.log("The checkbox IS checked and there is ONE location.");
+              Location.update(locations[0].id, {
+                addressLine1: b.companyAddress1,
+                addressLine2: b.companyAddress2,
+                country: b.companyCountry,
+                province: b.companyProvince,
+                postalCode: b.companyPostalCode
+              }).exec(function(err, newLocation){
+                if (err) { /* do something here */ }
+                return res.redirect('/company/update'); /* Success message? */
+              });
+            }
+
+            if (b.companyIsHq == "on" && numOfLocations === 2) {
+              console.log("The checkbox IS checked and there are TWO locations.");
+              var nonhq, hq;
+              locations.forEach(function(location) {
+                if (location.isHq === false) { nonhq = location; }
+                if (location.isHq === true) { hq = location; }
+              });
+
+              Location.update(hq.id, {
+                addressLine1: b.companyAddress1,
+                addressLine2: b.companyAddress2,
+                country: b.companyCountry,
+                province: b.companyProvince,
+                postalCode: b.companyPostalCode
+              }).exec(function(err, updatedHq) {
+                if (err) { /* do something here */ }
+              });
+
+              Location.destroy({ id: nonhq.id }).exec(function(err){
+                if (err) { /* do something here */ }
+              });
+
+              return res.redirect('/company/update');
+            }
+
+            if (b.companyIsHq == undefined && numOfLocations === 1) {  //LOOK INTO THIS MORE
+              console.log("The checkbox is NOT checked and there is ONE location.");
+
+              Location.update(locations[0].id, {
+                addressLine1: b.hqAddress1,
+                addressLine2: b.hqAddress2,
+                country: b.hqcompanyCountry,
+                province: b.hqcompanyProvince,
+                postalCode: b.hqPostalCode
+              }).exec(function(err, updatedHQ) {
+                if (err) { /* do something here */ }
+              });
+
+              Location.create({
+                company: companyID,
+                addressLine1: b.companyAddress1,
+                addressLine2: b.companyAddress2,
+                country: b.companyCountry,
+                province: b.companyProvince,
+                postalCode: b.companyPostalCode,
+                isHq: false,
+                type: "Other"
+              }, function(err, newLocation) {
+                if (err) { /* do something here */ }
+              });
+
+              return res.redirect('/company/update');
+            }
+
+            if (b.companyIsHq == undefined && numOfLocations === 2) {
+              console.log("The checkbox is NOT checked and there are TWO locations.");
+              var nonhq, hq;
+              locations.forEach(function(location) {
+                if (location.isHq === false) { nonhq = location; }
+                if (location.isHq === true) { hq = location; }
+              });
+
+              Location.update(nonhq.id, {
+                addressLine1: b.companyAddress1,
+                addressLine2: b.companyAddress2,
+                country: b.companyCountry,
+                province: b.companyProvince,
+                postalCode: b.companyPostalCode
+              }).exec(function(err, newNonHQ) {
+                if (err) { /* do something here */ }
+              });
+
+              Location.update(hq.id, {
+                addressLine1: b.hqAddress1,
+                addressLine2: b.hqAddress2,
+                country: b.hqcompanyCountry,
+                province: b.hqcompanyProvince,
+                postalCode: b.hqPostalCode
+              }).exec(function(err, newHQ) {
+                if (err) { /* do something here */ }
+              });
+              return res.redirect('/company/update'); /* Success message? */
+            }
+          });
+        });
+      });
+    });
+    
+
+  },
+
+  /*updateBasicCompanyDetails: function(req, res){
     var p = req.params.all(),
         name = p.name,
         phoneNumberCountryCode = p.phoneNumberCountryCode,
@@ -706,7 +702,7 @@ module.exports = {
         return res.redirect('/dashboard');
       }
     });
-  },
+  },*/
 
   updateBuyerInformation: function(req, res){
 
