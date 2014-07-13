@@ -26,6 +26,9 @@ $('#autocomplete1').on('focus', function(){
       $('.ui-helper-hidden-accessible').css("display","none");
     }
   });
+  $('#autocomplete1').on('blur', function(){
+    $('.autocompleteWrapper1').find('.ui-helper-hidden-accessible').css("display","none");
+  });
 });
 
 $('#autocomplete2').on('focus', function(){
@@ -42,6 +45,9 @@ $('#autocomplete2').on('focus', function(){
       $('.ui-helper-hidden-accessible').css("display","none");
     }
   });
+  $('#autocomplete2').on('blur', function(){
+    $('.autocompleteWrapper2').find('.ui-helper-hidden-accessible').css("display","none");
+  });
 });
 
 $('#autocomplete3').on('focus', function(){
@@ -57,5 +63,8 @@ $('#autocomplete3').on('focus', function(){
     if (n != -1){
       $('.ui-helper-hidden-accessible').css("display","none");
     }
+  });
+  $('#autocomplete3').on('blur', function(){
+    $('.autocompleteWrapper3').find('.ui-helper-hidden-accessible').css("display","none");
   });
 });
