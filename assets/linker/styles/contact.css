@@ -11,6 +11,7 @@
   text-transform: uppercase;
   border-bottom: 3px solid #d3d3d3;
   padding-bottom: 7px;
+  margin-bottom: 25px;
 }
 
 #contact h4 {
@@ -30,11 +31,37 @@
   font-color: #333132;
   letter-spacing: 0.04em;
   text-transform: capitalize;
+  margin-bottom: 0px;
+  margin-top: 20px;
 }
 
 #contact p {
   margin: 0px;
   padding-top: 0px;
+}
+
+
+#contact .heroRow p {
+  font-size: 22px;
+  font-family: 'Open Sans';
+  color: #a3a3a3;
+  font-weight: 300;
+  line-height: 36px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+#contact .infoSection .emails a {
+  color: #a3a3a3;
+  font-family: 'Montserrat';
+  letter-spacing: 0.06em;
+  font-weight: 300;
+  font-size: 11px;
+}
+
+#contact .infoSection .emails a:hover {
+  color: orange;
+  text-decoration: none;
 }
 
 #contact ul {
@@ -57,7 +84,6 @@
   text-decoration: none;
 }
 
-
 #contact .topRow {
   margin-top: 20px;
 }
@@ -69,4 +95,8 @@
 
 #contact hr.dotted {
   border-top: 1px dotted #a3a3a3;
+}
+
+textarea {
+  width: 100%;
 }
