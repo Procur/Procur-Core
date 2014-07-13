@@ -86,5 +86,10 @@
   margin-top: -23px;
   margin-left: 20px;
   margin-bottom: 20px;
+}
 
+#companyUpdate input.submit {
+  width: auto;
+  background: red;
+  color: white;
 }
