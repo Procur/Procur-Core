@@ -82,6 +82,82 @@
   color: #5cc56c;
 }
 
+#buyerInformation .dba {
+  margin: 20px 0px 0px 0px;
+}
+
+#buyerInformation .dba input {
+  margin-top: 2px;
+}
+
+#buyerInformation .language {
+  margin: 20px 0px 0px 0px;
+}
+
+#buyerInformation .header-currency {
+  margin-top: 10px;
+}
+
+#buyerInformation .checkbox {
+  display: inline-block;
+  width: auto;
+  height: auto;
+  margin: 0px 0px 30px 25px;
+}
+
+#buyerInformation .checkboxtext {
+  display: inline-block;
+  margin: 10px 0px 0px 10px;
+}
+
+#buyerInformation .clear {
+  clear: both;
+}
+
+  #supplierInformation .dba {
+    margin: 20px 0px 0px 0px;
+  }
+
+  #supplierInformation .dba input {
+    margin-top: 2px;
+  }
+
+  #supplierInformation .language {
+    margin: 20px 0px 0px 0px;
+  }
+
+  #supplierInformation .header-currency {
+    margin-top: 10px;
+  }
+
+  #supplierInformation .checkbox {
+    display: inline-block;
+    width: auto;
+    height: auto;
+    margin: 0px 0px 30px 25px;
+  }
+
+  #supplierInformation .checkboxtext {
+    display: inline-block;
+    margin: 10px 0px 0px 10px;
+  }
+
+  #supplierInformation .clear {
+    clear: both;
+  }
+
+#acceptedCurrencies .col-sm-3 .cb-container:first-child {
+  margin: 10px 0px 0px 0px;
+}
+
+#acceptedPaymentTerms .col-sm-3 .cb-container:first-child {
+  margin: 10px 0px 0px 0px;
+}
+
+#acceptedDeliveryTerms .col-sm-3 .cb-container:first-child {
+  margin: 10px 0px 0px 0px;
+}
+
 #companyUpdate .checkboxtext {
   margin-top: -23px;
   margin-left: 20px;

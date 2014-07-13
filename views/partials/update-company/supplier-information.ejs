@@ -15,11 +15,11 @@
 
           <form action="/supplier/update/information" method="post" id="supplierInformationForm">
 
-            <div class="col-sm-6">
+            <div class="col-sm-6 dba">
               <h5>DBA Name</h5>
               <div><input type="text" name="dba" value="<%= supplier.dbaName %>"></div>
             </div>
-            <div class="col-sm-6">
+            <div class="col-sm-6 language">
               <h5>Language</h5>
               <div class="styledSelect">
                 <select name="language">
@@ -28,9 +28,10 @@
                 </select>
               </div>
             </div>
+            <div class="clear"></div>
 
             <div class="col-sm-12">
-              <h5>Accepted Currencies</h5>
+              <h5 class="header-currency">Accepted Currencies</h5>
             </div>
 
             <% var currencies = ["USD","EUR","JPY","GBP","break","AUD","CHF","CAD","MXN","break","CNY","NZD","SEK","break","RUB","HKD","SGD"]; %>
@@ -47,14 +48,15 @@
                     <% for (var y = 0; y < supplier["acceptedCurrency"].length; y++) { %>
                       <% if (currencies[x] == supplier.acceptedCurrency[y]) { %>
                         <% matchFound = true; %>
-                        <input class="checkbox" type="checkbox" name="acceptedCurrency" value="<%= currencies[x] %>" checked><div class="checkboxtext"><%= currencies[x] %></div>
+                        <div class="cb-container"><input class="checkbox" type="checkbox" name="acceptedCurrency" value="<%= currencies[x] %>" checked><div class="checkboxtext"><%= currencies[x] %></div></div>
                         <% break; %>
                       <% } %>
                     <% } %>
                     <% if (matchFound === false && currencies[x] !== "break") { %>
-                      <input class="checkbox" type="checkbox" name="acceptedCurrency" value="<%= currencies[x] %>"><div class="checkboxtext"><%= currencies[x] %></div>
+                      <div class="cb-container"><input class="checkbox" type="checkbox" name="acceptedCurrency" value="<%= currencies[x] %>"><div class="checkboxtext"><%= currencies[x] %></div></div>
                     <% } %>
                   <% } %>
+              </div>
               </div>
             </section>
 
@@ -73,12 +75,12 @@
                     <% for (var y = 0; y < supplier["acceptedPaymentTerms"].length; y++) { %>
                       <% if (payment[x] == supplier.acceptedPaymentTerms[y]) { %>
                         <% matchFound = true; %>
-                        <input class="checkbox" type="checkbox" name="acceptedPaymentTerms" value="<%= payment[x] %>" checked><div class="checkboxtext"><%= payment[x] %></div>
+                        <div class="cb-container"><input class="checkbox" type="checkbox" name="acceptedPaymentTerms" value="<%= payment[x] %>" checked><div class="checkboxtext"><%= payment[x] %></div></div>
                         <% break; %>
                       <% } %>
                     <% } %>
                     <% if (matchFound === false && payment[x] !== "break") { %>
-                      <input class="checkbox" type="checkbox" name="acceptedPaymentTerms" value="<%= payment[x] %>"><div class="checkboxtext"><%= payment[x] %></div>
+                      <div class="cb-container"><input class="checkbox" type="checkbox" name="acceptedPaymentTerms" value="<%= payment[x] %>"><div class="checkboxtext"><%= payment[x] %></div></div>
                     <% } %>
                   <% } %>
               </div>
@@ -99,12 +101,12 @@
                     <% for (var y = 0; y < supplier["acceptedDeliveryTerms"].length; y++) { %>
                       <% if (terms[x] == supplier.acceptedDeliveryTerms[y]) { %>
                         <% matchFound = true; %>
-                        <input class="checkbox" type="checkbox" name="acceptedDeliveryTerms" value="<%= terms[x] %>" checked><div class="checkboxtext"><%= terms[x] %></div><br>
+                        <div class="cb-container"><input class="checkbox" type="checkbox" name="acceptedDeliveryTerms" value="<%= terms[x] %>" checked><div class="checkboxtext"><%= terms[x] %></div></div>
                         <% break; %>
                       <% } %>
                     <% } %>
                     <% if (matchFound === false && terms[x] !== "break") { %>
-                      <input class="checkbox" type="checkbox" name="acceptedDeliveryTerms" value="<%= terms[x] %>"><div class="checkboxtext"><%= terms[x] %></div><br>
+                      <div class="cb-container"><input class="checkbox" type="checkbox" name="acceptedDeliveryTerms" value="<%= terms[x] %>"><div class="checkboxtext"><%= terms[x] %></div></div>
                     <% } %>
                   <% } %>
               </div>
