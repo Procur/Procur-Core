@@ -66,6 +66,18 @@ jQuery.validator.addMethod("uniqueCompanyHandle", function(value, element, param
   return !(companyHandleTaken);
 }, jQuery.validator.format("This company handle is not available."));
 
+jQuery.validator.addMethod("actualCategoryOption", function(value, element, params) {
+  if (value==""){return true;}
+
+  var result = false;
+  $.each(autocompleteCategoriesList, function(index, category){
+    if (value==category){
+      result = true;
+    }
+  });
+  return result;
+}, jQuery.validator.format("Please choose an option provided."));
+
 /*
 
 Custom Validation Messages
@@ -112,6 +124,11 @@ $('#registration-form').validate({
       required: true,
       equalTo: "#regPassword"
     }
+  },
+  messages:{
+    passwordConfirm: {
+      equalTo: "Passwords do not match."
+    }
   }
 });
 
@@ -143,6 +160,11 @@ $('#signup-form').validate({
       required: true,
       equalTo: "#signUpPassword"
     }
+  },
+  messages:{
+    passwordConfirm: {
+      equalTo: "Passwords do not match."
+    }
   }
 });
 
@@ -169,6 +191,25 @@ $('#forgot-password-form').validate({
   }
 });
 
+$('#reset-password-form').validate({
+  rules: {  
+    password: {
+      required: true,
+      minlength: 8,
+      strongPassword: true,
+      maxlength: 50
+    },
+    confirmPassword: {
+      required: true,
+      equalTo: "#resetPasswordChoice"
+    }
+  },
+  messages:{
+    confirmPassword: {
+      equalTo: "Passwords do not match."
+    }
+  }
+});
 
 $('#select-handle-form').validate({
   rules: {
@@ -449,6 +490,9 @@ var buyerValidateObj = {
       // (provided)
       //Buyer model says this is stored as an array (length 1-100), but it is a single dropdown in the UI.
       //TODO: ask about this.
+    },
+    autocomplete: {
+      actualCategoryOption: true
     }
   },
   messages:{
@@ -619,10 +663,14 @@ var supplierValidateObj = {
       // (provided)
       //Buyer model says this is stored as an array (length 1-100), but it is a single dropdown in the UI.
       //TODO: ask about this.
+    },
+    autocompleteReq: {
+      required: true,
+      actualCategoryOption: true
+    },
+    autocomplete: {
+      actualCategoryOption: true
     }
-    /*
-      TODO: Product Specialties (At least one required.)
-    */
   },
   messages:{
     acceptedDeliveryTerms: {
@@ -1195,6 +1243,11 @@ $('#password-update-form').validate({
     passwordConfirm: {
       required: true,
       equalTo: "#newPassword"
+    }
+  },
+  messages:{
+    passwordConfirm: {
+      equalTo: "Passwords do not match."
     }
   }
 });
