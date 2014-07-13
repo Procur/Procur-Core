@@ -18,11 +18,14 @@ module.exports = function (req, res, next) {
         if (req.route.path == '/welcome') {
           res.redirect('/dashboard');
         }
+/* Needs to be 
         else if((req.route.path == '/welcome/buyer') || (req.route.path == '/welcome/supplier')){
           if(user.profileComplete == true){
             res.redirect('/dashboard');
           }
         }
+*/
+
         else {
           return next();
         }
