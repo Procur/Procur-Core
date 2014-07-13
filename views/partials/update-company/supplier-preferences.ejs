@@ -1,8 +1,8 @@
 <div id="preferencesSupplier">
   <h4>Preferences</h4>
-  <div class="formWrapper">
-    <div class="row">
-      <form action="/supplier/update/preferences" method="post" id="supplierPreferencesForm">
+  <form action="/supplier/update/preferences" method="post" id="supplierPreferencesForm">
+    <div class="formWrapper">
+      <div class="row">
 
         <div class="col-sm-6">
           <h5>Preferred Buyer Type</h5>
@@ -30,8 +30,8 @@
           </div><script language="javascript">edit_country("<%= supplier.preferredBuyerLocation %>", "preferredBuyerLocation");</script>
         </div> <!-- End of Second Column -->
         
-        <div><input type="submit"></div>
-      </form>
-    </div><!-- End of outside row -->
-  </div><!-- End of formWrapper -->
+      </div> <!-- End of outside row -->
+    </div><!-- End of formWrapper -->
+    <div class="row"><button class="continueButton" type="submit">Save&nbsp;&nbsp; <i class="fa fa-arrow-right"></i></button></div>
+  </form>
 </div>

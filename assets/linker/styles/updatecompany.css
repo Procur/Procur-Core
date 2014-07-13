@@ -157,3 +157,15 @@
 #acceptedDeliveryTerms .col-sm-3 .cb-container:first-child {
   margin: 10px 0px 0px 0px;
 }
+
+#companyUpdate .checkboxtext {
+  margin-top: -23px;
+  margin-left: 20px;
+  margin-bottom: 20px;
+}
+
+#companyUpdate input.submit {
+  width: auto;
+  background: red;
+  color: white;
+}
