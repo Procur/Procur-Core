@@ -112,6 +112,11 @@ $('#registration-form').validate({
       required: true,
       equalTo: "#regPassword"
     }
+  },
+  messages:{
+    passwordConfirm: {
+      equalTo: "Passwords do not match."
+    }
   }
 });
 
@@ -143,6 +148,11 @@ $('#signup-form').validate({
       required: true,
       equalTo: "#signUpPassword"
     }
+  },
+  messages:{
+    passwordConfirm: {
+      equalTo: "Passwords do not match."
+    }
   }
 });
 
@@ -169,6 +179,25 @@ $('#forgot-password-form').validate({
   }
 });
 
+$('#reset-password-form').validate({
+  rules: {  
+    password: {
+      required: true,
+      minlength: 8,
+      strongPassword: true,
+      maxlength: 50
+    },
+    confirmPassword: {
+      required: true,
+      equalTo: "#resetPasswordChoice"
+    }
+  },
+  messages:{
+    confirmPassword: {
+      equalTo: "Passwords do not match."
+    }
+  }
+});
 
 $('#select-handle-form').validate({
   rules: {
@@ -1195,6 +1224,11 @@ $('#password-update-form').validate({
     passwordConfirm: {
       required: true,
       equalTo: "#newPassword"
+    }
+  },
+  messages:{
+    passwordConfirm: {
+      equalTo: "Passwords do not match."
     }
   }
 });
