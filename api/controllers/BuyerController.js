@@ -343,48 +343,32 @@ module.exports = {
   },
 
   updateSocialOutlets: function (req, res) {
-    var activeUser = req.session.passport.user,
-        p = req.body;
-    User.findOne({ id: activeUser }, function(err, user){
-      if(err){ return res.redirect('/dashboard'); }
-      if(user !== undefined){
-        Company.findOne({ user: user.id }, function(err, company){
-          if(err){ return res.redirect('/dashboard'); }
-          if(company !== undefined){
-            Buyer.findOne({ company: company.id }, function(err, buyer){
-              if(err){ return res.redirect('/dashboard'); }
-              if(buyer !== undefined){
-                Buyer.update(buyer.id, {
-                  facebook: p.facebook,
-                  twitter: p.twitter,
-                  google: p.google,
-                  linkedin: p.linkedin,
-                  pinterest: p.pinterest,
-                  instagram: p.instagram,
-                  tumblr: p.tumblr
-                }, function(err, buyer){
-                  if(err){ return res.redirect('/company/update#socialOutletsBuyer') }
-                  if(buyer){
-                    return res.send('success');
-                  }
-                  else{
-                    return res.send('failed');
-                  }
-                });
-              }
-              else {
-                return res.redirect('/dashboard');
-              }
-            });
-          }
-          else {
-            return res.redirect('/dashboard');
-          }
+    var user = req.session.passport.user;
+    var b = req.body;
+
+    User.findOne({ id: user }, function(err, user) {
+      if (err) { /* do something here */ }
+      if (user === undefined) { /* do something here */ }
+      Company.findOne({ user: user.id }, function(err, company) {
+        if (err) { /* do something here */ }
+        if (company === undefined) { /* do something here */ }
+        Buyer.findOne({ company: company.id }, function(err, buyer) {
+          if (err) { /* do something here */ }
+          if (buyer === undefined) { /* do something here */ }
+          Buyer.update(buyer.id, {
+            facebook: b.facebook,
+            twitter: b.twitter,
+            google: b.google,
+            linkedin: b.linkedin,
+            pinterest: b.pinterest,
+            instagram: b.instagram,
+            tumblr: b.tumblr
+          }).exec(function(err, newBuyer) {
+            if (err) { /* do something here */ }
+            return res.redirect('/company/update#socialOutletsBuyer');
+          });
         });
-      }
-      else{
-        return res.redirect('/dashboard');
-      }
+      });
     });
   },
 
