@@ -1336,13 +1336,13 @@ $('#companyDetailsForm').validate({
       maxlength: 10
     },
     faxCountryCode: {
-      required: true,
+      required: false,
       "numeric+whitespace": true,
       minlength: 1,
       maxlength: 8
     },
     faxNumber: {
-      required: true,
+      required: false,
       "numeric+whitespace": true,
       minlength: 5,
       maxlength: 50
