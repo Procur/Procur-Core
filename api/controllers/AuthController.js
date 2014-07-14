@@ -339,6 +339,7 @@ module.exports = {
           if(err) { return res.redirect('/dashboard'); }
           User.update(user, { emailVerified: true }, function(err, toUpdate){
             if(err) { return res.redirect('/dashboard'); }
+            //req.flash('verified', 'Your email address has been verified. You can now log in.');
             return res.redirect('/dashboard');
           });
         });
