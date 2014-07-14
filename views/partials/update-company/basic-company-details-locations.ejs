@@ -52,14 +52,14 @@
 <!-- HQ Checkbox -->
 <% if (companyLocations["showHq"] === true) { %>
   <h5>Is the above address the headquarters?</h5>
-  <div>
+  <div class="checkbox-container">
     <input class="checkbox hqbox" type="checkbox" name="companyIsHq">
     <div class="checkboxtext breakForm"><h5>Yes; please copy my details below.</h5></div>
   </div>
 <% } %>
 <% if (companyLocations["showHq"] === false) { %>
   <h5>Is the above address the headquarters?</h5>
-  <div>
+  <div class="checkbox-container">
     <input class="checkbox hqbox" type="checkbox" name="companyIsHq" checked="checked">
     <div class="checkboxtext breakForm"><h5>Yes; please copy my details below.</h5></div>
   </div>

@@ -153,69 +153,104 @@
 
             <div class="col-sm-6">
               <h5>Secondary Location</h5>
-              <% for (var x = 0; x < buyer["locationName"].length; x++) { %>
-              <section id="otherLocation<%= x %>">
-                <div>
-                  <input type="text" name="locationName" placeholder="Location Title" value="<%= buyer.locationName[x] %>">
-                </div>
-                <div class="styledSelect">
-                  <select name="locationType">
-                    <option value="<%= buyer.locationType[x] %>" selected="selected"><%= buyer.locationType[x] %></option>
-                    <%- partial('../edit-dropdowns/edit-other-location-type') %>
-                  </select>
-                </div>
-                <div class="styledSelect">
-                  <select name="locationCountry" id="country<%= x %>" onchange="print_state('province<%= x %>',this.selectedIndex);">
-                    <!-- edit_country() will populate this dropdown -->
-                  </select>
-                </div>
-                <div class="styledSelect">
-                  <select name="locationProvince" id="province<%= x %>">
-                    <option value="<%= buyer.locationProvince[x] %>" selected="selected"><%= buyer.locationProvince[x] %></option>
-                  </select>
-                </div><script language="javascript">edit_country("<%= buyer.locationCountry[x] %>", "country<%= x %>");</script>
-                <div>
-                  <input type="text" name="locationCity" placeholder="City" value="<%= buyer.locationProvince[x] %>">
-                </div>
-              </section>
+                        <section id="otherLocation1">
+            <div><input type="text" name="locationName" value="<%= buyer.locationName %>" placeholder="Location Title"></div>
+
+            <div class="styledSelect">
+              <select name="locationType" id="locationType">
+                <%- partial('../edit-dropdowns/edit-other-location-type') %>
+                <% if (buyer.locationType) { %>
+                <script language="javascript">$("#locationType").val("<%=buyer.locationType%>");</script>
+                  <%} else { %>
+                  <script language="javascript">$("#locationType").val("");</script>
+                <% } %>
+              </select>
+            </div>
+
+            <div class="styledSelect">
+              <select name="locationCountry" id="locationCountry" onchange="print_state('locationProvince',this.selectedIndex);">
+              <script language="javascript">print_country("locationCountry");</script>
+              <% if (buyer.locationCountry) { %>
+                <script language="javascript">
+                  $("#locationCountry").val("<%=buyer.locationCountry%>");
+                </script>
+              <% } else { %>
+                <script language="javascript">$("#locationCountry").val("");</script>
               <% } %>
+              </select>
+            </div> 
+
+            <div class="styledSelect">
+              <select name="locationProvince" id="locationProvince">
+              <% if (buyer.locationCountry) { %>
+                  <script language="javascript">print_state("locationProvince",$("#locationCountry").prop('selectedIndex'));</script>
+                <% } else {%>
+                  <script language="javascript">print_state("locationProvince",0);</script>
+              <% } %>
+              <% if (buyer.locationProvince) { %>
+                <script language="javascript">
+                  $("#locationProvince").val("<%=buyer.locationProvince%>");
+                </script>
+              <% } else { %>
+                <script language="javascript">$("#locationProvince").val("");</script>
+              <% } %>
+              </select>
+            </div>
+
+            <div><input type="text" name="locationCity" value="<%= buyer.locationCity %>" placeholder="City"></div>
+          </section>
 
               <h5>Nearest Port</h5>
-              <section id="port">
-                <% if (buyer.portCity === undefined) { %>
-                  <div><input type="text" name="portCity" placeholder="City"></div>
-                  <% } else { %>
-                  <div><input type="text" name="portCity" placeholder="City" value="<%= buyer.portCity %>"></div>
-                <% } %>
+          <section id="port">
+            <% if (buyer.portCity) { %>
+               <div><input type="text" name="portCity" value="<%= buyer.portCity %>" placeholder="City"></div>
+              <% } else { %>
+              <div><input type="text" name="portCity" value="" placeholder="City"></div>
+            <% } %>
 
-                <div class="styledSelect">
-                  <select name="portCountry" id="portCountry" onchange="print_state('portProvince',this.selectedIndex);">
-                    <!-- edit_country() will populate this dropdown -->
-                  </select>
-                </div>
-                <div class="styledSelect">
-                  <select name="portProvince" id="portProvince">
-                    <%if (buyer.portProvince) {%><option value="<%= buyer.portProvince %>" selected="selected"><%= buyer.portProvince %></option><% } else {%><option value="Select Province" selected="selected"></option><% } %>
-                  </select>
-                </div><%if (buyer.portCountry) { %><script language="javascript">edit_country("<%= buyer.portCountry %>", "portCountry");</script><% } else { %><script language="javascript">edit_country("Select Country", "portCountry");</script><% } %>
-              </section>
+            <div class="styledSelect">
+              <select name="portCountry" id="portCountry" onchange="print_state('portProvince',this.selectedIndex);">
+              <script language="javascript">print_country("portCountry");</script>
+              <% if (buyer.portCountry) { %>
+                <script language="javascript">
+                  $("#portCountry").val("<%=buyer.portCountry%>");
+                </script>
+              <% } else { %>
+                <script language="javascript">$("#portCountry").val("");</script>
+              <% } %>
+              </select>
+            </div>
+
+            <div class="styledSelect">
+              <select name="portProvince" id="portProvince">
+                <% if (buyer.portCountry) { %>
+                  <script language="javascript">print_state("portProvince",$("#portCountry").prop('selectedIndex'));</script>
+                <% } else {%>
+                  <script language="javascript">print_state("portProvince",0);</script>
+                <% } %>
+                <% if (buyer.portProvince) { %>
+                  <script language="javascript">
+                    $("#portProvince").val("<%=buyer.portProvince%>");
+                  </script>
+                <% } else { %>
+                  <script language="javascript">
+                    $("#portProvince").val("");
+                  </script>
+                <% } %>
+              </select>
+            </div>
+          </section>
             </div>
 
             <div class="col-sm-12">
-              <h5>Product Categories</h5>
+              <h5>Enter Product Categories of Interest</h5>
               <% if (buyer["productCategory"].length > 0) { %>
                 <% for (var x = 0; x < buyer["productCategory"].length; x++) { %>
-                  <label  for="autocomplete"><h5>Select your Category Preferences</h5></label>
                   <input id="autocomplete<%= x + 1 %>" name="autocomplete" placeholder="Begin typing to search categories..." value="<%= buyer["productCategory"][x] %>">
                 <% } %>
               <% } else { %>
-                  <label  for="autocomplete"><h5>Select your Category Preferences</h5></label>
                   <input id="autocomplete1" name="autocomplete" placeholder="Begin typing to search categories...">
-
-                  <label  for="autocomplete"><h5>Select your Category Preferences</h5></label>
                   <input id="autocomplete2" name="autocomplete" placeholder="Begin typing to search categories...">
-
-                  <label  for="autocomplete"><h5>Select your Category Preferences</h5></label>
                   <input id="autocomplete3" name="autocomplete" placeholder="Begin typing to search categories...">
               <% } %>
             </div>

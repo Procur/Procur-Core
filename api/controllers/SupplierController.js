@@ -40,30 +40,40 @@ module.exports = {
       Company.findOne({ user: user.id }, function(err, company) {
         if (err) { return res.redirect('/dashboard'); }
         if (b.privateLabeler == "privateLabeler") { b.privateLabeler = true; } else { b.privateLabeler = false; }
-        Supplier.create({
-        company  : company.id,
-        dbaName : b.dba,
-        language: [b.language],
-        typeOfCompany : b.typeOfCompany,
-        locationName: [b.supplierOtherLocationName],
-        locationType: [b.supplierOtherLocationType],
-        locationCountry: [b.supplierOtherLocationCountry],
-        locationProvince: [b.supplierOtherLocationProvince],
-        locationCity: [b.supplierOtherLocationCity],
-        annualSalesValue: b.annualProductionVolume,
-        privateLabeler: b.privateLabeler,
-        acceptedCurrency: [b.acceptedCurrency],
-        acceptedPaymentTerms: [b.acceptedPaymentTerms],
-        preferredBuyerType: b.preferredBuyerType,
-        preferredBuyerLocation: [b.preferredBuyerLocation],
-        preferredBuyerLanguage: [b.preferredBuyerLanguage],
-        productCategory: [b.autocomplete],
-        active: true
-        }, function(err, supplier) {
-          if (err) { return res.redirect('/dashboard'); }
-          if (imageExists) { imageHelper.uploadSupplierImage(req, res, supplier, image, function(){
-            res.redirect('/dashboard');
-          }); }
+        Supplier.findOne({ company: company.id }, function(err, supplier){
+          if(err){ return res.redirect('/dashboard'); }
+          if(supplier === undefined){
+            Supplier.create({
+              company  : company.id,
+              dbaName : b.dba,
+              language: [b.language],
+              typeOfCompany : b.typeOfCompany,
+              locationName: [b.supplierOtherLocationName],
+              locationType: [b.supplierOtherLocationType],
+              locationCountry: [b.supplierOtherLocationCountry],
+              locationProvince: [b.supplierOtherLocationProvince],
+              locationCity: [b.supplierOtherLocationCity],
+              annualSalesValue: b.annualProductionVolume,
+              privateLabeler: b.privateLabeler,
+              acceptedCurrency: [b.acceptedCurrency],
+              acceptedPaymentTerms: [b.acceptedPaymentTerms],
+              preferredBuyerType: b.preferredBuyerType,
+              preferredBuyerLocation: [b.preferredBuyerLocation],
+              preferredBuyerLanguage: [b.preferredBuyerLanguage],
+              productCategory: [b.autocomplete],
+              active: true
+            }, function(err, supplier) {
+              if (err) { return res.redirect('/dashboard'); }
+              if (imageExists) { imageHelper.uploadSupplierImage(req, res, supplier, image, function(){
+                console.log('Redirecting to dashboard on supplier');
+                res.redirect('/dashboard');
+              }); }
+              res.redirect('/dashboard');
+            });
+          }
+          else {
+            return res.redirect('/dashboard');
+          }
         });
       });
     });
