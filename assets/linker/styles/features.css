@@ -147,9 +147,10 @@
   width: 100%;
   height: auto;
   min-height: 360px;
-  background: url('../../images/featuresHero.png');
+  background: url('../../images/featuresBG.jpg');
   background-repeat: no-repeat;
   background-size: 100%;
+  background-position: center bottom;
   margin: 0px;
   padding: 0px;
   
@@ -172,8 +173,8 @@
   font-family: 'Open Sans', sans-serif;
   font-size: 20px;
   font-weight: 300;
-  color: #7f7f7f;
-  background-color: rgba(245, 245, 245, 0.5);
+  color: #333132;
+  background-color: rgba(245, 245, 245, 0.8);
 }
 
 #features #heroButton:hover {
