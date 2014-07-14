@@ -830,6 +830,26 @@ transition: all 200ms ease-in-out;
 	font-weight: 400;
 }
 
+#tabs input::-webkit-input-placeholder {
+  color: #A9A9A9;
+  font-weight: 400;
+}
+/*
+#tabs select::-webkit-select-placeholder {
+  color: #A9A9A9;
+  font-weight: 400;
+}*/
+/*
+#tabs input{
+  color: #000;
+  font-weight: 400;
+}*/
+/*
+#tabs select{
+  color: #000;
+  font-weight: 400;
+}
+*/
 #faq .colRight a {
 	font-family: 'Roboto', sans-serif;
 font-weight: 300;
