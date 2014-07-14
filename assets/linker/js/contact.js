@@ -15,7 +15,7 @@ function populateNextDropdown(selection) {
   };
   var keys = Object.keys(reasons);
   var dropdownValues;
-  var dropdownHtml = "<option value=''>Field 2*</option>";
+  var dropdownHtml = "<option value=''>Please select a more detailed category:</option>";
 
   for (var x = 0; x < keys.length; x++) {
     if (keys[x] === selection) {
