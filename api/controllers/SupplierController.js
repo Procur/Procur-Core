@@ -68,7 +68,9 @@ module.exports = {
                 console.log('Redirecting to dashboard on supplier');
                 res.redirect('/dashboard');
               }); }
-              res.redirect('/dashboard');
+              else{
+                return res.redirect('/dashboard');
+              }
             });
           }
           else {

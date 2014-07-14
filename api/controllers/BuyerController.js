@@ -80,7 +80,9 @@ module.exports = {
                   res.redirect('/dashboard');
                 });
               }
-              res.redirect('/dashboard');
+              else {
+                res.redirect('/dashboard');
+              }
             });
           }
           else {

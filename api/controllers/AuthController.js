@@ -98,7 +98,7 @@ module.exports = {
             });
 
           }
-        })//END OF USER.CREATE
+        }); //END OF USER.CREATE
       }
       else {
         req.flash('error', "There is already an account associated with "+ b.email +". Would you like to login?");
