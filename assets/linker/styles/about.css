@@ -2,7 +2,7 @@
   width: 100%;
   background: url('../../images/aboutBG.jpg');
   background-repeat: no-repeat;
-  background-size: 100%;
+  background-size: cover;
   background-position: 0% 30%;
   height: 300px;
   margin-bottom: 0px;

@@ -149,7 +149,7 @@
   min-height: 360px;
   background: url('../../images/featuresBG.jpg');
   background-repeat: no-repeat;
-  background-size: 100%;
+  background-size: cover;
   background-position: center bottom;
   margin: 0px;
   padding: 0px;

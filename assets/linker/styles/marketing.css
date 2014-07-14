@@ -13,7 +13,7 @@
   width: 100%;
   background: url('../../images/mainBG.jpg');
   background-repeat: no-repeat;
-  background-size: 100%;
+  background-size: cover;
   background-position: center;
   margin: 0px;
   padding: 0px;
