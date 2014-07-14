@@ -137,7 +137,6 @@ module.exports = {
           if((company.buyer == true) && (company.supplier == true)){
             User.update(user, { activeMode: b.mode }, function(err, user){
               if(err){ return res.redirect('/dashboard'); }
-              req.flash('message', 'Switched to ' + user.activeMode + ' mode.');
               res.redirect('/dashboard');
             });
           }
