@@ -53,31 +53,39 @@ module.exports = {
     User.findOne({ id: req.session.passport.user }, function (err, user) {
       Company.findOne({ user: user.id }, function (err, company) {
         if (err) { return res.redirect('/dashboard'); }
-        Buyer.create({
-          company: company.id,
-          dbaName: b.dba,
-          language: [b.language],
-          preferredSupplierType: b.preferredSupplierType,
-          preferredSupplierLanguage: [b.preferredSupplierLanguage],
-          preferredSupplierLocation: [b.preferredSupplierLocation],
-          typeOfCompany: b.typeOfCompany,
-          acceptedCurrency: [b.acceptedCurrency],
-          acceptedPaymentTerms: [b.acceptedPaymentTerms],
-          locationName: [b.buyerOtherLocationName],
-          locationType: [b.buyerOtherLocationType],
-          locationCountry: [b.buyerOtherLocationCountry],
-          locationProvince: [b.buyerOtherLocationProvince],
-          locationCity: [b.buyerOtherLocationCity],
-          productCategory: [b.autocomplete],
-          active: true
-        }, function (err, buyer) {
-          if (err) { return res.redirect('/dashboard'); }
-          if (imageExists) {
-            imageHelper.uploadBuyerImage(req, res, buyer, image, function(){
+        Buyer.findOne({ company: company.id }, function(err, buyer){
+          if(err){ return res.redirect('/dashboard'); }
+          if(buyer === undefined){
+            Buyer.create({
+              company: company.id,
+              dbaName: b.dba,
+              language: [b.language],
+              preferredSupplierType: b.preferredSupplierType,
+              preferredSupplierLanguage: [b.preferredSupplierLanguage],
+              preferredSupplierLocation: [b.preferredSupplierLocation],
+              typeOfCompany: b.typeOfCompany,
+              acceptedCurrency: [b.acceptedCurrency],
+              acceptedPaymentTerms: [b.acceptedPaymentTerms],
+              locationName: [b.buyerOtherLocationName],
+              locationType: [b.buyerOtherLocationType],
+              locationCountry: [b.buyerOtherLocationCountry],
+              locationProvince: [b.buyerOtherLocationProvince],
+              locationCity: [b.buyerOtherLocationCity],
+              productCategory: [b.autocomplete],
+              active: true
+            }, function (err, buyer) {
+              if (err) { return res.redirect('/dashboard'); }
+              if (imageExists) {
+                imageHelper.uploadBuyerImage(req, res, buyer, image, function(){
+                  res.redirect('/dashboard');
+                });
+              }
               res.redirect('/dashboard');
             });
           }
-          res.redirect('/dashboard');
+          else {
+            return res.redirect('/dashboard');
+          }
         });
       });
     });
