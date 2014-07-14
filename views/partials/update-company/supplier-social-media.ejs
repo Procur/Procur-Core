@@ -6,29 +6,29 @@
         <div class="col-sm-6">
 
           <h5>Facebook</h5>
-          <div class="input-group"><div class="input-group-addon">facebook.com/<input type="text" name="facebook" value="<%= supplier.facebook %>" placeholder="Facebook"></div></div>
+          <div class="input-group"><div class="input-group-addon">facebook.com/<input type="text" name="facebook" <%if (supplier.facebook) { %>value="<%= supplier.facebook %>"<% } %> placeholder="Facebook"></div></div>
 
           <h5>Twitter</h5>
-          <div class="input-group"><div class="input-group-addon">twitter.com/<input type="text" name="twitter" value="<%= supplier.twitter %>" placeholder="Twitter"></div></div>
+          <div class="input-group"><div class="input-group-addon">twitter.com/<input type="text" name="twitter" <% if (supplier.twitter) {%>value="<%= supplier.twitter %>" <% }%>placeholder="Twitter"></div></div>
 
           <h5>Google+</h5>
-          <div class="input-group"><div class="input-group-addon">plus.google.com/+<input type="text" name="google" value="<%= supplier.google %>" placeholder="Google"></div></div>
+          <div class="input-group"><div class="input-group-addon">plus.google.com/+<input type="text" name="google" <% if (supplier.google) { %>value="<%= supplier.google %>" <% } %>placeholder="Google"></div></div>
 
           <h5>LinkedIn</h5>
-          <div class="input-group"><div class="input-group-addon">linkedin.com/users/<input type="text" name="linkedin" value="<%= supplier.linkedin %>" placeholder="Linkedin"></div></div>
+          <div class="input-group"><div class="input-group-addon">linkedin.com/users/<input type="text" name="linkedin" <% if (supplier.linkedin) {%>value="<%= supplier.linkedin %>" <% } %>placeholder="Linkedin"></div></div>
 
           </div>
         <!-- End First Column -->
         <div class="col-sm-6">
 
           <h5>Pinterest</h5>
-          <div class="input-group"><div class="input-group-addon">pinterest.com/<input type="text" name="pinterest" value="<%= supplier.pinterest %>" placeholder="Pinterest"></div></div>
+          <div class="input-group"><div class="input-group-addon">pinterest.com/<input type="text" name="pinterest" <% if (supplier.pinterest) { %>value="<%= supplier.pinterest %>" <% } %>placeholder="Pinterest"></div></div>
 
           <h5>Instagram</h5>
-          <div class="input-group"><div class="input-group-addon">instagram.com/<input type="text" name="instagram" value="<%= supplier.instagram %>" placeholder="Instagram"></div></div>
+          <div class="input-group"><div class="input-group-addon">instagram.com/<input type="text" name="instagram" <% if (supplier.instagram) {%>value="<%= supplier.instagram %>" <% } %>placeholder="Instagram"></div></div>
 
           <h5>Tumblr</h5>
-          <div class="input-group"><div class="input-group-addon">tumblr.com/<input type="text" name="tumblr" value="<%= supplier.tumblr %>" placeholder="Tumblr"></div></div>
+          <div class="input-group"><div class="input-group-addon">tumblr.com/<input type="text" name="tumblr" <% if (supplier.tumblr) { %>value="<%= supplier.tumblr %>"<% } %> placeholder="Tumblr"></div></div>
 
         </div>
         <!-- End Second Column -->

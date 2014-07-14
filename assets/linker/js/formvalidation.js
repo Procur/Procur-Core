@@ -1607,4 +1607,27 @@ $("#buyerDescriptionsForm").validate({ //TO-DO: Needs a custom labeling, because
   }
 });
 
+$("#supplierDescriptionsForm").validate({ //TO-DO: Needs a custom labeling, because labels aren't displaying.
+  rules: {
+    companyDescription: {
+      maxlength: 5000
+    },
+    environmentalSustainability: {
+      maxlength: 2000
+    },
+    qualitySourcing: {
+      maxlength: 2000
+    },
+    workplaceSafety: {
+      maxlength: 2000
+    },
+    laborEducationTraining: {
+      maxlength: 2000
+    },
+    reinvestment: {
+      maxlength: 2000
+    }
+  }
+});
+
 
