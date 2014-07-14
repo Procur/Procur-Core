@@ -193,3 +193,26 @@
   font-family: 'Open Sans', sans-serif;
   font-size: 12px;
 }
+  #socialOutletsBuyer .col-sm-6 h5:nth-of-type(n+2) {
+    margin-top: 10px;
+  }
+
+  #socialOutletsBuyer .input-group {
+    background: #FFF;
+    width: 300px;
+  }
+
+  #socialOutletsBuyer .input-group-addon {
+    background: #FFF;
+    float: left;
+    border: none;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 12px;
+  }
+
+  #socialOutletsBuyer input {
+    background: #FFF;
+    width: 150px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 12px;
+  }
