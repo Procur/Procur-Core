@@ -128,13 +128,25 @@
                 </section>
 
               <h5>Contact Name</h5>
-              <div><input type="text" name="contactName" <% if (supplier.contactName) { %>value="<%= supplier.contactName %>"<% } %> placeholder="Contact Name"></div>
+              <% if (supplier.contactName === undefined) { %>
+                <div><input type="text" name="contactName" placeholder="Contact Name"></div>
+                <% } else { %>
+                <div><input type="text" name="contactName" value="<%= supplier.contactName %>" placeholder="Contact Name"></div>
+              <% } %>
 
               <h5>Contact Position</h5>
-              <div><input type="text" name="contactPosition" <% if (supplier.contactPosition) { %> value="<%= supplier.contactPosition %>" <% } %>placeholder="Contact Position"></div>
+              <% if (supplier.contactPosition === undefined) { %>
+                <div><input type="text" name="contactPosition" placeholder="Contact Position"></div>
+                <% } else { %>
+                <div><input type="text" name="contactPosition" value="<%= supplier.contactPosition %>" placeholder="Contact Position"></div>
+              <% } %>
 
               <h5>Contact Email</h5>
-              <div><input type="text" name="contactEmail" <% if (supplier.contactEmail) { %>value="<%= supplier.contactEmail %>" <% } %>placeholder="Contact Email"></div>
+              <% if (supplier.contactEmail === undefined) { %>
+                <div><input type="text" name="contactEmail" placeholder="Contact Email"></div>
+                <% } else { %>
+                <div><input type="text" name="contactEmail" value="<%= supplier.contactEmail %>" placeholder="Contact Email"></div>
+              <% } %>
             </div>
 
             <div class="col-sm-6">
@@ -157,10 +169,18 @@
                 </section>
 
                 <h5>DUNS Number</h5>
-                <div><input type="text" name="dunsNumber" <% if (supplier.dunsNumber) { %>value="<%= supplier.dunsNumber %>" <% } %>placeholder="DUNS Number"></div>
+                <% if (supplier.dunsNumber === undefined) { %>
+                  <div><input type="text" name="dunsNumber" placeholder="DUNS Number"></div>
+                  <% } else { %>
+                  <div><input type="text" name="dunsNumber" value="<%= supplier.dunsNumber %>" placeholder="DUNS Number"></div>
+                <% } %>
 
                 <h5>CAGE Code</h5>
-                <div><input type="text" name="cageCode"  <% if (supplier.cageCode) { %>value="<%= supplier.cageCode %>" <% } %>placeholder="CAGE Code"></div>
+                <% if (supplier.cageCode=== undefined) { %>
+                  <div><input type="text" name="cageCode" placeholder="CAGE Code"></div>
+                  <% } else { %>
+                  <div><input type="text" name="cageCode" value="<%= supplier.cageCode %>" placeholder="CAGE Code"></div>
+                <% } %>
             </div>
 
             <div class="col-sm-12">
