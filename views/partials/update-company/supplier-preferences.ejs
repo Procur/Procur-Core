@@ -14,13 +14,13 @@
           </div>
           <h5>Preferred Buyer Language</h5>
           <div class="styledSelect">
-            <select name="preferredBuyerLanguage">
-              <% if (supplier.preferredBuyerLanguage.length === 0) { %>
-                <option value="<%= supplier.preferredBuyerLanguage %>" selected="selected">Select a language</option>
-                <% } else { %>
-                <option value="<%= supplier.preferredBuyerLanguage %>" selected="selected"><%= supplier.preferredBuyerLanguage %></option>
-              <% } %>
+            <select name="preferredBuyerLanguage" id="preferredBuyerLanguage">
               <%- partial('../edit-dropdowns/edit-pref-buyer-language') %>
+              <% if (supplier.preferredBuyerLanguage) { %>
+                <script language="javascript">$("#preferredBuyerLanguage").val("<%=supplier.preferredBuyerLanguage%>");</script>
+              <% } else { %>
+              <script language="javascript">$("#preferredBuyerLanguage").val("");</script>      
+              <% } %>
             </select>
           </div>
         </div> <!-- End of First Column -->
@@ -29,13 +29,14 @@
           <h5>Preferred Buyer Location</h5>
           <div class="styledSelect">
             <select name="preferredBuyerLocation" id="preferredBuyerLocation">
-              <option value="<%= supplier.preferredBuyerLocation %>" selected="selected"><%= supplier.preferredBuyerLocation %></option>
+              <script language="javascript">print_country("preferredBuyerLocation");</script>
+
             </select>
           </div>
-          <% if (supplier.preferredBuyerLocation.length === 0) { %>
-            <script language="javascript">print_country("preferredBuyerLocation");</script>
-            <% } else { %>
-            <script language="javascript">edit_country("<%= supplier.preferredBuyerLocation %>", "preferredBuyerLocation");</script>
+          <% if (supplier.preferredBuyerLocation) { %>
+            <script language="javascript">$("#preferredBuyerLocation").val("<%=supplier.preferredBuyerLocation%>");</script>
+          <% } else { %>
+            <script language="javascript">$("#preferredBuyerLocation").val("");</script>
           <% } %>
         </div> <!-- End of Second Column -->
         
