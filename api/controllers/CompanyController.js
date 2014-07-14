@@ -506,7 +506,7 @@ module.exports = {
     var companyID;
     var numOfLocations;
 
-    User.findOne({ id: user }, function(err, user) { 
+    User.findOne({ id: user }, function(err, user) {
       if (err) { /* do something here */ }
       Company.findOne({ user: user.id }, function(err, company) {
         if (err) { /* do something here */ }
@@ -629,7 +629,7 @@ module.exports = {
         });
       });
     });
-    
+
 
   },
 
