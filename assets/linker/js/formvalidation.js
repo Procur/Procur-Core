@@ -1443,8 +1443,8 @@ $('#companyDetailsForm').validate({
     }
   }
 });
-/*
-$('buyerInformationForm').validate({//TO-DO: WHY DOESNT THIS WORK??
+
+$('#buyerInformationForm').validate({
   rules: {
     dbaName: {
       required: false,
@@ -1456,13 +1456,13 @@ $('buyerInformationForm').validate({//TO-DO: WHY DOESNT THIS WORK??
       required: true //(provided)
     },
     acceptedCurrency: {
-      required: false
+      required: true
     },
     acceptedPaymentTerms: {
       required: true
     },
     acceptedDeliveryTerms: {
-      required: true
+      required: false
     },
     typeOfCompany: {
       required: true //(provided)
@@ -1542,7 +1542,7 @@ $('buyerInformationForm').validate({//TO-DO: WHY DOESNT THIS WORK??
     }
   }
 });
-*/
+
 
 $("#buyerSocialOutletsForm").validate({
   rules: {
