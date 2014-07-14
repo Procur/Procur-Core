@@ -302,6 +302,17 @@ module.exports = {
     });
   },
 
+  buyerOnly: function(req, res) {
+    var user = req.session.passport.user;
+    Company.findOne({ user: user }, function(err, company){
+      if(err) { res.redirect('404'); }
+      Company.update(company, { buyer: true, supplier: false }, function(err, company){
+        if(err) { res.redirect('404'); }
+      });
+    });
+    res.redirect('/welcome/buyer');
+  },
+
   buyerWizard: function(req, res){
     var isSupplierAndBuyer = function (company) {
       if (company.buyer === true && company.supplier === true) {
@@ -325,6 +336,17 @@ module.exports = {
         });
       });
     });
+  },
+
+  supplierOnly: function(req, res) {
+    var user = req.session.passport.user;
+    Company.findOne({ user: user }, function(err, company){
+      if(err) { res.redirect('404'); }
+      Company.update(company, { buyer: false, supplier: true }, function(err, company){
+        if(err) { res.redirect('404'); }
+      });
+    });
+    res.redirect('/welcome/supplier');
   },
 
   supplierWizard: function(req, res){

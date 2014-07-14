@@ -37,7 +37,7 @@ module.exports.policies = {
   },
 
   UserController: {
-    welcome: ['sessionCheck', 'isAuthenticated'],
+    welcome: ['sessionCheck', 'isAuthenticated', 'preventBackToWelcome'],
     pleaseVerify: ['sessionCheck', 'isAuthenticated', 'wizardComplete'],
     updateAccount: ['sessionCheck', 'isAuthenticated', 'profileComplete', 'wizardComplete'],
     processUpdateAccount: ['sessionCheck', 'isAuthenticated', 'profileComplete', 'wizardComplete'],
@@ -60,8 +60,10 @@ module.exports.policies = {
     selectDefault: ['sessionCheck', 'isAuthenticated', 'profileComplete', 'isBuyerAndSupplier'],
     setDefault: ['sessionCheck', 'isAuthenticated', 'profileComplete', 'isBuyerAndSupplier'],
     setBoth: ['sessionCheck', 'isAuthenticated', 'profileComplete', 'goBackToWizard'],
-    supplierWizard: ['sessionCheck', 'isAuthenticated', 'profileComplete', 'goBackToWizard', 'setSupplierTrueFalse'],
-    buyerWizard: ['sessionCheck', 'isAuthenticated', 'profileComplete', 'goBackToWizard', 'setBuyerTrueFalse']
+    supplierOnly: ['sessionCheck', 'isAuthenticated', 'profileComplete', 'goBackToWizard'],
+    supplierWizard: ['sessionCheck', 'isAuthenticated', 'profileComplete', 'goBackToWizard'],
+    buyerOnly: ['sessionCheck', 'isAuthenticated', 'profileComplete', 'goBackToWizard'],
+    buyerWizard: ['sessionCheck', 'isAuthenticated', 'profileComplete', 'goBackToWizard']
   },
 
   BuyerController: {
