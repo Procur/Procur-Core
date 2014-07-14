@@ -1,121 +1,105 @@
 /* DASHBOARD HEADER */
 
 #dashboard-header {
-  background: #ecebe7;
+  background: #EDECE8;
+  min-height: 55px;
+  padding-left: 25px;
+  padding-right: 25px;
 }
 
-#dashboard-header .typeToggle {
-  cursor: pointer;
-  font-family: 'Montserrat', sans-serif;
-  font-size: 11px;
-  color: #333132;
-  margin-top: 17px;
+#subnav-header {
+  background: #333132;
+  min-height: 37px;
+  padding-left: 25px;
+  padding-right: 25px;
 }
 
-#dashboard-header a {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 12px;
-  margin-top: 16px;
+.dashboard-header-left {
+  float: left;
 }
 
-#dashboard-header p.userCompanyName {
-  font-family: 'Montserrat', sans-serif;
-}
-
-#dashboard-header a i {
-  font-size: 14px;
-  top: -5px;
-}
-
-#dashboard-header .typeToggle:hover {
-  color: #7e7e7e;
-}
-
-#dashboard-header .typeToggle:hover i {
-  color: #5dc672;
-}
-
-#dashboard-header p.userCompanyName {
+.logo-image {
   position: relative;
-  font-size: 12px;
+  top: 17px;
+}
+
+.ea-link-image {
+  position: relative;
+  top: 13px;
+  left: 8px;
+}
+
+.dashboard-header-right {
+  float: right;
+}
+
+.dashboard-header-right p.typeToggle {
   display: inline;
-  top: -3px;
-}
-
-#dashboard-header .ea-light-image {
-  margin-top: -7px;
-}
-
-#dashboard-header .container {
-  padding: 0px 15px 0px;
-}
-
-#dashboard-header .navbar,
-#dashboard-header .navbar-default,
-#dashboard-header .navbar-fixed-top {
-  border: 0px none;
-  background: #ecebe7;
-  margin-bottom: 8px;
-  border-radius: 0px
-}
-
-#dashboard-header.subnav {
-  background: #333132;
-  margin-top: -8px;
-}
-
-#dashboard-header.subnav .navbar,
-#dashboard-header.subnav .navbar-default,
-#dashboard-header.subnav .navbar-fixed-top {
-  border: 0px none;
-  background: #333132;
-  margin-bottom: 0px;
-  border-radius: 0px;
-  min-height: 0px
-}
-
-#dashboard-header.subnav p {
-  padding-top: 12px;
-  padding-bottom: 5px;
-  padding-left: 7px;
-  padding-right: 7px;
-  color: #CCCCCC;
-  letter-spacing: 0.06em;
+  position: relative;
+  top: 17px;
   font-family: 'Montserrat', sans-serif;
   font-size: 11px;
-  margin: 0px;
-}
-
-
-#dashboard-header.subnav a {
-  padding-top: 10px;
-  padding-bottom: 10px;
-  padding-left: 7px;
-  padding-right: 7px;
-  color: #CCCCCC;
+  color: #575556;
   letter-spacing: 0.06em;
-  margin: 0px !important;
+  margin-right: 20px;
 }
 
-#dashboard-header.subnav a.navLink {
-  font-family: 'Roboto', sans-serif;
-  margin-top: 7px;
-  font-weight: 100;
+.dashboard-header-right p.typeToggle:hover {
+  cursor: pointer;
+  color: #a3a3a3;
 }
 
-#dashboard-header.subnav a.navLink:hover {
-  font-family: 'Roboto', sans-serif;
-  margin-top: 7px;
-  background: #1a1a1a;
+.dashboard-header-right p.typeToggle:hover i {
+  color: #5DC672;
+}
+
+.dashboard-header-right a.logout-link {
+  display: inline;
+  position: relative;
+  top: 17px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 11px;
+  color: #575556;
+  letter-spacing: 0.06em;
+}
+
+.dashboard-header-right a.logout-link:hover {
+  color: orange;
   text-decoration: none;
-  font-weight: 100;
 }
 
-@media (max-width: 900px) {
-  .ea-light-image,
-  #dashboard-header p.userCompanyName {
-    display: none;
-  }
+p.userCompanyName {
+  position: relative;
+  left: 200px;
+  top: -6px;
+}
+
+#subnav-header .myprocur-label {
+  color: #e3e3e3;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 11px;
+  display: inline;
+  letter-spacing: 0.06em;
+  margin-right: 10px;
+  top: 7px;
+  position: relative;
+}
+
+#subnav-header .navLink {
+  color: #c3c3c3;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 300;
+  letter-spacing: 0.06em;
+  top: 7px;
+  position: relative;
+  padding: 7px 7px 10px;
+}
+
+#subnav-header .navLink:hover {
+  color: white;
+  background: black;
+  text-decoration: none;
 }
 
 /* DASHBOARD FOOTER */
