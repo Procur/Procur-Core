@@ -77,6 +77,7 @@ module.exports = {
               res.redirect('/dashboard');
             });
           }
+          res.redirect('/dashboard');
         });
       });
     });
@@ -258,7 +259,7 @@ module.exports = {
         Buyer.findOne({ company: company.id }, function(err, buyer) {
           if (err) { /* do something here */ }
           if (buyer === undefined) { /* do something here */ }
-          Buyer.update(buyer.id, { 
+          Buyer.update(buyer.id, {
             dbaName: b.dbaName,
             language: [b.language],
             acceptedCurrency: [b.acceptedCurrency],

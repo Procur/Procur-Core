@@ -62,8 +62,10 @@ module.exports = {
         }, function(err, supplier) {
           if (err) { return res.redirect('/dashboard'); }
           if (imageExists) { imageHelper.uploadSupplierImage(req, res, supplier, image, function(){
+            console.log('Redirecting to dashboard on supplier');
             res.redirect('/dashboard');
           }); }
+          res.redirect('/dashboard');
         });
       });
     });
