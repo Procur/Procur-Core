@@ -169,3 +169,27 @@
   background: red;
   color: white;
 }
+
+#socialOutletsSupplier .col-sm-6 h5:nth-of-type(n+2) {
+  margin-top: 10px;
+}
+
+#socialOutletsSupplier .input-group {
+  background: #FFF;
+  width: 300px;
+}
+
+#socialOutletsSupplier .input-group-addon {
+  background: #FFF;
+  float: left;
+  border: none;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 12px;
+}
+
+#socialOutletsSupplier input {
+  background: #FFF;
+  width: 150px;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 12px;
+}
