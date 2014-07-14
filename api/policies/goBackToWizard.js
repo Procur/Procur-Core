@@ -41,7 +41,7 @@ module.exports = function (req, res, next) {
             }
           },
           function (err, data) {
-            if (err) { res.redirect('/welcome/selectdefault'); };
+            if (err) { res.redirect('/welcome/selectdefault'); }
             if (company.buyer == true && company.supplier == true ){
               if (data.buyer && data.supplier) {
                 //if default has not been selected yet go to that screen
@@ -76,4 +76,4 @@ module.exports = function (req, res, next) {
         );
       }
     });
-}
+};
