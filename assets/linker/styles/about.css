@@ -5,7 +5,7 @@
   background-size: 100%;
   background-position: 0% 30%;
   height: 300px;
-  margin-bottom: 30px;
+  margin-bottom: 0px;
 }
 
 #about #heroArea .textArea {
@@ -16,7 +16,7 @@
 
 }
 
-#about #heroArea .textArea h1 {
+#about #heroArea .textArea #overLay {
   font-family: 'Open Sans', sans-serif;
   font-size: 22px;
   font-weight: 300;
@@ -53,7 +53,7 @@
   font-family: 'Montserrat', sans-serif;
   color: #404041;
   letter-spacing: 0.06em;
-  font-size: 10px;
+  font-size: 12px;
   text-transform: uppercase;
   margin-top: 25px;
   border-bottom: 2px solid black;
@@ -61,16 +61,16 @@
   border-color: #808080;
 }
 
-#about h2 {
+#about #second{
   font-family: 'Open Sans', sans-serif;
   font-size: 22px;
-  text-transform: uppercase;
   font-weight: 300;
-  color: #ef9818;
+  color: #f8ac4c;
+  line-height: 30px;
 }
 
 #about h3 {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Open Sans', sans-serif;
   font-size: 18px;
   text-transform: uppercase;
   font-weight: 100;
@@ -78,6 +78,7 @@
   border-bottom: 2px solid black;
   padding-bottom: 10px;
   border-color: #808080;
+  color: #999999;
 }
 
 #about h4 {
@@ -92,10 +93,11 @@
   font-family: 'Roboto', sans-serif;
   font-weight: 300;
   letter-spacing: 0.06em;
-  font-size: 10px;
+  font-size: 12px;
   line-height: 18px;
+  color: #999999;
 }
-#about .row {
+#about .inBody{
   border-bottom: 2px solid black;
   border-color: #CCCCCC;
   padding: 11px;
@@ -150,4 +152,9 @@
   background-color: blue;
   opacity: 0.5;
 
+}
+
+#about .indentLittle {
+  padding-left: 30px;
+  padding-right: 30px;
 }
