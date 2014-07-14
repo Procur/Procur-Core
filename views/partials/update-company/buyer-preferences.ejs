@@ -5,7 +5,7 @@
         <div class="row">
 
           <div class="col-sm-6">
-            <h5>Preferred Supplier Type</h5>
+            <h5>Preferred Supplier Type*</h5>
             <div class="styledSelect">
               <select name="preferredSupplierType">
                 <option value="<%= buyer.preferredSupplierType %>" selected="selected"><%= buyer.preferredSupplierType %></option>
@@ -16,7 +16,7 @@
             <h5>Preferred Supplier Language</h5>
             <div class="styledSelect">
               <select name="preferredSupplierLanguage">
-                <option value="<%= buyer.preferredSupplierLanguage %>" selected="selected"><%= buyer.preferredSupplierLanguage %></option>
+                <%if (buyer.preferredSupplierLanguage) { %><option value="<%= buyer.preferredSupplierLanguage %>" selected="selected"><%= buyer.preferredSupplierLanguage %></option><% } %>
                 <%- partial('../edit-dropdowns/edit-pref-supplier-language') %>
               </select>
             </div>

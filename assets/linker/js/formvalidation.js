@@ -53,6 +53,11 @@ jQuery.validator.addMethod("companyHandleFormat", function(value, element, param
   return value === "" || regex.test(value);
 }, jQuery.validator.format("Alphanumeric characters and underscores only."));
 
+jQuery.validator.addMethod("socialMediaHandleFormat", function(value, element, params) {
+  var regex = /^[\S]*$/;
+  return value === "" || regex.test(value);
+}, jQuery.validator.format("No whitespace please."));
+
 jQuery.validator.addMethod("companyNameFormat", function(value, element, params) {
   //IMPLEMENT ME
   return true;
@@ -1439,7 +1444,7 @@ $('#companyDetailsForm').validate({
   }
 });
 /*
-$('buyerInformationForm').validate({
+$('buyerInformationForm').validate({//TO-DO: WHY DOESNT THIS WORK??
   rules: {
     dbaName: {
       required: false,
@@ -1538,4 +1543,68 @@ $('buyerInformationForm').validate({
   }
 });
 */
+
+$("#buyerSocialOutletsForm").validate({
+  rules: {
+    facebook:{
+      required:false,
+      socialMediaHandleFormat: true,
+      maxlength: 50 //*possibly too short?
+    },
+    twitter:{
+      required:false,
+      socialMediaHandleFormat: true,
+      maxlength: 50 //*possibly too short?
+    },
+    pinterest:{
+      required:false,
+      socialMediaHandleFormat: true,
+      maxlength: 50 //*possibly too short?
+    },
+    tumblr:{
+      required:false,
+      socialMediaHandleFormat: true,
+      maxlength: 50 //*possibly too short?
+    },
+    linkedin:{
+      required:false,
+      socialMediaHandleFormat: true,
+      maxlength: 50 //*possibly too short?
+    },
+    instagram:{
+      required:false,
+      socialMediaHandleFormat: true,
+      maxlength: 50 //*possibly too short?
+    },
+    google:{
+      required:false,
+      socialMediaHandleFormat:true,
+      maxlength: 50 //*possibly too short?
+    },
+  }
+});
+
+$("#buyerDescriptionsForm").validate({ //TO-DO: Needs a custom labeling, because labels aren't displaying.
+  rules: {
+    companyDescription: {
+      maxlength: 5000
+    },
+    environmentalSustainability: {
+      maxlength: 2000
+    },
+    qualitySourcing: {
+      maxlength: 2000
+    },
+    workplaceSafety: {
+      maxlength: 2000
+    },
+    laborEducationTraining: {
+      maxlength: 2000
+    },
+    reinvestment: {
+      maxlength: 2000
+    }
+  }
+});
+
 
