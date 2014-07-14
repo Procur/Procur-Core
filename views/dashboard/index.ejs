@@ -53,7 +53,7 @@
       <div class="middleList">
         <ul>
           <% if(user.image){%> <li><i class="fa fa-check-circle"></i> <strike>Upload a user photo</strike></li> <%}else{%> <li><i class="fa fa-circle-o"></i> Upload a user photo</li> <%}%>
-           <% if(user.jobTitle){%> <li><i class="fa fa-check-circle"></i> <strike>Update your Job Title</strike></li> <%}else{%> <li><i class="fa fa-circle-o"></i> Update your Job Title</li> <%}%>
+           <% if(user.jobTitle){%> <li><i class="fa fa-check-circle"></i> <strike>Update your job title</strike></li> <%}else{%> <li><i class="fa fa-circle-o"></i> Update your job title</li> <%}%>
           <% if(company.website){%> <li><i class="fa fa-check-circle"></i> <strike>Add your company's website address</strike></li> <%}else{%> <li><i class="fa fa-circle-o"></i> Add your company's website address</li> <%}%>
           <% if(company.description){%> <li><i class="fa fa-check-circle"></i> <strike>Add your company description</strike></li> <%}else{%> <li><i class="fa fa-circle-o"></i> Add your company description</li> <%}%>
           <% if(company.website){%> <li><i class="fa fa-check-circle"></i> <strike>Add your company website</strike></li> <%}else{%> <li><i class="fa fa-circle-o"></i> Add your company website</li> <%}%>
@@ -67,7 +67,7 @@
           }
           else if(user.activeMode == 'supplier') { %>
             <% if(supplier) { %>
-              <% if(supplier.preferredBuyerType){%> <li><i class="fa fa-check-circle"></i> <strike>Add your PBT</strike></li> <%}else{%> <li><i class="fa fa-circle-o"></i> Add your preffered buyer type</li> <%}%>
+              <% if(supplier.preferredBuyerType){%> <li><i class="fa fa-check-circle"></i> <strike>Add your preferred buyer type</strike></li> <%}else{%> <li><i class="fa fa-circle-o"></i> Add your preffered buyer type</li> <%}%>
             <% } %>
 
           <% } %>
