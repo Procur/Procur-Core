@@ -24,6 +24,10 @@ jQuery.validator.addMethod("internationalphanumeric+punct+whitespace", function(
   return value === "" || regex.test(value);
 }, jQuery.validator.format("International characters, simple punctuation, and spaces only."));
 
+jQuery.validator.addMethod("alphanumeric", function(value, element, params) {
+  var regex = /^[0-9A-Za-z]*$/;
+  return value === "" || regex.test(value);
+}, jQuery.validator.format("Numbers and letters only."));
 
 jQuery.validator.addMethod("numeric+whitespace", function(value, element, params) {
   var regex = /^[0-9 ]*$/;
@@ -1607,6 +1611,7 @@ $("#buyerDescriptionsForm").validate({ //TO-DO: Needs a custom labeling, because
   }
 });
 
+
 $("#supplierDescriptionsForm").validate({ //TO-DO: Needs a custom labeling, because labels aren't displaying.
   rules: {
     companyDescription: {
@@ -1630,4 +1635,45 @@ $("#supplierDescriptionsForm").validate({ //TO-DO: Needs a custom labeling, beca
   }
 });
 
+/*
+$("#supplierSocialOutletsForm").validate({
+  rules: {
+    facebook:{
+      required:false,
+      socialMediaHandleFormat: true,
+      maxlength: 50 //*possibly too short?
+    },
+    twitter:{
+      required:false,
+      socialMediaHandleFormat: true,
+      maxlength: 50 //*possibly too short?
+    },
+    pinterest:{
+      required:false,
+      socialMediaHandleFormat: true,
+      maxlength: 50 //*possibly too short?
+    },
+    tumblr:{
+      required:false,
+      socialMediaHandleFormat: true,
+      maxlength: 50 //*possibly too short?
+    },
+    linkedin:{
+      required:false,
+      socialMediaHandleFormat: true,
+      maxlength: 50 //*possibly too short?
+    },
+    instagram:{
+      required:false,
+      socialMediaHandleFormat: true,
+      maxlength: 50 //*possibly too short?
+    },
+    google:{
+      required:false,
+      socialMediaHandleFormat:true,
+      maxlength: 50 //*possibly too short?
+    },
+  }
+});
+*/
 
