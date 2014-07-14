@@ -6,7 +6,7 @@
         <div class="row">
           <div class="col-sm-6">
             <h5>Logo Image</h5>
-            <div><img src="<%= supplier.logoUrl %>"></div>
+            <div><% if (supplier.logoUrl) { %><img src="<%= supplier.logoUrl %>"><% } %></div>
             <form id="supplierLogoForm" action="/supplier/update/logo" method="post" enctype="multipart/form-data">
               <input type="file" name="logo" accept="image/*"/>
               <input type="submit" value="Update Logo Image">
@@ -21,10 +21,10 @@
 
             <div class="col-sm-6 dba">
               <h5>DBA Name</h5>
-              <div><input type="text" name="dba" value="<%= supplier.dbaName %>"></div>
+              <div><input type="text" name="dba" <% if (supplier.dbaName) { %>value="<%= supplier.dbaName %>"<% }%> placeholder="Alternate Company Name"></div>
             </div>
             <div class="col-sm-6 language">
-              <h5>Language</h5>
+              <h5>Language*</h5>
               <div class="styledSelect">
                 <select name="language">
                   <option value="<%= supplier.language %>" selected="selected"><%= supplier.language %></option>
@@ -35,7 +35,7 @@
             <div class="clear"></div>
 
             <div class="col-sm-12">
-              <h5 class="header-currency">Accepted Currencies</h5>
+              <h5 class="header-currency">Accepted Currencies*</h5>
             </div>
 
             <% var currencies = ["USD","EUR","JPY","GBP","break","AUD","CHF","CAD","MXN","break","CNY","NZD","SEK","break","RUB","HKD","SGD"]; %>
@@ -64,7 +64,7 @@
               </div>
             </section>
 
-            <h5>Accepted Payment Terms</h5>
+            <h5>Accepted Payment Terms*</h5>
             <% var payment = ["MoneyGram","Western Union","break","T/T","Credit Card","break","Escrow","PayPal","break","D/P D/A","Cash"]; %>
 
             <section id="acceptedPaymentTerms">
@@ -117,7 +117,7 @@
             </section>
 
             <div class="col-sm-6">
-              <h5>Type of Company</h5>
+              <h5>Type of Company*</h5>
                 <section id="typeOfCompany">
                   <div class="styledSelect breakForm">
                     <select name="typeOfCompany">
@@ -128,13 +128,13 @@
                 </section>
 
               <h5>Contact Name</h5>
-              <div><input type="text" name="contactName" value="<%= supplier.contactName %>" placeholder="Contact Name"></div>
+              <div><input type="text" name="contactName" <% if (supplier.contactName) { %>value="<%= supplier.contactName %>"<% } %> placeholder="Contact Name"></div>
 
               <h5>Contact Position</h5>
-              <div><input type="text" name="contactPosition" value="<%= supplier.contactPosition %>" placeholder="Contact Position"></div>
+              <div><input type="text" name="contactPosition" <% if (supplier.contactPosition) { %> value="<%= supplier.contactPosition %>" <% } %>placeholder="Contact Position"></div>
 
               <h5>Contact Email</h5>
-              <div><input type="text" name="contactEmail" value="<%= supplier.contactEmail %>" placeholder="Contact Email"></div>
+              <div><input type="text" name="contactEmail" <% if (supplier.contactEmail) { %>value="<%= supplier.contactEmail %>" <% } %>placeholder="Contact Email"></div>
             </div>
 
             <div class="col-sm-6">
@@ -157,10 +157,10 @@
                 </section>
 
                 <h5>DUNS Number</h5>
-                <div><input type="text" name="dunsNumber" value="<%= supplier.dunsNumber %>" placeholder="DUNS Number"></div>
+                <div><input type="text" name="dunsNumber" <% if (supplier.dunsNumber) { %>value="<%= supplier.dunsNumber %>" <% } %>placeholder="DUNS Number"></div>
 
                 <h5>CAGE Code</h5>
-                <div><input type="text" name="cageCode" value="<%= supplier.cageCode %>" placeholder="CAGE Code"></div>
+                <div><input type="text" name="cageCode"  <% if (supplier.cageCode) { %>value="<%= supplier.cageCode %>" <% } %>placeholder="CAGE Code"></div>
             </div>
 
             <div class="col-sm-12">
@@ -176,7 +176,7 @@
 
 </div><!-- END row -->
       </div><!-- END .formWrapper -->
-    <div class="row"><button class="continueButton" type="submit">Save&nbsp;&nbsp; <i class="fa fa-arrow-right"></i></button></div><br/><br/>
+    <div class="row"><button class="continueButton" type="submit">Save&nbsp;&nbsp; <i class="fa fa-check"></i></button></div><br/><br/>
   </form>
 </div><!-- END #companyDetails -->
   <% } %>

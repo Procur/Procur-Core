@@ -9,7 +9,7 @@
         <div class="row">
           <div class="col-sm-6">
             <h5>Logo Image</h5>  
-            <div><img src="<%= buyer.logoUrl %>"></div>
+            <div><%if (buyer.logoUrl) {%><img src="<%= buyer.logoUrl %>"><% } %></div>
             <form id="buyerLogoForm" action="/buyer/update/logo" method="post" enctype="multipart/form-data">
               <input type="file" name="logo" accept="image/*"/>
               <input type="submit" value="Update Logo Image">
@@ -20,10 +20,10 @@
               
             <div class="col-sm-6 dba">
               <h5>DBA Name</h5>
-              <div><input type="text" name="dbaName" value="<%= buyer.dbaName %>"></div>
+              <div><input type="text" name="dbaName" <% if (buyer.dbaName) { %>value="<%= buyer.dbaName %>"<% } %> placeholder="Altenate Company Name"></div>
             </div>
             <div class="col-sm-6 language">
-              <h5>Language</h5>
+              <h5>Language*</h5>
               <div class="styledSelect">
                 <select name="language">
                   <option value="<%= buyer.language %>" selected="selected"><%= buyer.language %></option>
@@ -33,7 +33,7 @@
             </div>
             <div class="clear"></div>
 
-            <h5 class="header-currency">Accepted Currencies</h5>
+            <h5 class="header-currency">Accepted Currencies*</h5>
             <% var currencies = ["USD","EUR","JPY","GBP","break","AUD","CHF","CAD","MXN","break","CNY","NZD","SEK","break","RUB","HKD","SGD"]; %>
 
             <section id="acceptedCurrencies">
@@ -59,7 +59,7 @@
               </div>
             </section>
 
-            <h5>Accepted Payment Terms</h5>
+            <h5>Accepted Payment Terms*</h5>
             <% var payment = ["MoneyGram","Western Union","break","T/T","Credit Card","break","Escrow","PayPal","break","D/P D/A","Cash"]; %>
 
             <section id="acceptedPaymentTerms">
@@ -112,7 +112,7 @@
             </section>
 
             <div class="col-sm-6">
-              <h5>Type of Company</h5>
+              <h5>Type of Company*</h5>
               <section id="typeOfCompany">
                 <div class="styledSelect breakForm">
                   <select name="typeOfCompany">
@@ -123,16 +123,16 @@
               </section>
 
               <h5>Contact Name</h5>
-              <div><input type="text" name="contactName" value="<%= buyer.contactName %>" placeholder="Contact Name"></div>
+              <div><input type="text" name="contactName" <%if (buyer.contactName) { %>value="<%= buyer.contactName %>" <% }%>placeholder="Contact Name"></div>
 
               <h5>Contact Position</h5>
-              <div><input type="text" name="contactPosition" value="<%= buyer.contactPosition %>" placeholder="Contact Position"></div>
+              <div><input type="text" name="contactPosition" <%if (buyer.contactPosition) { %>vvalue="<%= buyer.contactPosition %>" <% } %>placeholder="Contact Position"></div>
 
               <h5>Contact Email</h5>
-              <div><input type="text" name="contactEmail" value="<%= buyer.contactEmail %>" placeholder="Contact Email"></div>
+              <div><input type="text" name="contactEmail" <%if (buyer.contactEmail) { %>vvalue="<%= buyer.contactEmail %>" <% } %>placeholder="Contact Email"></div>
 
               <h5>DUNS Number</h5>
-              <div><input type="text" name="dunsNumber" value="<%= buyer.dunsNumber %>" placeholder="DUNS Number"></div>
+              <div><input type="text" name="dunsNumber" <%if (buyer.dunsNumber) { %>vvalue="<%= buyer.dunsNumber %>" <% } %>placeholder="DUNS Number"></div>
             </div>
 
             <div class="col-sm-6">
@@ -167,7 +167,7 @@
               <h5>Nearest Port</h5>
               <section id="port">
                 <div>
-                  <input type="text" name="portCity" placeholder="City" value="<%= buyer.portCity %>">
+                  <input type="text" name="portCity" placeholder="City" <%if (buyer.portCity) { %>value="<%= buyer.portCity %>"<% }%>>
                 </div>
                 <div class="styledSelect">
                   <select name="portCountry" id="portCountry" onchange="print_state('portProvince',this.selectedIndex);">
@@ -176,9 +176,9 @@
                 </div>
                 <div class="styledSelect">
                   <select name="portProvince" id="portProvince">
-                    <option value="<%= buyer.portProvince %>" selected="selected"><%= buyer.portProvince %></option>
+                    <%if (buyer.portProvince) {%><option value="<%= buyer.portProvince %>" selected="selected"><%= buyer.portProvince %></option><% } else {%><option value="Select Province" selected="selected"></option><% } %>
                   </select>
-                </div><script language="javascript">edit_country("<%= buyer.portCountry %>", "portCountry");</script>
+                </div><%if (buyer.portCountry) { %><script language="javascript">edit_country("<%= buyer.portCountry %>", "portCountry");</script><% } else { %><script language="javascript">edit_country("Select Country", "portCountry");</script><% } %>
               </section>
             </div>
 
@@ -192,7 +192,7 @@
             
         </div><!-- END row -->
       </div><!-- END .formWrapper -->
-    <div class="row"><button class="continueButton" type="submit">Save&nbsp;&nbsp; <i class="fa fa-arrow-right"></i></button></div>
+    <div class="row"><button class="continueButton" type="submit">Save&nbsp;&nbsp; <i class="fa fa-check"></i></button></div>
     <br/>
     <br/>
   </form>
