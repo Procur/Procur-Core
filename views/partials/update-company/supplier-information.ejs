@@ -4,16 +4,20 @@
       <h4>Supplier Information</h4>
       <div class="formWrapper">
         <div class="row">
-          <div class="col-sm-12">
+          <div class="col-sm-6">
             <h5>Logo Image</h5>
             <div><img src="<%= supplier.logoUrl %>"></div>
             <form id="supplierLogoForm" action="/supplier/update/logo" method="post" enctype="multipart/form-data">
               <input type="file" name="logo" accept="image/*"/>
-              <input type="submit">
+              <input type="submit" value="Update Logo Image">
             </form>
           </div><!-- END logo image .col-sm-12 -->
+        </div>
+      </div>
 
           <form action="/supplier/update/information" method="post" id="supplierInformationForm">
+          <div class="formWrapper">
+        <div class="row">
 
             <div class="col-sm-6 dba">
               <h5>DBA Name</h5>
@@ -168,11 +172,12 @@
                   <% } %>
                 </div>
             </div>
+      </form>
 
-            <div><input type="submit"></div>
-          </form>
-        </div><!-- END outside .row -->
+</div><!-- END row -->
       </div><!-- END .formWrapper -->
-    </div><!-- END #supplierInformation -->
+    <div class="row"><button class="continueButton" type="submit">Save&nbsp;&nbsp; <i class="fa fa-arrow-right"></i></button></div><br/><br/>
+  </form>
+</div><!-- END #companyDetails -->
   <% } %>
 <% } %>
