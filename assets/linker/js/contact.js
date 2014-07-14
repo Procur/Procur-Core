@@ -10,7 +10,7 @@ function populateNextDropdown(selection) {
     "Help & Support": ["Trouble Registering","Trouble Logging In","Error Screen Displayed","Other Problems"],
     "Partnerships": ["General Information","Initiatives","Philanthropy","Other"],
     "Press & Media": ["Professional Contact","Blog/Social Media","Materials","Advertising","Other"],
-    "Feedback": ["General","New Feature Request","Issues","Othere"],
+    "Feedback": ["General","New Feature Request","Issues","Other"],
     "General Inquiries": ["Investment","Membership","Platform/Website","Company","Careers","Other"]
   };
   var keys = Object.keys(reasons);
