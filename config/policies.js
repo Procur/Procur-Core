@@ -57,7 +57,7 @@ module.exports.policies = {
     createBuyerAndSupplier: ['sessionCheck', 'isAuthenticated'],
     update: ['sessionCheck', 'isAuthenticated', 'profileComplete', 'wizardComplete'],
     setUpdate: ['sessionCheck', 'isAuthenticated', 'profileComplete', 'wizardComplete'],
-    selectDefault: ['sessionCheck', 'isAuthenticated', 'profileComplete'],
+    selectDefault: ['sessionCheck', 'isAuthenticated', 'profileComplete', 'isBuyerAndSupplier'],
     setDefault: ['sessionCheck', 'isAuthenticated', 'profileComplete', 'isBuyerAndSupplier'],
     setBoth: ['sessionCheck', 'isAuthenticated', 'profileComplete', 'goBackToWizard'],
     supplierWizard: ['sessionCheck', 'isAuthenticated', 'profileComplete', 'goBackToWizard', 'setSupplierTrueFalse'],
