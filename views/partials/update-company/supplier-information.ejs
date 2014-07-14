@@ -168,7 +168,7 @@
                 <div class="col-sm-12">
                   <% for (var x = 0; x < supplier["productCategory"].length; x++) { %>
                     <label  for="autocomplete"><h5>Select your Category Preferences</h5></label>
-                    <input id="autocomplete<%= x %>" name="autocomplete" placeholder="Begin typing to search categories..." value="<%= supplier["productCategory"][x] %>">
+                    <input id="autocomplete<%= x + 1 %>" name="autocomplete" placeholder="Begin typing to search categories..." value="<%= supplier["productCategory"][x] %>">
                   <% } %>
                 </div>
             </div>
