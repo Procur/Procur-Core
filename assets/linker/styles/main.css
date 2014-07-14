@@ -392,6 +392,7 @@ text-decoration: none;
 .userColumn .userImage {
   width: 100%;
   padding-top: 35px;
+  max-width: 150px;
 }
 
 .userColumn .userColumnLinks {
@@ -838,5 +839,3 @@ line-height: 20px;
 font-size: 12px;
 
 }
-
-
