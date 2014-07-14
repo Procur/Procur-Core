@@ -258,3 +258,17 @@
 
   position: absolute;
 }
+
+@-moz-document url-prefix() { /* Checkboxtext vertical align fix for Firefox */
+  #companyUpdate .checkbox-container {
+    padding-bottom: 10px;
+  }
+  #companyUpdate .checkbox {
+    display: inline-block;
+    width: auto;
+  }
+  #companyUpdate .checkboxtext h5 {
+    display: inline-block;
+    position: absolute;
+  }
+}

@@ -186,10 +186,21 @@
             <div class="col-sm-12">
                 <h5>Product Categories</h5>
                 <div class="col-sm-12">
+                <% if (supplier["productCategory"].length > 0) { %>
                   <% for (var x = 0; x < supplier["productCategory"].length; x++) { %>
                     <label  for="autocomplete"><h5>Select your Category Preferences</h5></label>
                     <input id="autocomplete<%= x + 1 %>" name="autocomplete" placeholder="Begin typing to search categories..." value="<%= supplier["productCategory"][x] %>">
                   <% } %>
+                <% } else { %>
+                  <label  for="autocomplete"><h5>Select your Category Preferences</h5></label>
+                  <input id="autocomplete1" name="autocomplete" placeholder="Begin typing to search categories...">
+
+                  <label  for="autocomplete"><h5>Select your Category Preferences</h5></label>
+                  <input id="autocomplete2" name="autocomplete" placeholder="Begin typing to search categories...">
+
+                  <label  for="autocomplete"><h5>Select your Category Preferences</h5></label>
+                  <input id="autocomplete3" name="autocomplete" placeholder="Begin typing to search categories...">
+                <% } %>
                 </div>
             </div>
 

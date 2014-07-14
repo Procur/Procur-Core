@@ -9,8 +9,6 @@
         <ul>
           <li><a href="http://facebook.com/procurintl"><i class="fa fa-facebook"></i></a></li>
           <li><a href="http://twitter.com/procur_intl"><i class="fa fa-twitter"></i></a></li>
-          <li><a href="http://plus.google.com/+ProcurIntl/about"><i class="fa fa-google"></i></a></li>
-          <li><a href="http://instagram.com/procur_intl"><i class="fa fa-instagram"></i></a></li>
           <li><a href="https://www.linkedin.com/company/procur"><i class="fa fa-linkedin"></i></a></li>
           <li><a href="http://pinterest.com/procurintl"><i class="fa fa-pinterest"></i></a></li>
           <li><a href="http://www.good.is/members/procurintl"><i class="fa fa-plus-square"></i></a></li>
@@ -28,7 +26,7 @@
       <h4>Sign Up for Our Mailing List</h4>
       <form action="/contact/subscribe" method="post" id="subscriberForm">
 
-        <div class="row">
+        <div class="row" id="login">
           <div class="col-sm-8">
             <input class="mailingListInput" type="text" name="subscriberEmail" placeholder="email@your-address.com">
           </div>
@@ -49,7 +47,7 @@
             </div>
           </div>
         </div>
-        
+
       </form>
       </div>
     </div>
@@ -63,18 +61,17 @@
           </div>
         </div>
 
-        <div class="row">
+        <div class="row" id="login">
           <div class="col-sm-12">
             <h3>Get In Touch With Us Now</h3>
           </div>
-
           <form action="/contact" method="post" id="contactForm">
           <div class="col-sm-5">
             <div class="contact-email">
               <input name="email" placeholder="email@your-address.com" type="text">
-            </div>
+            </div><br/>
 
-
+            <h5>Please select a subject:</h5>
             <div class="styledSelect">
               <select name="field1" class="contact-first-dropdown">
                 <option disabled selected value="">
@@ -151,7 +148,7 @@
 
           </div>
           <div class="col-sm-6">
-            <h5>Press &amp; Membership</h5>
+            <h5>Press &amp; Media</h5>
             <a href="mailto:media@procur.com">media@procur.com</a>
 
             <h5>Social Media</h5>

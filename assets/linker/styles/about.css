@@ -101,6 +101,7 @@
   border-bottom: 2px solid black;
   border-color: #CCCCCC;
   padding: 11px;
+  padding-bottom: 20px;
 }
 
 
@@ -124,8 +125,9 @@
 
 
 #about #tractor {
-  position:relative;
-  top: 30px;
+  padding-top: 30px;
+  padding-left:30px;
+  padding-bottom: 30px;
 }
 
 #about #train  {
