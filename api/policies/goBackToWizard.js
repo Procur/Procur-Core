@@ -61,12 +61,12 @@ module.exports = function (req, res, next) {
               if(!company.primaryMode) { res.redirect('/welcome/selectdefault'); }
               else { res.redirect('/dashboard'); }
             }
-            else if (data.buyer && (data.supplier === undefined)) {
+            else if ((data.buyer) && (data.supplier === undefined)) {
               // if buyer data and only buyer was selected, then the wizard is complete so redirect to dashboard
               if(company.buyer == true && company.supplier == false){ res.redirect('/dashboard'); }
              // if both was select but only buyer has data, redirect to supplier wizard
             }
-            else if ((data.buyer === undefined) && data.supplier) {
+            else if ((data.buyer === undefined) && (data.supplier)) {
               // if supplier data and only supplier was selected, then the wizard is complete so redirect to dashboard
               if(company.buyer == false && company.supplier == true){ res.redirect('/dashboard'); }
              // if both was select but only supplier has data, redirect to buyer wizard
