@@ -76,7 +76,6 @@ module.exports = {
     };
 
 
-
     User.findOne({ id: req.session.passport.user }, function(err, user){
       if((b.email == "") || (b.email === undefined)){
         emailUnset = user.email;
@@ -89,7 +88,7 @@ module.exports = {
         if(imageSize) {
           cloudinary.uploader.upload(image, function(result){
             User.update(user, { firstName: b.firstName, lastName: b.lastName, email: emailUnset, image: result.url, jobTitle: b.jobTitle }, function(err, user){
-              if(err){ return res.redirect('/') };
+              if(err){ req.flash('error', 'There is already an account associated with ' + emailUnset + '.'); return res.redirect('back');};
               if(user){
                 req.flash('message', 'Account information updated');
                 res.redirect('/');
@@ -111,7 +110,10 @@ module.exports = {
         }
         else{
           User.update(user, { firstName: b.firstName, lastName: b.lastName, email: emailUnset, jobTitle: b.jobTitle }, function(err, user){
-            if(err){ return res.redirect('/') };
+            if(err){ 
+              req.flash('error', 'There is already an account associated with ' + emailUnset + '.');
+              return res.redirect('back');
+            }
             if(user){
               req.flash('message', 'Account information updated');
               res.redirect('/');
