@@ -5,22 +5,22 @@
       <div class="row">
         <div class="col-sm-12">
           <h5>Company Description</h5>
-          <div><textarea rows="5" name="companyDescription" placeholder="Company Description"><%= buyer.companyDescription %></textarea></div><br/>
+          <div><textarea rows="5" name="companyDescription" placeholder="Company Description"><% if (buyer.companyDescription) { %><%= buyer.companyDescription %><% }%></textarea></div><br/>
 
           <h5>Environmental Sustainability</h5>
-          <div><textarea rows="5" name="environmentalSustainability" placeholder="Environmental Sustainability"><%= buyer.environmentalSustainability %></textarea></div><br/>
+          <div><textarea rows="5" name="environmentalSustainability" placeholder="Environmental Sustainability"><%if (buyer.environmentalSustainability) { %><%= buyer.environmentalSustainability %><% }%></textarea></div><br/>
 
           <h5>Quality Sourcing</h5>
-          <div><textarea rows="5" name="qualitySourcing" placeholder="Quality Sourcing"><%= buyer.qualitySourcing %></textarea></div><br/>
+          <div><textarea rows="5" name="qualitySourcing" placeholder="Quality Sourcing"><% if (buyer.qualitySourcing) {%><%= buyer.qualitySourcing %><% } %></textarea></div><br/>
 
           <h5>Workplace Safety</h5>
-          <div><textarea rows="5" name="workplaceSafety" placeholder="Workplace Safety"> ><%= buyer.workplaceSafety  %></textarea></div><br/>
+          <div><textarea rows="5" name="workplaceSafety" placeholder="Workplace Safety"><% if (buyer.workplaceSafety) { %><%= buyer.workplaceSafety  %><% } %></textarea></div><br/>
 
           <h5>Labor Education &amp; Training</h5>
-          <div><textarea rows="5" name="laborEducationTraining" placeholder="Labor Education Training"> ><%= buyer.laborEducationTraining  %></textarea></div><br/>
+          <div><textarea rows="5" name="laborEducationTraining" placeholder="Labor Education Training"><%if (buyer.laborEducationTraining) { %><%= buyer.laborEducationTraining  %><% } %></textarea></div><br/>
 
           <h5>Community Reinvestment</h5>
-          <div><textarea rows="5" name="reinvestment" placeholder="Reinvestment"><%= buyer.reinvestment  %></textarea></div>
+          <div><textarea rows="5" name="reinvestment" placeholder="Reinvestment"><% if (buyer.reinvestment) { %><%= buyer.reinvestment  %><% } %></textarea></div>
         </div>
       </div><!-- END .row -->
     </div><!-- END .formWrapper -->
