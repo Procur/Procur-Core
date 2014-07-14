@@ -64,6 +64,19 @@ input {
   padding: 0px 7px;
   font-weight: 100;
 }
+#regWizard input.submission {
+  height: 38px;
+  background: none;
+  border: 2px solid orange;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 11px;
+  text-transform: uppercase;
+}
+
+#regWizard input.submission:hover {
+  background: orange;
+  color: white;
+}
 #regWizard .hqcompanyCountry {
   height: 16px;
 }
@@ -97,7 +110,7 @@ input {
 #regWizard .styledSelect select {
   width: 115%;
   background: transparent;
-  border: none 0px;
+  border: 0px;
   margin: 4px 0px 4px;
   height: 18px;
   font-family: 'Roboto', sans-serif;
@@ -772,7 +785,7 @@ background-position: right top;
 #tabs .styledSelect select {
   width: 115%;
   background: transparent;
-  border: none 0px;
+  border: 0px;
   margin: 4px 0px 4px;
   height: 18px;
   font-family: 'Roboto', sans-serif;

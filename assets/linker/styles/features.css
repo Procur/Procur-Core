@@ -149,7 +149,7 @@
   min-height: 360px;
   background: url('../../images/featuresBG.jpg');
   background-repeat: no-repeat;
-  background-size: 100%;
+  background-size: cover;
   background-position: center bottom;
   margin: 0px;
   padding: 0px;
@@ -215,3 +215,64 @@ text-decoration: none;
 transition: all 200ms ease-in-out;
 }
 
+
+
+/* ADDED FOR HEADER CONSISTENCY OVERRIDE */
+
+
+#features #heroArea {
+  width: 100%;
+  background: url('../../images/featuresBG.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center bottom;
+  height: 350px;
+  margin-bottom: 30px;
+}
+
+#features #heroArea .textArea {
+  background: rgba(255,255,255,0.8);
+  padding: 20px 30px;
+  margin-top: 60px;
+  float: left;
+  max-width: 650px;
+}
+
+#features #heroArea .textArea h1 {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 22px;
+  font-weight: 300;
+  margin: 0px;
+  padding: 0px;
+  line-height: 36px;
+  color: #5a5a5a;
+}
+
+#features #heroArea .pill {
+    border-radius: 25px 25px 25px 25px;
+    height: 50px;
+    background: rgba(0,0,0,0.7);
+    padding: 10px;
+    text-align: center;
+    margin-top: 30px;
+    line-height: 30px;
+    margin-left: 25px;
+    width: 100%;
+    position: relative;
+
+}
+
+#features #heroArea a {
+  font-family: 'Montserrat', sans-serif;
+  color: white;
+  letter-spacing: 0.06em;
+  font-size: 12px;
+  position: absolute;
+}
+
+#features #heroContainer {
+  margin-left: 0;
+  margin-right: 0;
+  width: 100%;
+  padding-right: 30px;
+}

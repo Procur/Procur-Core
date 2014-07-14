@@ -98,7 +98,7 @@ module.exports = {
             });
 
           }
-        })//END OF USER.CREATE
+        }); //END OF USER.CREATE
       }
       else {
         req.flash('error', "There is already an account associated with "+ b.email +". Would you like to login?");
@@ -339,6 +339,7 @@ module.exports = {
           if(err) { return res.redirect('/dashboard'); }
           User.update(user, { emailVerified: true }, function(err, toUpdate){
             if(err) { return res.redirect('/dashboard'); }
+            req.flash('error', 'Your email address has been verified. You can now log in.');
             return res.redirect('/dashboard');
           });
         });
