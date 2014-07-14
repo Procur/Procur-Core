@@ -16,20 +16,30 @@
             <h5>Preferred Supplier Language</h5>
             <div class="styledSelect">
               <select name="preferredSupplierLanguage">
-                <%if (buyer.preferredSupplierLanguage) { %><option value="<%= buyer.preferredSupplierLanguage %>" selected="selected"><%= buyer.preferredSupplierLanguage %></option><% } %>
+                <% if (buyer.preferredSupplierLanguage.length === 0) { %>
+                  <option value="<%= buyer.preferredSupplierLanguage %>" selected="selected">Select a language</option>
+                  <% } else { %>
+                  <option value="<%= buyer.preferredSupplierLanguage %>" selected="selected"><%= buyer.preferredSupplierLanguage %></option>
+                <% } %>
                 <%- partial('../edit-dropdowns/edit-pref-supplier-language') %>
               </select>
             </div>
           </div> <!-- End of First Column -->
 
           <div class="col-sm-6">
-          <h5>Preferred Supplier Location</h5>
-          <div class="styledSelect">
-            <select name="preferredSupplierLocation" id="preferredSupplierLocation">
-              <option value="<%= buyer.preferredSupplierLocation %>" selected="selected"><%= buyer.preferredSupplierLocation %></option>
-            </select>
-          </div><script language="javascript">edit_country("<%= buyer.preferredSupplierLocation %>", "preferredSupplierLocation");</script>
+            <h5>Preferred Supplier Location</h5>
+            <div class="styledSelect">
+              <select name="preferredSupplierLocation" id="preferredSupplierLocation">
+                <option value="<%= buyer.preferredSupplierLocation %>" selected="selected"><%= buyer.preferredSupplierLocation %></option>
+              </select>
+            </div>
+            <% if (buyer.preferredSupplierLocation.length === 0) { %>
+              <script language="javascript">print_country("preferredSupplierLocation");</script>
+              <% } else { %>
+              <script language="javascript">edit_country("<%= buyer.preferredSupplierLocation %>", "preferredSupplierLocation");</script>
+            <% } %>
           </div> <!-- End of Second Column -->
+
         </div> <!-- End of outside row -->
       </div><!-- End of formWrapper -->
     <div class="row"><button class="continueButton" type="submit">Save&nbsp;&nbsp; <i class="fa fa-check"></i></button></div>

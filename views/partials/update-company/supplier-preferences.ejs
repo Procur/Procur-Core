@@ -15,7 +15,11 @@
           <h5>Preferred Buyer Language</h5>
           <div class="styledSelect">
             <select name="preferredBuyerLanguage">
-              <option value="<%= supplier.preferredBuyerLanguage %>" selected="selected"><%= supplier.preferredBuyerLanguage %></option>
+              <% if (supplier.preferredBuyerLanguage.length === 0) { %>
+                <option value="<%= supplier.preferredBuyerLanguage %>" selected="selected">Select a language</option>
+                <% } else { %>
+                <option value="<%= supplier.preferredBuyerLanguage %>" selected="selected"><%= supplier.preferredBuyerLanguage %></option>
+              <% } %>
               <%- partial('../edit-dropdowns/edit-pref-buyer-language') %>
             </select>
           </div>
@@ -27,7 +31,12 @@
             <select name="preferredBuyerLocation" id="preferredBuyerLocation">
               <option value="<%= supplier.preferredBuyerLocation %>" selected="selected"><%= supplier.preferredBuyerLocation %></option>
             </select>
-          </div><script language="javascript">edit_country("<%= supplier.preferredBuyerLocation %>", "preferredBuyerLocation");</script>
+          </div>
+          <% if (supplier.preferredBuyerLocation.length === 0) { %>
+            <script language="javascript">print_country("preferredBuyerLocation");</script>
+            <% } else { %>
+            <script language="javascript">edit_country("<%= supplier.preferredBuyerLocation %>", "preferredBuyerLocation");</script>
+          <% } %>
         </div> <!-- End of Second Column -->
         
       </div> <!-- End of outside row -->
