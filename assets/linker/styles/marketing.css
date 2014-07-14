@@ -220,6 +220,10 @@ background-repeat:no-repeat;
   padding-top: 20px;
 }
 
+.indexMid {
+  margin-top: 50px;
+}
+
 .indexMid .midSecRight h1 {
   font-family: 'Open Sans', sans-serif;
   font-size: 23px;
