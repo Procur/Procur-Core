@@ -1,32 +1,27 @@
 <div id="dashboard-header">
-  <nav class="navbar navbar-default" role="navigation">
-      <div class="navbar-brand navbar-left">
-        <a href="/"><img src="/images/procur.png" /></a>
-        <a href="/earlyaccess"><img class="ea-light-image" src="/images/ea-light.png" /></a>
-        <p class="userCompanyName"><span class="greetingUser"><%= user.firstName %> <%= user.lastName %></span> <span class="greetingCompany">&middot; <%= company.name %></span></p>
-      </div>
-      <div class="registration-right-section navbar-right">
-        <% if((company.buyer == true) && (company.supplier == true)) { %>
-            <% if(user.activeMode == 'buyer') { %>
-              <p class="typeToggle buyer navbar-text">CURRENTLY IN BUYER MODE <i class="fa fa-exchange"></i>  SWITCH TO SUPPLIER</p>
-            <% } %>
-            <% if(user.activeMode == 'supplier') { %>
-              <p class="typeToggle supplier navbar-text">CURRENTLY IN SUPPLIER MODE <i class="fa fa-exchange"></i> SWITCH TO BUYER</p>
-            <% } %>
-          <% } %>
-          <a href="/logout" class="navbar-text"><i class="fa fa-sign-out fa-fw"></i> LOGOUT</a>
-      </div>
-  </nav>
+  <div class="dashboard-header-left">
+    <a class="logo-image" href="/"><img src="/images/procur.png" /></a>
+    <a class="ea-link-image" href="/earlyaccess"><img class="ea-light-image" src="/images/ea-light.png" /></a>
+    <p class="userCompanyName hidden-sm hidden-xs"><span class="greetingUser"><%= user.firstName %> <%= user.lastName %></span> <span class="greetingCompany">&middot; <%= company.name %></span></p>
+  </div>
+  <div class="dashboard-header-right">
+    <% if((company.buyer == true) && (company.supplier == true)) { %>
+      <% if(user.activeMode == 'buyer') { %>
+        <p class="typeToggle buyer">CURRENTLY IN BUYER MODE <i class="fa fa-exchange"></i> SWITCH TO SUPPLIER</p>
+      <% } %>
+      <% if(user.activeMode == 'supplier') { %>
+        <p class="typeToggle supplier">CURRENTLY IN SUPPLIER MODE <i class="fa fa-exchange"></i> SWITCH TO BUYER</p>
+      <% } %>
+    <% } %>
+    <a href="/logout" class="logout-link"><i class="fa fa-sign-out fa-fw"></i> LOGOUT</a>
+  </div>
 </div>
-
-<div id="dashboard-header" class="subnav">
-  <nav class="navbar navbar-default" role="navigation">
-      <div class="registration-right-section navbar-right">
-          <p class="navbar-text">MY PROCUR:</p>
-          <a href="/dashboard" class="navbar-text navLink dashboard">Dashboard</a>
-          <a href="/companies/<%= company.handle %>" class="navbar-text navLink company">View Company Profile</a>
-          <a href="/company/update" class="navbar-text navLink updateCompany">Edit Company Profile</a>
-          <a href="/user/update" class="navbar-text navLink updateUser">User Account Settings</a>
-      </div>
-  </nav>
+<div id="subnav-header">
+  <div class="dashboard-header-right">
+    <p class="myprocur-label">MY PROCUR:</p>
+    <a href="/dashboard" class="navLink dashboard">Dashboard</a>
+    <a href="/companies/<%= company.handle %>" class="navLink company">View Company Profile</a>
+    <a href="/company/update" class="navLink updateCompany">Edit Company Profile</a>
+    <a href="/user/update" class="navLink updateUser">User Account Settings</a>
+  </div>
 </div>

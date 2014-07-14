@@ -26,6 +26,9 @@
         .ui-tabs-vertical .ui-tabs-nav li.ui-tabs-active .rightSecBox { background: #ffc65c;}
         .ui-tabs-vertical .ui-tabs-nav li.ui-tabs-active .rightSec i { color: white;}
     </style>
+  <% if (req.session.flash) { %>
+    <div id="success-message"><%= req.flash('message') %></div>
+  <% } %>
   <div class="col-sm-12 col-sm-offset-0 col-md-12 col-md-offset-0 col-lg-10 col-lg-offset-1">
   <div class="row ui-tabs ui-widget ui-widget-content ui-corner-all ui-tabs-vertical ui-helper-clearfix" id="tabs">
     <div class="col-sm-4">   
@@ -57,7 +60,7 @@
         <div id="userUpdateForm">
         <h4>Contact Information</h4>
         
-            <form action="/user/update" method="post" id="user-update-form" enctype="multipart/form-data" id="companyDetailsForm">
+            <form action="/user/update" method="post" id="user-update-form" enctype="multipart/form-data">
             <div class="formWrapper">
               <div class="row">
                 <div class="col-sm-6">
@@ -83,7 +86,7 @@
                 <div id="existing-email-error"><%= req.flash('error') %></div>
               <% } %>
             </div>
-          <div class="row"><button class="continueButton" type="submit">Continue&nbsp;&nbsp; <i class="fa fa-arrow-right"></i></button></div>
+          <div class="row"><button class="continueButton" type="submit">Save&nbsp;&nbsp; <i class="fa fa-check"></i></button></div>
         </form>
         </div>
 
@@ -103,7 +106,8 @@
                 </div>
               </div>
               </div>
-              <div class="row"><button class="continueButton" type="submit">Continue&nbsp;&nbsp; <i class="fa fa-arrow-right"></i></button></div>
+              <div class="row">
+                <button class="continueButton" type="submit">Save&nbsp;&nbsp; <i class="fa fa-check"></i></button></div>
             </form>
           </div>
         </div>

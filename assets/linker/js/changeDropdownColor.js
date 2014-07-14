@@ -1,10 +1,13 @@
 
 
-$('#regWizard').find('select').change(function(){
+$('#regWizard, #companyUpdate').find('select').change(function(){
 	$(this).css({'color':'#000000','font-weight': 400});
 });
 
-$('#regWizard').find('input').keyup(function(){
+$('#regWizard, #companyUpdate').find('input').keyup(function(){
 	$(this).css({'color':'#000000','font-weight': 400});
 
 });
+
+$('#companyUpdate').find('input').css({'color':'#000000','font-weight': 400});
+$('#companyUpdate').find('select').css({'color':'#000000','font-weight': 400});

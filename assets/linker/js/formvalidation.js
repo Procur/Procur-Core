@@ -24,6 +24,10 @@ jQuery.validator.addMethod("internationalphanumeric+punct+whitespace", function(
   return value === "" || regex.test(value);
 }, jQuery.validator.format("International characters, simple punctuation, and spaces only."));
 
+jQuery.validator.addMethod("alphanumeric", function(value, element, params) {
+  var regex = /^[0-9A-Za-z]*$/;
+  return value === "" || regex.test(value);
+}, jQuery.validator.format("Numbers and letters only."));
 
 jQuery.validator.addMethod("numeric+whitespace", function(value, element, params) {
   var regex = /^[0-9 ]*$/;
@@ -52,6 +56,11 @@ jQuery.validator.addMethod("companyHandleFormat", function(value, element, param
   var regex = /^[A-Za-z0-9_]*[A-Za-z0-9][A-Za-z0-9_]*$/;
   return value === "" || regex.test(value);
 }, jQuery.validator.format("Alphanumeric characters and underscores only."));
+
+jQuery.validator.addMethod("socialMediaHandleFormat", function(value, element, params) {
+  var regex = /^[\S]*$/;
+  return value === "" || regex.test(value);
+}, jQuery.validator.format("No whitespace please."));
 
 jQuery.validator.addMethod("companyNameFormat", function(value, element, params) {
   //IMPLEMENT ME
@@ -748,9 +757,95 @@ $('#supplierOtherLocationCity').change(function () {
 	updateOtherLocationRules();
 });
 
+$('#user-update-form').validate({
+  rules: {
+    firstName: {
+      required: true,
+      minlength: 1,
+      maxlength: 100
+    },
+    lastName: {
+      required: true,
+      minlength: 1,
+      maxlength: 100
+    },
+    email: {
+      required: false,
+      email: true,
+      //uniqueEmailAddress: true,
+      minlength: 1,
+      maxlength: 100
+    },
+    emailConfirm: {
+      required: function(element){
+        return $('#updateEmail').val()!=="";
+      },
+      equalTo: "#updateEmail"
+    },
+    jobTitle: {
+      required: false,
+      "internationalphanumeric+punct+whitespace": true,
+      minlength: 1,
+      maxlength: 100
+    },
+    image: {
+      //n/a
+    }
+  },
+  messages:{
+    emailConfirm:{
+      equalTo: "Emails do not match."
+    }
+  }
+});
+
+$('#password-update-form').validate({
+  rules: {
+    password: {
+      required: true,
+      minlength: 8,
+      strongPassword: true,
+      maxlength: 50
+    },
+    passwordConfirm: {
+      required: true,
+      equalTo: "#newPassword"
+    }
+  },
+  messages:{
+    passwordConfirm: {
+      equalTo: "Passwords do not match."
+    }
+  }
+});
+
+$('#subscriberForm').validate({
+  rules:{
+    subscriberEmail: {
+      required: true,
+      email:true,
+      minlength:4,
+      maxlength: 50
+    }
+  }
+});
+
+$('#contactForm').validate({
+  rules:{
+    email: {
+      required: true,
+      email:true,
+      minlength:4,
+      maxlength: 50
+    },
+    content : {
+      required: true
+    }
+  }
+});
 
 
-
+/*
 $('#buyer-update-form').validate({
   rules: {
     logoUrl: {
@@ -1206,93 +1301,379 @@ $('#supplier-update-form').validate({
   }
 });
 
+*/
 
-$('#user-update-form').validate({
+/*
+
+Company Update Validation
+
+*/
+$('#companyDetailsForm').validate({
   rules: {
-    firstName: {
+    name:{
       required: true,
-      minlength: 1,
-      maxlength: 100
+      "internationalphanumeric+punct+whitespace": true,
+      minlength: 3,
+      maxlength: 50,
+      uniqueCompanyName: true
     },
-    lastName: {
+    phoneNumberCountryCode:{
       required: true,
+      "numeric+whitespace": true,
       minlength: 1,
-      maxlength: 100
+      maxlength: 8
+    },
+    phoneNumber: {
+      required: true,
+      "numeric+whitespace": true,
+      minlength: 5,
+      maxlength: 50
+    },
+    phoneExtension: {
+      required: false,
+      "numeric+whitespace": true,
+      minlength: 1,
+      maxlength: 10
+    },
+    faxCountryCode: {
+      required: true,
+      "numeric+whitespace": true,
+      minlength: 1,
+      maxlength: 8
+    },
+    faxNumber: {
+      required: true,
+      "numeric+whitespace": true,
+      minlength: 5,
+      maxlength: 50
+    },
+    faxExtension: {
+      required: false,
+      "numeric+whitespace": true,
+      minlength: 1,
+      maxlength: 10
     },
     email: {
-      required: false,
+      required: true,
       email: true,
-      //uniqueEmailAddress: true,
+      minlength: 4,
+      maxlength: 50
+    },
+    website: {
+      required: false,
+      url: true,
+      minlength: 4,
+      maxlength: 80
+    },
+    companyIndustry: {
+      required: true
+       //(provided) 
+      //Note: the required rule will only work on select menus if the dummy data has value="".
+      //Ex: <option value="">Select Employee Count</option>
+    },
+    companyAddress1: {
+      required: true,
+      "internationalphanumeric+punct+whitespace": true,
       minlength: 1,
-      maxlength: 100
+      maxlength: 80
     },
-    emailConfirm: {
-      required: function(element){
-        return $('#updateEmail').val()!=="";
-      },
-      equalTo: "#updateEmail"
-    },
-    jobTitle: {
+    companyAddress2: {
       required: false,
       "internationalphanumeric+punct+whitespace": true,
       minlength: 1,
-      maxlength: 100
+      maxlength: 80     
     },
-    image: {
-      //n/a
-    }
-  },
-  messages:{
-    emailConfirm:{
-      equalTo: "Emails do not match."
-    }
-  }
-});
-
-
-$('#password-update-form').validate({
-  rules: {
-    password: {
-      required: true,
-      minlength: 8,
-      strongPassword: true,
-      maxlength: 50
-    },
-    passwordConfirm: {
-      required: true,
-      equalTo: "#newPassword"
-    }
-  },
-  messages:{
-    passwordConfirm: {
-      equalTo: "Passwords do not match."
-    }
-  }
-});
-
-$('#subscriberForm').validate({
-  rules:{
-    subscriberEmail: {
-      required: true,
-      email:true,
-      minlength:4,
-      maxlength: 50
-    }
-  }
-});
-
-$('#contactForm').validate({
-  rules:{
-    email: {
-      required: true,
-      email:true,
-      minlength:4,
-      maxlength: 50
-    },
-    content : {
+    companyCountry: {
       required: true
+      //(provided) 
+      //Note: the required rule will only work on select menus if the dummy data has value="".
+      //Ex: <option value="">Select Employee Count</option>
+    },
+    companyProvince: {
+      required: true
+      //(provided) 
+      //Note: the required rule will only work on select menus if the dummy data has value="".
+      //Ex: <option value="">Select Employee Count</option>
+    },
+    companyPostalCode: {
+      required: true,
+      "alphanumeric+punct+whitespace" : true,
+      minlength: 1,
+      maxlength: 20
+    },
+    companyIsHq: {
+      //(n/a)
+    },
+    hqAddress1: {
+      required: true,
+      "internationalphanumeric+punct+whitespace": true,
+      minlength: 1,
+      maxlength: 80
+    },
+    hqAddress2: {
+      required: false,
+      "internationalphanumeric+punct+whitespace": true,
+      minlength: 1,
+      maxlength: 80
+    },
+    hqCountry: {
+      required: true
+      //(provided) 
+      //Note: the required rule will only work on select menus if the dummy data has value="".
+      //Ex: <option value="">Select Employee Count</option>
+    },
+    hqProvince: {
+      required: true
+      //(provided) 
+      //Note: the required rule will only work on select menus if the dummy data has value="".
+      //Ex: <option value="">Select Employee Count</option>
+    },
+    hqPostalCode: {
+      required: true,
+      "alphanumeric+punct+whitespace" : true,
+      minlength: 1,
+      maxlength: 20
+    },
+    employeeCount: {
+      required: true
+      //(provided) 
+      //Note: the required rule will only work on select menus if the dummy data has value="".
+      //Ex: <option value="">Select Employee Count</option>
+    }
+  },
+  messages:{
+    companyWebsite: {
+      url: urlHintMsg
     }
   }
 });
 
+$('#buyerInformationForm').validate({
+  rules: {
+    dbaName: {
+      required: false,
+      "internationalphanumeric+punct+whitespace": true,
+      minlength: 3,
+      maxlength: 50
+    },
+    language: {
+      required: true //(provided)
+    },
+    acceptedCurrency: {
+      required: true
+    },
+    acceptedPaymentTerms: {
+      required: true
+    },
+    acceptedDeliveryTerms: {
+      required: false
+    },
+    typeOfCompany: {
+      required: true //(provided)
+    },
+    contactName: {
+      required:false,
+      "internationalphanumeric+punct+whitespace": true
+    },
+    contactPosition: {
+      required:false,
+      "internationalphanumeric+punct+whitespace": true,
+      maxlength: 50
+    },
+    contactEmail: {
+      required:false,
+      email:true,
+      minlength:4,
+      maxlength: 50
+    },
+    dunsNumber: {
+      required:false,
+      digits: true,
+      minlength: 9,
+      maxlength: 9
+    },
+    locationName: {
+      required: false,
+      "internationalphanumeric+punct+whitespace": true,
+      minlength: 3,
+      maxlength: 50
+    },
+    locationType: {
+      required: false // (provided)
+    },
+    locationCountry: {
+      required: false // (provided)
+    },
+    locationProvince: {
+      required: false // (provided)
+    },
+    locationCity: {
+      required: false,
+      "internationalphanumeric+punct+whitespace": true,
+      minlength: 2,
+      maxlength: 50
+    },
+    portCity: {
+      required: false,
+      "internationalphanumeric+punct+whitespace": true,
+      minlength: 2,
+      maxlength: 50
+    },
+    portCountry: {
+      required: false // (provided)
+    },
+    portProvince: {
+      required: false // (provided)
+    },
+    autocomplete: {
+      actualCategoryOption: true
+    }
+  },
+  messages:{
+    acceptedDeliveryTerms: {
+      required: checkBoxMsg
+    },
+    acceptedCurrency: {
+      required: checkBoxMsg
+    },
+    acceptedPaymentTerms: {
+      required: checkBoxMsg
+    },
+    dunsNumber:{
+      digits: dnsMsg,
+      minlength: dnsMsg,
+      maxlength: dnsMsg
+    }
+  }
+});
+
+
+$("#buyerSocialOutletsForm").validate({
+  rules: {
+    facebook:{
+      required:false,
+      socialMediaHandleFormat: true,
+      maxlength: 50 //*possibly too short?
+    },
+    twitter:{
+      required:false,
+      socialMediaHandleFormat: true,
+      maxlength: 50 //*possibly too short?
+    },
+    pinterest:{
+      required:false,
+      socialMediaHandleFormat: true,
+      maxlength: 50 //*possibly too short?
+    },
+    tumblr:{
+      required:false,
+      socialMediaHandleFormat: true,
+      maxlength: 50 //*possibly too short?
+    },
+    linkedin:{
+      required:false,
+      socialMediaHandleFormat: true,
+      maxlength: 50 //*possibly too short?
+    },
+    instagram:{
+      required:false,
+      socialMediaHandleFormat: true,
+      maxlength: 50 //*possibly too short?
+    },
+    google:{
+      required:false,
+      socialMediaHandleFormat:true,
+      maxlength: 50 //*possibly too short?
+    },
+  }
+});
+
+$("#buyerDescriptionsForm").validate({ //TO-DO: Needs a custom labeling, because labels aren't displaying.
+  rules: {
+    companyDescription: {
+      maxlength: 5000
+    },
+    environmentalSustainability: {
+      maxlength: 2000
+    },
+    qualitySourcing: {
+      maxlength: 2000
+    },
+    workplaceSafety: {
+      maxlength: 2000
+    },
+    laborEducationTraining: {
+      maxlength: 2000
+    },
+    reinvestment: {
+      maxlength: 2000
+    }
+  }
+});
+
+
+$("#supplierDescriptionsForm").validate({ //TO-DO: Needs a custom labeling, because labels aren't displaying.
+  rules: {
+    companyDescription: {
+      maxlength: 5000
+    },
+    environmentalSustainability: {
+      maxlength: 2000
+    },
+    qualitySourcing: {
+      maxlength: 2000
+    },
+    workplaceSafety: {
+      maxlength: 2000
+    },
+    laborEducationTraining: {
+      maxlength: 2000
+    },
+    reinvestment: {
+      maxlength: 2000
+    }
+  }
+});
+
+/*
+$("#supplierSocialOutletsForm").validate({
+  rules: {
+    facebook:{
+      required:false,
+      socialMediaHandleFormat: true,
+      maxlength: 50 //*possibly too short?
+    },
+    twitter:{
+      required:false,
+      socialMediaHandleFormat: true,
+      maxlength: 50 //*possibly too short?
+    },
+    pinterest:{
+      required:false,
+      socialMediaHandleFormat: true,
+      maxlength: 50 //*possibly too short?
+    },
+    tumblr:{
+      required:false,
+      socialMediaHandleFormat: true,
+      maxlength: 50 //*possibly too short?
+    },
+    linkedin:{
+      required:false,
+      socialMediaHandleFormat: true,
+      maxlength: 50 //*possibly too short?
+    },
+    instagram:{
+      required:false,
+      socialMediaHandleFormat: true,
+      maxlength: 50 //*possibly too short?
+    },
+    google:{
+      required:false,
+      socialMediaHandleFormat:true,
+      maxlength: 50 //*possibly too short?
+    },
+  }
+});
+*/
 

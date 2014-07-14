@@ -26,18 +26,18 @@
       </div>
       <div class="row">
         <div class="col-sm-6 userResourceLinks">
-          <h4>TOOLS &amp; Resources</h4>
-          <a href="#">This Tool</a><br/>
-          <a href="#">Longer Text Here</a><br/>
-          <a href="#">Another One</a><br/>
+          <h4>COMPANY</h4>
+          <a href="/earlyaccess">Early Access</a><br/>
+          <a href="/features">Upcoming Features</a><br/>
+          <a href="/pricing">Membership &amp; Pricing</a><br/>
+          <a href="/about">About Procur</a>
         </div>
         <div class="col-sm-6 userResourceLinks">
-          <h4>Help &amp; Support</h4>
-          <a href="#">More Things</a><br/>
-          <a href="#">Better Stuff</a><br/>
-          <a href="#">Some Great Help</a><br/>
-          <a href="#">Very Useful</a><br/>
-          <a href="#">Totally Great &amp; Easy</a>
+          <h4>HELP &amp; SUPPORT</h4>
+          <a href="/faq">FAQ</a><br/>
+          <a href="/contact">Contact Us</a><br/>
+          <a href="/support">Support Topics</a><br/>
+          <a href="mailto:support@procur.com">Email Support</a>
         </div>
       </div>
     </div>
@@ -47,7 +47,7 @@
       </div>
       <div class="middleDescription">
         <h1>Welcome to Procur Early Access!</h1>
-        <p>This is a little bit about Early Access and what we’ll be doing and why we’re doing Early Access. People might want more information on what they’ll be able to do as a part of this time period and what the next steps are. This is just a change.</p>
+        <p>We're inviting select users to register with Procur before opening up our full platform later this summer. During Early Access, account holders will be able to create company profiles, organize products and RFQs, and start engaging with our online community. When we launch our full platform, Early Access suppliers will be the first to connect with global retailers, resellers and distributors looking to fill sourcing requirements.</p>
         <a href="/earlyaccess">Learn More About Early Access</a>
       </div>
       <div class="middleList">
@@ -78,7 +78,7 @@
       <h4>Currently Accessible:</h4>
         <a class="realLink" href="/companies/<%= company.handle %>"><div class="rightSec">
           <div class="rightSecBox">
-          	<i class="fa fa-gear fa-fw"></i>
+          	<i class="fa fa-user fa-fw"></i>
           </div>
           <h3 class="orangeButton">Company Profile</h3>
         </div>
@@ -87,7 +87,7 @@
         <h4>Features Coming Soon:</h4>
         <a class="orangeWrap" href="/earlyaccess#ea-uploadPhotos"><div class="rightSec">
           <div class="rightSecBox">
-          	<i class="fa fa-envelope fa-fw"></i>
+          	<i class="fa fa-camera fa-fw"></i>
           </div>
           <h3 class="orangeButton">Company Photos</h3>
          	</div>
@@ -95,7 +95,7 @@
         
         <a class="orangeWrap" href="/earlyaccess#ea-uploadPhotos"><div class="rightSec rightAlt">
           <div class="rightSecBox">
-          <i class="fa fa-search fa-fw"></i>
+          <i class="fa fa-tags fa-fw"></i>
           </div>
           <h3 class="orangeButton">Supplier Capabilities</h3>
         </div>
@@ -103,7 +103,7 @@
 
         <a class="orangeWrap" href="/earlyaccess#ea-uploadPhotos"><div class="rightSec">
           <div class="rightSecBox">
-          	<i class="fa fa-truck fa-fw"></i>
+          	<i class="fa fa-download fa-fw"></i>
           </div>
           <h3 class="orangeButton">Downloadable Files</h3>
         </div>
@@ -111,7 +111,7 @@
 
         <a class="orangeWrap" href="/earlyaccess#ea-uploadPhotos"><div class="rightSec rightAlt">
           <div class="rightSecBox">
-          	<i class="fa fa-th-large fa-fw"></i>
+          	<i class="fa fa-comments fa-fw"></i>
           </div>
           <h3 class="orangeButton">Community Resources</h3>
         </div>
@@ -119,7 +119,7 @@
 
         <a class="orangeWrap" href="/earlyaccess#ea-uploadPhotos"><div class="rightSec">
           <div class="rightSecBox">
-          	<i class="fa fa-user fa-fw"></i>
+          	<i class="fa fa-th-large fa-fw"></i>
           </div>
           <h3 class="orangeButton">Product Profiles</h3>
         </div>
@@ -186,4 +186,9 @@
 </section>
 <% } %> 
 -->
+
 <%- partial('../partials/dashboard-footer.ejs') %>
+
+<script>
+ $('html').css({ "minWidth": "768px" });
+</script>

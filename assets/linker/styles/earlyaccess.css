@@ -1,7 +1,10 @@
 #earlyAccess #heroRow {
   width: 100%;
   height: 600px;
-  background: url('http://www.placehold.it/1200x600');
+  background: url('../../images/earlyaccessBG.jpg');
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: center;
   margin: 0px;
   padding: 0px;
 }

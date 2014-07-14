@@ -216,3 +216,45 @@
     font-family: 'Open Sans', sans-serif;
     font-size: 12px;
   }
+
+/* ERROR MESSAGES */
+#companyUpdate label.error {
+  color: #FF5A5A;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 10px;
+  text-transform: uppercase;
+  line-height: 1.8em;
+  width: 100%;
+  top: -15px;
+  font-weight: 500;
+}
+
+#companyUpdate #acceptedCurrencies .cb-container label.error {
+  color: #FF5A5A;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 10px;
+  text-transform: uppercase;
+  line-height: 1.8em;
+  width: 300px;
+  font-weight: 500;
+  margin: 0px 0px 0px 110px;
+  padding: 0;
+  top: -18px;
+
+  position: absolute;
+}
+
+#companyUpdate #acceptedPaymentTerms .cb-container label.error {
+  color: #FF5A5A;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 10px;
+  text-transform: uppercase;
+  line-height: 1.8em;
+  width: 300px;
+  font-weight: 500;
+  margin: 0px 0px 0px 140px;
+  padding: 0;
+  top: -18px;
+
+  position: absolute;
+}

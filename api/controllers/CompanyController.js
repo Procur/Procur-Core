@@ -529,7 +529,6 @@ module.exports = {
             numOfLocations = locations.length;
 
             if (b.companyIsHq == "on" && numOfLocations === 1) {
-              console.log("The checkbox IS checked and there is ONE location.");
               Location.update(locations[0].id, {
                 addressLine1: b.companyAddress1,
                 addressLine2: b.companyAddress2,
@@ -543,7 +542,6 @@ module.exports = {
             }
 
             if (b.companyIsHq == "on" && numOfLocations === 2) {
-              console.log("The checkbox IS checked and there are TWO locations.");
               var nonhq, hq;
               locations.forEach(function(location) {
                 if (location.isHq === false) { nonhq = location; }
@@ -568,7 +566,6 @@ module.exports = {
             }
 
             if (b.companyIsHq == undefined && numOfLocations === 1) {  //LOOK INTO THIS MORE
-              console.log("The checkbox is NOT checked and there is ONE location.");
 
               Location.update(locations[0].id, {
                 addressLine1: b.hqAddress1,
@@ -597,7 +594,6 @@ module.exports = {
             }
 
             if (b.companyIsHq == undefined && numOfLocations === 2) {
-              console.log("The checkbox is NOT checked and there are TWO locations.");
               var nonhq, hq;
               locations.forEach(function(location) {
                 if (location.isHq === false) { nonhq = location; }
