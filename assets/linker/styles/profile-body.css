@@ -64,6 +64,10 @@
     padding-top: 5px;
   }
 
+  i {
+    font-size: 20px;
+  }
+
 /* FOR DETAIL BOXES */
 .company-detail-box {
   margin: 40px 0px;
