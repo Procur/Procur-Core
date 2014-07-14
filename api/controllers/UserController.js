@@ -90,11 +90,11 @@ module.exports = {
             User.update(user, { firstName: b.firstName, lastName: b.lastName, email: emailUnset, image: result.url, jobTitle: b.jobTitle }, function(err, user){
               if(err){ req.flash('error', 'There is already an account associated with ' + emailUnset + '.'); return res.redirect('back');};
               if(user){
-                req.flash('message', 'Account information updated');
-                res.redirect('/');
+                req.flash('message', 'Account information updated.');
+                res.redirect('back');
               }
               else {
-                req.flash('message', 'There was a problem');
+                req.flash('error', 'There was a problem.');
                 res.redirect('/');
               }
             });
@@ -115,11 +115,11 @@ module.exports = {
               return res.redirect('back');
             }
             if(user){
-              req.flash('message', 'Account information updated');
-              res.redirect('/');
+              req.flash('message', 'Account information updated.');
+              res.redirect('back');
             }
             else {
-              req.flash('message', 'There was a problem');
+              req.flash('error', 'There was a problem');
               res.redirect('/');
             }
           });
