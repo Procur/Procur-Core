@@ -228,10 +228,20 @@ module.exports.routes = {
     action: 'buyerOrSupplier'
   }, //Displays buyer/supplier/both slection view
 
+  'get /welcome/setbuyer': {
+    controller: 'CompanyController',
+    action: 'buyerOnly'
+  }, //sets Company:buyer true and supplier false
+
   'get /welcome/buyer': {
     controller: 'CompanyController',
     action: 'buyerWizard'
   }, //Displays buyer setup wizard
+
+  'get /welcome/setsupplier': {
+    controller: 'CompanyController',
+    action: 'supplierOnly'
+  }, //sets Company:buyer false and supplier true
 
   'get /welcome/supplier': {
     controller: 'CompanyController',
@@ -321,7 +331,7 @@ module.exports.routes = {
     controller: 'CompanyController',
     action: 'updateHandle'
   },
-  
+
   'get /checkHandleExists': {
     controller: 'CompanyController',
     action: 'checkHandleExists'

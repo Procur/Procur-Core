@@ -19,7 +19,7 @@ module.exports.policies = {
   '*': true,
 
   AuthController: {
-    verifyEmail: ['isAuthenticated'],
+    verifyEmail: [],
     process: ['isNotAuthenticated'],
     register: ['isNotAuthenticated'],
     processChangePassword: ['isAuthenticated'],
@@ -37,7 +37,7 @@ module.exports.policies = {
   },
 
   UserController: {
-    welcome: ['sessionCheck', 'isAuthenticated'],
+    welcome: ['sessionCheck', 'isAuthenticated', 'preventBackToWelcome'],
     pleaseVerify: ['sessionCheck', 'isAuthenticated', 'wizardComplete'],
     updateAccount: ['sessionCheck', 'isAuthenticated', 'profileComplete', 'wizardComplete'],
     processUpdateAccount: ['sessionCheck', 'isAuthenticated', 'profileComplete', 'wizardComplete'],
@@ -59,9 +59,11 @@ module.exports.policies = {
     setUpdate: ['sessionCheck', 'isAuthenticated', 'profileComplete', 'wizardComplete'],
     selectDefault: ['sessionCheck', 'isAuthenticated', 'profileComplete'],
     setDefault: ['sessionCheck', 'isAuthenticated', 'profileComplete', 'isBuyerAndSupplier'],
-    setBoth: ['sessionCheck', 'isAuthenticated', 'profileComplete'],
-    supplierWizard: ['sessionCheck', 'isAuthenticated', 'profileComplete'],
-    buyerWizard: ['sessionCheck', 'isAuthenticated', 'profileComplete']
+    setBoth: ['sessionCheck', 'isAuthenticated', 'profileComplete', 'goBackToWizard'],
+    supplierOnly: ['sessionCheck', 'isAuthenticated', 'profileComplete', 'goBackToWizard'],
+    supplierWizard: ['sessionCheck', 'isAuthenticated', 'profileComplete', 'goBackToWizard'],
+    buyerOnly: ['sessionCheck', 'isAuthenticated', 'profileComplete', 'goBackToWizard'],
+    buyerWizard: ['sessionCheck', 'isAuthenticated', 'profileComplete', 'goBackToWizard']
   },
 
   BuyerController: {
