@@ -12,5 +12,6 @@ module.exports = function (req, res, next) {
     if (user.profileComplete == true) {
       res.redirect('/welcome/moreinfo')
     }
+    else { return next(); }
   });
 };
