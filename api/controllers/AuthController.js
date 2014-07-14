@@ -30,7 +30,7 @@ module.exports = {
           if (err) { return res.redirect('/dashboard'); }
           else {
             req.session.authenticated = true;
-            res.redirect('/welcome');
+            res.redirect('/dashboard');
           }
         });
       })(req, res);
