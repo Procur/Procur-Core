@@ -1611,6 +1611,77 @@ $("#buyerDescriptionsForm").validate({ //TO-DO: Needs a custom labeling, because
   }
 });
 
+$('#supplierInformationForm').validate({//TO-DO: WHY DOESNT THIS WORK??
+  rules: {
+    dbaName: {
+      required: false,
+      "internationalphanumeric+punct+whitespace": true,
+      minlength: 3,
+      maxlength: 50
+    },
+    language: {
+      required: true //(provided)
+    },
+    acceptedCurrency: {
+      required: false
+    },
+    acceptedPaymentTerms: {
+      required: true
+    },
+    acceptedDeliveryTerms: {
+      required: true
+    },
+    typeOfCompany: {
+      required: true //(provided)
+    },
+    contactName: {
+      required:false,
+      "internationalphanumeric+punct+whitespace": true
+    },
+    contactPosition: {
+      required:false,
+      "internationalphanumeric+punct+whitespace": true,
+      maxlength: 50
+    },
+    contactEmail: {
+      required:false,
+      email:true,
+      minlength:4,
+      maxlength: 50
+    },
+    dunsNumber: {
+      required:false,
+      digits: true,
+      minlength: 9,
+      maxlength: 9
+    },
+    autocomplete: {
+      actualCategoryOption: true
+    },
+    cageCode: {
+      alphanumeric: true,
+      minlength: 5,
+      maxlength: 5
+    }
+  },
+  messages:{
+    acceptedDeliveryTerms: {
+      required: checkBoxMsg
+    },
+    acceptedCurrency: {
+      required: checkBoxMsg
+    },
+    acceptedPaymentTerms: {
+      required: checkBoxMsg
+    },
+    dunsNumber:{
+      digits: dnsMsg,
+      minlength: dnsMsg,
+      maxlength: dnsMsg
+    }
+  }
+});
+
 
 $("#supplierDescriptionsForm").validate({ //TO-DO: Needs a custom labeling, because labels aren't displaying.
   rules: {
@@ -1635,7 +1706,7 @@ $("#supplierDescriptionsForm").validate({ //TO-DO: Needs a custom labeling, beca
   }
 });
 
-/*
+
 $("#supplierSocialOutletsForm").validate({
   rules: {
     facebook:{
@@ -1675,5 +1746,5 @@ $("#supplierSocialOutletsForm").validate({
     },
   }
 });
-*/
+
 
