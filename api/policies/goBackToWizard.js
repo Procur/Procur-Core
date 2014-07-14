@@ -42,6 +42,20 @@ module.exports = function (req, res, next) {
           },
           function (err, data) {
             if (err) { res.redirect('/welcome/selectdefault'); };
+            if (company.buyer == true && company.supplier == true ){
+              if (data.buyer && data.supplier) {
+                //if default has not been selected yet go to that screen
+                if(!company.primaryMode) { res.redirect('/welcome/selectdefault'); }
+                else if(!company.handle){ res.redirect('/company/handle'); }
+                else { res.redirect('/dashboard');  }
+              }
+              if (!data.buyer){
+                if(req.route.path == '/welcome/buyer') { return next(); }
+              }
+              if (!data.supplier){
+                if(req.route.path == '/welcome/supplier') { return next(); }
+              }
+            }
             if (data.buyer && data.supplier) {
               //if default has not been selected yet go to that screen
               if(!company.primaryMode) { res.redirect('/welcome/selectdefault'); }
