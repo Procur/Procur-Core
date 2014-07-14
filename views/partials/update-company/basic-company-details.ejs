@@ -1,7 +1,7 @@
 <div id="companyDetails">
   <h4>Basic Company Details</h4>
-  <div class="formWrapper">
     <form action="/company/update/basicCompanyDetails" method="post" id="companyDetailsForm">
+    <div class="formWrapper">
       <div class="row">
         <div class="col-sm-6">
           <h5>Company Name</h5>
@@ -42,6 +42,15 @@
 
           <h5>Company Website</h5>
           <div><input type="text" name="website" value="<%= company.website %>"></div><br/>
+
+          <h5>Total Number of Employees</h5>
+          <div class="styledSelect">
+            <select name="employeeCount">
+              <option value="<%= company.employeeCount %>" selected="selected"><%= company.employeeCount %></option>
+              <%- partial('../edit-dropdowns/edit-total-employees') %>
+            </select>
+          </div>
+
         </div><!-- END col-sm-6 (LEFT) -->
 
         <div class="col-sm-6">
@@ -55,18 +64,10 @@
 
           <%- partial('../update-company/basic-company-details-locations') %>
 
-          <h5>Total Number of Employees</h5>
-          <div class="styledSelect">
-            <select name="employeeCount">
-              <option value="<%= company.employeeCount %>" selected="selected"><%= company.employeeCount %></option>
-              <%- partial('../edit-dropdowns/edit-total-employees') %>
-            </select>
-          </div>
-
         </div><!-- END col-sm-6 (RIGHT) -->
 
       </div><!-- END row -->
-      <div><input type="submit"></div>
-    </form>
-  </div><!-- END .formWrapper -->
+      </div><!-- END .formWrapper -->
+    <div class="row"><button class="continueButton" type="submit">Save&nbsp;&nbsp; <i class="fa fa-arrow-right"></i></button></div>
+  </form>
 </div><!-- END #companyDetails -->
