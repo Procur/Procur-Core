@@ -2,14 +2,17 @@
   <% if ((user.activeMode == 'buyer') || (user.activeMode === undefined)) { %>
     <div id="buyerInformation">
       <h4>Buyer Information</h4>
+      
+
+
       <div class="formWrapper">
         <div class="row">
-          <div class="col-sm-12">
+          <div class="col-sm-6">
             <h5>Logo Image</h5>  
             <div><img src="<%= buyer.logoUrl %>"></div>
             <form id="buyerLogoForm" action="/buyer/update/logo" method="post" enctype="multipart/form-data">
               <input type="file" name="logo" accept="image/*"/>
-              <input type="submit">
+              <input type="submit" value="Update Logo Image">
             </form>
           </div><!-- END logo image .col-sm-12 -->
 
@@ -187,10 +190,12 @@
               <% } %>
             </div>
             
-            <div><input type="submit"></div>
-          </form>
-        </div><!-- END outside .row -->
+        </div><!-- END row -->
       </div><!-- END .formWrapper -->
-    </div><!-- END #buyerInformation -->
+    <div class="row"><button class="continueButton" type="submit">Save&nbsp;&nbsp; <i class="fa fa-arrow-right"></i></button></div>
+    <br/>
+    <br/>
+  </form>
+</div><!-- END #buyerInformation -->
   <% } %>
 <% } %>
