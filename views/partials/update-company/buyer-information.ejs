@@ -20,7 +20,7 @@
               
             <div class="col-sm-6 dba">
               <h5>DBA Name</h5>
-              <div><input type="text" name="dbaName" value="<%= buyer.dbaName %>"></div>
+              <div><input type="text" name="dbaName" placeholder="DBA Name" value="<%= buyer.dbaName %>"></div>
             </div>
             <div class="col-sm-6 language">
               <h5>Language</h5>
@@ -123,16 +123,32 @@
               </section>
 
               <h5>Contact Name</h5>
-              <div><input type="text" name="contactName" value="<%= buyer.contactName %>" placeholder="Contact Name"></div>
+              <% if (buyer.contactName === undefined) { %>
+                <div><input type="text" name="contactName" placeholder="Contact Name"></div>
+                <% } else { %>
+                <div><input type="text" name="contactName" value="<%= buyer.contactName %>" placeholder="Contact Name"></div>
+              <% } %>
 
               <h5>Contact Position</h5>
-              <div><input type="text" name="contactPosition" value="<%= buyer.contactPosition %>" placeholder="Contact Position"></div>
+              <% if (buyer.contactPosition === undefined) { %>
+                <div><input type="text" name="contactPosition" placeholder="Contact Position"></div>
+                <% } else { %>
+                <div><input type="text" name="contactPosition" value="<%= buyer.contactPosition %>" placeholder="Contact Position"></div>
+              <% } %>
 
               <h5>Contact Email</h5>
-              <div><input type="text" name="contactEmail" value="<%= buyer.contactEmail %>" placeholder="Contact Email"></div>
+              <% if (buyer.contactEmail === undefined) { %>
+                <div><input type="text" name="contactEmail" placeholder="Contact Email"></div>
+                <% } else { %>
+                <div><input type="text" name="contactEmail" value="<%= buyer.contactEmail %>" placeholder="Contact Email"></div>
+              <% } %>
 
               <h5>DUNS Number</h5>
-              <div><input type="text" name="dunsNumber" value="<%= buyer.dunsNumber %>" placeholder="DUNS Number"></div>
+              <% if (buyer.dunsNumber === undefined) { %>
+                <div><input type="text" name="dunsNumber" placeholder="DUNS Number"></div>
+                <% } else { %>
+                <div><input type="text" name="dunsNumber" value="<%= buyer.dunsNumber %>" placeholder="DUNS Number"></div>
+              <% } %>
             </div>
 
             <div class="col-sm-6">
@@ -166,9 +182,12 @@
 
               <h5>Nearest Port</h5>
               <section id="port">
-                <div>
-                  <input type="text" name="portCity" placeholder="City" value="<%= buyer.portCity %>">
-                </div>
+                <% if (buyer.portCity === undefined) { %>
+                  <div><input type="text" name="portCity" placeholder="City"></div>
+                  <% } else { %>
+                  <div><input type="text" name="portCity" placeholder="City" value="<%= buyer.portCity %>"></div>
+                <% } %>
+
                 <div class="styledSelect">
                   <select name="portCountry" id="portCountry" onchange="print_state('portProvince',this.selectedIndex);">
                     <!-- edit_country() will populate this dropdown -->

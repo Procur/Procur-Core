@@ -5,29 +5,57 @@
       <div class="row">
         <div class="col-sm-6">
           <h5>Facebook</h5>
-          <div class="input-group"><div class="input-group-addon">facebook.com/<input type="text" name="facebook" value="<%= buyer.facebook %>" placeholder="Facebook"></div></div>
+          <% if (buyer.facebook === undefined || buyer.facebook === "undefined") { %>
+            <div class="input-group"><div class="input-group-addon">facebook.com/<input type="text" name="facebook" placeholder="Facebook"></div></div>
+            <% } else { %>
+            <div class="input-group"><div class="input-group-addon">facebook.com/<input type="text" name="facebook" value="<%= buyer.facebook %>" placeholder="Facebook"></div></div>
+          <% } %>
 
           <h5>Twitter</h5>
-          <div class="input-group"><div class="input-group-addon">twitter.com/<input type="text" name="twitter" value="<%= buyer.twitter %>" placeholder="Twitter"></div></div>
+          <% if (buyer.twitter === undefined || buyer.twitter === "undefined") { %>
+            <div class="input-group"><div class="input-group-addon">twitter.com/<input type="text" name="twitter" placeholder="Twitter"></div></div>
+            <% } else { %>
+            <div class="input-group"><div class="input-group-addon">twitter.com/<input type="text" name="twitter" value="<%= buyer.twitter %>" placeholder="Twitter"></div></div>
+          <% } %>
           
           <h5>Google+</h5>
-          <div class="input-group"><div class="input-group-addon">plus.google.com/+<input type="text" name="google" value="<%= buyer.google %>" placeholder="Google"></div></div>
+          <% if (buyer.google === undefined || buyer.google === "undefined") { %>
+            <div class="input-group"><div class="input-group-addon">plus.google.com/+<input type="text" name="google" placeholder="Google"></div></div>
+            <% } else { %>
+            <div class="input-group"><div class="input-group-addon">plus.google.com/+<input type="text" name="google" value="<%= buyer.google %>" placeholder="Google"></div></div>
+          <% } %>
           
           <h5>LinkedIn</h5>
-          <div class="input-group"><div class="input-group-addon">linkedin.com/users/<input type="text" name="linkedin" value="<%= buyer.linkedin %>" placeholder="Linkedin"></div></div>
+          <% if (buyer.linkedin === undefined || buyer.linkedin === "undefined") { %>
+            <div class="input-group"><div class="input-group-addon">linkedin.com/users/<input type="text" name="linkedin" placeholder="Linkedin"></div></div>
+            <% } else { %>
+            <div class="input-group"><div class="input-group-addon">linkedin.com/users/<input type="text" name="linkedin" value="<%= buyer.linkedin %>" placeholder="Linkedin"></div></div>
+          <% } %>
 
         </div>
         <!-- End First Column -->
         <div class="col-sm-6">
 
           <h5>Pinterest</h5>
-          <div class="input-group"><div class="input-group-addon">pinterest.com/<input type="text" name="pinterest" value="<%= buyer.pinterest %>" placeholder="Pinterest"></div></div>
+          <% if (buyer.pinterest === undefined || buyer.pinterest === "undefined") { %>
+            <div class="input-group"><div class="input-group-addon">pinterest.com/<input type="text" name="pinterest" placeholder="Pinterest"></div></div>
+            <% } else { %>
+            <div class="input-group"><div class="input-group-addon">pinterest.com/<input type="text" name="pinterest" value="<%= buyer.pinterest %>" placeholder="Pinterest"></div></div>
+          <% } %>
 
           <h5>Instagram</h5>
-          <div class="input-group"><div class="input-group-addon">instagram.com/<input type="text" name="instagram" value="<%= buyer.instagram %>" placeholder="Instagram"></div></div>
+          <% if (buyer.instagram === undefined || buyer.instagram === "undefined") { %>
+            <div class="input-group"><div class="input-group-addon">instagram.com/<input type="text" name="instagram" placeholder="Instagram"></div></div>
+            <% } else { %>
+            <div class="input-group"><div class="input-group-addon">instagram.com/<input type="text" name="instagram" value="<%= buyer.instagram %>" placeholder="Instagram"></div></div>
+          <% } %>
 
           <h5>Tumblr</h5>
-          <div class="input-group"><div class="input-group-addon">tumblr.com/<input type="text" name="tumblr" value="<%= buyer.tumblr %>" placeholder="Tumblr"></div></div>
+          <% if (buyer.tumblr === undefined || buyer.tumblr === "undefined") { %>
+            <div class="input-group"><div class="input-group-addon">tumblr.com/<input type="text" name="tumblr" placeholder="Tumblr"></div></div>
+            <% } else { %>
+            <div class="input-group"><div class="input-group-addon">tumblr.com/<input type="text" name="tumblr" value="<%= buyer.tumblr %>" placeholder="Tumblr"></div></div>
+          <% } %>
 
         </div>
         <!-- End Second Column -->
