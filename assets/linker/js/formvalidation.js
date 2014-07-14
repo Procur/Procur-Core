@@ -748,9 +748,95 @@ $('#supplierOtherLocationCity').change(function () {
 	updateOtherLocationRules();
 });
 
+$('#user-update-form').validate({
+  rules: {
+    firstName: {
+      required: true,
+      minlength: 1,
+      maxlength: 100
+    },
+    lastName: {
+      required: true,
+      minlength: 1,
+      maxlength: 100
+    },
+    email: {
+      required: false,
+      email: true,
+      //uniqueEmailAddress: true,
+      minlength: 1,
+      maxlength: 100
+    },
+    emailConfirm: {
+      required: function(element){
+        return $('#updateEmail').val()!=="";
+      },
+      equalTo: "#updateEmail"
+    },
+    jobTitle: {
+      required: false,
+      "internationalphanumeric+punct+whitespace": true,
+      minlength: 1,
+      maxlength: 100
+    },
+    image: {
+      //n/a
+    }
+  },
+  messages:{
+    emailConfirm:{
+      equalTo: "Emails do not match."
+    }
+  }
+});
+
+$('#password-update-form').validate({
+  rules: {
+    password: {
+      required: true,
+      minlength: 8,
+      strongPassword: true,
+      maxlength: 50
+    },
+    passwordConfirm: {
+      required: true,
+      equalTo: "#newPassword"
+    }
+  },
+  messages:{
+    passwordConfirm: {
+      equalTo: "Passwords do not match."
+    }
+  }
+});
+
+$('#subscriberForm').validate({
+  rules:{
+    subscriberEmail: {
+      required: true,
+      email:true,
+      minlength:4,
+      maxlength: 50
+    }
+  }
+});
+
+$('#contactForm').validate({
+  rules:{
+    email: {
+      required: true,
+      email:true,
+      minlength:4,
+      maxlength: 50
+    },
+    content : {
+      required: true
+    }
+  }
+});
 
 
-
+/*
 $('#buyer-update-form').validate({
   rules: {
     logoUrl: {
@@ -1206,93 +1292,145 @@ $('#supplier-update-form').validate({
   }
 });
 
+*/
 
-$('#user-update-form').validate({
+$('#companyDetailsForm').validate({
   rules: {
-    firstName: {
+    name:{
       required: true,
-      minlength: 1,
-      maxlength: 100
+      "internationalphanumeric+punct+whitespace": true,
+      minlength: 3,
+      maxlength: 50,
+      uniqueCompanyName: true
     },
-    lastName: {
+    phoneNumberCountryCode:{
       required: true,
+      "numeric+whitespace": true,
       minlength: 1,
-      maxlength: 100
+      maxlength: 8
+    },
+    phoneNumber: {
+      required: true,
+      "numeric+whitespace": true,
+      minlength: 5,
+      maxlength: 50
+    },
+    phoneExtension: {
+      required: false,
+      "numeric+whitespace": true,
+      minlength: 1,
+      maxlength: 10
+    },
+    faxCountryCode: {
+      required: true,
+      "numeric+whitespace": true,
+      minlength: 1,
+      maxlength: 8
+    },
+    faxNumber: {
+      required: true,
+      "numeric+whitespace": true,
+      minlength: 5,
+      maxlength: 50
+    },
+    faxExtension: {
+      required: false,
+      "numeric+whitespace": true,
+      minlength: 1,
+      maxlength: 10
     },
     email: {
-      required: false,
+      required: true,
       email: true,
-      //uniqueEmailAddress: true,
+      minlength: 4,
+      maxlength: 50
+    },
+    website: {
+      required: false,
+      url: true,
+      minlength: 4,
+      maxlength: 80
+    },
+    companyIndustry: {
+      required: true
+       //(provided) 
+      //Note: the required rule will only work on select menus if the dummy data has value="".
+      //Ex: <option value="">Select Employee Count</option>
+    },
+    companyAddress1: {
+      required: true,
+      "internationalphanumeric+punct+whitespace": true,
       minlength: 1,
-      maxlength: 100
+      maxlength: 80
     },
-    emailConfirm: {
-      required: function(element){
-        return $('#updateEmail').val()!=="";
-      },
-      equalTo: "#updateEmail"
-    },
-    jobTitle: {
+    companyAddress2: {
       required: false,
       "internationalphanumeric+punct+whitespace": true,
       minlength: 1,
-      maxlength: 100
+      maxlength: 80     
     },
-    image: {
-      //n/a
-    }
-  },
-  messages:{
-    emailConfirm:{
-      equalTo: "Emails do not match."
-    }
-  }
-});
-
-
-$('#password-update-form').validate({
-  rules: {
-    password: {
-      required: true,
-      minlength: 8,
-      strongPassword: true,
-      maxlength: 50
-    },
-    passwordConfirm: {
-      required: true,
-      equalTo: "#newPassword"
-    }
-  },
-  messages:{
-    passwordConfirm: {
-      equalTo: "Passwords do not match."
-    }
-  }
-});
-
-$('#subscriberForm').validate({
-  rules:{
-    subscriberEmail: {
-      required: true,
-      email:true,
-      minlength:4,
-      maxlength: 50
-    }
-  }
-});
-
-$('#contactForm').validate({
-  rules:{
-    email: {
-      required: true,
-      email:true,
-      minlength:4,
-      maxlength: 50
-    },
-    content : {
+    companyCountry: {
       required: true
+      //(provided) 
+      //Note: the required rule will only work on select menus if the dummy data has value="".
+      //Ex: <option value="">Select Employee Count</option>
+    },
+    companyProvince: {
+      required: true
+      //(provided) 
+      //Note: the required rule will only work on select menus if the dummy data has value="".
+      //Ex: <option value="">Select Employee Count</option>
+    },
+    companyPostalCode: {
+      required: true,
+      "alphanumeric+punct+whitespace" : true,
+      minlength: 1,
+      maxlength: 20
+    },
+    companyIsHq: {
+      //(n/a)
+    },
+    hqAddress1: {
+      required: true,
+      "internationalphanumeric+punct+whitespace": true,
+      minlength: 1,
+      maxlength: 80
+    },
+    hqAddress2: {
+      required: false,
+      "internationalphanumeric+punct+whitespace": true,
+      minlength: 1,
+      maxlength: 80
+    },
+    hqCountry: {
+      required: true
+      //(provided) 
+      //Note: the required rule will only work on select menus if the dummy data has value="".
+      //Ex: <option value="">Select Employee Count</option>
+    },
+    hqProvince: {
+      required: true
+      //(provided) 
+      //Note: the required rule will only work on select menus if the dummy data has value="".
+      //Ex: <option value="">Select Employee Count</option>
+    },
+    hqPostalCode: {
+      required: true,
+      "alphanumeric+punct+whitespace" : true,
+      minlength: 1,
+      maxlength: 20
+    },
+    employeeCount: {
+      required: true
+      //(provided) 
+      //Note: the required rule will only work on select menus if the dummy data has value="".
+      //Ex: <option value="">Select Employee Count</option>
+    }
+  },
+  messages:{
+    companyWebsite: {
+      url: urlHintMsg
     }
   }
 });
-
 

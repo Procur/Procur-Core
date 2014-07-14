@@ -4,16 +4,16 @@
     <div class="formWrapper">
       <div class="row">
         <div class="col-sm-6">
-          <h5>Company Name</h5>
-          <div><input type="text" name="name" value="<%= company.name %>" placeholder="Company Name"></div><br/>
+          <h5>Company Name*</h5>
+          <div><input type="text" name="name" value="<%= company.name %>" placeholder="Company Name*"></div><br/>
 
-          <h5>Company Phone</h5>
+          <h5>Company Phone*</h5>
           <div class="row insideForm">
             <div class="col-sm-5 inputColumnL">
-                <div><input type="text" name="phoneNumberCountryCode" value="<%= company.phoneNumberCountryCode %>" placeholder="Country Code"></div>
+                <div><input type="text" name="phoneNumberCountryCode" value="<%= company.phoneNumberCountryCode %>" placeholder="Country Code*"></div>
             </div>
             <div class="col-sm-7 inputColumnR">
-                <div><input type="text" name="phoneNumber" value="<%= company.phoneNumber %>" placeholder="Phone Number"></div>
+                <div><input type="text" name="phoneNumber" value="<%= company.phoneNumber %>" placeholder="Phone Number*"></div>
             </div>
           </div>
           <div class="row insideForm">
@@ -25,25 +25,25 @@
           <h5>Company Fax</h5>
           <div class="row insideForm">
             <div class="col-sm-5 inputColumnL">
-                <div><input type="text" name="faxCountryCode" value="<%= company.faxCountryCode %>" placeholder="Country Code"></div>
+                <div><input type="text" name="faxCountryCode" <%if (company.faxCountryCode) { %>value="<%= company.faxCountryCode %>"<% }%> placeholder="Country Code"></div>
             </div>
             <div class="col-sm-7 inputColumnR">
-                <div><input type="text" name="faxNumber" value="<%= company.faxNumber %>" placeholder="Fax Number"></div>
+                <div><input type="text" name="faxNumber" <%if (company.faxNumber) { %>value="<%= company.faxNumber %>" <% }%>placeholder="Fax Number"></div>
             </div>
           </div>
           <div class="row insideForm">
             <div class="col-sm-7 col-sm-offset-5 inputColumnR">
-                <div class="breakForm"><input type="text" name="faxExtension" value="<%= company.faxExtension %>"></div>
+                <div class="breakForm"><input type="text" name="faxExtension" <%if (company.faxExtension) { %>value="<%= company.faxExtension %>"<% } %> placeholder="Fax Extension"></div>
             </div>
           </div>
 
-          <h5>Company Email</h5>
-          <div><input type="text" name="email" value="<%= company.email %>"></div><br/>
+          <h5>Company Email*</h5>
+          <div><input type="text" name="email" value="<%= company.email %>" placeholder="info@mycompany.com"></div><br/>
 
           <h5>Company Website</h5>
-          <div><input type="text" name="website" value="<%= company.website %>"></div><br/>
+          <div><input type="text" name="website" <%if (company.website) { %>value="<%= company.website %>" <% }%>placeholder="http://www.mycompany.com"></div><br/>
 
-          <h5>Total Number of Employees</h5>
+          <h5>Total Number of Employees*</h5>
           <div class="styledSelect">
             <select name="employeeCount">
               <option value="<%= company.employeeCount %>" selected="selected"><%= company.employeeCount %></option>
@@ -54,7 +54,7 @@
         </div><!-- END col-sm-6 (LEFT) -->
 
         <div class="col-sm-6">
-          <h5>Company Industry</h5>
+          <h5>Company Industry*</h5>
           <div class="styledSelect">
             <select name="companyIndustry">
               <option value="<%= company.industry %>" selected="selected"><%= company.industry %></option>
