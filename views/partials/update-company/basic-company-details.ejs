@@ -25,15 +25,27 @@
           <h5>Company Fax</h5>
           <div class="row insideForm">
             <div class="col-sm-5 inputColumnL">
-                <div><input type="text" name="faxCountryCode" value="<%= company.faxCountryCode %>" placeholder="Country Code"></div>
+                <% if (company.faxCountryCode === undefined) { %>
+                  <div><input type="text" name="faxCountryCode" placeholder="Country Code"></div>
+                  <% } else { %>
+                  <div><input type="text" name="faxCountryCode" value="<%= company.faxCountryCode %>" placeholder="Country Code"></div>
+                <% } %>
             </div>
             <div class="col-sm-7 inputColumnR">
-                <div><input type="text" name="faxNumber" value="<%= company.faxNumber %>" placeholder="Fax Number"></div>
+                <% if (company.faxNumber === undefined) { %>
+                  <div><input type="text" name="faxNumber" placeholder="Fax Number"></div>
+                  <% } else { %>
+                  <div><input type="text" name="faxNumber" value="<%= company.faxNumber %>" placeholder="Fax Number"></div>
+                <% } %>
             </div>
           </div>
           <div class="row insideForm">
             <div class="col-sm-7 col-sm-offset-5 inputColumnR">
+              <% if (company.faxNumber === undefined) { %>
+                <div class="breakForm"><input type="text" name="faxExtension" placeholder="Fax Extension"></div>
+                <% } else { %>
                 <div class="breakForm"><input type="text" name="faxExtension" value="<%= company.faxExtension %>"></div>
+              <% } %>
             </div>
           </div>
 

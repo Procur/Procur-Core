@@ -5,22 +5,46 @@
       <div class="row">
         <div class="col-sm-12">
           <h5>Company Description</h5>
-          <div><textarea rows="5" name="companyDescription" placeholder="Company Description"><%= supplier.companyDescription %></textarea></div><br/>
+          <% if (supplier.companyDescription === "undefined") { %>
+            <div><textarea rows="5" name="companyDescription" placeholder="Company Description"></textarea></div><br/>
+            <% } else { %>
+            <div><textarea rows="5" name="companyDescription" placeholder="Company Description"><%= supplier.companyDescription %></textarea></div><br/>
+          <% } %>
 
           <h5>Environmental Sustainability</h5>
-          <div><textarea rows="5" name="environmentalSustainability" placeholder="Environmental Sustainability"><%= supplier.environmentalSustainability %></textarea></div><br/>
+          <% if (supplier.environmentalSustainability === "undefined") { %>
+            <div><textarea rows="5" name="environmentalSustainability" placeholder="Environmental Sustainability"></textarea></div><br/>
+            <% } else { %>
+            <div><textarea rows="5" name="environmentalSustainability" placeholder="Environmental Sustainability"><%= supplier.environmentalSustainability %></textarea></div><br/>
+          <% } %>
 
           <h5>Quality Sourcing</h5>
-          <div><textarea rows="5" name="qualitySourcing" placeholder="Quality Sourcing"><%= supplier.environmentalSustainability  %></textarea></div><br/>
+          <% if (supplier.qualitySourcing === "undefined") { %>
+            <div><textarea rows="5" name="qualitySourcing" placeholder="Quality Sourcing"></textarea></div><br/>
+            <% } else { %>
+            <div><textarea rows="5" name="qualitySourcing" placeholder="Quality Sourcing"><%= supplier.qualitySourcing %></textarea></div><br/>
+          <% } %>
 
           <h5>Workplace Safety</h5>
-          <div><textarea rows="5" name="workplaceSafety" placeholder="Workplace Safety"><%= supplier.workplaceSafety  %></textarea></div><br/>
+          <% if (supplier.workplaceSafety === "undefined") { %>
+            <div><textarea rows="5" name="workplaceSafety" placeholder="Workplace Safety"></textarea></div><br/>
+            <% } else { %>
+            <div><textarea rows="5" name="workplaceSafety" placeholder="Workplace Safety"><%= supplier.workplaceSafety  %></textarea></div><br/>
+          <% } %>
 
           <h5>Labor Education &amp; Training</h5>
-          <div><textarea rows="5" name="laborEducationTraining" placeholder="Labor Education Training"><%= supplier.laborEducationTraining  %></textarea></div><br/>
+          <% if (supplier.laborEducationTraining === "undefined") { %>
+            <div><textarea rows="5" name="laborEducationTraining" placeholder="Labor Education Training"></textarea></div><br/>
+            <% } else { %>
+            <div><textarea rows="5" name="laborEducationTraining" placeholder="Labor Education Training"><%= supplier.laborEducationTraining  %></textarea></div><br/>
+          <% } %>
 
           <h5>Community Reinvestment</h5>
-          <div><textarea rows="5" name="reinvestment" placeholder="Reinvestment"><%= supplier.reinvestment  %></textarea></div>
+          <% if (supplier.reinvestment === "undefined") { %>
+            <div><textarea rows="5" name="reinvestment" placeholder="Reinvestment"></textarea></div>
+            <% } else { %>
+            <div><textarea rows="5" name="reinvestment" placeholder="Reinvestment"><%= supplier.reinvestment  %></textarea></div>
+          <% } %>
         </div>
 
       </div>
