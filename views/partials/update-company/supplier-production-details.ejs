@@ -6,59 +6,79 @@
         <div class="col-sm-6">
           <h5>Annual Sales Value*</h5>
           <div class="styledSelect">
-          <select name="annualSalesValue">
-            <% if (supplier.annualSalesValue === undefined) { %>
-              <option value="" selected="selected">Select an option</option>
-              <% } else { %>
-              <option value="<%= supplier.annualSalesValue %>" selected="selected"><%= supplier.annualSalesValue %></option>
-            <% } %>
+          <select name="annualSalesValue" id="annualSalesValue">
             <%- partial('../edit-dropdowns/edit-annual-sales-value') %>
+            <% if (supplier.annualSalesValue) { %>
+              <script language="javascript">$("#annualSalesValue").val("<%=supplier.annualSalesValue%>");</script>
+            <% } else { %>
+               <script language="javascript">$("#annualSalesValue").val("");</script>
+            <% } %>
           </select>
           </div>
 
           <h5>Total Factory Size</h5>
           <div class='styledSelect'>
-          <select name="totalFactorySize">
-            <% if (supplier.totalFactorySize === undefined) { %>
-              <option value="" selected="selected">Select an option</option>
-              <% } else { %>
-              <option value="<%= supplier.totalFactorySize %>" selected="selected"><%= supplier.totalFactorySize %></option>
-            <% } %>
+          <select name="totalFactorySize" id="totalFactorySize">
             <%- partial('../edit-dropdowns/edit-factory-size') %>
+            <% if (supplier.totalFactorySize) { %>
+            <script language="javascript">$("#totalFactorySize").val("<%=supplier.totalFactorySize%>");</script>
+              <% } else { %>
+              <script language="javascript">$("#totalFactorySize").val("");</script>
+            <% } %>
           </select>
           </div>
 
           <h5>Total QC Staff</h5>
           <div class="styledSelect">
-          <select name="totalQCStaff">
-            <% if (supplier.totalQCStaff === undefined) { %>
-              <option value="" selected="selected">Select an option</option>
-              <% } else { %>
-              <option value="<%= supplier.totalQCStaff %>" selected="selected"><%= supplier.totalQCStaff %></option>
-            <% } %>
+          <select name="totalQCStaff" id="totalQCStaff">
             <%- partial('../edit-dropdowns/edit-qc-staff') %>
+            <% if (supplier.totalQCStaff) { %>
+              <script language="javascript">$("#totalQCStaff").val("<%=supplier.totalQCStaff%>");</script>
+            <% } else { %>
+              <script language="javascript">$("#totalQCStaff").val("");</script>
+            <% } %>
           </select>
           </div>
 
           <h5>Nearest Port</h5>
           <section id="port">
-            <% if (supplier.portCity === undefined) { %>
-              <div><input type="text" name="portCity" value="" placeholder="City"></div>
+            <% if (supplier.portCity) { %>
+               <div><input type="text" name="portCity" value="<%= supplier.portCity %>" placeholder="City"></div>
               <% } else { %>
-              <div><input type="text" name="portCity" value="<%= supplier.portCity %>" placeholder="City"></div>
+              <div><input type="text" name="portCity" value="" placeholder="City"></div>
             <% } %>
 
             <div class="styledSelect">
               <select name="portCountry" id="portCountry" onchange="print_state('portProvince',this.selectedIndex);">
-                <!-- edit_country() will populate this dropdown -->
+              <script language="javascript">print_country("portCountry");</script>
+              <% if (supplier.portCountry) { %>
+                <script language="javascript">
+                  $("#portCountry").val("<%=supplier.portCountry%>");
+                </script>
+              <% } else { %>
+                <script language="javascript">$("#portCountry").val("");</script>
+              <% } %>
               </select>
             </div>
 
             <div class="styledSelect">
               <select name="portProvince" id="portProvince">
-                <option value="<%= supplier.portProvince %>" selected="selected"><%= supplier.portProvince %></option>
+                <% if (supplier.portCountry) { %>
+                  <script language="javascript">print_state("portProvince",$("#portCountry").prop('selectedIndex'));</script>
+                <% } else {%>
+                  <script language="javascript">print_state("portProvince",0);</script>
+                <% } %>
+                <% if (supplier.portProvince) { %>
+                  <script language="javascript">
+                    $("#portProvince").val("<%=supplier.portProvince%>");
+                  </script>
+                <% } else { %>
+                  <script language="javascript">
+                    $("#portProvince").val("");
+                  </script>
+                <% } %>
               </select>
-            </div><script language="javascript">edit_country("<%= supplier.portCountry %>", "portCountry");</script>
+            </div>
           </section>
         </div>
 
@@ -68,27 +88,45 @@
             <div><input type="text" name="locationName" value="<%= supplier.locationName %>" placeholder="Location Title"></div>
 
             <div class="styledSelect">
-              <select name="locationType">
-                <% if (supplier.locationType.length === 0) { %>
-                  <option value="" selected="selected">Select an option</option>
-                  <% } else { %>
-                  <option value="<%= supplier.locationType %>" checked="checked"><%= supplier.locationType %></option>
-                <% } %>
+              <select name="locationType" id="locationType">
                 <%- partial('../edit-dropdowns/edit-other-location-type') %>
+                <% if (supplier.locationType) { %>
+                <script language="javascript">$("#locationType").val("<%=supplier.locationType%>");</script>
+                  <%} else { %>
+                  <script language="javascript">$("#locationType").val("");</script>
+                <% } %>
               </select>
             </div>
 
             <div class="styledSelect">
-              <select name="locationCountry" id="country" onchange="print_state('province',this.selectedIndex);">
-                <!-- edit_country() will populate this dropdown -->
+              <select name="locationCountry" id="locationCountry" onchange="print_state('locationProvince',this.selectedIndex);">
+              <script language="javascript">print_country("locationCountry");</script>
+              <% if (supplier.locationCountry) { %>
+                <script language="javascript">
+                  $("#locationCountry").val("<%=supplier.locationCountry%>");
+                </script>
+              <% } else { %>
+                <script language="javascript">$("#locationCountry").val("");</script>
+              <% } %>
               </select>
             </div> 
 
             <div class="styledSelect">
-              <select name="locationProvince" id="province">
-                <option value="<%= supplier.locationProvince %>" selected="selected"><%= supplier.locationProvince %></option>
+              <select name="locationProvince" id="locationProvince">
+              <% if (supplier.locationCountry) { %>
+                  <script language="javascript">print_state("locationProvince",$("#locationCountry").prop('selectedIndex'));</script>
+                <% } else {%>
+                  <script language="javascript">print_state("locationProvince",0);</script>
+              <% } %>
+              <% if (supplier.locationProvince) { %>
+                <script language="javascript">
+                  $("#locationProvince").val("<%=supplier.locationProvince%>");
+                </script>
+              <% } else { %>
+                <script language="javascript">$("#locationProvince").val("");</script>
+              <% } %>
               </select>
-            </div><script language="javascript">edit_country("<%= supplier.locationCountry %>", "country");</script>
+            </div>
 
             <div><input type="text" name="locationCity" value="<%= supplier.locationCity %>" placeholder="City"></div>
           </section>
