@@ -55,6 +55,15 @@
   font-weight: 300;
 }
 
+#companyUpdate textarea {
+  width: 100%;
+  resize: none;
+  border: none 0px;
+  padding: 10px;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 12px;
+}
+
 #companyUpdate button {
   position: relative;
   background: white;
@@ -72,3 +81,138 @@
 #companyUpdate button i {
   color: #5cc56c;
 }
+
+#buyerInformation .dba {
+  margin: 20px 0px 0px 0px;
+}
+
+#buyerInformation .dba input {
+  margin-top: 2px;
+}
+
+#buyerInformation .language {
+  margin: 20px 0px 0px 0px;
+}
+
+#buyerInformation .header-currency {
+  margin-top: 10px;
+}
+
+#buyerInformation .checkbox {
+  display: inline-block;
+  width: auto;
+  height: auto;
+  margin: 0px 0px 30px 25px;
+}
+
+#buyerInformation .checkboxtext {
+  display: inline-block;
+  margin: 10px 0px 0px 10px;
+}
+
+#buyerInformation .clear {
+  clear: both;
+}
+
+  #supplierInformation .dba {
+    margin: 20px 0px 0px 0px;
+  }
+
+  #supplierInformation .dba input {
+    margin-top: 2px;
+  }
+
+  #supplierInformation .language {
+    margin: 20px 0px 0px 0px;
+  }
+
+  #supplierInformation .header-currency {
+    margin-top: 10px;
+  }
+
+  #supplierInformation .checkbox {
+    display: inline-block;
+    width: auto;
+    height: auto;
+    margin: 0px 0px 30px 25px;
+  }
+
+  #supplierInformation .checkboxtext {
+    display: inline-block;
+    margin: 10px 0px 0px 10px;
+  }
+
+  #supplierInformation .clear {
+    clear: both;
+  }
+
+#acceptedCurrencies .col-sm-3 .cb-container:first-child {
+  margin: 10px 0px 0px 0px;
+}
+
+#acceptedPaymentTerms .col-sm-3 .cb-container:first-child {
+  margin: 10px 0px 0px 0px;
+}
+
+#acceptedDeliveryTerms .col-sm-3 .cb-container:first-child {
+  margin: 10px 0px 0px 0px;
+}
+
+#companyUpdate .checkboxtext {
+  margin-top: -23px;
+  margin-left: 20px;
+  margin-bottom: 20px;
+}
+
+#companyUpdate input.submit {
+  width: auto;
+  background: red;
+  color: white;
+}
+
+#socialOutletsSupplier .col-sm-6 h5:nth-of-type(n+2) {
+  margin-top: 10px;
+}
+
+#socialOutletsSupplier .input-group {
+  background: #FFF;
+  width: 300px;
+}
+
+#socialOutletsSupplier .input-group-addon {
+  background: #FFF;
+  float: left;
+  border: none;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 12px;
+}
+
+#socialOutletsSupplier input {
+  background: #FFF;
+  width: 150px;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 12px;
+}
+  #socialOutletsBuyer .col-sm-6 h5:nth-of-type(n+2) {
+    margin-top: 10px;
+  }
+
+  #socialOutletsBuyer .input-group {
+    background: #FFF;
+    width: 300px;
+  }
+
+  #socialOutletsBuyer .input-group-addon {
+    background: #FFF;
+    float: left;
+    border: none;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 12px;
+  }
+
+  #socialOutletsBuyer input {
+    background: #FFF;
+    width: 150px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 12px;
+  }

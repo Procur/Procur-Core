@@ -1,26 +1,31 @@
 <div id="descriptionsBuyer">
   <h4>Descriptions</h4>
+  <form action="/buyer/update/descriptions" method="post" id="buyerDescriptionsForm">
     <div class="formWrapper">
-      <form action="/buyer/update/descriptions" method="post" id="buyerDescriptionsForm">
-        <h5>Company Description</h5>
-        <div><textarea name="companyDescription" placeholder="Company Description"><%= buyer.companyDescription %></textarea></div>
+      <div class="row">
+        <div class="col-sm-12">
+          <h5>Company Description</h5>
+          <div><textarea rows="5" name="companyDescription" placeholder="Company Description"><%= buyer.companyDescription %></textarea></div><br/>
 
-        <h5>Environmental Sustainability</h5>
-        <div><textarea name="environmentalSustainability" placeholder="Environmental Sustainability"><%= buyer.environmentalSustainability %></textarea></div>
+          <h5>Environmental Sustainability</h5>
+          <div><textarea rows="5" name="environmentalSustainability" placeholder="Environmental Sustainability"><%= buyer.environmentalSustainability %></textarea></div><br/>
 
-        <h5>Quality Sourcing</h5>
-        <div><textarea name="qualitySourcing" placeholder="Quality Sourcing"><%= buyer.qualitySourcing %></textarea></div>
+          <h5>Quality Sourcing</h5>
+          <div><textarea rows="5" name="qualitySourcing" placeholder="Quality Sourcing"><%= buyer.qualitySourcing %></textarea></div><br/>
 
-        <h5>Workplace Safety</h5>
-        <div><textarea name="workplaceSafety" placeholder="Workplace Safety"> ><%= buyer.workplaceSafety  %></textarea></div>
+          <h5>Workplace Safety</h5>
+          <div><textarea rows="5" name="workplaceSafety" placeholder="Workplace Safety"> ><%= buyer.workplaceSafety  %></textarea></div><br/>
 
-        <h5>Labor Education &amp; Training</h5>
-        <div><textarea name="laborEducationTraining" placeholder="Labor Education Training"> ><%= buyer.laborEducationTraining  %></textarea></div>
+          <h5>Labor Education &amp; Training</h5>
+          <div><textarea rows="5" name="laborEducationTraining" placeholder="Labor Education Training"> ><%= buyer.laborEducationTraining  %></textarea></div><br/>
 
-        <h5>Community Reinvestment</h5>
-        <div><textarea name="reinvestment" placeholder="Reinvestment"><%= buyer.reinvestment  %></textarea></div>
-        
-        <div><input type="submit"></div>
-      </form>
-    </div>
+          <h5>Community Reinvestment</h5>
+          <div><textarea rows="5" name="reinvestment" placeholder="Reinvestment"><%= buyer.reinvestment  %></textarea></div>
+        </div>
+      </div><!-- END .row -->
+    </div><!-- END .formWrapper -->
+    <div class="row"><button class="continueButton" type="submit">Save&nbsp;&nbsp; <i class="fa fa-arrow-right"></i></button></div> 
+    <br />
+    <br />
+  </form>
 </div>
