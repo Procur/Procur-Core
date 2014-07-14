@@ -1,6 +1,6 @@
-<h5>Official Address</h5>
+<h5>Official Address*</h5>
 <% if (companyLocations["showHq"] === false) { %>
-  <div><input class="address1" type="text" name="companyAddress1" value="<%= companyLocations["company-isHq"].addressLine1 %>" placeholder="Address Line #1"></div>
+  <div><input class="address1" type="text" name="companyAddress1" value="<%= companyLocations["company-isHq"].addressLine1 %>" placeholder="Address Line #1*"></div>
   <div><input class="address2" type="text" name="companyAddress2" value="<%= companyLocations["company-isHq"].addressLine2 %>" placeholder="Address Line #2"></div>
   <div class="styledSelect">
     <select class="companyCountry" name="companyCountry" id="companyCountry" onchange="print_state('companyProvince',this.selectedIndex);"> 
@@ -19,7 +19,7 @@
 
     <div class="col-sm-5 inputColumnR">
       <div class="breakForm">
-        <input type="text" class="companyPostalCode" name="companyPostalCode" value="<%= companyLocations["company-isHq"].postalCode %>" placeholder="Postal Code">
+        <input type="text" class="companyPostalCode" name="companyPostalCode" value="<%= companyLocations["company-isHq"].postalCode %>" placeholder="Postal Code*">
       </div>
     </div>
   </div>
@@ -68,7 +68,7 @@
 <!-- HQ Address -->
 <h5>Company Headquarters Address*</h5>
 <div>
-  <input class="hqfield hqaddress1" type="text" name="hqAddress1" value="<%= companyLocations["company-isHq"].addressLine1 %>" placeholder="Address Line #1">
+  <input class="hqfield hqaddress1" type="text" name="hqAddress1" value="<%= companyLocations["company-isHq"].addressLine1 %>" placeholder="Address Line #1*">
 </div>
 <div>
   <input  class="hqfield hqaddress2" type="text" name="hqAddress2" value="<%= companyLocations["company-isHq"].addressLine2 %>" placeholder="Address Line #2">
@@ -91,7 +91,7 @@
 
   <div class="col-sm-5 inputColumnR">
     <div class="breakForm">
-      <input class="hqfield hqPostalCode" type="text" name="hqPostalCode" value="<%= companyLocations["company-isHq"].postalCode %>" placeholder="Postal Code">
+      <input class="hqfield hqPostalCode" type="text" name="hqPostalCode" value="<%= companyLocations["company-isHq"].postalCode %>" placeholder="Postal Code*">
     </div>
   </div>
 </div>
