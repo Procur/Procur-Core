@@ -57,10 +57,8 @@ module.exports = function (req, res, next) {
               }
             }
             if (data.buyer && data.supplier) {
-              console.log('here');
               //if default has not been selected yet go to that screen
               if(!company.primaryMode) {
-                console.log('hello');
                 res.redirect('/welcome/selectdefault'); }
               else { res.redirect('/dashboard'); }
             }
