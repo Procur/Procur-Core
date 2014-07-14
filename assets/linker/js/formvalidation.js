@@ -29,10 +29,10 @@ jQuery.validator.addMethod("alphanumeric", function(value, element, params) {
   return value === "" || regex.test(value);
 }, jQuery.validator.format("Numbers and letters only."));
 
-jQuery.validator.addMethod("numeric+whitespace", function(value, element, params) {
-  var regex = /^[0-9 ]*$/;
+jQuery.validator.addMethod("phoneNumberFormat", function(value, element, params) {
+  var regex = /^[0-9 \(\)\-\#]*$/;
   return value === "" || regex.test(value);
-}, jQuery.validator.format("Numbers and spaces only."));
+}, jQuery.validator.format("Digits and phone number punctuation only."));
 
 
 jQuery.validator.addMethod("decimal+number+whitespace", function(value, element, params) {
@@ -263,40 +263,22 @@ $('#basic-company-details-form').validate({
     },
     companyPhoneCountryCode:{
       required: true,
-      "numeric+whitespace": true,
+      "phoneNumberFormat": true,
       minlength: 1,
       maxlength: 8
     },
     companyPhone: {
       required: true,
-      "numeric+whitespace": true,
+      "phoneNumberFormat": true,
       minlength: 5,
       maxlength: 50
     },
     companyPhoneExt: {
       required: false,
-      "numeric+whitespace": true,
+      "phoneNumberFormat": true,
       minlength: 1,
       maxlength: 10
     },
-    /*companyFaxCountryCode: {
-      required: true,
-      "numeric+whitespace": true,
-      minlength: 1,
-      maxlength: 8
-    },
-    companyFax: {
-      required: true,
-      "numeric+whitespace": true,
-      minlength: 5,
-      maxlength: 50
-    },
-    companyFaxExt: {
-      required: false,
-      "numeric+whitespace": true,
-      minlength: 1,
-      maxlength: 10
-    },*/
     companyEmail: {
       required: true,
       email: true,
@@ -1319,37 +1301,37 @@ $('#companyDetailsForm').validate({
     },
     phoneNumberCountryCode:{
       required: true,
-      "numeric+whitespace": true,
+      "phoneNumberFormat": true,
       minlength: 1,
       maxlength: 8
     },
     phoneNumber: {
       required: true,
-      "numeric+whitespace": true,
+      "phoneNumberFormat": true,
       minlength: 5,
       maxlength: 50
     },
     phoneExtension: {
       required: false,
-      "numeric+whitespace": true,
+      "phoneNumberFormat": true,
       minlength: 1,
       maxlength: 10
     },
     faxCountryCode: {
       required: false,
-      "numeric+whitespace": true,
+      "phoneNumberFormat": true,
       minlength: 1,
       maxlength: 8
     },
     faxNumber: {
       required: false,
-      "numeric+whitespace": true,
+      "phoneNumberFormat": true,
       minlength: 5,
       maxlength: 50
     },
     faxExtension: {
       required: false,
-      "numeric+whitespace": true,
+      "phoneNumberFormat": true,
       minlength: 1,
       maxlength: 10
     },
