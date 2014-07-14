@@ -1294,6 +1294,11 @@ $('#supplier-update-form').validate({
 
 */
 
+/*
+
+Company Update Validation
+
+*/
 $('#companyDetailsForm').validate({
   rules: {
     name:{
@@ -1433,4 +1438,104 @@ $('#companyDetailsForm').validate({
     }
   }
 });
+/*
+$('buyerInformationForm').validate({
+  rules: {
+    dbaName: {
+      required: false,
+      "internationalphanumeric+punct+whitespace": true,
+      minlength: 3,
+      maxlength: 50
+    },
+    language: {
+      required: true //(provided)
+    },
+    acceptedCurrency: {
+      required: false
+    },
+    acceptedPaymentTerms: {
+      required: true
+    },
+    acceptedDeliveryTerms: {
+      required: true
+    },
+    typeOfCompany: {
+      required: true //(provided)
+    },
+    contactName: {
+      required:false,
+      "internationalphanumeric+punct+whitespace": true
+    },
+    contactPosition: {
+      required:false,
+      "internationalphanumeric+punct+whitespace": true,
+      maxlength: 50
+    },
+    contactEmail: {
+      required:false,
+      email:true,
+      minlength:4,
+      maxlength: 50
+    },
+    dunsNumber: {
+      required:false,
+      digits: true,
+      minlength: 9,
+      maxlength: 9
+    },
+    locationName: {
+      required: false,
+      "internationalphanumeric+punct+whitespace": true,
+      minlength: 3,
+      maxlength: 50
+    },
+    locationType: {
+      required: false // (provided)
+    },
+    locationCountry: {
+      required: false // (provided)
+    },
+    locationProvince: {
+      required: false // (provided)
+    },
+    locationCity: {
+      required: false,
+      "internationalphanumeric+punct+whitespace": true,
+      minlength: 2,
+      maxlength: 50
+    },
+    portCity: {
+      required: false,
+      "internationalphanumeric+punct+whitespace": true,
+      minlength: 2,
+      maxlength: 50
+    },
+    portCountry: {
+      required: false // (provided)
+    },
+    portProvince: {
+      required: false // (provided)
+    },
+    autocomplete: {
+      actualCategoryOption: true
+    }
+  },
+  messages:{
+    acceptedDeliveryTerms: {
+      required: checkBoxMsg
+    },
+    acceptedCurrency: {
+      required: checkBoxMsg
+    },
+    acceptedPaymentTerms: {
+      required: checkBoxMsg
+    },
+    dunsNumber:{
+      digits: dnsMsg,
+      minlength: dnsMsg,
+      maxlength: dnsMsg
+    }
+  }
+});
+*/
 
