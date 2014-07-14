@@ -859,3 +859,9 @@ line-height: 20px;
 font-size: 12px;
 
 }
+
+/*pricing margin fix/ hackky css bootstrap override*/
+#pricing .col-xs-2, #pricing .col-sm-2, #pricing .col-md-2, #pricing .col-lg-2, #pricing .col-sm-3, #pricing .col-md-3, #pricing .col-lg-3, #pricing .col-sm-4, #pricing .col-md-4, #pricing .col-lg-4, #pricing .col-sm-5, #pricing .col-md-5, #pricing .col-lg-5, #pricing .col-sm-6, #pricing .col-md-6, #pricing .col-lg-6, #pricing .col-xs-7, #pricing .col-sm-7, #pricing .col-md-7, #pricing .col-lg-7, #pricing .col-xs-8, #pricing .col-sm-8, #pricing .col-md-8, #pricing .col-lg-8, #pricing .col-xs-9, #pricing .col-sm-9, #pricing .col-md-9, #pricing .col-lg-9, #pricing .col-xs-10, #pricing .col-sm-10, #pricing .col-md-10, #pricing .col-lg-10, #pricing .col-xs-11, #pricing .col-sm-11, #pricing .col-md-11, #pricing .col-lg-11, #pricing .col-xs-12, #pricing .col-sm-12, #pricing .col-md-12, #pricing .col-lg-12 {
+
+padding-right: 0px;
+}
