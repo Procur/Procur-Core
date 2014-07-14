@@ -1,4 +1,4 @@
-# Procur-Core
+# Procur-Core [ ![Codeship Status for Procur/Procur-Core](https://www.codeship.io/projects/ca4ebbc0-ed93-0131-89c3-324801df83ad/status)](https://www.codeship.io/projects/26702)
 ##Stack
 ```
 |=======|    |=========|
