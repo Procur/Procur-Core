@@ -122,7 +122,7 @@
 
 #dashboard-footer {
   background: #333;
-  margin-top: 50px;
+  margin-top: 70px;
 }
 
 #dashboard-footer .navbar,
@@ -154,10 +154,10 @@
   color: #807e7e;
 }
 
-#dashboard-footer .navbar-right p {
+#dashboard-footer .right-section p {
   margin-left: 8px;
   margin-right: 8px;
-  font-size: 11px;
+  font-size: 12px;
 }
 
 #dashboard-footer .socialBar {
@@ -167,6 +167,7 @@
 #dashboard-footer .socialBar p {
   margin-left: 8px;
   margin-right: 8px;
+  display: inline;
 }
 
 #dashboard-footer .socialBar p a {
@@ -177,36 +178,24 @@
   color: white;
 }
 
+#dashboard-footer .left-section {
+  float: left;
+}
+
+#dashboard-footer .right-section {
+  float: right;
+}
+
 @media (max-width: 991px) {
 
   #dashboard-footer nav {
     padding-left: 25px;
   }
 
-  #dashboard-footer .navbar-left {
-    float: none;
-    width: 100%;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 0px;
-    margin: 0px;
-  }
+}
 
-  #dashboard-footer .navbar-right {
-    float: none;
-    width: 100%;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 0px;
-    margin: 0px;
+@media (max-width: 991px) { 
+  #dashboard-footer {
+    margin-top: 140px;
   }
-
-  #dashboard-footer .navbar-left p.navbar-text {
-    margin: 15px 15px 5px;
-  }
-
-  #dashboard-footer .navbar-right p.navbar-text {
-    margin: 5px 15px 15px;
-  }
-
 }
