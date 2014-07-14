@@ -1,7 +1,10 @@
 #pricing #heroArea {
   width: 100%;
-  background: #e3e3e3;
-  height: 250px;
+  background: url('../../images/pricingBG.jpg');
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: 0% 30%;
+  height: 300px;
   margin-bottom: 30px;
 }
 
