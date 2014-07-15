@@ -248,7 +248,7 @@ module.exports = {
                   PasswordReset.update(reset, { consumed: true }, function(err, reset){
                     if(err){ return res.redirect('/dashboard'); }
                     if(reset){
-                      req.flash('message', 'Password changed. Please log in.');
+                      //No flash here. Reset success page already tells them it was a success.
                       res.redirect('/resetsuccess');
                     }
                     else{
@@ -333,8 +333,7 @@ module.exports = {
         User.findOne({ email: verification.email }, function(err, user){
           if(err) { return res.redirect('/dashboard'); }
           User.update(user, { emailVerified: true }, function(err, toUpdate){
-            if(err) { return res.redirect('/dashboard'); }
-            req.flash('error', 'Your email address has been verified. You can now log in.');
+            if(err) { return res.redirect('/dashboard');}
             return res.redirect('/dashboard');
           });
         });
