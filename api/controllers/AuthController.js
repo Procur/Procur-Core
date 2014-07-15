@@ -101,7 +101,7 @@ module.exports = {
         }); //END OF USER.CREATE
       }
       else {
-        req.flash('error', "There is already an account associated with "+ b.email +". Would you like to login?");
+        req.flash('error', "There is already an account associated with "+ b.email +". Would you like to sign in?");
         res.redirect('back');
         //res.redirect('/login'); //<-- toggle this for proof that the flash just doesn't show up on '/' & '/signup'
       }
