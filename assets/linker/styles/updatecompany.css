@@ -82,6 +82,17 @@
   color: #5cc56c;
 }
 
+#companyUpdate .styledSelect > input {
+  margin: 0;
+  padding: 0;
+  height: 26px;
+
+  font-family: 'Roboto', sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  padding-left: 5px;
+}
+
 #buyerInformation .dba {
   margin: 20px 0px 0px 0px;
 }
