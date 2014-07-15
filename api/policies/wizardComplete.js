@@ -107,26 +107,7 @@ module.exports = function (req, res, next) {
                 }
               }
             )
-            //company is buyer OR supplier but not both
-            /*if (company.buyer == true) {
-              Buyer.findOne({ company: company.id }, function(err, buyer){
-                if(buyer === undefined) { return res.redirect('/welcome/buyer'); }
-                if(err){res.redirect('/welcome/buyer');}
-                else {return next();}
-              });
-            }
-            else if (company.supplier == true) {
-              Supplier.findOne({ company: company.id }, function(err, supplier){
-                if(supplier === undefined) { return res.redirect('/welcome/supplier'); }
-                if(err){res.redirect('/welcome/supplier');}
-                else {return next();}
-              });
-            }
-            else if ((company.supplier == undefined) && (company.buyer == undefined)) {
-              res.redirect('/welcome/moreinfo');
-            }
-            else {res.redirect('/dashboard');} */
-          } /* ends else statemnt */
+          }
         }
         else {res.redirect('/welcome');}
       }
