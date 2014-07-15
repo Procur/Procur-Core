@@ -149,6 +149,13 @@
   padding-right: 0px;
 }
 
+
+@media (max-width: 767px) {
+#marketing-header .navbar-collapse {
+  padding-right: 25px;
+}
+}
+
 /* MARKETING HEADER LINE */
 
 #marketing-header.line .container {
