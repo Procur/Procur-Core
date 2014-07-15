@@ -416,7 +416,6 @@ module.exports = {
     Company.findOne({ handle: b.handle }, function(err, company){
       if(err) { return res.redirect('/dashboard'); }
       if(company) {
-        req.flash('message', 'Handle is unavailable'); //HANDLE UNAVAILABLE FLASH FOR BOTH CONDITIONS
         User.findOne({ id: req.session.passport.user }, function(err, user){
           if(err) { return res.redirect('/dashboard'); }
           Company.findOne({ user: user.id }, function(err, company){
@@ -437,7 +436,6 @@ module.exports = {
             if(err) { return res.redirect('/dashboard'); }
             Company.update(company, { handle: b.handle.toLowerCase() }, function(err, company){
               if(err) { return res.redirect('/dashboard'); }
-              req.flash('message', 'Handle updated.');
               res.redirect('/dashboard');
             });
           });
