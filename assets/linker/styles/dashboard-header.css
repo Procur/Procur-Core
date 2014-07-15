@@ -176,10 +176,34 @@ p.userCompanyName {
     padding-left: 25px;
   }
 
-}
-
-@media (max-width: 991px) { 
   #dashboard-footer {
     margin-top: 140px;
   }
+
+}
+
+@media (max-width: 784px) {
+
+  .navbar-fixed-bottom {
+    position: relative;
+  }
+
+  #dashboard-footer {
+    margin-top: 60px;
+  }
+
+  #dashboard-footer nav {
+    padding-right: 25px;
+  }
+
+  .left-section {
+    width: 100%;
+    text-align: center;
+  }
+
+  .right-section {
+    width: 100%;
+    text-align: center;
+  }
+
 }
