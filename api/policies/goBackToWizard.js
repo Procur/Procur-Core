@@ -41,22 +41,26 @@ module.exports = function (req, res, next) {
             }
           },
           function (err, data) {
-            if (err) { res.redirect('/welcome/selectdefault'); }
+            if (err) { res.redirect('/dashboard'); }
             if (company.buyer == true && company.supplier == true ){
               if (data.buyer && data.supplier) {
                 //if default has not been selected yet go to that screen
                 if(!company.primaryMode) { res.redirect('/welcome/selectdefault'); }
                 else if(!company.handle){ res.redirect('/company/handle'); }
                 else { res.redirect('/dashboard');  }
-              }
-              if (!data.buyer){
+              }//once create buyer/supplier completes it should redirect to dashboard from the action
+              if (!data.buyer) {
                 if(req.route.path == '/welcome/buyer') { return next(); }
               }
-              if (!data.supplier){
+              if (!data.supplier) {
                 if(req.route.path == '/welcome/supplier') { return next(); }
               }
             }
             if (data.buyer && data.supplier) {
+              // this should never evaluate to true but incase it does
+              if ((company.supplier == false) || (company.buyer == false)){
+                res.redirect('/welcome/both');
+              }
               //if default has not been selected yet go to that screen
               if(!company.primaryMode) {
                 res.redirect('/welcome/selectdefault'); }
@@ -65,12 +69,10 @@ module.exports = function (req, res, next) {
             else if ((data.buyer) && (data.supplier === undefined)) {
               // if buyer data and only buyer was selected, then the wizard is complete so redirect to dashboard
               if(company.buyer == true && company.supplier == false){ res.redirect('/dashboard'); }
-             // if both was select but only buyer has data, redirect to supplier wizard
             }
             else if ((data.buyer === undefined) && (data.supplier)) {
               // if supplier data and only supplier was selected, then the wizard is complete so redirect to dashboard
               if(company.buyer == false && company.supplier == true){ res.redirect('/dashboard'); }
-             // if both was select but only supplier has data, redirect to buyer wizard
             }
             else { return next() }
           }
