@@ -153,7 +153,7 @@
   background-position: center bottom;
   margin: 0px;
   padding: 0px;
-  
+
 }
 
 #features .heroOverLay {
@@ -260,6 +260,14 @@ transition: all 200ms ease-in-out;
     width: 100%;
     position: relative;
 
+}
+
+#features #heroArea .pill:hover {
+  background: rgba(0,0,0,0.8);
+}
+
+#features #heroContainer a:hover {
+  text-decoration: none;
 }
 
 #features #heroArea a {
