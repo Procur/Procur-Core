@@ -194,6 +194,7 @@ module.exports = {
             addressLine1: b.companyAddress1,
             addressLine2: b.companyAddress2,
             country: b.companyCountry,
+            city: b.companyCity,
             province: b.companyProvince,
             postalCode: b.companyPostalCode,
             isHq: true,
@@ -222,6 +223,7 @@ module.exports = {
               company: company.id,
               addressLine1: b.hqAddress1,
               addressLine2: b.hqAddress2,
+              city: b.hqCity,
               country: b.hqCountry,
               province: b.hqProvince,
               postalCode: b.hqPostalCode,
@@ -414,7 +416,6 @@ module.exports = {
     Company.findOne({ handle: b.handle }, function(err, company){
       if(err) { return res.redirect('/dashboard'); }
       if(company) {
-        req.flash('message', 'Handle is unavailable'); //HANDLE UNAVAILABLE FLASH FOR BOTH CONDITIONS
         User.findOne({ id: req.session.passport.user }, function(err, user){
           if(err) { return res.redirect('/dashboard'); }
           Company.findOne({ user: user.id }, function(err, company){
@@ -435,7 +436,6 @@ module.exports = {
             if(err) { return res.redirect('/dashboard'); }
             Company.update(company, { handle: b.handle.toLowerCase() }, function(err, company){
               if(err) { return res.redirect('/dashboard'); }
-              req.flash('message', 'Handle updated.');
               res.redirect('/dashboard');
             });
           });

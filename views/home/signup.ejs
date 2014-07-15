@@ -1,10 +1,9 @@
-<% if (req.session.flash) { %>
-  <div style="text-align: center;" id="incorrect-login-error"><%= req.flash('error') %></div>
-<% } %>
-
 <%- partial('../partials/mktheaderline') %>
 
 <div class="container" id="signUp">
+  <% if (req.session.flash) { %>
+  <div style="text-align: center;" id="email-taken-error"><%= req.flash('error') %></div>
+<% } %>
   <div class="row">
     <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 col-sm-12 col-sm-offset-0">
       <div class="row">

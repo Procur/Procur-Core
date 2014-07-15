@@ -4,7 +4,7 @@
       <img src="<%= buyer.logoUrl %>">
     <% } else { %>
       <!-- ADD PLACEHOLDER IMAGE HERE -->
-      <img src="/images/profile-logo.png">
+      <img src="/images/profile-logo.png" id="default-logo">
     <% } %>
     <div class="company-header">
       <h2>
@@ -17,22 +17,28 @@
     <% if (locations["showHq"] === false) { %>
       <div class="company-info-box company-business-address">
         <h3><i class="fa fa-fw fa-map-marker"></i><span class="info-title">Official Business Address</span></h3>
-        <p><%= locations["company-isHq"].addressLine1 %></p>
-        <p><%= locations["company-isHq"].addressLine2 %></p>
-        <p><%= locations["company-isHq"].country %></p>
+        <% if(locations["company-isHq"].addressLine1 !== undefined){ %><p><%= locations["company-isHq"].addressLine1 %></p><% } %>
+        <% if(locations["company-isHq"].addressLine2 !== undefined){ %><p><%= locations["company-isHq"].addressLine2 %></p><% } %>
+        <% if(locations["company-isHq"].city !== undefined){ %><p><%= locations["company-isHq"].city %></p><% } %>
+        <% if(locations["company-isHq"].province !== undefined){ %><p><%= locations["company-isHq"].province %></p><% } %>
+        <% if(locations["company-isHq"].country !== undefined){ %><p><%= locations["company-isHq"].country %><% } %>
       </div>
     <% } else { %>
       <div class="company-info-box company-business-address">
         <h3><i class="fa fa-fw fa-map-marker"></i><span class="info-title">Official Business Address</span></h3>
-        <p><%= locations["company-notHq"][0].addressLine1 %></p>
-        <p><%= locations["company-notHq"][0].addressLine2 %></p>
-        <p><%= locations["company-notHq"][0].country %></p>
+        <% if(locations["company-notHq"].addressLine1 !== undefined){ %><p><%= locations["company-notHq"][0].addressLine1 %></p><% } %>
+        <% if(locations["company-notHq"].addressLine2 !== undefined){ %><p><%= locations["company-notHq"][0].addressLine2 %></p><% } %>
+        <% if(locations["company-notHq"].city !== undefined){ %><p><%= locations["company-notHq"].city %></p><% } %>
+        <% if(locations["company-notHq"].province !== undefined){ %><p><%= locations["company-notHq"].province %></p><% } %>
+        <% if(locations["company-notHq"].country !== undefined){ %><p><%= locations["company-notHq"][0].country %></p><% } %>
       </div>
       <div class="company-info-box">
         <h3><i class="fa fa-fw fa-globe"></i><span class="info-title">Headquarters</span></h3>
-        <p><%= locations["company-isHq"].addressLine1 %></p>
-        <p><%= locations["company-isHq"].addressLine2 %></p>
-        <p><%= locations["company-isHq"].country %></p>
+        <% if(locations["company-isHq"].addressLine1 !== undefined){ %><p><%= locations["company-isHq"].addressLine1 %></p><% } %>
+        <% if(locations["company-isHq"].addressLine2 !== undefined){ %><p><%= locations["company-isHq"].addressLine2 %></p><% } %>
+        <% if(locations["company-isHq"].city !== undefined){ %><p><%= locations["company-isHq"].city %></p><% } %>
+        <% if(locations["company-isHq"].province !== undefined){ %><p><%= locations["company-isHq"].province %></p><% } %>
+        <% if(locations["company-isHq"].country !== undefined){ %><p><%= locations["company-isHq"].country %></p><% } %>
       </div>
     <% } %>
 

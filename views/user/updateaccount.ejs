@@ -4,7 +4,7 @@
         $("#tabs").tabs().addClass("ui-tabs-vertical ui-helper-clearfix");
     });
 </script>
-<div class="container" id="companyUpdate"><!-- TODO: change id name, but right now it's pulling from styling by having this id, so only change intelligently. -->
+<div class="container" id="userUpdate"><!-- TODO: change id name, but right now it's pulling from styling by having this id, so only change intelligently. -->
   <script>
         $(document).ready(function() {
             $("#tabs").tabs().addClass("ui-tabs-vertical ui-helper-clearfix");
@@ -27,6 +27,9 @@
     </style>
   <% if (req.session.flash) { %>
     <div id="success-message"><%= req.flash('message') %></div>
+  <% } %>
+  <% if (req.session.flash) { %>
+    <div id="existing-email-error"><%= req.flash('error') %></div>
   <% } %>
   <div class="col-sm-12 col-sm-offset-0 col-md-12 col-md-offset-0 col-lg-10 col-lg-offset-1">
   <div class="row ui-tabs ui-widget ui-widget-content ui-corner-all ui-tabs-vertical ui-helper-clearfix" id="tabs">
@@ -61,9 +64,9 @@
             <div class="formWrapper">
               <div class="row">
                 <div class="col-sm-6">
-                  <h5>Contact Name</h5>
-                  <div><input type="text" name="firstName" value=<%= user.firstName %>></div>
-                  <div><input type="text" name="lastName" value=<%= user.lastName %>></div><br/>
+                  <h5>Contact Name*</h5>
+                  <div><input type="text" name="firstName" value=<%= user.firstName %> placeholder="First"></div>
+                  <div><input type="text" name="lastName" value=<%= user.lastName %> placeholder="Last"></div> <br/>
 
                   <h5>Update Email Address</h5>
                   <div><input type="text" name="email" id="updateEmail" placeholder="Enter New Address"></div>
@@ -79,9 +82,6 @@
                   <div><input type="file" name="image" accept="image/*"/></div>
                 </div>
               </div>
-              <% if (req.session.flash) { %>
-                <div id="existing-email-error"><%= req.flash('error') %></div>
-              <% } %>
             </div>
           <div class="row"><button class="continueButton" type="submit">Save&nbsp;&nbsp; <i class="fa fa-check"></i></button></div>
         </form>

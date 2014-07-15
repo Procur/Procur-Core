@@ -16,3 +16,63 @@
   line-height: 1.8em;
   width: 100%;
 }
+
+#login #incorrect-login-error {
+  color: #FF5A5A;
+  text-align: center;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 12px;
+  text-transform: uppercase;
+  line-height: 1.8em;
+  width: 100%;
+}
+
+#signUp #email-taken-error {
+  color: #FF5A5A;
+  text-align: center;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 12px;
+  text-transform: uppercase;
+  line-height: 1.8em;
+  width: 100%;
+}
+
+#userUpdate #existing-email-error {
+  color: #FF5A5A;
+  text-align: center;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 12px;
+  text-transform: uppercase;
+  line-height: 1.8em;
+  width: 100%;
+}
+
+#userUpdate #success-message {
+  color: #5cc56c;
+  text-align: center;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 12px;
+  text-transform: uppercase;
+  line-height: 3em;
+  width: 100%;
+}
+
+#emailVerify #not-verified-error {
+  color: #FF5A5A;
+  text-align: center;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 12px;
+  text-transform: uppercase;
+  line-height: 1.8em;
+  width: 100%;
+}
+
+#contactPage #confirmation{
+  color: #5cc56c;
+  text-align: center;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 12px;
+  text-transform: uppercase;
+  line-height: 3em;
+  width: 100%;
+}

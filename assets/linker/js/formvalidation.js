@@ -809,6 +809,11 @@ $('#subscriberForm').validate({
       minlength:4,
       maxlength: 50
     }
+  },
+  messages:{
+    subscriberEmail: {
+      required: "Enter your email to join our mailing list."
+    }
   }
 });
 
