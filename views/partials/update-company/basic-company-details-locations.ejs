@@ -8,13 +8,15 @@
     </select>
   </div>
 
+  <div class="styledSelect inputColumnL">
+    <select class="companyProvince" name="companyProvince" id="companyProvince">
+      <option value="<%= companyLocations["company-isHq"].province %>" selected="selected"><%= companyLocations["company-isHq"].province %></option>
+    </select><script language="javascript">edit_country("<%= companyLocations["company-isHq"].country %>", "companyCountry");</script>
+  </div>
+
   <div class="row insideForm">
     <div class="col-sm-7">
-      <div class="styledSelect inputColumnL">
-        <select class="companyProvince" name="companyProvince" id="companyProvince">
-          <option value="<%= companyLocations["company-isHq"].province %>" selected="selected"><%= companyLocations["company-isHq"].province %></option>
-        </select><script language="javascript">edit_country("<%= companyLocations["company-isHq"].country %>", "companyCountry");</script>
-      </div>
+      <div><input class="city" type="text" name="companyCity" value="<%= companyLocations["company-isHq"].city %>" placeholder="City"></div>
     </div>
 
     <div class="col-sm-5 inputColumnR">
@@ -31,14 +33,16 @@
       <!-- edit_country() will populate this dropdown -->
     </select>
   </div>
+  
+  <div class="styledSelect inputColumnL">
+    <select class="companyProvince" name="companyProvince" id="companyProvince">
+      <option value="<%= companyLocations["company-notHq"][0].province %>" selected="selected"><%= companyLocations["company-notHq"][0].province %></option>
+    </select><script language="javascript">edit_country("<%= companyLocations["company-notHq"][0].country %>", "companyCountry");</script>
+  </div>
 
   <div class="row insideForm">
     <div class="col-sm-7">
-      <div class="styledSelect inputColumnL">
-        <select class="companyProvince" name="companyProvince" id="companyProvince">
-          <option value="<%= companyLocations["company-notHq"][0].province %>" selected="selected"><%= companyLocations["company-notHq"][0].province %></option>
-        </select><script language="javascript">edit_country("<%= companyLocations["company-notHq"][0].country %>", "companyCountry");</script>
-      </div>
+      <div><input class="city" type="text" name="companyCity" value="<%= companyLocations["company-notHq"][0].city %>" placeholder="City"></div>
     </div>
 
     <div class="col-sm-5 inputColumnR">
@@ -71,7 +75,7 @@
   <input class="hqfield hqaddress1" type="text" name="hqAddress1" value="<%= companyLocations["company-isHq"].addressLine1 %>" placeholder="Address Line #1*">
 </div>
 <div>
-  <input  class="hqfield hqaddress2" type="text" name="hqAddress2" value="<%= companyLocations["company-isHq"].addressLine2 %>" placeholder="Address Line #2">
+  <input class="hqfield hqaddress2" type="text" name="hqAddress2" value="<%= companyLocations["company-isHq"].addressLine2 %>" placeholder="Address Line #2">
 </div>
 
 <div class="styledSelect">
@@ -80,17 +84,18 @@
   </select>
 </div>
 
+<div class="styledSelect inputColumnL">
+  <select class="hqfield hqcompanyProvince" name="hqProvince" id="hqcompanyProvince">
+    <option value="<%= companyLocations["company-isHq"].province %>" selected="selected"><%= companyLocations["company-isHq"].province %></option>
+  </select>
+</div><script language="javascript">edit_country("<%= companyLocations["company-isHq"].country %>", "hqcompanyCountry");</script>
+
 <div class="row insideForm">
   <div class="col-sm-7">
-    <div class="styledSelect inputColumnL">
-      <select class="hqfield hqcompanyProvince" name="hqProvince" id="hqcompanyProvince">
-        <option value="<%= companyLocations["company-isHq"].province %>" selected="selected"><%= companyLocations["company-isHq"].province %></option>
-      </select>
-    </div><script language="javascript">edit_country("<%= companyLocations["company-isHq"].country %>", "hqcompanyCountry");</script>
+    <div><input class="hqfield city" type="text" name="companyCity" value="<%= companyLocations["company-isHq"].city %>" placeholder="City"></div>
   </div>
 
-  <div class="col-sm-5 inputColumnR">
-    <div class="breakForm">
+  <div class="col-sm-5 inputColumnR"> <div class="breakForm">
       <input class="hqfield hqPostalCode" type="text" name="hqPostalCode" value="<%= companyLocations["company-isHq"].postalCode %>" placeholder="Postal Code*">
     </div>
   </div>
