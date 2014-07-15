@@ -1,9 +1,9 @@
-<% if (req.session.flash) { %>
-  <div style="text-align: center;" id="incorrect-login-error"><%= req.flash('error') %></div>
-<% } %>
-
 <%- partial('../partials/mktheader') %>
 
+<div class="container" id="index">
+<% if (req.session.flash) { %>
+  <div style="text-align: center;" id="email-taken-error"><%= req.flash('error') %></div>
+<% } %>
 <!--Start Header Pic -->
 <div class="row heroImage" id="homePage">
   <div class="container">
@@ -102,6 +102,7 @@
     <!--END Right Column-->
   </div>
   <!--END Mid Section-->
+</div>
 </div>
 </div>
 
