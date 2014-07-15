@@ -62,15 +62,62 @@ module.exports = function (req, res, next) {
             }
           }
           else {
+            async.parallel(
+              {
+                buyer: function(callback) {
+                  Buyer
+                    .findOne({ company: company.id })
+                    .exec(function(err, buyer) {
+                      if (err) { callback(err, null); }
+                      else if (!buyer) { callback(null, undefined); }
+                      else { callback(null, buyer); }
+                  });
+                },
+                supplier: function(callback) {
+                  Supplier
+                    .findOne({ company: company.id })
+                    .exec(function(err, supplier) {
+                      if (err) { callback(err, null); }
+                      else if (!supplier) { callback(null, undefined); }
+                      else { callback(null, supplier); }
+                  });
+                }
+              },
+              function(err, data) {
+                if (company.buyer === true && company.supplier === true) {
+                  if (data.buyer === undefined && company.activeMode === "buyer") {
+                    return res.redirect('/welcome/buyer');
+                  }
+                  if (data.supplier === undefined && company.activeMode === "supplier") {
+                    return res.redirect('/welcome/supplier');
+                  }
+                }
+                else if (company.buyer === true && company.supplier === false) {
+                  if (data.buyer === undefined) { return res.redirect('/welcome/buyer'); }
+                  if (err) { /* do something here */ }
+                  else { return next(); }
+                }
+                else if (company.buyer === false && company.supplier === true) {
+                  if (data.supplier === undefined) { return res.redirect('/welcome/supplier'); }
+                  if (err) { /* do something here */ }
+                  else { return next(); }
+                }
+                else { 
+                  res.redirect('/welcome/moreinfo');
+                }
+              }
+            )
             //company is buyer OR supplier but not both
-            if (company.buyer == true) {
+            /*if (company.buyer == true) {
               Buyer.findOne({ company: company.id }, function(err, buyer){
+                if(buyer === undefined) { return res.redirect('/welcome/buyer'); }
                 if(err){res.redirect('/welcome/buyer');}
                 else {return next();}
               });
             }
             else if (company.supplier == true) {
               Supplier.findOne({ company: company.id }, function(err, supplier){
+                if(supplier === undefined) { return res.redirect('/welcome/supplier'); }
                 if(err){res.redirect('/welcome/supplier');}
                 else {return next();}
               });
@@ -78,8 +125,8 @@ module.exports = function (req, res, next) {
             else if ((company.supplier == undefined) && (company.buyer == undefined)) {
               res.redirect('/welcome/moreinfo');
             }
-            else {res.redirect('/dashboard');}
-          }
+            else {res.redirect('/dashboard');} */
+          } /* ends else statemnt */
         }
         else {res.redirect('/welcome');}
       }
