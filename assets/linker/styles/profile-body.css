@@ -12,6 +12,10 @@
   }
 
 /* LEFT COLUMN */
+.profile-container img#default-logo {
+  width: 350px;
+}
+
 .company-header {
   height: 60px;
   border-bottom: 3px solid #E6E7E8;
