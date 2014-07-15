@@ -194,6 +194,7 @@ module.exports = {
             addressLine1: b.companyAddress1,
             addressLine2: b.companyAddress2,
             country: b.companyCountry,
+            city: b.companyCity
             province: b.companyProvince,
             postalCode: b.companyPostalCode,
             isHq: true,
