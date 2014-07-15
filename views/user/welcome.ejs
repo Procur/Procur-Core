@@ -56,15 +56,15 @@
                 </select>
               </div>
 
+              <div class="styledSelect inputColumnL">
+                <select class="companyProvince" name="companyProvince" id="companyProvince">
+                  <option value="">Select Province/State</option>
+                </select><script language="javascript">print_country("companyCountry");</script>
+              </div><span id="noCountryWarning"></span>
+
               <div class="row insideForm">
                 <div class="col-sm-7">
-                  <div class="styledSelect inputColumnL">
-                    <select class="companyProvince" name="companyProvince" id="companyProvince">
-                      <option value="">Select Province/State</option>
-
-                    </select><script language="javascript">print_country("companyCountry");</script>
-
-                  </div><span id="noCountryWarning"></span>
+                  <div><input class="companyCity" type="text"name="companyCity" placeholder="City"></div>
                 </div>
 
                 <div class="col-sm-5 inputColumnR">
@@ -82,20 +82,21 @@
               <h4>Company Headquarters Address*</h4>
               <div><input class="hqfield hqaddress1" type="text" name="hqAddress1" placeholder="Address Line #1"></div>
               <div><input  class="hqfield hqaddress2" type="text" name="hqAddress2" placeholder="Address Line #2"></div>
-
               <div class="styledSelect">
                 <select class="hqfield hqcompanyCountry" name="hqCountry" id="hqcompanyCountry" onchange="print_state('hqcompanyProvince',this.selectedIndex);">
                   <option value="">Select Country</option>
                 </select>
               </div>
 
+              <div class="styledSelect inputColumnL">
+                <select class="hqfield hqcompanyProvince" name="hqProvince" id="hqcompanyProvince">
+                  <option value="">Select Province/State</option>
+                </select>
+              </div><span id="noHQCountryWarning"></span><script language="javascript">print_country("hqcompanyCountry");</script>
+
               <div class="row insideForm">
                 <div class="col-sm-7">
-                  <div class="styledSelect inputColumnL">
-                    <select class="hqfield hqcompanyProvince" name="hqProvince" id="hqcompanyProvince">
-                      <option value="">Select Province/State</option>
-                    </select>
-                  </div><span id="noHQCountryWarning"></span><script language="javascript">print_country("hqcompanyCountry");</script>
+                  <div><input class="hqfield hqCity" type="text"name="hqCity" placeholder="City"></div>
                 </div>
 
                 <div class="col-sm-5 inputColumnR">

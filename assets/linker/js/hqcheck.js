@@ -10,12 +10,14 @@ $( ".hqbox" ).click(function() {
     // And copy over the values from the company fields
     $(".hqaddress1").val($(".address1").val());
     $(".hqaddress2").val($(".address2").val());
+    $(".hqCity").val($(".companyCity").val());
     $(".hqcompanyCountry").val($(".companyCountry").val());
     $(".hqcompanyProvince").val($(".companyProvince").val());
     $(".hqPostalCode").val($(".companyPostalCode").val());
 
     $(".hqaddress1").css({ background: "#FFF" });
     $(".hqaddress2").css({ background: "#FFF" });
+    $(".hqcompanyCity").css({ background: "#FFF" });
     $(".hqcompanyCountry").css({ background: "#FFF" });
     $(".hqcompanyProvince").css({ background: "#FFF" });
     $(".hqPostalCode").css({ background: "#FFF" });
