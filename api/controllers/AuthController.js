@@ -141,7 +141,7 @@ module.exports = {
       });
     }
     else {
-      req.flash('message', 'You must enter a new password to change your current one');
+      //req.flash('message', 'You must enter a new password to change your current one');
       res.redirect('/user/update')
     }
   },
@@ -177,7 +177,7 @@ module.exports = {
                   };
                   smtpTransport.sendMail(mailOptions, function(err, response){
                     if(err){res.serverError();}
-                    req.flash('error', 'Password reset request sent.');
+                    req.flash('message', 'Password reset request sent.');
                     res.redirect('/forgotpassword');
                   });
                 });
@@ -196,7 +196,7 @@ module.exports = {
                 };
                 smtpTransport.sendMail(mailOptions, function(err, response){
                   if(err){res.serverError();}
-                  req.flash('error', 'Password reset request sent.');
+                  req.flash('message', 'Password reset request sent.');
                   res.redirect('/forgotpassword');
                 });
               });
@@ -205,7 +205,7 @@ module.exports = {
         });
       }
       else {
-        req.flash('message', 'User not found.');
+        //req.flash('message', 'User not found.');
         return res.redirect('/forgotpassword');
       }
     });
