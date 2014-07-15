@@ -726,6 +726,8 @@ hr.darkseparator {
 }
 
 #regWizard #selectHandleForm label.error {
+  display: block;
+  margin-left: -10px;
   color: #FF5A5A;
   font-family: 'Montserrat', sans-serif;
   font-size: 10px;
@@ -733,7 +735,6 @@ hr.darkseparator {
   line-height: 1.8em;
   width: 100%;
   font-weight: 500;
-  padding-bottom: 10px;
 }
 
 #regWizard .styledSelect label.error {
