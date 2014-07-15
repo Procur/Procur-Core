@@ -141,7 +141,6 @@ module.exports = {
       });
     }
     else {
-      //req.flash('message', 'You must enter a new password to change your current one');
       res.redirect('/user/update')
     }
   },
@@ -153,10 +152,6 @@ module.exports = {
   processForgotPassword: function(req, res){
     var b = req.body;
     User.findOne({ email: b.email }, function(err, user){
-      if(user === undefined) {
-        req.flash("error", "The email address you entered cannot be found.");
-        return res.redirect('/forgotpassword');
-      }
       if(user){
         crypto.randomBytes(256, function(err, hash) {
           token = hash.toString('base64').replace(/\//g,'_').replace(/\+/g,'-');
@@ -205,7 +200,7 @@ module.exports = {
         });
       }
       else {
-        //req.flash('message', 'User not found.');
+        req.flash("error", "\"" + b.email + "\" cannot be found.");
         return res.redirect('/forgotpassword');
       }
     });
