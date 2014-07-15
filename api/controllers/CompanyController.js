@@ -223,6 +223,7 @@ module.exports = {
               company: company.id,
               addressLine1: b.hqAddress1,
               addressLine2: b.hqAddress2,
+              city: b.hqCity,
               country: b.hqCountry,
               province: b.hqProvince,
               postalCode: b.hqPostalCode,
