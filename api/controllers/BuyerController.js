@@ -81,7 +81,7 @@ module.exports = {
                 });
               }
               else {
-                res.redirect('/dashboard');
+                return res.redirect('/dashboard');
               }
             });
           }
