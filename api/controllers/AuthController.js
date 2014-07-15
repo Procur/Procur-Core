@@ -132,7 +132,7 @@ module.exports = {
               };
               smtpTransport.sendMail(mailOptions, function(err, response){
                 if(err){}
-                req.flash('message', 'Password changed.');
+                req.flash('message', 'Password updated.');
                 res.redirect('back');
               });
             });
