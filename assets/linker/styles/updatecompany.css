@@ -181,6 +181,10 @@
   color: white;
 }
 
+#socialOutletsSupplier .col-sm-6 h5 {
+  margin-bottom: 10px;
+}
+
 #socialOutletsSupplier .col-sm-6 h5:nth-of-type(n+2) {
   margin-top: 10px;
 }
@@ -204,6 +208,12 @@
   font-family: 'Open Sans', sans-serif;
   font-size: 12px;
 }
+#socialOutletsSupplier input::-webkit-input-placeholder {
+  padding-top: 3px;
+}
+  #socialOutletsBuyer .col-sm-6 h5 {
+    margin-bottom: 10px;
+  }
   #socialOutletsBuyer .col-sm-6 h5:nth-of-type(n+2) {
     margin-top: 10px;
   }
@@ -226,6 +236,10 @@
     width: 150px;
     font-family: 'Open Sans', sans-serif;
     font-size: 12px;
+  }
+
+  #socialOutletsBuyer input::-webkit-input-placeholder {
+    padding-top: 3px;
   }
 
 /* ERROR MESSAGES */
