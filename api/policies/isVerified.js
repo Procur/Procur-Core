@@ -11,7 +11,7 @@ module.exports = function (req, res, next) {
       res.redirect('/dashboard');
     }
     else if(user.emailVerified == false) {
-      req.flash('error', 'Please verify your account before continuing to your dashboard.');
+      req.flash('error', 'Please verify your account.');
       res.redirect('/pleaseverify');
     }
     else {
