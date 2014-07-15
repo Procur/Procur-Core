@@ -139,8 +139,9 @@
   text-align: center;
   color: white;
   margin-top: 20px;
-  margin-bottom: 30px;
+  margin-bottom: 0px;
   cursor: pointer;
+  padding-bottom: 0px;
 }
 
 #features .heroImage {
@@ -283,4 +284,37 @@ transition: all 200ms ease-in-out;
   margin-right: 0;
   width: 100%;
   padding-right: 30px;
+}
+
+#features #tech i {
+  color: #1d76b7;
+}
+
+#features #tech h3 {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300;
+}
+
+#features #tech h4 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 200;
+  text-transform: uppercase;
+}
+
+#features #tech hr {
+  border-top: 1px dotted #eee;
+}
+
+#features #expanderButton i {
+  color:#eee;
+  width: 100%;
+  text-align: center;
+}
+
+#features #chevronContainerUp {
+  display: none;
+}
+
+#features #chevronContainerDown {
+  padding-bottom: 15px;
 }
