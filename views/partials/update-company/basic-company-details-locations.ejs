@@ -121,11 +121,10 @@
 
 <div class="styledSelect">
   <select class="hqfield hqcompanyCountry" name="hqCountry" id="hqcompanyCountry" onchange="print_state('hqcompanyProvince',this.selectedIndex);">
-    <!-- edit_country() will populate this dropdown -->
   <script language="javascript">print_country("hqcompanyCountry");</script>
   <% if (companyLocations["company-isHq"].country) { %>
     <script language="javascript">
-      $("#hqcompanyCountry").val("<%=companyLocations["company-isHq"].country%>");
+      $("#hqcompanyCountry").val("<%=companyLocations['company-isHq'].country%>");
     </script>
   <% } else { %>
     <script language="javascript">$("#hqcompanyCountry").val("");</script>

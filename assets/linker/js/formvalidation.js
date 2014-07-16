@@ -976,7 +976,7 @@ $('#companyDetailsForm').validate({
     }
   },
   messages:{
-    companyWebsite: {
+    website: {
       url: urlHintMsg
     }
   }
