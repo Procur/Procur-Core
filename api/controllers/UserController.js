@@ -95,7 +95,7 @@ module.exports = {
               }
               else {
                 req.flash('error', 'There was a problem.');
-                res.redirect('/');
+                res.redirect('back');
               }
             });
           },
@@ -120,7 +120,7 @@ module.exports = {
             }
             else {
               req.flash('error', 'There was a problem');
-              res.redirect('/');
+              res.redirect('back');
             }
           });
         }

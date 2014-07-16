@@ -101,7 +101,7 @@ module.exports = {
         }); //END OF USER.CREATE
       }
       else {
-        req.flash('error', "There is already an account associated with "+ b.email +". Would you like to login?");
+        req.flash('error', "There is already an account associated with "+ b.email +". Would you like to sign in?");
         res.redirect('back');
         //res.redirect('/login'); //<-- toggle this for proof that the flash just doesn't show up on '/' & '/signup'
       }
@@ -132,7 +132,7 @@ module.exports = {
               };
               smtpTransport.sendMail(mailOptions, function(err, response){
                 if(err){}
-                req.flash('message', 'Password changed.');
+                req.flash('message', 'Password updated.');
                 res.redirect('back');
               });
             });
@@ -141,7 +141,6 @@ module.exports = {
       });
     }
     else {
-      req.flash('message', 'You must enter a new password to change your current one');
       res.redirect('/user/update')
     }
   },
@@ -153,10 +152,6 @@ module.exports = {
   processForgotPassword: function(req, res){
     var b = req.body;
     User.findOne({ email: b.email }, function(err, user){
-      if(user === undefined) {
-        req.flash("error", "The email address you entered cannot be found.");
-        return res.redirect('/forgotpassword');
-      }
       if(user){
         crypto.randomBytes(256, function(err, hash) {
           token = hash.toString('base64').replace(/\//g,'_').replace(/\+/g,'-');
@@ -177,7 +172,7 @@ module.exports = {
                   };
                   smtpTransport.sendMail(mailOptions, function(err, response){
                     if(err){res.serverError();}
-                    req.flash('error', 'Password reset request sent.');
+                    req.flash('message', 'Password reset request sent.');
                     res.redirect('/forgotpassword');
                   });
                 });
@@ -196,7 +191,7 @@ module.exports = {
                 };
                 smtpTransport.sendMail(mailOptions, function(err, response){
                   if(err){res.serverError();}
-                  req.flash('error', 'Password reset request sent.');
+                  req.flash('message', 'Password reset request sent.');
                   res.redirect('/forgotpassword');
                 });
               });
@@ -205,7 +200,7 @@ module.exports = {
         });
       }
       else {
-        req.flash('message', 'User not found.');
+        req.flash("error", "\"" + b.email + "\" cannot be found.");
         return res.redirect('/forgotpassword');
       }
     });
@@ -253,7 +248,7 @@ module.exports = {
                   PasswordReset.update(reset, { consumed: true }, function(err, reset){
                     if(err){ return res.redirect('/dashboard'); }
                     if(reset){
-                      req.flash('message', 'Password changed. Please log in.');
+                      //No flash here. Reset success page already tells them it was a success.
                       res.redirect('/resetsuccess');
                     }
                     else{
@@ -338,8 +333,7 @@ module.exports = {
         User.findOne({ email: verification.email }, function(err, user){
           if(err) { return res.redirect('/dashboard'); }
           User.update(user, { emailVerified: true }, function(err, toUpdate){
-            if(err) { return res.redirect('/dashboard'); }
-            req.flash('error', 'Your email address has been verified. You can now log in.');
+            if(err) { return res.redirect('/dashboard');}
             return res.redirect('/dashboard');
           });
         });

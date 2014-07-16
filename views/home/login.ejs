@@ -8,11 +8,10 @@
 		    <div><input type="text" name="email" placeholder="Email Address*" tabindex="1"></div>
 		    <div><input type="password" name="password" placeholder="Password*" tabindex="2"></div>
         <div class="forgotPass"><a href="/forgotpassword" tabindex="5">Forgot Your Password? Click here to reset.</a></div>
-        <div><button type="submit" class="signInButton" tabindex="3">Sign in</button></div>
         <% if (req.session.flash) { %>
-                <div id="incorrect-login-error"><%= req.flash('error') %></div>
+          <div id="incorrect-login-error"><%= req.flash('error') %></div>
         <% } %>
-
+        <div><button type="submit" class="signInButton" tabindex="3">Sign in</button></div>
 	  </form>
     <p class="or">or</p>
     <a href="/signup"><div class="registerLink" tabindex="4">New user? Create an account.</div>

@@ -8,19 +8,22 @@
 
         <section id="selectHandleForm">
           <form action="/company/createHandle" id="select-handle-form" method="post">
-            <div class="selectHandleInput"><input id="desiredHandle" type="text" name="handle" placeholder="Create Your Custom Username Here"></div>
+            <!--<div class="selectHandleInput"><input id="desiredHandle" type="text" name="handle" placeholder="Create Your Custom Username Here"></div>-->
 
-            <h2>Here's a preview of your custom company profile link, using your username:</h2>
+            <!--<h2>Here's a preview of your custom company profile link, using your username:</h2>-->
             <div class="urlBox">
               <div class="urls urlStatic">
-                <img width="16px" src="/linker/favicon.ico" /> <span class="green">https</span>://procur.com/companies/
+                <img width="16px" src="/linker/favicon.ico" /> <span class="green">https</span><span>://procur.com/companies/</span><span><input id="desiredHandle" name="handle" placeholder="EnterCustomHandleHere"></input></span>
               </div>
+              <!--
               <div class="urls urlDynamic">
+                <input type="text"
               </div>
+              -->
             </div>
-            <div><input class="submission" type="submit"></div>
+            <div><input class="submission" value="Submit" type="submit"></input></div>
           </form>
-        </section>    
+        </section>
   	  </div>
   	</div>
   </div>

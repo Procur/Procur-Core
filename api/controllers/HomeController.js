@@ -116,7 +116,7 @@ module.exports = {
 
     smtpTransport.sendMail(mailOptions, function(err, response){
       if(err){res.serverError();}
-      req.flash('success',"Message sent! We'll get back to you as soon as possible.");
+      req.flash('message',"Message sent! We'll get back to you as soon as possible.");
       res.redirect('/contact');
     });
   },
@@ -126,7 +126,6 @@ module.exports = {
     var b = req.body;
     var email = b.subscriberEmail;
     if(!email){
-      req.flash('status',"Email address is blank.");
       res.redirect('/contact');
     }
     else if (email) {
@@ -156,7 +155,7 @@ module.exports = {
       if (b.chkList1 != undefined) { subscribeToList(email, mcConfig.listid1); }
       if (b.chkList2 != undefined) { subscribeToList(email, mcConfig.listid2); }
       if (b.chkList3 != undefined) { subscribeToList(email, mcConfig.listid3); }
-      req.flash('status', "Thank you! Please check your inbox for confirmation.");
+      req.flash('message', "Thank you! Please check your inbox for confirmation.");
       res.redirect('/contact');
     }
   },

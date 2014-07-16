@@ -44,22 +44,26 @@
               <% if (company.faxNumber === undefined) { %>
                 <div class="breakForm"><input type="text" name="faxExtension" placeholder="Fax Extension"></div>
                 <% } else { %>
-                <div class="breakForm"><input type="text" name="faxExtension" value="<%= company.faxExtension %>"></div>
+                <div class="breakForm"><input type="text" name="faxExtension" value="<%= company.faxExtension %>" placeholder="Fax Extension"></div>
               <% } %>
             </div>
           </div>
 
           <h5>Company Email*</h5>
-          <div><input type="text" name="email" value="<%= company.email %>" placeholder="info@mycompany.com"></div><br/>
+          <div><input type="text" name="email" value="<%= company.email %>" placeholder="info@mycompany.com*"></div><br/>
 
           <h5>Company Website</h5>
           <div><input type="text" name="website" <%if (company.website) { %>value="<%= company.website %>" <% }%>placeholder="http://www.mycompany.com"></div><br/>
 
           <h5>Total Number of Employees*</h5>
           <div class="styledSelect">
-            <select name="employeeCount">
-              <option value="<%= company.employeeCount %>" selected="selected"><%= company.employeeCount %></option>
+            <select name="employeeCount" id="employeeCount">
               <%- partial('../edit-dropdowns/edit-total-employees') %>
+              <% if (company.employeeCount) { %>
+                <script language="javascript">$("#employeeCount").val("<%=company.employeeCount%>");</script>
+              <%}else{%>
+                <script language="javascript">$("#employeeCount").val("");</script>
+              <%}%>
             </select>
           </div>
 
@@ -68,9 +72,13 @@
         <div class="col-sm-6">
           <h5>Company Industry*</h5>
           <div class="styledSelect">
-            <select name="companyIndustry">
-              <option value="<%= company.industry %>" selected="selected"><%= company.industry %></option>
+            <select name="companyIndustry" id="companyIndustry">
               <%- partial('../edit-dropdowns/edit-industry') %>
+              <% if (company.industry) { %>
+                <script language="javascript">$("#companyIndustry").val("<%=company.industry%>");</script>
+              <%}else{%>
+                <script language="javascript">$("#companyIndustry").val("");</script>
+              <%}%>
             </select>
           </div><br/>
 

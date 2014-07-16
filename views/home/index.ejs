@@ -1,9 +1,9 @@
-<% if (req.session.flash) { %>
-  <div style="text-align: center;" id="incorrect-login-error"><%= req.flash('error') %></div>
-<% } %>
-
 <%- partial('../partials/mktheader') %>
 
+<div class="container" id="index">
+<% if (req.session.flash) { %>
+  <div style="text-align: center;" id="email-taken-error"><%= req.flash('error') %></div>
+<% } %>
 <!--Start Header Pic -->
 <div class="row heroImage" id="homePage">
   <div class="container">
@@ -104,5 +104,13 @@
   <!--END Mid Section-->
 </div>
 </div>
+</div>
 
 <%- partial('../partials/dashboard-footer.ejs') %>
+
+<script type="text/javascript">
+setTimeout(function(){var a=document.createElement("script");
+var b=document.getElementsByTagName("script")[0];
+a.src=document.location.protocol+"//dnn506yrbagrg.cloudfront.net/pages/scripts/0022/5863.js?"+Math.floor(new Date().getTime()/3600000);
+a.async=true;a.type="text/javascript";b.parentNode.insertBefore(a,b)}, 1);
+</script>
