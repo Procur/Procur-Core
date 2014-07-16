@@ -108,13 +108,13 @@ module.exports = {
     });
   },
 
-  processChangePassword: function(req, res){
-    var b = req.body;
-    var newPassword;
-    var emailAddress;
-    if((b.password !== undefined) && (b.password !== "")){
-      bcrypt.genSalt(10, function(err, salt){
-        bcrypt.hash(b.password, salt, function(err, hash){
+  processChangePassword: function(req, res) {
+    var b = req.body,
+        newPassword,
+        emailAddress;
+    if ((b.password !== undefined) && (b.password !== "")){
+      bcrypt.genSalt(10, function(err, salt) {
+        bcrypt.hash(b.password, salt, function(err, hash) {
           newPassword = hash;
           User.findOne({ id: req.session.passport.user }, function(err, user){
             if(err) { return res.redirect('/dashboard'); }
@@ -219,9 +219,9 @@ module.exports = {
   selectNewPassword: function(req, res){
     var consumeToken = req.query.token;
     PasswordReset.findOne({ token: consumeToken, consumed: false }, function(err, reset){
-      if(err){ return res.redirect('/dashboard') };
+      if(err){ return res.redirect('/dashboard'); }
       if(reset){
-        if(reset.consumed != true) {
+        if(reset.consumed !== true) {
           req.session.token = consumeToken;
           res.view();
         }
@@ -259,7 +259,7 @@ module.exports = {
                     else{
                       res.redirect('/dashboard');
                     }
-                  })
+                  });
                 });
               }
               else {
@@ -275,7 +275,7 @@ module.exports = {
     });
   },
 
-  passwordResetSuccess: function(req, res){
+  passwordResetSuccess: function(req, res) {
     res.view();
   },
 
@@ -344,10 +344,8 @@ module.exports = {
           });
         });
       });
-    };
-
+    }
   }
-
 };
 
 /**
