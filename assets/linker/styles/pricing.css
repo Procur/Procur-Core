@@ -426,3 +426,19 @@ padding-right: 0
 	margin-bottom: 0;
 	font-size: 11px;
 }
+
+/*NON RESPONSIVE CONSIDERATIONS*/
+
+/* Account for fixed navbar */
+/*#pricing body {
+  min-width: 970px;
+  padding-top: 70px;
+  padding-bottom: 30px;
+}*/
+
+/* Reset the container*/
+#pricing .container {
+  max-width: none !important;
+  width: 970px;
+
+}
