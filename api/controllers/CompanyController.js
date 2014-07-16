@@ -515,6 +515,8 @@ module.exports = {
     var b = req.body;
     var companyID;
     var numOfLocations;
+    console.log(b.companyCity);
+    console.log(b.hqcompanyCity);
 
     User.findOne({ id: user }, function(err, user) {
       if (err) { /* do something here */ }
@@ -543,10 +545,12 @@ module.exports = {
                 addressLine1: b.companyAddress1,
                 addressLine2: b.companyAddress2,
                 country: b.companyCountry,
+                city: b.companyCity,
                 province: b.companyProvince,
                 postalCode: b.companyPostalCode
               }).exec(function(err, newLocation){
                 if (err) { /* do something here */ }
+                req.flash('message', 'Company information updated.');
                 return res.redirect('/company/update'); /* Success message? */
               });
             }
@@ -562,6 +566,7 @@ module.exports = {
                 addressLine1: b.companyAddress1,
                 addressLine2: b.companyAddress2,
                 country: b.companyCountry,
+                city: b.companyCity,
                 province: b.companyProvince,
                 postalCode: b.companyPostalCode
               }).exec(function(err, updatedHq) {
@@ -571,7 +576,7 @@ module.exports = {
               Location.destroy({ id: nonhq.id }).exec(function(err){
                 if (err) { /* do something here */ }
               });
-
+              req.flash('message', 'Company information updated.');
               return res.redirect('/company/update');
             }
 
@@ -581,6 +586,7 @@ module.exports = {
                 addressLine1: b.hqAddress1,
                 addressLine2: b.hqAddress2,
                 country: b.hqcompanyCountry,
+                city: b.hqcompanyCity,
                 province: b.hqcompanyProvince,
                 postalCode: b.hqPostalCode
               }).exec(function(err, updatedHQ) {
@@ -592,6 +598,7 @@ module.exports = {
                 addressLine1: b.companyAddress1,
                 addressLine2: b.companyAddress2,
                 country: b.companyCountry,
+                city: b.companyCity,
                 province: b.companyProvince,
                 postalCode: b.companyPostalCode,
                 isHq: false,
@@ -599,7 +606,7 @@ module.exports = {
               }, function(err, newLocation) {
                 if (err) { /* do something here */ }
               });
-
+              req.flash('message', 'Company information updated.');
               return res.redirect('/company/update');
             }
 
@@ -614,6 +621,7 @@ module.exports = {
                 addressLine1: b.companyAddress1,
                 addressLine2: b.companyAddress2,
                 country: b.companyCountry,
+                city: b.companyCity,
                 province: b.companyProvince,
                 postalCode: b.companyPostalCode
               }).exec(function(err, newNonHQ) {
@@ -624,11 +632,13 @@ module.exports = {
                 addressLine1: b.hqAddress1,
                 addressLine2: b.hqAddress2,
                 country: b.hqcompanyCountry,
+                city: b.hqcompanyCity,
                 province: b.hqcompanyProvince,
                 postalCode: b.hqPostalCode
               }).exec(function(err, newHQ) {
                 if (err) { /* do something here */ }
               });
+              req.flash('message', 'Company information updated.');
               return res.redirect('/company/update'); /* Success message? */
             }
           });
