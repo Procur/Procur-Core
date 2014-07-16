@@ -2,13 +2,13 @@
   <% if ((user.activeMode == 'buyer') || (user.activeMode === undefined)) { %>
     <div id="buyerInformation">
       <h4>Buyer Information</h4>
-      
+
 
 
       <div class="formWrapper">
         <div class="row">
           <div class="col-sm-6">
-            <h5>Logo Image</h5>  
+            <h5>Logo Image</h5>
             <div><%if (buyer.logoUrl) {%><img src="<%= buyer.logoUrl %>"><% } %></div>
             <form id="buyerLogoForm" action="/buyer/update/logo" method="post" enctype="multipart/form-data">
               <input type="file" name="logo" accept="image/*"/>
@@ -17,7 +17,7 @@
           </div><!-- END logo image .col-sm-12 -->
 
           <form action="/buyer/update/information" method="post" id="buyerInformationForm">
-              
+
             <div class="col-sm-6 dba">
               <h5>DBA Name</h5>
               <div><input type="text" name="dbaName" <% if (buyer.dbaName) { %>value="<%= buyer.dbaName %>"<% } %> placeholder="Altenate Company Name"></div>
@@ -168,7 +168,7 @@
               <select name="locationType" id="locationType">
                 <%- partial('../edit-dropdowns/edit-other-location-type') %>
                 <% if (buyer.locationType) { %>
-                <script language="javascript">$("#locationType").val("<%=buyer.locationType%>");</script>
+                <script language="javascript">$("#locationType").val("<%-buyer.locationType%>");</script>
                   <%} else { %>
                   <script language="javascript">$("#locationType").val("");</script>
                 <% } %>
@@ -186,7 +186,7 @@
                 <script language="javascript">$("#locationCountry").val("");</script>
               <% } %>
               </select>
-            </div> 
+            </div>
 
             <div class="styledSelect">
               <select name="locationProvince" id="locationProvince">
@@ -262,7 +262,7 @@
                   <input id="autocomplete3" name="autocomplete" placeholder="Begin typing to search categories...">
               <% } %>
             </div>
-            
+
         </div><!-- END row -->
       </div><!-- END .formWrapper -->
     <div class="row"><button class="continueButton" type="submit">Save&nbsp;&nbsp; <i class="fa fa-check"></i></button></div>
