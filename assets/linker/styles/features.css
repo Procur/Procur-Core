@@ -135,6 +135,10 @@
   background: #5c5c5c;
 }
 
+#features .expander-contractor:hover {
+  cursor: pointer;
+}
+
 #features .toggleText {
   text-align: center;
   color: white;
