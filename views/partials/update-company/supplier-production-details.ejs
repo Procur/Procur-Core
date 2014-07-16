@@ -91,7 +91,7 @@
               <select name="locationType" id="locationType">
                 <%- partial('../edit-dropdowns/edit-other-location-type') %>
                 <% if (supplier.locationType) { %>
-                <script language="javascript">$("#locationType").val("<%=supplier.locationType%>");</script>
+                <script language="javascript">$("#locationType").val("<%-supplier.locationType%>");</script>
                   <%} else { %>
                   <script language="javascript">$("#locationType").val("");</script>
                 <% } %>
@@ -109,7 +109,7 @@
                 <script language="javascript">$("#locationCountry").val("");</script>
               <% } %>
               </select>
-            </div> 
+            </div>
 
             <div class="styledSelect">
               <select name="locationProvince" id="locationProvince">
