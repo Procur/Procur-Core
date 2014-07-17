@@ -66,7 +66,7 @@
     },
     acceptedDeliveryTerms: {
       type: 'array',
-      minLength: 1,
+      minLength: 0,
       maxLength: 100
     },
     acceptedCurrency: {
@@ -294,7 +294,7 @@
     },
     locationName: {
       type: 'array',
-      minLength: 0, //not required 
+      minLength: 0, //not required
       //Note: *array* min length of 0; length of string checked in client-side valdation
       maxLength: 50
     },
