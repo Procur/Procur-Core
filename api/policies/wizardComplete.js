@@ -13,8 +13,8 @@ module.exports = function (req, res, next) {
     if(company !== undefined){
       if(err) {res.redirect('/dashboard');}
       else {
-        if (company.wizardComplete != true){
-          if((company.buyer == true) && (company.supplier == true)) {
+        if (company.wizardComplete !== true){
+          if((company.buyer === true) && (company.supplier === true)) {
             if(!company.primaryMode){
               res.redirect('/welcome/selectdefault');
             }
@@ -23,7 +23,7 @@ module.exports = function (req, res, next) {
                 case 'buyer':
                   Buyer.findOne({ company: company.id }, function(err, buyer){
                     if(err){res.redirect('/dashboard');}
-                    else if (buyer == undefined) {
+                    else if (buyer === undefined) {
                       res.redirect('/welcome/buyer');
                     }
                     else {
@@ -31,11 +31,11 @@ module.exports = function (req, res, next) {
                         if(err){
                           res.redirect('/dashboard');
                         }
-                        else if (supplier == undefined) {
+                        else if (supplier === undefined) {
                           res.redirect('/welcome/supplier');
                         }
                         else {return next();}
-                      })
+                      });
                     }
                   });
                   break;
@@ -44,13 +44,13 @@ module.exports = function (req, res, next) {
                     if(err){
                       res.redirect('/dashboard');
                     }
-                    else if (supplier == undefined) {
+                    else if (supplier === undefined) {
                       res.redirect('/welcome/supplier');
                     }
                     else {
                       Buyer.findOne({ company: company.id }, function(err, buyer){
                         if(err){res.redirect('/dashboard');}
-                        else if (buyer == undefined) {
+                        else if (buyer === undefined) {
                           res.redirect('/welcome/buyer');
                         }
                         else {return next();}
@@ -102,11 +102,11 @@ module.exports = function (req, res, next) {
                   if (err) { /* do something here */ }
                   else { return next(); }
                 }
-                else { 
+                else {
                   res.redirect('/welcome/moreinfo');
                 }
               }
-            )
+            );
           }
         }
         else {res.redirect('/welcome');}
@@ -116,4 +116,4 @@ module.exports = function (req, res, next) {
       res.redirect('/welcome');
     }
   });
-}
+};
