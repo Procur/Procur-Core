@@ -7,4 +7,4 @@ var config = sails.util.merge(require('optimist').argv,{
     pubsub: false
   }
 });
-require('sails').lift(config);
+sails.lift(config);
