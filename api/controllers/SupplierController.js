@@ -35,8 +35,6 @@ module.exports = {
     var image = req.files.logoUrl.path;
     var imageHelper = sails.config.imageUploadHelper;
     var imageExists = imageHelper.getFileSize(image);
-    var categories = [b.autocompleteReq, b.autocomplete[0],b.autocomplete[1]];
-    console.log(categories);
     User.findOne({ id: req.session.passport.user }, function(err, user) {
       Company.findOne({ user: user.id }, function(err, company) {
         if (err) { return res.redirect('/dashboard'); }
@@ -61,7 +59,7 @@ module.exports = {
               preferredBuyerType: b.preferredBuyerType,
               preferredBuyerLocation: [b.preferredBuyerLocation],
               preferredBuyerLanguage: [b.preferredBuyerLanguage],
-              productCategory: [categories],
+              productCategory: [b.autocomplete],
               active: true
             }, function(err, supplier) {
               if (err) { return res.redirect('/dashboard'); }
