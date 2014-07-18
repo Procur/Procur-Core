@@ -8,7 +8,7 @@ var propogateHqClick = function() {
     // And copy over the values from the company fields
     $(".hqaddress1").val($(".address1").val());
     $(".hqaddress2").val($(".address2").val());
-    $(".hqCity").val($(".companyCity").val());
+    $(".hqcompanyCity").val($(".companyCity").val());
     $(".hqcompanyCountry").val($(".companyCountry").val());
     $(".hqcompanyProvince").val($(".companyProvince").val());
     $(".hqPostalCode").val($(".companyPostalCode").val());
