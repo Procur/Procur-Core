@@ -16,7 +16,7 @@ module.exports.productCategoryHelper = {
   },
 
   returnLastInHierarchy: function(categoryList) {
-    if (categoryList.length === 0) { return null; }
+    if (categoryList === undefined || categoryList === null || categoryList.length === 0) { return null; }
 
     var seperator = ">";
     var splitList;
