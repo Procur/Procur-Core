@@ -1,9 +1,9 @@
-/*var mq = window.matchMedia( "(min-width: 500px)" );
+/*var mq = window.matchMedia( "(min-width: 768px)" );
 if (mq.matches) {
 
-  $('#dashboard-footer').find('nav').addClass('navbar-fixed-bottom');
 }
 else {
-
+    console.log('here');
+    $('#faq').find('#nav-wrapper').remove();
 }
 */
