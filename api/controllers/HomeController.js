@@ -78,7 +78,7 @@ module.exports = {
   },
 
   earlyaccess: function(req, res){
-  res.view();
+    res.view();
   },
 
   press: function(req, res){
