@@ -78,7 +78,7 @@ module.exports = {
   },
 
   earlyaccess: function(req, res){
-  res.view();
+    res.view();
   },
 
   press: function(req, res){
@@ -108,7 +108,7 @@ module.exports = {
     var htmlContent = (b.field1 || "") + '<br>' + (b.field2 || "") + '<br>' + (b.field3 || "") + '<br>' + b.content;
     var mailOptions = {
       from: b.email,
-      to: 'dev@procur.com',
+      to: 'info@procur.com',
       subject: "Contact form submission",
       generateTextFromHTML: true,
       html: htmlContent
@@ -152,9 +152,9 @@ module.exports = {
           }
         });
       };
-      if (b.chkList1 != undefined) { subscribeToList(email, mcConfig.listid1); }
-      if (b.chkList2 != undefined) { subscribeToList(email, mcConfig.listid2); }
-      if (b.chkList3 != undefined) { subscribeToList(email, mcConfig.listid3); }
+      if (b.chkList1 !== undefined) { subscribeToList(email, mcConfig.listid1); }
+      if (b.chkList2 !== undefined) { subscribeToList(email, mcConfig.listid2); }
+      if (b.chkList3 !== undefined) { subscribeToList(email, mcConfig.listid3); }
       req.flash('message', "Thank you! Please check your inbox for confirmation.");
       res.redirect('/contact');
     }
