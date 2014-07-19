@@ -4,13 +4,15 @@
     <div class="formWrapper">
       <div class="row">
         <div class="col-sm-12">
-          <h5>Company Description</h5>
+          <h3>Company Description</h3>
           <% if (buyer.companyDescription === "undefined" || buyer.companyDescription === undefined) { %>
             <div><textarea rows="5" name="companyDescription" placeholder="Company Description"></textarea></div><br/>
             <% } else { %>
             <div><textarea rows="5" name="companyDescription" placeholder="Company Description"><%= buyer.companyDescription %></textarea></div><br/>
           <% } %>
 
+          <br/>
+          <h3>Statements of Responsibility</h3>
           <h5>Environmental Sustainability</h5>
           <% if (buyer.environmentalSustainability === "undefined" || buyer.environmentalSustainability === undefined) { %>
             <div><textarea rows="5" name="environmentalSustainability" placeholder="Environmental Sustainability"></textarea></div><br/>
