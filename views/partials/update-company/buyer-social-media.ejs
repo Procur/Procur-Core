@@ -61,38 +61,38 @@
 
           <h5>Link 1</h5>
           <% if (buyer.relevantLinkTitle && buyer.relevantLinkTitle[0]) { %>
-            <div><input type="text" name="linktitle" value="<%= buyer.relevantLinkTitle[0] %>" placeholder="Title"/></div>
+            <div><input type="text" name="linktitle" id="linktitle0" value="<%= buyer.relevantLinkTitle[0] %>" placeholder="Title"/></div>
           <% } else { %>
-            <div><input type="text" name="linktitle" placeholder="Title"/></div>
+            <div><input type="text" name="linktitle" id="linktitle0" placeholder="Title"/></div>
           <% } %>
           <% if (buyer.relevantLinkUrl && buyer.relevantLinkUrl[0]) { %>
-            <div><input type="text" name="linkurl" value="<%= buyer.relevantLinkUrl[0] %>" placeholder="http://www.mycompany.org"/></div>
+            <div><input type="text" name="linkurl" id="linkurl0" value="<%= buyer.relevantLinkUrl[0] %>" placeholder="http://www.mycompany.org"/></div>
           <% } else { %>
-            <div><input type="text" name="linkurl" placeholder="http://www.mycompany.org"/></div>
+            <div><input type="text" name="linkurl" id="linkurl0" placeholder="http://www.mycompany.org"/></div>
           <% } %>
 
           <h5>Link 2</h5>
           <% if (buyer.relevantLinkTitle && buyer.relevantLinkTitle[1]) { %>
-            <div><input type="text" name="linktitle" value="<%= buyer.relevantLinkTitle[1] %>" placeholder="Title"/></div>
+            <div><input type="text" name="linktitle" id="linktitle1" value="<%= buyer.relevantLinkTitle[1] %>" placeholder="Title"/></div>
           <% } else { %>
-            <div><input type="text" name="linktitle" placeholder="Title"/></div>
+            <div><input type="text" name="linktitle" id="linktitle1" placeholder="Title"/></div>
           <% } %>
           <% if (buyer.relevantLinkUrl && buyer.relevantLinkUrl[1]) { %>
-            <div><input type="text" name="linkurl" value="<%= buyer.relevantLinkUrl[1] %>" placeholder="http://www.mycompany.org"/></div>
+            <div><input type="text" name="linkurl" id="linkurl1" value="<%= buyer.relevantLinkUrl[1] %>" placeholder="http://www.mycompany.org"/></div>
           <% } else { %>
-            <div><input type="text" name="linkurl" placeholder="http://www.mycompany.org"/></div>
+            <div><input type="text" name="linkurl" id="linkurl1" placeholder="http://www.mycompany.org"/></div>
           <% } %>
 
           <h5>Link 3</h5>
           <% if (buyer.relevantLinkTitle && buyer.relevantLinkTitle[2]) { %>
-            <div><input type="text" name="linktitle" value="<%= buyer.relevantLinkTitle[2] %>" placeholder="Title"/></div>
+            <div><input type="text" name="linktitle" id="linktitle2" value="<%= buyer.relevantLinkTitle[2] %>" placeholder="Title"/></div>
           <% } else { %>
-            <div><input type="text" name="linktitle" placeholder="Title"/></div>
+            <div><input type="text" name="linktitle" id="linktitle2" placeholder="Title"/></div>
           <% } %>
           <% if (buyer.relevantLinkUrl && buyer.relevantLinkUrl[2]) { %>
-            <div><input type="text" name="linkurl" value="<%= buyer.relevantLinkUrl[2] %>" placeholder="http://www.mycompany.org"/></div>
+            <div><input type="text" name="linkurl" id="linkurl2" value="<%= buyer.relevantLinkUrl[2] %>" placeholder="http://www.mycompany.org"/></div>
           <% } else { %>
-            <div><input type="text" name="linkurl" placeholder="http://www.mycompany.org"/></div>
+            <div><input type="text" name="linkurl" id="linkurl2" placeholder="http://www.mycompany.org"/></div>
           <% } %>
 
         </div>

@@ -1119,6 +1119,34 @@ $("#buyerSocialOutletsForm").validate({
       socialMediaHandleFormat:true,
       maxlength: 50 //*possibly too short?
     },
+    linktitle:{
+      required: function(element){
+        var elID = element.id;
+        var ind = elID.charAt(elID.length-1);
+        var urlID = '#linkurl' + ind;
+        //alert(urlID);
+        return $(urlID).val()!=="";
+      },
+      maxlength: 50
+    },
+    linkurl:{
+      required: function(element){
+        var elID = element.id;
+        var ind = elID.charAt(elID.length-1);
+        var titleID = '#linktitle' + ind;
+        //alert(titleID);
+        return $(titleID).val()!=="";
+      },
+      url: true
+    }
+  },
+  messages:{
+    linktitle: {
+      required: "Provide title & url for each link."
+    },
+    linkurl: {
+      required: "Provide title & url for each link."
+    }
   }
 });
 
@@ -1278,6 +1306,34 @@ $("#supplierSocialOutletsForm").validate({
       socialMediaHandleFormat:true,
       maxlength: 50 //*possibly too short?
     },
+    linktitle:{
+      required: function(element){
+        var elID = element.id;
+        var ind = elID.charAt(elID.length-1);
+        var urlID = '#linkurl' + ind;
+        //alert(urlID);
+        return $(urlID).val()!=="";
+      },
+      maxlength: 50
+    },
+    linkurl:{
+      required: function(element){
+        var elID = element.id;
+        var ind = elID.charAt(elID.length-1);
+        var titleID = '#linktitle' + ind;
+        //alert(titleID);
+        return $(titleID).val()!=="";
+      },
+      url: true
+    }
+  },
+  messages:{
+    linktitle: {
+      required: "Provide title & url for each link."
+    },
+    linkurl: {
+      required: "Provide title & url for each link."
+    }
   }
 });
 
