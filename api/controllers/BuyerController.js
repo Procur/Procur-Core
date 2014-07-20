@@ -373,7 +373,9 @@ module.exports = {
             linkedin: b.linkedin,
             pinterest: b.pinterest,
             instagram: b.instagram,
-            tumblr: b.tumblr
+            tumblr: b.tumblr,
+            relevantLinkTitle: [b.linktitle],
+            relevantLinkUrl: [b.linkurl]
           }).exec(function(err, newBuyer) {
             if (err) { /* do something here */ }
             return res.redirect('/company/update#socialOutletsBuyer');
