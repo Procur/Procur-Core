@@ -13,7 +13,7 @@
       </h2>
       <h1><%= company.name %></h1>
     </div>
-    
+
     <% if (locations["showHq"] === false) { %>
       <div class="company-info-box company-business-address">
         <h3><i class="fa fa-fw fa-map-marker"></i><span class="info-title">Official Business Address</span></h3>
@@ -41,7 +41,7 @@
         <% if(locations["company-isHq"].country !== undefined){ %><p><%= locations["company-isHq"].country %></p><% } %>
       </div>
     <% } %>
-    
+
     <div class="company-info-box">
       <h3><i class="fa fa-fw fa-phone"></i><span class="info-title">Company Phone &amp; Fax</span></h3>
       <p><% if(company.phoneNumberCountryCode && company.phoneNumber) { %>Telephone: +<%= company.phoneNumberCountryCode %> <%= company.phoneNumber %> <% if (company.phoneExtension) { %> Ext: <%company.phoneExtension %><% } } %></p>
@@ -70,7 +70,7 @@
       <div class="capability-box">Fabrics &amp; Trim</div>
       <div class="capability-box">Digital Printing</div>
     </div>-->
-    
+
     <div class="company-two-col-box">
       <h3><span>Supplier Details</span></h3>
       <div class="company-col-left">
@@ -116,7 +116,7 @@
       <div class="company-col-clear"></div>
     </div>
   </div><!-- END LEFT COLUMN -->
-  
+
   <div class="col-sm-12 col-md-7 col-lg-8 pull-right">
     <div class="profile-nav">
       <ul>
@@ -134,7 +134,7 @@
       <% if (supplier.companyDescription !== undefined) { %>
         <div class="content-desc"><%= supplier.companyDescription %></div>
       <% } else { %>
-        <div class="content-desc">This company does not have a buyer company description.</div>
+        <div class="content-desc">This company does not currently have a supplier company description.</div>
       <% } %>
       <% if (supplier.productsOfInterest !== undefined) { %>
         <div class="content-interest" id="inactive"><%= supplier.productsOfInterest %></div>
