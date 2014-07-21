@@ -27,9 +27,9 @@
           
           <h5>LinkedIn</h5>
           <% if (buyer.linkedin === undefined || buyer.linkedin === "undefined") { %>
-            <div class="input-group"><div class="input-group-addon">linkedin.com/users/<input type="text" name="linkedin" placeholder="Linkedin"></div></div>
+            <div class="input-group"><div class="input-group-addon">linkedin.com/company/<input type="text" name="linkedin" placeholder="Linkedin"></div></div>
             <% } else { %>
-            <div class="input-group"><div class="input-group-addon">linkedin.com/users/<input type="text" name="linkedin" value="<%= buyer.linkedin %>" placeholder="Linkedin"></div></div>
+            <div class="input-group"><div class="input-group-addon">linkedin.com/company/<input type="text" name="linkedin" value="<%= buyer.linkedin %>" placeholder="Linkedin"></div></div>
           <% } %>
 
           <h5>Pinterest</h5>
@@ -48,9 +48,9 @@
 
           <h5>Tumblr</h5>
           <% if (buyer.tumblr === undefined || buyer.tumblr === "undefined") { %>
-            <div class="input-group"><input type="text" name="tumblr" placeholder="Tumblr"></div>
+            <div class="input-group" id="tumblrWeirdo"><div class="input-group-addon"><input id="tumblr-input" type="text" name="tumblr" placeholder="Tumblr">.tumblr.com</div></div>
             <% } else { %>
-            <div class="input-group"><input type="text" name="tumblr" value="<%= buyer.tumblr %>" placeholder="Tumblr"></div>
+            <div class="input-group" id="tumblrWeirdo"><div class="input-group-addon"><input type="text" name="tumblr" value="<%= buyer.tumblr %>" placeholder="Tumblr">.tumblr.com</div></div>
           <% } %>
 
         </div>

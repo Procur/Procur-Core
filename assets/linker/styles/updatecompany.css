@@ -214,6 +214,7 @@
   font-family: 'Open Sans', sans-serif;
   font-size: 12px;
 }
+
 #socialOutletsSupplier input::-webkit-input-placeholder {
   padding-top: 3px;
 }
@@ -235,6 +236,10 @@
     border: none;
     font-family: 'Open Sans', sans-serif;
     font-size: 12px;
+  }
+ 
+  #socialOutletsBuyer #tumblrWeirdo input {
+    text-align: right;
   }
 
 #socialOutletsBuyer .relevantlink input {
