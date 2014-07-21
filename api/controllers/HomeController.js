@@ -86,11 +86,11 @@ module.exports = {
   },
 
   login: function(req, res){
-  res.view();
+    res.view();
   },
 
   signup: function(req, res){
-  res.view();
+    res.view();
   },
 
   careers: function(req, res){
