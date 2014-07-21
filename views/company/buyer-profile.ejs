@@ -57,7 +57,7 @@
       <h3><i class="fa fa-fw fa-location-arrow"></i><span class="info-title">Company Website</span></h3>
       <p><% if(company.website) { %><a href="<%= company.website %>" target="_blank"><%= company.website %></a><% } %></p>
     </div>
-    
+
     <div class="company-detail-box">
       <h3><span>Product Categories</span></h3>
       <p><%= buyer.viewCategoryList %></p>
@@ -123,7 +123,7 @@
       <% if (buyer.companyDescription !== undefined) { %>
         <div class="content-desc"><%= buyer.companyDescription %></div>
       <% } else { %>
-        <div class="content-desc">Company Description Here.</div>
+        <div class="content-desc">This company does not currently have a buyer company description.</div>
       <% } %>
       <% if (buyer.productsOfInterest !== undefined) { %>
         <div class="content-interest" id="inactive"><%= buyer.productsOfInterest %></div>
