@@ -93,10 +93,6 @@
       </div><!-- END LEFT DETAIL COLUMN -->
       <div class="company-col-right">
         <div class="company-col-detail">
-          <p class="detail-header">Certifications</p>
-          <p class="detail-body"></p><!-- example: ISO Compliant-->
-        </div>
-        <div class="company-col-detail">
           <p class="detail-header">Links</p>
           <p class="detail-body"><% if (company.website) { %><div><span class="fa fa-fw fa-location-arrow"></span><a class="company-link" href="<%= company.website %>" target="_blank">Our Website</a></div><% } %></p>
           <p class="detail-body">
@@ -126,6 +122,30 @@
               <% } %>
             <% } %>
           </p>
+          <!--<p class="detail-header">Social Media</p>-->
+          <div class="social-link-list">
+            <ul>
+              <% if (buyer.facebook) { var facebooklink = "http://facebook.com/" + buyer.facebook; %>
+                <li><a href="<%=facebooklink%>" target="_blank"><i class="fa fa-facebook"></i></a></li>
+              <% } %>
+              <% if (buyer.twitter) { var twitterlink = "http://twitter.com/" + buyer.twitter; %>
+                <li><a href="<%=twitterlink%>" target="_blank"><i class="fa fa-twitter"></i></a></li>
+              <% } %>
+              <% if (buyer.google) { var googlelink = "http://plus.google.com/+" + buyer.google; %>
+                <li><a href="<%=googlelink%>" target="_blank"><i class="fa fa-google-plus"></i></a></li>
+              <% } %>
+              <% if (buyer.linkedin) { var linkedinlink = "https://www.linkedin.com/company/" + buyer.linkedin; %>
+                <li><a href="<%=linkedinlink%>" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+              <% } %>
+              <% if (buyer.pinterest) { var pinterestlink = "http://pinterest.com/" + buyer.pinterest; %>
+                <li><a href="<%=pinterestlink%>" target="_blank"><i class="fa fa-pinterest"></i></a></li>
+              <% } %>
+              <% if (buyer.tumblr) { var tumblrlink = "http://" + buyer.tumblr + ".tumblr.com"; %>
+                <li><a href="<%= tumblrlink %>" target="_blank"><i class="fa fa-tumblr"></i></a></li>
+              <% } %>
+            </ul>
+          </div>
+
         </div>
       </div><!-- END RIGHT DETAIL COLUMN -->
       <div class="company-col-clear"></div>

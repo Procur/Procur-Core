@@ -8,7 +8,7 @@
   .profile-container a:hover {
     text-decoration: none;
     color: #FBAC27;
-    border-bottom: 1px solid black; 
+    border-bottom: 1px solid #FBAC27;
   }
 
 /* LEFT COLUMN */
@@ -149,9 +149,38 @@
   .detail-body {
     font-size: 14px;
   }
-  .company-link {
-    margin-left: 10px;
+  .company-col-detail a {
+    font-size: 12px;
+    margin-left: 8px;
   }
+
+.social-link-list ul {
+  margin: 0px;
+  padding: 0px;
+}
+
+.social-link-list ul li {
+  list-style: none;
+  display: inline;
+}
+
+.social-link-list ul li i {
+  color: #a3a3a3;
+  margin-right: 12px;
+}
+
+.social-link-list ul li i:hover {
+  color: #333132;
+  text-decoration: none;
+}
+
+.social-link-list a {
+  margin-left: 0px;
+}
+
+.social-link-list a:hover {
+   border-bottom: none;
+}
 
 /* RIGHT COLUMN */
 .profile-nav {
@@ -179,6 +208,7 @@
 .profile-nav a:hover {
   text-decoration: none;
   color: #7F7F7F;
+  border-bottom: 1px solid black;
   /* What to do here? */
 }
 
