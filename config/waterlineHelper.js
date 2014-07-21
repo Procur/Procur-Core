@@ -4,7 +4,8 @@ module.exports.waterlineHelper = {
     var arrFields = ["acceptedCurrency","acceptedDeliveryTerms","acceptedPaymentTerms",
                      "language","locationCity","locationCountry","locationName",
                      "locationProvince","locationType","preferredBuyerLocation",
-                     "preferredBuyerLanguage", "productCategory"];
+                     "preferredBuyerLanguage", "productCategory", "relevantLinkTitle",
+                     "relevantLinkUrl"];
     var modelKeys = Object.keys(inObject);
     var newObject = {};
 
@@ -34,7 +35,8 @@ module.exports.waterlineHelper = {
     var arrFields = ["language","locationName","locationType","locationCity",
                      "locationProvince","locationCountry","preferredSupplierLanguage",
                      "preferredSupplierLocation","acceptedCurrency","acceptedDeliveryTerms",
-                     "acceptedPaymentTerms","productCategory"];
+                     "acceptedPaymentTerms","productCategory", "relevantLinkTitle",
+                     "relevantLinkUrl"];
     var modelKeys = Object.keys(inObject);
     var newObject = {};
 

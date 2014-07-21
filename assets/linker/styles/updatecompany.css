@@ -202,6 +202,12 @@
   font-size: 12px;
 }
 
+
+#socialOutletsSupplier .relevantlink input {
+  background: #FFF;
+  width: 300px;
+}
+
 #socialOutletsSupplier input {
   background: #FFF;
   width: 150px;
@@ -230,6 +236,11 @@
     font-family: 'Open Sans', sans-serif;
     font-size: 12px;
   }
+
+#socialOutletsBuyer .relevantlink input {
+  background: #FFF;
+  width: 300px;
+}
 
   #socialOutletsBuyer input {
     background: #FFF;
