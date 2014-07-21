@@ -98,7 +98,34 @@
         </div>
         <div class="company-col-detail">
           <p class="detail-header">Links</p>
-          <p class="detail-body"><% if (company.website) { %><a href="<%= company.website %>" target="_blank">Our Website</a><% } %></p>
+          <p class="detail-body"><% if (company.website) { %><div><span class="fa fa-fw fa-location-arrow"></span><a class="company-link" href="<%= company.website %>" target="_blank">Our Website</a></div><% } %></p>
+          <p class="detail-body">
+            <% if (buyer.relevantLinkUrl && buyer.relevantLinkUrl[0]) { %>
+              <%if (buyer.relevantLinkTitle && buyer.relevantLinkTitle[0]) {%>
+                <div><span class="fa fa-fw fa-location-arrow"></span><a class="company-link" href="<%= buyer.relevantLinkUrl[0] %>" target="_blank"><%= buyer.relevantLinkTitle[0] %></a></div>
+              <% } else { %>
+                <div><span class="fa fa-fw fa-location-arrow"></span><a class="company-link" href="<%= buyer.relevantLinkUrl[0] %>" target="_blank">Untitled</a></div>
+              <% } %>
+            <% } %>
+          </p>
+          <p class="detail-body">
+            <% if (buyer.relevantLinkUrl && buyer.relevantLinkUrl[1]) { %>
+              <%if (buyer.relevantLinkTitle && buyer.relevantLinkTitle[1]) {%>
+                <div><span class="fa fa-fw fa-location-arrow"></span><a class="company-link" href="<%= buyer.relevantLinkUrl[1] %>" target="_blank"><%= buyer.relevantLinkTitle[1] %></a></div>
+              <% } else { %>
+                <div><span class="fa fa-fw fa-location-arrow"></span><a class="company-link" href="<%= buyer.relevantLinkUrl[1] %>" target="_blank">Untitled</a></div>
+              <% } %>
+            <% } %>
+          </p>
+          <p class="detail-body">
+            <% if (buyer.relevantLinkUrl && buyer.relevantLinkUrl[2]) { %>
+              <%if (buyer.relevantLinkTitle && buyer.relevantLinkTitle[2]) {%>
+                <div><span class="fa fa-fw fa-location-arrow"></span><a class="company-link" href="<%= buyer.relevantLinkUrl[2] %>" target="_blank"><%= buyer.relevantLinkTitle[2] %></a></div>
+              <% } else { %>
+                <div><span class="fa fa-fw fa-location-arrow"></span><a class="company-link" href="<%= buyer.relevantLinkUrl[2] %>" target="_blank">Untitled</a></div>
+              <% } %>
+            <% } %>
+          </p>
         </div>
       </div><!-- END RIGHT DETAIL COLUMN -->
       <div class="company-col-clear"></div>

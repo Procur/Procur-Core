@@ -149,6 +149,9 @@
   .detail-body {
     font-size: 14px;
   }
+  .company-link {
+    margin-left: 10px;
+  }
 
 /* RIGHT COLUMN */
 .profile-nav {
