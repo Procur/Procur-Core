@@ -55,7 +55,7 @@ module.exports = function (req, res, next) {
               if (!data.supplier) {
                 if(req.route.path == '/welcome/supplier') { return next(); }
               }
-              res.redirect('/dashboard');
+              return res.redirect('/dashboard');
             }
             if (data.buyer && data.supplier) {
               // this should never evaluate to true but incase it does
