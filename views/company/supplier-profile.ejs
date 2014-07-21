@@ -105,10 +105,6 @@
       </div><!-- END LEFT DETAIL COLUMN -->
       <div class="company-col-right">
         <div class="company-col-detail">
-          <p class="detail-header">Certifications</p>
-          <p class="detail-body"></p><!-- example: ISO Compliant-->
-        </div>
-        <div class="company-col-detail">
           <p class="detail-header">Links</p>
           <p class="detail-body"><% if (company.website) { %><a href="<%= company.website %>" target="_blank">Our Website</a><% } %></p>
         </div>
@@ -126,21 +122,24 @@
         <div class="nav-right">
           <li><a id="company-description">Company Description</a></li>
           <li><a id="products-of-interest">Product Overview</a></li>
+          <!-- TO-DO: BROKEN. AND STYLING BAD. 
           <% if (supplier.showSORTab === true) { %><li><a id="statements-of-responsibility">Statements of Responsibility</a></li><% } %>
+          -->
         </div>
       </ul>
     </div>
     <div id="profile-content">
-      <% if (supplier.companyDescription !== undefined) { %>
+      <% if (supplier.companyDescription !== undefined && supplier.companyDescription !=="") { %>
         <div class="content-desc"><%= supplier.companyDescription %></div>
       <% } else { %>
-        <div class="content-desc">This company does not currently have a supplier company description.</div>
+        <div class="content-desc hint">Add Company Description in <a href="/company/update">Edit Company Profile > Descriptions</a>.</div>
       <% } %>
-      <% if (supplier.productsOfInterest !== undefined) { %>
-        <div class="content-interest" id="inactive"><%= supplier.productsOfInterest %></div>
+      <% if (supplier.productDescription !== undefined && supplier.productDescription!=="") { %>
+        <div class="content-interest" id="inactive"><%= supplier.productDescription %></div>
       <% } else { %>
-        <div class="content-interest" id="inactive">This company does not have products of interest.</div>
+        <div class="content-interest hint" id="inactive">Add Product Overview in <a href="/company/update">Edit Company Profile > Descriptions</a>.</div>
       <% } %>
+      <!-- TO-DO: BROKEN. AND STYLING BAD. 
       <% if (supplier.showSORTab === true) { %>
         <div class="content-statement" id="inactive">
           <% var sorKeys = Object.keys(supplier["sorViewFields"]); %>
@@ -151,7 +150,7 @@
             <% } %>
           <% } %>
         </div>
-      <% } %><!-- end if -->
+      <% } %> -->
     </div>
   </div><!-- END RIGHT COLUMN -->
 </div>

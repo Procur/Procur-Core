@@ -206,6 +206,12 @@
   padding: 8px 0;
 }
 
+#profile-content .hint {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
 #inactive {
   display: none;
 }
