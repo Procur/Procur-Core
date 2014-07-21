@@ -5,23 +5,8 @@
  * description of configuration variables and their potential values.
  */
 exports.config = {
-  rules: {
-    ignore: ['^/socket.io/*/xhr-polling']
-  },
-  /**
-   * Array of application names.
-   */
+  rules: { ignore: ['^/socket.io/*/xhr-polling'] },
   app_name : ['CORE PRODUCTION'],
-  /**
-   * Your New Relic license key.
-   */
   license_key : process.env.NEW_RELIC_LICENSE_KEY,
-  logging : {
-    /**
-     * Level at which to log. 'trace' is most useful to New Relic when diagnosing
-     * issues with the agent, 'info' and higher will impose the least overhead on
-     * production applications.
-     */
-    level : 'warn'
-  }
+  logging : { level : 'warn' }
 };
