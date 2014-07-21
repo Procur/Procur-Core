@@ -329,6 +329,7 @@ module.exports = {
           if (supplier === undefined) { /* do something here */ }
           Supplier.update(supplier.id, {
             companyDescription: b.companyDescription,
+            productDescription: b.productDescription,
             environmentalSustainability: b.environmentalSustainability,
             qualitySourcing: b.qualitySourcing,
             workplaceSafety: b.workplaceSafety,

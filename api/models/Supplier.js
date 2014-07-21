@@ -157,6 +157,11 @@
       minLength: 1,
       maxLength: 5000
     },
+    productDescription: {
+      type: 'string',
+      minLength: 1,
+      maxLength: 5000
+    },
     downloadTitle: {
       type: 'array',
       minLength: 1,

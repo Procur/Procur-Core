@@ -10,7 +10,9 @@
             <% } else { %>
             <div><textarea rows="5" name="companyDescription" placeholder="Company Description"><%= buyer.companyDescription %></textarea></div><br/>
           <% } %>
-
+          <br/>
+          <h3>Products of Interest Overview</h3>
+            <div><textarea rows="5" name="productDescription" placeholder="Products of Interest Overview"><% if (buyer.productDescription) { %><%= buyer.productDescription %><% } %></textarea></div><br/>
           <br/>
           <h3>Statements of Responsibility</h3>
           <h5>Environmental Sustainability</h5>
