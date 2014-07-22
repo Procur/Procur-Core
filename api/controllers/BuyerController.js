@@ -313,6 +313,7 @@ module.exports = {
           if (buyer === undefined) { /* do something here */ }
           Buyer.update(buyer.id, {
             companyDescription: b.companyDescription,
+            productDescription: b.productDescription,
             environmentalSustainability: b.environmentalSustainability,
             qualitySourcing: b.qualitySourcing,
             workplaceSafety: b.workplaceSafety,
