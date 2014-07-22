@@ -428,6 +428,11 @@ module.exports.routes = {
   'post /supplier/update/socialoutlets': {
     controller: 'SupplierController',
     action: 'updateSocialOutlets'
+  },
+
+  'post /supplier/update/downloads': {
+    controller: 'SupplierController',
+    action: 'updateDownloads'
   }
 
   /*'get /locationstest': {

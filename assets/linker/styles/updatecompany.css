@@ -82,6 +82,13 @@
   color: #5cc56c;
 }
 
+#companyUpdate .uploadButton {
+  background: #FFF;
+  border-color: #000;
+  float: right;
+  width: 100px;
+}
+
 #companyUpdate .styledSelect > input {
   margin: 0;
   padding: 0;

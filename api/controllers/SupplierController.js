@@ -401,6 +401,51 @@ module.exports = {
     });
   },
 
+
+  updateDownloads: function (req, res) {
+    var activeUser = req.session.passport.user;
+    var b = req.body;
+
+    /* MISSING ACTUAL FILE STORAGE. */
+
+    User.findOne({ id: activeUser }, function (err, user) {
+      if (err) { return res.redirect('/dashboard'); }
+      if (user) {
+        Company.findOne({ user: user.id }, function (err, company) {
+          if (err) { return res.redirect('/dashboard'); }
+          if (company) {
+            Supplier.findOne({ company: company.id }, function (err, supplier) {
+              if(err){ return res.redirect('/dashboard'); }
+              if(supplier){
+                Supplier.update(supplier.id, {
+                  downloadTitle: [b.downloadTitle],
+                  downloadFile: [b.downloadURI]
+                }).exec(function(err, newSupplier) {
+                  if (err) { /*do something here*/ }
+                  if (newSupplier){
+                    return res.redirect('/company/update#photosDownloadsSupplier');
+                  }
+                  else{
+                    res.redirect('/dashboard');
+                  }
+                });              
+              }
+              else{
+                return res.redirect('/dashboard');
+              }
+            });
+          }
+          else {
+            return res.redirect('/dashboard');
+          }
+        });
+      }
+      else {
+        return res.redirect('/dashboard');
+      }
+    });
+  },
+
   destroy: function(req, res){
     User.findOne({ id: req.session.passport.user }, function(err, user){
       if(err) { return res.redirect('/dashboard'); }

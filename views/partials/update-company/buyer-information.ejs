@@ -12,7 +12,7 @@
             <div><%if (buyer.logoUrl) {%><img src="<%= buyer.logoUrl %>"><% } %></div>
             <form id="buyerLogoForm" action="/buyer/update/logo" method="post" enctype="multipart/form-data">
               <input type="file" name="logo" accept="image/*"/>
-              <input type="submit" value="Update Logo Image">
+              <input type="submit" class="uploadButton" value="Upload Logo">
             </form>
           </div><!-- END logo image .col-sm-12 -->
 

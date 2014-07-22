@@ -5,7 +5,7 @@ module.exports.waterlineHelper = {
                      "language","locationCity","locationCountry","locationName",
                      "locationProvince","locationType","preferredBuyerLocation",
                      "preferredBuyerLanguage", "productCategory", "relevantLinkTitle",
-                     "relevantLinkUrl"];
+                     "relevantLinkUrl", "downloadTitle", "downloadFile"];
     var modelKeys = Object.keys(inObject);
     var newObject = {};
 

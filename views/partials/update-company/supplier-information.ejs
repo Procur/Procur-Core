@@ -9,16 +9,11 @@
             <div><% if (supplier.logoUrl) { %><img src="<%= supplier.logoUrl %>"><% } %></div>
             <form id="supplierLogoForm" action="/supplier/update/logo" method="post" enctype="multipart/form-data">
               <input type="file" name="logo" accept="image/*"/>
-              <input type="submit" value="Update Logo Image">
+              <input type="submit" class="uploadButton" value="Upload Logo">
             </form>
           </div><!-- END logo image .col-sm-12 -->
-        </div>
-      </div>
 
           <form action="/supplier/update/information" method="post" id="supplierInformationForm">
-          <div class="formWrapper">
-            <div class="row">
-
             <div class="col-sm-6 dba">
               <h5>DBA Name</h5>
               <div><input type="text" name="dba" <% if (supplier.dbaName) { %>value="<%= supplier.dbaName %>"<% }%> placeholder="Alternate Company Name"></div>
@@ -46,8 +41,8 @@
                   <% for(var x = 0; x < currencies.length; x++) { %>
                     <% var matchFound = false; %>
                     <% if (currencies[x] === "break") { %>
-                      </div>
-                      <div class="col-sm-3">
+                </div>
+                <div class="col-sm-3">
                     <% } %>
                     <% for (var y = 0; y < supplier["acceptedCurrency"].length; y++) { %>
                       <% if (currencies[x] == supplier.acceptedCurrency[y]) { %>
@@ -60,7 +55,7 @@
                       <div class="cb-container"><input class="checkbox" type="checkbox" name="acceptedCurrency" value="<%= currencies[x] %>"><div class="checkboxtext"><%= currencies[x] %></div></div>
                     <% } %>
                   <% } %>
-              </div>
+                </div>
               </div>
             </section>
 
@@ -73,8 +68,8 @@
                   <% for(var x = 0; x < payment.length; x++) { %>
                     <% var matchFound = false; %>
                     <% if (payment[x] === "break") { %>
-                      </div>
-                      <div class="col-sm-3">
+                </div>
+                <div class="col-sm-3">
                     <% } %>
                     <% for (var y = 0; y < supplier["acceptedPaymentTerms"].length; y++) { %>
                       <% if (payment[x] == supplier.acceptedPaymentTerms[y]) { %>
@@ -87,6 +82,7 @@
                       <div class="cb-container"><input class="checkbox" type="checkbox" name="acceptedPaymentTerms" value="<%= payment[x] %>"><div class="checkboxtext"><%= payment[x] %></div></div>
                     <% } %>
                   <% } %>
+                </div>
               </div>
             </section>
 
@@ -99,8 +95,8 @@
                   <% for (var x = 0; x < terms.length; x++) { %>
                     <% var matchFound = false; %>
                     <% if (terms[x] === "break") { %>
-                      </div>
-                      <div class="col-sm-3">
+                </div>
+                <div class="col-sm-3">
                     <% } %>
                     <% for (var y = 0; y < supplier["acceptedDeliveryTerms"].length; y++) { %>
                       <% if (terms[x] == supplier.acceptedDeliveryTerms[y]) { %>
@@ -113,6 +109,7 @@
                       <div class="cb-container"><input class="checkbox" type="checkbox" name="acceptedDeliveryTerms" value="<%= terms[x] %>"><div class="checkboxtext"><%= terms[x] %></div></div>
                     <% } %>
                   <% } %>
+                </div>
               </div>
             </section>
 

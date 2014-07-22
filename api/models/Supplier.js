@@ -164,12 +164,12 @@
     },
     downloadTitle: {
       type: 'array',
-      minLength: 1,
+      minLength: 0,
       maxLength: 100
     },
     downloadFile: {
       type: 'array',
-      minLength: 1,
+      minLength: 0,
       maxLength: 100
     },
     photo: {
