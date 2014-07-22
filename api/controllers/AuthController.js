@@ -298,25 +298,31 @@ module.exports = {
     User.findOne(req.session.passport.user, function(err, user){
       if(err) { return res.redirect('/dashboard'); }
       EmailVerification.findOne({ email: user.email }, function(err, emailVerification){
-        if(err) { return res.redirect('/dashboard'); }
+        if(err) { console.log(JSON.stringify(err)); return res.redirect('/dashboard'); }
         crypto.randomBytes(256, function(err, hash) {
           if(err) { return res.redirect('/dashboard'); }
           token = hash.toString('base64').replace(/\//g,'_').replace(/\+/g,'-');
-          EmailVerification.update(emailVerification, { token: token }, function(err, emailVerification){
-            if(err) { return res.redirect('/dashboard'); }
-            var htmlContent = '<a href="http://' + address + '/verify?token=' + token + '">Click to verify your Procur account!</a>';
-            var mailOptions = {
-              from: "welcome@procur.com",
-              to: user.email,
-              subject: "Please verify your Procur account!",
-              generateTextFromHTML: true,
-              html: htmlContent
-            };
-
-            smtpTransport.sendMail(mailOptions, function(err, response){
-              if(err){res.serverError();}
-              res.redirect('/dashboard');
+          if (emailVerification === undefined){
+            EmailVerification.create({ email: user.email, token: token }, function(err, emailVerification){
+              if(err) {return res.redirect('/dashboard'); }
             });
+          }
+          else {
+            EmailVerification.update(emailVerification, { token: token }, function(err, emailVerification){
+            if(err) { return res.redirect('/dashboard'); }
+            });
+          }
+          var htmlContent = '<a href="http://' + address + '/verify?token=' + token + '">Click to verify your Procur account!</a>';
+          var mailOptions = {
+            from: "welcome@procur.com",
+            to: user.email,
+            subject: "Please verify your Procur account!",
+            generateTextFromHTML: true,
+            html: htmlContent
+          };
+          smtpTransport.sendMail(mailOptions, function(err, response){
+            if(err){res.serverError();}
+            res.redirect('/dashboard');
           });
         });
       });
@@ -325,7 +331,6 @@ module.exports = {
 
   verifyEmail: function(req, res) {
     var consumeToken = req.query.token;
-
     if(!consumeToken) { return res.redirect('/dashboard'); }
     else {
       EmailVerification.findOne({ token: consumeToken }, function(err, verification){
