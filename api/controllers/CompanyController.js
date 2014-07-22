@@ -63,6 +63,10 @@ module.exports = {
                         supplier = waterlineHelper.fixSupplierArrays(supplier);
                         supplier = productCategoryHelper.getCategoryChild(supplier);
                         supplier = sorHelper.appendViewFields(supplier);
+                        console.log(supplier);
+                        supplier.formattedDuns = supplier.getDuns();
+                        console.log(Object.keys(supplier));
+                        console.log(supplier);
                         payload.push(supplier);
                         callback(null, supplier);
                       }

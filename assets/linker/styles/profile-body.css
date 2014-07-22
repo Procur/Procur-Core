@@ -215,3 +215,9 @@
 #inactive {
   display: none;
 }
+
+#profile-content pre {
+  font-size: 14px;
+  background-color: #fff;
+  border: none;
+}

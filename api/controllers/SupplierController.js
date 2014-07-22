@@ -179,7 +179,7 @@ module.exports = {
               linkedin: b.linkedin,
               instagram: b.instagram,
               google: b.google,
-              dunsNumber: b.dunsNumber,
+              dunsNumber: b.getDuns(),
               contactName: b.contactName,
               contactPosition: b.contactPosition,
               contactEmail: b.contactEmail,
