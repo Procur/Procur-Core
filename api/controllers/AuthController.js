@@ -330,13 +330,18 @@ module.exports = {
     else {
       EmailVerification.findOne({ token: consumeToken }, function(err, verification){
         if(err) { return res.redirect('/dashboard'); }
-        User.findOne({ email: verification.email }, function(err, user){
-          if(err) { return res.redirect('/dashboard'); }
-          User.update(user, { emailVerified: true }, function(err, toUpdate){
-            if(err) { return res.redirect('/dashboard');}
-            return res.redirect('/dashboard');
+        if(verification !== undefined){
+          User.findOne({ email: verification.email }, function(err, user){
+            if(err) { return res.redirect('/dashboard'); }
+            User.update(user, { emailVerified: true }, function(err, toUpdate){
+              if(err) { return res.redirect('/dashboard');}
+              return res.redirect('/dashboard');
+            });
           });
-        });
+        }
+        else {
+          return res.redirect('/dashboard');
+        }
       });
     }
   }
