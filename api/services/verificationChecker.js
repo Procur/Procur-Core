@@ -3,9 +3,21 @@
 * The purpose of this service is to check for users
 * that have issues with account verification and resolve those problems
 */
+var nodemailer = require('nodemailer'),
+    smtpTransport = nodemailer.createTransport("SMTP", {
+      service: "Mandrill",
+      auth: {
+        user: process.env.MANDRILL_USERNAME || "app25459603@heroku.com",
+        pass: process.env.MANDRILL_APIKEY || "_tko3ueulFUKJ4Grtv9cmQ"
+      }
+    }),
+    address = process.env.ENVIRONMENT_URL || 'localhost:1337',
+    crypto = require('crypto'),
+    bcrypt = require('bcrypt'),
+    token;
 
 module.exports = {
-  
+
   counter: function (){
     User.find({emailVerified:true}, function(err, users){
       if (users !== null){console.log("Count of verified Users: " + users.length);}
