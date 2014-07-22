@@ -1,0 +1,235 @@
+#careers #navSection {
+position: fixed;
+top: 0px;
+background: white;
+border-bottom: #FFAD24 5px solid;
+height: 50px;
+width: 100%;
+z-index: 9999;
+}
+
+#careers p, ul, li {
+font-family: 'Roboto';
+font-weight: 300;
+font-size: 1em;
+}
+
+#careers .topRow {
+    margin-top: 30px;
+}
+
+#careers .logoArea {
+height: 25px;
+width: 84px;
+background: url(../img/logo.png);
+margin-top: 13px;}
+
+#careers .currentPage a {
+line-height: 50px;
+font-family: 'Montserrat';
+font-weight: 400;
+text-transform: uppercase;
+color: #333132;
+font-size: 0.9em;
+letter-spacing: 0.05em; 
+}
+
+#careers .currentPage a:hover {
+text-decoration: none;
+color: #FFAD24;
+}
+
+#careers h1 {
+font-family: 'Open Sans';
+font-weight: 300;
+color: #FFAD24;
+border-bottom: #C4C4C4 1px dotted;
+padding-bottom: 20px;
+letter-spacing: 1px;
+}
+
+#careers .tagLine p {
+font-family: 'Montserrat';
+font-weight: 400;
+color: #333132;
+margin-top: 20px;
+font-size: 0.95em;
+}
+
+#careers h2 {
+font-family: 'Montserrat';
+font-weight: 700;
+text-transform: uppercase;
+color: #333132;
+font-size: 1em; 
+letter-spacing: 1px;
+padding-bottom: 0px;
+margin-top: 30px;
+
+}
+
+#careers hr {
+margin: 0px;
+padding: 0px 0px 10px;
+border-top: #CFCECE 3px solid;}
+
+#careers .sideBar {
+  margin-top: 20px;
+}
+
+#careers .sideBarNavSection ul {
+margin: 0px;
+padding: 0px;
+list-style: none;
+font-family: 'Roboto';
+font-weight: 300;
+}
+
+#careers .sideBarNavSection ul li a:link {
+color: #333132 !important;
+text-decoration: none;
+}
+
+#careers .sideBarNavSection ul li a:visited {
+color: #333132 !important;
+text-decoration: none;
+}
+
+#careers .sideBarNavSection ul li a:hover {
+color: #FFAD24 !important;
+text-decoration: none;
+}
+
+#careers .sideBarNavSection ul li a.active {
+	color: #FFAD24 !important;
+}
+
+#careers .glandular {
+font-size: 2em;
+color: #FFAD24;
+margin-top: 0px;
+}
+
+
+#careers .miniTitle {
+text-transform: uppercase;
+font-family: 'Montserrat';
+font-weight: 700;
+font-size: 0.8em;
+letter-spacing: 0.05em;
+line-height: 1em;
+padding-top: 5px;}
+
+#careers .details p {
+margin-top: 5px;
+line-height: 18px !important;
+}
+
+#careers .sideBarContactSection {
+border-top: #C4C4C4 1px dotted;
+border-bottom: #C4C4C4 1px dotted;
+margin-top: 25px;
+padding-top: 10px;
+padding-bottom: 20px;
+}
+
+#careers .sideBarContactSection h3 {
+font-family: 'Montserrat';
+font-weight: 700;
+text-transform: uppercase;
+color: #333132;
+font-size: 0.85em; 
+letter-spacing: 0.1em;
+}
+
+#careers .sideBarContactSection a:link {
+font-family: 'Montserrat';
+font-weight: 500;
+color: #FFAD24;}
+
+
+
+
+
+
+
+#careers .generalSectionTitle h4 {
+margin-top: 94px;
+font-family: 'Montserrat';
+font-size: 1em;
+font-weight: 700;
+border-bottom: #C4C4C4 1px dotted;
+padding-bottom: 10px;
+color: #333132;}
+
+
+#careers .mainCopy p {
+line-height: 1.7em;
+margin-bottom: 25px;
+}
+
+
+
+
+
+
+
+
+
+#careers footer {
+height: 50px;
+width: 100%;
+background: #5c5c5c;
+margin-top: 20px;}
+
+#careers .socialArea ul {
+margin: 0px;
+padding: 0px;
+list-style: none;
+}
+
+#careers .socialArea ul li{
+display: inline;
+}
+
+#careers .socialArea ul li a {
+font-size: 1.7em;
+line-height: 50px;
+letter-spacing: 10px;
+color: #dedede;}
+
+#careers .socialArea ul li a:hover {
+color: #ffffff;}
+
+#careers .copyright p {
+line-height: 50px;
+margin: 0px;
+font-family: 'Montserrat';
+font-weight: 400;
+font-size: 0.9em;
+color: #dedede;}
+
+
+#careers .aboutProcur ul {
+margin-top: -15px;
+}
+
+
+#careers * {
+	margin: 0;
+}
+#careers html, body {
+	height: 100%;
+}
+#careers .wrapper {
+    padding-top: 70px;
+    padding-bottom: 30px;
+	min-height: 100%;
+	height: auto !important;
+	height: 100%;
+	margin: 0 auto -70px;
+}
+#careers footer, .push {
+	height: 50px;
+}
+

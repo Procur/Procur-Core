@@ -79,10 +79,10 @@ module.exports.routes = {
     action: 'signup'
   }, //Displays Signup Page
 
-  /*'get /careers': {
+  'get /careers': {
     controller: 'HomeController',
     action: 'careers'
-  },*/ //Displays Careers Page
+  },//Displays Careers Page
 
   'get /contact': {
     controller: 'HomeController',
