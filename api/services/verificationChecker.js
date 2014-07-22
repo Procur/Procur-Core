@@ -74,15 +74,17 @@ module.exports = {
 //  For Users without associated emailVerification objects:
 //  creates emailVerification object and sends an email to any users that do not have one already
   massResolver: function () {
+    var counter = 0;
     User.find({}, function(err, users){
       users.forEach(function(user){
         if (user.emailVerified === false){
           EmailVerification.findOne({ email: user.email }, function(err, emailVerification){
             if(err) { console.log(JSON.stringify(err)); }
-            crypto.randomBytes(256, function(err, hash) {
+            if (emailVerification === undefined){
+              crypto.randomBytes(256, function(err, hash) {
               if(err) { console.log(JSON.stringify(err)); }
               token = hash.toString('base64').replace(/\//g,'_').replace(/\+/g,'-');
-              if (emailVerification === undefined){
+
                 EmailVerification.create({ email: user.email, token: token }, function(err, emailVerification){
                   if(err) {console.log(JSON.stringify(err));  }
                 });
@@ -98,12 +100,15 @@ module.exports = {
               smtpTransport.sendMail(mailOptions, function(err, response){
                 if(err){console.log(JSON.stringify(err));}
               });
-              }
+
             });
+            counter++;
+          }
           });
         }
         });
     });
+    console.log("Number of accounts fixed and emails sent: "+ counter);
   },
 
   // Remind users that have not yet verified and created an email verification object for any that do not have one
