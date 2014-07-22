@@ -37,21 +37,21 @@ module.exports = {
   //CThis checks for both non existent verification and people who have not verified yet and sends an email
   individualResolver: function () {
     User.findOne(req.session.passport.user, function(err, user){
-      if(err) { return res.redirect('/dashboard'); }
+      if(err) { console.log(JSON.stringify(err));  }
       if(user.emailVerified === false){
         EmailVerification.findOne({ email: user.email }, function(err, emailVerification){
-          if(err) { console.log(JSON.stringify(err)); return res.redirect('/dashboard'); }
+          if(err) { console.log(JSON.stringify(err));}
           crypto.randomBytes(256, function(err, hash) {
-            if(err) { return res.redirect('/dashboard'); }
+            if(err) { console.log(JSON.stringify(err)); }
             token = hash.toString('base64').replace(/\//g,'_').replace(/\+/g,'-');
             if (emailVerification === undefined){
               EmailVerification.create({ email: user.email, token: token }, function(err, emailVerification){
-                if(err) {return res.redirect('/dashboard'); }
+                if(err) { console.log(JSON.stringify(err)); }
               });
             }
             else {
               EmailVerification.update(emailVerification, { token: token }, function(err, emailVerification){
-              if(err) { return res.redirect('/dashboard'); }
+              if(err) { console.log(JSON.stringify(err));  }
               });
             }
             var htmlContent = '<a>Please verify your email via the link below.</a><br><a href="http://' + address + '/verify?token=' + token + '">Click to verify your Procur account!</a>';
@@ -63,8 +63,7 @@ module.exports = {
               html: htmlContent
             };
             smtpTransport.sendMail(mailOptions, function(err, response){
-              if(err){res.serverError();}
-              res.redirect('/dashboard');
+              if(err){console.log(JSON.stringify(err));}
             });
           });
         });
@@ -85,7 +84,7 @@ module.exports = {
               token = hash.toString('base64').replace(/\//g,'_').replace(/\+/g,'-');
               if (emailVerification === undefined){
                 EmailVerification.create({ email: user.email, token: token }, function(err, emailVerification){
-                  if(err) {return res.redirect('/dashboard'); }
+                  if(err) {console.log(JSON.stringify(err));  }
                 });
 
               var htmlContent = '<a>Please verify your email via the link below.</a><br><a href="http://' + address + '/verify?token=' + token + '">Click to verify your Procur account!</a>';
@@ -97,8 +96,7 @@ module.exports = {
                 html: htmlContent
               };
               smtpTransport.sendMail(mailOptions, function(err, response){
-                if(err){res.serverError();}
-                res.redirect('/dashboard');
+                if(err){console.log(JSON.stringify(err));}
               });
               }
             });
@@ -120,7 +118,7 @@ module.exports = {
               token = hash.toString('base64').replace(/\//g,'_').replace(/\+/g,'-');
               if (emailVerification === undefined){
                 EmailVerification.create({ email: user.email, token: token }, function(err, emailVerification){
-                  if(err) {return res.redirect('/dashboard'); }
+                  if(err) { console.log(JSON.stringify(err)); }
                 });
               }
               else {
@@ -137,8 +135,7 @@ module.exports = {
                 html: htmlContent
               };
               smtpTransport.sendMail(mailOptions, function(err, response){
-                if(err){res.serverError();}
-                res.redirect('/dashboard');
+                if(err){ console.log(JSON.stringify(err)); }
               });
             });
           });
