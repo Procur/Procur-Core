@@ -11,6 +11,15 @@ module.exports = {
 
     owner: {
       type: 'string'
+    },
+
+    title: {
+      type: 'string'
+    },
+
+    assetUrl: {
+      type: 'string',
+      unique: true
     }
 
   }
