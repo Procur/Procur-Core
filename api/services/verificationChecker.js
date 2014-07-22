@@ -3,7 +3,9 @@
 * The purpose of this service is to check for users
 * that have issues with account verification and resolve those problems
 */
+
 module.exports = {
+  
   counter: function (){
     User.find({emailVerified:true}, function(err, users){
       if (users !== null){console.log("Count of verified Users: " + users.length);}
@@ -18,7 +20,8 @@ module.exports = {
       else {console.log("Count of emailVerification objects: 0");}
     });
   },
-  // This function could be included in any action where we would like to check and resolve verification
+
+  // This function could be included in any action where we would like to check and resolve verification.
   //CThis checks for both non existent verification and people who have not verified yet and sends an email
   individualResolver: function () {
     User.findOne(req.session.passport.user, function(err, user){
@@ -56,6 +59,8 @@ module.exports = {
       }
     });
   },
+
+//  For Users without associated emailVerification objects:
 //  creates emailVerification object and sends an email to any users that do not have one already
   massResolver: function () {
     User.find({}, function(err, users){
@@ -90,6 +95,7 @@ module.exports = {
         });
     });
   },
+
   // Remind users that have not yet verified and created an email verification object for any that do not have one
   massReminder: function () {
     User.find({}, function(err, users){
