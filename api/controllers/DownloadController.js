@@ -6,6 +6,8 @@
  */
 
 module.exports = {
-	
-};
 
+	process: function(req, res){
+		//execute skipper code here
+	},
+};
