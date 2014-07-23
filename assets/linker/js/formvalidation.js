@@ -108,6 +108,7 @@ var dnsMsg = "Please enter a 9-digit DNS Number.";
 var otherLocationsMsg = "Include the name, type, & country when providing a location.";
 var agreeTermsMsg = "You must read & agree to all of the above.";
 var responsiblePartyMsg = "You must assert the above.";
+var cageMsg = "Please enter a 5 characters.";
 
 /*
 
@@ -1199,6 +1200,10 @@ $('#supplierInformationForm').validate({//TO-DO: WHY DOESNT THIS WORK??
     }
   },
   messages:{
+    cageCode: {
+      minlength: cageMsg,
+      maxlength: cageMsg
+    },
     acceptedDeliveryTerms: {
       required: checkBoxMsg
     },
