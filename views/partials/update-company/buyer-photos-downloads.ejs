@@ -1,29 +1,29 @@
 <div id="photosDownloadsBuyer">
   <h4>Photos &amp; Downloads</h4>
   <div class="formWrapper">
+    <div class="row">
+      <div class="col-sm-6">
+        <h3>Downloadable Files</h3>
+      </div>
+    </div>
+    <form id="downloadablesForm" action="/downloads/process" method="post" enctype="multipart/form-data">
       <div class="row">
         <div class="col-sm-6">
-          <h3>Downloadable Files</h3>
+          <input type="text" name="downloadTitle" <% if (buyerDownload && buyerDownload[0] && buyerDownload[0].title) { %> value="<%=buyerDownload[0].title%>" <% } %> placeholder="Title"/>
+        </div>
+        <div class="col-sm-6">
+          <input inline="true" type="file" name="downloadURI" size="40" accept="image/*"/>
         </div>
       </div>
-      <form id="downloadablesForm" action="/downloads/process" method="post" enctype="multipart/form-data">
       <div class="row">
         <div class="col-sm-6">
-          <input type="text" name="downloadTitle" <% if (buyerDownload && buyerDownload.title) { %> value="<%=buyerDownload.title%>" <% } %> placeholder="Title"/>
-        </div>
-        <div class="col-sm-6">
-          <input inline="true" type="file" name="downloadURI" size="40" accept="image/*"//>
-        </div>
-        <!--
-      </div>
-      <div class="row">
-        <div class="col-sm-6">
-          <input type="text" name="downloadTitle" <% if (buyer.downloadTitle && buyer.downloadTitle[1]) { %> value="<%=buyer.downloadTitle[1]%>" <% } %> placeholder="Title"/>
+          <input type="text" name="downloadTitle" <% if (buyerDownload && buyerDownload[1] && buyerDownload[1].title) { %> value="<%=buyerDownload[1].title%>" <% } %> placeholder="Title"/>
         </div>
         <div class="col-sm-6">
           <input inline="true" type="file" name="downloadURI" size="40"/>
         </div>
       </div>
+      <!--
       <div class="row">
         <div class="col-sm-6">
           <input type="text" name="downloadTitle" <% if (buyer.downloadTitle && buyer.downloadTitle[2]) { %> value="<%=buyer.downloadTitle[2]%>" <% } %> placeholder="Title"/>

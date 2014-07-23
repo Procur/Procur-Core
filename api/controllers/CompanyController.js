@@ -551,13 +551,13 @@ module.exports = {
                 buyerdownload: function(callback){
                   if (payload["buyer"]){
                   Download
-                    .findOne({owner: payload["buyer"].id})
-                    .exec(function(err,download){
+                    .find({owner: payload["buyer"].id})
+                    .exec(function(err,downloads){
                       if (err) {callback(err,null)}
-                      else if (!download) { callback(null, undefined); }
+                      else if (!downloads) { callback(null, undefined); }
                       else{
-                        payload["buyerDownload"] = download;
-                        callback(null, download);
+                        payload["buyerDownload"] = downloads;
+                        callback(null, downloads);
                       }
                     });
                   }
@@ -599,8 +599,6 @@ module.exports = {
     var b = req.body;
     var companyID;
     var numOfLocations;
-    console.log(b.companyCity);
-    console.log(b.hqcompanyCity);
 
     User.findOne({ id: user }, function(err, user) {
       if (err) { /* do something here */ }
