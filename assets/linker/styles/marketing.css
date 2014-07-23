@@ -302,7 +302,7 @@ background-repeat:no-repeat;
   display: inline;
 }
 
-.carousel-caption h4 {
+#homeCarousel .carousel-caption h4 {
   font-family: 'Montserrat', sans-serif;
   font-weight: 100;
   letter-spacing: 0.08em;
@@ -313,7 +313,7 @@ background-repeat:no-repeat;
   margin-top: 27px;
 }
 
-.carousel-caption h3 {
+#homeCarousel .carousel-caption h3 {
   font-family: 'Open Sans', sans-serif;
   font-size: 25px;
   font-weight: 100;
@@ -323,7 +323,7 @@ background-repeat:no-repeat;
   margin-top: 0px;
 }
 
-.carousel-caption li {
+#homeCarousel .carousel-caption li {
   font-family: 'Montserrat', sans-serif;
   font-weight: 100;
   letter-spacing: 0.08em;
@@ -334,12 +334,12 @@ background-repeat:no-repeat;
   text-transform: uppercase;
 }
 
-.carousel-caption ul {
+#homeCarousel .carousel-caption ul {
   padding-left: 15px;
   margin-bottom: 30px;
 }
 
-.carousel-caption {
+#homeCarousel .carousel-caption {
   top: 0px;
   left: 0;
   right: 0;
@@ -350,7 +350,7 @@ background-repeat:no-repeat;
   padding: 10px;
 }
 
-.carousel-indicators {
+#homeCarousel .carousel-indicators {
   text-align: left;
   margin-left: 25px;
   left: 0px;
@@ -358,7 +358,7 @@ background-repeat:no-repeat;
 
 }
 
-.carousel-indicators li {
+#homeCarousel .carousel-indicators li {
   border: none;
   background-color: #b8b8b8;
   margin: 0px;
@@ -366,7 +366,7 @@ background-repeat:no-repeat;
   margin-right: 8px;
 }
 
-.carousel-indicators .active {
+#homeCarousel .carousel-indicators .active {
   width:10px;
   height: 10px;
   margin-bottom: 20px;
@@ -379,16 +379,16 @@ background-repeat:no-repeat;
 .glyphicon-chevron-right {
 }
 
-.carousel-control-wrapper{
+#homeCarousel .carousel-control-wrapper{
   margin-right: 25px;
 }
 
-.carousel-control {
+#homeCarousel .carousel-control {
   font-size: 23px;
   text-shadow: none;
 }
 
-.carousel-control.left {
+#homeCarousel .carousel-control.left {
   position: relative;
   background-image: none;
   z-index: 40;
@@ -401,7 +401,7 @@ background-repeat:no-repeat;
   margin-right: 10px;
 }
 
-.carousel-control.right {
+#homeCarousel .carousel-control.right {
   position: relative;
   background-image: none;
   z-index: 40;
@@ -413,7 +413,7 @@ background-repeat:no-repeat;
   top:-55px;
 }
 
-.carousel-caption hr {
+#homeCarousel .carousel-caption hr {
 	border-top: dotted 1px;
 }
 
