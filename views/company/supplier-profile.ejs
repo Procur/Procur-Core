@@ -122,9 +122,9 @@
         <div class="nav-right">
           <li><a id="company-description">Company Description</a></li>
           <li><a id="products-of-interest">Product Overview</a></li>
-          <!-- TO-DO: BROKEN. AND STYLING BAD. 
+          
           <% if (supplier.showSORTab === true) { %><li><a id="statements-of-responsibility">Statements of Responsibility</a></li><% } %>
-          -->
+          
         </div>
       </ul>
     </div>
@@ -139,18 +139,18 @@
       <% } else { %>
         <div class="content-interest hint" id="inactive">Add Product Overview in <a href="/company/update">Edit Company Profile > Descriptions</a>.</div>
       <% } %>
-      <!-- TO-DO: BROKEN. AND STYLING BAD. 
+      
       <% if (supplier.showSORTab === true) { %>
         <div class="content-statement" id="inactive">
           <% var sorKeys = Object.keys(supplier["sorViewFields"]); %>
           <% for (var x = 0; x < sorKeys.length; x++) { %>
-            <% if (supplier[sorKeys[x]] !== undefined) { %>
+            <% if (supplier[sorKeys[x]] !== undefined  && supplier[sorKeys[x]] != "") { %>
               <h4><%= supplier.sorViewFields[sorKeys[x]]  %></h4>
-              <p><%= supplier[sorKeys[x]] %></p>
+              <pre><%= supplier[sorKeys[x]] %></pre>
             <% } %>
           <% } %>
         </div>
-      <% } %> -->
+      <% } %> 
     </div>
   </div><!-- END RIGHT COLUMN -->
 </div>

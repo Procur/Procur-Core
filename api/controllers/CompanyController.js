@@ -127,6 +127,7 @@ module.exports = {
                       else {
                         buyer = waterlineHelper.fixBuyerArrays(buyer);
                         buyer = productCategoryHelper.getCategoryChild(buyer);
+                        buyer = sorHelper.appendViewFields(buyer);
                         payload.push(buyer);
                         callback(null, buyer);
                       }
@@ -141,6 +142,7 @@ module.exports = {
                       else {
                         supplier = waterlineHelper.fixSupplierArrays(supplier);
                         supplier = productCategoryHelper.getCategoryChild(supplier);
+                        supplier = sorHelper.appendViewFields(supplier);
                         payload.push(supplier);
                         callback(null, supplier);
                       }
