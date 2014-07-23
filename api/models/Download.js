@@ -9,7 +9,7 @@ module.exports = {
 
   attributes: {
 
-    owner: {
+    owner: { //ID of the buyer or supplier that owns this download
       type: 'string'
     },
 
