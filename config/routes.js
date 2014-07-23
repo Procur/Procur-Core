@@ -398,11 +398,6 @@ module.exports.routes = {
     action: 'updateSocialOutlets'
   },
 
-  'post /buyer/update/downloads':{
-    controller: 'BuyerController',
-    action: 'updateDownloads'
-  },
-
   //SUPPLIER UPDATE ACTIONS
 
   'post /supplier/update/logo': {
@@ -438,7 +433,14 @@ module.exports.routes = {
   'post /supplier/update/downloads': {
     controller: 'SupplierController',
     action: 'updateDownloads'
-  }
+  },
+
+  //Downloads actions
+
+  'post /downloads/buyer':{
+    controller: 'DownloadController',
+    action: 'process'
+  },
 
   /*'get /locationstest': {
     controller: 'BuyerController',

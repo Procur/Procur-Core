@@ -6,21 +6,24 @@
           <h3>Downloadable Files</h3>
         </div>
       </div>
-      <form id="downloadablesForm" action="/buyer/update/downloads" method="post" enctype="multipart/form-data">
+      <form id="downloadablesForm" action="/downloads/buyer" method="post" enctype="multipart/form-data">
       <div class="row">
+        <!--
         <div class="col-sm-6">
           <input type="text" name="downloadTitle" <% if (buyer.downloadTitle && buyer.downloadTitle[0]) { %> value="<%=buyer.downloadTitle[0]%>" <% } %> placeholder="Title"/>
         </div>
+      -->
         <div class="col-sm-6">
-          <input inline="true" type="file" name="downloadURI" accept="text/*"/>
+          <input inline="true" type="file" name="downloadURI" size="40" accept="image/*"//>
         </div>
+        <!--
       </div>
       <div class="row">
         <div class="col-sm-6">
           <input type="text" name="downloadTitle" <% if (buyer.downloadTitle && buyer.downloadTitle[1]) { %> value="<%=buyer.downloadTitle[1]%>" <% } %> placeholder="Title"/>
         </div>
         <div class="col-sm-6">
-          <input inline="true" type="file" name="downloadURI" accept="text/*"/>
+          <input inline="true" type="file" name="downloadURI" size="40"/>
         </div>
       </div>
       <div class="row">
@@ -28,9 +31,9 @@
           <input type="text" name="downloadTitle" <% if (buyer.downloadTitle && buyer.downloadTitle[2]) { %> value="<%=buyer.downloadTitle[2]%>" <% } %> placeholder="Title"/>
         </div>
         <div class="col-sm-6">
-          <input inline="true" type="file" name="downloadURI" accept="text/*"/>
+          <input inline="true" type="file" name="downloadURI" size="40"/>
         </div>
-      </div>
+      </div>-->
       <div class="row">
         <div class="col-sm-6 col-sm-offset-6">
           <input type="submit" class="uploadButton" value="Upload Files">

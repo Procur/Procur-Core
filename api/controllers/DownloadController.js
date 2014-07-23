@@ -8,6 +8,13 @@
 module.exports = {
 
 	process: function(req, res){
-		//execute skipper code here
-	},
+    console.log("Hit here.");
+    req.file('downloadURI').upload(function (err, files) {
+      if (err) return res.serverError(err);
+      return res.json({
+        message: files.length + ' file(s) uploaded successfully!',
+        files: files
+      });
+    });
+  }
 };
