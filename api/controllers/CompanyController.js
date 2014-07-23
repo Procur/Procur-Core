@@ -45,9 +45,11 @@ module.exports = {
                       if (err) { callback(err, null); }
                       else if (!buyer) { callback(null, undefined); }
                       else {
+                        var formattedDuns = buyer.getDuns();
                         buyer = waterlineHelper.fixBuyerArrays(buyer);
                         buyer = productCategoryHelper.getCategoryChild(buyer);
                         buyer = sorHelper.appendViewFields(buyer);
+                        buyer.formattedDuns = formattedDuns;
                         payload.push(buyer);
                         callback(null, buyer);
                       }
@@ -60,13 +62,11 @@ module.exports = {
                       if (err) { callback(err, null); }
                       else if (!supplier) { callback(null, undefined); }
                       else {
+                        var formattedDuns = supplier.getDuns();
                         supplier = waterlineHelper.fixSupplierArrays(supplier);
                         supplier = productCategoryHelper.getCategoryChild(supplier);
                         supplier = sorHelper.appendViewFields(supplier);
-                        console.log(supplier);
-                        supplier.formattedDuns = supplier.getDuns();
-                        console.log(Object.keys(supplier));
-                        console.log(supplier);
+                        supplier.formattedDuns = formattedDuns;
                         payload.push(supplier);
                         callback(null, supplier);
                       }
@@ -129,8 +129,10 @@ module.exports = {
                       if (err) { callback(err, null); }
                       else if (!buyer) { callback(null, undefined); }
                       else {
+                        var formattedDuns = buyer.getDuns();
                         buyer = waterlineHelper.fixBuyerArrays(buyer);
                         buyer = productCategoryHelper.getCategoryChild(buyer);
+                        buyer.formattedDuns = formattedDuns;
                         payload.push(buyer);
                         callback(null, buyer);
                       }
@@ -143,8 +145,10 @@ module.exports = {
                       if (err) { callback(err, null); }
                       else if (!supplier) { callback(null, undefined); }
                       else {
+                        var formattedDuns = supplier.getDuns();
                         supplier = waterlineHelper.fixSupplierArrays(supplier);
                         supplier = productCategoryHelper.getCategoryChild(supplier);
+                        supplier.formattedDuns = formattedDuns;
                         payload.push(supplier);
                         callback(null, supplier);
                       }
