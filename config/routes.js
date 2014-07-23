@@ -398,6 +398,11 @@ module.exports.routes = {
     action: 'updateSocialOutlets'
   },
 
+  'post /buyer/update/downloads':{
+    controller: 'BuyerController',
+    action: 'updateDownloads'
+  },
+
   //SUPPLIER UPDATE ACTIONS
 
   'post /supplier/update/logo': {

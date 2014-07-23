@@ -386,6 +386,51 @@ module.exports = {
     });
   },
 
+  updateDownloads: function (req, res) {
+    var activeUser = req.session.passport.user;
+    var b = req.body;
+
+    /* MISSING ACTUAL FILE STORAGE. */
+
+    User.findOne({ id: activeUser }, function (err, user) {
+      if (err) { return res.redirect('/dashboard'); }
+      if (user) {
+        Company.findOne({ user: user.id }, function (err, company) {
+          if (err) { return res.redirect('/dashboard'); }
+          if (company) {
+            Buyer.findOne({ company: company.id }, function (err, buyer) {
+              if(err){ return res.redirect('/dashboard'); }
+              if(buyer){
+                Buyer.update(buyer.id, {
+                  downloadTitle: [b.downloadTitle],
+                  downloadFile: [b.downloadURI]
+                }).exec(function(err, newBuyer) {
+                  if (err) { }
+                  if (newBuyer){
+                    req.flash('message', 'Buyer information updated.');
+                    return res.redirect('/company/update#photosDownloadsBuyer');
+                  }
+                  else{
+                    res.redirect('/dashboard');
+                  }
+                });              
+              }
+              else{
+                return res.redirect('/dashboard');
+              }
+            });
+          }
+          else {
+            return res.redirect('/dashboard');
+          }
+        });
+      }
+      else {
+        return res.redirect('/dashboard');
+      }
+    });
+  },
+
   destroy: function (req, res) {
     var activeUser = req.session.passport.user,
         p = req.params;
