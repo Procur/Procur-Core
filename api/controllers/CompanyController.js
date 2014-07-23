@@ -36,7 +36,7 @@ module.exports = {
             locationsPayload["company"] = location;
             viewLocations = locationsHelper.parseLocations(locationsPayload);
 
-            async.parallel(
+            async.series(
               {
                 buyer: function(callback) {
                   Buyer
@@ -48,7 +48,7 @@ module.exports = {
                         buyer = waterlineHelper.fixBuyerArrays(buyer);
                         buyer = productCategoryHelper.getCategoryChild(buyer);
                         buyer = sorHelper.appendViewFields(buyer);
-                        payload.push(buyer);
+                        payload["buyer"] = buyer;
                         callback(null, buyer);
                       }
                     });
@@ -63,33 +63,49 @@ module.exports = {
                         supplier = waterlineHelper.fixSupplierArrays(supplier);
                         supplier = productCategoryHelper.getCategoryChild(supplier);
                         supplier = sorHelper.appendViewFields(supplier);
-                        payload.push(supplier);
-
-                        Download
-                          .findOne({owner: supplier.id}).exec(function(err,download){
-                            //there would actually be more than 1 to find...
-                          if (err) {return res.redirect('/dashboard');}
-                          if (download){
-                            console.log("download found");
-                          }
-                          else{
-                            console.log("download null");
-                          }
-                          });
+                        payload["supplier"]= supplier;
                         callback(null, supplier);
                       }
                     });
+                },
+                buyerdownload: function(callback){
+                  if (payload["buyer"]){
+                  Download
+                    .findOne({owner: payload["buyer"].id})
+                    .exec(function(err,download){
+                      if (err) {callback(err,null)}
+                      else if (!download) { callback(null, undefined); }
+                      else{
+                        payload["buyerDownload"] = download;
+                        callback(null, download);
+                      }
+                    });
+                  }
+                },
+                supplierdownload: function(callback){
+                  if (payload["supplier"]){
+                  Download
+                    .findOne({owner: payload["supplier"].id})
+                    .exec(function(err,download){
+                      if (err) {callback(err,null)}
+                      else if (!download) { callback(null, undefined); }
+                      else{
+                        payload["supplierDownload"] = download;
+                        callback(null, download);
+                      }
+                    });
+                  }
                 }
               },
               function(err, data) {
                 if (data.buyer && data.supplier) {
-                  res.view({ company: payload[0], user: payload[1], buyer: payload[2], supplier: payload[3], locations: viewLocations, loggedin: loggedin });
+                  res.view({ company: payload[0], user: payload[1], buyer: payload["buyer"], supplier: payload["supplier"], locations: viewLocations, loggedin: loggedin, buyerDownload: payload["buyerDownload"], supplierDownload: payload["supplierDownload"]});
                 }
                 else if (data.buyer && (data.supplier === undefined)) {
-                  res.view({ company: payload[0], user: payload[1], buyer: payload[2], locations: viewLocations, loggedin: loggedin });
+                  res.view({ company: payload[0], user: payload[1], buyer: payload["buyer"], locations: viewLocations, loggedin: loggedin, buyerDownload: payload["buyerDownload"]});
                 }
                 else if ((data.buyer === undefined) && data.supplier) {
-                  res.view({ company: payload[0], user: payload[1], supplier: payload[2], locations: viewLocations, loggedin: loggedin });
+                  res.view({ company: payload[0], user: payload[1], supplier: payload["supplier"], locations: viewLocations, loggedin: loggedin, supplierDownload: payload["supplierDownload"]});
                 }
               }
             )
@@ -128,7 +144,7 @@ module.exports = {
             locationsPayload["company"] = location;
             viewLocations = locationsHelper.parseLocations(locationsPayload);
 
-            async.parallel(
+            async.series(
               {
                 buyer: function(callback) {
                   Buyer
@@ -139,7 +155,7 @@ module.exports = {
                       else {
                         buyer = waterlineHelper.fixBuyerArrays(buyer);
                         buyer = productCategoryHelper.getCategoryChild(buyer);
-                        payload.push(buyer);
+                        payload["buyer"] = buyer;
                         callback(null, buyer);
                       }
                     });
@@ -153,19 +169,47 @@ module.exports = {
                       else {
                         supplier = waterlineHelper.fixSupplierArrays(supplier);
                         supplier = productCategoryHelper.getCategoryChild(supplier);
-                        payload.push(supplier);
+                        payload["supplier"] = supplier;
                         callback(null, supplier);
                       }
                     });
+                },
+                buyerdownload: function(callback){
+                  if (payload["buyer"]){
+                  Download
+                    .findOne({owner: payload["buyer"].id})
+                    .exec(function(err,download){
+                      if (err) {callback(err,null)}
+                      else if (!download) { callback(null, undefined); }
+                      else{
+                        payload["buyerDownload"] = download;
+                        callback(null, download);
+                      }
+                    });
+                  }
+                },
+                supplierdownload: function(callback){
+                  if (payload["supplier"]){
+                  Download
+                    .findOne({owner: payload["supplier"].id})
+                    .exec(function(err,download){
+                      if (err) {callback(err,null)}
+                      else if (!download) { callback(null, undefined); }
+                      else{
+                        payload["supplierDownload"] = download;
+                        callback(null, download);
+                      }
+                    });
+                  }
                 }
               },
               function(err, data) {
                 switch(profileType) {
                   case ("supplier"):
-                    res.view({ company: payload[0], user: payload[1], supplier: payload[3], locations: viewLocations, loggedin: loggedin, type: profileType });
+                    res.view({ company: payload[0], user: payload[1], supplier: payload["supplier"], locations: viewLocations, loggedin: loggedin, type: profileType, supplierDownload: payload["supplierDownload"] });
                     break;
                   case ("buyer"):
-                    res.view({ company: payload[0], user: payload[1], buyer: payload[2], locations: viewLocations, loggedin: loggedin, type: profileType });
+                    res.view({ company: payload[0], user: payload[1], buyer: payload["buyer"], locations: viewLocations, loggedin: loggedin, type: profileType, buyerDownload: payload["buyerDownload"] });
                 }
               }
             )
