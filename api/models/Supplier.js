@@ -174,8 +174,7 @@
     },
     photo: {
       type: 'array',
-      minLength: 1,
-      maxLength: 100
+      minLength: 1
     },
     environmentalSustainability: {
       type: 'string',
