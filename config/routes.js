@@ -437,7 +437,7 @@ module.exports.routes = {
 
   //Downloads actions
 
-  'post /downloads/buyer':{
+  'post /downloads/process':{
     controller: 'DownloadController',
     action: 'process'
   },

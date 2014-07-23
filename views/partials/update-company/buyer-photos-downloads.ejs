@@ -6,13 +6,11 @@
           <h3>Downloadable Files</h3>
         </div>
       </div>
-      <form id="downloadablesForm" action="/downloads/buyer" method="post" enctype="multipart/form-data">
+      <form id="downloadablesForm" action="/downloads/process" method="post" enctype="multipart/form-data">
       <div class="row">
-        <!--
         <div class="col-sm-6">
-          <input type="text" name="downloadTitle" <% if (buyer.downloadTitle && buyer.downloadTitle[0]) { %> value="<%=buyer.downloadTitle[0]%>" <% } %> placeholder="Title"/>
+          <input type="text" name="downloadTitle" <% if (buyerDownload && buyerDownload.title) { %> value="<%=buyerDownload.title%>" <% } %> placeholder="Title"/>
         </div>
-      -->
         <div class="col-sm-6">
           <input inline="true" type="file" name="downloadURI" size="40" accept="image/*"//>
         </div>

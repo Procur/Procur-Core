@@ -64,6 +64,18 @@ module.exports = {
                         supplier = productCategoryHelper.getCategoryChild(supplier);
                         supplier = sorHelper.appendViewFields(supplier);
                         payload.push(supplier);
+
+                        Download
+                          .findOne({owner: supplier.id}).exec(function(err,download){
+                            //there would actually be more than 1 to find...
+                          if (err) {return res.redirect('/dashboard');}
+                          if (download){
+                            console.log("download found");
+                          }
+                          else{
+                            console.log("download null");
+                          }
+                          });
                         callback(null, supplier);
                       }
                     });
@@ -464,7 +476,7 @@ module.exports = {
           locationsPayload["company"] = locations;
           viewLocations = locationsHelper.parseLocations(locationsPayload);
 
-          async.parallel(
+          async.series(
               {
                 buyer: function(callback) {
                   Buyer
@@ -491,17 +503,45 @@ module.exports = {
                         callback(null, supplier);
                       }
                     });
+                },
+                buyerdownload: function(callback){
+                  if (payload["buyer"]){
+                  Download
+                    .findOne({owner: payload["buyer"].id})
+                    .exec(function(err,download){
+                      if (err) {callback(err,null)}
+                      else if (!download) { callback(null, undefined); }
+                      else{
+                        payload["buyerDownload"] = download;
+                        callback(null, download);
+                      }
+                    });
+                  }
+                },
+                supplierdownload: function(callback){
+                  if (payload["supplier"]){
+                  Download
+                    .findOne({owner: payload["supplier"].id})
+                    .exec(function(err,download){
+                      if (err) {callback(err,null)}
+                      else if (!download) { callback(null, undefined); }
+                      else{
+                        payload["supplierDownload"] = download;
+                        callback(null, download);
+                      }
+                    });
+                  }
                 }
               },
               function(err, data) {
                 if (payload["buyer"] !== undefined && payload["supplier"] === undefined) {
-                  res.view({ user: payload["user"], company: payload["company"], buyer: payload["buyer"], supplier: payload["supplier"], companyLocations: viewLocations });
+                  res.view({ user: payload["user"], company: payload["company"], buyer: payload["buyer"], supplier: payload["supplier"], companyLocations: viewLocations, buyerDownload: payload["buyerDownload"]});
                 }
                 if (payload["buyer"] === undefined && payload["supplier"] !== undefined) {
-                  res.view({ user: payload["user"], company: payload["company"], buyer: payload["buyer"], supplier: payload["supplier"], companyLocations: viewLocations });
+                  res.view({ user: payload["user"], company: payload["company"], buyer: payload["buyer"], supplier: payload["supplier"], companyLocations: viewLocations, supplierDownload: payload["supplierDownload"]});
                 }
                 if (payload["buyer"] !== undefined && payload["supplier"] !== undefined) {
-                  res.view({ user: payload["user"], company: payload["company"], buyer: payload["buyer"], supplier: payload["supplier"], companyLocations: viewLocations });
+                  res.view({ user: payload["user"], company: payload["company"], buyer: payload["buyer"], supplier: payload["supplier"], companyLocations: viewLocations, buyerDownload: payload["buyerDownload"], supplierDownload: payload["supplierDownload"]});
                 }
               }
             ) // End async

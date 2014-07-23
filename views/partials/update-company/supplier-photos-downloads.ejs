@@ -1,20 +1,21 @@
 <div id="photosDownloadsSupplier">
   <h4>Photos &amp; Downloads</h4>
   <div class="formWrapper">
-      <div class="row">
-        <div class="col-sm-6">
-          <h3>Downloadable Files</h3>
-        </div>
+    <div class="row">
+      <div class="col-sm-6">
+       <h3>Downloadable Files</h3>
       </div>
-      <form id="downloadablesForm" action="/supplier/update/downloads" method="post" enctype="multipart/form-data">
+    </div>
+    <form id="downloadablesForm" action="/downloads/process" method="post" enctype="multipart/form-data">
       <div class="row">
         <div class="col-sm-6">
-          <input type="text" name="downloadTitle" <% if (supplier.downloadTitle && supplier.downloadTitle[0]) { %> value="<%=supplier.downloadTitle[0]%>" <% } %> placeholder="Title"/>
+          <input type="text" name="downloadTitle" <% if (supplierDownload && supplierDownload.title) { %> value="<%=supplierDownload.title%>" <% } %> placeholder="Title"/>
         </div>
         <div class="col-sm-6">
           <input inline="true" type="file" name="downloadURI" accept="text/*"/>
         </div>
       </div>
+      <!--
       <div class="row">
         <div class="col-sm-6">
           <input type="text" name="downloadTitle" <% if (supplier.downloadTitle && supplier.downloadTitle[1]) { %> value="<%=supplier.downloadTitle[1]%>" <% } %> placeholder="Title"/>
@@ -31,11 +32,13 @@
           <input inline="true" type="file" name="downloadURI" accept="text/*"/>
         </div>
       </div>
+      -->
       <div class="row">
         <div class="col-sm-6 col-sm-offset-6">
           <input type="submit" class="uploadButton" value="Upload Files">
         </div>
       </div>
+
     </form>
     <div class="row">
       <div class="col-sm-6">
