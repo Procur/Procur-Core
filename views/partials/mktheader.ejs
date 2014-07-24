@@ -39,12 +39,21 @@
           </div>
         </li>
         <li>
+        <% if (loggedin) { %>
+          <a class="loginLink" href="/logout">Log Out</a>
+        <% } else { %>
           <a class="loginLink" href="/login">Sign In</a>
+        <% } %>
+          
           <div class="hoverTriContainer">
           </div>
         </li>
         <li>
-          <a class="joinLink" href="/signup">Join Now</a>
+          <% if (loggedin) { %>
+           <a class="joinLink" href="/dashboard">Go to My Procur</a>
+          <% } else { %>
+            <a class="joinLink" href="/login">Join Now</a>
+          <% } %>
           <div class="hoverTriContainer">
           </div>
         </li>

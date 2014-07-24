@@ -62,45 +62,65 @@ module.exports = {
 
   //HEADER ACTIONS
   features: function(req, res){
-    res.view();
+    var loggedin;
+    req.session.passport.user === undefined ? loggedin = false : loggedin = true;
+    res.view({ loggedin: loggedin});
   },
 
   pricing: function(req, res){
-    res.view();
+    var loggedin;
+    req.session.passport.user === undefined ? loggedin = false : loggedin = true;
+    res.view({ loggedin: loggedin});
   },
 
   tradeShows: function(req, res){
-    res.view();
+    var loggedin;
+    req.session.passport.user === undefined ? loggedin = false : loggedin = true;
+    res.view({ loggedin: loggedin});
   },
 
   aboutUs: function(req, res){
-    res.view();
+    req.session.passport.user === undefined ? loggedin = false : loggedin = true;
+    console.log(loggedin);
+    res.view({ loggedin: loggedin});
   },
 
   earlyaccess: function(req, res){
-    res.view();
+    var loggedin;
+    req.session.passport.user === undefined ? loggedin = false : loggedin = true;
+    res.view({ loggedin: loggedin});
   },
 
   press: function(req, res){
-    res.view();
+    var loggedin;
+    req.session.passport.user === undefined ? loggedin = false : loggedin = true;
+    res.view({ loggedin: loggedin});
   },
 
   login: function(req, res){
-    res.view();
+    var loggedin;
+    req.session.passport.user === undefined ? loggedin = false : loggedin = true;
+    res.view({ loggedin: loggedin});
   },
 
   signup: function(req, res){
-    res.view();
+    var loggedin;
+    req.session.passport.user === undefined ? loggedin = false : loggedin = true;
+    res.view({ loggedin: loggedin});
   },
 
   careers: function(req, res){
-    res.view();
+    var loggedin;
+    req.session.passport.user === undefined ? loggedin = false : loggedin = true;
+    res.view({ loggedin: loggedin});
   },
 
   //CONTACT FORM FUNCTIONALITY
 
   contact: function(req, res){
-    res.view();
+    var loggedin;
+    req.session.passport.user === undefined ? loggedin = false : loggedin = true;
+    res.view({ loggedin: loggedin});
   },
 
   processContact: function(req, res){
@@ -163,20 +183,28 @@ module.exports = {
   ////////////////////////////
 
   faq: function(req, res){
-    res.view();
+    var loggedin;
+    req.session.passport.user === undefined ? loggedin = false : loggedin = true;
+    res.view({ loggedin: loggedin});
   },
 
   support: function(req, res){
-    res.view();
+    var loggedin;
+    req.session.passport.user === undefined ? loggedin = false : loggedin = true;
+    res.view({ loggedin: loggedin});
   },
 
   //FOOTER ACTIONS
   privacyNotice: function(req, res){
-    res.view();
+    var loggedin;
+    req.session.passport.user === undefined ? loggedin = false : loggedin = true;
+    res.view({ loggedin: loggedin});
   },
 
   termsofservice: function(req, res){
-    res.view();
+    var loggedin;
+    req.session.passport.user === undefined ? loggedin = false : loggedin = true;
+    res.view({ loggedin: loggedin});
   }
 
 
