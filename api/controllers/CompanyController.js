@@ -20,10 +20,12 @@ module.exports = {
     var locationsPayload = {};
     var viewLocations = {};
     var loggedin;
+    var isOwner = false;
 
     currentUser === undefined ? loggedin = false : loggedin = true;
 
     Company.findOne({ handle: handle }, function(err, company) {
+      currentUser == company.user ? isOwner = true : isOwner = false;
       if (err) { return res.redirect('/error/notfound'); }
       if (!company) { return res.redirect('/404'); }
       if (company !== undefined) {
@@ -71,13 +73,13 @@ module.exports = {
               },
               function(err, data) {
                 if (data.buyer && data.supplier) {
-                  res.view({ company: payload[0], user: payload[1], buyer: payload[2], supplier: payload[3], locations: viewLocations, loggedin: loggedin });
+                  res.view({ company: payload[0], user: payload[1], buyer: payload[2], supplier: payload[3], locations: viewLocations, loggedin: loggedin , isOwner: isOwner});
                 }
                 else if (data.buyer && (data.supplier === undefined)) {
-                  res.view({ company: payload[0], user: payload[1], buyer: payload[2], locations: viewLocations, loggedin: loggedin });
+                  res.view({ company: payload[0], user: payload[1], buyer: payload[2], locations: viewLocations, loggedin: loggedin , isOwner: isOwner});
                 }
                 else if ((data.buyer === undefined) && data.supplier) {
-                  res.view({ company: payload[0], user: payload[1], supplier: payload[2], locations: viewLocations, loggedin: loggedin });
+                  res.view({ company: payload[0], user: payload[1], supplier: payload[2], locations: viewLocations, loggedin: loggedin , isOwner: isOwner});
                 }
               }
             )
@@ -104,6 +106,7 @@ module.exports = {
     currentUser === undefined ? loggedin = false : loggedin = true;
 
     Company.findOne({ handle: handle }, function(err, company) {
+      currentUser == company.user ? isOwner = true : isOwner = false;
       if (err) { return res.redirect('/error/notfound'); }
       if (!company) { return res.redirect('/404'); }
       if (company !== undefined) {
@@ -150,10 +153,10 @@ module.exports = {
               function(err, data) {
                 switch(profileType) {
                   case ("supplier"):
-                    res.view({ company: payload[0], user: payload[1], supplier: payload[3], locations: viewLocations, loggedin: loggedin, type: profileType });
+                    res.view({ company: payload[0], user: payload[1], supplier: payload[3], locations: viewLocations, loggedin: loggedin, type: profileType, isOwner: isOwner });
                     break;
                   case ("buyer"):
-                    res.view({ company: payload[0], user: payload[1], buyer: payload[2], locations: viewLocations, loggedin: loggedin, type: profileType });
+                    res.view({ company: payload[0], user: payload[1], buyer: payload[2], locations: viewLocations, loggedin: loggedin, type: profileType, isOwner: isOwner });
                 }
               }
             )

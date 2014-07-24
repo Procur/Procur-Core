@@ -41,6 +41,19 @@ input {
   padding: 15px 36px;
 
 }
+
+#regWizard .countryCodeDisplay {
+  white-space: nowrap; 
+  background-color: #fff; 
+  height: 25px; 
+  margin-top:5px;
+}
+
+#regWizard .countryCodeInput {
+  margin-top: 0px;
+  width: 90%;
+}
+
 #regWizard .topBox {
   background: #333132;
 }

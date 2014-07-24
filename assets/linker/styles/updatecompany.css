@@ -284,6 +284,17 @@
   position: absolute;
 }
 
+#companyUpdate .countryCodeDisplay {
+  white-space: nowrap; 
+  background-color: #fff; 
+  height: 25px; 
+  margin-top:5px;
+}
+
+#companyUpdate .countryCodeInput {
+  margin-top: 0px;
+}
+
 @-moz-document url-prefix() { /* Checkboxtext vertical align fix for Firefox */
   #companyUpdate .checkbox-container {
     padding-bottom: 10px;

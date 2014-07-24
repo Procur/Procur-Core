@@ -10,7 +10,7 @@
           <h5>Company Phone*</h5>
           <div class="row insideForm">
             <div class="col-sm-5 inputColumnL">
-                <div><input type="text" name="phoneNumberCountryCode" value="<%= company.phoneNumberCountryCode %>" placeholder="Country Code*"></div>
+                <div class="countryCodeDisplay">&nbsp+<input class="countryCodeInput" type="text" name="phoneNumberCountryCode" value="<%= company.phoneNumberCountryCode %>" placeholder="Country Code*"></div>
             </div>
             <div class="col-sm-7 inputColumnR">
                 <div><input type="text" name="phoneNumber" value="<%= company.phoneNumber %>" placeholder="Phone Number*"></div>
@@ -26,9 +26,9 @@
           <div class="row insideForm">
             <div class="col-sm-5 inputColumnL">
                 <% if (company.faxCountryCode === undefined) { %>
-                  <div><input type="text" name="faxCountryCode" placeholder="Country Code"></div>
+                  <div class="countryCodeDisplay">&nbsp+<input class="countryCodeInput"  type="text" name="faxCountryCode" placeholder="Country Code"></div>
                   <% } else { %>
-                  <div><input type="text" name="faxCountryCode" value="<%= company.faxCountryCode %>" placeholder="Country Code"></div>
+                  <div class="countryCodeDisplay">&nbsp+<input class="countryCodeInput"  type="text" name="faxCountryCode" value="<%= company.faxCountryCode %>" placeholder="Country Code"></div>
                 <% } %>
             </div>
             <div class="col-sm-7 inputColumnR">

@@ -121,13 +121,15 @@
       <% if (buyer.companyDescription !== undefined && buyer.productDescription !=="") { %>
         <div class="content-desc"><%= buyer.companyDescription %></div>
       <% } else { %>
+        <% if (isOwner == true) { %>
         <div class="content-desc hint">Add Company Description in <a href="/company/update">Edit Company Profile > Descriptions</a>.</div>
-      <% } %>
+      <% } } %>
       <% if (buyer.productDescription !== undefined && buyer.productDescription !=="") { %>
         <div class="content-interest" id="inactive"><%= buyer.productDescription %></div>
       <% } else { %>
+        <% if (isOwner == true) { %>
         <div class="content-interest hint" id="inactive">Add Products of Interest in <a href="/company/update">Edit Company Profile > Descriptions</a></div>
-      <% } %>
+      <% } } %>
       <!-- TO-DO: BROKEN. AND STYLING BAD. 
       <% if (buyer.showSORTab === true) { %>
         <div class="content-statement" id="inactive">
