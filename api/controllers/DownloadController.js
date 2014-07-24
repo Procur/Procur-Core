@@ -12,17 +12,19 @@ module.exports = {
     User.findOne({ id: req.session.passport.user }, function(err, user) {
       Company.findOne({ user: user.id }, function(err, company) {
         if (err) { return res.redirect('/dashboard'); }
-        if (b.privateLabeler == "privateLabeler") { b.privateLabeler = true; } else { b.privateLabeler = false; }
-        
         if(user.activeMode == 'supplier'){
           Supplier.findOne({ company: company.id }, function(err, supplier){
             if(err){ return res.redirect('/dashboard'); }
-            Download.create({
-              owner: supplier.id,
-              title: b.downloadTitle
-            }, function(err, supplier) {
-              if (err) { return res.redirect('/dashboard'); }
-            });
+            var i = 0;
+            while (b["downloadTitle" + i]) {
+              Download.create({
+                owner: supplier.id,
+                title: b["downloadTitle" + i]
+              }, function(err, download) {
+                if (err) { return res.redirect('/dashboard'); }
+              });
+              i=i+1;
+            }
             return res.redirect('/company/update#photosDownloadsSupplier');
           });
         }
@@ -34,7 +36,7 @@ module.exports = {
               Download.create({
                 owner: buyer.id,
                 title: b["downloadTitle" + i]
-              }, function(err, buyer) {
+              }, function(err, download) {
                 if (err) { return res.redirect('/dashboard'); }
               });
               i=i+1;

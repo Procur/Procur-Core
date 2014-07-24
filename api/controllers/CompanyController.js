@@ -552,7 +552,7 @@ module.exports = {
                   if (payload["buyer"]){
                   Download
                     .find({owner: payload["buyer"].id})
-                    .sort('createdAt')
+                    .sort('updatedAt')
                     .exec(function(err,downloads){
                       if (err) {callback(err,null)}
                       else if (!downloads) { callback(null, undefined); }
@@ -566,13 +566,14 @@ module.exports = {
                 supplierdownload: function(callback){
                   if (payload["supplier"]){
                   Download
-                    .findOne({owner: payload["supplier"].id})
-                    .exec(function(err,download){
+                    .find({owner: payload["supplier"].id})
+                    .sort('updatedAt')
+                    .exec(function(err,downloads){
                       if (err) {callback(err,null)}
-                      else if (!download) { callback(null, undefined); }
+                      else if (!downloads) { callback(null, undefined); }
                       else{
-                        payload["supplierDownload"] = download;
-                        callback(null, download);
+                        payload["supplierDownload"] = downloads;
+                        callback(null, downloads);
                       }
                     });
                   }
