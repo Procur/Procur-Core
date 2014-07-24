@@ -9,8 +9,6 @@ module.exports = {
 
 	process: function(req, res){
     var b = req.body;
-    console.log(b);
-    console.log('b downloadtitle' + b.downloadTitle);
     User.findOne({ id: req.session.passport.user }, function(err, user) {
       Company.findOne({ user: user.id }, function(err, company) {
         if (err) { return res.redirect('/dashboard'); }
@@ -31,15 +29,15 @@ module.exports = {
         if (user.activeMode == 'buyer'){
           Buyer.findOne({ company: company.id }, function(err, buyer){
             if(err){ return res.redirect('/dashboard'); }
-            var allTitles = [b.downloadTitle];
-            //console.log(allTitles);
-            for (var i = 0; i < allTitles.length; i++) {
+            var i = 0;
+            while (b["downloadTitle" + i]) {
               Download.create({
                 owner: buyer.id,
-                title: allTitles[i]
+                title: b["downloadTitle" + i]
               }, function(err, buyer) {
                 if (err) { return res.redirect('/dashboard'); }
               });
+              i=i+1;
             }
             return res.redirect('/company/update#photosDownloadsBuyer');
           });

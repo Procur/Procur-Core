@@ -10,16 +10,19 @@ module.exports = {
   attributes: {
 
     owner: { //ID of the buyer or supplier that owns this download
-      type: 'string'
+      type: 'string',
+      required: true
     },
 
     title: {
-      type: 'string'
+      type: 'string',
+      required: true
     },
 
     assetUrl: {
       type: 'string',
-      unique: true
+      unique: true//,
+      //required: true //just commented out for testing til downloading works
     }
 
   }

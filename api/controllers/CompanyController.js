@@ -552,6 +552,7 @@ module.exports = {
                   if (payload["buyer"]){
                   Download
                     .find({owner: payload["buyer"].id})
+                    .sort('createdAt')
                     .exec(function(err,downloads){
                       if (err) {callback(err,null)}
                       else if (!downloads) { callback(null, undefined); }
