@@ -1,43 +1,54 @@
 <div id="photosDownloadsBuyer">
-  <h4>Downloadable Files</h4>
-  <div class="formWrapper">
     <% if (buyerDownload && buyerDownload.length>0) { %>
-      <div class="row">
-        <div class="col-sm-6">
-          <h3>Current Publicly Available Downloads</h3>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-sm-12">
-          <ul class="downloadsList">
-            <% for (var i = 0; i<buyerDownload.length; i++){ %>
-              <li>
-                <%= buyerDownload[i].title %><a href="#"><i class="fa fa-download"></i></a><a href="#" title="Remove"><i class="fa fa-times"></i></a>
-              </li>
-            <% } %>
-          </ul>
-        </div>
-      </div>
-    <% } %>
-    <% if (!buyerDownload || buyerDownload.length<5){ %>
-    <div class="row">
-      <div class="col-sm-6">
-        <h3>Upload Files</h3>
-      </div>
-    </div>
-    <form id="downloadablesForm" action="/downloads/process" method="post" enctype="multipart/form-data">
-      <% for (var i = 0; i<5-buyerDownload.length; i++){ %>
+      <h4>My Downloadable Files</h4>
+      <div class="formWrapper">
+        <form id="downloadablesForm" action="/downloads/remove" method="post" enctype="multipart/form-data">
         <div class="row">
-          <div class="col-sm-6">
-            <input type="text" name="<%='downloadTitle'+i %>" placeholder="Title"/>
-          </div>
-          <div class="col-sm-6">
-            <input inline="true" type="file" name="<%='downloadURI'+i %>"  accept="image/*"/>
+          <div class="col-sm-12">
+            <ul class="downloadsList">
+              <% for (var i = 0; i<buyerDownload.length; i++){ %>
+                <li>
+                  <div class="col-sm-8">
+                    <%= buyerDownload[i].title %>
+                  </div>
+                  <div class="col-sm-2">
+                    <a href="#">Download<i class="fa fa-download"></i></a>
+                  </div>
+                  <div class="col-sm-2">
+                    <a href="#" title="Remove">Remove<i class="fa fa-times"></i></a>
+                  </div>
+                </li>
+              <% } %>
+            </ul>
           </div>
         </div>
-      <% } %>
-      <% } %>
       </div><!-- END formWrapper -->
-    <div class="row"><button class="continueButton" type="submit">Save&nbsp;&nbsp; <i class="fa fa-check"></i></button>
+      <div class="row"><button class="continueButton" type="submit">Save&nbsp;&nbsp; <i class="fa fa-check"></i></button></div>
+      <br/>
+      <br/>
+  </form>
+    <% } %>
+    <h4>Upload Files</h4>
+    <div class="formWrapper">
+      <% if (!buyerDownload || buyerDownload.length<5){ %>
+        <form id="downloadablesForm" action="/downloads/process" method="post" enctype="multipart/form-data">
+          <% for (var i = 0; i<5-buyerDownload.length; i++){ %>
+            <div class="row">
+              <div class="col-sm-6">
+                <input type="text" name="<%='downloadTitle'+i %>" placeholder="Title"/>
+              </div>
+              <div class="col-sm-6">
+                <input inline="true" type="file" name="<%='downloadURI'+i %>"  accept="image/*"/>
+              </div>
+            </div>
+          <% } %>
+        <% } %>
+        <div class="row">
+          <div class="col-sm-12">
+            <p class="detailText"><%=5-buyerDownload.length%> uploads remain.<% if (buyerDownload.length==5) { %> Remove files above to upload more.<% } %></p>
+          </div>
+        </div>
+      </div><!-- END formWrapper -->
+    <div class="row"><button class="continueButton" type="submit">Save&nbsp;&nbsp; <i class="fa fa-check"></i></button></div>
   </form>
 </div><!-- END #photosDownloadsBuyer -->

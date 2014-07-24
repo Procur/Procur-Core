@@ -70,15 +70,28 @@
 
 #companyUpdate .downloadsList li{
   border: 0px none;
-  margin: 5px 0px;
+  margin: 0px 0px;
   height: 25px;
   font-size: 11px;
-  padding: 0px 10px;
   font-weight: 500;
 }
 
-#companyUpdate .downloadsList a{
+#companyUpdate .downloadsList .col-sm-8{
+  padding: 0px 7px;
+  padding-top: 7px;
+}
+
+#companyUpdate .downloadsList i{
   margin: 10px;
+}
+
+#companyUpdate .detailText{
+  border: 0px none;
+  margin: 5px 0px;
+  font-size: 9px;
+  text-transform: uppercase;
+  padding: 0px 10px;
+  font-weight: 300;
 }
 
 #companyUpdate button {
