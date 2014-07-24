@@ -67,9 +67,9 @@
                   <h5>Contact Name*</h5>
                   <div><input type="text" name="firstName" value=<%= user.firstName %> placeholder="First"></div>
                   <div><input type="text" name="lastName" value=<%= user.lastName %> placeholder="Last"></div> <br/>
-
+                  <h5>Current Email Address</h5>
+                  <div><input type="text" value="<%= user.email %>" readonly></div><br/>
                   <h5>Update Email Address</h5>
-                  <div><%= user.email %></div>
                   <div><input type="text" name="email" id="updateEmail" placeholder="Enter New Address"></div>
                   <div><input type="text" name="emailConfirm" placeholder="Confirm New Address"></div><br/>
                 </div>
