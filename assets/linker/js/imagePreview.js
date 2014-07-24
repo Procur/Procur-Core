@@ -20,9 +20,16 @@ $("#myButton").click(function() {
     url: '/supplier/update/photos',
     data: { originalDimensions: originalImageDimensions, croppedDimensions: croppedImageDimensions, file: filePath },
     success: function(result) {
-      $('#blah2').attr('src', result.newImage);
-      $('.img-container2').css('display', 'block');
-      $('#carousel-image-1').attr('src', 'http://terryshoemaker.files.wordpress.com/2013/03/placeholder1.jpg');
+      //$('#blah2').attr('src', result.newImage);
+      //$('.img-container2').css('display', 'block');
+      /*$('.carousel-inner').append(
+        "<div class='item'>" +
+        "<img src='' style='width: 100%; height: 400px; alt=''>" +
+        "</div>"
+      );*/
+      /*$('.carousel-inner div:last-of-type img').attr('src', result.newImage);*/
+      /*$('#photo-preview-carousel a.right').trigger('click');*/
+      //$('.carousel-inner div.active img').attr('src', result.newImage);
     },
     error: function(error) {
       console.log('error is ' + error);
@@ -48,7 +55,7 @@ function readURL(input) {
 
 function displayCropper() {
   $(".cropper").cropper({
-    aspectRatio: 16 / 9,
+    aspectRatio: "auto",
     done: function(data) {
       $dataX1.val(data.x1);
       $dataY1.val(data.y1);
