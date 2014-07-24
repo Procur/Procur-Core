@@ -1,0 +1,30 @@
+.current-photos .photo-box {
+  width: 200px;
+  height: 140px;
+  background: white;
+}
+
+.current-photos .photo-box .photo-box-header {
+  display: block;
+  height: 25px;
+  background: #333132;
+  margin-bottom: 5px;
+}
+
+.current-photos .photo-box img {
+  width: 190px;
+  height: 110px;
+  margin: 0px 5px 0px 5px;
+}
+
+.current-photos i.fa {
+  margin: 2% 2% 0% 0%;
+  float: right;
+  color: white;
+  font-size: 1.2em;
+  cursor: pointer;
+}
+
+#supplierPhotos .formWrapper .current-photos:nth-child(n+2) {
+  margin-top: 40px;
+}
