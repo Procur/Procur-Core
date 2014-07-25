@@ -221,4 +221,9 @@
   background-color: #fff;
   border: none;
   font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+
+  white-space: -moz-pre-wrap;
+  white-space: -pre-wrap;
+  white-space: -o-pre-wrap;
+  white-space: pre-wrap;
 }
