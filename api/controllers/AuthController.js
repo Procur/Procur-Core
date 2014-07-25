@@ -15,7 +15,8 @@ var passport = require('passport'),
     address = process.env.ENVIRONMENT_URL || 'localhost:1337',
     crypto = require('crypto'),
     bcrypt = require('bcrypt'),
-    token;
+    token,
+    loggedin = false;
 
 module.exports = {
 
@@ -146,7 +147,7 @@ module.exports = {
   },
 
   forgotPassword: function(req, res){
-    res.view();
+    res.view({loggedin : false});
   },
 
   processForgotPassword: function(req, res){
@@ -208,7 +209,7 @@ module.exports = {
 
 
   resetRequestMade: function(req, res){
-    res.view();
+    res.view({loggedin : false});
   },
 
   selectNewPassword: function(req, res){
@@ -218,7 +219,7 @@ module.exports = {
       if(reset){
         if(reset.consumed !== true) {
           req.session.token = consumeToken;
-          res.view();
+          res.view({loggedin : true});
         }
         else{
           res.redirect('/forgotpassword');
@@ -271,7 +272,7 @@ module.exports = {
   },
 
   passwordResetSuccess: function(req, res) {
-    res.view();
+    res.view({loggedin : true});
   },
 
   //KILLS SESSIONS AND REDIRECTS TO LOGOUT CONFIRMATION VIEW (GOODBYE)

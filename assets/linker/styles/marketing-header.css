@@ -43,6 +43,7 @@
   padding: 15px 7px;
 }
 
+
 #marketing-header ul li a.loginLink {
   color: #7f7f7f;
   -webkit-transition: all 200ms ease-in-out;
@@ -169,6 +170,19 @@
 
 #marketing-header.line .navbar-collapse {
   padding-right: 0px;
+}
+
+
+#marketing-header .mktHeadPill {
+  padding: 3px 20px 3px 20px;
+  margin: 5px 0px 0px 15px;
+  border: 2px solid #E6E7E8;
+  border-radius: 30px;
+  color: #231F20;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  font-weight: 400;
+  font-family: 'Montserrat', sans-serif;
 }
 
 @media (max-width: 767px) {
