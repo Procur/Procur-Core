@@ -179,7 +179,7 @@ module.exports = {
               linkedin: b.linkedin,
               instagram: b.instagram,
               google: b.google,
-              dunsNumber: b.dunsNumber,
+              dunsNumber: b.getDuns(),
               contactName: b.contactName,
               contactPosition: b.contactPosition,
               contactEmail: b.contactEmail,
@@ -194,6 +194,7 @@ module.exports = {
               if (err) { return res.redirect('/dashboard'); }
             });
           });
+          req.flash('message', 'Company information updated.');
           return res.redirect('/dashboard');
         });
       });
@@ -273,6 +274,7 @@ module.exports = {
             cageCode: b.cageCode
           }).exec(function(err, newSupplier) {
             if (err) { /* do something here */ }
+            req.flash('message', 'Company information updated.');
             return res.redirect('/company/update#supplierInformation');
           });
         });
@@ -307,6 +309,7 @@ module.exports = {
             portProvince: b.portProvince
           }).exec(function(err, newSupplier) {
             if (err) { /* do something here */ }
+            req.flash('message', 'Company information updated.');
             return res.redirect('/company/update#productionDetails');
           });
         });
@@ -337,6 +340,7 @@ module.exports = {
             reinvestment: b.reinvestment
           }).exec(function(err, newSupplier) {
             if (err) { /* do something here */ }
+            req.flash('message', 'Company information updated.');
             return res.redirect('/company/update#descriptionsSupplier')
           });
         });
@@ -363,6 +367,7 @@ module.exports = {
             preferredBuyerLocation: [b.preferredBuyerLocation]
           }).exec(function(err, newSupplier) {
             if (err) { /* do something here */ }
+            req.flash('message', 'Company information updated.');
             return res.redirect('/company/update#preferencesSupplier')
           });
         });
@@ -392,6 +397,7 @@ module.exports = {
             tumblr: b.tumblr
           }).exec(function(err, newSupplier) {
             if (err) { /* do something here */ }
+            req.flash('message', 'Company information updated.');
             return res.redirect('/company/update#socialOutletsSupplier')
           });
         });

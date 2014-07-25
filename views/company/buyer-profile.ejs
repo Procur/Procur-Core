@@ -88,7 +88,7 @@
         </div>
         <div class="company-col-detail">
           <p class="detail-header">DUNS Number</p>
-          <p class="detail-body"><% if (buyer.dunsNumber) { %><%= buyer.dunsNumber %><% }%></p>
+          <p class="detail-body"><% if (buyer.dunsNumber) { %><%= buyer.formattedDuns %><% }%></p>
         </div>
       </div><!-- END LEFT DETAIL COLUMN -->
       <div class="company-col-right">
@@ -119,12 +119,16 @@
     </div>
     <div id="profile-content">
       <% if (buyer.companyDescription !== undefined && buyer.productDescription !=="") { %>
-        <div class="content-desc"><%= buyer.companyDescription %></div>
+        <div class="content-desc">
+        <pre><%= buyer.companyDescription %></pre>
+        </div>
       <% } else { %>
         <div class="content-desc hint">Add Company Description in <a href="/company/update">Edit Company Profile > Descriptions</a>.</div>
       <% } %>
       <% if (buyer.productDescription !== undefined && buyer.productDescription !=="") { %>
-        <div class="content-interest" id="inactive"><%= buyer.productDescription %></div>
+        <div class="content-interest" id="inactive">
+        <pre><%= buyer.productDescription %></pre>
+        </div>
       <% } else { %>
         <div class="content-interest hint" id="inactive">Add Products of Interest in <a href="/company/update">Edit Company Profile > Descriptions</a></div>
       <% } %>
