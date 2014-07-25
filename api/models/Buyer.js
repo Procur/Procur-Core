@@ -236,7 +236,11 @@ module.exports = {
       required: 'true'
     },
     getDuns: function() {
+      if (this.dunsNumber === undefined) {
+        return undefined;
+      } 
       return this.dunsNumber.substring(0,2)+"-"+this.dunsNumber.substring(2,5)+"-"+this.dunsNumber.substring(5,9);
+      
     }
   }
 
