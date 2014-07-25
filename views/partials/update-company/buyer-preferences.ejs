@@ -7,21 +7,22 @@
           <div class="col-sm-6">
             <h5>Preferred Supplier Type*</h5>
             <div class="styledSelect">
-              <select name="preferredSupplierType">
-                <option value="<%= buyer.preferredSupplierType %>" selected="selected"><%= buyer.preferredSupplierType %></option>
+              <select name="preferredSupplierType" id="preferredSupplierType">
                 <%- partial('../edit-dropdowns/edit-pref-supplier-type') %>
+                <script language="javascript">$("#preferredSupplierType").val("<%=buyer.preferredSupplierType%>");</script>
               </select>
             </div>
 
             <h5>Preferred Supplier Language</h5>
             <div class="styledSelect">
-              <select name="preferredSupplierLanguage">
+              <select name="preferredSupplierLanguage" id="preferredSupplierLang">
                 <% if (buyer.preferredSupplierLanguage.length === 0) { %>
                   <option value="<%= buyer.preferredSupplierLanguage %>" selected="selected">Select a language</option>
+                  <%- partial('../edit-dropdowns/edit-pref-supplier-language') %>
                   <% } else { %>
-                  <option value="<%= buyer.preferredSupplierLanguage %>" selected="selected"><%= buyer.preferredSupplierLanguage %></option>
-                <% } %>
-                <%- partial('../edit-dropdowns/edit-pref-supplier-language') %>
+                  <%- partial('../edit-dropdowns/edit-pref-supplier-language') %>
+                   <script language="javascript">$("#preferredSupplierLang").val("<%=buyer.preferredSupplierLanguage%>");</script>
+                  <% } %>
               </select>
             </div>
           </div> <!-- End of First Column -->
@@ -30,14 +31,14 @@
             <h5>Preferred Supplier Location</h5>
             <div class="styledSelect">
               <select name="preferredSupplierLocation" id="preferredSupplierLocation">
-                <option value="<%= buyer.preferredSupplierLocation %>" selected="selected"><%= buyer.preferredSupplierLocation %></option>
+                <script language="javascript">print_country("preferredSupplierLocation");</script>
               </select>
             </div>
-            <% if (buyer.preferredSupplierLocation.length === 0) { %>
-              <script language="javascript">print_country("preferredSupplierLocation");</script>
-              <% } else { %>
-              <script language="javascript">edit_country("<%= buyer.preferredSupplierLocation %>", "preferredSupplierLocation");</script>
-            <% } %>
+            <% if (buyer.preferredSupplierLocation) { %>
+            <script language="javascript">$("#preferredSupplierLocation").val("<%=buyer.preferredSupplierLocation%>");</script>
+          <% } else { %>
+            <script language="javascript">$("#preferredSupplierLocation").val("");</script>
+          <% } %>
           </div> <!-- End of Second Column -->
 
         </div> <!-- End of outside row -->

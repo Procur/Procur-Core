@@ -96,7 +96,7 @@
         </div>
         <div class="company-col-detail">
           <p class="detail-header">DUNS Number</p>
-          <p class="detail-body"><% if (supplier.dunsNumber) { %><%= supplier.dunsNumber %><% }%></p>
+          <p class="detail-body"><% if (supplier.dunsNumber) { %><%= supplier.formattedDuns   %><% }%></p>
         </div>
         <div class="company-col-detail">
           <p class="detail-header">Cage Code</p>
@@ -122,37 +122,41 @@
         <div class="nav-right">
           <li><a id="company-description">Company Description</a></li>
           <li><a id="products-of-interest">Product Overview</a></li>
-          <!-- TO-DO: BROKEN. AND STYLING BAD. 
+          
           <% if (supplier.showSORTab === true) { %><li><a id="statements-of-responsibility">Statements of Responsibility</a></li><% } %>
-          -->
+          
         </div>
       </ul>
     </div>
     <div id="profile-content">
       <% if (supplier.companyDescription !== undefined && supplier.companyDescription !=="") { %>
-        <div class="content-desc"><%= supplier.companyDescription %></div>
+        <div class="content-desc">
+        <pre><%= supplier.companyDescription %></pre>
+        </div>
       <% } else { %>
         <% if (isOwner == true) { %>
         <div class="content-desc hint">Add Company Description in <a href="/company/update">Edit Company Profile > Descriptions</a>.</div>
       <% } } %>
       <% if (supplier.productDescription !== undefined && supplier.productDescription!=="") { %>
-        <div class="content-interest" id="inactive"><%= supplier.productDescription %></div>
+        <div class="content-interest" id="inactive">
+        <pre><%= supplier.productDescription %></pre>
+        </div>
       <% } else { %>
         <% if (isOwner == true) { %>
         <div class="content-interest hint" id="inactive">Add Product Overview in <a href="/company/update">Edit Company Profile > Descriptions</a>.</div>
       <% } } %>
-      <!-- TO-DO: BROKEN. AND STYLING BAD. 
+      
       <% if (supplier.showSORTab === true) { %>
         <div class="content-statement" id="inactive">
           <% var sorKeys = Object.keys(supplier["sorViewFields"]); %>
           <% for (var x = 0; x < sorKeys.length; x++) { %>
-            <% if (supplier[sorKeys[x]] !== undefined) { %>
+            <% if (supplier[sorKeys[x]] !== undefined  && supplier[sorKeys[x]] != "") { %>
               <h4><%= supplier.sorViewFields[sorKeys[x]]  %></h4>
-              <p><%= supplier[sorKeys[x]] %></p>
+              <pre><%= supplier[sorKeys[x]] %></pre>
             <% } %>
           <% } %>
         </div>
-      <% } %> -->
+      <% } %> 
     </div>
   </div><!-- END RIGHT COLUMN -->
 </div>

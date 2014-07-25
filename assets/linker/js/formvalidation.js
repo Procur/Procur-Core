@@ -40,6 +40,20 @@ jQuery.validator.addMethod("decimal+number+whitespace", function(value, element,
  return value === "" || regex.test(value);
 }, jQuery.validator.format("Numeric or decimal formats and spaces only."));
 
+jQuery.validator.addMethod("complete_url", function(val, elem) {
+    // if no url, don't do anything
+    if (val.length == 0) { return true; }
+
+    // if user has not entered http:// https:// or ftp:// assume they mean http://
+    if(!/^(https?|ftp):\/\//i.test(val)) {
+        val = 'http://'+val; // set both the value
+        $(elem).val(val); // also update the form element
+    }
+    // now check if valid url
+    // http://docs.jquery.com/Plugins/Validation/Methods/url
+    // contributed by Scott Gonzalez: http://projects.scottsplayground.com/iri/
+    return /^(https?|ftp):\/\/(((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&amp;'\(\)\*\+,;=]|:)*@)?(((\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5]))|((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?)(:\d*)?)(\/((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&amp;'\(\)\*\+,;=]|:|@)+(\/(([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&amp;'\(\)\*\+,;=]|:|@)*)*)?)?(\?((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&amp;'\(\)\*\+,;=]|:|@)|[\uE000-\uF8FF]|\/|\?)*)?(\#((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&amp;'\(\)\*\+,;=]|:|@)|\/|\?)*)?$/i.test(val);
+});
 
 jQuery.validator.addMethod("alphanumeric+punct+whitespace", function(value, element, params) {
   //breakdown of regex:
@@ -103,11 +117,12 @@ Custom Validation Messages
 
 */
 var checkBoxMsg = "Please select at least one option.";
-var urlHintMsg = "Please enter a valid URL preceded by http://";
+var urlHintMsg = "Please enter a valid URL.";
 var dnsMsg = "Please enter a 9-digit DNS Number.";
 var otherLocationsMsg = "Include the name, type, & country when providing a location.";
 var agreeTermsMsg = "You must read & agree to all of the above.";
 var responsiblePartyMsg = "You must assert the above.";
+var cageMsg = "Please enter a 5 characters.";
 
 /*
 
@@ -287,7 +302,7 @@ $('#basic-company-details-form').validate({
     },
     companyWebsite: {
       required: false,
-      url: true,
+      "complete_url": true,
       minlength: 4,
       maxlength: 80
     },
@@ -381,7 +396,7 @@ $('#basic-company-details-form').validate({
   },
   messages:{
     companyWebsite: {
-      url: urlHintMsg
+      "complete_url": urlHintMsg
     },
     agreeTerms: {
       required: agreeTermsMsg
@@ -896,7 +911,7 @@ $('#companyDetailsForm').validate({
     },
     website: {
       required: false,
-      url: true,
+      "complete_url": true,
       minlength: 4,
       maxlength: 80
     },
@@ -978,7 +993,7 @@ $('#companyDetailsForm').validate({
   },
   messages:{
     website: {
-      url: urlHintMsg
+      "complete_url": urlHintMsg
     }
   }
 });
@@ -1200,6 +1215,10 @@ $('#supplierInformationForm').validate({//TO-DO: WHY DOESNT THIS WORK??
     }
   },
   messages:{
+    cageCode: {
+      minlength: cageMsg,
+      maxlength: cageMsg
+    },
     acceptedDeliveryTerms: {
       required: checkBoxMsg
     },

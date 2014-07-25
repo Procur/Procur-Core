@@ -47,9 +47,11 @@ module.exports = {
                       if (err) { callback(err, null); }
                       else if (!buyer) { callback(null, undefined); }
                       else {
+                        var formattedDuns = buyer.getDuns();
                         buyer = waterlineHelper.fixBuyerArrays(buyer);
                         buyer = productCategoryHelper.getCategoryChild(buyer);
                         buyer = sorHelper.appendViewFields(buyer);
+                        buyer.formattedDuns = formattedDuns;
                         payload.push(buyer);
                         callback(null, buyer);
                       }
@@ -62,9 +64,11 @@ module.exports = {
                       if (err) { callback(err, null); }
                       else if (!supplier) { callback(null, undefined); }
                       else {
+                        var formattedDuns = supplier.getDuns();
                         supplier = waterlineHelper.fixSupplierArrays(supplier);
                         supplier = productCategoryHelper.getCategoryChild(supplier);
                         supplier = sorHelper.appendViewFields(supplier);
+                        supplier.formattedDuns = formattedDuns;
                         payload.push(supplier);
                         callback(null, supplier);
                       }
@@ -101,7 +105,7 @@ module.exports = {
     var payload = [];
     var locationsPayload = {};
     var viewLocations = {};
-    var loggedin;
+    var loggedin = false;
 
     currentUser === undefined ? loggedin = false : loggedin = true;
 
@@ -128,8 +132,11 @@ module.exports = {
                       if (err) { callback(err, null); }
                       else if (!buyer) { callback(null, undefined); }
                       else {
+                        var formattedDuns = buyer.getDuns();
                         buyer = waterlineHelper.fixBuyerArrays(buyer);
                         buyer = productCategoryHelper.getCategoryChild(buyer);
+                        buyer = sorHelper.appendViewFields(buyer);
+                        buyer.formattedDuns = formattedDuns;
                         payload.push(buyer);
                         callback(null, buyer);
                       }
@@ -142,8 +149,11 @@ module.exports = {
                       if (err) { callback(err, null); }
                       else if (!supplier) { callback(null, undefined); }
                       else {
+                        var formattedDuns = supplier.getDuns();
                         supplier = waterlineHelper.fixSupplierArrays(supplier);
                         supplier = productCategoryHelper.getCategoryChild(supplier);
+                        supplier = sorHelper.appendViewFields(supplier);
+                        supplier.formattedDuns = formattedDuns;
                         payload.push(supplier);
                         callback(null, supplier);
                       }
@@ -246,11 +256,11 @@ module.exports = {
   },
 
   buyerOrSupplier: function(req, res){
-    res.view();
+    res.view({loggedin : true});
   },
 
   selectDefault: function(req, res){
-    res.view();
+    res.view({loggedin : true});
   },
 
   setDefault: function(req, res){
@@ -320,12 +330,12 @@ module.exports = {
 
     Company.findOne({ user: user }, function(err, company){
       if (err) { return res.redirect('/dashboard'); }
-      if (isSupplierAndBuyer(company)) { return res.view(); }
+      if (isSupplierAndBuyer(company)) { return res.view({loggedin : false}); }
       Company.update(company, { buyer: true, supplier: false }, function(err, company){
         if (err) { return res.redirect('/dashboard'); }
         User.update(user, { activeMode: 'buyer' }, function (err, user) {
           if (err) { return res.redirect('/dashboard'); }
-          if (company) { res.view(); }
+          if (company) { res.view({loggedin : false}); }
         });
       });
     });
@@ -361,14 +371,14 @@ module.exports = {
         if (err) { return res.redirect('/dashboard'); }
         User.update(user, { activeMode: 'supplier' }, function (err, user) {
           if (err) { return res.redirect('/dashboard'); }
-          if (company) { res.view(); }
+          if (company) { res.view({loggedin : false}); }
         });
       });
     });
   },
 
   selectHandle: function(req, res){
-    res.view();
+    res.view({loggedin : false});
   },
 
   createHandle: function(req, res){
@@ -390,7 +400,7 @@ module.exports = {
       if(err) { return res.redirect('/dashboard'); }
       Company.findOne({ user: user.id }, function(err, company){
         if(err) { return res.redirect('/dashboard'); }
-        res.view({ handle: company.handle });
+        res.view({ handle: company.handle, loggedin : true });
       });
     });
   },
@@ -498,13 +508,13 @@ module.exports = {
               },
               function(err, data) {
                 if (payload["buyer"] !== undefined && payload["supplier"] === undefined) {
-                  res.view({ user: payload["user"], company: payload["company"], buyer: payload["buyer"], supplier: payload["supplier"], companyLocations: viewLocations });
+                  res.view({ user: payload["user"], company: payload["company"], buyer: payload["buyer"], supplier: payload["supplier"], companyLocations: viewLocations, loggedin: true });
                 }
                 if (payload["buyer"] === undefined && payload["supplier"] !== undefined) {
-                  res.view({ user: payload["user"], company: payload["company"], buyer: payload["buyer"], supplier: payload["supplier"], companyLocations: viewLocations });
+                  res.view({ user: payload["user"], company: payload["company"], buyer: payload["buyer"], supplier: payload["supplier"], companyLocations: viewLocations, loggedin: true });
                 }
                 if (payload["buyer"] !== undefined && payload["supplier"] !== undefined) {
-                  res.view({ user: payload["user"], company: payload["company"], buyer: payload["buyer"], supplier: payload["supplier"], companyLocations: viewLocations });
+                  res.view({ user: payload["user"], company: payload["company"], buyer: payload["buyer"], supplier: payload["supplier"], companyLocations: viewLocations, loggedin: true });
                 }
               }
             ) // End async
@@ -740,7 +750,9 @@ module.exports = {
   },
 
   notFound: function(req, res){
-    res.view();
+    var loggedin = false;
+    req.session.passport.user === undefined ? loggedin = false : loggedin = true;
+    res.view({ loggedin: loggedin});
   }
 
 
