@@ -26,9 +26,11 @@
             <div class="col-sm-6 language">
               <h5>Language*</h5>
               <div class="styledSelect">
-                <select name="language">
-                  <option value="<%= supplier.language %>" selected="selected"><%= supplier.language %></option>
+                <select name="language" id="languageSelect">
+                  
                   <%- partial('../edit-dropdowns/edit-language') %>
+                  <script language="javascript">$("#languageSelect").val("<%=supplier.language%>");</script>
+
                 </select>
               </div>
             </div>
@@ -120,9 +122,11 @@
               <h5>Type of Company*</h5>
                 <section id="typeOfCompany">
                   <div class="styledSelect breakForm">
-                    <select name="typeOfCompany">
-                      <option value="<%= supplier.typeOfCompany %>" selected="selected"><%= supplier.typeOfCompany %></option>
+                    <select name="typeOfCompany" id="typeOfComp">
                       <%- partial('../edit-dropdowns/edit-buyer-type') %>
+                      <% if (supplier.preferredBuyerType) { %>
+                        <script language="javascript">$("#typeOfComp").val("<%=supplier.typeOfCompany%>");</script>
+                      <% } %>
                     </select>
                   </div>
                 </section>

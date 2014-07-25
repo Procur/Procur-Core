@@ -132,6 +132,7 @@ module.exports = {
                         var formattedDuns = buyer.getDuns();
                         buyer = waterlineHelper.fixBuyerArrays(buyer);
                         buyer = productCategoryHelper.getCategoryChild(buyer);
+                        buyer = sorHelper.appendViewFields(buyer);
                         buyer.formattedDuns = formattedDuns;
                         payload.push(buyer);
                         callback(null, buyer);
@@ -148,6 +149,7 @@ module.exports = {
                         var formattedDuns = supplier.getDuns();
                         supplier = waterlineHelper.fixSupplierArrays(supplier);
                         supplier = productCategoryHelper.getCategoryChild(supplier);
+                        supplier = sorHelper.appendViewFields(supplier);
                         supplier.formattedDuns = formattedDuns;
                         payload.push(supplier);
                         callback(null, supplier);
