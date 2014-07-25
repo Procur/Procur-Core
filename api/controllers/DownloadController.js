@@ -20,7 +20,8 @@ module.exports = {
                 if (b["downloadTitle"]!==""){
                   Download.create({
                     owner: buyer.id,
-                    title: b["downloadTitle"]
+                    title: b["downloadTitle"],
+                    active: true
                   }, function(err, download) {
                     if (err) { return res.redirect('/dashboard'); }
                   });
@@ -30,7 +31,8 @@ module.exports = {
                   if (b["downloadTitle"][i]!==""){
                     Download.create({
                       owner: buyer.id,
-                      title: b["downloadTitle"][i]
+                      title: b["downloadTitle"][i],
+                      active: true
                     }, function(err, download) {
                       if (err) { return res.redirect('/dashboard'); }
                     });
@@ -60,7 +62,8 @@ module.exports = {
                 if (b["downloadTitle"]!==""){
                   Download.create({
                     owner: supplier.id,
-                    title: b["downloadTitle"]
+                    title: b["downloadTitle"],
+                    active: true
                   }, function(err, download) {
                     if (err) { return res.redirect('/dashboard'); }
                   });
@@ -70,7 +73,8 @@ module.exports = {
                   if (b["downloadTitle"][i]!==""){
                     Download.create({
                       owner: supplier.id,
-                      title: b["downloadTitle"][i]
+                      title: b["downloadTitle"][i],
+                      active: true
                     }, function(err, download) {
                       if (err) { return res.redirect('/dashboard'); }
                     });
@@ -91,13 +95,19 @@ module.exports = {
     var b = req.body;
     if (b["deleteMe"]){
       if (typeof b["deleteMe"]=="string"){
-        Download.destroy({id: b["deleteMe"]}, function (err, download){
-          if(err){ return res.redirect('/dashboard'); }
-          if (!download){res.redirect('/dashboard');}
+        var downloadid = b["deleteMe"];
+        Download.update(downloadid, {
+          active: false
+        }).exec(function (err, download){
+            if(err){ return res.redirect('/dashboard'); }
+            if (!download){res.redirect('/dashboard');}
         });
       } else {
         for (var i=0; i<b["deleteMe"].length; i++){
-          Download.destroy({id: b["deleteMe"][i]}, function (err, download){
+          var downloadid = b["deleteMe"][i];
+          Download.update(downloadid, {
+            active: false
+          }).exec(function (err, download){
             if(err){ return res.redirect('/dashboard'); }
             if (!download){res.redirect('/dashboard');}
           });
@@ -113,13 +123,19 @@ module.exports = {
     var b = req.body;
     if (b["deleteMe"]){
       if (typeof b["deleteMe"]=="string"){
-        Download.destroy({id: b["deleteMe"]}, function (err, download){
-          if(err){ return res.redirect('/dashboard'); }
-          if (!download){res.redirect('/dashboard');}
+        var downloadid = b["deleteMe"];
+        Download.update(downloadid, {
+          active: false
+        }).exec(function (err, download){
+            if(err){ return res.redirect('/dashboard'); }
+            if (!download){res.redirect('/dashboard');}
         });
       } else {
         for (var i=0; i<b["deleteMe"].length; i++){
-          Download.destroy({id: b["deleteMe"][i]}, function (err, download){
+          var downloadid = b["deleteMe"][i];
+          Download.update(downloadid, {
+            active: false
+          }).exec(function (err, download){
             if(err){ return res.redirect('/dashboard'); }
             if (!download){res.redirect('/dashboard');}
           });

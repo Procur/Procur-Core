@@ -72,6 +72,8 @@ module.exports = {
                   if (payload["buyer"]){
                   Download
                     .find({owner: payload["buyer"].id})
+                    .where({active: true})
+                    .sort('updatedAt')
                     .exec(function(err,downloads){
                       if (err) {callback(err,null)}
                       else if (!downloads) { callback(null, undefined); }
@@ -86,6 +88,8 @@ module.exports = {
                   if (payload["supplier"]){
                   Download
                     .find({owner: payload["supplier"].id})
+                    .where({active: true})
+                    .sort('updatedAt')
                     .exec(function(err,downloads){
                       if (err) {callback(err,null)}
                       else if (!downloads) { callback(null, undefined); }
@@ -178,6 +182,8 @@ module.exports = {
                   if (payload["buyer"]){
                   Download
                     .find({owner: payload["buyer"].id})
+                    .where({active: true})
+                    .sort('updatedAt')
                     .exec(function(err,downloads){
                       if (err) {callback(err,null)}
                       else if (!downloads) { callback(null, undefined); }
@@ -192,6 +198,8 @@ module.exports = {
                   if (payload["supplier"]){
                   Download
                     .find({owner: payload["supplier"].id})
+                    .where({active: true})
+                    .sort('updatedAt')
                     .exec(function(err,downloads){
                       if (err) {callback(err,null)}
                       else if (!downloads) { callback(null, undefined); }
@@ -552,6 +560,7 @@ module.exports = {
                   if (payload["buyer"]){
                   Download
                     .find({owner: payload["buyer"].id})
+                    .where({active: true})
                     .sort('updatedAt')
                     .exec(function(err,downloads){
                       if (err) {callback(err,null)}
@@ -567,6 +576,7 @@ module.exports = {
                   if (payload["supplier"]){
                   Download
                     .find({owner: payload["supplier"].id})
+                    .where({active: true})
                     .sort('updatedAt')
                     .exec(function(err,downloads){
                       if (err) {callback(err,null)}

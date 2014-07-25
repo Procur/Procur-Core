@@ -24,6 +24,10 @@ module.exports = {
       type: 'string',
       unique: true//,
       //required: true //just commented out for testing til downloading works
+    },
+
+    active: {
+      type: 'boolean'
     }
 
   }
