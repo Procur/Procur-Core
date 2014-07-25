@@ -7,9 +7,11 @@
         <div class="col-sm-6">
           <h5>Preferred Buyer Type*</h5>
           <div class="styledSelect">
-            <select name="preferredBuyerType">
-              <option value="<%= supplier.preferredBuyerType %>" selected="selected"><%= supplier.preferredBuyerType %></option>
+            <select name="preferredBuyerType" id="preferredBuyerType">
               <%- partial('../edit-dropdowns/edit-pref-buyer-type') %>
+              <% if (supplier.preferredBuyerType) { %>
+              <script language="javascript">$("#preferredBuyerType").val("<%=supplier.preferredBuyerType%>");</script>
+              <% } %>
             </select>
           </div>
           <h5>Preferred Buyer Language</h5>

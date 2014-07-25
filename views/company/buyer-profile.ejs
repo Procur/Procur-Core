@@ -111,9 +111,9 @@
         <div class="nav-right">
           <li><a id="company-description">Company Description</a></li>
           <li><a id="products-of-interest">Products of Interest</a></li>
-          <!-- TO-DO: BROKEN. AND STYLING BAD. 
+          
           <% if (buyer.showSORTab === true) { %><li><a id="statements-of-responsibility">Statements of Responsibility</a></li><% } %>
-          -->
+          
         </div>
       </ul>
     </div>
@@ -126,24 +126,25 @@
         <div class="content-desc hint">Add Company Description in <a href="/company/update">Edit Company Profile > Descriptions</a>.</div>
       <% } %>
       <% if (buyer.productDescription !== undefined && buyer.productDescription !=="") { %>
-        <div class="content-desc">
+        <div class="content-interest" id="inactive">
         <pre><%= buyer.productDescription %></pre>
         </div>
       <% } else { %>
         <div class="content-interest hint" id="inactive">Add Products of Interest in <a href="/company/update">Edit Company Profile > Descriptions</a></div>
       <% } %>
-      <!-- TO-DO: BROKEN. AND STYLING BAD. 
+      
       <% if (buyer.showSORTab === true) { %>
-        <div class="content-statement" id="inactive">
+          <div class="content-statement" id="inactive">
           <% var sorKeys = Object.keys(buyer["sorViewFields"]); %>
           <% for (var x = 0; x < sorKeys.length; x++) { %>
-            <% if (buyer[sorKeys[x]] !== undefined) { %>
+            <% if (buyer[sorKeys[x]] !== undefined && buyer[sorKeys[x]] != "") { %>
               <h4><%= buyer.sorViewFields[sorKeys[x]]  %></h4>
-              <p><%= buyer[sorKeys[x]] %></p>
+              <pre><%= buyer[sorKeys[x]] %></pre>
             <% } %>
           <% } %>
         </div>
-      <% } %> -->
+        </div>
+      <% } %> 
     </div>
   </div><!-- END RIGHT COLUMN -->
 </div>
