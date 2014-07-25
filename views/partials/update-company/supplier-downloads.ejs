@@ -1,24 +1,21 @@
-<div id="photosDownloadsBuyer">
-    <% if (buyerDownload && buyerDownload.length>0) { %>
+<div id="photosDownloadsSupplier">
+    <% if (supplierDownload && supplierDownload.length>0) { %>
       <h4>My Downloadable Files</h4>
       <div class="formWrapper">
-        <form id="deleteDownloadsForm" action="/downloads/removeBuyer" method="post">
+        <form id="deleteDownloadsForm" action="/downloads/removeSupplier" method="post">
         <div class="row">
           <div class="col-sm-12">
             <div class="col-sm-8"></div>
             <div class="col-sm-2"></div>
             <div class="col-sm-2"><h3>Remove</h3></div>
             <ul class="downloadsList">
-              <% for (var i = 0; i<buyerDownload.length; i++){ %>
+              <% for (var i = 0; i<supplierDownload.length; i++){ %>
                 <li>
-                  <div class="col-sm-8">
-                    <%= buyerDownload[i].title %>
+                  <div class="col-sm-10">
+                    <%= supplierDownload[i].title %><a href="#" title="Download Copy" target="_blank"><i class="fa fa-download"></i></a>
                   </div>
                   <div class="col-sm-2">
-                    <a href="#">View<i class="fa fa-external-link"></i></a>
-                  </div>
-                  <div class="col-sm-2">
-                    <input type="checkbox" class="deleteYesNo" value="<%=buyerDownload[i].id %>" name="deleteMe"></input>
+                    <input type="checkbox" class="deleteYesNo" value="<%=supplierDownload[i].id %>" name="deleteMe"></input>
                   </div>
                 </li>
               <% } %>
@@ -44,9 +41,9 @@
     <% } %>
     <h4>Upload Files</h4>
     <div class="formWrapper">
-      <% if (!buyerDownload || buyerDownload.length<5){ %>
-        <form id="downloadablesForm" action="/downloads/processBuyer" method="post" enctype="multipart/form-data">
-          <% for (var i = 0; i<5-buyerDownload.length; i++){ %>
+      <% if (!supplierDownload || supplierDownload.length<5){ %>
+        <form id="downloadablesForm" action="/downloads/processSupplier" method="post" enctype="multipart/form-data">
+          <% for (var i = 0; i<5-supplierDownload.length; i++){ %>
             <div class="row">
               <div class="col-sm-6">
                 <input type="text" name="downloadTitle" placeholder="Title"/>
@@ -59,10 +56,10 @@
         <% } %>
         <div class="row">
           <div class="col-sm-12">
-            <p class="detailText"><%=5-buyerDownload.length%> uploads remain.<% if (buyerDownload.length==5) { %> Remove files above to upload more.<% } %></p>
+            <p class="detailText"><%=5-supplierDownload.length%> uploads remain.<% if (supplierDownload.length==5) { %> Remove files above to upload more.<% } %></p>
           </div>
         </div>
       </div><!-- END formWrapper -->
     <div class="row"><button class="continueButton" type="submit">Save&nbsp;&nbsp; <i class="fa fa-check"></i></button></div>
   </form>
-</div><!-- END #photosDownloadsBuyer -->
+</div><!-- END #photosDownloadsSupplier -->

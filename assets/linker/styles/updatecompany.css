@@ -86,13 +86,21 @@
   font-weight: 500;
 }
 
-#companyUpdate .downloadsList .col-sm-8{
+#companyUpdate .downloadsList .col-sm-10{
   padding: 0px 7px;
   padding-top: 7px;
 }
 
 #companyUpdate .downloadsList i{
   margin: 10px;
+}
+
+#companyUpdate .downloadsList a{
+  color: #575556;
+}
+
+#companyUpdate .downloadsList a:hover{
+  color: #FD9237;
 }
 
 #companyUpdate .detailText{
