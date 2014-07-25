@@ -27,6 +27,7 @@ module.exports = {
         Buyer.findOne({ company: company.id }, function (err, buyer) {
           var b = buyer;
           res.view({
+            loggedin: true,
             company: b.company,
             dbaName: b.dba,
             logoUrl: b.logoUrl,

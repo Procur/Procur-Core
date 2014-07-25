@@ -35,7 +35,7 @@ module.exports = {
     Company.findOne({ user: req.session.passport.user },function(err, company){
       if(err){ return res.redirect('/dashboard'); }
       if(company === undefined){
-        res.view();
+        res.view({loggedin : false});
       }
       else{
         res.redirect('/dashboard');
@@ -44,7 +44,7 @@ module.exports = {
   },
 
   pleaseVerify: function(req, res){
-    res.view();
+    res.view({loggedin : false});
   },
 
   updateAccount: function(req, res){
@@ -53,7 +53,7 @@ module.exports = {
       Company.findOne({ user: user.id }, function(err, company){
         if(err) { return res.redirect('/dashboard'); }
         if(company !== undefined){
-          res.view({ user: user, company: company });
+          res.view({ user: user, company: company , loggedin : true});
         }
         else {
           return res.redirect('/dashboard');

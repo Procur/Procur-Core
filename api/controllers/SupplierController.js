@@ -24,7 +24,7 @@ module.exports = {
         if(err) { return res.redirect('/dashboard'); }
         Supplier.findOne({ company: company.id }, function(err, supplier){
             //TODO: Pass all supplier attributes to view.
-            res.view();
+            res.view({loggedin: true});
         });
       });
     });
