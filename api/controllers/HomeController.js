@@ -48,14 +48,18 @@ module.exports = {
       if(is_auth){
         res.redirect('/dashboard');
       }
-      res.view();
+      var loggedin;
+      req.session.passport.user === undefined ? loggedin = false : loggedin = true;
+      res.view({ loggedin: loggedin});
     }
     else {
       if(is_auth){
         res.redirect('/logout');
       }
       else {
-        res.view();
+        var loggedin;
+        req.session.passport.user === undefined ? loggedin = false : loggedin = true;
+        res.view({ loggedin: loggedin});
       }
     }
   },
