@@ -437,14 +437,24 @@ module.exports.routes = {
 
   //Downloads actions
 
-  'post /downloads/process':{
+  'post /downloads/processBuyer':{
     controller: 'DownloadController',
-    action: 'process'
+    action: 'processBuyer'
   },
 
-  'post /downloads/remove':{
+  'post /downloads/processSupplier':{
     controller: 'DownloadController',
-    action: 'remove'
+    action: 'processSupplier'
+  },
+
+  'post /downloads/removeBuyer':{
+    controller: 'DownloadController',
+    action: 'removeBuyer'
+  },
+
+  'post /downloads/removeSupplier':{
+    controller: 'DownloadController',
+    action: 'removeSupplier'
   },
 
   /*'get /locationstest': {
