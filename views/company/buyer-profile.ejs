@@ -92,12 +92,14 @@
         </div>
       </div><!-- END LEFT DETAIL COLUMN -->
       <div class="company-col-right">
-        <div class="company-col-detail">
-          <p class="detail-header">Downloads</p>
-          <p class="detail-body"><div><span class="fa fa-fw fa-download"></span><a class="company-link" href="#" target="_blank"><% if (buyerDownload && buyerDownload.title) { %><%= buyerDownload.title %><% } else { %>Download Hardcode 1<% } %></a></div></p>
-          <p class="detail-body"><div><span class="fa fa-fw fa-download"></span><a class="company-link" href="#" target="_blank">Download Hardcode 2</a></div></p>
-          <p class="detail-body"><div><span class="fa fa-fw fa-download"></span><a class="company-link" href="#" target="_blank">Download Hardcode 3</a></div></p>
-        </div>
+        <% if (buyerDownload && buyerDownload.length>0) { %>
+          <div class="company-col-detail">
+            <p class="detail-header">Downloads</p>
+            <% for (var i=0; i<buyerDownload.length; i++){ %>
+              <p class="detail-body"><div><span class="fa fa-fw fa-download"></span><a class="company-link" href="#" target="_blank"><%= buyerDownload[i].title %></a></div></p>
+            <% } %>
+          </div>
+        <% } %>
         <div class="company-col-detail">
           <p class="detail-header">Links</p>
           <p class="detail-body"><% if (company.website) { %><div><span class="fa fa-fw fa-location-arrow"></span><a class="company-link" href="<%= company.website %>" target="_blank">Our Website</a></div><% } %></p>

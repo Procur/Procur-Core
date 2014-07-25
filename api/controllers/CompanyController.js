@@ -71,13 +71,13 @@ module.exports = {
                 buyerdownload: function(callback){
                   if (payload["buyer"]){
                   Download
-                    .findOne({owner: payload["buyer"].id})
-                    .exec(function(err,download){
+                    .find({owner: payload["buyer"].id})
+                    .exec(function(err,downloads){
                       if (err) {callback(err,null)}
-                      else if (!download) { callback(null, undefined); }
+                      else if (!downloads) { callback(null, undefined); }
                       else{
-                        payload["buyerDownload"] = download;
-                        callback(null, download);
+                        payload["buyerDownload"] = downloads;
+                        callback(null, downloads);
                       }
                     });
                   }
@@ -85,13 +85,13 @@ module.exports = {
                 supplierdownload: function(callback){
                   if (payload["supplier"]){
                   Download
-                    .findOne({owner: payload["supplier"].id})
-                    .exec(function(err,download){
+                    .find({owner: payload["supplier"].id})
+                    .exec(function(err,downloads){
                       if (err) {callback(err,null)}
-                      else if (!download) { callback(null, undefined); }
+                      else if (!downloads) { callback(null, undefined); }
                       else{
-                        payload["supplierDownload"] = download;
-                        callback(null, download);
+                        payload["supplierDownload"] = downloads;
+                        callback(null, downloads);
                       }
                     });
                   }
@@ -177,13 +177,13 @@ module.exports = {
                 buyerdownload: function(callback){
                   if (payload["buyer"]){
                   Download
-                    .findOne({owner: payload["buyer"].id})
-                    .exec(function(err,download){
+                    .find({owner: payload["buyer"].id})
+                    .exec(function(err,downloads){
                       if (err) {callback(err,null)}
-                      else if (!download) { callback(null, undefined); }
+                      else if (!downloads) { callback(null, undefined); }
                       else{
-                        payload["buyerDownload"] = download;
-                        callback(null, download);
+                        payload["buyerDownload"] = downloads;
+                        callback(null, downloads);
                       }
                     });
                   }
@@ -191,13 +191,13 @@ module.exports = {
                 supplierdownload: function(callback){
                   if (payload["supplier"]){
                   Download
-                    .findOne({owner: payload["supplier"].id})
-                    .exec(function(err,download){
+                    .find({owner: payload["supplier"].id})
+                    .exec(function(err,downloads){
                       if (err) {callback(err,null)}
-                      else if (!download) { callback(null, undefined); }
+                      else if (!downloads) { callback(null, undefined); }
                       else{
-                        payload["supplierDownload"] = download;
-                        callback(null, download);
+                        payload["supplierDownload"] = downloads;
+                        callback(null, downloads);
                       }
                     });
                   }
