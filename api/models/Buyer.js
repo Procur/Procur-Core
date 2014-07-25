@@ -238,9 +238,9 @@ module.exports = {
     getDuns: function() {
       if (this.dunsNumber === undefined) {
         return undefined;
-      }
-        return this.dunsNumber.substring(0,2)+"-"+this.dunsNumber.substring(2,5)+"-"+this.dunsNumber.substring(5,9);
-      }
+      } 
+      return this.dunsNumber.substring(0,2)+"-"+this.dunsNumber.substring(2,5)+"-"+this.dunsNumber.substring(5,9);
+      
     }
   }
 
