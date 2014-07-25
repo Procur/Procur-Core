@@ -442,6 +442,11 @@ module.exports.routes = {
     action: 'process'
   },
 
+  'post /downloads/remove':{
+    controller: 'DownloadController',
+    action: 'remove'
+  },
+
   /*'get /locationstest': {
     controller: 'BuyerController',
     action: 'test'
