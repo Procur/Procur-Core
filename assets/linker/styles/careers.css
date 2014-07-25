@@ -14,6 +14,11 @@ font-weight: 300;
 font-size: 1em;
 }
 
+#careers .sideBarNavSection .col-xs-2{
+	padding-left: 0px;
+	padding-right: 0px;
+}
+
 #careers .topRow {
     margin-top: 30px;
 }
@@ -125,7 +130,7 @@ margin-top: 5px;
 line-height: 18px !important;
 }
 
-#careers .sideBarContactSection {
+#careers .contactSection {
 border-top: #C4C4C4 1px dotted;
 border-bottom: #C4C4C4 1px dotted;
 margin-top: 25px;
@@ -133,7 +138,7 @@ padding-top: 10px;
 padding-bottom: 20px;
 }
 
-#careers .sideBarContactSection h3 {
+#careers .contactSection h3 {
 font-family: 'Montserrat';
 font-weight: 700;
 text-transform: uppercase;
@@ -142,12 +147,14 @@ font-size: 0.85em;
 letter-spacing: 0.1em;
 }
 
-#careers .sideBarContactSection a:link {
+#careers .contactSection a:link {
 font-family: 'Montserrat';
 font-weight: 500;
 color: #FFAD24;}
 
-
+#careers .contactSection p {
+margin-top: 15px;
+}
 
 
 
