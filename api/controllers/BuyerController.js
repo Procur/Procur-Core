@@ -204,6 +204,7 @@ module.exports = {
               productCategory: [b.autocomplete]
             }, function (err, buyer) {
               if (err) { return res.redirect('/dashboard'); }
+              req.flash('message', 'Company information updated.');
               return res.redirect('/company/update');
             });
           });
@@ -291,6 +292,7 @@ module.exports = {
             portProvince: b.portProvince
           }).exec(function(err, newBuyer) {
             if (err) { /* do something here */ }
+            req.flash('message', 'Company information updated.');
             return res.redirect('/company/update#buyerInformation');
           });
         });
@@ -321,6 +323,7 @@ module.exports = {
             reinvestment: b.reinvestment
           }).exec(function(err, newBuyer) {
             if (err) { /* do something here */ }
+            req.flash('message', 'Company information updated.');
             return res.redirect('/company/update#descriptionsBuyer');
           });
         });
@@ -347,6 +350,7 @@ module.exports = {
             preferredSupplierLocation: [b.preferredSupplierLocation]
           }).exec(function(err, newBuyer) {
             if (err) { /* do something here */ }
+            req.flash('message', 'Company information updated.');
             return res.redirect('/company/update#preferencesBuyer');
           });
         });
@@ -377,6 +381,7 @@ module.exports = {
             tumblr: b.tumblr
           }).exec(function(err, newBuyer) {
             if (err) { /* do something here */ }
+            req.flash('message', 'Company information updated.');
             return res.redirect('/company/update#socialOutletsBuyer');
           });
         });

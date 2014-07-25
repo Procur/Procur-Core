@@ -332,6 +332,9 @@
     active: {
       type:'boolean',
       required: 'true'
+    },
+    getDuns: function() {
+      return this.dunsNumber.substring(0,2)+"-"+this.dunsNumber.substring(2,5)+"-"+this.dunsNumber.substring(5,9);
     }
   }
 
