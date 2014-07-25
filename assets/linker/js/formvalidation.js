@@ -338,6 +338,7 @@ $('#basic-company-details-form').validate({
     },
     companyCity:{
       "internationalphanumeric+punct+whitespace": true,
+      required: true,
       minlength: 1,
       maxlength: 100
     },

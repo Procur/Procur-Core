@@ -8,6 +8,11 @@
 
       <div class="nav navbar-nav navbar-right">
         <p class="navbar-text account-registration procurPill">
+        <% if (isOwner == true) { %>
+          <a href="/company/update">Edit Profile</a>
+        <% } else { %>
+          
+        <% } %>
           <a href="/dashboard">Return to My Procur</a>
         </p>
       </div>
