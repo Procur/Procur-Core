@@ -290,19 +290,32 @@ transition: all 200ms ease-in-out;
   padding-right: 30px;
 }
 
+#features #tech p {
+  line-height: 20px;
+  font-size: 11px;
+  padding-bottom: 15px;
+  font-weight: 100
+}
+
 #features #tech i {
   color: #1d76b7;
 }
 
 #features #tech h3 {
   font-family: 'Open Sans', sans-serif;
-  font-weight: 300;
+  font-weight: 100;
+  font-size: 18px;
 }
 
 #features #tech h4 {
   font-family: 'Montserrat', sans-serif;
-  font-weight: 200;
+  font-size: 12px;
+  font-weight: 100;
   text-transform: uppercase;
+}
+
+#features #tech .availability {
+  font-size: 11px;
 }
 
 #features #tech hr {
@@ -321,4 +334,8 @@ transition: all 200ms ease-in-out;
 
 #features #chevronContainerDown {
   padding-bottom: 15px;
+}
+
+#features .last-text {
+  margin-bottom: 20px;
 }
