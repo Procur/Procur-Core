@@ -9,6 +9,8 @@ var filePath;
 
 $("#imgInp").change(function(){
   readURL(this);
+  $("#myButton").removeClass("disabled");
+  $("#myButton").addClass("enabled");
 });
 
 $("#myButton").click(function() {
@@ -19,8 +21,22 @@ $("#myButton").click(function() {
     type: "POST",
     url: '/supplier/update/photos',
     data: { originalDimensions: originalImageDimensions, croppedDimensions: croppedImageDimensions, file: filePath },
+    beforeSend: function() {
+      $('.loading').show();
+    },
+    complete: function() {
+      $('.loading').hide();
+    },
     success: function(result) {
-      console.log('photo upload done');
+      $(".row .current-photos").append(
+        "<div class='col-xs-6 col-sm-4'>" +
+          "<div class='photo-box'>" +
+            "<div class='photo-box-header'><i class='fa fa-times'></i></div>" +
+            "<img name='photo' src='" + result.newImage + "'>" +
+            "<input class='photo-src' name='' type='text' value='" + result.newImage + "'/>" +
+          "</div>" +
+        "</div>"
+      );
     },
     error: function(error) {
       console.log('error is ' + error);

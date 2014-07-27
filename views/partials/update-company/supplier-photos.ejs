@@ -9,10 +9,11 @@
       <div class="row">
         <div class="col-sm-6">
           <input type='file' id="imgInp" name="logo" />
-          <div id="myButton" style="background: white; width: 100px; height: 20px; text-align: center;">Crop &amp; Save</div>
+          <div id="myButton" class="disabled">Crop &amp; Save</div>
         </div>
         <div class="col-sm-6">
-          <div class="img-container" style="display: none; width: 300px; height: 250px;"><img id="img-preview" class="cropper" src="" alt="your image"/></div>
+          <div class="img-container"><img id="img-preview" class="cropper" src="" alt="your image"/></div>
+          <div class="loading"><img src="/../../images/loading.gif" /></div>
         </div>
       </div><!-- FIRST ROW -->
     </div>
@@ -31,10 +32,6 @@
                 <input class="photo-src" name="" type="text" value="<%= supplier["photo"][x] %>"/>
               </div>
             </div>
-            <% if (((x + 1) % 3 === 0) && ((x + 1) !== length)) { %>
-              </div>
-              <div class="row current-photos">
-            <% } %>
           <% } %>
         </div><!-- end row -->
       </div><!-- end formWrapper -->

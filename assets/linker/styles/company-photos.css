@@ -1,31 +1,56 @@
-.current-photos .photo-box {
+#uploadPhotos #myButton {
+  width: 120px;
+  height: 20px;
+  text-align: center;
+  color: #FFF;
+  letter-spacing: 0.07em;
+}
+
+.disabled {
+  background: #5C5C5C;
+  cursor: default;
+}
+
+.enabled {
+  background: #5CC672;
+  cursor: pointer;
+}
+
+#uploadPhotos .img-container {
+  display: none;
+  width: auto;
+  height: 250px;
+  text-align: center;
+}
+
+.photo-box {
   width: 200px;
   height: 140px;
   background: white;
 }
 
-.current-photos .photo-box .photo-box-header {
+.photo-box .photo-box-header {
   display: block;
   height: 25px;
   background: #333132;
   margin-bottom: 5px;
 }
 
-.current-photos .photo-box .header-remove {
+.photo-box .header-remove {
   background: #FBAC27;
 }
 
-.current-photos .photo-box img {
+.photo-box img {
   width: 190px;
   height: 110px;
   margin: 0px 5px 0px 5px;
 }
 
-.current-photos .photo-box input {
+.photo-box input {
   display: none;
 }
 
-.current-photos i.fa {
+i.fa-times {
   margin: 2% 2% 0% 0%;
   float: right;
   color: white;
@@ -33,6 +58,20 @@
   cursor: pointer;
 }
 
-#supplierPhotos .formWrapper .current-photos:nth-child(n+2) {
+#supplierPhotos .formWrapper .col-xs-6:nth-child(n+4) {
   margin-top: 40px;
+}
+
+.loading {
+  position: absolute;
+  top: 40%;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  display: none;
+}
+
+.cropper-container {
+  margin: 0 auto;
+  left: 0px !important;
 }
