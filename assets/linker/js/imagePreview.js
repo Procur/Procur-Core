@@ -20,21 +20,22 @@ $("#myButton").click(function() {
     url: '/supplier/update/photos',
     data: { originalDimensions: originalImageDimensions, croppedDimensions: croppedImageDimensions, file: filePath },
     success: function(result) {
-      //$('#blah2').attr('src', result.newImage);
-      //$('.img-container2').css('display', 'block');
-      /*$('.carousel-inner').append(
-        "<div class='item'>" +
-        "<img src='' style='width: 100%; height: 400px; alt=''>" +
-        "</div>"
-      );*/
-      /*$('.carousel-inner div:last-of-type img').attr('src', result.newImage);*/
-      /*$('#photo-preview-carousel a.right').trigger('click');*/
-      //$('.carousel-inner div.active img').attr('src', result.newImage);
+      console.log('photo upload done');
     },
     error: function(error) {
       console.log('error is ' + error);
     }
   });
+});
+
+$("i.fa-times").click(function() {
+  if ($(this).parent().hasClass("header-remove")) {
+    $(this).parent().removeClass("header-remove");
+    $(this).parent().siblings('.photo-src').attr('name', '');
+  } else {
+    $(this).parent().addClass("header-remove");
+    $(this).parent().siblings('.photo-src').attr('name', 'photos-to-delete');
+  }
 });
 
 function readURL(input) {
@@ -43,7 +44,7 @@ function readURL(input) {
     
     reader.onload = function (e) {
       filePath = e.target.result;
-      $('#blah').attr('src', e.target.result);
+      $('#img-preview').attr('src', e.target.result);
       $('.img-container').css('display','block');
 
       displayCropper();

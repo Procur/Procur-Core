@@ -436,6 +436,11 @@ module.exports.routes = {
   'post /supplier/update/photos': {
     controller: 'SupplierController',
     action: 'updatePhotos'
+  },
+
+  'post /supplier/delete/photos': {
+    controller: 'SupplierController',
+    action: 'deletePhotos'
   }
 
   /*'get /locationstest': {

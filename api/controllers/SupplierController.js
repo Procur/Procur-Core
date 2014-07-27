@@ -482,6 +482,102 @@ module.exports = {
     )
   },
 
+  deletePhotos: function(req, res) {
+    var b = req.body;
+    var _ = require('lodash');
+    var payload = {};
+    //console.log('body is ' + JSON.stringify(b, null, ' '));
+
+    async.series(
+      {
+        user: function(callback) {
+          User
+            .findOne({ id: req.session.passport.user })
+            .exec(function(err, user) {
+              if (err) { callback(err, null); }
+              else if (!user) { callback(null, undefined); }
+              else {
+                payload["user"] = user.id;
+                callback(null, user);
+              }
+          });
+        },
+        company: function(callback) {
+          Company
+            .findOne({ user: payload.user })
+            .exec(function(err, company) {
+              if (err) { callback(err, null); }
+              else if (!company) { callback(null, undefined); }
+              else {
+                payload["company"] = company.id;
+                callback(null, company);
+              }
+          });
+        },
+        buyer: function(callback) {
+          Buyer
+            .findOne({ company: payload.company })
+            .exec(function(err, buyer) {
+              if (err) { callback(err, null); }
+              else if (!buyer) { callback(null, undefined); }
+              else {
+                payload["buyer"] = buyer.id;
+                callback(null, buyer);
+              }
+          });
+        },
+        supplier: function(callback) {
+          Supplier
+            .findOne({ company: payload.company })
+            .exec(function(err, supplier) {
+              if (err) { callback(err, null); }
+              else if (!supplier) { callback(null, undefined); }
+              else {
+                payload["supplier"] = supplier.id;
+                callback(null, supplier);
+              }
+          });
+        }
+      },
+      function(err, data) {
+        if (data.buyer && data.user.activeMode === "buyer") { 
+          console.log("Buyer is " + data.buyer.id);
+        }
+        if (data.supplier && data.user.activeMode === "supplier") {
+          var photosToDelete = [];
+          var currentPhotos = [];
+          photosToDelete = b["photos-to-delete"];
+
+          if (typeof photosToDelete === "string") { photosToDelete = photosToDelete.split(); }
+
+          data.supplier.photo.forEach(function(photo) {
+            currentPhotos.push(photo);
+          });
+
+          Supplier.findOne({ company: payload.company }).exec(function(err, supplier) {
+            if (err) {
+              res.send(500, err);
+            } else {
+              supplier["photo"] = _.difference(supplier["photo"], photosToDelete);
+
+              supplier.save(function(err) {
+                if (err) {
+                  res.send(500, err);
+                } else {
+                  res.send(200, 'all deleted');
+                }
+              });
+            }
+          });
+
+          photosToDelete.length > 1 ? req.flash('message', 'Photos succesfully deleted.') : req.flash('message', 'Photo succesfully deleted.');
+
+          return res.redirect('/company/update/#supplierPhotos');
+        }
+      }
+    )
+  },
+
   destroy: function(req, res){
     User.findOne({ id: req.session.passport.user }, function(err, user){
       if(err) { return res.redirect('/dashboard'); }

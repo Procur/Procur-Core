@@ -1,6 +1,7 @@
 <link href="/linker/styles/cropper.css" rel="stylesheet">
 <script src="/linker/js/cropper.js"></script>
 
+<%= req.flash('message') %>
 <div id="supplierPhotos">
   <div id="uploadPhotos">
     <h4>Supplier Photos</h4>
@@ -11,28 +12,33 @@
           <div id="myButton" style="background: white; width: 100px; height: 20px; text-align: center;">Crop &amp; Save</div>
         </div>
         <div class="col-sm-6">
-          <div class="img-container" style="display: none; width: 300px; height: 250px;"><img id="blah" class="cropper" src="" alt="your image"/></div>
+          <div class="img-container" style="display: none; width: 300px; height: 250px;"><img id="img-preview" class="cropper" src="" alt="your image"/></div>
         </div>
       </div><!-- FIRST ROW -->
     </div>
   </div><br/><br/>
   <div class="photo-preview-area">
     <h4>Your Photos</h4>
-    <div class="formWrapper">
-      <div class="row current-photos">
-        <% var length = supplier["photo"].length; %>
-        <% for (var x = 0; x < length; x++) { %>
-          <div class="col-xs-6 col-sm-4">
-            <div class="photo-box">
-              <div class="photo-box-header"><i class="fa fa-times"></i></div>
-              <img src="<%= supplier["photo"][x] %>" value="<%= x %>">
+    <form action="/supplier/delete/photos" method="post" id="supplierPhotosForm">
+      <div class="formWrapper">
+        <div class="row current-photos">
+          <% var length = supplier["photo"].length; %>
+          <% for (var x = 0; x < length; x++) { %>
+            <div class="col-xs-6 col-sm-4">
+              <div class="photo-box">
+                <div class="photo-box-header"><i class="fa fa-times"></i></div>
+                <img name="photo" src="<%= supplier["photo"][x] %>">
+                <input class="photo-src" name="" type="text" value="<%= supplier["photo"][x] %>"/>
+              </div>
             </div>
-          </div>
-          <% if (((x + 1) % 3 === 0) && ((x + 1) !== length)) { %>
-            </div>
-            <div class="row current-photos">
+            <% if (((x + 1) % 3 === 0) && ((x + 1) !== length)) { %>
+              </div>
+              <div class="row current-photos">
+            <% } %>
           <% } %>
-        <% } %>
-  </div>
-</div>
-</div>
+        </div><!-- end row -->
+      </div><!-- end formWrapper -->
+      <div class="row"><button class="continueButton" type="submit">Save&nbsp;&nbsp; <i class="fa fa-check"></i></button></div>
+    </form>
+  </div><!-- end photo-preview-area -->
+</div><!-- end supplierPhotos -->
