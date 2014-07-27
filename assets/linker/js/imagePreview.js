@@ -9,11 +9,11 @@ var filePath;
 
 $("#imgInp").change(function(){
   readURL(this);
-  $("#myButton").removeClass("disabled");
-  $("#myButton").addClass("enabled");
+  $("#upload-photo").removeClass("disabled");
+  $("#upload-photo").addClass("enabled");
 });
 
-$("#myButton").click(function() {
+$("#uploadPhotos").on('click', '#upload-photo.enabled', function() {
   var originalImageDimensions = $image.cropper("getImgInfo");
   var croppedImageDimensions = $image.cropper("getData");
 
