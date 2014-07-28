@@ -6,7 +6,7 @@
         <h1 class="hidden-xs"><span class="profileName"><%= user.firstName %> <%= user.lastName %></span> &middot; <span class="profileCompany"><%= company.name%></span></h1>
       </div>
 
-      <div class="nav navbar-nav navbar-right">
+      <div class="nav navbar-nav navbar-right hidden-xs">
         <p class="navbar-text account-registration procurPill">
         <% if (isOwner == true) { %>
           <a href="/company/update">Edit Profile</a>
@@ -16,6 +16,20 @@
           <a href="/dashboard">Return to My Procur</a>
         </p>
       </div>
+
+      <div class="dashboard-header-right  hidden-sm hidden-md hidden-lg"> <!-- MOBILE -->
+  
+    <div class="dropdown navbar-right">
+        <% if (isOwner == true) { %>
+          <a href="/company/update"><custom style="padding-top: 10px; font-size: 2em; color: #000; border: black 1px;">Edit</custom></span></a>
+        <% } %>
+          
+          <a href="/dashboard"  ><span class="glyphicon glyphicon-home" style="padding-top: 10px; padding-left: 10px; font-size: 2em; color: #000; border: black 1px;"></span></a>
+          
+    </div>
+    
+  </div>
+
     </div>
   </nav>
 </div>

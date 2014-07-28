@@ -1,10 +1,11 @@
+<nav class="navbar navbar-default" role="navigation">
 <div id="dashboard-header">
   <div class="dashboard-header-left">
     <a class="logo-image" href="/"><img src="/images/procur.png" /></a>
     <a class="ea-link-image" href="/earlyaccess"><img class="ea-light-image" src="/images/ea-light.png" /></a>
     <p class="userCompanyName hidden-sm hidden-xs"><span class="greetingUser"><%= user.firstName %> <%= user.lastName %></span> <span class="greetingCompany">&middot; <%= company.name %></span></p>
   </div>
-  <div class="dashboard-header-right">
+  <div class="dashboard-header-right hidden-xs"> <!-- NON MOBILE -->
     <% if((company.buyer == true) && (company.supplier == true)) { %>
       <% if(user.activeMode == 'buyer') { %>
         <p class="typeToggle buyer">CURRENTLY IN BUYER MODE <i class="fa fa-exchange"></i> SWITCH TO SUPPLIER</p>
@@ -15,8 +16,38 @@
     <% } %>
     <a href="/logout" class="logout-link"><i class="fa fa-sign-out fa-fw"></i> LOGOUT</a>
   </div>
+
+
+  <div class="dashboard-header-right hidden-sm hidden-md hidden-lg"> <!-- MOBILE -->
+  
+    <div class="dropdown navbar-right">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-th-list" style="padding-top: 10px; font-size: 2em; color: #000; border: black 1px;"></span></a>
+          <ul class="dropdown-menu pull-right" role="menu">
+            <li><a href="/dashboard">Dashboard</a></li>
+            <li><a href="/companies/<%= company.handle %>">View Company Profile</a></li>
+            <li><a href="/company/update">Edit Company Profile</a></li>
+            <li><a href="/user/update">User Account Settings</a></li>
+            <li class="divider"></li>
+            <li>
+            <% if((company.buyer == true) && (company.supplier == true)) { %>
+              <% if(user.activeMode == 'buyer') { %>
+                <a class="typeToggle buyer">Switch to Supplier</a>
+              <% } %>
+              <% if(user.activeMode == 'supplier') { %>
+                <a class="typeToggle supplier">Switch to Buyer</a>
+              <% } %>
+            <% } %>
+           </li>
+           <li class="divider"></li>
+           <li><a href="/logout">LOGOUT</a></li>
+          </ul>
+        </div>
+    
+  </div>
+
 </div>
-<div id="subnav-header">
+</nav>
+<div id="subnav-header" class="hidden-xs"> <!-- NON MOBILE -->
   <div class="dashboard-header-right">
     <p class="myprocur-label">MY PROCUR:</p>
     <a href="/dashboard" class="navLink dashboard">Dashboard</a>
@@ -25,3 +56,4 @@
     <a href="/user/update" class="navLink updateUser">User Account Settings</a>
   </div>
 </div>
+

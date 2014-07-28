@@ -21,7 +21,7 @@
         <% if(locations["company-isHq"].addressLine2 !== undefined){ %><p><%= locations["company-isHq"].addressLine2 %></p><% } %>
         <% if(locations["company-isHq"].city !== undefined){ %><p><%= locations["company-isHq"].city %></p><% } %>
         <% if(locations["company-isHq"].province !== undefined){ %><p><%= locations["company-isHq"].province %></p><% } %>
-        <% if(locations["company-isHq"].country !== undefined){ %><p><%= locations["company-isHq"].country %><% } %>
+        <% if(locations["company-isHq"].country !== undefined){ %><p><%= locations["company-isHq"].country %></p><% } %>
       </div>
     <% } else { %>
       <div class="company-info-box company-business-address">
@@ -102,7 +102,7 @@
 
   </div><!-- END LEFT COLUMN -->
 
-  <div class="col-sm-12 col-md-7 col-lg-8 pull-right">
+  <div class="col-sm-12 col-md-7 col-lg-8 pull-right hidden-xs"> <!-- NON-MOBILE -->
     <div class="profile-nav">
       <ul>
         <div class="nav-left">
@@ -148,5 +148,45 @@
         </div>
       <% } %> 
     </div>
+
+    <div class="col-xs-12 hidden-sm hidden-md hidden-lg company-two-col-box"> <!-- MOBILE -->
+      <span><h3>About</h3></span>
+
+      <div id="profile-content">
+        <% if (buyer.companyDescription !== undefined && buyer.productDescription !=="") { %>
+          <div class="content-desc">
+          <span><h3>Company Description</h3></span>
+          <pre><%= buyer.companyDescription %></pre>
+          </div>
+        <% } else { %>
+          <% if (isOwner == true) { %>
+          <div class="content-desc hint">Add Company Description in <a href="/company/update">Edit Company Profile > Descriptions</a>.</div>
+        <% } } %>
+        <% if (buyer.productDescription !== undefined && buyer.productDescription !=="") { %>
+          <div class="content-interest">
+          <span><h3>Products of Interest</h3></span>
+          <pre><%= buyer.productDescription %></pre>
+          </div>
+        <% } else { %>
+          <% if (isOwner == true) { %>
+          <div class="content-interest hint" >Add Products of Interest in <a href="/company/update">Edit Company Profile > Descriptions</a></div>
+        <% } } %>
+        
+        <% if (buyer.showSORTab === true) { %>
+            <div class="content-statement">
+            <span><h3>Statements of Responsibility</h3></span>
+            <% var sorKeys = Object.keys(buyer["sorViewFields"]); %>
+            <% for (var x = 0; x < sorKeys.length; x++) { %>
+              <% if (buyer[sorKeys[x]] !== undefined && buyer[sorKeys[x]] != "") { %>
+                <h4><%= buyer.sorViewFields[sorKeys[x]]  %></h4>
+                <pre><%= buyer[sorKeys[x]] %></pre>
+              <% } %>
+            <% } %>
+          </div>
+          </div>
+      <% } %> 
+    </div>
+
+
   </div><!-- END RIGHT COLUMN -->
-</div>
+
