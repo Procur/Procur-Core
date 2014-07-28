@@ -54,7 +54,8 @@
 
     </script>
     <!-- End Google Analytics -->
-    <!--Pardot-->
+    <% if (process.env.NODE_ENV == 'procur.com') { %>
+      <!--Pardot-->
     <script>
       piAId = '50892';
       piCId = '2280';
@@ -66,10 +67,12 @@
           }
           if(window.attachEvent) { window.attachEvent('onload', async_load); }
           else { window.addEventListener('load', async_load, false); }
+
       })();
+
     </script>
     <!--End Pardot-->
-
+    <% } %>
   </head>
 
   <body>
