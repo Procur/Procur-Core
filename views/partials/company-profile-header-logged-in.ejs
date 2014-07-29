@@ -13,15 +13,34 @@
       </div>
 
       <div class="collapse navbar-collapse" id="nav-links">
-        <ul class="nav navbar-nav navbar-right">
+        <ul class="nav navbar-nav navbar-right hidden-xs">
+        <% if (isOwner == true) { %>
         <li class="tri">
           <a href="/pricing">Edit Profile</a>
           <div class="hoverTriContainer">
             <div class="hoverTri"></div>
           </div>
         </li>
+        <% } %>
         <li class="tri">
-          <a href="/faq">Return to Dashboard</a>
+          <a href="/dashboard">Return to Dashboard</a>
+          <div class="hoverTriContainer">
+            <div class="hoverTri"></div>
+          </div>
+        </li>
+      </ul>
+
+      <ul class="nav navbar-nav hidden-sm hidden-md hidden-lg">
+      <% if (isOwner == true) { %>
+        <li class="tri">
+          <a href="/pricing">Edit Profile</a>
+          <div class="hoverTriContainer">
+            <div class="hoverTri"></div>
+          </div>
+        </li>
+      <% } %>
+        <li class="tri">
+          <a href="/dashboard">Return to Dashboard</a>
           <div class="hoverTriContainer">
             <div class="hoverTri"></div>
           </div>
