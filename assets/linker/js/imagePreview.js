@@ -11,6 +11,11 @@ $("#imgInp").change(function(){
   readURL(this);
   $("#upload-photo").removeClass("disabled");
   $("#upload-photo").addClass("enabled");
+  $("#upload-photo").removeClass("hide");
+  $("#upload-photo").addClass("show");
+
+  $("#uploadPhotos h5").removeClass("hide");
+  $("#uploadPhotos h5").addClass("show");
 });
 
 $("#uploadPhotos").on('click', '#upload-photo.enabled', function() {
@@ -54,13 +59,28 @@ $("i.fa-times").click(function() {
   }
 });
 
+/*$("#uploadPhotos").on("click", "i.fa-times", function() {
+  console.log('clicked second method');
+  if ($(this).parent().hasClass("header-remove")) {
+    $(this).parent().removeClass("header-remove");
+    $(this).parent().siblings('.photo-src').attr('name', '');
+  } else {
+    $(this).parent().addClass("header-remove");
+    $(this).parent().siblings('.photo-src').attr('name', 'photos-to-delete');
+  }
+});*/
+
 function readURL(input) {
+  console.log('input files is ' + JSON.stringify(input.files, null, ' '));
   if (input.files && input.files[0]) {
     var reader = new FileReader();
-    
+
     reader.onload = function (e) {
+      console.log('e is ' + e.target.result);
       filePath = e.target.result;
+
       $('#img-preview').attr('src', e.target.result);
+      //$('.cropper-container img').attr('src', e.target.result);
       $('.img-container').css('display','block');
 
       displayCropper();

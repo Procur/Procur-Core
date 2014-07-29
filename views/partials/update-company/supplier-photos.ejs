@@ -7,12 +7,24 @@
     <h4>Supplier Photos</h4>
     <div class="formWrapper">
       <div class="row">
-        <div class="col-sm-6">
+        <div class="col-sm-6 header-spacer"><h5>Upload a photo</h5></div>
+        <div class="col-sm-6 header-spacer"><h5 class="hide">Crop and save your photo</h5></div>
+      </div>
+      <div class="row">
+        <!--<div class="col-sm-6">
           <input type='file' id="imgInp" name="logo" />
           <div id="upload-photo" class="disabled">Crop &amp; Save</div>
+        </div>-->
+        <div class="col-sm-6">
+          <span class="file-wrapper">
+            <input type="file" id="imgInp" name="logo" />
+            <span class="file-button">Choose a Photo</span>
+          </span>
+          <!--<div id="upload-photo" class="disabled">Crop &amp; Save</div>-->
         </div>
         <div class="col-sm-6">
           <div class="img-container"><img id="img-preview" class="cropper" src="" alt="your image"/></div>
+          <div id="upload-photo" class="disabled hide">Crop &amp; Save</div>
           <div class="loading"><img src="/../../images/loading.gif" /></div>
         </div>
       </div><!-- FIRST ROW -->

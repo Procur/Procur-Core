@@ -1,9 +1,44 @@
-#uploadPhotos #upload-photo {
+/*#uploadPhotos #upload-photo {
   width: 120px;
   height: 20px;
   text-align: center;
   color: #FFF;
   letter-spacing: 0.07em;
+
+  float: right;
+  margin-top: 20px;
+}*/
+
+#uploadPhotos h5 {
+  font-size: 12px !important;
+}
+
+#uploadPhotos .hide { 
+  display: none;
+}
+
+#uploadPhotos .show { 
+  display: block;
+}
+
+#uploadPhotos #upload-photo {
+  color: #FFF;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 4px 18px;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+
+  width: 156px;
+  text-align: center;
+  float: right;
+  margin-top: 20px;
+}
+
+.header-spacer {
+  margin-bottom: 10px;
 }
 
 .disabled {
@@ -24,9 +59,10 @@
 }
 
 .photo-box {
-  width: 200px;
-  height: 140px;
+  width: auto;
+  height: 145px;
   background: white;
+  text-align: center;
 }
 
 .photo-box .photo-box-header {
@@ -41,7 +77,7 @@
 }
 
 .photo-box img {
-  width: 190px;
+  width: 200px;
   height: 110px;
   margin: 0px 5px 0px 5px;
 }
@@ -74,4 +110,43 @@ i.fa-times {
 .cropper-container {
   margin: 0 auto;
   left: 0px !important;
+}
+
+/* Button */
+.file-wrapper {
+  cursor: pointer;
+  display: inline-block;
+  overflow: hidden;
+  position: relative;
+  top: 0;
+}
+
+.file-wrapper .file-button {
+  background: #333132;
+  color: #FFF;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 4px 18px;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+
+  margin-top: 0px;
+}
+
+.file-wrapper input {
+  cursor: pointer;
+  height: 100%;
+  position: absolute;
+  right: 0;
+  top: 0;
+  margin: 0;
+  padding: 0;
+
+  filter: alpha(opacity=1);
+  -moz-opacity: 0.01;
+  opacity: 0.01;
+
+  font-size: 100px;
 }
