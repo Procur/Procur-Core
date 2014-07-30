@@ -25,7 +25,7 @@ module.exports = {
                   temp["filename"+n] = filename1;
                   filename = filename1+"."+req.files["downloadURI"+n].path.split(".").pop();
                   filetype = req.files["downloadURI"+n].headers['content-type'];
-                  console.log(filepath);
+                  console.log("FILEPATH "+filepath);
                   console.log(filename);
                   console.log(filetype);
                   fStream = fs.createReadStream(filepath);
