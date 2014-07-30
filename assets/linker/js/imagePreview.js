@@ -19,8 +19,12 @@ $("#imgInp").change(function(){
 });
 
 $("#uploadPhotos").on('click', '#upload-photo.enabled', function() {
-  var originalImageDimensions = $image.cropper("getImgInfo");
-  var croppedImageDimensions = $image.cropper("getData");
+  $(".cropper").addClass("to-upload");
+  var originalImageDimensions = {},
+      croppedImageDimensions = {};
+
+  originalImageDimensions = $image.cropper("getImgInfo").val();
+  croppedImageDimensions = $image.cropper("getData").val();
 
   $.ajax({
     type: "POST",
@@ -31,6 +35,8 @@ $("#uploadPhotos").on('click', '#upload-photo.enabled', function() {
     },
     complete: function() {
       $('.loading').hide();
+      $(".cropper").removeClass("to-upload");
+      $(".cropper").addClass("uploaded");
     },
     success: function(result) {
       $(".row .current-photos").append(
@@ -71,16 +77,16 @@ $("i.fa-times").click(function() {
 });*/
 
 function readURL(input) {
-  console.log('input files is ' + JSON.stringify(input.files, null, ' '));
+  //console.log('input files is ' + JSON.stringify(input.files, null, ' '));
   if (input.files && input.files[0]) {
     var reader = new FileReader();
 
     reader.onload = function (e) {
-      console.log('e is ' + e.target.result);
+      //console.log('e is ' + e.target.result);
       filePath = e.target.result;
 
-      $('#img-preview').attr('src', e.target.result);
-      //$('.cropper-container img').attr('src', e.target.result);
+      $('.cropper').attr('src', ' ');
+      $('.cropper').attr('src', e.target.result);
       $('.img-container').css('display','block');
 
       displayCropper();
@@ -94,6 +100,7 @@ function displayCropper() {
   $(".cropper").cropper({
     aspectRatio: "auto",
     done: function(data) {
+      //console.log('data is ' + JSON.stringify(data, null, ' '));
       $dataX1.val(data.x1);
       $dataY1.val(data.y1);
       $dataX2.val(data.x2);

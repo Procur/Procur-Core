@@ -12,6 +12,9 @@
 
     var $window = $(window),
         Cropper = function (element, options) {
+            /*if ( $(".cropper-container").length ) {
+              $(".cropper-container").remove();
+            };*/
             options = $.isPlainObject(options) ? options : {};
             this.$image = $(element);
             this.defaults = $.extend({}, Cropper.defaults, this.$image.data(), options);
@@ -22,6 +25,10 @@
         construstor: Cropper,
 
         init: function () {
+            //console.log('in init');
+            if ( $(".cropper-container").length ) {
+              $(".cropper-container").remove();
+            }
             this.setAspectRatio(this.defaults.aspectRatio);
             this.render();
         },
@@ -675,7 +682,16 @@
     // Common methods
     Cropper.fn = {
         toggle: function ($e) {
+            /* Fix - Adam M. */
+            /* If the image isn't hidden, hide it! */
+            if ($e.hasClass("cropper-hidden") === false) {
+              $e.toggleClass("cropper-hidden");
+            }
+          
+            /* Original source code below */
+            /*
             $e.toggleClass("cropper-hidden");
+            */
         },
 
         position: function ($e, option) {
@@ -787,6 +803,16 @@
         this.each(function () {
             var $this = $(this),
                 data = $this.data("cropper");
+
+            /* Removes the existing cropper container and creates a new one */
+            if ( $("#img-preview").hasClass("to-upload") ) {
+              return true;
+            }
+            
+            if (data) {
+                $this.data("cropper", (data = new Cropper(this, options)));
+            }
+            /* */
 
             if (!data) {
                 $this.data("cropper", (data = new Cropper(this, options)));
