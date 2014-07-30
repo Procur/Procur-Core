@@ -12,7 +12,7 @@
               <% for (var i = 0; i<buyerDownload.length; i++){ %>
                 <li>
                   <div class="col-sm-10">
-                    <%= buyerDownload[i].title %><a href="#" title="Download Copy" target="_blank"><i class="fa fa-download"></i></a>
+                    <%= buyerDownload[i].title %><a href="<%= buyerDownload[i].assetUrl%>" title="Download Copy" target="_blank"><i class="fa fa-download"></i></a>
                   </div>
                   <div class="col-sm-2">
                     <input type="checkbox" class="deleteYesNo" value="<%=buyerDownload[i].id %>" name="deleteMe"></input>

@@ -22,8 +22,7 @@ module.exports = {
 
     assetUrl: {
       type: 'string',
-      unique: true//,
-      //required: true //just commented out for testing til downloading works
+      required: true //just commented out for testing til downloading works
     },
 
     active: {
