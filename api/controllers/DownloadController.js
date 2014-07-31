@@ -19,15 +19,17 @@ module.exports = {
             Buyer.findOne({ company: company.id }, function(err, buyer){
               if(err){ return res.redirect('/dashboard'); }
               async.times(5, function(n, next) {
-                if (b["downloadTitle"][n] && b["downloadTitle"][n] != "") {           
+                if (b["downloadTitle"+n] && b["downloadTitle"+n][0] != "" && req.files["downloadURI"+n].headers['content-type'] != "application/octet-stream") {           
+                  //console.log("cur N: "+n);
                   filepath = req.files["downloadURI"+n].path;
-                  filename1 = b["downloadTitle"][n];
+                  filename1 = b["downloadTitle"+n];
                   temp["filename"+n] = filename1;
                   filename = filename1+"."+req.files["downloadURI"+n].path.split(".").pop();
                   filetype = req.files["downloadURI"+n].headers['content-type'];
-                  console.log("FILEPATH "+filepath);
-                  console.log(filename);
-                  console.log(filetype);
+                  //console.log("FILEPATH "+filepath);
+                  //console.log("filetype: "+filetype)
+                  //console.log(filename);
+                  //console.log(filetype);
                   fStream = fs.createReadStream(filepath);
                   var uploader = new streamingS3(fStream, 'AKIAJJ2Y43ZH662PWFUA', 'IGrhMgy29wD++dB9H9pMzLqOhx5cll45U1qWy+uJ',
                     {
@@ -48,21 +50,21 @@ module.exports = {
                                   active: true,
                                   assetUrl: resp.Location
                                    }, function(err,post){
-                          console.log(post);
+                          //console.log(post);
                           if (err){
-                            console.log("ERROR " + JSON.stringify(err, null, ' '));
+                            //console.log("ERROR " + JSON.stringify(err, null, ' '));
                             req.flash("There was a problem. Try again.");
                             res.redirect("/company/update");
                             }
                           else {
-                            console.log("next:"+n);
+                            //console.log("next:"+n);
                             next(err, post);
                           }
                         });
                     }
                   );
               } else {
-                console.log("blah next:"+n);
+                //console.log("blah next:"+n);
                 next(err, buyer);
               }
             }, function(err) {
@@ -80,18 +82,20 @@ module.exports = {
     User.findOne({ id: req.session.passport.user }, function(err, user) {
         Company.findOne({ user: user.id }, function(err, company) {
           if (err) { return res.redirect('/dashboard'); }
-            Buyer.findOne({ company: company.id }, function(err, supplier){
+            Supplier.findOne({ company: company.id }, function(err, supplier){
               if(err){ return res.redirect('/dashboard'); }
               async.times(5, function(n, next) {
-                if (b["downloadTitle"][n] && b["downloadTitle"][n] != "") {           
+                if (b["downloadTitle"+n] && b["downloadTitle"+n][0] != "" && req.files["downloadURI"+n].headers['content-type'] != "application/octet-stream") {           
+                  //console.log("cur N: "+n);
                   filepath = req.files["downloadURI"+n].path;
-                  filename1 = b["downloadTitle"][n];
+                  filename1 = b["downloadTitle"+n];
                   temp["filename"+n] = filename1;
                   filename = filename1+"."+req.files["downloadURI"+n].path.split(".").pop();
                   filetype = req.files["downloadURI"+n].headers['content-type'];
-                  console.log(filepath);
-                  console.log(filename);
-                  console.log(filetype);
+                  //console.log("FILEPATH "+filepath);
+                  //console.log("filetype: "+filetype)
+                  //console.log(filename);
+                  //console.log(filetype);
                   fStream = fs.createReadStream(filepath);
                   var uploader = new streamingS3(fStream, 'AKIAJJ2Y43ZH662PWFUA', 'IGrhMgy29wD++dB9H9pMzLqOhx5cll45U1qWy+uJ',
                     {
@@ -112,21 +116,21 @@ module.exports = {
                                   active: true,
                                   assetUrl: resp.Location
                                    }, function(err,post){
-                          console.log(post);
+                          //console.log(post);
                           if (err){
-                            console.log("ERROR " + JSON.stringify(err, null, ' '));
+                            //console.log("ERROR " + JSON.stringify(err, null, ' '));
                             req.flash("There was a problem. Try again.");
                             res.redirect("/company/update");
                             }
                           else {
-                            console.log("next:"+n);
+                            //console.log("next:"+n);
                             next(err, post);
                           }
                         });
                     }
                   );
               } else {
-                console.log("blah next:"+n);
+                //console.log("blah next:"+n);
                 next(err, supplier);
               }
             }, function(err) {
