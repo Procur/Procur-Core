@@ -151,6 +151,16 @@
   }
 
 /* RIGHT COLUMN */
+.carousel-inner div.item {
+  width: 100%;
+  height: 400px;
+}
+
+.carousel-inner div img {
+  width: 100%;
+  height: 400px;
+}
+
 .profile-nav {
   height: 30px;
   border-bottom: 3px solid #E6E7E8;
