@@ -103,6 +103,7 @@ i.fa-times {
   width: 100%;
   text-align: center;
   display: none;
+  z-index: 1000;
 }
 
 .cropper-container {
