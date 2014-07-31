@@ -412,7 +412,7 @@ module.exports = {
     var image = req.param('file');
     var imageData;
     var payload = {};
-
+  
     if (req.isAjax === false) { res.redirect('404'); } 
 
     async.series(
@@ -466,18 +466,11 @@ module.exports = {
                 }
               });
             });
-            /*Supplier.update(payload["supplier"].id, { photo: [imageData]}, function(err, supplier) {
-              if (err) { callback(err, null); }
-              else if (!supplier) { callback(null, undefined); }
-              else {
-                callback(null, supplier);
-              }
-            });*/
-          }, { x: newDimensions.x1, y: newDimensions.y1, width: newDimensions.width, height: newDimensions.height, crop: "crop" });
+          }, { x: newDimensions.x, y: newDimensions.y, width: newDimensions.w, height: newDimensions.h, crop: "crop" });
         }
       },
       function(err, data) {
-        return res.send(true, { oldDimensions: oldDimensions, newDimensions: newDimensions, newImage: imageData });
+        return res.send(true, { newDimensions: newDimensions, newImage: imageData });
       }
     )
   },
@@ -486,7 +479,6 @@ module.exports = {
     var b = req.body;
     var _ = require('lodash');
     var payload = {};
-    //console.log('body is ' + JSON.stringify(b, null, ' '));
 
     async.series(
       {

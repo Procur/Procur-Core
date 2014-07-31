@@ -1,10 +1,5 @@
-var $image = $(".img-container img"),
-    $dataX1 = $("#data-x1"),
-    $dataY1 = $("#data-y1"),
-    $dataX2 = $("#data-x2"),
-    $dataY2 = $("#data-y2"),
-    $dataHeight = $("#data-height"),
-    $dataWidth = $("#data-width");
+var croppedImageDimensions = {};
+var jcrop;
 var filePath;
 
 $("#imgInp").change(function(){
@@ -19,17 +14,14 @@ $("#imgInp").change(function(){
 });
 
 $("#uploadPhotos").on('click', '#upload-photo.enabled', function() {
-  $(".cropper").addClass("to-upload");
-  var originalImageDimensions = {},
-      croppedImageDimensions = {};
-
-  originalImageDimensions = $image.cropper("getImgInfo").val();
-  croppedImageDimensions = $image.cropper("getData").val();
+  console.log('clicked');
+  console.log('file path is ' + filePath);
+  /*$(".cropper").addClass("to-upload");*/
 
   $.ajax({
     type: "POST",
     url: '/supplier/update/photos',
-    data: { originalDimensions: originalImageDimensions, croppedDimensions: croppedImageDimensions, file: filePath },
+    data: { croppedDimensions: croppedImageDimensions, file: filePath },
     beforeSend: function() {
       $('.loading').show();
     },
@@ -65,48 +57,58 @@ $("i.fa-times").click(function() {
   }
 });
 
-/*$("#uploadPhotos").on("click", "i.fa-times", function() {
-  console.log('clicked second method');
-  if ($(this).parent().hasClass("header-remove")) {
-    $(this).parent().removeClass("header-remove");
-    $(this).parent().siblings('.photo-src').attr('name', '');
-  } else {
-    $(this).parent().addClass("header-remove");
-    $(this).parent().siblings('.photo-src').attr('name', 'photos-to-delete');
-  }
-});*/
+function showCoords(c) {
+  croppedImageDimensions["x"] = Math.floor(c.x);
+  croppedImageDimensions["y"] = Math.floor(c.y);
+  croppedImageDimensions["x2"] = Math.floor(c.x2);
+  croppedImageDimensions["y2"] = Math.floor(c.y2);
+  croppedImageDimensions["w"] = Math.floor(c.w);
+  croppedImageDimensions["h"] = Math.floor(c.h);
+}
 
 function readURL(input) {
-  //console.log('input files is ' + JSON.stringify(input.files, null, ' '));
+  if ( $(".jcrop-holder").length ) {
+    $("#img-preview").css("visibility", "");
+    $("#img-preview").css("width", "");
+    $("#img-preview").css("height", "");
+    //$(".jcrop-holder").remove();
+    jcrop.destroy();
+  }
+
   if (input.files && input.files[0]) {
     var reader = new FileReader();
 
     reader.onload = function (e) {
-      //console.log('e is ' + e.target.result);
       filePath = e.target.result;
 
-      $('.cropper').attr('src', ' ');
-      $('.cropper').attr('src', e.target.result);
+      $('#img-preview').attr('src', ' ');
+      $('#img-preview').attr('src', e.target.result);
       $('.img-container').css('display','block');
 
-      displayCropper();
+      $('#img-preview').Jcrop({
+        onSelect: showCoords,
+        onChange: showCoords,
+        bgColor: 'black',
+        bgOpacity: .60,
+        minSize: [50, 50],
+        aspectRatio: 16 / 9,
+        boxWidth: 300,
+        allowMove: true
+      }, function() {
+        jcrop = this;
+      });
+
+      $('.img-container').css({
+        width: '300px'
+      });
+      $('.jcrop-tracker').css({
+        width: '300px'
+      });
+      $('.jcrop-holder').css({
+        width: '300px'
+      });
     }
       
     reader.readAsDataURL(input.files[0]); 
   }
-}
-
-function displayCropper() {
-  $(".cropper").cropper({
-    aspectRatio: "auto",
-    done: function(data) {
-      //console.log('data is ' + JSON.stringify(data, null, ' '));
-      $dataX1.val(data.x1);
-      $dataY1.val(data.y1);
-      $dataX2.val(data.x2);
-      $dataY2.val(data.y2);
-      $dataHeight.val(data.height);
-      $dataWidth.val(data.width);
-    }
-  });
 }

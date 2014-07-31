@@ -1,5 +1,5 @@
-<link href="/linker/styles/cropper.css" rel="stylesheet">
-<script src="/linker/js/cropper.js"></script>
+<!--<link href="/linker/styles/cropper.css" rel="stylesheet">-->
+<script src="/linker/js/jcrop.min.js"></script>
 
 <%= req.flash('message') %>
 <div id="supplierPhotos">
@@ -23,7 +23,7 @@
           <!--<div id="upload-photo" class="disabled">Crop &amp; Save</div>-->
         </div>
         <div class="col-sm-6">
-          <div class="img-container"><img id="img-preview" class="cropper" src="" alt="your image"/></div>
+          <img id="img-preview" class="img-container" src="" alt="your image" />
           <div id="upload-photo" class="disabled hide">Crop &amp; Save</div>
           <div class="loading"><img src="/../../images/loading.gif" /></div>
         </div>
