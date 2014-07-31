@@ -13,6 +13,7 @@ module.exports = {
 	processBuyer: function(req, res) {
     var b = req.body;
     var temp = {};
+    var uploaded = false;
     User.findOne({ id: req.session.passport.user }, function(err, user) {
         Company.findOne({ user: user.id }, function(err, company) {
           if (err) { return res.redirect('/dashboard'); }
@@ -58,6 +59,7 @@ module.exports = {
                             }
                           else {
                             //console.log("next:"+n);
+                            uploaded = true;
                             next(err, post);
                           }
                         });
@@ -68,8 +70,13 @@ module.exports = {
                 next(err, buyer);
               }
             }, function(err) {
-                req.flash('message', 'Downloads successfully uploaded.');
+                if (uploaded){
+                  req.flash('message', 'Downloads successfully uploaded.');
+                } else {
+                  req.flash('message', 'No downloads uploaded.');
+                }
                 return res.redirect('/company/update#photosDownloadsBuyer');
+              
             });
             });//buyer findone done
         });
@@ -79,6 +86,7 @@ module.exports = {
   processSupplier: function(req, res){
     var b = req.body;
     var temp = {};
+    var uploaded = false;
     User.findOne({ id: req.session.passport.user }, function(err, user) {
         Company.findOne({ user: user.id }, function(err, company) {
           if (err) { return res.redirect('/dashboard'); }
@@ -134,7 +142,11 @@ module.exports = {
                 next(err, supplier);
               }
             }, function(err) {
-                req.flash('message', 'Downloads successfully uploaded.');
+                if (uploaded){
+                  req.flash('message', 'Downloads successfully uploaded.');
+                } else {
+                  req.flash('message', 'No downloads uploaded.');
+                }
                 return res.redirect('/company/update#photosDownloadsSupplier');
             });
             });//buyer findone done
