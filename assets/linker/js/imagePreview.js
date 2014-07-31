@@ -14,9 +14,6 @@ $("#imgInp").change(function(){
 });
 
 $("#uploadPhotos").on('click', '#upload-photo.enabled', function() {
-  console.log('clicked');
-  console.log('file path is ' + filePath);
-  /*$(".cropper").addClass("to-upload");*/
 
   $.ajax({
     type: "POST",
@@ -27,8 +24,6 @@ $("#uploadPhotos").on('click', '#upload-photo.enabled', function() {
     },
     complete: function() {
       $('.loading').hide();
-      $(".cropper").removeClass("to-upload");
-      $(".cropper").addClass("uploaded");
     },
     success: function(result) {
       $(".row .current-photos").append(
@@ -47,7 +42,7 @@ $("#uploadPhotos").on('click', '#upload-photo.enabled', function() {
   });
 });
 
-$("i.fa-times").click(function() {
+$(".photo-preview-area").on("click", "i.fa-times", function() {
   if ($(this).parent().hasClass("header-remove")) {
     $(this).parent().removeClass("header-remove");
     $(this).parent().siblings('.photo-src').attr('name', '');
@@ -71,7 +66,6 @@ function readURL(input) {
     $("#img-preview").css("visibility", "");
     $("#img-preview").css("width", "");
     $("#img-preview").css("height", "");
-    //$(".jcrop-holder").remove();
     jcrop.destroy();
   }
 
@@ -83,7 +77,7 @@ function readURL(input) {
 
       $('#img-preview').attr('src', ' ');
       $('#img-preview').attr('src', e.target.result);
-      $('.img-container').css('display','block');
+      $('#img-preview').css('display','block');
 
       $('#img-preview').Jcrop({
         onSelect: showCoords,
