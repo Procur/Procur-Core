@@ -5,16 +5,16 @@
         <form id="deleteDownloadsForm" action="/downloads/removeBuyer" method="post">
         <div class="row">
           <div class="col-sm-12">
-            <div class="col-sm-8"></div>
-            <div class="col-sm-2"></div>
-            <div class="col-sm-2"><h3>Remove</h3></div>
+            <div class="col-sm-8 col-xs-8"></div>
+            <div class="col-sm-2 hidden-xs"></div>
+            <div class="col-sm-2 col-xs-4"><h3>Remove</h3></div>
             <ul class="downloadsList">
               <% for (var i = 0; i<buyerDownload.length; i++){ %>
                 <li>
-                  <div class="col-sm-10">
+                  <div class="col-sm-10 col-xs-8">
                     <%= buyerDownload[i].title %><a href="<%= buyerDownload[i].assetUrl%>" title="Download Copy" target="_blank"><i class="fa fa-download"></i></a>
                   </div>
-                  <div class="col-sm-2">
+                  <div class="col-sm-2 col-xs-4">
                     <input type="checkbox" class="deleteYesNo" value="<%=buyerDownload[i].id %>" name="deleteMe"></input>
                   </div>
                 </li>
@@ -49,7 +49,7 @@
                 <input type="text" name="<%='downloadTitle' + i %>" placeholder="Title (Required)"/>
               </div>
               <div class="col-sm-6">
-                <input inline="true" type="file" name="<%='downloadURI'+i %>"  accept="*"/>
+                <input inline="true" type="file" name="<%='downloadURI'+i %>"  accept="application/pdf,application/vnd.ms-excel,image/*,application/zip,application/mspowerpoint,application/msword"/>
               </div>
             </div>
           <% } %>
