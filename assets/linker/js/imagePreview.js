@@ -15,23 +15,21 @@ $("#imgInp").change(function(){
 
 $("#uploadPhotos").on('click', '#upload-photo.enabled', function() {
 
-  /*if ( $(".current-photos h3").length) {
-    console.log('should delete!');
-    $(".current-photos h3").remove();
-  }*/
+  var urlPath;
+  
+  if ( $("#buyerPhotos").length ) { var urlPath = "/buyer/update/photos"; }
+  if ( $("#supplierPhotos").length) { var urlPath = "/supplier/update/photos"; }
 
   $.ajax({
     type: "POST",
-    url: '/supplier/update/photos',
+    url: urlPath,
     data: { croppedDimensions: croppedImageDimensions, file: filePath },
     beforeSend: function() {
       $('.loading').show();
     },
     complete: function() {
       $('.loading').hide();
-      if ( $(".current-photos h3").length) {
-        $(".current-photos h3").remove();
-      }
+      if ($(".current-photos h3").length) { $(".current-photos h3").remove(); }
     },
     success: function(result) {
       $(".current-photos").append(

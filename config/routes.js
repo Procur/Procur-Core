@@ -441,6 +441,16 @@ module.exports.routes = {
   'post /supplier/delete/photos': {
     controller: 'SupplierController',
     action: 'deletePhotos'
+  },
+
+  'post /buyer/update/photos': {
+    controller: 'BuyerController',
+    action: 'updatePhotos'
+  },
+
+  'post /buyer/delete/photos': {
+    controller: 'BuyerController',
+    action: 'deletePhotos'
   }
 
   /*'get /locationstest': {

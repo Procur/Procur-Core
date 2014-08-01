@@ -1,0 +1,51 @@
+<script src="/linker/js/jcrop.min.js"></script>
+
+<%= req.flash('message') %>
+<div id="buyerPhotos">
+  <div id="uploadPhotos">
+    <h4>Buyer Photos</h4>
+    <div class="formWrapper">
+      <div class="row">
+        <div class="col-sm-6 header-spacer"><h5>Upload a photo</h5></div>
+        <div class="col-sm-6 header-spacer"><h5 class="hide">Crop and save your photo</h5></div>
+      </div>
+      <div class="row">
+        <div class="col-sm-6">
+          <span class="file-wrapper">
+            <input type="file" id="imgInp" name="logo" />
+            <span class="file-button">Choose a Photo</span>
+          </span>
+        </div>
+        <div class="col-sm-6">
+          <img id="img-preview" class="img-container" src="" alt="your image" />
+          <div id="upload-photo" class="disabled hide">Crop &amp; Save</div>
+          <div class="loading"><img src="/../../images/loading.gif" /></div>
+        </div>
+      </div><!-- FIRST ROW -->
+    </div>
+  </div><br/><br/>
+  <div class="photo-preview-area">
+    <h4>Your Photos</h4>
+    <form action="/buyer/delete/photos" method="post" id="buyerPhotosForm">
+      <% if (buyer["photo"].length !== undefined) { var length = buyer["photo"].length; } %>
+      <div class="formWrapper">
+        <% if (length > 0) { %>
+          <div class="row current-photos">
+            <% for (var x = 0; x < length; x++) { %>
+              <div class="col-xs-6 col-sm-4">
+                <div class="photo-box">
+                  <div class="photo-box-header"><i class="fa fa-times"></i></div>
+                  <img name="photo" src="<%= buyer["photo"][x] %>">
+                  <input class="photo-src" name="" type="text" value="<%= buyer["photo"][x] %>"/>
+                </div>
+              </div>
+            <% } %>
+          </div><!-- end row -->
+        <% } else { %>
+          <div class="row current-photos"><h3 class="no-photos">You have not uploaded any photos</h3></div>
+        <% } %>
+      </div><!-- end formWrapper -->
+      <div class="row"><button class="continueButton" type="submit">Save&nbsp;&nbsp; <i class="fa fa-check"></i></button></div>
+    </form>
+  </div><!-- end photo-preview-area -->
+</div><!-- end buyerPhotos-->

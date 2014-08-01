@@ -35,7 +35,7 @@ module.exports.waterlineHelper = {
     var arrFields = ["language","locationName","locationType","locationCity",
                      "locationProvince","locationCountry","preferredSupplierLanguage",
                      "preferredSupplierLocation","acceptedCurrency","acceptedDeliveryTerms",
-                     "acceptedPaymentTerms","productCategory"];
+                     "acceptedPaymentTerms","productCategory", "photo"];
     var modelKeys = Object.keys(inObject);
     var newObject = {};
 
@@ -47,6 +47,7 @@ module.exports.waterlineHelper = {
       }
 
       if (inObject[arrFields[x]][0][0].length == 1) {
+        if (arrFields[x] == "photo") { break; }
         newObject[arrFields[x]] = [];
         newObject[arrFields[x]].push(inObject[arrFields[x]][0]);
       }

@@ -92,7 +92,7 @@ i.fa-times {
   cursor: pointer;
 }
 
-#supplierPhotos .formWrapper .col-xs-6:nth-child(n+4) {
+.current-photos .col-xs-6:nth-child(n+4) {
   margin-top: 40px;
 }
 

@@ -390,6 +390,159 @@ module.exports = {
     });
   },
 
+  updatePhotos: function(req, res) {
+    var cloudinary = require('cloudinary');
+    var oldDimensions = req.param('originalDimensions');
+    var newDimensions = req.param('croppedDimensions');
+    var image = req.param('file');
+    var imageData;
+    var payload = {};
+  
+    if (req.isAjax === false) { res.redirect('404'); } 
+
+    async.series(
+      {
+        user: function(callback) {
+          User
+            .findOne({ id: req.session.passport.user })
+            .exec(function(err, user) {
+              if (err) { callback(err, null); }
+              else if (!user) { callback(null, undefined); }
+              else {
+                payload["user"] = user.id;
+                callback(null, user);
+              }
+            });
+        },
+        company: function(callback) {
+          Company 
+            .findOne({ user: payload.user })
+            .exec(function(err, company) {
+              if (err) { callback(err, null); }
+              else if (!company) { callback(null, undefined); }
+              else {
+                payload["company"] = company.id;
+                callback(null, company);
+              }
+            });
+        },
+        buyer: function(callback) {
+          Buyer 
+            .findOne({ company: payload.company })
+            .exec(function(err, buyer) {
+              if (err) { callback(err, null); }
+              else if (!buyer) { callback(null, undefined); }
+              else {
+                payload["buyer"] = buyer.id;
+                callback(null, buyer);
+              }
+            });
+        },
+        cloud: function(callback) {
+          cloudinary.uploader.upload(image, function(result) {
+            imageData = result.url;
+            Buyer.findOne({ company: payload.company }).exec(function(err, buyer) {
+              if (buyer.photo === undefined) { buyer["photo"] = []; }
+              buyer["photo"].push(imageData);
+              buyer.save(function(err) {
+                if (err) { callback(err, null); }
+                else if (!buyer) { callback(null, undefined); }
+                else {
+                  callback(null, buyer);
+                }
+              });
+            });
+          }, { x: newDimensions.x, y: newDimensions.y, width: newDimensions.w, height: newDimensions.h, crop: "crop" });
+        }
+      },
+      function(err, data) {
+        return res.send(true, { newDimensions: newDimensions, newImage: imageData });
+      }
+    )
+  },
+
+  deletePhotos: function(req, res) {
+    console.log('made it here');
+    var b = req.body;
+    var _ = require('lodash');
+    var payload = {};
+
+    async.series(
+      {
+        user: function(callback) {
+          User
+            .findOne({ id: req.session.passport.user })
+            .exec(function(err, user) {
+              if (err) { callback(err, null); }
+              else if (!user) { callback(null, undefined); }
+              else {
+                payload["user"] = user.id;
+                callback(null, user);
+              }
+          });
+        },
+        company: function(callback) {
+          Company
+            .findOne({ user: payload.user })
+            .exec(function(err, company) {
+              if (err) { callback(err, null); }
+              else if (!company) { callback(null, undefined); }
+              else {
+                payload["company"] = company.id;
+                callback(null, company);
+              }
+          });
+        },
+        buyer: function(callback) {
+          Buyer
+            .findOne({ company: payload.company })
+            .exec(function(err, buyer) {
+              if (err) { callback(err, null); }
+              else if (!buyer) { callback(null, undefined); }
+              else {
+                payload["buyer"] = buyer.id;
+                callback(null, buyer);
+              }
+          });
+        },
+      },
+      function(err, data) {
+        if (data.buyer) {
+          console.log('data buyer');
+          var photosToDelete = [];
+          var currentPhotos = [];
+          photosToDelete = b["photos-to-delete"];
+
+          if (typeof photosToDelete === "string") { photosToDelete = photosToDelete.split(); }
+
+          data.buyer.photo.forEach(function(photo) {
+            currentPhotos.push(photo);
+          });
+
+          Buyer.findOne({ company: payload.company }).exec(function(err, buyer) {
+            if (err) {
+              res.send(500, err);
+            } else {
+              buyer["photo"] = _.difference(buyer["photo"], photosToDelete);
+
+              buyer.save(function(err) {
+                if (err) {
+                  res.send(500, err);
+                } else {
+                  res.send(200, 'all deleted');
+                }
+              });
+            }
+          });
+
+          photosToDelete.length > 1 ? req.flash('message', 'Photos succesfully deleted.') : req.flash('message', 'Photo succesfully deleted.');
+
+          return res.redirect('/company/update/#buyerPhotos');
+        }
+      }
+    )
+  },
+
   destroy: function (req, res) {
     var activeUser = req.session.passport.user,
         p = req.params;
