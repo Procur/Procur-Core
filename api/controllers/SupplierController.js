@@ -507,18 +507,6 @@ module.exports = {
               }
           });
         },
-        buyer: function(callback) {
-          Buyer
-            .findOne({ company: payload.company })
-            .exec(function(err, buyer) {
-              if (err) { callback(err, null); }
-              else if (!buyer) { callback(null, undefined); }
-              else {
-                payload["buyer"] = buyer.id;
-                callback(null, buyer);
-              }
-          });
-        },
         supplier: function(callback) {
           Supplier
             .findOne({ company: payload.company })
@@ -533,10 +521,7 @@ module.exports = {
         }
       },
       function(err, data) {
-        if (data.buyer && data.user.activeMode === "buyer") { 
-          console.log("Buyer is " + data.buyer.id);
-        }
-        if (data.supplier && data.user.activeMode === "supplier") {
+        if (data.supplier) {
           var photosToDelete = [];
           var currentPhotos = [];
           photosToDelete = b["photos-to-delete"];
