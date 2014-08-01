@@ -290,7 +290,7 @@ module.exports = {
         return res.redirect('/dashboard');
       }
       else {
-        res.view({ message: "signed out. "});
+        res.view({ loggedin: false, message: "signed out. "});
       }
     });
   },

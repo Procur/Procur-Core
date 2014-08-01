@@ -137,6 +137,9 @@ input {
   color: black;
   font-weight: 500;
 }
+#regWizard .buyerOrSupplier .col-xs-12 {
+  height: 100%;
+} 
 #regWizard .styledSelect {
   margin-top: 5px;
   margin-bottom: 10px;
@@ -744,6 +747,18 @@ hr.darkseparator {
   width: 100%;
   top: -15px;
   font-weight: 500;
+}
+
+@media (max-width: 784px) {
+
+  #wizardPhone {
+    padding-left: 7px;
+  }
+  
+  #regWizard .countryCodeDisplay {
+  width: 96%;
+}
+
 }
 
 #regWizard #selectHandleForm label.error {

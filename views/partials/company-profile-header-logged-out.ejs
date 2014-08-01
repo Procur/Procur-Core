@@ -1,18 +1,58 @@
 <div id="profile-header">
-  <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-    <div class="container profile-header">
-      <div class="navbar-left">
+  <nav class="navbar navbar-default" style="margin-bottom: 0px;" role="navigation">
+    <div class="container">
+
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#nav-links">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
         <a class="navbar-brand" href="/"><img src="/images/procur.png" /></a>
       </div>
 
-      <div class="nav navbar-nav navbar-right">
+      <div class="collapse navbar-collapse" id="nav-links">
+        
+        <ul class="nav navbar-nav navbar-right hidden-xs">
+        <li>
         <p class="navbar-text earlyaccess-pill newText hidden-xs">
           New to Procur?
-        </p>
+        </p>       
+        </li>
+        <li>
         <p class="navbar-text account-registration createPill">
           <a href="/signup">Create a free account</a>
         </p>
+        </li>
+        </ul>
+
+      
+
+      <ul class="nav navbar-nav hidden-sm hidden-md hidden-lg">
+      
+        <li class="tri">
+          <a href="/">Procur Home</a>
+          <div class="hoverTriContainer">
+            <div class="hoverTri"></div>
+          </div>
+        </li>
+        <li class="tri">
+          <a href="/signup">Sign Up</a>
+          <div class="hoverTriContainer">
+            <div class="hoverTri"></div>
+          </div>
+        </li>
+        <li class="tri">
+          <a href="/login">Sign In</a>
+          <div class="hoverTriContainer">
+            <div class="hoverTri"></div>
+          </div>
+        </li>
+      </ul>
       </div>
     </div>
   </nav>
 </div>
+
+

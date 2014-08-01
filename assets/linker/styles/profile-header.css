@@ -30,6 +30,22 @@
   text-decoration: none;
 }
 
+#profile-header {
+  position: relative;
+  height: 64px;
+  width: 100%;
+  background: white;
+  margin-bottom: 0px;
+  z-index: 99999;
+}
+
+#profile-header ul {
+  position: relative;
+  list-style: none;
+  margin: 0px;
+  padding: 0px;
+}
+
 #profile-header .createPill a {
   padding: 3px 20px 3px 20px;
   margin: 5px 0px 0px 15px;

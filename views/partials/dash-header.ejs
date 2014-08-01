@@ -1,10 +1,11 @@
+<nav class="navbar navbar-default hidden-xs" style="margin-bottom: 0px;" role="navigation">
 <div id="dashboard-header">
   <div class="dashboard-header-left">
     <a class="logo-image" href="/"><img src="/images/procur.png" /></a>
     <a class="ea-link-image" href="/earlyaccess"><img class="ea-light-image" src="/images/ea-light.png" /></a>
     <p class="userCompanyName hidden-sm hidden-xs"><span class="greetingUser"><%= user.firstName %> <%= user.lastName %></span> <span class="greetingCompany">&middot; <%= company.name %></span></p>
   </div>
-  <div class="dashboard-header-right">
+  <div class="dashboard-header-right hidden-xs"> <!-- NON MOBILE -->
     <% if((company.buyer == true) && (company.supplier == true)) { %>
       <% if(user.activeMode == 'buyer') { %>
         <p class="typeToggle buyer">CURRENTLY IN BUYER MODE <i class="fa fa-exchange"></i> SWITCH TO SUPPLIER</p>
@@ -15,8 +16,53 @@
     <% } %>
     <a href="/logout" class="logout-link"><i class="fa fa-sign-out fa-fw"></i> LOGOUT</a>
   </div>
+
+
 </div>
-<div id="subnav-header">
+</nav>
+
+<div id="dash-header" class="hidden-sm hidden-md hidden-lg"> <!-- Mobile -->
+  <nav class="navbar navbar-default" role="navigation" style="background-color: #EDECE8;">
+    <div class="container">
+
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#nav-links">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="logo-image" id="mobile-fix" href="/"><img src="/images/procur.png" /></a>
+    <a class="ea-link-image" href="/earlyaccess"><img class="ea-light-image" src="/images/ea-light.png" /></a>
+      </div>
+
+      <div class="collapse navbar-collapse" style="background-color: #f8f8f8;" id="nav-links">
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="/dashboard">Dashboard</a></li>
+            <li><a href="/companies/<%= company.handle %>">View Company Profile</a></li>
+            <li><a href="/company/update">Edit Company Profile</a></li>
+            <li><a href="/user/update">User Account Settings</a></li>
+            <li class="divider"></li>
+            <li>
+            <% if((company.buyer == true) && (company.supplier == true)) { %>
+              <% if(user.activeMode == 'buyer') { %>
+                <a class="typeToggle buyer">Switch to Supplier</a>
+              <% } %>
+              <% if(user.activeMode == 'supplier') { %>
+                <a class="typeToggle supplier">Switch to Buyer</a>
+              <% } %>
+            <% } %>
+           </li>
+           <li class="divider"></li>
+           <li><a href="/logout">LOGOUT</a></li>
+      </ul>
+      </div>
+    </div>
+  </nav>
+</div>
+
+
+<div id="subnav-header" class="hidden-xs"> <!-- NON MOBILE -->
   <div class="dashboard-header-right">
     <p class="myprocur-label">MY PROCUR:</p>
     <a href="/dashboard" class="navLink dashboard">Dashboard</a>
@@ -25,3 +71,4 @@
     <a href="/user/update" class="navLink updateUser">User Account Settings</a>
   </div>
 </div>
+

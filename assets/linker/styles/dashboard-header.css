@@ -205,5 +205,25 @@ p.userCompanyName {
     width: 100%;
     text-align: center;
   }
+  #mobile-fix {
+    padding-left: 15px;
+  }
 
 }
+
+#dash-header {
+  position: relative;
+  height: 64px;
+  width: 100%;
+  background: white;
+  margin-bottom: 0px;
+  z-index: 99999;
+}
+
+#dash-header ul {
+  position: relative;
+  list-style: none;
+  margin: 0px;
+  padding: 0px;
+}
+
