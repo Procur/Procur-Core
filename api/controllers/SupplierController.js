@@ -457,6 +457,7 @@ module.exports = {
           cloudinary.uploader.upload(image, function(result) {
             imageData = result.url;
             Supplier.findOne({ company: payload.company }).exec(function(err, supplier) {
+              if (supplier.photo === undefined) { supplier["photo"] = []; }
               supplier["photo"].push(imageData);
               supplier.save(function(err) {
                 if (err) { callback(err, null); }

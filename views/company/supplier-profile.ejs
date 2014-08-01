@@ -114,39 +114,41 @@
   </div><!-- END LEFT COLUMN -->
 
   <div class="col-sm-12 col-md-7 col-lg-8 pull-right hidden-xs">
-    <div class="row">
-      <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-        <!-- Indicators -->
-        <ol class="carousel-indicators">
-          <!--<li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-          <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-          <li data-target="#carousel-example-generic" data-slide-to="2"></li>-->
-          <% for (var x = 0; x < supplier["photo"].length; x++ ) { %>
-            <li data-target="#carousel-example-generic" data-slide-to"<%= x %>" <% if (x === supplier["photo"].length - 1) { %><%= 'class=active' %><% } %>></li>
-          <% } %>
-        </ol>
+    <% if (supplier["photo"].length > 0) { %>
+      <div class="row">
+        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+          <!-- Indicators -->
+          <ol class="carousel-indicators">
+            <!--<li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+            <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+            <li data-target="#carousel-example-generic" data-slide-to="2"></li>-->
+            <% for (var x = 0; x < supplier["photo"].length; x++ ) { %>
+              <li data-target="#carousel-example-generic" data-slide-to"<%= x %>" <% if (x === supplier["photo"].length - 1) { %><%= 'class=active' %><% } %>></li>
+            <% } %>
+          </ol>
 
-        <!-- Wrapper for slides -->
-        <div class="carousel-inner">
-          <% for (var x = 0; x < supplier["photo"].length; x++ ) { %>
-            <div class="item <% if (x === supplier["photo"].length - 1) { %><%= "active" %><% } %>">
-              <img src="<%= supplier["photo"][x] %>">
-              <!--<div class="carousel-caption">
-                ...
-              </div>-->
-            </div>
-          <% } %>
+          <!-- Wrapper for slides -->
+          <div class="carousel-inner">
+            <% for (var x = 0; x < supplier["photo"].length; x++ ) { %>
+              <div class="item <% if (x === supplier["photo"].length - 1) { %><%= "active" %><% } %>">
+                <img src="<%= supplier["photo"][x] %>">
+                <!--<div class="carousel-caption">
+                  ...
+                </div>-->
+              </div>
+            <% } %>
+          </div>
+
+          <!-- Controls -->
+          <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+          </a>
+          <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right"></span>
+          </a>
         </div>
-
-        <!-- Controls -->
-        <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-          <span class="glyphicon glyphicon-chevron-left"></span>
-        </a>
-        <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-          <span class="glyphicon glyphicon-chevron-right"></span>
-        </a>
       </div>
-    </div>
+    <% } %>
 
     <div class="profile-nav">
       <ul>

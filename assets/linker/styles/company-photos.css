@@ -106,10 +106,11 @@ i.fa-times {
   z-index: 1000;
 }
 
-.cropper-container {
-  margin: 0 auto;
-  left: 0px !important;
+h3.no-photos {
+  margin: 0px;
+  padding-left: 15px;
 }
+
 
 /* Button */
 .file-wrapper {

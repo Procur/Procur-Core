@@ -15,6 +15,11 @@ $("#imgInp").change(function(){
 
 $("#uploadPhotos").on('click', '#upload-photo.enabled', function() {
 
+  /*if ( $(".current-photos h3").length) {
+    console.log('should delete!');
+    $(".current-photos h3").remove();
+  }*/
+
   $.ajax({
     type: "POST",
     url: '/supplier/update/photos',
@@ -24,9 +29,12 @@ $("#uploadPhotos").on('click', '#upload-photo.enabled', function() {
     },
     complete: function() {
       $('.loading').hide();
+      if ( $(".current-photos h3").length) {
+        $(".current-photos h3").remove();
+      }
     },
     success: function(result) {
-      $(".row .current-photos").append(
+      $(".current-photos").append(
         "<div class='col-xs-6 col-sm-4'>" +
           "<div class='photo-box'>" +
             "<div class='photo-box-header'><i class='fa fa-times'></i></div>" +
