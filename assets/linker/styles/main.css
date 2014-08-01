@@ -749,6 +749,18 @@ hr.darkseparator {
   font-weight: 500;
 }
 
+@media (max-width: 784px) {
+
+  #wizardPhone {
+    padding-left: 7px;
+  }
+  
+  #regWizard .countryCodeDisplay {
+  width: 96%;
+}
+
+}
+
 #regWizard #selectHandleForm label.error {
   display: block;
   margin-left: -10px;
