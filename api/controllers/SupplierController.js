@@ -412,7 +412,7 @@ module.exports = {
     var image = req.param('file');
     var imageData;
     var payload = {};
-  
+
     if (req.isAjax === false) { res.redirect('404'); } 
 
     async.series(

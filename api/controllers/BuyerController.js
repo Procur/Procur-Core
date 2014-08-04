@@ -462,7 +462,6 @@ module.exports = {
   },
 
   deletePhotos: function(req, res) {
-    console.log('made it here');
     var b = req.body;
     var _ = require('lodash');
     var payload = {};
@@ -508,7 +507,6 @@ module.exports = {
       },
       function(err, data) {
         if (data.buyer) {
-          console.log('data buyer');
           var photosToDelete = [];
           var currentPhotos = [];
           photosToDelete = b["photos-to-delete"];
