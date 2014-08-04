@@ -53,6 +53,9 @@ module.exports.routes = {
     controller: 'HomeController',
     action: 'tradeShows'
   },*/ //Displays Trade Shows
+  'get /thankyou' : {
+    view: 'home/thankyou'
+  },
 
   'get /about': {
     controller: 'HomeController',

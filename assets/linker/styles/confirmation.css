@@ -1,0 +1,50 @@
+/*Thank you page*/
+#confirmation {
+  margin-top: 15%; }
+  #confirmation h1 {
+    font-family: "Roboto", Helvetica, Arial;
+    font-weight: 100;
+    font-size: 3em;
+    margin-bottom: 25px;
+    margin-top: 25px;
+    border-top: 1px #c9c9c9 dotted;
+    padding-top: 25px; }
+  #confirmation p {
+    font-family: "Roboto", Helvetica, Arial;
+    font-weight: 300;
+    padding-left: 5px;
+    line-height: 22px; }
+  #confirmation a {
+    margin-top: 25px;
+    position: absolute;
+    padding-left: 5px;
+    font-family: "Montserrat", Tahoma, Verdana;
+    font-weight: 400;
+    text-transform: uppercase;
+    font-size: 11px;
+    letter-spacing: 0.05em;
+    line-height: 36px;
+    text-align: center; }
+    #confirmation a i {
+      font-size: 13px;
+      margin-right: 5px; }
+    #confirmation a .returnButton {
+      position: relative;
+      height: 35px;
+      color: black;
+      background: #e5e6e7;
+      padding-left: 20px;
+      padding-right: 20px;
+      -webkit-transition: all 150ms ease-in-out;
+      -moz-transition: all 150ms ease-in-out;
+      -ms-transition: all 150ms ease-in-out;
+      -o-transition: all 150ms ease-in-out;
+      transition: all 150ms ease-in-out; }
+  #confirmation a:hover .returnButton {
+    background: #fe9e23;
+    color: white;
+    -webkit-transition: all 150ms ease-in-out;
+    -moz-transition: all 150ms ease-in-out;
+    -ms-transition: all 150ms ease-in-out;
+    -o-transition: all 150ms ease-in-out;
+    transition: all 150ms ease-in-out; }
