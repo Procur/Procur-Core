@@ -151,20 +151,32 @@
   }
 
 /* RIGHT COLUMN */
-.carousel {
+.profile-container .carousel {
   margin: 0 auto 30px auto;
   width: 96%;
   max-height: 410px;
+  min-height: 410px;
 }
 
-.carousel-inner div.item {
+.profile-container .carousel-inner div.item {
   width: 100%;
   max-height: 410px;
+  min-height: 410px;
 }
 
-.carousel-inner div img {
+.profile-container .carousel-inner div img {
   width: 100%;
   max-height: 410px;
+  min-height: 410px;
+}
+
+.profile-container .carousel a.carousel-control {
+  background-image: none;
+  width: 10%;
+}
+
+.profile-container .carousel a.carousel-control:hover {
+  border-bottom: none;
 }
 
 .profile-nav {
