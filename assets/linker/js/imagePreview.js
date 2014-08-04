@@ -1,14 +1,10 @@
 var croppedImageDimensions = {};
 var jcrop;
 var filePath;
+var file;
 
 $("#imgInp").change(function(){
   readURL(this);
-  $("#upload-photo").removeClass("disabled");
-  $("#upload-photo").addClass("enabled");
-  $("#upload-photo").removeClass("hide");
-  $("#upload-photo").addClass("show");
-
   $("#uploadPhotos h5").removeClass("hide");
   $("#uploadPhotos h5").addClass("show");
 });
@@ -17,8 +13,8 @@ $("#uploadPhotos").on('click', '#upload-photo.enabled', function() {
 
   var urlPath;
   
-  if ( $("#buyerPhotos").length ) { var urlPath = "/buyer/update/photos"; }
-  if ( $("#supplierPhotos").length) { var urlPath = "/supplier/update/photos"; }
+  if ($("#buyerPhotos").length) { var urlPath = "/buyer/update/photos"; }
+  if ($("#supplierPhotos").length) { var urlPath = "/supplier/update/photos"; }
 
   cropperIsFullImage(croppedImageDimensions);
 
@@ -46,6 +42,7 @@ $("#uploadPhotos").on('click', '#upload-photo.enabled', function() {
     },
     error: function(error) {
       console.log('error is ' + error);
+      console.log("Error is " + JSON.stringify(error, null, ' '));
     }
   });
 });
@@ -86,6 +83,28 @@ function cropperIsFullImage(dimensions) {
   }
 }
 
+function isFileSizeValid(file, e) {
+  if (file.size > 2000000) {
+    $("#upload-photo").removeClass("enabled");
+    $("#upload-photo").addClass("disabled");
+    $("#upload-photo").removeClass("hide");
+    $("#upload-photo").addClass("show");
+
+    $('#img-preview').attr('src', ' ');
+    $('#img-preview').attr('src', '/images/addUserPhoto.png'); 
+    $('#img-preview').css('display','block');
+  } else {
+    $("#upload-photo").removeClass("disabled");
+    $("#upload-photo").addClass("enabled");
+    $("#upload-photo").removeClass("hide");
+    $("#upload-photo").addClass("show");
+
+    $('#img-preview').attr('src', ' ');
+    $('#img-preview').attr('src', e.target.result);
+    $('#img-preview').css('display','block');
+  }
+}
+
 function readURL(input) {
   if ( $(".jcrop-holder").length ) {
     $("#img-preview").css("visibility", "");
@@ -95,16 +114,14 @@ function readURL(input) {
   }
 
   if (input.files && input.files[0]) {
+    file = input.files && input.files[0];
     var reader = new FileReader();
 
     reader.onload = function (e) {
       filePath = e.target.result;
 
+      isFileSizeValid(file, e);
       initDimensions();
-
-      $('#img-preview').attr('src', ' ');
-      $('#img-preview').attr('src', e.target.result);
-      $('#img-preview').css('display','block');
 
       $('#img-preview').Jcrop({
         onSelect: showCoords,
