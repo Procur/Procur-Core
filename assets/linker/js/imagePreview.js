@@ -20,6 +20,8 @@ $("#uploadPhotos").on('click', '#upload-photo.enabled', function() {
   if ( $("#buyerPhotos").length ) { var urlPath = "/buyer/update/photos"; }
   if ( $("#supplierPhotos").length) { var urlPath = "/supplier/update/photos"; }
 
+  cropperIsFullImage(croppedImageDimensions);
+
   $.ajax({
     type: "POST",
     url: urlPath,
@@ -67,6 +69,23 @@ function showCoords(c) {
   croppedImageDimensions["h"] = Math.floor(c.h);
 }
 
+function initDimensions() {
+  croppedImageDimensions = {
+    "x"  : "",
+    "y"  : "",
+    "x2" : "",
+    "y2" : "",
+    "w"  : "",
+    "h"  : ""
+  };
+}
+
+function cropperIsFullImage(dimensions) {
+  if (dimensions["w"] == 0 || dimensions["h"] == 0) {
+    initDimensions();
+  }
+}
+
 function readURL(input) {
   if ( $(".jcrop-holder").length ) {
     $("#img-preview").css("visibility", "");
@@ -80,6 +99,8 @@ function readURL(input) {
 
     reader.onload = function (e) {
       filePath = e.target.result;
+
+      initDimensions();
 
       $('#img-preview').attr('src', ' ');
       $('#img-preview').attr('src', e.target.result);
