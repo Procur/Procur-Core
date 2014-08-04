@@ -154,14 +154,17 @@
 .carousel {
   margin: 0 auto 30px auto;
   width: 96%;
+  max-height: 410px;
 }
 
 .carousel-inner div.item {
   width: 100%;
+  max-height: 410px;
 }
 
 .carousel-inner div img {
   width: 100%;
+  max-height: 410px;
 }
 
 .profile-nav {
