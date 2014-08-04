@@ -57,16 +57,11 @@ module.exports = {
           async.times(numUploads, function(n, next) {
             if (req.files["downloadURI" + uploadArray[n]]) {
               if (b["downloadTitle" + uploadArray[n]] && b["downloadTitle" + uploadArray[n]][0] != "" && req.files["downloadURI" + uploadArray[n]].headers['content-type'] != "application/octet-stream" && req.files["downloadURI" + uploadArray[n]].size < maxSize) {
-                console.log("cur N: " + uploadArray[n]);
                 filepath = req.files["downloadURI" + uploadArray[n]].path;
                 filename1 = b["downloadTitle" + uploadArray[n]];
                 filenameDict["filename" + uploadArray[n]] = filename1;
                 filename = filename1 + "." + req.files["downloadURI" + uploadArray[n]].path.split(".").pop();
                 filetype = req.files["downloadURI" + uploadArray[n]].headers['content-type'];
-                console.log("FILEPATH " + filepath);
-                console.log("filetype: " + filetype)
-                console.log(filename);
-                console.log(filetype);
                 fStream = fs.createReadStream(filepath);
                 var uploader = new streamingS3(fStream, 'AKIAJJ2Y43ZH662PWFUA', 'IGrhMgy29wD++dB9H9pMzLqOhx5cll45U1qWy+uJ', {
                   Bucket: 'procur-cms',
@@ -75,12 +70,6 @@ module.exports = {
                   ACL: 'public-read'
                 }, function(err, resp, filename1, stats) {
                   if (err) return res.redirect('/dashboard');
-                  //console.log('Upload stats: ', stats);
-                  //console.log('Upload successful: ', resp);
-                  //console.log('start');
-                  //console.log(buyer.id);
-                  //console.log(resp.Location);
-                  //console.log(b["downloadTitle"][0]);
                   Download.create({
                     owner: buyer.id,
                     title: filenameDict["filename" + uploadArray[n]],
@@ -89,11 +78,9 @@ module.exports = {
                   }, function(err, post) {
                     //console.log(post);
                     if (err) {
-                      console.log("ERROR " + JSON.stringify(err, null, ' '));
                       req.flash("There was a problem. Try again.");
                       res.redirect("/company/update");
                     } else {
-                      console.log("next:" + uploadArray[n]);
                       uploaded = true;
                       next(err, post);
                     }
@@ -115,8 +102,7 @@ module.exports = {
             } else {
               req.flash('message', 'No downloads uploaded.');
             }
-            f (res.headersSent) {
-              console.log("blah");
+            if (res.headersSent) {
             } else {
               return res.redirect('/company/update#photosDownloadsSupplier');
             }
@@ -156,38 +142,29 @@ module.exports = {
     User.findOne({
       id: req.session.passport.user
     }, function(err, user) { //start User
-      console.log("in user");
       if (err) {
         return res.redirect('/dashboard');
       }
       Company.findOne({
         user: user.id 
       }, function(err, company) { //start company
-        console.log("in company");
         if (err) {
           return res.redirect('/dashboard');
         }
         Supplier.findOne({
           company: company.id
         }, function(err, supplier) {
-          console.log("in supplier");
           if (err) {
             return res.redirect('/dashboard');
           }
           async.times(numUploads, function(n, next) {
-            console.log("in async");
             if (req.files["downloadURI" + uploadArray[n]]) {
               if (b["downloadTitle" + uploadArray[n]] && b["downloadTitle" + uploadArray[n]][0] != "" && req.files["downloadURI" + uploadArray[n]].headers['content-type'] != "application/octet-stream" && req.files["downloadURI" + uploadArray[n]].size < maxSize) {
-                console.log("cur N: " + uploadArray[n]);
                 filepath = req.files["downloadURI" + uploadArray[n]].path;
                 filename1 = b["downloadTitle" + uploadArray[n]];
                 filenameDict["filename" + uploadArray[n]] = filename1;
                 filename = filename1 + "." + req.files["downloadURI" + uploadArray[n]].path.split(".").pop();
                 filetype = req.files["downloadURI" + uploadArray[n]].headers['content-type'];
-                console.log("FILEPATH " + filepath);
-                console.log("filetype: " + filetype)
-                console.log(filename);
-                console.log(filetype);
                 fStream = fs.createReadStream(filepath);
                 var uploader = new streamingS3(fStream, 'AKIAJJ2Y43ZH662PWFUA', 'IGrhMgy29wD++dB9H9pMzLqOhx5cll45U1qWy+uJ', {
                   Bucket: 'procur-cms',
@@ -196,54 +173,37 @@ module.exports = {
                   ACL: 'public-read'
                 }, function(err, resp, filename1, stats) {
                   if (err) return res.redirect('/dashboard');
-                  //console.log('Upload stats: ', stats);
-                  //console.log('Upload successful: ', resp);
-                  //console.log('start');
-                  //console.log(supplier.id);
-                  //console.log(resp.Location);
-                  //console.log(b["downloadTitle"][0]);
                   Download.create({
                     owner: supplier.id,
                     title: filenameDict["filename" + uploadArray[n]],
                     active: true,
                     assetUrl: resp.Location
                   }, function(err, post) {
-                    console.log("in download");
-                    //console.log(post);
                     if (err) {
-                      console.log("ERROR " + JSON.stringify(err, null, ' '));
                       req.flash("There was a problem. Try again.");
                       res.redirect("/company/update");
                     } else {
-                      console.log("next:" + uploadArray[n]);
                       uploaded = true;
                       next(err, post);
                     }
                   }); //End download create
                 }); //End uploader function
               } else {
-                //console.log("blah next:"+n);
                 next(err, supplier);
               }
             } else {
               next(err, supplier);
             }
           }, function(err) {
-            console.log("after async");
             if (err) {
-              console.log("after async1");
               return res.redirect('/dashboard');
             }
             if (uploaded) {
-              console.log("after async2");
               req.flash('message', 'Downloads successfully uploaded.');
             } else {
-              console.log("after async3");
               req.flash('message', 'No downloads uploaded.');
             }
-            console.log("after async4");
             if (res.headersSent) {
-              console.log("blah");
             } else {
               return res.redirect('/company/update#photosDownloadsSupplier');
             }
