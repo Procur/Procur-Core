@@ -1,217 +1,286 @@
 <% if (company.supplier == true) { %>
-  <% if ((user.activeMode == 'supplier') || (user.activeMode === undefined)) { %>
-    <div id="supplierInformation">
-      <h4>Supplier Information</h4>
-      <div class="formWrapper">
+<% if ((user.activeMode == 'supplier') || (user.activeMode === undefined)) { %>
+<div id="supplierInformation">
+  <h4>Supplier Information</h4>
+ 
+  <div class="formWrapper">
+    <div class="row">
+      <div class="col-sm-6"> <!-- Left Column-->
+        <div class="formWrapper">
+          <h5>Logo Image</h5>
+          <div><% if (supplier.logoUrl) { %><img src="<%= supplier.logoUrl %>"><% } %></div>
+          <form id="supplierLogoForm" action="/supplier/update/logo" method="post" enctype="multipart/form-data">
+            <input type="file" name="logo" accept="image/*"/>
+            <input type="submit" value="Update Logo Image">
+          </form>
+        </div>
+        
+        <form action="/supplier/update/information" method="post" id="supplierInformationForm">
+        <h5>Type of Company*</h5>
+        <section id="typeOfCompany">
+          <div class="styledSelect breakForm">
+            <select name="typeOfCompany" id="typeOfComp">
+              <%- partial('../edit-dropdowns/edit-buyer-type') %>
+              <% if (supplier.preferredBuyerType) { %>
+              <script language="javascript">$("#typeOfComp").val("<%=supplier.typeOfCompany%>");</script>
+              <% } %>
+            </select>
+          </div>
+        </section>
+
+        <h5>Contact Name</h5>
+        <% if (supplier.contactName === undefined) { %>
+        <div><input type="text" name="contactName" placeholder="Contact Name"></div>
+        <% } else { %>
+        <div><input type="text" name="contactName" value="<%= supplier.contactName %>" placeholder="Contact Name"></div>
+        <% } %>
+
+        <h5>Contact Position</h5>
+        <% if (supplier.contactPosition === undefined) { %>
+        <div><input type="text" name="contactPosition" placeholder="Contact Position"></div>
+        <% } else { %>
+        <div><input type="text" name="contactPosition" value="<%= supplier.contactPosition %>" placeholder="Contact Position"></div>
+        <% } %>
+
+        <h5>Contact Email</h5>
+        <% if (supplier.contactEmail === undefined) { %>
+        <div><input type="text" name="contactEmail" placeholder="Contact Email"></div>
+        <% } else { %>
+        <div><input type="text" name="contactEmail" value="<%= supplier.contactEmail %>" placeholder="Contact Email"></div>
+        <% } %>
+
+        <h5>Private Labeler</h5>
+        <section id="privateLabeler" class="breakForm">
+          <% if (supplier.privateLabeler === true) { %>
+          <input style="margin-left: 0px;" class="checkbox"type="checkbox" name="privateLabeler" value="privateLabeler" checked="checked"><div class="checkboxtext">Private Labeling</div><br>
+          <% } else { %>
+          <input style="margin-left: 0px;" class="checkbox"type="checkbox" name="privateLabeler" value="privateLabeler"><div class="checkboxtext">Private Labeling</div><br>
+          <% } %>
+        </section>
+
+        <h5>GSA Approved Supplier</h5>
+        <section id="gsaApprovedSupplier" class="breakForm">
+          <% if (supplier.gsaApprovedSupplier === true) { %>
+          <input style="margin-left: 0px;" class="checkbox"type="checkbox" name="gsaApprovedSupplier" value="gsaApprovedSupplier" checked="checked"><div class="checkboxtext">GSA Approved Supplier</div><br>
+          <% } else { %>
+          <input style="margin-left: 0px;" class="checkbox"type="checkbox" name="gsaApprovedSupplier" value="gsaApprovedSupplier"><div class="checkboxtext">GSA Approved Supplier</div><br>
+          <% } %>
+        </section>
+
+        <h5>DUNS Number</h5>
+        <% if (supplier.dunsNumber === undefined) { %>
+        <div><input type="text" name="dunsNumber" placeholder="DUNS Number"></div>
+        <% } else { %>
+        <div><input type="text" name="dunsNumber" value="<%= supplier.dunsNumber %>" placeholder="DUNS Number"></div>
+        <% } %>
+
+        <h5>CAGE Code</h5>
+        <% if (supplier.cageCode=== undefined) { %>
+        <div><input type="text" name="cageCode" placeholder="CAGE Code"></div>
+        <% } else { %>
+        <div><input type="text" name="cageCode" value="<%= supplier.cageCode %>" placeholder="CAGE Code"></div>
+        <% } %>
+      </div><!-- END left column -->
+
+      <div class="col-sm-6"> <!-- Right Column-->
+        <h5>DBA Name</h5>
+        <div><input type="text" name="dba" <% if (supplier.dbaName) { %>value="<%= supplier.dbaName %>"<% }%> placeholder="Alternate Company Name"></div>
+
+        <h5>Language*</h5>
+        <div class="styledSelect">
+          <select name="language" id="languageSelect">
+
+            <%- partial('../edit-dropdowns/edit-language') %>
+            <script language="javascript">$("#languageSelect").val("<%=supplier.language%>");</script>
+
+          </select>
+        </div>
+        <h5>Accepted Currencies*</h5>
+        <section id="acceptedCurrencies">
+        <% var currencies = ["USD","EUR","JPY","GBP","AUD","CHF","CAD","MXN","CNY","NZD","SEK","RUB","HKD","SGD"]; %>
+          <div class="row">
+          <% for(var x = 0; x < currencies.length; x++) { %>
+          <% var matchFound = false; %>
+          <% if (x % 2 == 0) { %>
+        </div>
         <div class="row">
-          <div class="col-sm-6">
-            <h5>Logo Image</h5>
-            <div><% if (supplier.logoUrl) { %><img src="<%= supplier.logoUrl %>"><% } %></div>
-            <form id="supplierLogoForm" action="/supplier/update/logo" method="post" enctype="multipart/form-data">
-              <input type="file" name="logo" accept="image/*"/>
-              <input type="submit" value="Update Logo Image">
-            </form>
-          </div><!-- END logo image .col-sm-12 -->
+          <% } %>
+          <% for (var y = 0; y < supplier["acceptedCurrency"].length; y++) { %>
+          <% if (currencies[x] == supplier.acceptedCurrency[y]) { %>
+          <% matchFound = true; %>
+          <div class="col-sm-2">
+              <label class="checkbox-inline">
+                <input name="acceptedCurrency" checked type="checkbox" id="acceptedCurrency" value="<%= currencies[x] %>" />
+              </label>
+            </div>
+            <div class="col-sm-3 checkboxText">
+              <%= currencies[x] %>
+            </div>
+          <% break; %>
+          <% } %>
+          <% } %>
+          <% if (matchFound === false && currencies[x] !== "break") { %>
+          <div class="col-sm-2">
+              <label class="checkbox-inline">
+                <input name="acceptedCurrency" type="checkbox" id="acceptedCurrency" value="<%= currencies[x] %>" />
+              </label>
+            </div>
+            <div class="col-sm-3 checkboxText">
+              <%= currencies[x] %>
+            </div>
+          <% } %>
+          <% } %>
+          </div>            
+        </section>
+
+        <h5>Accepted Payment Terms*</h5>
+        <section id="acceptedPaymentTerms">
+        <% var payment = ["MoneyGram","Western Union","T/T","Credit Card","Escrow","PayPal","D/P D/A","Cash"]; %>
+          <div class="row">
+          <% for(var x = 0; x < payment.length; x++) { %>
+          <% var matchFound = false; %>
+          <% if (x % 2 == 0) { %>
+        </div>
+        <div class="row">
+          <% } %>
+          <% for (var y = 0; y < supplier["acceptedPaymentTerms"].length; y++) { %>
+          <% if (payment[x] == supplier.acceptedPaymentTerms[y]) { %>
+          <% matchFound = true; %>
+          <div class="col-sm-2">
+              <label class="checkbox-inline">
+                <input name="acceptedPaymentTerms" checked type="checkbox" id="acceptedPaymentTerms" value="<%= payment[x] %>" />
+              </label>
+            </div>
+            <div class="col-sm-3 checkboxText">
+              <%= payment[x] %>
+            </div>
+          <% break; %>
+          <% } %>
+          <% } %>
+          <% if (matchFound === false && payment[x] !== "break") { %>
+          <div class="col-sm-2">
+              <label class="checkbox-inline">
+                <input name="acceptedPaymentTerms" type="checkbox" id="acceptedPaymentTerms" value="<%= payment[x] %>" />
+              </label>
+            </div>
+            <div class="col-sm-3 checkboxText">
+              <%= payment[x] %>
+            </div>
+          <% } %>
+          <% } %>
+          </div>            
+        </section>
+
+        <h5>Accepted Delivery Terms</h5>
+        <section id="acceptedPaymentTerms">
+        <% var terms = ["EXW","FCA","CPT","CIP","DAT","DAP","DDP","FAS","FOB","CFR","CIF","Custom"]; %>
+          <div class="row">
+          <% for(var x = 0; x < terms.length; x++) { %>
+          <% var matchFound = false; %>
+          <% if (x % 2 == 0) { %>
+        </div>
+        <div class="row">
+          <% } %>
+          <% for (var y = 0; y < supplier["acceptedDeliveryTerms"].length; y++) { %>
+          <% if (terms[x] == supplier.acceptedDeliveryTerms[y]) { %>
+          <% matchFound = true; %>
+          <div class="col-sm-2">
+              <label class="checkbox-inline">
+                <input name="acceptedDeliveryTerms" checked type="checkbox" id="acceptedDeliveryTerms" value="<%= terms[x] %>" />
+              </label>
+            </div>
+            <div class="col-sm-3 checkboxText">
+              <%= terms[x] %>
+            </div>
+          <% break; %>
+          <% } %>
+          <% } %>
+          <% if (matchFound === false && terms[x] !== "break") { %>
+          <div class="col-sm-2">
+              <label class="checkbox-inline">
+                <input name="acceptedDeliveryTerms" type="checkbox" id="acceptedDeliveryTerms" value="<%= terms[x] %>" />
+              </label>
+            </div>
+            <div class="col-sm-3 checkboxText">
+              <%= terms[x] %>
+            </div>
+          <% } %>
+          <% } %>
+          </div>            
+        </section>
+      </div><!-- END right column -->
+
+      <div class="col-sm-12">
+        <h5>Enter Product Specialties*</h5>
+        <div class="col-sm-12">
+        <% if (supplier["productCategory"].length > 0) { %>
+          <% for (var x = 0; x < supplier["productCategory"].length; x++) { %>
+            <% if (x === 0) { %>
+              <input id="autocomplete<%= x + 1 %>" name="autocompleteReq" placeholder="Begin typing to search categories..." value="<%= supplier["productCategory"][x] %>">
+            <% } else { %>
+              <input id="autocomplete<%= x + 1 %>" name="autocomplete" placeholder="Begin typing to search categories..." value="<%= supplier["productCategory"][x] %>">
+            <% } %>
+          <% } %>
+        <% } else { %>
+          <input id="autocomplete1" name="autocompleteReq" placeholder="Begin typing to search categories...*">
+          <input id="autocomplete2" name="autocomplete" placeholder="Begin typing to search categories...">
+          <input id="autocomplete3" name="autocomplete" placeholder="Begin typing to search categories...">
+        <% } %>
         </div>
       </div>
 
-          <form action="/supplier/update/information" method="post" id="supplierInformationForm">
-          <div class="formWrapper">
-            <div class="row">
-
-            <div class="col-sm-6 dba">
-              <h5>DBA Name</h5>
-              <div><input type="text" name="dba" <% if (supplier.dbaName) { %>value="<%= supplier.dbaName %>"<% }%> placeholder="Alternate Company Name"></div>
-            </div>
-            <div class="col-sm-6 language">
-              <h5>Language*</h5>
-              <div class="styledSelect">
-                <select name="language" id="languageSelect">
-                  
-                  <%- partial('../edit-dropdowns/edit-language') %>
-                  <script language="javascript">$("#languageSelect").val("<%=supplier.language%>");</script>
-
-                </select>
-              </div>
-            </div>
-            <div class="clear"></div>
-
-            <div class="col-sm-12">
-              <h5 class="header-currency">Accepted Currencies*</h5>
-            </div>
-
-            <% var currencies = ["USD","EUR","JPY","GBP","break","AUD","CHF","CAD","MXN","break","CNY","NZD","SEK","break","RUB","HKD","SGD"]; %>
-
-            <section id="acceptedCurrencies">
-              <div class="row">
-                <div class="col-sm-3">
-                  <% for(var x = 0; x < currencies.length; x++) { %>
-                    <% var matchFound = false; %>
-                    <% if (currencies[x] === "break") { %>
-                      </div>
-                      <div class="col-sm-3">
-                    <% } %>
-                    <% for (var y = 0; y < supplier["acceptedCurrency"].length; y++) { %>
-                      <% if (currencies[x] == supplier.acceptedCurrency[y]) { %>
-                        <% matchFound = true; %>
-                        <div class="cb-container"><input class="checkbox" type="checkbox" name="acceptedCurrency" value="<%= currencies[x] %>" checked><div class="checkboxtext"><%= currencies[x] %></div></div>
-                        <% break; %>
-                      <% } %>
-                    <% } %>
-                    <% if (matchFound === false && currencies[x] !== "break") { %>
-                      <div class="cb-container"><input class="checkbox" type="checkbox" name="acceptedCurrency" value="<%= currencies[x] %>"><div class="checkboxtext"><%= currencies[x] %></div></div>
-                    <% } %>
-                  <% } %>
-              </div>
-              </div>
-            </section>
-
-            <h5>Accepted Payment Terms*</h5>
-            <% var payment = ["MoneyGram","Western Union","break","T/T","Credit Card","break","Escrow","PayPal","break","D/P D/A","Cash"]; %>
-
-            <section id="acceptedPaymentTerms">
-              <div class="row">
-                <div class="col-sm-3">
-                  <% for(var x = 0; x < payment.length; x++) { %>
-                    <% var matchFound = false; %>
-                    <% if (payment[x] === "break") { %>
-                      </div>
-                      <div class="col-sm-3">
-                    <% } %>
-                    <% for (var y = 0; y < supplier["acceptedPaymentTerms"].length; y++) { %>
-                      <% if (payment[x] == supplier.acceptedPaymentTerms[y]) { %>
-                        <% matchFound = true; %>
-                        <div class="cb-container"><input class="checkbox" type="checkbox" name="acceptedPaymentTerms" value="<%= payment[x] %>" checked><div class="checkboxtext"><%= payment[x] %></div></div>
-                        <% break; %>
-                      <% } %>
-                    <% } %>
-                    <% if (matchFound === false && payment[x] !== "break") { %>
-                      <div class="cb-container"><input class="checkbox" type="checkbox" name="acceptedPaymentTerms" value="<%= payment[x] %>"><div class="checkboxtext"><%= payment[x] %></div></div>
-                    <% } %>
-                  <% } %>
-              </div>
-            </section>
-
-            <h5>Accepted Delivery Terms</h5>
-            <% var terms = ["EXW","FCA","CPT","break","CIP","DAT","DAP","break","DDP","FAS","FOB","break","CFR","CIF","Custom"]; %>
-
-            <section id="acceptedDeliveryTerms">
-              <div class="row">
-                <div class="col-sm-3">
-                  <% for (var x = 0; x < terms.length; x++) { %>
-                    <% var matchFound = false; %>
-                    <% if (terms[x] === "break") { %>
-                      </div>
-                      <div class="col-sm-3">
-                    <% } %>
-                    <% for (var y = 0; y < supplier["acceptedDeliveryTerms"].length; y++) { %>
-                      <% if (terms[x] == supplier.acceptedDeliveryTerms[y]) { %>
-                        <% matchFound = true; %>
-                        <div class="cb-container"><input class="checkbox" type="checkbox" name="acceptedDeliveryTerms" value="<%= terms[x] %>" checked><div class="checkboxtext"><%= terms[x] %></div></div>
-                        <% break; %>
-                      <% } %>
-                    <% } %>
-                    <% if (matchFound === false && terms[x] !== "break") { %>
-                      <div class="cb-container"><input class="checkbox" type="checkbox" name="acceptedDeliveryTerms" value="<%= terms[x] %>"><div class="checkboxtext"><%= terms[x] %></div></div>
-                    <% } %>
-                  <% } %>
-              </div>
-            </section>
-
-            <div class="col-sm-6">
-              <h5>Type of Company*</h5>
-                <section id="typeOfCompany">
-                  <div class="styledSelect breakForm">
-                    <select name="typeOfCompany" id="typeOfComp">
-                      <%- partial('../edit-dropdowns/edit-buyer-type') %>
-                      <% if (supplier.preferredBuyerType) { %>
-                        <script language="javascript">$("#typeOfComp").val("<%=supplier.typeOfCompany%>");</script>
-                      <% } %>
-                    </select>
-                  </div>
-                </section>
-
-              <h5>Contact Name</h5>
-              <% if (supplier.contactName === undefined) { %>
-                <div><input type="text" name="contactName" placeholder="Contact Name"></div>
-                <% } else { %>
-                <div><input type="text" name="contactName" value="<%= supplier.contactName %>" placeholder="Contact Name"></div>
-              <% } %>
-
-              <h5>Contact Position</h5>
-              <% if (supplier.contactPosition === undefined) { %>
-                <div><input type="text" name="contactPosition" placeholder="Contact Position"></div>
-                <% } else { %>
-                <div><input type="text" name="contactPosition" value="<%= supplier.contactPosition %>" placeholder="Contact Position"></div>
-              <% } %>
-
-              <h5>Contact Email</h5>
-              <% if (supplier.contactEmail === undefined) { %>
-                <div><input type="text" name="contactEmail" placeholder="Contact Email"></div>
-                <% } else { %>
-                <div><input type="text" name="contactEmail" value="<%= supplier.contactEmail %>" placeholder="Contact Email"></div>
-              <% } %>
-            </div>
-
-            <div class="col-sm-6">
-                <h5>Private Labeler</h5>
-                <section id="privateLabeler" class="breakForm">
-                  <% if (supplier.privateLabeler === true) { %>
-                    <input class="checkbox"type="checkbox" name="privateLabeler" value="privateLabeler" checked="checked"><div class="checkboxtext">Private Labeling</div><br>
-                  <% } else { %>
-                    <input class="checkbox"type="checkbox" name="privateLabeler" value="privateLabeler"><div class="checkboxtext">Private Labeling</div><br>
-                  <% } %>
-                </section>
-
-                <h5>GSA Approved Supplier</h5>
-                <section id="gsaApprovedSupplier" class="breakForm">
-                  <% if (supplier.gsaApprovedSupplier === true) { %>
-                    <input class="checkbox"type="checkbox" name="gsaApprovedSupplier" value="gsaApprovedSupplier" checked="checked"><div class="checkboxtext">GSA Approved Supplier</div><br>
-                  <% } else { %>
-                    <input class="checkbox"type="checkbox" name="gsaApprovedSupplier" value="gsaApprovedSupplier"><div class="checkboxtext">GSA Approved Supplier</div><br>
-                  <% } %>
-                </section>
-
-                <h5>DUNS Number</h5>
-                <% if (supplier.dunsNumber === undefined) { %>
-                  <div><input type="text" name="dunsNumber" placeholder="DUNS Number"></div>
-                  <% } else { %>
-                  <div><input type="text" name="dunsNumber" value="<%= supplier.dunsNumber %>" placeholder="DUNS Number"></div>
-                <% } %>
-
-                <h5>CAGE Code</h5>
-                <% if (supplier.cageCode=== undefined) { %>
-                  <div><input type="text" name="cageCode" placeholder="CAGE Code"></div>
-                  <% } else { %>
-                  <div><input type="text" name="cageCode" value="<%= supplier.cageCode %>" placeholder="CAGE Code"></div>
-                <% } %>
-            </div>
-
-            <div class="col-sm-12">
-                <h5>Enter Product Specialties*</h5>
-                <div class="col-sm-12">
-                <% if (supplier["productCategory"].length > 0) { %>
-                  <% for (var x = 0; x < supplier["productCategory"].length; x++) { %>
-                    <% if (x === 0) { %>
-                      <input id="autocomplete<%= x + 1 %>" name="autocompleteReq" placeholder="Begin typing to search categories..." value="<%= supplier["productCategory"][x] %>">
-                    <% } else { %>
-                      <input id="autocomplete<%= x + 1 %>" name="autocomplete" placeholder="Begin typing to search categories..." value="<%= supplier["productCategory"][x] %>">
-                    <% } %>
-                  <% } %>
-                <% } else { %>
-                  <input id="autocomplete1" name="autocompleteReq" placeholder="Begin typing to search categories...*">
-
-                  <input id="autocomplete2" name="autocomplete" placeholder="Begin typing to search categories...">
-
-                  <input id="autocomplete3" name="autocomplete" placeholder="Begin typing to search categories...">
-                <% } %>
-                </div>
-            </div>
-
-        </div><!-- END row -->
-      </div><!-- END .formWrapper -->
-    <div class="row"><button class="continueButton" type="submit">Save&nbsp;&nbsp; <i class="fa fa-check"></i></button></div><br/><br/>
+    </div><!-- END .row -->
+  </div><!-- END .formWrapper -->
+  <div class="row"><button class="continueButton" type="submit">Save&nbsp;&nbsp; <i class="fa fa-check"></i></button></div><br/><br/>
   </form>
-</div><!-- END #companyDetails -->
-  <% } %>
+</div><!-- END #supplierInformation -->
 <% } %>
+<% } %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

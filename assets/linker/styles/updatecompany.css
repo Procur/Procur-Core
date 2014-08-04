@@ -61,6 +61,17 @@
   font-weight: 400;
 }
 
+#companyUpdate .checkbox-inline input {
+  width: auto;
+  margin-top: 0px;
+  padding-top: 0px; 
+  margin-right: 7px;
+}
+
+#companyUpdate .checkboxText {
+  padding-left: 0px;
+}
+
 #companyUpdate textarea {
   width: 100%;
   resize: none;
