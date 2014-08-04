@@ -2,36 +2,23 @@
 <% if ((user.activeMode == 'supplier') || (user.activeMode === undefined)) { %>
 <div id="supplierInformation">
   <h4>Supplier Information</h4>
-  <div class="formWrapper">
-    <div class="row">
-      <div class="col-sm-6">
-        <h5>Logo Image</h5>
-        <div><% if (supplier.logoUrl) { %><img src="<%= supplier.logoUrl %>"><% } %></div>
-        <form id="supplierLogoForm" action="/supplier/update/logo" method="post" enctype="multipart/form-data">
-          <input type="file" name="logo" accept="image/*"/>
-          <input type="submit" value="Update Logo Image">
-        </form>
-      </div><!-- END logo image .col-sm-12 -->
-    </div>
-  </div>
+  
 
-  <form action="/supplier/update/information" method="post" id="supplierInformationForm">
+ 
     <div class="formWrapper">
       <div class="row">
         <div class="col-sm-6"> <!-- Left Column-->
-          <h5>DBA Name</h5>
-          <div><input type="text" name="dba" <% if (supplier.dbaName) { %>value="<%= supplier.dbaName %>"<% }%> placeholder="Alternate Company Name"></div>
+          <div class="formWrapper">
+            <h5>Logo Image</h5>
+            <div><% if (supplier.logoUrl) { %><img src="<%= supplier.logoUrl %>"><% } %></div>
+            <form id="supplierLogoForm" action="/supplier/update/logo" method="post" enctype="multipart/form-data">
+              <input type="file" name="logo" accept="image/*"/>
+              <input type="submit" value="Update Logo Image">
+            </form>
 
-          <h5>Language*</h5>
-          <div class="styledSelect">
-            <select name="language" id="languageSelect">
-
-              <%- partial('../edit-dropdowns/edit-language') %>
-              <script language="javascript">$("#languageSelect").val("<%=supplier.language%>");</script>
-
-            </select>
           </div>
-
+          
+ <form action="/supplier/update/information" method="post" id="supplierInformationForm">
           <h5>Type of Company*</h5>
           <section id="typeOfCompany">
             <div class="styledSelect breakForm">
@@ -68,18 +55,18 @@
           <h5>Private Labeler</h5>
           <section id="privateLabeler" class="breakForm">
             <% if (supplier.privateLabeler === true) { %>
-            <input class="checkbox"type="checkbox" name="privateLabeler" value="privateLabeler" checked="checked"><div class="checkboxtext">Private Labeling</div><br>
+            <input style="margin-left: 0px;" class="checkbox"type="checkbox" name="privateLabeler" value="privateLabeler" checked="checked"><div class="checkboxtext">Private Labeling</div><br>
             <% } else { %>
-            <input class="checkbox"type="checkbox" name="privateLabeler" value="privateLabeler"><div class="checkboxtext">Private Labeling</div><br>
+            <input style="margin-left: 0px;" class="checkbox"type="checkbox" name="privateLabeler" value="privateLabeler"><div class="checkboxtext">Private Labeling</div><br>
             <% } %>
           </section>
 
           <h5>GSA Approved Supplier</h5>
           <section id="gsaApprovedSupplier" class="breakForm">
             <% if (supplier.gsaApprovedSupplier === true) { %>
-            <input class="checkbox"type="checkbox" name="gsaApprovedSupplier" value="gsaApprovedSupplier" checked="checked"><div class="checkboxtext">GSA Approved Supplier</div><br>
+            <input style="margin-left: 0px;" class="checkbox"type="checkbox" name="gsaApprovedSupplier" value="gsaApprovedSupplier" checked="checked"><div class="checkboxtext">GSA Approved Supplier</div><br>
             <% } else { %>
-            <input class="checkbox"type="checkbox" name="gsaApprovedSupplier" value="gsaApprovedSupplier"><div class="checkboxtext">GSA Approved Supplier</div><br>
+            <input style="margin-left: 0px;" class="checkbox"type="checkbox" name="gsaApprovedSupplier" value="gsaApprovedSupplier"><div class="checkboxtext">GSA Approved Supplier</div><br>
             <% } %>
           </section>
 
@@ -97,89 +84,240 @@
           <div><input type="text" name="cageCode" value="<%= supplier.cageCode %>" placeholder="CAGE Code"></div>
           <% } %>
 
+          <h5>Secondary Location</h5>
+                        <section id="otherLocation1">
+            <div><input type="text" name="locationName" value="<%= supplier.locationName %>" placeholder="Location Title"></div>
+
+            <div class="styledSelect">
+              <select name="locationType" id="locationType">
+                <%- partial('../edit-dropdowns/edit-other-location-type') %>
+                <% if (supplier.locationType) { %>
+                <script language="javascript">$("#locationType").val("<%-supplier.locationType%>");</script>
+                  <%} else { %>
+                  <script language="javascript">$("#locationType").val("");</script>
+                <% } %>
+              </select>
+            </div>
+
+            <div class="styledSelect">
+              <select name="locationCountry" id="locationCountry" onchange="print_state('locationProvince',this.selectedIndex);">
+              <script language="javascript">print_country("locationCountry");</script>
+              <% if (supplier.locationCountry) { %>
+                <script language="javascript">
+                  $("#locationCountry").val("<%=supplier.locationCountry%>");
+                </script>
+              <% } else { %>
+                <script language="javascript">$("#locationCountry").val("");</script>
+              <% } %>
+              </select>
+            </div>
+
+            <div class="styledSelect">
+              <select name="locationProvince" id="locationProvince">
+              <% if (supplier.locationCountry) { %>
+                  <script language="javascript">print_state("locationProvince",$("#locationCountry").prop('selectedIndex'));</script>
+                <% } else {%>
+                  <script language="javascript">print_state("locationProvince",0);</script>
+              <% } %>
+              <% if (supplier.locationProvince) { %>
+                <script language="javascript">
+                  $("#locationProvince").val("<%=supplier.locationProvince%>");
+                </script>
+              <% } else { %>
+                <script language="javascript">$("#locationProvince").val("");</script>
+              <% } %>
+              </select>
+            </div>
+
+            <div><input type="text" name="locationCity" value="<%= supplier.locationCity %>" placeholder="City"></div>
+          </section>
+
+              
+
         </div>
         <div class="col-sm-6"> <!-- Right Column-->
+          <h5>DBA Name</h5>
+          <div><input type="text" name="dba" <% if (supplier.dbaName) { %>value="<%= supplier.dbaName %>"<% }%> placeholder="Alternate Company Name"></div>
+
+          <h5>Language*</h5>
+          <div class="styledSelect">
+            <select name="language" id="languageSelect">
+
+              <%- partial('../edit-dropdowns/edit-language') %>
+              <script language="javascript">$("#languageSelect").val("<%=supplier.language%>");</script>
+
+            </select>
+          </div>
+          <h5>Accepted Currencies*</h5>
+          <section id="acceptedCurrencies">
+          <% var currencies = ["USD","EUR","JPY","GBP","AUD","CHF","CAD","MXN","CNY","NZD","SEK","RUB","HKD","SGD"]; %>
+            <div class="row">
+            <% for(var x = 0; x < currencies.length; x++) { %>
+            <% var matchFound = false; %>
+            <% if (x % 2 == 0) { %>
+          </div>
+          <div class="row">
+            <% } %>
+            <% for (var y = 0; y < supplier["acceptedCurrency"].length; y++) { %>
+            <% if (currencies[x] == supplier.acceptedCurrency[y]) { %>
+            <% matchFound = true; %>
+            <div class="col-sm-2">
+                <label class="checkbox-inline">
+                  <input name="acceptedCurrency" checked type="checkbox" id="acceptedCurrency" value="<%= currencies[x] %>" />
+                </label>
+              </div>
+              <div class="col-sm-4 checkboxText">
+                <%= currencies[x] %>
+              </div>
+            <% break; %>
+            <% } %>
+            <% } %>
+            <% if (matchFound === false && currencies[x] !== "break") { %>
+            <div class="col-sm-2">
+                <label class="checkbox-inline">
+                  <input name="acceptedCurrency" type="checkbox" id="acceptedCurrency" value="<%= currencies[x] %>" />
+                </label>
+              </div>
+              <div class="col-sm-3 checkboxText">
+                <%= currencies[x] %>
+              </div>
+            <% } %>
+            <% } %>
+            </div>            
+          </section>
+
 
           <h5>Accepted Payment Terms*</h5>
           <section id="acceptedPaymentTerms">
+          <% var payment = ["MoneyGram","Western Union","T/T","Credit Card","Escrow","PayPal","D/P D/A","Cash"]; %>
             <div class="row">
-              <div class="col-sm-2">
+            <% for(var x = 0; x < payment.length; x++) { %>
+            <% var matchFound = false; %>
+            <% if (x % 2 == 0) { %>
+          </div>
+          <div class="row">
+            <% } %>
+            <% for (var y = 0; y < supplier["acceptedPaymentTerms"].length; y++) { %>
+            <% if (payment[x] == supplier.acceptedPaymentTerms[y]) { %>
+            <% matchFound = true; %>
+            <div class="col-sm-2">
                 <label class="checkbox-inline">
-                  <input type="checkbox" id="acceptedPaymentTerms" value="MoneyGram" />
+                  <input name="acceptedPaymentTerms" checked type="checkbox" id="acceptedPaymentTerms" value="<%= payment[x] %>" />
                 </label>
               </div>
               <div class="col-sm-4 checkboxText">
-                MoneyGram
+                <%= payment[x] %>
               </div>
+            <% break; %>
+            <% } %>
+            <% } %>
+            <% if (matchFound === false && payment[x] !== "break") { %>
+            <div class="col-sm-2">
+                <label class="checkbox-inline">
+                  <input name="acceptedPaymentTerms" type="checkbox" id="acceptedPaymentTerms" value="<%= payment[x] %>" />
+                </label>
+              </div>
+              <div class="col-sm-3 checkboxText">
+                <%= payment[x] %>
+              </div>
+            <% } %>
+            <% } %>
+            </div>            
+          </section>
 
-              <div class="col-sm-2">
+          <h5>Accepted Delivery Terms</h5>
+          <section id="acceptedPaymentTerms">
+          <% var terms = ["EXW","FCA","CPT","CIP","DAT","DAP","DDP","FAS","FOB","CFR","CIF","Custom"]; %>
+            <div class="row">
+            <% for(var x = 0; x < terms.length; x++) { %>
+            <% var matchFound = false; %>
+            <% if (x % 2 == 0) { %>
+          </div>
+          <div class="row">
+            <% } %>
+            <% for (var y = 0; y < supplier["acceptedDeliveryTerms"].length; y++) { %>
+            <% if (terms[x] == supplier.acceptedDeliveryTerms[y]) { %>
+            <% matchFound = true; %>
+            <div class="col-sm-2">
                 <label class="checkbox-inline">
-                  <input type="checkbox" id="acceptedPaymentTerms" value="MoneyGram" />
+                  <input name="acceptedDeliveryTerms" checked type="checkbox" id="acceptedDeliveryTerms" value="<%= terms[x] %>" />
                 </label>
               </div>
-              <div class="col-sm-4 checkboxText">
-                Western Union
+              <div class="col-sm-3 checkboxText">
+                <%= terms[x] %>
               </div>
+            <% break; %>
+            <% } %>
+            <% } %>
+            <% if (matchFound === false && terms[x] !== "break") { %>
+            <div class="col-sm-2">
+                <label class="checkbox-inline">
+                  <input name="acceptedDeliveryTerms" type="checkbox" id="acceptedDeliveryTerms" value="<%= terms[x] %>" />
+                </label>
+              </div>
+              <div class="col-sm-3 checkboxText">
+                <%= terms[x] %>
+              </div>
+            <% } %>
+            <% } %>
+            </div>            
+          </section>
+
+          <h5>Nearest Port</h5>
+          <section id="port">
+            <% if (supplier.portCity) { %>
+               <div><input type="text" name="portCity" value="<%= supplier.portCity %>" placeholder="City"></div>
+              <% } else { %>
+              <div><input type="text" name="portCity" value="" placeholder="City"></div>
+            <% } %>
+
+            <div class="styledSelect">
+              <select name="portCountry" id="portCountry" onchange="print_state('portProvince',this.selectedIndex);">
+              <script language="javascript">print_country("portCountry");</script>
+              <% if (supplier.portCountry) { %>
+                <script language="javascript">
+                  $("#portCountry").val("<%=supplier.portCountry%>");
+                </script>
+              <% } else { %>
+                <script language="javascript">$("#portCountry").val("");</script>
+              <% } %>
+              </select>
             </div>
-            <div class="row">
-              <div class="col-sm-2">
-                <label class="checkbox-inline">
-                  <input type="checkbox" id="acceptedPaymentTerms" value="MoneyGram" />
-                </label>
-              </div>
-              <div class="col-sm-4 checkboxText">
-                T/T
-              </div>
 
-              <div class="col-sm-2">
-                <label class="checkbox-inline">
-                  <input type="checkbox" id="acceptedPaymentTerms" value="MoneyGram" />
-                </label>
-              </div>
-              <div class="col-sm-4 checkboxText">
-                Credit Card
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-sm-2">
-                <label class="checkbox-inline">
-                  <input type="checkbox" id="acceptedPaymentTerms" value="MoneyGram" />
-                </label>
-              </div>
-              <div class="col-sm-4 checkboxText">
-                Escrow
-              </div>
-
-              <div class="col-sm-2">
-                <label class="checkbox-inline">
-                  <input type="checkbox" id="acceptedPaymentTerms" value="MoneyGram" />
-                </label>
-              </div>
-              <div class="col-sm-4 checkboxText">
-                PayPal
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-sm-2">
-                <label class="checkbox-inline">
-                  <input type="checkbox" id="acceptedPaymentTerms" value="MoneyGram" />
-                </label>
-              </div>
-              <div class="col-sm-4 checkboxText">
-                D/P D/A
-              </div>
-
-              <div class="col-sm-2">
-                <label class="checkbox-inline">
-                  <input type="checkbox" id="acceptedPaymentTerms" value="MoneyGram" />
-                </label>
-              </div>
-              <div class="col-sm-4 checkboxText">
-                Cash
-              </div>
+            <div class="styledSelect">
+              <select name="portProvince" id="portProvince">
+                <% if (supplier.portCountry) { %>
+                  <script language="javascript">print_state("portProvince",$("#portCountry").prop('selectedIndex'));</script>
+                <% } else {%>
+                  <script language="javascript">print_state("portProvince",0);</script>
+                <% } %>
+                <% if (supplier.portProvince) { %>
+                  <script language="javascript">
+                    $("#portProvince").val("<%=supplier.portProvince%>");
+                  </script>
+                <% } else { %>
+                  <script language="javascript">
+                    $("#portProvince").val("");
+                  </script>
+                <% } %>
+              </select>
             </div>
           </section>
+
+
         </div>
+        <div class="col-sm-12">
+              <h5>Enter Product Categories of Interest</h5>
+              <% if (supplier["productCategory"].length > 0) { %>
+                <% for (var x = 0; x < supplier["productCategory"].length; x++) { %>
+                  <input id="autocomplete<%= x + 1 %>" name="autocomplete" placeholder="Begin typing to search categories..." value="<%= supplier["productCategory"][x] %>">
+                <% } %>
+              <% } else { %>
+                  <input id="autocomplete1" name="autocomplete" placeholder="Begin typing to search categories...">
+                  <input id="autocomplete2" name="autocomplete" placeholder="Begin typing to search categories...">
+                  <input id="autocomplete3" name="autocomplete" placeholder="Begin typing to search categories...">
+              <% } %>
+            </div>
       </div>
     </div><!-- END .formWrapper -->
     <div class="row"><button class="continueButton" type="submit">Save&nbsp;&nbsp; <i class="fa fa-check"></i></button></div><br/><br/>
