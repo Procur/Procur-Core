@@ -462,8 +462,9 @@ module.exports = {
   },
 
   deletePhotos: function(req, res) {
-    var b = req.body;
+    var cloudinary = require('cloudinary');
     var _ = require('lodash');
+    var b = req.body;
     var payload = {};
 
     async.series(
@@ -509,6 +510,8 @@ module.exports = {
         if (data.buyer) {
           var photosToDelete = [];
           var currentPhotos = [];
+          var photoIds = [];
+          var numPhotos;
           photosToDelete = b["photos-to-delete"];
 
           if (typeof photosToDelete === "string") { photosToDelete = photosToDelete.split(); }
@@ -517,10 +520,21 @@ module.exports = {
             currentPhotos.push(photo);
           });
 
+          photoIds = cloudinaryService.getCloudinaryIds(photosToDelete);
+          numPhotos = photoIds.length;
+
           Buyer.findOne({ company: payload.company }).exec(function(err, buyer) {
             if (err) {
               res.send(500, err);
             } else {
+              async.times(numPhotos, function(n, next) {
+                cloudinary.uploader.destroy(photoIds[n], function(result) {
+                  next(result);
+                });
+              }, function(err, deletedPhotos) {
+                if (err) { /* do something */ }
+              });
+
               buyer["photo"] = _.difference(buyer["photo"], photosToDelete);
 
               buyer.save(function(err) {
