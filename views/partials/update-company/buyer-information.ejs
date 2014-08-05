@@ -50,23 +50,7 @@
           <div><input type="text" name="contactEmail" value="<%= buyer.contactEmail %>" placeholder="Contact Email"></div>
           <% } %>
 
-          <h5>Private Labeler</h5>
-          <section id="privateLabeler" class="breakForm">
-            <% if (buyer.privateLabeler === true) { %>
-            <input style="margin-left: 0px;" class="checkbox"type="checkbox" name="privateLabeler" value="privateLabeler" checked="checked"><div class="checkboxtext">Private Labeling</div><br>
-            <% } else { %>
-            <input style="margin-left: 0px;" class="checkbox"type="checkbox" name="privateLabeler" value="privateLabeler"><div class="checkboxtext">Private Labeling</div><br>
-            <% } %>
-          </section>
-
-          <h5>GSA Approved Buyer</h5>
-          <section id="gsaApprovedBuyer" class="breakForm">
-            <% if (buyer.gsaApprovedBuyer === true) { %>
-            <input style="margin-left: 0px;" class="checkbox"type="checkbox" name="gsaApprovedBuyer" value="gsaApprovedBuyer" checked="checked"><div class="checkboxtext">GSA Approved Bupplier</div><br>
-            <% } else { %>
-            <input style="margin-left: 0px;" class="checkbox"type="checkbox" name="gsaApprovedBuyer" value="gsaApprovedBupplier"><div class="checkboxtext">GSA Approved Buyer</div><br>
-            <% } %>
-          </section>
+          
 
           <h5>DUNS Number</h5>
           <% if (buyer.dunsNumber === undefined) { %>
@@ -75,12 +59,7 @@
           <div><input type="text" name="dunsNumber" value="<%= buyer.dunsNumber %>" placeholder="DUNS Number"></div>
           <% } %>
 
-          <h5>CAGE Code</h5>
-          <% if (buyer.cageCode=== undefined) { %>
-          <div><input type="text" name="cageCode" placeholder="CAGE Code"></div>
-          <% } else { %>
-          <div><input type="text" name="cageCode" value="<%= buyer.cageCode %>" placeholder="CAGE Code"></div>
-          <% } %>
+          
 
           <h5>Secondary Location</h5>
                         <section id="otherLocation1">
@@ -130,6 +109,47 @@
             <div><input type="text" name="locationCity" value="<%= buyer.locationCity %>" placeholder="City"></div>
           </section>
 
+          <h5>Nearest Port</h5>
+          <section id="port">
+            <% if (buyer.portCity) { %>
+               <div><input type="text" name="portCity" value="<%= buyer.portCity %>" placeholder="City"></div>
+              <% } else { %>
+              <div><input type="text" name="portCity" value="" placeholder="City"></div>
+            <% } %>
+
+            <div class="styledSelect">
+              <select name="portCountry" id="portCountry" onchange="print_state('portProvince',this.selectedIndex);">
+              <script language="javascript">print_country("portCountry");</script>
+              <% if (buyer.portCountry) { %>
+                <script language="javascript">
+                  $("#portCountry").val("<%=buyer.portCountry%>");
+                </script>
+              <% } else { %>
+                <script language="javascript">$("#portCountry").val("");</script>
+              <% } %>
+              </select>
+            </div>
+
+            <div class="styledSelect">
+              <select name="portProvince" id="portProvince">
+                <% if (buyer.portCountry) { %>
+                  <script language="javascript">print_state("portProvince",$("#portCountry").prop('selectedIndex'));</script>
+                <% } else {%>
+                  <script language="javascript">print_state("portProvince",0);</script>
+                <% } %>
+                <% if (buyer.portProvince) { %>
+                  <script language="javascript">
+                    $("#portProvince").val("<%=buyer.portProvince%>");
+                  </script>
+                <% } else { %>
+                  <script language="javascript">
+                    $("#portProvince").val("");
+                  </script>
+                <% } %>
+              </select>
+            </div>
+          </section>
+
               
 
         </div>
@@ -164,7 +184,7 @@
                   <input name="acceptedCurrency" checked type="checkbox" id="acceptedCurrency" value="<%= currencies[x] %>" />
                 </label>
               </div>
-              <div class="col-sm-4 checkboxText">
+              <div class="col-sm-3 checkboxText">
                 <%= currencies[x] %>
               </div>
             <% break; %>
@@ -261,46 +281,7 @@
             </div>            
           </section>
 
-          <h5>Nearest Port</h5>
-          <section id="port">
-            <% if (buyer.portCity) { %>
-               <div><input type="text" name="portCity" value="<%= buyer.portCity %>" placeholder="City"></div>
-              <% } else { %>
-              <div><input type="text" name="portCity" value="" placeholder="City"></div>
-            <% } %>
-
-            <div class="styledSelect">
-              <select name="portCountry" id="portCountry" onchange="print_state('portProvince',this.selectedIndex);">
-              <script language="javascript">print_country("portCountry");</script>
-              <% if (buyer.portCountry) { %>
-                <script language="javascript">
-                  $("#portCountry").val("<%=buyer.portCountry%>");
-                </script>
-              <% } else { %>
-                <script language="javascript">$("#portCountry").val("");</script>
-              <% } %>
-              </select>
-            </div>
-
-            <div class="styledSelect">
-              <select name="portProvince" id="portProvince">
-                <% if (buyer.portCountry) { %>
-                  <script language="javascript">print_state("portProvince",$("#portCountry").prop('selectedIndex'));</script>
-                <% } else {%>
-                  <script language="javascript">print_state("portProvince",0);</script>
-                <% } %>
-                <% if (buyer.portProvince) { %>
-                  <script language="javascript">
-                    $("#portProvince").val("<%=buyer.portProvince%>");
-                  </script>
-                <% } else { %>
-                  <script language="javascript">
-                    $("#portProvince").val("");
-                  </script>
-                <% } %>
-              </select>
-            </div>
-          </section>
+          
 
 
         </div>

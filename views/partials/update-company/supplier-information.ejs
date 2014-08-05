@@ -84,53 +84,6 @@
           <div><input type="text" name="cageCode" value="<%= supplier.cageCode %>" placeholder="CAGE Code"></div>
           <% } %>
 
-          <h5>Secondary Location</h5>
-                        <section id="otherLocation1">
-            <div><input type="text" name="locationName" value="<%= supplier.locationName %>" placeholder="Location Title"></div>
-
-            <div class="styledSelect">
-              <select name="locationType" id="locationType">
-                <%- partial('../edit-dropdowns/edit-other-location-type') %>
-                <% if (supplier.locationType) { %>
-                <script language="javascript">$("#locationType").val("<%-supplier.locationType%>");</script>
-                  <%} else { %>
-                  <script language="javascript">$("#locationType").val("");</script>
-                <% } %>
-              </select>
-            </div>
-
-            <div class="styledSelect">
-              <select name="locationCountry" id="locationCountry" onchange="print_state('locationProvince',this.selectedIndex);">
-              <script language="javascript">print_country("locationCountry");</script>
-              <% if (supplier.locationCountry) { %>
-                <script language="javascript">
-                  $("#locationCountry").val("<%=supplier.locationCountry%>");
-                </script>
-              <% } else { %>
-                <script language="javascript">$("#locationCountry").val("");</script>
-              <% } %>
-              </select>
-            </div>
-
-            <div class="styledSelect">
-              <select name="locationProvince" id="locationProvince">
-              <% if (supplier.locationCountry) { %>
-                  <script language="javascript">print_state("locationProvince",$("#locationCountry").prop('selectedIndex'));</script>
-                <% } else {%>
-                  <script language="javascript">print_state("locationProvince",0);</script>
-              <% } %>
-              <% if (supplier.locationProvince) { %>
-                <script language="javascript">
-                  $("#locationProvince").val("<%=supplier.locationProvince%>");
-                </script>
-              <% } else { %>
-                <script language="javascript">$("#locationProvince").val("");</script>
-              <% } %>
-              </select>
-            </div>
-
-            <div><input type="text" name="locationCity" value="<%= supplier.locationCity %>" placeholder="City"></div>
-          </section>
 
               
 
@@ -166,7 +119,7 @@
                   <input name="acceptedCurrency" checked type="checkbox" id="acceptedCurrency" value="<%= currencies[x] %>" />
                 </label>
               </div>
-              <div class="col-sm-4 checkboxText">
+              <div class="col-sm-3 checkboxText">
                 <%= currencies[x] %>
               </div>
             <% break; %>
@@ -263,46 +216,7 @@
             </div>            
           </section>
 
-          <h5>Nearest Port</h5>
-          <section id="port">
-            <% if (supplier.portCity) { %>
-               <div><input type="text" name="portCity" value="<%= supplier.portCity %>" placeholder="City"></div>
-              <% } else { %>
-              <div><input type="text" name="portCity" value="" placeholder="City"></div>
-            <% } %>
-
-            <div class="styledSelect">
-              <select name="portCountry" id="portCountry" onchange="print_state('portProvince',this.selectedIndex);">
-              <script language="javascript">print_country("portCountry");</script>
-              <% if (supplier.portCountry) { %>
-                <script language="javascript">
-                  $("#portCountry").val("<%=supplier.portCountry%>");
-                </script>
-              <% } else { %>
-                <script language="javascript">$("#portCountry").val("");</script>
-              <% } %>
-              </select>
-            </div>
-
-            <div class="styledSelect">
-              <select name="portProvince" id="portProvince">
-                <% if (supplier.portCountry) { %>
-                  <script language="javascript">print_state("portProvince",$("#portCountry").prop('selectedIndex'));</script>
-                <% } else {%>
-                  <script language="javascript">print_state("portProvince",0);</script>
-                <% } %>
-                <% if (supplier.portProvince) { %>
-                  <script language="javascript">
-                    $("#portProvince").val("<%=supplier.portProvince%>");
-                  </script>
-                <% } else { %>
-                  <script language="javascript">
-                    $("#portProvince").val("");
-                  </script>
-                <% } %>
-              </select>
-            </div>
-          </section>
+          
 
 
         </div>
