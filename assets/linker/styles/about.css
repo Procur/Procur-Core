@@ -103,6 +103,14 @@
   line-height: 30px;
 }
 
+#about .ourPlatform {
+  line-height: 21px;
+}
+
+#about .CQR {
+  line-height: 21px;
+}
+
 #about .inBody{
   border-bottom: 2px solid black;
   border-color: #CCCCCC;
