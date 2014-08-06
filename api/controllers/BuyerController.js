@@ -532,7 +532,7 @@ module.exports = {
                   next(result);
                 });
               }, function(err, deletedPhotos) {
-                if (err) { /* do something */ }
+                if (err) { req.flash('error', 'Sorry, we encountered an issue while uploading your image. Please try again.'); }
               });
 
               buyer["photo"] = _.difference(buyer["photo"], photosToDelete);

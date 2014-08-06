@@ -22,9 +22,9 @@
     .ui-tabs-vertical .ui-tabs-nav li.ui-tabs-active .rightSecBox { background: #ffc65c;}
     .ui-tabs-vertical .ui-tabs-nav li.ui-tabs-active .rightSec i { color: white;}
   </style>
-  <% if (req.session.flash) { %>
-    <div id="success-message"><%= req.flash('message') %></div>
-  <% } %>
+  <% if (req.session.flash) { %><div id="success-message"><%= req.flash('message') %></div><% } %>
+  <% if (req.session.flash) { %><div id="error-message"><%= req.flash('error') %></div><% } %>
+
   <div class="row ui-tabs ui-widget ui-widget-content ui-corner-all ui-tabs-vertical ui-helper-clearfix" id="tabs">
     <div class="col-sm-4">
       <% if(user.activeMode == 'buyer') { %><h3>Edit Buyer Profile</h3><% } %>
@@ -50,6 +50,7 @@
     </div><!-- END col-sm-4 -->
 
     <div class="col-sm-8">
+      <div id="ajax-error"></div>
       <% if (company.buyer === true && company.supplier === false) { %>
         <%- partial('../partials/update-company/basic-company-details') %>
         <%- partial('../partials/update-company/buyer-information') %>
