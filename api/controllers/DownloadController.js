@@ -104,7 +104,7 @@ module.exports = {
             }
             if (res.headersSent) {
             } else {
-              return res.redirect('/company/update#photosDownloadsSupplier');
+              return res.redirect('/company/update#photosDownloadsBuyer');
             }
 
           });
@@ -137,7 +137,7 @@ module.exports = {
     //if there are no uploads it sends them back
     if (numUploads == 0) {
       req.flash('message', 'No downloads uploaded.');
-      return res.redirect('/company/update#photosDownloadsBuyer');
+      return res.redirect('/company/update#photosDownloadsSupplier');
     }
     User.findOne({
       id: req.session.passport.user
