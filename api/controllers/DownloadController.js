@@ -33,7 +33,7 @@ module.exports = {
     }
     //if there are no uploads it sends them back
     if (numUploads == 0) {
-      req.flash('message', 'No downloads uploaded.');
+      req.flash('errorMessage', 'No downloads uploaded.');
       return res.redirect('/company/update#photosDownloadsBuyer');
     }
     User.findOne({
@@ -100,7 +100,7 @@ module.exports = {
             if (uploaded) {
               req.flash('message', 'Downloads successfully uploaded.');
             } else {
-              req.flash('message', 'No downloads uploaded.');
+              req.flash('errorMessage', 'No downloads uploaded.');
             }
             if (res.headersSent) {
             } else {
@@ -136,7 +136,7 @@ module.exports = {
     }
     //if there are no uploads it sends them back
     if (numUploads == 0) {
-      req.flash('message', 'No downloads uploaded.');
+      req.flash('errorMessage', 'No downloads uploaded.');
       return res.redirect('/company/update#photosDownloadsSupplier');
     }
     User.findOne({
@@ -180,7 +180,7 @@ module.exports = {
                     assetUrl: resp.Location
                   }, function(err, post) {
                     if (err) {
-                      req.flash("There was a problem. Try again.");
+                      req.flash('errorMessage', "There was a problem. Try again.");
                       res.redirect("/company/update");
                     } else {
                       uploaded = true;
@@ -201,7 +201,7 @@ module.exports = {
             if (uploaded) {
               req.flash('message', 'Downloads successfully uploaded.');
             } else {
-              req.flash('message', 'No downloads uploaded.');
+              req.flash('errorMessage', 'No downloads uploaded.');
             }
             if (res.headersSent) {
             } else {

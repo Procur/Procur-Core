@@ -24,6 +24,7 @@
   </style>
   <% if (req.session.flash) { %>
     <div id="success-message"><%= req.flash('message') %></div>
+    <div id="error-message"><%= req.flash('errorMessage') %></div>
   <% } %>
   <div class="row ui-tabs ui-widget ui-widget-content ui-corner-all ui-tabs-vertical ui-helper-clearfix" id="tabs">
     <div class="col-sm-4">

@@ -77,6 +77,16 @@
   width: 100%;
 }
 
+#companyUpdate #error-message {
+  color: #FF5A5A;
+  text-align: center;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 12px;
+  text-transform: uppercase;
+  line-height: 3em;
+  width: 100%;
+}
+
 #emailVerify #not-verified-error {
   color: #FF5A5A;
   text-align: center;
