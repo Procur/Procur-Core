@@ -97,6 +97,12 @@
   line-height: 18px;
   color: #999999;
 }
+
+#about #paragraphicalSpecial {
+  font-size: 22px;
+  line-height: 30px;
+}
+
 #about .inBody{
   border-bottom: 2px solid black;
   border-color: #CCCCCC;
