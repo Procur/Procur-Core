@@ -10,7 +10,6 @@ $("#imgInp").change(function(){
 });
 
 $("#uploadPhotos").on('click', '#upload-photo.enabled', function() {
-
   var urlPath;
   
   if ($("#buyerPhotos").length) { var urlPath = "/buyer/update/photos"; }
@@ -41,8 +40,7 @@ $("#uploadPhotos").on('click', '#upload-photo.enabled', function() {
       );
     },
     error: function(error) {
-      console.log('error is ' + error);
-      console.log("Error is " + JSON.stringify(error, null, ' '));
+      $("#ajax-error").html("Sorry, we encountered an issue while uploading your image. Please try again.");
     }
   });
 });
@@ -51,39 +49,60 @@ $(".photo-preview-area").on("click", "i.fa-times", function() {
   if ($(this).parent().hasClass("header-remove")) {
     $(this).parent().removeClass("header-remove");
     $(this).parent().siblings('.photo-src').attr('name', '');
-  } else {
+  }
+  else {
     $(this).parent().addClass("header-remove");
     $(this).parent().siblings('.photo-src').attr('name', 'photos-to-delete');
   }
 });
 
+function isImage(file) {
+  var fileType = file["type"].toString();
+
+  if (fileType.indexOf("image") !== -1) {
+    return true;
+  }
+  else {
+    return false;
+  }
+
+}
+
 function readURL(input) {
   var isValidSize;
+  var isValidImage;
 
   if ( $(".jcrop-holder").length ) { destroyJcrop(); }
 
   if (input.files && input.files[0]) {
     file = input.files && input.files[0];
+    isValidImage = isImage(file);
+
     var reader = new FileReader();
 
-    reader.onload = function (e) {
-      filePath = e.target.result;
+    if (isValidImage) {
+      reader.onload = function (e) {
+        filePath = e.target.result;
 
-      isValidSize = isFileSizeValid(file, e);
-      initDimensions();
+        isValidSize = isFileSizeValid(file, e);
+        initDimensions();
 
-      if (isValidSize) {
-        addValidStyling(e);
-        createJcrop();
-        sizeJcrop();
-      } else {
-        addInvalidStyling();
+        if (isValidSize) {
+          addValidStyling(e);
+          createJcrop();
+          sizeJcrop();
+        } else {
+          addInvalidStyling("size");
+        }
+
       }
-
+      reader.readAsDataURL(input.files[0]); 
+    } else {
+      reader.readAsDataURL(input.files[0]); 
+      addInvalidStyling("filetype");
     }
-      
-    reader.readAsDataURL(input.files[0]); 
   }
+
 }
 
 function destroyJcrop() {
@@ -94,6 +113,7 @@ function destroyJcrop() {
 }
 
 function isFileSizeValid(file, e) {
+  /* TODO update file size limit */
   return file.size > 2000000 ? false : true;
 }
 
@@ -119,14 +139,27 @@ function addValidStyling(e) {
   $('#img-preview').css('display','block');
 }
 
-function addInvalidStyling() {
+function addInvalidStyling(issue) {
+  var imagepath;
+  switch(issue) {
+    case "size":
+      imagepath = "/images/imageTooLarge.png";
+      break;
+    case "filetype":
+      imagepath = "/images/invalidImage.png";
+      break;
+    default:
+      imagepath = "/images/imageTooLarge.png";
+      break;
+  } 
+
   $("#upload-photo").removeClass("enabled");
   $("#upload-photo").addClass("disabled");
   $("#upload-photo").removeClass("hide");
   $("#upload-photo").addClass("show");
 
   $('#img-preview').attr('src', ' ');
-  $('#img-preview').attr('src', '/images/imageTooLarge.png'); 
+  $('#img-preview').attr('src', imagepath); 
   $('#img-preview').css('display','block');
 }
 
@@ -137,7 +170,7 @@ function createJcrop() {
     bgColor: 'black',
     bgOpacity: .60,
     minSize: [50, 50],
-    aspectRatio: 16 / 9,
+    aspectRatio: 15 / 9,
     boxWidth: 300,
     allowMove: true
   }, function() {
