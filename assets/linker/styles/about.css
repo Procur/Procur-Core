@@ -118,6 +118,10 @@
   padding-bottom: 20px;
 }
 
+#about .noBottomBorder {
+  border-bottom: 0px;
+}
+
 
 
 #about a {
