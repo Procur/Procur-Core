@@ -82,6 +82,8 @@ module.exports = {
                         callback(null, downloads);
                       }
                     });
+                  } else {
+                    callback(null,undefined);
                   }
                 },
                 supplierdownload: function(callback){
@@ -98,6 +100,8 @@ module.exports = {
                         callback(null, downloads);
                       }
                     });
+                  } else {
+                    callback(null,undefined);
                   }
                 }
               },
@@ -192,6 +196,8 @@ module.exports = {
                         callback(null, downloads);
                       }
                     });
+                  } else {
+                    callback(null,undefined);
                   }
                 },
                 supplierdownload: function(callback){
@@ -208,6 +214,8 @@ module.exports = {
                         callback(null, downloads);
                       }
                     });
+                  } else {
+                    callback(null,undefined);
                   }
                 }
               },
@@ -570,6 +578,8 @@ module.exports = {
                         callback(null, downloads);
                       }
                     });
+                  } else {
+                    callback(null,undefined);
                   }
                 },
                 supplierdownload: function(callback){
@@ -586,6 +596,8 @@ module.exports = {
                         callback(null, downloads);
                       }
                     });
+                  } else {
+                    callback(null,undefined);
                   }
                 }
               },
