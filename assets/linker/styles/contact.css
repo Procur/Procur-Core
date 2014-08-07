@@ -52,9 +52,9 @@
   height: 37px;
   line-height: 37px;
   font-family: 'Roboto', sans-serif;
-  font-weight: 300;
+  font-weight: 400;
   border: 0px none;
-  font-size: 11px;
+  font-size: 12px;
   letter-spacing: 0.05em;
   margin-top: 4px;
   padding-left: 15px;
@@ -168,10 +168,10 @@ textarea {
   height: 37px;
   line-height: 37px;
   font-family: 'Roboto', sans-serif;
-  font-weight: 300;
+  font-weight: 400;
   border: 0px none;
-  font-size: 11px;
-  letter-spacing: 0.05em;
+  font-size: 12px;
+  letter-spacing: 0.06em;
 }
 
 #contactForm input {
@@ -179,6 +179,7 @@ textarea {
   background: #F6F5F3;
   border: none;
   padding-left: 15px;
+  letter-spacing: 0.06em;
 }
 
 #contactForm .styledSelect {
@@ -197,8 +198,8 @@ textarea {
   margin: 4px 0px 4px;
   height: 18px;
   font-family: 'Roboto', sans-serif;
-  font-weight: 100;
-  font-size: 11px;
+  font-weight: 400;
+  font-size: 12px;
   padding: 0px 4px;
   -webkit-appearance: none;
   color: #b2b2b2;
@@ -218,9 +219,9 @@ textarea {
   line-height: 37px;
   padding-left: 15px;
   font-family: 'Roboto', sans-serif;
-  font-weight: 300;
+  font-weight: 400;
   border: 0px none;
-  font-size: 11px;
+  font-size: 12px;
   letter-spacing: 0.05em;
   resize: none;
 }
