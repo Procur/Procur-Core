@@ -150,11 +150,11 @@
 }
 
 #earlyAccess .featuresDetail p {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Open Sans', sans-serif;
   letter-spacing: 0.06em;
   margin: 0px;
   font-size: 12px;
-  font-weight: 300;
+  font-weight: 100;
   line-height: 18px;
 }
 
