@@ -28,6 +28,7 @@
   text-align: center;
   font-weight: 400;
   margin-bottom: 14px;
+  margin-top: 30px;
 }
 
 .regForm {
@@ -46,7 +47,7 @@
   font-family: 'Roboto', sans-serif;
   font-weight: 300;
   border: 0px none;
-  font-size: 11px;
+  font-size: 12px;
   letter-spacing: 0.05em;
 }
 
@@ -62,7 +63,7 @@
   background: #FD9237;
   color: white;
   letter-spacing: 0.08em;
-  font-size: 11px;
+  font-size: 12px;
 }
 
 .launchingSoon h2 {
@@ -276,9 +277,9 @@ background-repeat:no-repeat;
   background-color: #5cc672;
   margin-left: 0;
   border-radius: 20px;
-  font-size: 10px;
+  font-size: 12px;
   font-family: 'Montserrat';
-  font-weight: 300;
+  font-weight: 100;
 }
 
 .indexMid .midSecRight .BL {
@@ -292,7 +293,7 @@ background-repeat:no-repeat;
 
 #homeCarousel .grayBox {
   width: 100%;
-  min-height: 450px;
+  min-height: 410px;
   background-color: #4d4d4d;
 }
 
@@ -308,6 +309,8 @@ background-repeat:no-repeat;
   font-size: 11px;
   line-height: 22px;
   color: white;
+  margin-bottom: 5px;
+  margin-top: 27px;
 }
 
 .carousel-caption h3 {
@@ -316,7 +319,8 @@ background-repeat:no-repeat;
   font-weight: 100;
   letter-spacing: 0.06em;
   color: white;
-  line-height: 40px;
+  line-height: 35px;
+  margin-top: 0px;
 }
 
 .carousel-caption li {
@@ -326,7 +330,7 @@ background-repeat:no-repeat;
   font-size: 10px;
   line-height: 15px;
   color: white;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
   text-transform: uppercase;
 }
 
@@ -425,18 +429,3 @@ background-repeat:no-repeat;
 .indexMid .midSecRight .BR {
 margin-bottom: 25px;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
