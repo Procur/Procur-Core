@@ -37,7 +37,7 @@ module.exports.policies = {
   },
 
   UserController: {
-    welcome: ['sessionCheck', 'isAuthenticated', 'preventBackToWelcome'],
+    welcome: ['sessionCheck', 'isAuthenticated'],
     pleaseVerify: ['sessionCheck', 'isAuthenticated', 'wizardComplete'],
     updateAccount: ['sessionCheck', 'isAuthenticated', 'profileComplete', 'wizardComplete'],
     processUpdateAccount: ['sessionCheck', 'isAuthenticated', 'profileComplete', 'wizardComplete'],
