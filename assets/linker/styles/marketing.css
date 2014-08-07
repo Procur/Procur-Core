@@ -309,6 +309,8 @@ background-repeat:no-repeat;
   font-size: 11px;
   line-height: 22px;
   color: white;
+  margin-bottom: 5px;
+  margin-top: 27px;
 }
 
 .carousel-caption h3 {
@@ -318,6 +320,7 @@ background-repeat:no-repeat;
   letter-spacing: 0.06em;
   color: white;
   line-height: 40px;
+  margin-top: 0px;
 }
 
 .carousel-caption li {
