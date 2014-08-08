@@ -1338,3 +1338,23 @@ $("#supplierSocialOutletsForm").validate({
 });
 
 
+var $downloadTitle1 = $('#downloadTitle0'),
+    $downloadFile1 = $('#downloadURI0');
+
+$('#downloadablesForm').validate({
+  rules: {
+    downloadTitle0: {
+      required: function () {
+        alert("fkdj");
+        console.log($('#downloadURI0'));
+        return $('#downloadURI0').val().length > 0;
+      }
+    }
+  }
+});
+
+$("#downloadTitle0:file").change(function () {
+  alert("change bro");
+});
+
+

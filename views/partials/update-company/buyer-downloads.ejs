@@ -11,8 +11,8 @@
             <ul class="downloadsList">
               <% for (var i = 0; i<buyerDownload.length; i++){ %>
                 <li>
-                  <div class="col-sm-10 col-xs-8">
-                    <%= buyerDownload[i].title %><a href="<%= buyerDownload[i].assetUrl%>" title="Download Copy" target="_blank"><i class="fa fa-download"></i></a>
+                  <div class="col-sm-10 col-xs-8" style="padding-top: 0px;"><h5>
+                    <%= buyerDownload[i].title %><a href="<%= buyerDownload[i].assetUrl%>" title="Download Copy" target="_blank"><i class="fa fa-download"></i></a></h5>
                   </div>
                   <div class="col-sm-2 col-xs-4">
                     <input type="checkbox" class="deleteYesNo" value="<%=buyerDownload[i].id %>" name="deleteMe"></input>
@@ -46,7 +46,7 @@
           <% for (var i = 0; i<5-buyerDownload.length; i++){ %>
             <div class="row">
               <div class="col-sm-6">
-                <input type="text" name="<%='downloadTitle' + i %>" placeholder="Title (Required)"/>
+                <input type="text" id="<%='downloadTitle' + i %>" name="<%='downloadTitle' + i %>" placeholder="Title (Required)"/>
               </div>
               <div class="col-sm-6">
                 <input inline="true" type="file" name="<%='downloadURI'+i %>"  accept="application/pdf,application/vnd.ms-excel,image/*,application/zip,application/mspowerpoint,application/msword"/>
