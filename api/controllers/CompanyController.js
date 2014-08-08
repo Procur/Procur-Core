@@ -183,7 +183,6 @@ module.exports = {
 
   create: function(req, res){
     var b = req.body;
-
     //CREATE HQ TOGGLE LOGIC
     Company.create({
       user: req.session.passport.user,
@@ -214,7 +213,7 @@ module.exports = {
             type: 'HQ'
           }, function(err, location){
             if(err) { return res.redirect('/dashboard'); }
-            User.update(req.session.user, { profileComplete: true }, function(err, user){
+            User.update(req.session.passport.user,  {profileComplete: true }, function(err, user){
               if(err) { return res.redirect('/dashboard'); }
               res.redirect('/dashboard');
             });
@@ -244,7 +243,7 @@ module.exports = {
               type: 'HQ'
             }, function(err, location){
               if(err) { return res.redirect('/dashboard'); }
-              User.update(req.session.user, { profileComplete: true }, function(err, user){
+              User.update(req.session.passport.user,  {profileComplete: true }, function(err, user){
                 if(err) return next(err);
                 res.redirect('/dashboard');
               });

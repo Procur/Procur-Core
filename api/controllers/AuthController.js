@@ -284,8 +284,7 @@ module.exports = {
 
   //LOGOUT CONFIRMATION
   goodbye: function(req, res){
-    var user = req.session.user;
-    User.findOne({ id: req.session.user }, function(err, user){
+    User.findOne({ id: req.session.passport.user }, function(err, user){
       if(err) {
         return res.redirect('/dashboard');
       }
