@@ -16,7 +16,6 @@ input {
   font-family: 'Roboto', sans-serif;
 }
 
-
 /* REGISTRATION WIZARD */
 
 #regWizard {
@@ -75,7 +74,8 @@ input {
   height: 25px;
   font-size: 11px;
   padding: 0px 7px;
-  font-weight: 100;
+  font-weight: 400;
+  color: #000;
 }
 #regWizard input.submission {
   height: 38px;
@@ -214,7 +214,7 @@ input {
 }
 
 #regWizard .emailVerify a.resendLink:hover{
-text-decoration: none;
+  text-decoration: none;
 }
 
 #regWizard .emailVerify .midBox {
@@ -826,55 +826,49 @@ hr.darkseparator {
 
 /* COMPANY UPDATE */
 #tabs .styledSelect {
-margin-top: 5px;
-margin-bottom: 10px;
-width: 100%;
-overflow: hidden;
-background: url(/images/ddarrow.png) no-repeat white;
-background-position: right top;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  width: 100%;
+  overflow: hidden;
+  background: url(/images/ddarrow.png) no-repeat white;
+  background-position: right top;
 }
 
-#tabs .styledSelect select {
+#companyUpdate .styledSelect select {
   width: 115%;
   background: transparent;
   border: 0px;
   margin: 4px 0px 4px;
   height: 18px;
   font-family: 'Roboto', sans-serif;
-  font-weight: 100;
+  font-weight: 400;
   font-size: 11px;
   padding: 0px 4px;
   -webkit-appearance: none;
-  color: #b2b2b2;
-}
-
-#tabs .styledSelect option {
-color: black;
-font-weight: 500;
 }
 
 /*Dash*/
 
 .orangeButton {
 	font-family: 'Montserrat', sans-serif;
-line-height: 48px;
-margin-left: 60px;
-font-size: 10px;
-text-transform: uppercase;
-color: #4d4d4d;
-letter-spacing: 0.06em;
-margin-top: 0;
-margin-bottom: 0;
-font-weight: 100;
+  line-height: 48px;
+  margin-left: 60px;
+  font-size: 10px;
+  text-transform: uppercase;
+  color: #4d4d4d;
+  letter-spacing: 0.06em;
+  margin-top: 0;
+  margin-bottom: 0;
+  font-weight: 100;
 }
 .rightSec:hover .orangeButton:hover {
-color: white;
-text-decoration: none;
--webkit-transition: all 200ms ease-in-out;
--moz-transition: all 200ms ease-in-out;
--ms-transition: all 200ms ease-in-out;
--o-transition: all 200ms ease-in-out;
-transition: all 200ms ease-in-out;
+  color: white;
+  text-decoration: none;
+  -webkit-transition: all 200ms ease-in-out;
+  -moz-transition: all 200ms ease-in-out;
+  -ms-transition: all 200ms ease-in-out;
+  -o-transition: all 200ms ease-in-out;
+  transition: all 200ms ease-in-out;
 }
 
 .orangeWrap:hover {
@@ -896,39 +890,17 @@ transition: all 200ms ease-in-out;
   font-weight: 400;
 }
 
-#regWizard select::-webkit-select-placeholder {
-  color: #A9A9A9;
-  font-weight: 400;
+#tabs textarea::-webkit-input-placeholder {
+  color: #7F7F7F;
 }
 
-#tabs input::-webkit-input-placeholder {
-  color: #7F7F7F;
-  font-weight: 400;
-}
-/*
-#tabs select::-webkit-select-placeholder {
-  color: #A9A9A9;
-  font-weight: 400;
-}*/
-/*
-#tabs input{
-  color: #000;
-  font-weight: 400;
-}*/
-/*
-#tabs select{
-  color: #000;
-  font-weight: 400;
-}
-*/
 #faq .colRight a {
 	font-family: 'Roboto', sans-serif;
-font-weight: 300;
-letter-spacing: 0.06em;
-color: #fbac27;
-line-height: 20px;
-font-size: 12px;
-
+  font-weight: 300;
+  letter-spacing: 0.06em;
+  color: #fbac27;
+  line-height: 20px;
+  font-size: 12px;
 }
 
 /*pricing margin fix/ hackky css bootstrap override*/

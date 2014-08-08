@@ -1,13 +1,14 @@
-
-
-$('#regWizard, #companyUpdate').find('select').change(function(){
-	$(this).css({'color':'#000000','font-weight': 400});
+$('#regWizard, #companyUpdate').on('change', '.styledSelect select', function() {
+  $(this).css({'color':'#000000','font-weight': 400});
 });
 
-$('#regWizard, #companyUpdate').find('input').keyup(function(){
-	$(this).css({'color':'#000000','font-weight': 400});
-
+$('#regWizard, #companyUpdate').find('.styledSelect select').val(function(index, value) {
+  if (value) {
+    $(this).parent().css({'color':'#000000','font-weight':400});
+  }
+  else {
+    $(this).parent().css({'color':'#7F7F7F','font-weight':400});
+  }
+  return value;
 });
 
-$('#companyUpdate').find('input').css({'color':'#000000','font-weight': 400});
-$('#companyUpdate').find('select').css({'color':'#000000','font-weight': 400});

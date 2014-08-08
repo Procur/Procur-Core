@@ -31,6 +31,8 @@ var propogateHqClick = function() {
     $(".hqaddress2").val("");
     $(".hqcompanyCity").val("");
     $(".hqPostalCode").val("");
+    $(".hqcompanyCountry").css({'color':'#7F7F7F','font-weight': 400});
+    $(".hqcompanyProvince").css({'color':'#7F7F7F','font-weight': 400});
   }
 
 };
