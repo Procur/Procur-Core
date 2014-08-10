@@ -22,18 +22,28 @@ module.exports = {
     var numUploads = 0;
     //array of proper uploads indicies 
     var uploadArray = [];
+    var needTitle = false;
     //find out the number of uploads and their indicies 
     for (i = 0; i < 5; i++) {
       if (req.files["downloadURI" + i]) {
         if (b["downloadTitle" + i] && b["downloadTitle" + i][0] != "" && req.files["downloadURI" + i].headers['content-type'] != "application/octet-stream" && req.files["downloadURI" + i].size < maxSize) {
           numUploads++;
           uploadArray.push(i);
+        } else {
+          if (b["downloadTitle" + i] == "" && req.files["downloadURI" + i].size > 0) {
+            needTitle = true;
+          }
         }
+
       }
     }
     //if there are no uploads it sends them back
     if (numUploads == 0) {
-      req.flash('errorMessage', 'No downloads uploaded.');
+      if (needTitle == true) {
+        req.flash('errorMessage', 'A title is required for all files.');
+      } else {
+        req.flash('errorMessage', 'No downloads uploaded.');
+      }
       return res.redirect('/company/update#photosDownloadsBuyer');
     }
     User.findOne({
@@ -98,9 +108,18 @@ module.exports = {
               return res.redirect('/dashboard');
             }
             if (uploaded) {
-              req.flash('message', 'Downloads successfully uploaded.');
+              if (needTitle == true) {
+                req.flash('message', 'Files with titles successfully uploaded. Files without titles were not.');
+              } else {
+                req.flash('message', 'Downloads successfully uploaded.');
+              }
+              
             } else {
-              req.flash('errorMessage', 'No downloads uploaded.');
+              if (needTitle == true) {
+                req.flash('errorMessage', 'A title is required for all files.');
+              } else {
+                req.flash('errorMessage', 'No downloads uploaded.');
+              }
             }
             if (res.headersSent) {
             } else {
@@ -125,19 +144,29 @@ module.exports = {
     var numUploads = 0;
     //array of proper uploads indicies 
     var uploadArray = [];
+    var needTitle = false;
     //find out the number of uploads and their indicies 
     for (i = 0; i < 5; i++) {
       if (req.files["downloadURI" + i]) {
         if (b["downloadTitle" + i] && b["downloadTitle" + i][0] != "" && req.files["downloadURI" + i].headers['content-type'] != "application/octet-stream" && req.files["downloadURI" + i].size < maxSize) {
           numUploads++;
           uploadArray.push(i);
+        } else {
+          if (b["downloadTitle" + i] == "" && req.files["downloadURI" + i].size > 0) {
+            needTitle = true;
+          }
         }
+
       }
     }
     //if there are no uploads it sends them back
     if (numUploads == 0) {
-      req.flash('errorMessage', 'No downloads uploaded.');
-      return res.redirect('/company/update#photosDownloadsSupplier');
+      if (needTitle == true) {
+        req.flash('errorMessage', 'A title is required for all files.');
+      } else {
+        req.flash('errorMessage', 'No downloads uploaded.');
+      }
+      return res.redirect('/company/update#photosDownloadsBuyer');
     }
     User.findOne({
       id: req.session.passport.user
@@ -199,9 +228,18 @@ module.exports = {
               return res.redirect('/dashboard');
             }
             if (uploaded) {
-              req.flash('message', 'Downloads successfully uploaded.');
+              if (needTitle == true) {
+                req.flash('message', 'Files with titles successfully uploaded. Files without titles were not.');
+              } else {
+                req.flash('message', 'Downloads successfully uploaded.');
+              }
+              
             } else {
-              req.flash('errorMessage', 'No downloads uploaded.');
+              if (needTitle == true) {
+                req.flash('errorMessage', 'A title is required for all files.');
+              } else {
+                req.flash('errorMessage', 'No downloads uploaded.');
+              }
             }
             if (res.headersSent) {
             } else {
