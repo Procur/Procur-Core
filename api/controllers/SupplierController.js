@@ -244,6 +244,7 @@ module.exports = {
   updateInformation: function (req, res) {
     var user = req.session.passport.user;
     var b = req.body;
+    var productCategories = [b.autocompleteReq, (b.autocomplete[0] || ""), (b.autocomplete[1] || "")];
 
     b.privateLabeler === "privateLabeler" ? b.privateLabeler = true : b.privateLabeler = false;
     b.gsaApprovedSupplier === "gsaApprovedSupplier" ? b.gsaApprovedSupplier = true : b.gsaApprovedSupplier = false;
@@ -268,7 +269,7 @@ module.exports = {
             contactName: b.contactName,
             contactPosition: b.contactPosition,
             contactEmail: b.contactEmail,
-            productCategory: [b.autocomplete],
+            productCategory: [productCategories], 
             gsaApprovedSupplier: b.gsaApprovedSupplier,
             dunsNumber: b.dunsNumber,
             cageCode: b.cageCode

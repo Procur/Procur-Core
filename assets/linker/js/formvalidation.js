@@ -1205,6 +1205,10 @@ $('#supplierInformationForm').validate({//TO-DO: WHY DOESNT THIS WORK??
       minlength: 9,
       maxlength: 9
     },
+    autocompleteReq: {
+      required: true,
+      actualCategoryOption: true
+    },
     autocomplete: {
       actualCategoryOption: true
     },
