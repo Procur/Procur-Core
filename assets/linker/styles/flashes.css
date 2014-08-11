@@ -59,12 +59,12 @@
 
 #userUpdate #success-message {
   color: #5cc56c;
-  text-align: center;
   font-family: 'Montserrat', sans-serif;
   font-size: 12px;
   text-transform: uppercase;
   line-height: 3em;
   width: 100%;
+  margin-left: 38%;
 }
 
 #companyUpdate #success-message {
