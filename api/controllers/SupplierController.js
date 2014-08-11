@@ -471,7 +471,7 @@ module.exports = {
         }
       },
       function(err, data) {
-        return res.send(true, { newDimensions: newDimensions, newImage: imageData });
+        return res.send(200, { newDimensions: newDimensions, newImage: imageData });
       }
     )
   },
