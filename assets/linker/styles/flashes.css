@@ -77,6 +77,14 @@
   margin-left: 35%;
 }
 
+#contactPage #success-message {
+  color: #5cc56c;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 10px;
+  text-transform: uppercase;
+  width: 60%;
+}
+
 #emailVerify #not-verified-error {
   color: #FF5A5A;
   text-align: center;
