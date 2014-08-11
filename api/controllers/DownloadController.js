@@ -75,7 +75,7 @@ module.exports = {
                 fStream = fs.createReadStream(filepath);
                 var uploader = new streamingS3(fStream, 'AKIAJJ2Y43ZH662PWFUA', 'IGrhMgy29wD++dB9H9pMzLqOhx5cll45U1qWy+uJ', {
                   Bucket: 'procur-cms',
-                  Key: filename,
+                  Key: company.name+"%"+filename,
                   ContentType: filetype,
                   ACL: 'public-read'
                 }, function(err, resp, filename1, stats) {
@@ -197,7 +197,7 @@ module.exports = {
                 fStream = fs.createReadStream(filepath);
                 var uploader = new streamingS3(fStream, 'AKIAJJ2Y43ZH662PWFUA', 'IGrhMgy29wD++dB9H9pMzLqOhx5cll45U1qWy+uJ', {
                   Bucket: 'procur-cms',
-                  Key: filename,
+                  Key: company.name+"%"+filename,
                   ContentType: filetype,
                   ACL: 'public-read'
                 }, function(err, resp, filename1, stats) {
