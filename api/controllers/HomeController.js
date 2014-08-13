@@ -50,6 +50,7 @@ module.exports = {
       }
       var loggedin;
       req.session.passport.user === undefined ? loggedin = false : loggedin = true;
+      res.locals.title = "B2B Wholesale Marketplace & Platform";
       res.view({ loggedin: loggedin});
     }
     else {
@@ -59,6 +60,7 @@ module.exports = {
       else {
         var loggedin;
         req.session.passport.user === undefined ? loggedin = false : loggedin = true;
+        res.locals.title = "B2B Wholesale Marketplace & Platform";
         res.view({ loggedin: loggedin});
       }
     }
@@ -68,6 +70,7 @@ module.exports = {
   features: function(req, res){
     var loggedin;
     req.session.passport.user === undefined ? loggedin = false : loggedin = true;
+    res.locals.title = "B2B Sales Solutions for Global Commerce";
     res.view({ loggedin: loggedin});
   },
 
@@ -85,13 +88,14 @@ module.exports = {
 
   aboutUs: function(req, res){
     req.session.passport.user === undefined ? loggedin = false : loggedin = true;
-    console.log(loggedin);
+    res.locals.title = "Product Platform for Responsible Sourcing";
     res.view({ loggedin: loggedin});
   },
 
   earlyaccess: function(req, res){
     var loggedin;
     req.session.passport.user === undefined ? loggedin = false : loggedin = true;
+    res.locals.title = "Wholesale Selling and Sourcing Platform";
     res.view({ loggedin: loggedin});
   },
 
