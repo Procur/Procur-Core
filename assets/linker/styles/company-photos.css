@@ -84,7 +84,7 @@
   display: none;
 }
 
-i.fa-times {
+.photo-preview-area i.fa-times {
   margin: 2% 2% 0% 0%;
   float: right;
   color: white;
