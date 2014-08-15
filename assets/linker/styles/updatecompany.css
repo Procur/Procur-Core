@@ -69,7 +69,32 @@
 }
 
 #companyUpdate .checkboxText {
+  margin-top: 4px;
   padding-left: 0px;
+  font-weight: 300;
+  font-family: "Montserrat", sans-serif;
+  font-size: 12px;
+}
+
+#companyUpdate .checkbox-label {
+  display: block;
+  padding-left: 15px;
+  text-indent: -15px;
+  font-weight: 300;
+  font-family: "Montserrat", sans-serif;
+  font-size: 12px;
+  margin-top: 5px;
+  line-height: 20px;
+}
+
+#companyUpdate .checkbox-label input[type='checkbox'] {
+  width: 13px;
+  height: 13px;
+  padding: 0;
+  margin: 5px 10px 0px 0px;
+  vertical-align: bottom;
+  position: relative;
+  top: -1px;
 }
 
 #companyUpdate textarea {
@@ -163,11 +188,6 @@
     width: auto;
     height: auto;
     margin: 0px 0px 30px 25px;
-  }
-
-  #supplierInformation .checkboxtext {
-    display: inline-block;
-    margin: 10px 0px 0px 10px;
   }
 
   #supplierInformation .clear {

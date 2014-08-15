@@ -48,22 +48,22 @@
         <% } else { %>
         <div><input type="text" name="contactEmail" value="<%= supplier.contactEmail %>" placeholder="Contact Email"></div>
         <% } %>
-
+        
         <h5>Private Labeler</h5>
         <section id="privateLabeler" class="breakForm">
           <% if (supplier.privateLabeler === true) { %>
-          <input style="margin-left: 0px;" class="checkbox"type="checkbox" name="privateLabeler" value="privateLabeler" checked="checked"><div class="checkboxtext">Private Labeling</div><br>
+          <label class="checkbox-label" for="private-labeler"><input class="checkbox" id="private-labeler" type="checkbox" name="privateLabeler" value="privateLabeler" checked="checked">Private Labeling</label><br>
           <% } else { %>
-          <input style="margin-left: 0px;" class="checkbox"type="checkbox" name="privateLabeler" value="privateLabeler"><div class="checkboxtext">Private Labeling</div><br>
+          <label class="checkbox-label" for="private-labeler"><input class="checkbox" id="private-labeler" type="checkbox" name="privateLabeler" value="privateLabeler">Private Labeling</label><br>
           <% } %>
         </section>
 
         <h5>GSA Approved Supplier</h5>
         <section id="gsaApprovedSupplier" class="breakForm">
           <% if (supplier.gsaApprovedSupplier === true) { %>
-          <input style="margin-left: 0px;" class="checkbox"type="checkbox" name="gsaApprovedSupplier" value="gsaApprovedSupplier" checked="checked"><div class="checkboxtext">GSA Approved Supplier</div><br>
+          <label class="checkbox-label" for="gsa"><input class="checkbox" id="gsa" type="checkbox" name="gsaApprovedSupplier" value="gsaApprovedSupplier" checked="checked">GSA Approved Supplier</label><br>
           <% } else { %>
-          <input style="margin-left: 0px;" class="checkbox"type="checkbox" name="gsaApprovedSupplier" value="gsaApprovedSupplier"><div class="checkboxtext">GSA Approved Supplier</div><br>
+          <label class="checkbox-label" for="gsa"><input class="checkbox" id="gsa" type="checkbox" name="gsaApprovedSupplier" value="gsaApprovedSupplier">GSA Approved Supplier</label><br>
           <% } %>
         </section>
 
