@@ -50,7 +50,7 @@ module.exports = {
       }
       var loggedin;
       req.session.passport.user === undefined ? loggedin = false : loggedin = true;
-      res.locals.title = "B2B Wholesale Marketplace & Platform";
+      res.locals.title = "Procur - B2B Wholesale Marketplace & Platform";
       res.view({ loggedin: loggedin});
     }
     else {
@@ -60,7 +60,7 @@ module.exports = {
       else {
         var loggedin;
         req.session.passport.user === undefined ? loggedin = false : loggedin = true;
-        res.locals.title = "B2B Wholesale Marketplace & Platform";
+        res.locals.title = "Procur - B2B Wholesale Marketplace & Platform";
         res.view({ loggedin: loggedin});
       }
     }
