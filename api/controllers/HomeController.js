@@ -70,7 +70,7 @@ module.exports = {
   features: function(req, res){
     var loggedin;
     req.session.passport.user === undefined ? loggedin = false : loggedin = true;
-    res.locals.title = "B2B Sales Solutions for Global Commerce";
+    res.locals.title = "B2B Sales Solutions for Global Commerce | Procur";
     res.view({ loggedin: loggedin});
   },
 
@@ -88,14 +88,14 @@ module.exports = {
 
   aboutUs: function(req, res){
     req.session.passport.user === undefined ? loggedin = false : loggedin = true;
-    res.locals.title = "Product Platform for Responsible Sourcing";
+    res.locals.title = "Product Platform for Responsible Sourcing | Procur";
     res.view({ loggedin: loggedin});
   },
 
   earlyaccess: function(req, res){
     var loggedin;
     req.session.passport.user === undefined ? loggedin = false : loggedin = true;
-    res.locals.title = "Wholesale Selling and Sourcing Platform";
+    res.locals.title = "Wholesale Selling and Sourcing Platform | Procur";
     res.view({ loggedin: loggedin});
   },
 
